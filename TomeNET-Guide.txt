@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 19. December 2015 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 27. December 2015 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.6.1 - official websites are:
 | http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | http://koti.mbnet.fi/mikaelh/tomenet/ (Mikael's TomeNET site)
@@ -489,6 +489,10 @@ g       g       pick up an item from the floor. You have to stand on the item
                 to do that. You can also pick up an item by pressing '5' on
                 the number pad while numlock is turned off. Gold is always
                 picked up automatically.
+                If you stand on a pile of different items, the top-most type of
+                item will be picked.
+
+CTRL+G  CTRL+Z  pick up exactly one piece from a stack of same type of items.
 
 K       CTRL+C  forcibly combines a level 0 item in your inventory with other
                 items of the same type that aren't level 0. Be warned, that
@@ -1047,6 +1051,8 @@ They all start with a slash '/' hence they're called slash commands:
             a message telling you so and about which details what's missing.
             NOTE: If you log out, your sign-up is cancelled automatically,
                   so after logging back in you will have to sign up again.
+/evunsign <#>
+            Signs you off from that event number #.
 
 /ex or /examine or /extra
             Gives you detailed information about your character's status, such
@@ -1477,15 +1483,8 @@ The # inscription:
     It can be especially convenient if the item has a very long name.
     Sometimes you can also use this to confuse your fellow players :-p
 
-Items that induce random teleportation, like a 'ring of teleportation' or
-'weapon of the thunderlords':
-..  If the item is _not cursed_ then you may inscribe it with two dots '..' to
-    prevent it from teleporting you! In order for the inscription to take
-    effect in case you already have it equipped you will need to take it off
-    and wield it again.
-    The two dots can appear anywhere in the inscription, as long as they are
-    not separated from each other. Example:
-    A Long Sword Of The Thunderlords (2d5) (+10,+15) {NxCaFALevReg..}
+(The '..' inscription is no longer available since 'Thunderlord' ego weapons
+no longer have the TELEPORT flag.)
 
 Items that 'can cause Earthquakes':
     !E          Prevents the item from causing an earthquake. This usually
@@ -1513,6 +1512,7 @@ Ammunition:
                 you're currently using runs out.
                 Note that you can place ammo in your inventory in the desired
                 order for reloading by dropping it/picking it up again!
+                The !L inscription also works for boomerangs.
 
 Sling ammunition:
     !R          Prevents ricochetting.
@@ -1974,8 +1974,8 @@ Wormy       Wormtongue, Agent of Saruman. He drops great items.
  background music. To find out more, read (2.1a).
 
 -Usually characters expire (that means they are automatically deleted!)
- after 180 days of inactivity. Empty accounts (ie accounts that don't hold any
- characters) usually expire after 60 days.
+ after 366 days of inactivity. Empty accounts (ie accounts that don't hold any
+ characters) usually expire after 62 days.
 
 -Items on the ground (especially in towns) often disappear automatically after
  a while. So don't use the town or the wilderniss to 'store' loot.
@@ -7454,7 +7454,7 @@ Swords, axes, blunt weapons (whips, hammers, morning stars etc.), polearms.
 
 You may wonder which one to choose and why. In general, if your character is
 especially skilled at one of the four masteries you might want to pick that one
-to save skill points.
+to save skill points (for example Half-Trolls get a bonus on Blunt-Mastery).
 
 Also, priests cannot use edged weapons that aren't 'blessed' (a special magical
 property, ie ego-power), so if the player wants to make a melee-oriented priest,
@@ -7480,6 +7480,9 @@ swords, and very few 1h polearms.
 In-game you can press 'I' (or 'x' if inside a store) to inspect an item.
 Even if you haven't *identified* it, it will still tell you the weapon class
 the item belongs to, if it is a weapon.
+
+(Swords can be damaged by acid-based attacks, all other weapon types can be
+damaged by both fire- and acid-based attacks.)
 
 
 
@@ -10287,6 +10290,15 @@ If the item you want to enchant is among your equipment instead of your
 inventory, press '/' key at the "enchant what?" prompt, which will switch to
 equipment (and back to inventory if pressed again).
 
+Vampires have a special take on curses:
+If an item is heavily cursed and it is NOT the "of nothingness" type (weapons)
+then if a vampire (true one, not mimicked) equips it its negative boni will
+flip to positive numbers. Also vampires tend to greatly resist certain bad
+effects that heavily cursed items may exert, making for example Morgul weapons
+and some heavily cursed artifacts quite useful. Note that the curse must be
+heavy, not normal, for this bonus-flipping to work. See (6.4) "- Vampire" for
+more information.
+
 
 
 (5.15) Vampirism
@@ -11718,6 +11730,11 @@ Note that not every skill is available to every profession (class).
                                 Note: Weapon weight or whether it's 1-h, 1 1/2h
                                 or 2h weapon does not matter for backstabbing.
 
+                                Backstab hits and critical hits do not stack.
+                                If you roll a critical hit on backstabbing, the
+                                damage is compared to what the pure backstab
+                                would do and the higher one is used.
+
                                 Vampires will feed especially much from
                                 backstabbing a sleeping opponent to death.
 
@@ -11809,6 +11826,9 @@ Note that not every skill is available to every profession (class).
                                 a harder time to discover your traps.
                                 Last but not least you learn to optimize your
                                 traps for higher damage output.
+                                (Note that 'Magic Device' or 'Runecraft' skill
+                                have no effect on trap damage output, even if
+                                it is loaded with a device or a rune.)
                                 See (4.7) for details about monster traps.
 
                                 Trapping also improves your disarming ability,
@@ -12379,7 +12399,11 @@ create a character!):
     on items such as scrolls, on magic devices, or on equipment such as weapons
     and light sources (which may drain their hit points if equipped, even if
     the vampire acquired resistance to light).
-    Vampires fear the sun light and any other kind of blessed light source,
+    Vampires fear the sun light and any kind of items giving off powerful light
+    such as of a radius of 3 or more, or artifacts or blessed, evil-slaying or
+    undead-slaying items. Light sources aside they fear all items that are
+    blessed or *slay* undead. Exceptions are cursed lights and items and the
+    Stone of Lore - these will not harm vampires.
     since it burns them, draining their hit points. They start with a mummy
     wrapping, because it can protect them from the sunlight (press 'w' to wear
     it). If they are moving on the world surface (meaning not in a dungeon or
@@ -12711,6 +12735,9 @@ create a character!):
     rogue be unable to avoid or disarm a trap. Rogues also have the unusual
     ability to train stealing from shops and their fellow men, a dangerous but
     sometimes very rewarding profession.
+    Searching (or entering searching mode) will actually search within a radius
+    instead of just the adjacent grids, another special trick of this class -
+    this way it becomes much easier to find staircases without mapping magic.
     Rogues are better than warriors or paladins with magical devices, but still
     can not rely on their performance. They can also learn a few magic spells.
     When searching for hidden traps, doors and stairs, they may spot them more
@@ -12871,7 +12898,7 @@ create a character!):
     required for dual-wielding you might want to buy a secondary weapon right
     away, for example a cheap dagger, or even dispose of your starter weapon
     completely and go with two cheap, light weapons instead. (See (6.2) for
-    details on dual-wielding.)
+    details on dual-wielding.) This will increase your BpR by 1 or even 2!
     Note you can determine the order in which ammunition is listed in your
     backpack by simply dropping it and picking it up again in your preferred
     order.
@@ -13070,7 +13097,7 @@ Istar       -5  +3   0  +1  -2  +1       +0      +35%       1
             30  36  30   2  20  16  34  20              bad      bad
              7  13   9   0   0   0  15  15
 Priest      -1  -3  +3  -1   0  +2       +4      +20%       4
-            25  25  32   2   8  16  48  35              poor     poor
+            25  25  32   2   8  16  48  35              fair     fair
              7  10  12   0   0   0  20  15
 Rogue       +2  +1  -2  +3  +1  -1       +5      +15%       5
             45  28  28   5  32  24  60  66              superb   fair
@@ -13091,13 +13118,13 @@ Adventurer   0   0   0   0   0   0       +6      +25%       4
             20  22  20   3  15  15  50  50              fair     fair
             10  10  10   0   5   5  25  25
 Druid       +1   0  +2  -2  -2  +1       +5      +35%       4
-            30  35  30   4  25  25  50  44              fair     fair
+            30  35  30   4  25  25  50  44              poor     poor
              8  11  10   0   5  10  20  25
 Shaman       0  +1  +2  -2   0   0       +3      +40%       4
             10  30  30   4  30  20  45  23              poor     poor
              0  11  10   0   5   3  20  12
 Runemaster  +1  +2  -3  +3  -3  -3       +5      +20%       4
-            30  23  20   2  30  20  45  40              fair     fair
+            30  23  20   2  30  20  45  40              fair     poor
              0  11  10   0   5   3  20  20
 Mindcrafter +2  +2   0   0   0  +1       +6      +25%       5
             30  28  36   3  35  14  55  45              good     fair
@@ -15348,7 +15375,7 @@ Confusion      | FA     |      | Re     | Re    |       | W+I+  | FA    |
 Inertia        | NT     |      |        |       |       |       |       |
 Lightning      | Im     | Br   |        |       | Au    |       | BrD+  |
 Fire           | Im     | Br   |        |       | Au    |       | BrS+  |
-Water          | ImSD   |      |        |       |       |       |       |
+Water          | Im     |      |        |       |       |       |       |
 Gravity        | NT     |      |        |       | Lv    |       |       | Lv
 Frost          | Im     | Br   |        |       | Au    |       | BrS+  |
 Acid           | Im     | Br   |        |       |       |       | Brc+  |
@@ -15357,8 +15384,8 @@ Shards         | Rh     | CrVo |        |       |       |       | Cr    |
 Sound          | Sl     |      |        | Sl    | Sl    | Fe    |       | Sl
 Time           | Sp     | EA   |        |       |       |       | EA    | Sp
 Disenchantment | AM     |      | Ba     | Ba    | Ba    |       |       |
-Ice            | Im     | BrVo |        |       |       |       | Br    |
-Plasma         | ImIm   | Br   |        |       |       |       | Br    |
+Ice            | SD     | BrVo |        |       |       |       | Br    |
+Plasma         | Pl     | Br   |        |       |       | Fe    | Br    |
 
 
 
@@ -17464,7 +17491,7 @@ In general, Ironman rules are stricter than normal server configurations.
 The differences between Ironman ruleset and normal servers are as follows:
   -Only one character is allowed per account.
   -All characters are no-ghost mode, so they have only 1 life (ie 'unworldly').
-  -Usually, accounts expire slower (180 days instead of 60 days).
+  -Usually, accounts expire slower (183 days instead of 62 days).
   -The Training Tower is empty, no monsters or items spawn in there
    (except for the Arena Monster Challenge event).
   -Certain extra stores may spawn in the dungeons
