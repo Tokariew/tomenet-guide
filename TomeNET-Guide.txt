@@ -6082,7 +6082,7 @@ WOUNDING ('It is very sharp and makes your foes bleed.')
         Has additional to-hit/to-dam bonus.
 Weapons of Spinning
         Spin around on activation, hitting every monster around you in a
-        radius of 1.
+        radius of 1, with an extra stun effect.
 EASY_USE (of Simplicity)
         You have a much higher chance of succeeding to use the magic device.
         Also see (6.10) for more information about the 'Magic Device' skill.
@@ -8325,6 +8325,8 @@ Note that not every skill is available to every profession (class).
                                 suffer from.
                                 Slightly increases melee and ranged to-hit
                                 bonus, and melee to-damage bonus.
+                                Increases 'Fighting' and 'Bows/Throws'
+                                abilities.
                                 If your Combat skill isn't zero, then you can
                                 press 'm' to check your base chance of
                                 parrying (weapon) and blocking (shield), see
@@ -11254,6 +11256,10 @@ At a certain point however, usually when the spell's fail chance is already
 rather low, the spell fail rate might not go down further from increasing its
 level. At that point the only thing you can do to further reduce the spell fail
 rate is to increase the stat (INT or WIS) that the spell uses.
+
+Mimic powers use INT to determine fail rate, have a greater fail rate than
+other spells in general, and do not have a 'spell level'. Their effects are
+pretty much fixed.
 
 
 
