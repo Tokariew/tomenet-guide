@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 11. October 2011 - written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.4.8 - official websites are:
+| Latest update: 25. December 2011 - written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.4.8b - official websites are:
 | http://www.tomenet.net/ (main site),
 | http://koti.mbnet.fi/mikaelh/tomenet/ and http://www.c-blue.de/rogue.html
 |
@@ -44,6 +44,7 @@ Contents
 (2) Installation & setup
     (2.1)   Installing TomeNET
     (2.1a)  Installing sound and music packs
+    (2.1b)  Editing sound and music configuration
     (2.2)   Starting TomeNET and getting to play on an internet server
     (2.3)   Client options
 (3) Creating a character & starting to play
@@ -70,7 +71,8 @@ Contents
     (4.1)   Running, picking up items, fighting
     (4.1a)  Auto-retaliation
     (4.2)   Level and owner of items
-    (4.3)   Dungeon and tower types, Ironman, Jail
+    (4.3)   Dungeon and tower types
+    (4.3a)  The Jail
     (4.4)   Terrain
     (4.5)   Towns, shops, the dungeons
     (4.6)   Pits and vaults
@@ -99,7 +101,7 @@ Contents
     (5.9a)  Activatable items
     (5.9b)  Artifacts
     (5.10)  Destruction of items by elemental attacks
-    (5.11)  Armour Class vs monster attacks, damage caps
+    (5.11)  Monster attack mechanism, Armour Class, damage caps
     (5.12)  Monster attack types and brands
     (5.13)  Earthquakes
     (5.14)  Curses
@@ -126,6 +128,7 @@ Contents
     (6.7b)  Druid form details
     (6.7c)  Useful low-level forms for weapon-using mimics
     (6.8)   Magic spells and prayers
+    (6.8a)  Spell failure rate
     (6.9)   Parties, Iron Teams, Guilds
     (6.10)  Magic Device skill/ability details
     (6.11)  Parrying and blocking
@@ -137,13 +140,14 @@ Contents
     (7.2)   Preparing the equipment for diving into the dungeon
     (7.3)   Surviving critical situations
     (7.4)   Spoiler files
-    (7.5)   Skill point distribution
+    (7.5)   Monster tactics
 (8) Miscellanous
     (8.1)   'The Art Not To Die'
     (8.2)   Character dumps
     (8.3)   Golem creation
     (8.4)   Artifact creation
     (8.5)   Alternative ruleset 'RPG Server'
+    (8.5a)  Special server type 'Arcade Server'
     (8.6)   Troubleshooting
 
 
@@ -553,7 +557,7 @@ Note: Mixer settings are saved automatically, provided you use CTRL+X to quit.
 (Compare troubleshooting section (8.6), problem 21.)
 
 There are also some commands that can be entered with ':' like a chat line.
-They all start with a slash '/':
+They all start with a slash '/' hence they're called slash commands:
 
 /help       get a help about slash-commands.
 /afk        toggle AFK (away from keyboard) mode if you have to take a
@@ -670,6 +674,11 @@ They all start with a slash '/':
 /ftkon or /ftkoff
             Enables or disables fire-till-kill mode (see (5.2a)).
             Alternatively, you can toggle it in 'm' menu.
+/guild_adder <name of another player>
+            Allows that player permanently to add other players to the guild too.
+            Use the command a second time to revoke his rights again.
+/guild_cfg [<flag> [<value]]
+            Shows you your current guild configuration and allows you to change it.
 /hou        Displays your houses, same as ~6.
  (/house)
 /ig <player name>
@@ -699,11 +708,11 @@ They all start with a slash '/':
 /note <account name>
             Delete all pending notes that were addressed to that player.
 /notes      Display all pending notes that you wrote to other players.
-/notep <text>
+/pnote <text>
             Leave a note to the party you own.
             If <text> is omitted, it will display the current note.
             If <text> is just an '*' char, it will erase the current note.
-/noteg <text>
+/gnote <text>
             Leave a note to the guild you own.
             If <text> is omitted, it will display the current note.
             If <text> is just an '*' char, it will erase the current note.
@@ -732,6 +741,8 @@ They all start with a slash '/':
             Usually you simply enter another player's store by trying to enter
             his house, which will preset you with the store screen.
             (See (4.10a) for more information about player stores.)
+/pvp        Carries you into/out of the PvP arena. Only usable by pvp-mode
+            chars. See (6.13) for details about PvP mode.
 /que        gives a quest! It needs to be fulfilled before a certain period
  (/quest)   of time passes (continues to expire even while not logged on).
             The player who completes it gets a great item as reward. It will
@@ -762,8 +773,6 @@ They all start with a slash '/':
             Same as /shout, but also aggravates monsters in your current
             line of sight. (Same effect as scroll of aggravate monsters,
             see (5.9)).
-/cough      You let out a cough that might disturb the sleep of nearby
-            monsters, or at least make it a less deep sleep..
 /shot  or  /shot <filename>
  (/screenshot)
             Takes a screen shot to a html file. If <filename> is omitted, it
@@ -784,6 +793,17 @@ They all start with a slash '/':
  (/target)
             Allows you to target a specific grid specified by X,Y as offset
             to your current character position.
+/testyourmight [rs]
+or shorter: /tym [rs]
+            Displays damage and healing stats for your character, totals and
+            averages over number of attacks and over time (# of seconds
+            passed).
+            Note: 'Numer of attacks' only counts successful attacks, ie not
+                  attacks that missed, were blocked/parried/dodged or
+                  nullified by invulnerability, etc.
+                  It however counts ALL attacks, for example aura hits too.
+/time       Tells you the current date and time (of the server, not of your
+            local timezone).
 /untag [<inscription>]
             If <inscription is omitted, it removes all inscriptions from items
             in your backpack which are exactly '!k' (as done by /tag command).
@@ -798,9 +818,6 @@ They all start with a slash '/':
 /untag u    will remove all unique-loot tags from your inventory items.
 /at         Apply auto-inscription settings to current inventory.
  (/autotag)
-/version    Displays the server version.
-/time       Tells you the current date and time (of the server, not of your
-            local timezone).
 /undoskills Allows you to undo the skill points you assigned in 'G' menu last
             time. Use this to correct points you accidentally put into a wrong
             skill.
@@ -808,8 +825,7 @@ They all start with a slash '/':
             making it impossible to undo points spent previously.
             Also, it can only be used ONCE per level, so make sure you get your
             skill point distribution right on the second attempt.
-/pvp        Carries you into/out of the PvP arena. Only usable by pvp-mode
-            chars. See (6.13) for details about PvP mode.
+/version    Displays the server version.
 
 
 
@@ -855,8 +871,8 @@ intend to pick up again, you may inscribe the ammo to make it disappear:
 Other !-inscriptions:
 !T  prevent taking off a secondary item.
 !F  prevent filling a light source with this item. (Ok, not really important.)
-!E  prevent eating this item. Note: !E can also turn off earthquakes if used
-    on items which cause those (see below), so it has two meanings.
+!E  prevent eating this item.
+    (Note: !E may also prevent items from causing earthquakes, see below.)
 !q  prevent quaffing this potion.
 !r  prevent reading this scroll.
 !u,!a, !z  prevent using a staff/aim a wand/zap a rod.
@@ -879,8 +895,12 @@ Items that induce random teleportation, like a 'ring of teleportation' or
     A Long Sword Of The Thunderlords (2d5) (+10,+15) {NxFAReg..}
 
 Items that 'can cause Earthquakes':
-    !E          will make the item stop causing earthquakes randomly on
-                striking. (See (5.13) for more information.)
+    !E          Depends on server settings. If it's enabled for all items, it
+                will make the item stop causing earthquakes randomly on
+                striking. By default !E is only available on the artifact
+                "The Mighty Hammer 'Grond'" though. Press keys  ~d  in the game
+                to check server settings.
+                (See (5.13) for more information about earthquakes.)
 
 Word-of-Recall scrolls:
     @R500       will teleport you to depth 500ft (tower).
@@ -1161,6 +1181,10 @@ Wormy       Wormtongue, Agent of Saruman. He drops great items.
 
 (0.5) Rumours, missing features, technical warnings (READ!)
 -----------------------------------------------------------
+-Do not trust your wireless network regarding lag spikes when you don't want
+ them to happen, if you don't have some high quality wifi equipment running.
+ Most devices that ISPs hand to you for free are pretty mediocre, so plug in
+ your trusted ethernet cable and be fine.
 -To report a bug, use /bug command in game. It allows you to type a line of
  text to explain the bug or problem you encountered. You can use the /bug
  command multiple times if one line is not sufficient for the amount of text
@@ -1414,11 +1438,16 @@ Last but not least, you may use the following command-line options:
 -q                      turns off loading/initializing of audio ('quiet mode')
 -w                      disables weather effects
 -u                      disables automatic LUA script updating
+-k                      don't disable numlock on client startup
 
 
 Linux (compiling from source):
 ------------------------------
 (For using the pre-compiled client instead, see further below.)
+
+There are additional distribution-specific information on Mikael's website at:
+http://koti.mbnet.fi/mikaelh/tomenet/installation-linux.php
+(It's linked on www.tomenet.net -> "Links".)
 
 You can get the source from www.tomenet.net, also see (1.1).
 
@@ -1519,10 +1548,50 @@ Starting with version 4.4.5, TomeNET features a new SDL-based audio system,
 which provides sound effects and background music.
 
 To make use of it, all you have to do is install a sound pack and/or a music
-pack to your lib/xtra/ folder.
+pack to your TomeNET/lib/xtra/ folder. Read on for instructions how to do that.
+
+Note: Some people have reported that the program 'WinRAR' seems to cause
+      problems in some cases, not being able to handle zip files correctly.
+      A powerful free and open source program that is guaranteed to work is
+      '7zip' (a sourceforge project at the time of writing) downloadable at:
+      http://www.7-zip.org/
 
 You can get the official sound pack on http://www.tomenet.net/ in the download
 section, and also look for player-made sound or music packs in the forum!
+
+
+On Microsoft Windows, the easiest way to do this after you downloaded a sound
+or music zip file is to:
+------------------------
+1. install 7zip, a free zip/unzip tool, if you haven't installed one already.
+2. open a Windows Explorer window and navigate to your TomeNET folder. Then
+   double-click the 'lib' folder to enter it. You should now now see a folder
+   named 'xtra' being shown.
+3. quit TomeNET if it's still running, just to be on the safe side (sometimes
+   MS Windows may prevent files from getting overwritten if they are still in
+   use by a running program).
+4. double-click your downloaded sound or music pack zip file to open it in 7zip
+   or whatever you use, and its contents should be displayed:
+   Either a folder named 'sound' or a folder named 'music', depending on what
+   kind of pack you just downloaded.
+   Use the mouse to drag that 'sound' or 'music' folder over to the Windows
+   Explorer window you prepared, right onto the 'xtra' folder, and let go.
+   7zip will now extract the sound or music folder into the xtra folder (while
+   preserving the path structure).
+   If you were extracting a sound pack or if you already installed a music pack
+   previously then you will be prompted to overwrite files - choose "yes".
+   Wait for the extraction process to finish.
+5. Start or restart TomeNET and press CTRL+U in the game to view the audio
+   mixer screen. If everything went smoothly it should say that a sound or a
+   music pack or both have been found.
+   If you don't have sound, make sure that your TomeNET.ini file (it's in your
+   TomeNET folder, double-click it to view, can be opened with any normal text
+   editor) says 'Sound=1' which it should by default if you haven't modified it
+   earlier.
+
+
+General/Linux instructions:
+---------------------------
 After you downloaded a sound pack or a music pack, extract it to your lib/xtra/
 folder, preserving the ZIPs pathname structure. You should end up with a folder
 lib/xtra/sound/ and lib/xtra/music/ respectively, which contain config files
@@ -1533,6 +1602,7 @@ settings with CTRL+U key (or use CTRL+C to toggle music and CTRL+N to toggle
 the master mixer on/off).
 If you don't have sound, check CTRL+U for a red error message and also verify
 that your config file (TomeNET.ini or .tomenetrc) has 'Sound' set to '1'.
+
 
 Note: Mixer settings are saved automatically, provided you use CTRL+X to quit.
 (Compare troubleshooting section (8.6), problem 21.)
@@ -1546,7 +1616,33 @@ command-line option.
 
 If you want to use your own sound and music, and create audio packs for other
 players, read sound.cfg and music.cfg in your lib/xtra/sound or lib/xtra/music
-folder to see how it's done and which formats are supported.
+folder to see how it's done and which formats are supported. Those cfg files
+can be opened with any normal text editor.
+
+
+(2.1b) Editing sound and music configuration
+--------------------------------------------
+You can easily replace or disable certain sound effects or music, or even
+create your own sound and musick packs.
+
+All audio files are in the sub-folders 'sound' and 'music' in the folder
+TomeNET/lib/xtra/. You can just delete or replace the sound files and it'll
+apply as soon as you start/restart the game.
+
+For more specific editing, open the files 'sound.cfg' (in the sound folder) or
+'music.cfg' (in the music folder, if a music pack has been installed) in any
+text editor that supports unix line breaks (Notepad++ for example) and start
+fine-tuning your audio. Both cfg files actually begin with some instructions
+on what file types are supported and about the structure of the files aka how
+to modify/add entries correctly.
+
+For example if you want to disable a certain sound effect, open sound.cfg in
+your text editor, locate the sound effect, and just put a '#' symbol at the
+beginning of the line - that will effectively disable the whole line.
+
+Note: Do not modify the file audio.lua, it has nothing to do with editing your
+      sound or music. Don't worry though if you accidentally modified it, it'll
+      be automatically restored next time you log on to the server.
 
 
 
@@ -2016,6 +2112,12 @@ message. Politely try again after some time.
 You can scroll back the messages using CTRL+P, or look at chat-only messages
 using CTRL+O.
 
+Please do not use foul language in chat. If you do, depending on the server
+settings you might end up in jail.
+Also, foul language is filtered by default. If you want to turn that off,
+press  = 2  and toggle the client option "censor_swearing". (Requires client
+version newer than 4.4.8a, or the 'test client' download.)
+
 You can also enter slash commands in the chat line. For details about slash
 commands see (0.2).
 
@@ -2036,7 +2138,7 @@ Example:
                                where the 'h' is violet. The rest of the
                                message is light blue (standard colour).
 If you cannot see coloured messages in your secondary Tomenet windows other
-than the big main window, check your client option settings by typing  =3
+than the big main window, check your client option settings by typing  =1
 and looking for 'Flicker messages in recall' (recall_flicker). Set it to
 'yes'.
 If you want to type the character '{' in a chat message, rather than using
@@ -2436,6 +2538,9 @@ You can also save macros to <racename>.prf or to <classname>.prf, like
 Warrior.prf to have them being auto-loaded on all characters of that class.
 Priority order (latter one overrides prior one):
 
+These files are meant to store client options and configuration,
+you should NOT use them for macros:
+-----------------------------------
 pref.prf (global for all OS and users on the system)
 user.prf (global, for the specific user)
 pref-<operating system>.prf (loaded if under the specific operating system)
@@ -2443,12 +2548,16 @@ graf-<operating system>.prf OR font-<operating system>.prf
                             (loaded if using graphics / ascii font on the
                              specified system)
 user-<operating system>.prf (loaded if under the specific operating system)
+
+These files can be used for saving your macros to without problems:
+-------------------------------------------------------------------
+<account name>.prf (for the account the player logged in with)
 <race>.prf (for the specific race)
 <class>.prf (for the specific class)
-<account name>.prf (for the account the player logged in with)
 <character name>.prf (for the specific character the player logged in with)
 
-It is recommended to use only race/class/account/character preference files.
+It is recommended to use only race/class/account/character preference files
+for storing your macros.
 
 
 Command macros:  !WORKS DIFFERENT FROM MOST ROGUE-LIKES!
@@ -3238,7 +3347,6 @@ On the skill chart you can press 'Up'/'Down' keys to select a skill and
 'Right' key to invest one of your spare skill points into it. Choices cannot
 be undone, so be careful here.
 For details about skill point distribution and the different skills see (6.2).
-Also see (7.5) for suggestions about skill point distribution.
 
 
 
@@ -3305,8 +3413,9 @@ If you stood in a place where there is no room for your items to drop, for
 example inside a dense forest (green tree fields) or mountain regions (brown ^
 fields) then your items will be scattered randomly over the whole level.
 
-Last but not least, non-validated players and characters below level 5 don't
-drop their items on death, their loot will vanish forever.
+Last but not least, non-validated players and characters below level 3 don't
+drop their items on death, their loot will vanish forever. (The level depends
+on server settings, so check them via ~d to verify.)
 
 
 Ghosts
@@ -3537,8 +3646,8 @@ the owner.
 
 
 
-(4.3) Dungeon and tower types, Ironman, Jail
---------------------------------------------
+(4.3) Dungeon and tower types
+-----------------------------
 To enter a dungeon, you look for the staircase symbol '>', step on it and press
 the '>' key to enter. Same for entering towers, except their staircase goes
 upwards instead of downwards, and hence is a '<' symbol instead of '>'.
@@ -3589,64 +3698,70 @@ For a list of the dungeons see '(4.5) Towns'.
 Dungeon types
 -------------
 There are different types of dungeons. The main five are:
+
 -Normal dungeons. The main dungeons below the five cities Bree, Minas Anor,
  Gondolin, Lothlorien and Khazad-dum are such regular dungeons.
- Normal dungeons/towers are marked by a light grey < or > symbol.
--NO_RECALL. These dungeons don't allow you to use Word-of-Recall nor
- probability travel to change the level. The staircases are the only way.
- Sending items via telekinesis to a player who is currently in a no-recall
- dungeon/tower will only work if both players are on the same dungeon floor.
- Ghosts of dead players can still float up/down.
- No-recall dungeons/towers are marked by a light red < or > symbol.
+ Normal dungeons/towers are marked by a white < or > symbol.
+
 -NO_RECALL_INTO. You may not recall into this dungeon/tower. You can use
  recall to get out of it though. Probability travel works towards the surface
  but not towards the dungeon bottom/tower top. To Telekinesis the same
  restrictions apply as for NO_RECALL. Ghosts may float freely.
  Staircases are yellow.
+
 -NO_UP. These dungeons won't allow you to go upwards, similar to ironman,
  just without the penalty of permanent ghost-death. You are allowed to use
  Word-of-Recall as well! Ghosts of dead players can float upwards.
  No-up dungeons/towers are marked by an orange < or > symbol.
+
+-NO_RECALL. These dungeons don't allow you to use Word-of-Recall nor
+ probability travel to change the level. The staircases are the only way.
+ Sending items via telekinesis to a player who is currently in a no-recall
+ dungeon/tower will only work if both players are on the same dungeon floor.
+ Ghosts of dead players can still float up/down.
+ No-recall dungeons/towers are marked by a red < or > symbol.
+
 -FORCE_DOWN. Same as NO_UP, but you can only recall at the bottom of the
  dungeon, similar to ironman (except for the no-ghost death penalty).
- Force-down dungeons/towers are marked by a red < or > symbol.
--Ironman. Ironman dungeons or towers won't allow you to recall or to use
+ Force-down dungeons/towers are marked by a light red < or > symbol.
+
+-Hellish. Players suffer no-ghost deaths inside hellish dungeons.
+ Even if they're everlasting, meaning that if you die in such a dungeon or
+ tower you won't turn into a ghost either but get destroyed completely.
+ Hellish dungeons/towers are marked by a fire-like flickering < or > symbol
+ (red/yellow).
+
+-Ironman. Same as hellish. Also:
+ Ironman dungeons or towers won't allow you to recall or to use
  staircases that lead upwards or probability travel backwards!
- If you die in such a dungeon or tower you won't turn into a ghost either but
- get destroyed completely.
  Sending items via telekinesis to a player who is currently in an ironman
  dungeon/tower will only work if both players are on the same dungeon floor.
- To leave an ironman dungeon/tower you'll have to get to it's bottom
- respectively top. There might be possibilities to use Word-of-Recall even if
- you're not at bottom/top yet, depending on the server configuration. In
- general you will recognize levels which allow recalling by a green message,
+ To leave an ironman dungeon/tower you'll have to get to it's bottom or top
+ respectively. There might be possibilities to use Word-of-Recall even if
+ you're not at bottom/top yet, depending on the server/dungeon type.
+ In general you will recognize levels which allow recalling by a green message,
  saying "You don't sense a magic barrier here..." (compare (4.8)).
  Ironman dungeons/towers are marked by a dark grey < or > symbol.
+
  NOTE: In the case of RPG-server settings, you can usually recall INTO town
  dungeons every (n*1000)+50 ft, n starting at 0. Example: -50 ft, -1050 ft,
  -2050 ft, etc. Also, ALL dungeons will usually not allow recalling OUT until
  you reach a floor that is equivalent to at least dungeon level 20. Examples:
  At least -1000 ft in Barrow-Downs, at least -550 ft in The Orc Cave.
  (See (8.5) for more information about RPG settings.)
--Hellish. Players suffer no-ghost deaths inside hellish dungeons.
- Even if they're everlasting.
- Hellish dungeons/towers are marked by a fire-like flickering < or > symbol
- (red/yellow).
+
 -NO_DEATH. The Training Tower in Bree has this flag. Players who die inside a
  no-death dungeon won't turn into a ghost if they 'die' but just be teleported
  back to town! They still lose about 20% experience (and gold) though.
  No-death dungeons/towers are marked by a green < or > symbol.
-If a dungeon has several of these flags, the latter ones will override the
-staircase colour. So a hellish ironman dungeon has hellish-looking staircases.
 
-Jail:
-Note that jails (if the server has one) don't allow any type of teleportation,
-nor will you turn into a ghost if you get killed there, instead you will get
-destroyed completely. Same as with 'ironman dungeons'.
-A jail usually has an ironman tower inside.
+If a dungeon has several of these flags, the latter ones will override the
+staircase colour. So a hellish NO_RECALL_INTO dungeon has hellish-looking
+staircases.
 
 Sometimes you might find ruins of old staircases that don't lead to any
-dungeon or tower. Those have no further functionality and are coloured grey.
+dungeon or tower. Those have no further functionality and are coloured grey
+(make sure you don't confuse them with an ironman dungeon accidentally).
 
 
 Overview:
@@ -3662,11 +3777,51 @@ Ironman       yes     yes       at bottom only  downwards   no            +15%
 Hellish       yes     yes       yes             yes         yes           +10%
 
 
+(4.3a) The Jail
+---------------
+The jail is a dedicated house that does not allow imprisoned characters to
+escape until a timer runs out, after which they will be freed.
+
+The jail was originally built for punishment of the following felonies -
+although depending on the server's configuration some might be disabled while
+others might get added:
+    -Swearing
+     Still the most common felony, it will usually only result in a pretty
+     short time of imprisonment.
+     Foul language will be filtered by '*' characters to other players, except
+     if they have turned the filter off in their clients (also see (3.3)).
+     It's possible that not all foul language might result in jailing, but most
+     of it certainly will.
+    -Spamming the chat (aka 'talking too much')
+     Very rare to trigger, also results in a pretty short time of imprisonment.
+    -On server settings where players have to declare that they are ready for
+     pvp, attacking a non-pvp player will result in a long time of imprisonment
+     Trying to shoot someone who's on a safe grid will also result in a medium
+     duration of imprisonment.
+     (These settings are not enabled on the main servers.)
+
+If you commit multiple felonies, whether you are already in jail or not, the
+punishment adds up (except that it doesn't matter how many swear words occured
+in one chat message).
+
+There can be multiple jails. The player will be imprisoned in the one closest
+to him. Also, players will only get caught if they are getting close to a town.
+If you are far away from town, your punishment will be delayed until you move
+close to a town gain, then you will be jailed "for old crimes" accordingly.
+
+Note that jails (if the server has one) don't allow any sort of teleportation,
+nor will you turn into a ghost if you get killed there, instead you will get
+destroyed completely (basically same as if you were a no-ghost mode char).
+
+A jail usually has an ironman tower or dungeon inside. It has no deeper meaning
+and is certainly not required or recommended to take. If you're up for a pretty
+hard extra challenge and take it, you'll be a free man or woman if you make it
+out alive, though.
+
+
 
 (4.4) Terrain
 -------------
-
-
 Terrain features in the main window:
 ------------------------------------
 Town buildings-
@@ -4024,6 +4179,21 @@ notified about the trap by an ^ symbol in front of the item name and the trap
 type appended to it in { } brackets. It looks like this:
 ^ A potion of Constitution {Chaos Ball Trap}
 
+Trap symbols ('^') come in different colours. Here's an overview:
+    blue            stat traps (STR/INT/WIS/DEX/CON/CHR), in three difficulties:
+                    1) only reduces an attribute temporarily, heals on its own.
+                    2) reduces an attribute, requiring you to use restoration.
+                    3) permanently reduces an attribute. Counter with stat potion.
+    bright white    teleport traps
+    orange          dungeon/trap rearrangment traps
+    violet          summoning traps
+    yellow          item-affecting traps
+    red             character status-affecting traps
+    green           elemental bolt traps
+    light blue      elemental ball traps
+    light red       arrow/bolt/dagger traps
+    white           miscellaneous traps
+
 
 About trap sets (or "trapping kits"):
 -------------------------------------
@@ -4114,8 +4284,8 @@ and the item afterwards, effectively simply asking you to specify the item.
 
 
 
-(4.8) Level & vault feelings, Jail, Ironman
--------------------------------------------
+(4.8) Level & vault feelings
+----------------------------
 Levels:
 -------
 Sometimes if you enter a new dungeon level your character will have a special
@@ -4176,7 +4346,9 @@ floor to receive an extra feeling on entering the next floor.
 These extra level feelings (displayed in yellow) are:
 
   "What a terrifying place.."
-      means a) there's a highly ood monster (20+ levels) or
+      means a) there's a highly ood monster (20..40 levels above floor level,
+      with 40 actually being the maximum possible ood level shift, compare
+      ood explanation in (0.4)) or
       b) a great vault and some ood monster (10..19 levels) on the level.
 
   "You sense an air of danger.."
@@ -4519,6 +4691,16 @@ Those are:
 
 Fear, blindness, confusion, sleep, slowing, and stun.
 
+Note (except for 'stun' effect):
+      There are basic spells or magic devices that don't do anything except
+      trying to cause one of these effects directly, for example a 'wand of
+      slow monsters' or the spell 'scare'.
+      It is important to know that unique monsters are always unaffected by
+      these basic spells. Other monsters have a chance to resist, depending on
+      their level vs the power (level) of the spell.
+
+Effect details:
+---------------
 Fear is a temporary effect, causing the monster to flee. Many monsters turn
         afraid if their hit points drop very low. Wears off after a while.
 Blindness and confusion are currently the same thing, resulting in erratic
@@ -4626,12 +4808,16 @@ Ironman Deep Dive Challenge
     inside the office, to view the records).
     To provide some support, this dungeon will have 'town levels' occur at
     random, meaning that the whole level is actually not a normal dungeon level
-    but a wild town. Monsters may still spawn on it though!
+    but a wild town. Monsters may still spawn on it though and may even attack
+    you while you're shopping, so take care!
     Since you cannot recall out before reaching the 99th floor, in case you
     need to leave you'll just have to log out inside of the dungeon. For this,
     keep in mind that your character will, as usually when logging out outside
     of towns, stay in the game for about 30 more seconds during which it could
     be killed if you log out in an unsafe place.
+
+    Note: The Deep Dive dungeon requires your character to be at most level 12
+    in order to be eligible to enter.
 
 
 
@@ -5801,8 +5987,8 @@ the spoiler files section (7.4) or further explanations in (5.8) and (5.9).
 --------------------------------
 FEATHER ('It allows you to levitate.')
         'Feather Falling', also called 'Levitation'.
-        Lets you resist gravitation effects. Lets you float down gently
-        if you accidentally stumble into pits.
+        Lets you resist gravitation damage somewhat.
+        Lets you float down gently if you accidentally stumble into pits.
 FLY     ('It allows you to fly.')
         Allows you to cross water areas without drowning. Enables you to fly
         over trees.
@@ -5877,18 +6063,21 @@ CRIT    ('It affects your ability to score critical hits.')
         description of the "Critical-strike" skill in (6.2).
 CHAOTIC ('It produces chaotic effects')
         On hitting, you have a 50% chance to do one of the following:
-        a) drain life (VAMPIRIC, see (5.15)) (very likely)
-        b) earthquake (see (5.13))
-           (Can be suppressed with !E inscription)
-        c) confuse target (very likely)
-        d) teleport target away
-        e) polymorph target
-        f) clone target
+        a) drain life (VAMPIRIC, see (5.15)) (very likely).
+        b) earthquake (see (5.13) for details).
+           (If enabled in the server settings, it can be suppressed with
+           the !E inscription. See (0.3) for !E settings or press ~d in game.)
+        c) confuse target (very likely).
+        d) teleport target away.
+        e) polymorph target.
+        f) clone target.
         Note that most of these have an *extremely* low chance to occur.
         Most of the time the vampirism or confusion effect is chosen.
 IMPACT ('It can cause earthquakes')
-        Causes earthquakes if the damage is > 50. (See (5.13).)
-        (Can be suppressed with !E inscription)
+        Causes earthquakes if the damage is > 50. See (5.13) for details about
+        earthquakes.
+        (If enabled in the server settings, it can be suppressed with
+        the !E inscription. See (0.3) for !E settings or press ~d in game.)
 WOUNDING ('It is very sharp and makes your foes bleed.')
         Has additional to-hit/to-dam bonus.
 Weapons of Spinning
@@ -5963,6 +6152,13 @@ Dark Sword      Dark Swords have a so-called 'antimagic field', which
                 AC boni on Dark Swords won't affect the antimagic field.
                 The antimagic chance and field radius of a dark sword stacks
                 with the 'Antimagic' skill (see 6.2).
+
+                Note that if you dual-wield dark swords the stronger AM field
+                will override the weaker one, so they don't stack.
+
+                Similarly, if there are multiple players around nearby who have
+                antimagic fields affecting the same monster then only the
+                strongest AM field will work, overriding the weaker ones.
 Bluesteel Blade Cannot rust (not damaged by water attacks) and are especially
                 sharp (see 'VORPAL' under (5.8)).
 Shadow Blade    Resists darkness, cannot be damaged by acid or water, provides
@@ -5982,6 +6178,19 @@ Weapons of Morgul       These are terribly cursed weapons that aren't good for
                         of *remove curse* or use enchant scrolls to break it.
                         For details about the enchant-scrolls trick, which is
                         usually much cheaper, see paragraph '(5.14) Curses'.
+                        Wielding a weapon of Morgul will allow you to see the
+                        invisible but also infect you with the Black Breath,
+                        drain your experience and aggravate nearby monsters.
+                        Note that this weapon can auto-recurse itself when you
+                        move it between equipment and inventory, so when you
+                        uncursed it drop it to the ground right away!
+Weapons of Nothingness  Similarly terribly cursed as weapons of Morgul. You
+                        are unable to strike while wielding this weapon.
+                        See 'Weapons of Morgul' right above on how to break the
+                        curse of this weapon to get rid of it.
+                        Note that this weapon can auto-recurse itself when you
+                        move it between equipment and inventory, so when you
+                        uncursed it drop it to the ground right away!
 
 Magic ammunition (Magic Arrows, Magic Bolts, Magic Shots).
                 Those will return into your quiver magically, so just having
@@ -5993,8 +6202,14 @@ Silver ammunition       *Slays* undead.
 Ethereal ammunition     Magically returns after being fired, has a small chance
                         to fade away instead though.
 
-Dragonrider Coat        Resists heat & cold.
-Serpent Scale Mail      Resists acid.
+Dragonrider Coat                Resists heat & cold.
+Serpent Scale Mail              Resists acid.
+Multi-hued Dragon Scale Mail    Gives base + poison resistance (base means
+                                fire/cold/lightning/acid) and two random
+                                immunities out of those five.
+                                For example one MHDSM might give fire and cold
+                                immunity, while a nother MHDSM gives poison and
+                                lightning immunity.
 Elven Cloak     Increases your stealth, searching ability and luck.
                 For details about luck see LUCK flag in (5.8).
 Shadow Cloak    Makes you hard to spot for other players, regarding
@@ -6353,11 +6568,11 @@ Mummy Wrapping      Reduces your charisma slightly, and prevents other players
                     wear a mummy wrapping.
                     Hint: Polymorphing into a vampire bat may improve hit
                     point regeneration rate.
-Tarpaulin           When equipped, prevents your inventory and equipment from
-                    taking water damage when crossing water fields or when you
-                    are attacked with water-based effects.
+Tarpaulin           When equipped a tarp prevents your inventory and equipment
+                    from taking water damage when crossing water fields or when
+                    you are attacked with water-based effects.
                     Note that your weapon is not included in this protection
-                    while attacking.
+                    when you for example attack a water-based monster with it.
 Picklock            When equipped, improves your trap-disarming ability.
 Money Belt          When equipped, greatly reduces chance of thieves succeeding
                     in stealing your money.
@@ -6380,7 +6595,12 @@ Mushroom of Restoring
 Mushrooms with bad effects are also often poisonous.
 Lembas (elvish waybread)
                     Satisifies your hunger, cures poison and hallucinations.
-Flint               Prevents your light from going out.
+Flint               Prevents your light from going out by automatically
+                    refilling it right when it would've reached 0 turns.
+                    For this to work you'll need to carry appropriate items in
+                    your inventory that will be used up in the process, eg a
+                    flask of oil or another lantern for refilling a lantern or
+                    another torch for refilling a torch.
 Empty bottles       You can /fill these at fountains to turn them into
                     potions. (See 0.2 for more details.)
 Skeletons/Bones/Skulls  You can create ammunition from these if your Archery
@@ -6501,6 +6721,8 @@ and also
     The Hard Leather Armor 'Gothmog'    (which is actually a random artifact)
 You'd get a small luck bonus. The more artifacts of similar name you equip the
 greater the luck bonus will be.
+The exact luck boni for those 'artifact sets' starting at two items are:
+4, 9, 16, 25, 36, 40 (cap). So it's basically the amount of artifacts squared.
 
 Artifacts of any type cannot be enchanted by any means, nor harmed by elemental
 attacks of any type. Also they have a high chance to resist disenchantment
@@ -6587,8 +6809,65 @@ For example a Tome of the Eternal Flame cannot be harmed by fire.
 
 
 
-(5.11) Armour Class vs monster attacks, damage caps
----------------------------------------------------
+(5.11) Monster attack mechanism, Armour Class, damage caps
+----------------------------------------------------------
+Monsters may try to attack you in three different ways:
+-Hitting you.
+-Shooting you.
+-Casting a spell that may wound you.
+
+Monster is trying to hit you:
+-----------------------------
+If a monster tries to hit you, the following happens:
+1) Any shielding magic around you is evaluated and may prevent the attack.
+   (Note: Disruption shield is currently evaluated later on.)
+   If this doesn't succeed..
+2) your character may dodge. If this doesn't succeed..
+3) your character may try to parry with a weapon or block with a shield.
+   It will mostly choose the action (either parry or block) where it is more
+   proficient, although it won't always be able to use the preferable method
+   of those two, and sometimes randomly has to rely on the other one.
+   If this doesn't succeed..
+4) your armour class is evaluated and might catch the attack, in which case
+   you don't take any damage, ie the monster misses you. If this doesn't
+   succeed..
+5) your character takes damage, but your armour class will at least reduce it.
+
+Note that some attacks can bypass some of those defenses.
+More info further below.
+
+Monster is trying to shoot you:
+-------------------------------
+If a monster tries to shoot you, the following happens:
+1) Your character may dodge. If this doesn't succeed..
+2) any shielding magic around you is evaluated and may prevent the attack.
+   (Note: Disruption shield is currently evaluated later on.)
+   If this doesn't succeed..
+3) if you have REFLECTION you will try to reflect the shot.
+   If this doesn't succeed..
+4) your character may try to block the shot with a shield.
+   If this doesn't succeed..
+5) your character takes damage. Armour class has no effect.
+
+Monster is casting a spell that wounds you:
+-------------------------------------------
+If a monster casts a spell at you, the following happens:
+1) Your character may dodge if it's a bolt spell. If this doesn't succeed..
+2) any shielding magic around you is evaluated and may prevent the attack.
+   (Note: Disruption shield is currently evaluated later on.)
+   If this doesn't succeed..
+3) if you have REFLECTION and if the spell is a bolt spell, you will try to
+   reflect it. If this doesn't succeed..
+4) if it's a bolt spell, your character may try to block it with a shield.
+   If it isn't then your character may still try to cover behind a shield.
+   If this doesn't succeed..
+5) your character takes damage. Armour class has no effect.
+
+For details about parrying and blocking see (6.11).
+
+
+Armour class:
+-------------
 Armour class helps you twice:
 -It makes monsters miss you more often.
  The more AC the better, it's weighed against the level of the attacking
@@ -6605,16 +6884,23 @@ The power of the resulting cut/stun depends on the damage too.
 So a high armour class helps a lot, to avoid critical monster hits and to
 reduce their power.
 
-Monsters have a cap on melee attacks, which limits their attacks to an
-_average_ of 700 total damage points per round (Monsters, depending on their
-race, can perform up to 4 melee attacks each round they can move/act). Note
-that the monster may attack for more damage, it's just the averaged value,
+Basic monsters (that means before any ego-power such as 'Warrior' or 'Holy'
+is applied as in 'Hill troll warrior' or 'Holy 5-headed hydra') have a cap on
+melee attacks, which limits their attacks to an _average_ of 700 total damage
+points per round (Monsters, depending on their race, can perform up to four
+melee attacks each round they can move/act).
+Note that the monster may attack for more damage, it's just the averaged value,
 the real damage is random and can fluctuate above or below the average.
 Wearing armour will further reduce the total average damage you can expect to
 take per round from that monster. The cap will be used on the monster's raw
 damage output _before_ the player's AC is factored in.
 Sanity-draining melee attacks are capped at 55 points of _average_ sanity
 damage per _blow_ (not per round).
+
+WARNING: If the monster is an ego-monster (eg the aforementioned 'Warrior'
+or 'Holy' ego power) this will modify its damage output _after_ the cap was
+applied. That means that some very powerful ego-monsters may deal even more
+than cap damage on average per round, although that's very rare.
 
 Note that there are melee attacks that cannot be reduced by armour. It depends
 on the way the melee attack is performed. See (5.12) for details.
@@ -6673,6 +6959,47 @@ SHATTER         hits & causes an earthquake - very dangerous, see (5.13).
 
 Getting hit by higher undead creatures may also infect you with the
 Black Breath! (See 1.5 for more information about Black Breath.)
+
+
+Further, monsters may have one or more spells they can cast. Breathing elements
+and shooting or throwing boulders belong to those too (but aren't affected by
+anti-magic fields since they aren't 'real spells' but rather physical actions).
+
+Among the monster spells, such as casting bolt or ball spells, teleporting,
+healing, trying to blind/scare/confuse/paralyze/slow the player, summoning
+other monsters for help, or speeding itself up with a haste-self spell, there
+are some particularly special spells that will be explained here in more
+detail:
+
+SHRIEK          Not a real spell but a physical action, some monsters can emit
+                an aggravating noise that will wake up all nearby monsters and
+                even haste those within line-of-sight of the shrieker.
+                This can be extremely dangerous and you'll see a light red
+                message in the combat message log when a monster shrieks.
+                If you have the sound pack installed, you'll also clearly hear
+                it, which can help further to react quickly: On shallow levels
+                shrieking might not be that bad, but on deep levels it might
+                well be reason enough to teleport out instantly.
+TRAPS           Again not a spell but nasty nevertheless. The monster casts a
+                3x3 'circle' of traps around you, watch where you step.
+UNMAGIC         This can be extremely nasty for Istari. Unmagic cancels nearly
+                all kind of magic effects your character is currently under,
+                such as speed from a speed potion and even Disruption Shield.
+                This won't affect classes much such as warriors and archers but
+                is life-threatening if it neutralizes the Disruption Shield
+                of an Istar. (Note: Holy Martyr cannot be cancelled.)
+MIND_BLAST      A psionic attack spell that hurts your sanity and can cause
+                confusion and hallucinations.
+BRAIN_SMASH     A powerful psionic attack spell that hurts your sanity and can
+                cause blindness, confusion, paralyzation and slowness.
+FORGET          This mind blanking spell will create darkness around you and
+                make you forget about some or all of the items you are carrying
+                effectively un-identifying them (except for flavoured items).
+HOLD            Although not so special and already mentioned in the text above
+                this spell is listed because it's a ranged paralyzation spell.
+                Ghouls can do this for example, so make sure that you get
+                Free Action as early as possible, definitely before venturing
+                into Mordor though.
 
 
 
@@ -6768,9 +7095,9 @@ vampiric 'brand' on their melee attacks (see (6.7)).
 Vampiric life draining heals you with a part of the damage you afflicted on
 your target, almost each hit! The more damage you deal and the more attacks per
 round you have, the more life you will leech back. There's a maximum amount of
-HP which you can leech from a victim per round (usually around 50..100).
-Said cap of 50..100 HP isn't really reached until your character deals quite a
-lot of damage, remember: Leeching is based on a fraction of your damage dealt.
+HP which you can leech from a victim per round, but this cap isn't really
+reached until your character deals quite a lot of damage, remember:
+Leeching is based on a fraction of your damage dealt.
 
 Vampirism does not work on all types of monsters. From some it is not possible
 to drain life force. Those immune to vampirism are:
@@ -6787,17 +7114,30 @@ If you use other vampiric equipment, like gloves, they will be a bit less
 efficient than an actual vampiric weapon, meaning that you will leech less
 frequently (the amount of leeched life per hit is not penalized though) but in
 turn it will work with any weapon you use (ranged too).
-For ranged weapons it doesn't matter which part is vampiric, the bow or the
-ammunition. It won't increase your over all life leeching if both are
-vampiric either.
+For ranged weapons it doesn't matter whether the bow or the ammunition is
+vampiric. It won't increase your over all life leeching if both are vampiric
+either.
 
-In general, vampiric flags don't stack from multiple items! Just the item that
-fits the situation best (weapon/ammo) overrides the weaker ones (non-weapons).
+Note that vampirism gained from mimicked forms only works on melee combat.
+Vampires (real ones as well as mimicked ones) usually only are half efficient
+at vampiric leeching, compared to vampiric weapons, due to half of vampires'
+attacks being normal hits and the other half being biting (which does the
+actual leeching).
 
-Note that vampirism gained from mimicked forms only works on melee combat and
-has a 50% chance to go off (except for vampire bat which has 100%) due to a
-half of vampires' attacks being normal hits and the other half being biting
-(which does the actual leeching!).
+In general, vampiric flags don't stack from multiple sources! Just the source
+that fits the situation best (usually weapon/ammo) overrides the weaker ones
+(usually non-weapons). Here is a table of priority - as was just explained,
+only the most powerful source is applied, the rest is ignored:
+
+Vampirism source priority table (from best at the top to worst at the bottom)
+The best source overrides all weaker ones, which simply get ignored:
+| Melee                               | Ranged                              |
+-----------------------------------------------------------------------------
+| Weapon                     100%     | Shooter                    100%     |
+| Vampire bat/mist form      100%     | Ammunition                 100%     |
+| Vampire character race      50%     |                                     |
+| Other vampiric forms        50%     |                                     |
+| Non-weapons (gloves)        50%     | Non-weapons (gloves)        33%     |
 
 
 
@@ -6810,17 +7150,20 @@ While characters either having or not having 'invisible' property is a binary
 choice, the actual effect it has on gameplay will be affected by player/monster
 level, the ability to see invisible, and shadow cloaks, as follows here:
 
-A player who is invisible is harder to spot for monsters, making them move
+A player who is invisible is harder to spot for monsters in the way that they
+only have a certain chance to see the player on each turn, making them move
 erratically instead of directly targetting the player. This also helps against
 casters, archers or breathers who won't be able to target you as well (often)
 as they usually could. Being invisible costs your body a lot of effort,
 resulting in getting hungry quickly.
 
-Invisibility won't work at all on monsters that..
-        -are invisible too.
+Invisibility won't work at all on monsters that are..
+        -invisible too.
         -special quest monsters (Sauron, Morgoth).
-        -are Dragonriders, they have ESP.
+        -Dragonriders, they have ESP.
         -nonliving monsters with empty mind (not using optical senses).
+        -able to see through the rogue-specific 'cloaking' ability,
+         see the cloaking command description in (0.2) for a list.
 
 All other monsters are randomly affected by the player's invisibility,
 meaning that they will only sometimes be able to spot him (they will see the
@@ -6851,7 +7194,10 @@ If another player is invisible and not of higher level than you..
          need some timing, might take several tries.
 Invisibility (on players) overrides ESP. So it does help in a (blood bond)
 duel even if the opponent has ESP.
-The effect of invisibility is greatly reduced in PvP but still gives an edge.
+
+The effect of invisibility is greatly reduced in PvP (you cannot become
+completely invisible even if your level is higher than the other player) but
+still gives a slight edge.
 
 
 Cloaking:
@@ -6860,8 +7206,9 @@ The ability to cloak themselves is exclusive to rogues and automatically
 acquired at level 15. This will effectively render them invisible, but it is in
 fact NOT the "Invisibility" that has been described above.
 Cloaking overrides any detection mechanism, a cloaked player can only be seen
-by party members, or while the cloaking is weakened because the cloaked player
-performed certain (noisy) actions. (Also see (0.2) for more information.)
+by party members, certain special monsters, or while the cloaking is weakened
+because the cloaked player performed certain (noisy) actions.
+See (0.2) for more information about cloaking.
 
 
 
@@ -7546,7 +7893,7 @@ Lvl | Projection | Explosions | Self-spell | Rune 1 | Rune 2 | Rune 3 | Augment
  25 | Darkness   | Shards     | Obscurity  | Acid   | Nether | Earth  |        
 *25 | Darkness   | Shards     | Obscurity  | Fire   | Nether | Earth  |        
  25 | Water      | Wonder     |            | Water  | Chaos  | Time   | Time   
- 25 | Shards     | Wonder     |            | Shards | Chaos  | Time   | Time   
+ 25 | Shards     | Wonder     |            | Earth  | Chaos  | Time   | Time   
  25 | Gestalt    | Confusion  | VerminCtrl | Water  | Poison | Chaos  | Chaos  
  25 | Gestalt    | Confusion  | CurePoison | Earth  | Poison | Chaos  | Chaos  
  25 | Gestalt    | Darkness   | VerminCtrl | Water  | Poison | Nether | Nether 
@@ -7699,27 +8046,57 @@ Ranging from +0 at 3 over +10 at 18/10, +50 at 18/110 up to +100 at 18/***.
 
 If you don't have a digging tool equipped, your total digging power is halved.
 
-To dig through certain features, you have to win a random number roll of 1..x
-by having a digging power that is greater than the roll:
-Rubble      200
-Trees       400
-Bushes      300
-Ivy         200
-Dead trees  300
+To successfully dig through certain features, your digging power must be
+greater than the result of a random number roll "random(0..x-1) + y":
+-------------------------------------------------------------------
+Rubble      200 +  0
+Ivy         200 +  0
+Bushes      300 +  0
+Dead trees  300 +  0
+Trees       400 +  0
 Sandwalls   250 +  5
 Magma       400 + 10
 Quartz      800 + 20
 Granite    1600 + 40
-The +x is a fixed value that gets added to what you have to overcome.
+The +y is a fixed value that gets added to the random roll of (1..x), the sum
+of this is what you have to overcome with your digging power value.
 For example you cannot successfully tunnel through quartz if you don't
 have at least 21 digging power, since you have to overcome the +20.
 
+Example: If you have 21 digging power and try to dig into quartz you'll have to
+be very lucky and hope for the random(0..799) roll for quartz to actually be a
+0 so that the result will be 0+20 which is 20 and therefore smaller than your
+digging power of 21. So on each turn of tunnelling your chance to succeed would
+be 1 in 800 in that case.
+
+Some too-long-didn't-calculate values, assuming 0.000 'Digging' skill
+and unenchanted (ie (+0,+0)) digging tools:
+-------------------------------------------
+-You cannot tunnel through granite with a shovel if your STRength is
+ below 18/30.
+-You cannot tunnel through granite with a pick if your STRength is
+ below 12.
+-You can tunnel through all other materials with just a basic shovel even if
+ your STRength is only 3.
+ (For quartz, you have a 3% chance to succeed at 18/50 STR with the shovel
+  and at 18/10 STR with a pick. If you use an enchanted shovel (+9,+9) (+1)
+  however, you already have a 3% chance to succeed at only 5 STR.)
+
+For digging through granite wall without having to wait for ages to succeed,
+you will definitely want a better digging tool than basic shovels or picks.
+For example ones 'of Digging', a magical ego power for digging tools.
+Or higher level diggers such as gnomish, orcish or dwarven diggers or mattocks,
+which have a higher base digging bonus that just (+1).
+
 Tunnelling into walls that are actually secret doors will be treated as if
-you were 'searching' instead of tunnelling.
+you were 'searching' instead of tunnelling. You cannot find secret doors in
+permanent (aka non-tunneable) walls this way though, such as mountains.
 Tunnelling into known doors will just try to open them instead.
 
-Tunnelling might reveal special floor features, items or gold, see
-'Digging' skill in (6.2) for details.
+Tunnelling might reveal special floor features, items or gold (walls that are
+displayed as a '*' symbol will reveal cash worth of gems or precious metal, but
+those walls might not always show it until you use 'Treasure Detection' or
+'Treasure Location' magic), see 'Digging' skill in (6.2) for details.
 Also see (3.4a) for more information on digging tool mods.
 
 If you haven't got a digging tool equipped, or if it's just a basic shovel (+1)
@@ -7793,7 +8170,7 @@ These depend on your race and class and the stat assignments you did during
 character creation process.
 
 Stats are displayed as values from 3 (minimum) to 18.
-(Note: This can be changed in TomeNET options, press key =5 and toggle
+(Note: This can be changed in TomeNET options, press key =1 and toggle
 'linear_stats' option. It is recommended to keep the traditional way though,
 which represents the D&D system of throwing three 6-sided dice to determine a
 stat).
@@ -8440,8 +8817,7 @@ Note that not every skill is available to every profession (class).
                                 -shoot with ranged weapons,
                                 -use a void jumpgate,
                                 -invoke a mimic spell,
-                                -set a monster trap,
-                                -use a staircase.
+                                -set a monster trap.
     .Trapping                   Improves your ability to set traps:
                                 Gives you a higher chance to successfully
                                 place a trap if a monster is close to you and
@@ -8476,7 +8852,7 @@ Note that not every skill is available to every profession (class).
                                 water.
                                 Skill maxes at 01.000, with the ability to
                                 swim improving steadily while increasing it.
-                                At 0.0700 you become able to swim very swiftly
+                                At 0.700 you become able to swim very swiftly
                                 if no monsters are within sight, enabling you
                                 to 'run' through water.
     .Climbing                   You need this at 01.000 to learn climbing.
@@ -8503,8 +8879,6 @@ fly over water instead of swimming across. Wands of stone-to-mud will turn any
 obstacle to mud that you could dig through, and some boots or a climbing set
 might grant you the ability to climb highest mountains. Dwarves also learn
 this ability automatically when they reach level 30.
-
-Also see (7.5) for suggestions about skill point distribution.
 
 Here is what the numbers mean (we will use the Axe-Mastery skill for this
 example:
@@ -8555,13 +8929,15 @@ Take care on the following combinations:
 Maiar start with a low-profile skill chart, which gets boosted or diminished
 depending on their alignment on initiation.
 
+Note: After getting boosted as stated below, a skill's gain ratio will be
+      capped at 2.000.
+
 Modifications for becoming 'enlightened':
     Necromancy, traumaturgy and aura of death become disabled.
     Sword, blunt and polearm skill x 1.3.
     The four priestly schools x 2.4.
     Divination school x 1.7.
     Fear and shivering aura x 3.0.
-    Sneakiness and stealth x 2.1.
 Modifications for becoming 'corrupted':
     The four priestly schools become disabled.
     Axe and martial arts skill x 1.3.
@@ -8693,7 +9069,7 @@ Warrior is strongly recommended.
     Humans have no experience penalties and tend to go up levels faster than
     most other races. No racial adjustments or intrinsics occur to characters
     choosing human.
-    Humans get a bonus on 'Interception' and 'Climbing'.
+    Humans get a bonus on 'Climbing' and a large bonus on 'Interception'.
 
 - Half-Elf
     Half-elves tend to be smarter and faster than humans, but not as strong.
@@ -8720,7 +9096,8 @@ Warrior is strongly recommended.
     prefer to be called burglars. They are much weaker than humans, and no good
     at melee fighting. Halflings have fair infravision, so they can detect
     warm-blooded creatures at a distance. Hobbits resist black breath somewhat.
-    They get bonus on 'Sling-Mastery', 'Stealth', 'Sneakiness' and 'Dodging'.
+    They get bonus on 'Sling-Mastery', 'Sneakiness', 'Dodging' and a large
+    bonus on 'Stealth'.
 
 - Gnome
     Gnomes are intrinsically protected to paralysis effects. Gnomes are smaller
@@ -8730,8 +9107,8 @@ Warrior is strongly recommended.
     perception, and stealth. They have lower strength than humans so they are
     not very good at fighting with hand weapons. Gnomes have fair infra-vision,
     so they can detect warm-blooded creatures at a distance.
-    Gnomes receive bonus on 'Crossbow-Mastery', 'Magic', 'Dodging' and
-    'Digging'.
+    Gnomes receive bonus on 'Crossbow-Mastery' and 'Magic' and a large bonus on
+    'Dodging' and 'Digging'.
 
 - Dwarf
     Dwarves can never be blinded and at level 30 they learn to travel across
@@ -8746,7 +9123,7 @@ Warrior is strongly recommended.
     voices, arguing with themselves for no good reason, and screaming out
     challenges at nearby foes. In other words, dwarves have a miserable
     stealth.
-    They receive a bonus on 'Axe-Mastery' and a large bonus on 'Digging'.
+    They receive a bonus on 'Axe-Mastery' and a huge bonus on 'Digging'.
 
 - Half-Orc
     Because of their preference to living underground to on the surface,
@@ -8756,8 +9133,8 @@ Warrior is strongly recommended.
     are quite ugly, and tend to pay more for goods in town. Half-Orcs do make
     good warriors and rogues, for the simple reason that Half-Orcs tend to
     have great constitutions and lots of hit points.
-    They get bonus on 'Weaponmastery', 'Backstabbing', 'Necromancy' and receive
-    slight penalties on 'Magic' and 'Sorcery'.
+    They get a slight bonus on 'Backstabbing', a large bonus on 'Weaponmastery'
+    and a bonus on 'Necromancy' and receive penalties on 'Magic' and 'Sorcery'.
 
 - Half-Troll
     Half-trolls have their strength sustained. They are very strong, but also
@@ -8765,15 +9142,16 @@ Warrior is strongly recommended.
     bad at searching, disarming, perception, and stealth. They are so ugly
     that a Half-Orc grimaces in their presence. They need to eat often.
     Half-Trolls get bonus on 'Blunt-Mastery', 'Health' and 'Swimming'. They
-    receive large penalties on 'Archery', 'Magic' and 'Sorcery' and a light
-    penalty on 'Critical-Strike'.
+    receive a penalty on 'Critical-Strike' and large penalties on 'Archery',
+    'Magic' and 'Sorcery'.
 
 - Dunadan
     Dunadain have their constitution sustained. Dunadain are a race of hardy
     men from the West. This elder race surpasses human abilities in every
     field, especially constitution. However, being men of the world, very
     little is new to them, and levels are very hard for them to gain.
-    A Dunadan gets bonus on 'Combat', 'Magic' and 'Archery'.
+    A Dunadan gets bonus on 'Combat', 'Archery' and 'Interception' and a small
+    bonus to 'Magic'.
 
 - High-Elf
     High-Elves can see the invisible and resist light and the flow of time
@@ -8782,8 +9160,8 @@ Warrior is strongly recommended.
     their wisdom is sometimes suspect. They do very well in all professions.
     There are few things that they have not seen already, and experience is
     hard for them to gain.
-    High-Elves receive bonus on 'Bow-Mastery', 'Magic', 'Stealth', 'Calmness'
-    and 'Dodging'.
+    High-Elves receive bonus on 'Bow-Mastery', 'Magic', 'Stealth', 'Dodging'
+    and a large bonus on 'Calmness'.
 
 - Yeek
     Being weak and losing many childhood fights, they have learned the
@@ -8797,12 +9175,11 @@ Warrior is strongly recommended.
     Yeeks don't receive boni or mali on any skills.
 
 - Goblin
-    Goblins resist darkness intrinsically. Goblins have a decidedly
-    mixed reputation. They are almost always grinning, and more often than
-    not you cannot tell whether or not they are eyeing you like a side of
-    meat. They are as sturdy as Dwarves and are quite agile making them
-    good fighters, rogues, and mimics. Being creatures of the night,
-    Golbins have natural resistance to darkness.
+    Goblins have a decidedly mixed reputation. They are almost always grinning,
+    and more often than not you cannot tell whether or not they are eyeing you
+    like a side of meat. They are as sturdy as Dwarves and are quite agile
+    making them good fighters, rogues, and mimics. Being creatures of the
+    night, Golbins have natural resistance to darkness.
     They receive bonus on 'Boomerang-Mastery' and 'Stealing'.
 
 - Ent
@@ -8823,9 +9200,9 @@ Warrior is strongly recommended.
     such as grass, earth, mud or water. Their food state will go up to 'Full'
     that way.
     Ents intrinsically resist the force of unleashed water.
-    They get boni on 'Health', 'Calmness' and on the magic schools 'Earth' and
-    'Water' and they receive a large penalty 'Fire' school, a small penalty on
-    'Axe-mastery' and a very slight penalty on 'Sword-mastery'.
+    They get bonus to 'Health' and a large bonus on 'Calmness' and on the magic
+    schools 'Earth' and 'Water'. They receive a large penalty on 'Fire' school,
+    a penalty on 'Axe-mastery' and a small penalty on 'Sword-mastery'.
 
 - Draconian
     These humanoid half-breeds of dragon and man surpass common humans in all
@@ -8839,8 +9216,9 @@ Warrior is strongly recommended.
     they learn how to fly. Draconians need a very long time to gain further
     experience and need to eat often. They have feather falling (levitation)
     instrinsically from birth.
-    They receive bonus on 'Polearm-Mastery', 'Aura of Fear', 'Thought Contact'
-    and the magic schools 'Conveyance' and 'Fire'.
+    They receive a bonus on 'Thought Contact' and a large bonus on
+    'Polearm-Mastery', 'Aura of Fear' and the magic schools 'Conveyance' and
+    'Fire'.
 
 - Dark-Elf
     Dark-Elves dwell below the surface in huge caverns of their underground
@@ -8861,6 +9239,11 @@ Warrior is strongly recommended.
     They don't actually need a light source, since they are able to determine
     their close surroundings even in complete darkness. This ability grows
     when the vampire rises in character-levels.
+    Vampires start with a mummy wrapping, because it can protect them from the
+    sunlight (press 'w' to wear it). If they are moving on the world surface
+    (meaning not in a dungeon/tower) while it's day, the sun will burn them if
+    they don't resist light or wear a mummy wrapping. Hint: Polymorphing into
+    a vampire bat may improve hit point regeneration rate.
     Vampires are good fighters and decent mages. However, they are unable to
     utilize magic of water or nature school. Neither can they make use of
     mimicry techniques or holy spells. They are unable to try and suppress
@@ -8872,14 +9255,11 @@ Warrior is strongly recommended.
     creatures. This means that you need to kill monsters in melee combat in
     order to satisfy your hunger, which might be quite easy for melee classes
     but sometimes a hassle for ranged/caster classes.
-    Vampires dislike blunt weapons, get a small penalty on divination magic,
-    but receive a bonus on 'Mental Intrusion' and on all necromancy skills.
     They become able to turn into a bat at level 20.
-    Vampires start with a mummy wrapping, because it can protect them from the
-    sunlight (press 'w' to wear it). If they are moving on the world surface
-    (meaning not in a dungeon/tower) while it's day, the sun will burn them if
-    they don't resist light or wear a mummy wrapping. Hint: Polymorphing into
-    a vampire bat may improve hit point regeneration rate.
+    Vampires hate 'Blunt' weapons, get a penalty on 'Divination' magic school,
+    but receive a bonus on 'Mental Intrusion' and a large bonus on 'Necromancy'
+    and all aura skills and a small bonus on 'Traumaturgy'. They cannot use
+    certain magic schools at all as described above.
 
 - Maia
     The Maiar are lesser spirits who are associated with one or more Valar, the
@@ -8934,6 +9314,7 @@ Warrior is strongly recommended.
     remain as close to their previous values as possible while the character
     gets back any skill points that are freed up due to higher skill ratios
     after the initiation took place, see (6.2a) for details.
+    Maia get a bonus on 'Sneakiness' and 'Stealth' no matter the alignment.
 
 
 Here is a table showing boni/mali of the different races:
@@ -9046,6 +9427,8 @@ vary. For example a warrior cannot learn magic spells.
     very light 1-handed weapons such as daggers or whips which you dual-wield
     (which requires light armour). This should last you until you find some
     heavy armour and shield in the dungeon.
+    Pick one of the four weapon masteries (Sword/Blunt/Axe/Polearm) or Martial
+    Arts if you don't want to use weapons and always keep it maximized.
 
 - Istar (elvish word for Mage)
     Istari use intelligence primarily, determining how much mana they have
@@ -9122,6 +9505,8 @@ vary. For example a warrior cannot learn magic spells.
     'Taunt' when you learn them, which you do pretty early on. They are great
     for catching annoying monsters that try to keep their distance from you.
     (See (6.12) for details about fighting techniques.)
+    Always keep your sword-mastery skill at maximum (if you don't go for an
+    unusual build that uses martial arts instead).
 
 - Mimic
     Mimics are melee fighters who can learn how to shapechange and use the form
@@ -9164,21 +9549,25 @@ vary. For example a warrior cannot learn magic spells.
     'Rings of Polymorphing' for you from forms he or she no longer uses.
     As for all shape-shifters going with fruit bat body modification is not
     recommended, since it will restrict your equipment even if you polymorph.
+    Pick one of the four weapon masteries (Sword/Blunt/Axe/Polearm) or Martial
+    Arts if you don't want to use weapons and always keep it maximized.
 
 - Archer
     Archers aren't good at fighting, but can deliever extremely high damage
     with their ranged weapons. They can die quickly too, however.
     Archers are to bows what warriors are to melee. They are the best class
     around with any bow, crossbow or sling and their primary stat is dexterity.
-    An Archer is very bad at melee, being only better than the Sorcerer.
+    An Archer is very bad at melee, being only better than mage-like classes.
     Archers will receive an array of special techniques to their disposal from
     training the 'Archery' skill, such as setting up a precise sniping shot at
     a target asleep or how to create ammunition from rubble or from the bones
-    of their opponents (see (6.12)).
+    of their opponents (see (6.12)), accessible via 'm' key or macro wizard.
 
     Hint: Enchanting your ranged weapon to-damage is especially effective,
     because the enchantment will be multiplied by the weapons multiplier.
     Also make sure to have an ample supply of 'Scrolls of Phase Door'.
+    Pick one of the three ranged masteries (Bow/Crossbow/Sling) and always
+    keep it maximized. Keep your Archery skill maximized too.
 
 - Paladin
     Paladins are a combination of warrior and priest. Holy knights that
@@ -9199,6 +9588,8 @@ vary. For example a warrior cannot learn magic spells.
     Also make sure to create a macro for your fighting techniques 'Sprint' and
     'Taunt' when you learn them, they are great for catching annoying monsters
     that try to keep their distance from you. (See (6.12) for details.)
+    Pick one of the four weapon masteries (Sword/Blunt/Axe/Polearm) or Martial
+    Arts if you don't want to use weapons and always keep it maximized.
 
 - Ranger
     Second only to adventurers regarding versatility rangers excel at a lot of
@@ -9257,6 +9648,7 @@ vary. For example a warrior cannot learn magic spells.
     Also make sure to create a macro for your fighting technique 'Sprint' when
     you learn it, which you do pretty early on. It is great for catching
     annoying monsters that try to keep their distance from you. (See (6.12).)
+    Always keep your Martial Arts skill maximized.
 
 - Shaman
     Shamans are able to call upon both spiritual and magical powers, whatever
@@ -9264,13 +9656,16 @@ vary. For example a warrior cannot learn magic spells.
     manner, allowing them to collect energy from intelligence or wisdom,
     whatever currently is easiest for them!
     Shamans are able to shapeshift same as mimics (see mimics above for details
-    about how to learn forms) but they are limited to animals, giants, dragons,
-    dragonriders, spirits, elementals or ghosts.
+    about how to learn forms) but they are limited to animals, trolls, giants,
+    dragons and dragonriders, hybrid creatures, golems, spirits, elementals and
+    ghosts.
     However, they may use the latter three types while still wearing their full
     equipment and they are always able to move straight even if the creature in
     whose shape they appear usually moves erratically - these two are feats
     that mimics cannot achieve.
     Shamans learn elemental ('E') forms especially quickly.
+    Note that shamans cannot use non-living or undead forms except for ghosts,
+    spirits, elementals and golems.
     While they are excellent at magic they have weaker combat abilities than
     rangers or paladins but still don't need to hide from a melee if trained
     properly.
@@ -9284,6 +9679,8 @@ vary. For example a warrior cannot learn magic spells.
     isn't easy either, that's why this class is not recommended for beginners.
     As for all shape-shifters going with fruit bat body modification is not
     recommended, since it will restrict your equipment even if you polymorph.
+    Note that all 'O' Ogre type monsters count as 'giants' too, so their forms
+    are usable in shaman mimicry.
 
 - Runemaster
     Runemasters use arcane symbols or 'runes' to summon pure elemental magic.
@@ -9339,10 +9736,14 @@ vary. For example a warrior cannot learn magic spells.
     mindcrafters, so training them may require somewhat more effort.
     They are able to detect 'Telepath' ego monsters via ESP which usually are
     able to conceal their presence telepathically vs all other classes.
+    Also they are able to resist malicious mind-affecting effects better than
+    other classes, for example such as forgetfulness or psionic attacks.
 
     Hint: Mindcrafters have a powerful ranged attack spell they can use very
     early on, Psionic Blast. Look for it in the book store right away.
     Also get the spell 'Autokinesis I' early on, which is like phase door.
+    Pick one of the four weapon masteries (Sword/Blunt/Axe/Polearm) or Martial
+    Arts if you don't want to use weapons and always keep it maximized.
 
 
 If you raise in levels, you will get new titles. These are displayed between
@@ -9908,6 +10309,7 @@ amount of energy in the ring.
 
 (6.7b) Druid form details
 -------------------------
+The according polymorph code is given in parentheses below the creature name.
 Note: Some forms can open doors, others may try to bash doors.
       Also, all animal forms are able to travel through woods.
 You can use the /ex command in game to see which forms you can use, and what
@@ -9916,34 +10318,41 @@ polymorph code they have.
 Level 5:
 --------
 Cave bear               tough; can pass mountain terrain
+(Code 160)
 
 Panther                 speedy
+(Code 198)
 
 Level 10:
 ---------
 Grizzly bear            same as Cave Bear, but tougher
+(Code 191)
 
 Yeti                    can pass mountain terrain;
-                        is immune to cold but susceptible to fire
+(Code 154)              is immune to cold but susceptible to fire
 
 Level 15:
 ---------
 Griffon                 can fly; can pass mountain terrain
+(Code 279)
 
 Sasquatch               speedy; similar to Yeti, but not susceptible to fire
+(Code 343)
 
 Level 20:
 ---------
 Werebear                same as Grizzly Bear, but tougher
+(Code 414)
 
 Great eagle             speedy; can fly; passes most terrain types
+(Code 335)
 
 Great White shark       speedy and tough aquatic form
-                        (aquatic means that it requires deep water to breathe
+(Code 898)              (aquatic means that it requires deep water to breathe
                         and greatly resists water-based attacks)
 
 Aranea                  a speedy greater spider;
-                        poisonous hits;
+(Code 963)              poisonous hits;
                         resists fire, completely immune to poison;
                         susceptible to light and to 'good' (creature is evil);
                         has a small array of magic spells at its disposal
@@ -9951,36 +10360,37 @@ Aranea                  a speedy greater spider;
 Level 25:
 ---------
 Wyvern                  speedy; can fly; passes most terrains;
-                        25% poisonous attacks;
+(Code 334)              25% poisonous attacks;
                         immune to poison; susceptible to 'good'
 
 Multi-hued Hound        resists fire/cold/lightning/acid/poison and gets a
-                        random immunity of those five on polymorphing;
+(Code 512)              random immunity of those five on polymorphing;
                         can't be confused or paralyzed;
                         can breathe the five elements mentioned above
 
 Level 30:
 ---------
 5-headed hydra          tough and speedy; can swim;
-                        poisonous attacks; immune to poison;
+(Code 440)              poisonous attacks; immune to poison;
                         can cast fear and poison ball
 
 Minotaur                tough and very speed; susceptible to 'good'
+(Code 641)
 
 Giant squid             tough and speedy aquatic creature;
-                        resists water greatly;
+(Code 482)              resists water greatly;
                         resists cold/acid/lightning/poison;
                         can breathe lightning, acid and poison
 
 Level 35:
 ---------
 7-headed hydra          tough and speedy; can swim;
-                        poisonous (75%) and blinding (25%) attacks;
+(Code 614)              poisonous (75%) and blinding (25%) attacks;
                         immune to poison;
                         can cast fear, poison ball, and breathe poison
 
 Elder aranea            speedy and smart (INT bonus) greater spider;
-                        50% poisonous attacks;
+(Code 964)              50% poisonous attacks;
                         resists darkness, fire, poison; immune to either fire
                         or poison chosen randomly on polymorphing;
                         susceptible to 'good' and to light;
@@ -9989,7 +10399,7 @@ Elder aranea            speedy and smart (INT bonus) greater spider;
                         has a medium array of spells at its disposal
 
 Plasma hound            speedy;
-                        resists plasma, sound; immune to fire;
+(Code 726)              resists plasma, sound; immune to fire;
                         susceptible to cold;
                         can't be cut/stunned/confused or paralyzed;
                         can breathe plasma
@@ -9997,17 +10407,17 @@ Plasma hound            speedy;
 Level 40:
 ---------
 11-headed hydra         speedy and toughest hydra; can swim;
-                        fiery attacks;
+(Code 688)              fiery attacks;
                         immune to fire;
                         has a small array of fire/fear spells
 
 Giant Roc               speedy giant bird; deals high damage;
-                        can fly; passes most terrains;
+(Code 640)              can fly; passes most terrains;
                         immune to electricity; resists sound;
                         can't be paralyzed or confused;
 
 Lesser kraken           speedy, smart and very tough aquatic creature;
-                        resists water greatly as well as lightning, cold,
+(Code 740)              resists water greatly as well as lightning, cold,
                         darkness, poison;
                         completely immune to either water attacks or poison;
                         can't be paralyzed or confused;
@@ -10016,11 +10426,11 @@ Lesser kraken           speedy, smart and very tough aquatic creature;
 Level 45:
 ---------
 Maulotaur               like Minotaur, but tougher; stupid (INT malus);
-                        immune to fire and resisting teleportation attacks;
+(Code 723)              immune to fire and resisting teleportation attacks;
                         can cast plasma bolt and fire ball
 
 Winged Horror           speedy winged creature; can fly;
-                        resists cold, poison, darkness, nether, life drain;
+(Code 704)              resists cold, poison, darkness, nether, life drain;
                         immune to either cold or poison;
                         susceptible to 'good';
                         can breathe nether, darkness and poison
@@ -10028,7 +10438,7 @@ Winged Horror           speedy winged creature; can fly;
 Level 50:
 ---------
 Spectral Tyrannosaur    speedy undead animal;
-                        has 25% scaring attacks;
+(Code 705)              has 25% scaring attacks;
                         resists nexus, teleportation attacks, nether,
                         life drain, cold, acid and poison;
                         becomes immune to one of cold/acid/poison;
@@ -10037,14 +10447,14 @@ Spectral Tyrannosaur    speedy undead animal;
                         can breathe nexus, poison and nether
 
 Greater kraken          speedy, smart and extremely tough aquatic creature;
-                        resists water attacks greatly, as well as cold, poison,
+(Code 775)              resists water attacks greatly, as well as cold, poison,
                         lightning, acid, darkness;
                         completely immune to one of lightning/poison/water;
                         susceptible to 'good';
                         can cast from a large array of spells
 
 Jabberwock              fabulous very speedy and tough hybrid creature that
-                        deals high damage;
+(Code 778)              deals high damage;
                         can fly;
                         resists teleportation attacks and chaos;
                         can curse and breathe chaos
@@ -10052,7 +10462,7 @@ Jabberwock              fabulous very speedy and tough hybrid creature that
 Level 55:
 ---------
 Horned Serpent          speedy and tough; can swim and pass mountain terrain;
-                        33% poisonous attacks;
+(Code 1131)             33% poisonous attacks;
                         resists poison, acid, fire, water attacks,
                         becomes immune to either poison or acid;
                         can't be scared, confused or paralyzed;
@@ -10061,7 +10471,7 @@ Horned Serpent          speedy and tough; can swim and pass mountain terrain;
 Level 60:
 ---------
 Firebird                speedy and tough; can fly and passes most terrains;
-                        fiery attacks and fire aura;
+(Code 1127)             fiery attacks and fire aura;
                         immune to fire and susceptible to cold;
                         resists poison, plasma and light;
                         regenerates HP quickly;
@@ -10092,26 +10502,42 @@ Agent of the black market
 
 Further forms:
 --------------
-Novice Mage      2  Sort of weak but has 'blink' spell (aka phase door) and
+Note: All of these actually occur in packs (although some of them might also
+appear on their own) making them even easier to attain, except for 'Tengu'.
+Novice mage      2  Sort of weak but has 'blink' spell (aka phase door) and
                     more.
-Novice Ranger    4  Can pass trees easily. Gives an extra shot with ranged
+Novice ranger    4  Can pass trees easily. Gives an extra shot with ranged
                     weapons. This can be pretty powerful early on if the
                     character has a decent 'bows/throws' ability or has a bow
                     that is well enchanted to-hit.
-Rotting Corpse   8  Free action, resists confusion/fear/cold, poison immunity,
-                    brands melee attacks with poison.
-Tengu           10  High HP, can blink/teleport and more, resists fear and
-                    fire, can fly.
+Novice priest    6  Sort of weak but can cast heal/fear/curse spells.
+N. mindcrafter   8  Free action, resists confusion and slightly insanity too.
+                    Can cast blind/slow/confuse/fear spells.
+Rotting corpse   8  Free action, resists confusion/fear/cold, poison immunity,
+                    brands melee attacks with poison, decent AC.
+Phantom warrior  8  Useful only for shamans because it has no limbs:
+                    This form can pass solid walls!
+                    Also gives fear/sound/insanity resistance, free action,
+                    poison immunity, and you won't bleed from cuts.
+Tengu           10  High HP, good AC, can blink/teleport and more, resists fear
+                    and fire, can fly. A secret tip for form hunters!
                     (Does not occur in packs unlike the other monsters listed.)
 Ogre            13  This form can cross thick woods and mountain terrain.
+                    Note that Ogres also count as giants which means that
+                    shamans can use this form too.
                     (This monster occurs somewhat more rarely than the others.)
-Lizard Man      16  High HP, can swim easily, resists water, immune to acid.
+Black orc       13  Good HP, good melee damage, +1 extra shot.
+Lizard man      16  High HP, can swim easily, resists water, immune to acid.
                     (This monster occurs somewhat more rarely than the others.)
-Ogrillion       16  Very high HP for its level, good melee damage.
+Ogrillon        16  Very high HP for its level, good melee damage.
+                    Note that Ogrillons also count as giants which means that
+                    shamans can use this form too.
                     (This monster occurs somewhat more rarely than the others.)
-Uruk            16  Good HP, good melee damage, +1 extra shot, poison immunity.
-Elite Uruk      20  Good HP, very high melee damage, +1 extra shot, poison
+Uruk            16  Good HP, good melee damage, good AC, +1 extra shot, poison
                     immunity.
+Forest troll    17  High HP, good AC, can pass trees, gives 'HP regeneration'.
+Elite uruk      20  Good HP, very high melee damage, good AC, +1 extra shot,
+                    poison immunity.
 
 (The number is the monster level and therefore the amount of monsters you need
 to kill to learn the form.)
@@ -10130,6 +10556,10 @@ mindcrafters and even adventurers can cast magic spells, use telepathic powers
 To do so, they need the according spell scrolls (which contain exactly one
 specific spell) or books (such as Codices, Spell Books, Grimoires, Handbooks
 or Tomes, that contain several different spells) in their inventory.
+
+The failure rate when attempting to successfully cast a spell is usually shown
+when browsing the according spell scroll/crystal, and is determined by your
+intelligence or wisdom, and the spell's level. For details see (6.8a).
 
 Spell scrolls and some books can be purchased in store '9' (the 'book store',
 usually also sells 'Beginner Cantrips' and sometimes also Codices) or in
@@ -10218,7 +10648,7 @@ Fire
     Globe of Light  Creates a globe of magical light.
                     Lv10: Damages monsters.
                     Lv25: Turns into a more powerful kind of light.
-                    Required skill level for first spell level: 1.
+                    Required skill level for first spell level: 2.
     Fireflash       Conjures a fire ball.
                     Lv20: Turns into holy fire which is especially deadly to
                           evil opponents.
@@ -10301,7 +10731,7 @@ Nature
 
 Conveyance
     Phase Door      Teleports you on a small scale range.           (project)
-                    Required skill level for first spell level: 1.
+                    Required skill level for first spell level: 2.
     Disarm          Destroys doors and traps around you.
                     Required skill level for first spell level: 5.
     Teleport        Teleports you within the level.                 (project)
@@ -10310,7 +10740,7 @@ Conveyance
                     Lv10: Turns into a ball.
                     Lv20: Teleports away all monsters in sight.
                     Required skill level for first spell level: 23.
-    Recall          Works like Word Of Recall.                      (project)
+    Recall          Works like Word of Recall.                      (project)
                     Inscribe your spell scroll or book like you would inscribe
                     a scroll, in order to specify a destination.
                     Required skill level for first spell level: 30.
@@ -10324,7 +10754,7 @@ Conveyance
 
 Divination
     Detect Monsters Detects all monsters nearby.                    (project)
-                    Required skill level for first spell level: 1.
+                    Required skill level for first spell level: 3.
     Identify        Identifies items.
                     Lv17: Identifies all items that you carry/wear.
                     Lv27: Also identifies all items on the floor around you.
@@ -10344,7 +10774,7 @@ Divination
 
 Temporal
     Magelock        Magically locks a door.
-                    Lv40: Creates a Glyph Of Warding on the ground that stops
+                    Lv40: Creates a Glyph of Warding on the ground that stops
                           monsters from crossing the field or summoning on it.
                     Required skill level for first spell level: 1.
     Slow Monster    Slows down a monster.
@@ -10429,23 +10859,23 @@ Meta
 Priest schools:
 ---------------
 Holy Offense
-    Holy Light      Creates a globe of pure light.
-                    Lv3: Damages monsters.
-                    Lv15: Calls a more powerful kind of light.
-                    Required skill level for first spell level: 1.
-                    Shared spell (see above): H.Offense, H.Support.
     Curse           Randomly causes confusion damage or slowness or blindness.
                     Lv15: Turns from bolt into beam, passing through the
                           target and also hitting those behind.
                     Lv25: Affects all monsters in line of sight.
                     Required skill level for first spell level: 1.
+    Holy Light      Creates a globe of pure light.
+                    Lv3: Damages monsters.
+                    Lv8: Calls a more powerful kind of light.
+                    Required skill level for first spell level: 2.
+                    Shared spell (see above): H.Offense, H.Support.
     Exorcism        Dispels nearby undead.
                     Lv20: Dispels nearby demons.
                     Lv30: Dispels nearby evil.
                     Required skill level for first spell level: 11.
     Release Souls   *Dispels undead*.
                     Required skill level for first spell level: 10.
-    Orb Of Draining Summons a holy orb, devouring monsters.
+    Orb of Draining Summons a holy orb, devouring monsters.
                     This spell deals double damage against evil monsters.
                     Required skill level for first spell level: 20.
     Drain Life      Drains life from a non-undead and non-nonliving creature
@@ -10472,13 +10902,13 @@ Holy Defense
                     Works very well, as long as the creature isn't of a higher
                     level than you.
                     Required skill level for first spell level: 12.
-    Glyph Of Warding
+    Glyph of Warding
                     Creates a rune on the ground that monsters cannot cross
                     nor summon on. Powerful monsters may break it.
                     Required skill level for first spell level: 35.
-    Martyrdom       Burns you in holy fire, making you invulnerable.
+    Martyrdom       You burn in holy fire making you invulnerable for 15 turns.
                     When your martyrium ends, you will be left close to death
-                    with 1/15 of your maximum HP, yet always at least 30 HP.
+                    with a fraction of your hit points, at least 30 HP though.
                     Note that you cannot be healed in any way during martyr.
                     Invulnerable here in detail means you won't take..
                     -any hit point decreasing damage,
@@ -10486,7 +10916,7 @@ Holy Defense
                     -any malicious effects such as poisoning, fear, blindness,
                      confusion, paralyzation, slowness, stun or cuts,
                     -nexus, polymorph and teleportation effects.
-                    The gods won't accept another martyrium until 1000 turns
+                    The heavens won't accept another martyrium until 1000 turns
                     have passed.
                     Note: To check whether you can use the spell again,
                     use the /martyr (or /mar) command.
@@ -10532,16 +10962,16 @@ Holy Support
     Holy Light      Creates a globe of pure light.
                     Lv3: Damages monsters.
                     Lv8: Calls a more powerful kind of light.
-                    Required skill level for first spell level: 1.
+                    Required skill level for first spell level: 2.
                     Note that this is a spell shared between offense and
                     support school, meaning that increases in one of those
                     school will increase the spell level by only half as much.
     Sense Monsters  Detect monsters, see invisible for a while.
                     Lv30: Gives full temporary ESP.
-                    Required skill level for first spell level: 1.
+                    Required skill level for first spell level: 3.
     Sanctuary       Puts nearby monsters asleep.
                     Lv20: Lets all monsters in line of sight fall asleep.
-                    Required skill level for first spell level: 1.
+                    Required skill level for first spell level: 3.
     Satisfy Hunger  Satisfies your hunger.                     (auto-project)
                     Required skill level for first spell level: 10.
     Sense Surroundings
@@ -10565,8 +10995,12 @@ Druid schools:
 Arcane Lore
     Nature's Call   Quickly grows trees around you.
                     Required skill level for first spell level: 10.
-    Toxic Moisture  Creates a cloud of toxic moisture at a designated target.
-                    At level 30 it turns into ice shards.
+    Toxic Moisture  Creates a cloud of toxic moisture at a designated target,
+                    consisting of poisonous gas.
+                    At level 20 it combines the surrounding air into the
+                    attack, turning it into a water/poison mixture.
+                    At level 30 it condenses the water and turns into
+                    poisonous ice shards.
                     Required skill level for first spell level: 3.
     Ancient Lore    Identifies all items in your inventory.
                     Required skill level for first spell level: 20.
@@ -10591,11 +11025,10 @@ Physical Lore
                     Lv35: Cures black breath!                  (auto-project)
                     Required skill level for first spell level: 3.
     Extra Growth    Increases your attributes temporarily.
-                    Lv5: Increases charisma.
-                    Lv10: Also increases dexterity.
-                    Lv15: Also increases strength.
-                    Lv20: Also increases constitution.
-                    Lv25: Also increases intelligence.
+                    Lv1: Increases strength.
+                    Lv5: Also increases dexterity.
+                    Lv10: Also increases constitution.
+                    Lv20: Also increases intelligence.
                     Required skill level for first spell level: 15.
     Focus           Increases your accuracy, adding a bonus to your
                     melee-to-hit and ranged-to-hit.
@@ -10763,7 +11196,7 @@ Astral
                     Required skill level for first spell level: 22.
     Vengeance       Enlightened: Summons all party members on the same floor
                                  to you (as well as all monsters in line of
-                                 sight).
+                                 sight) who have their mind opened.
                     Corrupted: Damages all monsters in line of sight.
                     (This spell uses WISDOM to determine fail-rates!)
                     Required skill level for first spell level: 30.
@@ -10777,7 +11210,7 @@ Astral
                     Corrupted: Increases your chance to strike critically.
                     (This spell uses WISDOM to determine fail-rates!)
                     Required skill level for first spell level: 45.
-    Sphere Of Destruction
+    Sphere of Destruction
                     Enlightened: Conjures up a mana storm.
                     Corrupted: Conjures up raging inferno, which deals similar
                                damage as rockets do.
@@ -10788,6 +11221,39 @@ Astral
                     (This spell uses WISDOM to determine fail-rates!)
                     Required skill level for first spell level: 50.
                     This spell requires a character level of at least 62.
+
+
+(6.8a) Spell failure rate
+-------------------------
+The chance to not successfully cast a spell, aka the spell fail rate is shown
+in percent when browsing a spell scroll/crystal. An exception are currently
+mimic powers which they inherit from mimicking a monster, whose fail rates are
+not shown anywhere at the moment, this might be subject to improvement.
+
+The fail rate of a spell depends on..
+
+Magic schools:
+    Nearly all spells depend on the spell level and your INTelligence,
+    some spells however use WISdom instead of intelligence, those spells are
+    designated in (6.8) in their spell description.
+Prayer schools:
+    All spells depend on the spell level and your WISdom.
+Mindcraft schools:
+    All spells depend on the spell level and your INTelligence.
+Druidic schools:
+    All spells depend on the spell level and your WISdom.
+Astral school:
+    Some spells depend on the spell level and WISdom, some on the spell level
+    and INTelligence, as designated in (6.8) in the spell descriptions.
+
+In general, when you learn a new spell that starts at a high fail rate, you
+will observe a great improvement just by further training the spell's school to
+increase the spell's level. Increasing your INT or WIS (depending on what this
+particular spell uses) will also help.
+At a certain point however, usually when the spell's fail chance is already
+rather low, the spell fail rate might not go down further from increasing its
+level. At that point the only thing you can do to further reduce the spell fail
+rate is to increase the stat (INT or WIS) that the spell uses.
 
 
 
@@ -10886,21 +11352,25 @@ Here you can..
     If the owner leaves his own party, the whole party is disbanded.
 
 
--Specify player to attack
-    Now you are hostile to that player and you will hurt each other like
-    when fighting a monster (this includes auto-retaliating and targetting)!
-
--Make peace
-    Make peace with a player you are hostile too. Better pay attention that
-    your opponent makes peace too >:).
-
-
 -Create a new guild
     This costs 2,000,000 Au. A guild will stay, even if the owner dies.
     The guild creator will receive a 'Guild Key' which designates him as the
     guild master. In case the guild master dies, another guild member may
     fetch the key to become the new guild master.
     (Currently guilds look cool and have a dedicated guild chat.)
+
+    The following slash commands are available to manage your guild, only the
+    guild master may use them:
+
+    /guild_adder <name of another player>
+        Allows that player permanently to add other players to the guild too.
+        Use the command a second time to revoke his rights again.
+        Note that this only works if you have enabled the guild flag 'adder',
+        see the '/guild_cfg' command below.
+
+    /guild_cfg [<flag> [<value]]
+        Shows you your current guild configuration if used without any parms
+        and allows you to change it by specifying a flag.
 
 -Add player to guild
     Only the guild master can do this.
@@ -10914,9 +11384,23 @@ Here you can..
 -Leave guild
     If the last member leaves, the whole guild is disbanded.
     If the guild master leaves the guild, the guild becomes leaderless.
-    The next player who grabs the guild key becomes the new guild master.
+    The next player from that guild who grabs the guild key becomes the new
+    guild master.
+
+Note: In general, a player of a guild who grabs the guild key becomes the new
+      guild master.
 
 Note: Keys are indestructible, they can be lost though..
+
+
+-Specify player to attack
+    Now you are hostile to that player and you will hurt each other like
+    when fighting a monster (this includes auto-retaliating and targetting).
+    You can kill each other for real this way, so this is NOT recommended!
+
+-Make peace
+    Make peace with a player you are hostile too. Better pay attention that
+    your opponent makes peace too.
 
 
 
@@ -10963,6 +11447,13 @@ The magic device skill does the following...
 There are a couple of ways to reduce damage taken. One is simply to have high
 armour class (see (5.11) for details), another one is 'Dodging' skill (see
 (6.2) for details).
+This paragraph is about parrying/blocking only. Note that the chance values
+given below do not always apply as is, but sometimes depend on the the attack
+type and especially on a little bit of randomness when your character chooses
+which defense method it actually uses (block or parry) - for details about this
+and about all damage reduction mechanisms in general and the order/chance they
+are applied, make sure you also read (5.11).
+
 For melee fighters that use weapons or shields, two more abilities can help:
 Parrying enemy attacks with a weapon, and blocking attacks with a shield.
 Press 'm' and choose 'Check block/parry chance' to see your actual ability
@@ -10983,7 +11474,7 @@ Note: Above 30% can only be reached in defensive combat stance without a
       shield equipped. (Because if no shield is equipped, defensive combat
       stance which normally bolsters block chance will transfer that defensive
       advantage to the weapon instead, increasing the parry chance.)
-      Also, your class should be fairly skilled at parrying (see below.)
+      Also your class needs to be fairly skilled at parrying (see below.)
 
 "You cannot block at the moment."               You aren't wielding a shield.
 "You have almost no chance of blocking."        Below 5% chance.
@@ -11029,11 +11520,10 @@ The bigger a shield, the more you can block. Depending on server settings,
 the actual block base chance will usually be displayed as a percentage in []
 brackets behind the shield's name, where AC is located for other types of
 armour.
-This base chance in many cases applies as is to standard melee combat, but is
-often modified depending on the type of an incoming attack, so it's not to be
-taken as your character's total overall block chance. For example shots,
-balls, breaths are all blocked at higher probability, and in PvP combat
-blocking receives an additional overall boost.
+This base chance in many cases applies as is to standard melee combat IF your
+character tries to block instead of parrying (compare (5.11)), but is sometimes
+modified depending on the type of an incoming attack: When deflecting bolts
+from bolt traps or when in PvP combat blocking receives an additional bonus.
 
 Parrying and blocking can both be affected by combat stances - see (6.2) for
 "Combat Stances" skill.
@@ -11047,7 +11537,7 @@ fighting techniques that cost 'Stamina' to use. Warriors, rangers, paladins
 and mimics will learn all of them eventually, while rogues may learn sprint
 and taunt, and some rogue-specific techniques.
 Similarly, by training archery your character will gain access to a couple of
-shooting techniques.
+ranged techniques.
 
 All techniques are accessable via 'm' key, also see (3.7a).
 
@@ -11130,12 +11620,13 @@ The techniques are as follows:
         create sling ammunition from it.
         The quality mainly depends on your archery skill and somewhat on your
         ranged mastery skill, but is still somewhat random.
-        A random discount will be applied to the crafted ammo.
+        A random discount will be applied to the crafted ammo (can be 100% too
+        which makes the ammo unsellable to stores).
         If you want to create larger stacks of the same type of ammunition,
         collect a large stack of materials and use the skill on that stack
         (the total weight of that inventory slot determines the stack size).
         The level of the raw materials has no effect on the outcome.
-    Double-shot         1 stamina/turn while using it actively
+    Double-shot         1 stamina/5 turns (random) while using it actively
         Toggle, making you enter or leave double-shot mode. While active, you
         will fire 2 projectiles at once on each shot, dealing way less damage
         than a single shot though. Useful to eradicate weak critters.
@@ -11145,11 +11636,12 @@ The techniques are as follows:
               To permanently leave double-shot mode, you have to toggle it
               explicitely in the 'm' menu.
     Barrage             9 stamina
-        Prepares to fire a powerful multi-shot which will cost you a whole
+        Prepares to fire a powerful multi-shot which will cost you half a
         turn. It stuns the target (if it doesn't resist stunning attacks).
 
-    Note: The technique 'fire-till-kill' is available to any class, and
-    does appear directly under 'm'. See (5.2a) for details.
+    Note: The ability 'fire-till-kill' is available to any class and not
+    considered to be a special shooting technique. It appears directly in the
+    'm' key menu. See (5.2a) for details.
 
 Stamina regenerates slowly over time, faster while resting. Your CONstitution
 stat and 'Health' skill will further improve regeneration speed.
@@ -11823,28 +12315,34 @@ very end, which explains the meaning of each discrete info-line.
 
 
 
-(7.5) Skill point distribution
-------------------------------
-Melee fighters should maximize (to get extra attacks and extra damage) one of
-the weapon masteries (Sword, Blunt, Polearm, Axes) or Martial Arts if they
-prefer weaponless combat, and 'Interception'.
-Interception is especially important if they don't train Martial Arts, in
-order to try and prevent their opponent from summoning or casting spells.
-Hybrid classes might choose to not fully train their chosen mastery to have
-spare skill points for spell casting or other skills.
+(7.5) Monster tactics
+---------------------
+Monsters may follow certain schemes regarding their movement, target selection
+and spell-casting.
 
-Spellcasters might want to train Spell-Power additionally to their school
-spells to further boost their powers.
+Movement:
+---------
+Rather mindless monsters might just try to get to the player straight away
+while more clever monsters might try to avoid being kited, depending on their
+hit points or if there are buddies around. Also, some pack animals might avoid
+to encounter you in hallways but jump you all at once when you enter a room.
 
-Archers probably want to train Calmness to keep shooting adjacent enemies,
-without getting intercepted by them. And of course they should train one of
-the ranged-weapon masteries (Bows, Crossbows, Slings) to eventually get some
-extra shots per round, and also train Archery up to 50 to get additional
-extra might.
+Target selection:
+-----------------
+When a monster has multiple players next to it it might choose its target
+depending on its cleverness, power and health state. For example it might go
+for the target it perceives as most squishy.
+Players may counter this by using techniques such as Taunt or Distract.
 
-Spare skill points might be well invested into Stealth and Sneakiness,
-especially in Stealth if your stealth is rather low and you tend to wake up
-every monster nearby early.
+Spell-casting:
+--------------
+Despite appearing random sometimes monsters prefer certain spells over others.
+If a player is close a monster might especially try to blink away to continue
+to throw attack or summon spells at the player from afar.
+If a monster is low on HP or scared it might try to use escape spells and if
+it's low on HP or stunned it might emphasize heal spells (the chance to
+successfully cast those is also negatively affected by stun same as all other
+spells - compare (4.12)).
 
 
 
@@ -12352,6 +12850,85 @@ The differences between RPG ruleset and normal servers are as follows:
    level characters to level 0 will be ignored, ie item level is kept.
 
 
+(8.5a) Special server type 'Arcade Server'
+------------------------------------------
+*** Under very sporadic development -
+    features might be incomplete/not working.
+    To check the sourc code, look for ARCADE_SERVER definitions.
+    The arcade server might not be running at all times but
+    you could ask for it to be started when an admin is online. ***
+
+Like 'RPG Server' mentioned in the paragraph above, 'Arcade Server' is an
+alternate ruleset, which is however *very* different from normal gameplay:
+
+The Arcade Server was originally created and developed by Moltor. Later on
+Kurzel also joined the project. It has nothing to do with normal dungeon
+dwelling but instead features some hot action games that merely (ab)use the
+TomeNET 'engine'. :)
+
+Note: After logging in you may press '?' key for a help screen.
+      The descriptions below are partially taken from that help file.
+
+On the Arcade server, you can play..
+
+
+Smash'em
+--------
+Smash TV was a kickass arcade game from 1990, similar to Robotron. The player
+is attacked from all sides by mostly-unarmed goons. The arcade version uses two
+joysticks to allow you to run and fire in different directions. Unfortunately
+tomenet doesn't support joystick input. Here you must use special macros to
+shoot. For details press '?' in the game.
+
+To play Smash'em you need to download the Smash'em macros from the download
+page and place them in your TomeNET/lib/user folder.
+Controls are:
+    F1                  starts the game.
+    q,w,e               makes your character auto-fire in the according
+    a, ,d               direction.
+    z,x,c
+    s                   stops firing.
+    CTRL+numpad         shifts the screen.
+    ,                   same as < key
+Type "play 2smash" in chat to start the game and skip the early levels if you
+feel that those are too easy.
+
+
+Tron
+----
+Like in the movie "Tron", a light cycle racing game where you leave a trail of
+energy behind you forming a wall in which you and other competitors can crash
+which results in their elimination.
+Power-ups will randomly spawn and increase the trail length.
+Up to four players can participate at once. For details press '?' in the game.
+
+To play Tron you need to download the Tron macros from the download page and
+place them in your TomeNET/lib/user folder.
+Controls are:
+    F3  enter arena.
+    F4  start game.
+    F5  list options.
+    F6  reduce game speed.
+    F7  increase game speed.
+    Q   quit game.
+    Arrow keys or numpad 2,4,6,8 or w,x,a,d are for movement.
+Hit F4 as soon as at least two players have joined the areana via F3 key to
+start the actual match.
+To toggle an option, type "option" or "option on"/"option off" in chat.
+Speed can be changed via "moar speed"/"less speed",
+length can be changed via "moar length"/"less length".
+
+
+Food Fight
+----------
+<to come>
+
+
+Boat Arena
+----------
+<to come>
+
+
 
 (8.6) Troubleshooting
 ---------------------
@@ -12366,8 +12943,8 @@ SOLUTION:   If you want to connect directly to a specific server by specifying
             an outgoing TCP/IP connection to remote port 18348, that's the
             standard port servers run on. (If you'd like to play on the RPG
             server, it's port 19348 instead of 18348. See (8.5) for more
-            information about RPG settings. For the Smash Arcade server it's
-            port 20348.)
+            information about RPG settings. For the Arcade server it's port
+            20348, see (8.5a) for more information about Arcade server.)
             If you want to make use of the server list that appears when you
             don't specify a particular server, you additionally have to allow
             the game to connect to the meta server which provides the server
@@ -12413,21 +12990,29 @@ PROBLEM 03: When I start TomeNET I don't see anything except a small hollow
             yellow rectangle (the cursor). All windows stay black. It seems
             that the cursor reacts to my inputs by printing out some black
             hence invisible text.
-SOLUTION:   A rare problem that is not caused by TomeNET really. Restart your
-            MS Windows system and the text should be visible again.
+SOLUTION:   A rare problem that is not caused by TomeNET really, but usually
+            happens on Windows XP and older:
+            MS Windows sometimes keeps the TomeNET font file opened although
+            the client has already been terminated. Next time you start TomeNET
+            it will be unable to open its font files for that reason, resulting
+            in the lack of any text on the screen.
+            What to do is restart your MS Windows system and the text should be
+            visible again.
             (This usually only happens once, after updating the client.)
 
-PROBLEM 04: All windows except for the main window stay empty.
+PROBLEM 04: All windows _except for the main window_ stay empty.
 SOLUTION:   First make sure it's really a bug and not just missing window
-            settings: Press '=' key and 'W' key and configure your windows
+            settings: Press '=' key and 'w' key and configure your windows
             appropriately. It is vital to set one of the windows to display
             game and/or chat messages, so you can actually read what other
             players write, and also keep track of combat messages!
             When you're done setting up the windows, go to 'save options'
-            (key '9'). If all the windows are still blank, read on:
-            Reasons are unknown. Sometimes a simple reboot helps. Otherwise:
-            Open TomeNET.ini file with a text editor, look for the window
-            sections, change the fonts to the same settings (8x13) as in the
+            (key 's').
+            If all the windows are still blank, read on:
+            Exact reasons are unknown but seem to only happen on MS Windows
+            machines. Sometimes a simple reboot helps. If it doesn't, open
+            TomeNET.ini file with a text editor, look for the window sections,
+            change the fonts to the same settings (8x13) as in the
             [Main window] section: FontFile=8X13.FON , Font=8X13.FON .
             Also, you could adjust the width/height of the windows (to 80x24
             for example). Try other fonts too, maybe they work for you.
@@ -12442,6 +13027,8 @@ SOLUTION:   Your LUA script files are outdated. Those files are responsible
              updated.
             -If for some reason auto-update doesn't work for you,
              download the latest client again.
+            Note: There was a bug in client 4.4.8, preventing it from auto-
+            updating LUA files, which was fixed in 4.4.8a and higher again.
 
 PROBLEM 06: TomeNET seems to freeze up while playing. (Also see PROBLEM 25 and
             28, which offer different solutions for similar issues!)
@@ -12642,7 +13229,7 @@ PROBLEM 11: The main window doesn't display the floor dots in town and in
             certain dungeons, like the Training Tower and Angband. Further,
             fields are sometimes not redrawn correctly, resulting in fake
             'trails'.
-SOLUTION:   Seems to happen on Windows machines sometimes.
+SOLUTION:   Seems to happen on MS Windows machines sometimes.
             Workaround (will slightly change the game's look, ie those dots):
             Edit /lib/user/font-win.prf and comment out the lines which end on
             the string '\31' (should be 2 lines at the beginning of the file,
@@ -12846,11 +13433,21 @@ SOLUTION:   Macros or client options can be saved to various .prf files which
 PROBLEM 31: After logging on, the file 'audio.lua' was updated automatically.
             Now the wrong sound effects seem to be played for game events.
 SOLUTION:   Just log out and back in, and your sound should be fine again.
-            This typically happen if 'audio.lua' was updated.
+            This typically happens if 'audio.lua' was updated.
             On a side note: Also check if maybe the sound pack was updated too,
             so you can redownload it and not miss out on newly added sound
             effects. Usually an update to file 'audio.lua' means that the sound
             pack has also been updated indeed.
+
+PROBLEM 32: When trying to extract a music or sound pack to my xtra folder in
+            order to install it, I get an error message or it doesn't seem to
+            work correctly.
+SOLUTION:   See (2.1a) for details on how to install audio packs. Also note
+            that some people have reported that the program 'WinRAR' seems to
+            cause problems in some cases, not being able to handle zip files
+            correctly. A powerful free and open source program that is
+            guaranteed to work is '7zip' (a sourceforge project at the time
+            of writing) downloadable at:  http://www.7-zip.org/
 
 
 
