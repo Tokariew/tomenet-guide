@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 18. May 2014 - written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.5.7 - official websites are:
+| Latest update: 25. July 2014 - written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.5.7a - official websites are:
 | http://www.tomenet.net/ (main site),
 | http://koti.mbnet.fi/mikaelh/tomenet/ and http://www.c-blue.de/rogue.html
 |
@@ -45,7 +45,7 @@ Contents
     (1.3a)  Sauron, Morgoth and the Nazgul
     (1.3b)  How to encounter the final boss: Morgoth, Lord of Darkness
 (2) Installation & setup
-    (2.1)   Installing TomeNET
+    (2.1)   Installing/updating TomeNET
     (2.1a)  Installing sound and music packs
     (2.1b)  Audio controls and config options
     (2.1c)  Editing sound and music configuration
@@ -182,7 +182,7 @@ Contents
 (0.1) Start & play
 ------------------
 If you are using Linux, you will find additional information about how to
-compile the game under '(2.1) Installing TomeNET'.
+compile the game under '(2.1) Installing/updating TomeNET'.
 
 -Get the latest client from the project's main official site www.tomenet.net
  or from  http://koti.mbnet.fi/mikaelh/tomenet/getting-started.php (Mikael's
@@ -407,7 +407,14 @@ q       q       quaff a potion.
 
 r       r       read a scroll.
 
-E       E       eat. (Draconians can eat firestones to gain temporary special
+E       E       eat food. Hunger can kill you, if you don't eat for a longer
+                while, depending on your character. You will see a yellow
+                'Hungry' appear below the status bar on the left side in the
+                main window, then it will change gradually to orange/red 'Weak'
+                and you will start getting paralysed by the lack of food!
+                Finally you will start losing hit points and eventually die
+                from starvation.
+                (Draconians can eat firestones to gain temporary special
                 abilities, see (5.9). Players in dragon form can eat them too.)
 
 F       F       fuel your light source.
@@ -509,7 +516,8 @@ D       D       disarm a trap. This yields experience points, depending on the
                 disarming traps via magic spells or magic devices.)
                 Also see (4.7) for details about traps.
 
-k       CTRL+D  destroy an item. (Note that artifacts are indestructible.)
+k       CTRL+D  destroy an item. (Note that artifacts cannot be destroyed this
+                way.)
 
 G       G       skills screen.
 
@@ -562,6 +570,9 @@ P       O       party screen. Form/disband/modify a party with other players
                 For winners (queens/kings/empresses/emperors) the range is 11
                 levels instead of 7.
 
+H       CTRL+G  re-apply client-side and (if 'auto_inscribe' option is enabled)
+                server-side auto-inscriptions to an item.
+
 
 SPACE   Stop executing repeatable actions such as searching, tunnelling or
         disarming traps. Also stops active fire-till-kill shooting and any
@@ -598,9 +609,6 @@ SPACE   Stop executing repeatable actions such as searching, tunnelling or
         "\##" will remove the whole part that follows after the '#' character.
 
 }       remove inscription from an item.
-
-H       re-apply client-side and (if 'auto_inscribe' option is enabled)
-        server-side auto-inscriptions to an item.
 
 /       in general, use an item (combines q,r, etc..).
         This can be useful if you run out of macros for a specific action,
@@ -849,7 +857,8 @@ They all start with a slash '/' hence they're called slash commands:
             Skips 'flavoured' items that are not known to you yet (example:
             'a blue potion {+,?}' or 'a malachite ring {+,?}').
             Skips items which inscription contains more than a pseudo-ID tag.
-            Also see /tag and /untag. Note that artifacts cannot be destroyed.
+            Also see /tag and /untag. Note that artifacts cannot be destroyed
+            this way.
 
 /dis a      DESTROYS items like '/dis', and additionally destroys all items that
             have no inscription at all.
@@ -1385,6 +1394,16 @@ remember what it does just by looking at it and reading the inscription.
 It can make your life easier if you wear lots of items that have different
 resistances or abilities.
 
+Newly added in 4.5.7:
+    !L          Can be used on an item that is target of a scroll of
+                Artifact Creation. The resulting randart will not gain +LIFE
+                ('it affects your hit points') mod. So this is an inscription
+                that only makes sense for winners to use, since non-winners
+                cannot generate +LIFE on randarts anyway.
+
+    !U          This item will be displayed in dark grey colour in your
+                inventory. Can be useful for sorting loot.
+
 
 (0.3a) The auto-inscription feature
 -----------------------------------
@@ -1686,6 +1705,18 @@ Unique      A monster that is named and exists only once. Although it can
             That's precisely because every player can only get kill credit for
             each unique monster once.
             Uniques often have large escorts.
+
+            Note that a unique monster cannot occur in two or more different
+            places in the whole game world at the _same time_ - with the only
+            exception being the IDDC (Ironman Deep Dive Challenge) which is a
+            closed ecosystem and has unique monsters spawn independently from
+            the rest of the game world.
+            So if you are desperately looking for a unique monster and can't
+            seem to make it spawn, ask in chat if someone else sees that
+            particular monster on his current dungeon level. Then wait till
+            they have left that level or killed the unique so it will be ready
+            to spawn again for you, or maybe they will tell you that you can
+            come over to kill it there in place.
 
             Unique monsters will randomly respawn for winners, ie Kings,
             Queens, Emperors and Empresses. That means: The game will "forget"
@@ -2017,8 +2048,25 @@ the mundane world. See (4.5c) for more information about the Nether Realm.
 (2) Installation & setup
 ========================
 
-(2.1) Installing TomeNET
-------------------------
+(2.1) Installing/updating TomeNET
+---------------------------------
+
+Updating:
+---------
+Starting with version 4.5.7a, TomeNET comes with an updater tool that should
+work on most platforms. If it doesn't on yours, please contact us and provide
+details about which operating system you are using.
+
+To update your TomeNET client or the sound pack or music pack, just run the
+'TomeNET-Updater' and click on the according button.
+The only prerequisite is that you must have '7-Zip' installed, a great, free,
+open source archiver that beats WinRAR and WinZIP easily. You can get it from
+www.7-zip.org.
+Important: You should exit the game before attempting to update it!
+
+
+Installation from scratch:
+--------------------------
 (Covered are Windows, Linux, OSX, FreeBSD.)
 
 Go to http://www.tomenet.net/ (or one of our personal pages) to download the
@@ -2579,6 +2627,106 @@ self-explaining or that are especially important are listed in detail here:
     Don't display 'flavours' in item names (short_item_names)
         A 'Black Potion of Speed' will just be shown as a 'Potion of Speed'.
 
+    Show experience bar instead of a number (exp_bar)
+        In the main window at the 'XP' label your experience is displayed as a
+        progress bar instead of showing the numerical value, much like in
+        common MMORPGs where each bar segment is often referred to as 'bubble'.
+
+        This bar has a resolution of 5% steps and displays..
+          a dark blue '#' to indicate 5%,
+          a light blue '#' to indicate 10%,
+          a full bar of dark blue '#' to indicate 95%+.
+
+        This is especially recommended for high-level characters who require
+        several dungeon dives to gain a level-up. This way, you can keep track
+        of your progress during the current dive, eg "I want to make at least
+        30% experience progress (aka '3 bubbles') before I recall out of this
+        dungeon".
+
+        Examples for the bar (dark blue '#' are written as '+' here just for
+        illustration purpose):
+        ---------   You have made less than 5% XP since your last level-up.
+        ###------   You already made 30% (or a bit more) XP this level.
+        ####+----   You made 45% (or a bit more) XP towards next level already.
+        +++++++++   You have 95% (or up to 99%) XP and are therefore very close
+                    to level-up! Might just as well keep diving till ding! :-p
+
+    Hide unusable skills (hide_unusable_skills)
+        Skills that your character cannot use will not be displayed in the
+        skill menu invoked by 'G' key.
+
+    Flash own character icon after far relocation (flash_player)
+        Whenever your character teleports, recalls, takes a void jump gate or
+        phases in such a way that your current view panel changes, your
+        character icon will flash quickly and brightly for a moment, to help
+        your eyes ascertain your position.
+        Useful for example if there are many monsters around and you're a
+        mimic in monster form, or just in general when you're in big_map mode.
+
+    A bunch of options for special visual effects and lighting.
+        These options change how lighting is applied to lamp light and walls,
+        lamp light colour and how walls are displayed depending on the font:
+        font_map_solid_walls (depending on font displays walls as solid blocks)
+        view_animated_lite (fire-based light sources flicker yellow-orange)
+        view_bright_lite2 (darkens wall grids out of sight)
+        view_yellow_lite (your light source lights up certain floor/wall grids)
+        view_bright_lite (darkens floor grids out of sight)
+        view_granite_lite (enables special lighting fx listed above for walls)
+        view_special_lite (enables special lighting fx listed above for floors)
+
+(3) Audio Options
+    (See (2.1a) for more information about sound and music.)
+
+    A bunch of stuff here, mostly you might want to look at attack-sound effect
+    frequency. Some people don't like to have those be played on each single
+    attack, so you can tweak them here.
+
+    no_shriek_sfx and no_house_sfx might be especially interesting too.
+
+(4 & 5) Game-Play Options
+    Use old target by default (use_old_target)
+        If this is on, a ranged attack via *t5 or *t- will not pick a new
+        (ie closer) target if the previously acquired target is still okay.
+
+    Set 'AFK mode' automatically (auto_afk)
+        Rogues might want to turn this off in order to sit out their blacklist
+        timer in town.
+
+    Double height of the map shown in the main window (big_map)
+        Definitely enable this to see if you prefer it: It doubles the size of
+        the game-play area displayed in the main window.
+
+    Prevent floating for a short while after death (safe_float)
+        For a few turns after your character dies you cannot float up or down
+        with the '<' or '>' key. This prevents accidentally leaving the floor
+        in case you were just trying to take a staircase right the moment you
+        died, which would result in losing your items since the dungeon level
+        would probably regenerate if you left it.
+
+    Abort macro execution if an action fails (safe_macros)
+        If any sub-action in a macro you execute fails then the whole macro/key
+        queue will be discarded and cleared.
+        This is useful if you for example have a spellcasting macro that would
+        just do something weird in case you lost the according spell book and
+        then tried to cast it anyway, accidentally.
+        This only affects magic spells and monster traps.
+
+    Automatically open doors (easy_open)
+        Your character attempts to open a door just by you moving into it.
+
+    Clear @-inscriptions on taking item ownership (clear_inscr)
+        When you pick up items that belonged to another player, any '@...'
+        inscriptions will be rendered effectless by replacing the @ by a space.
+        This is a security feature that is intended to prevent the inscriptions
+        from interfering with the inscriptions on your own items.
+        For example, your potions of healing might be inscribed @q1. If you now
+        pick up a potion of heroism that someone else also inscribed @q1, it
+        will be used the next time you press your 'q1' macro, because heroism
+        potions are sorted in in the inventory before healing potions, which
+        might cost your life if unlucky.
+        Alternatively if you have this option turned off, you can just use the
+        '}' key to uninscribe the items you get from someone else.
+
     Use additional predefined auto-inscriptions (auto_inscribe)
         Will provide a predefined (on server-side) set of item-inscriptions
         that will be applied automatically to some selected items, which are
@@ -2600,75 +2748,6 @@ self-explaining or that are especially important are listed in detail here:
             Potions of Restore-L-Lev:   @q4
         Note: Already inscribed items are not touched.
 
-    Hide unusable skills (hide_unusable_skills)
-        Skills that your character cannot use will not be displayed in the
-        skill menu invoked by 'G' key.
-
-    A bunch of options for special visual effects and lighting.
-        These options change how lighting is applied to lamp light and walls,
-        lamp light colour and how walls are displayed depending on the font:
-        font_map_solid_walls (depending on font displays walls as solid blocks)
-        view_animated_lite (fire-based light sources flicker yellow-orange)
-        view_bright_lite2 (darkens wall grids out of sight)
-        view_yellow_lite (your light source lights up certain floor/wall grids)
-        view_bright_lite (darkens floor grids out of sight)
-        view_granite_lite (enables special lighting fx listed above for walls)
-        view_special_lite (enables special lighting fx listed above for floors)
-
-(3) Audio Options
-    (See (2.1a) for more information about sound and music.)
-    A bunch of stuff here, mostly you might want to look at attack-sound effect
-    frequency. Some people don't like to have those be played on each single
-    attack, so you can tweak them here.
-
-(4 & 5) Game-Play Options
-    Use old target by default (use_old_target)
-        If this is on, a ranged attack via *t5 or *t- will not pick a new
-        (ie closer) target if the previously acquired target is still okay.
-
-    Set 'AFK mode' automatically (auto_afk)
-        Rogues might want to turn this off in order to sit out their blacklist
-        timer in town.
-
-    Double height of the map shown in the main window (big_map)
-        Definitely enable this to see if you prefer it: It doubles the size of
-        the game-play area displayed in the main window.
-
-    Automatically open doors (easy_open)
-        Your character attempts to open a door just by you moving into it.
-
-    Scroll the screen more frequently (wide_scroll_margin)
-        Should always be enabled! Will reduce probability for off-screen kills,
-        since the screen scrolls much earlier when you come close to a border!
-
-    Prevent floating for a short while after death (safe_float)
-        For a few turns after your character dies you cannot float up or down
-        with the '<' or '>' key. This prevents accidentally leaving the floor
-        in case you were just trying to take a staircase right the moment you
-        died, which would result in losing your items since the dungeon level
-        would probably regenerate if you left it.
-
-    Abort macro execution if an action fails (safe_macros)
-        If any sub-action in a macro you execute fails then the whole macro/key
-        queue will be discarded and cleared.
-        This is useful if you for example have a spellcasting macro that would
-        just do something weird in case you lost the according spell book and
-        then tried to cast it anyway, accidentally.
-        This only affects magic spells and monster traps.
-
-    Clear @-inscriptions on taking item ownership (clear_inscr)
-        When you pick up items that belonged to another player, any '@...'
-        inscriptions will be rendered effectless by replacing the @ by a space.
-        This is a security feature that is intended to prevent the inscriptions
-        from interfering with the inscriptions on your own items.
-        For example, your potions of healing might be inscribed @q1. If you now
-        pick up a potion of heroism that someone else also inscribed @q1, it
-        will be used the next time you press your 'q1' macro, because heroism
-        potions are sorted in in the inventory before healing potions, which
-        might cost your life if unlucky.
-        Alternatively if you have this option turned off, you can just use the
-        '}' key to uninscribe the items you get from someone else.
-
     Thin down screen flush signals to avoid freezing (thin_down_flush)
         Enabled by default, this discards all 9 of every 10 flush signals, so
         it reduces the animation delays to 10%.
@@ -2681,6 +2760,10 @@ self-explaining or that are especially important are listed in detail here:
         like the arrow flying or the balls of explosions.
         If you have a slow network or are lagging a lot, you may try to disable
         this. Certain animations might visually suffer from doing so.
+
+    Scroll the screen more frequently (wide_scroll_margin)
+        Should always be enabled! Will reduce probability for off-screen kills,
+        since the screen scrolls much earlier when you come close to a border!
 
 (8) Check Server Options
     Displays a list of the server rules and configuration.
@@ -5262,7 +5345,8 @@ The Sacred Land Of Mountains   |  2000..2250/ 40..45   |       20
 Erebor                         |  2500..3050/ 50..61   |       35
 Dol Guldur                     |  2850..3550/ 57..71   |       28
 Mount Doom                     |  4250..5000/ 85..99   |       38
-Nether Realm                   |  8300..9800/166..196  |       40 (****)
+The Cloud Planes               |  6500..7450/130..149  |       40 (****)
+Nether Realm                   |  8300..9800/166..196  |       40 (*****)
 
 (**) Minimum level requirements are usually disabled, so you can actually
 enter any dungeon you like at any character level.
@@ -5279,7 +5363,11 @@ show up under according names in the list.
 You cannot escape this dungeon, ever. Any character that enters it is fated to
 die to monsters (unlikely) or starvation (very likely).
 
-(****) Nether Realm details:
+(****) Cloud Planes details:
+-To enter the Cloud Planes a player must carry the 'King'/'Queen' title,
+ acquired by beating Morgoth, Lord of Darkness.
+
+(*****) Nether Realm details:
 -To enter the Nether Realm a player must carry the 'King'/'Queen' title,
  acquired by beating Morgoth, Lord of Darkness.
 -Each floor in the Nether Realm gives a +2% bonus to experience from monster
@@ -5364,6 +5452,7 @@ The Sacred Land Of Mountains |  T'ron                | Coat of T'ron
 Erebor                       |  Smaug                | Nauglamir
 Dol Guldur                   |  Shadow of Dol Guldur | Ring of Durin
 Mount Doom                   |  Sauron, the Sorceror | - (***)
+The Cloud Planes             |  The Living Lightning | -
 Nether Realm                 |  Zu-Aon               | Ring of Phasing
 
 (*) Angband does not have a designated final boss, but the unique monster
@@ -6160,6 +6249,11 @@ it's completely random.
 If you fail to carry out your order in time, the order will be cancelled and
 you can just get a new one if you want to. There is no penalty.
 
+Party members (and you) can see that you received an extermination order by
+looking at the character list ('@' key): An 'X' will appear behind your
+location information (except if they are using the super compact @-screen
+layout that shows only two lines per player).
+
 On Ironman server or within the Ironman Deep Dive Challenge dungeon, the
 quality of the items rewarded is boosted somewhat, while the amount of
 monsters that need to be slain is somewhat lower (especially for low level
@@ -6256,7 +6350,7 @@ Dungeon Keeper (everyone can win, 1+ participants)
     (You should enable 'easy_open' option in  = 5  for this event, which is
     enabled by default, and lets you open doors simply be moving into them.)
 
-    Characters who want to participate must not be of higher level than 15.
+    Characters who want to participate must not be of higher level than 14.
     A character can participate only once in this event.
     PvP-mode characters are not eligible to join.
     Running, phasing, teleporting, magic mappping, detection and ESP are
@@ -6300,10 +6394,11 @@ Dungeon Keeper (everyone can win, 1+ participants)
     temporary luck buff (about 30 minutes duration).
     For details about luck see LUCK flag in (5.8).
 
-    Hints: The Horned Reaper in this maze bashes doors instead of opening them.
-    If you stand still for a turn, you can 'jump' over one adjacent floor grid
-    as quickly as you can double-tap a movement key (or make a macro for that).
-    Players usually do not start next to rooms that have escape beacons.
+    Hints:
+    -The Horned Reaper in this maze bashes doors instead of opening them.
+    -If you stand still for a turn, you can 'run' over one adjacent floor grid
+     as quickly as you can double-tap a movement key (maybe create a macro).
+    -Players usually do not start next to rooms that have escape beacons.
 
 
 Asides from extermination orders and events, there is another, permanently
@@ -8274,7 +8369,7 @@ Wilderness Mapping  Maps the wilderness area around the worldmap sector you
                     are currently within. These scrolls also sometimes carry
                     an inscription telling the location of a hidden dungeon.
 Cancellation    Don't use it! It can heavily disenchant magic items in your
-                inventory and/or equipment. It hasn't got a useful purpose.
+                inventory and/or equipment.
 Golem Creation  Allows you to create a golem which follows you and which you
                 can control to some extent, see (8.3) for more information.
 Parchments      These contain informations about the game, they won't
@@ -8527,10 +8622,12 @@ Chests              Chests may contain treasures or items. Usually, chests
 
 (5.9a) Activatable items
 ------------------------
-Many items can be activated (press 'A' to try).
+Many items can be activated (press 'A' to try). These items are generally
+called 'Magic Devices'.
 The chance of successful activation may or may not depend on various factors,
 such as..
 -your magic device skill vs the item type base level
+ See (6.10) for more information about the Magic Device skill.
 -whether you have trained your Antimagic skill
 -if you have the item equipped
 
@@ -9491,6 +9588,10 @@ and unenchanted (ie (+0,+0)) digging tools with (+1) to digging:
  is below 18/180.
 -You cannot tunnel through quartz without a digging tool if your STRength is
  below 18/100.
+-You cannot tunnel through magma without a digging tool if your STRength is
+ below 18/60.
+-You cannot tunnel through sand walls without a digging tool if your STRength
+ is below 18/20.
 -You cannot tunnel through granite with a shovel if your STRength is
  below 18/30.
 -You cannot tunnel through granite with a pick if your STRength is
@@ -9922,6 +10023,9 @@ Note that not every skill is available to every profession (class).
                                                  gripped with both hands
                                                  (COULD2H, SHOULD2H, MUST2H).
 
+                                (Note: Switching your combat stance costs you
+                                half a turn of energy.)
+
         .Dual-Wield             The ability to wield two weapons at once. This
                                 ability cannot be trained, it's always at 1.000
                                 if your character's class can dual-wield, else
@@ -10045,8 +10149,6 @@ Note that not every skill is available to every profession (class).
                                 Increases your chance to score critical hits.
                                 At 20 the quality of your handmade ammunition
                                 becomes remarkably better.
-                                50 in archery grants +1 'extra might',
-                                increasing your launcher's multiplier by 1.
 
                                 Lets you pseudo-id ranged weapons and
                                 ammunition more often the higher the skill.
@@ -10055,36 +10157,38 @@ Note that not every skill is available to every profession (class).
                                 the items. Before that, you can only
                                 distinguish between cursed and good.
 
-                                NOTE: The extra might bonus does not apply
-                                to Boomerangs! All other boni do apply.
-
         .Sling-mastery          Increases hit chance (while using a sling).
                                 At 10,20,30,40,50 you will get +1 additional
                                 shot per round each (while using a sling).
-                                Also reduces the chance of your ammunition to
-                                shatter by up to 90% at 50. (Example:
+                                Also reduces the chance of your sling
+                                ammunition to shatter by up to 90% at 50.
+                                Example:
                                 a shot that usually has 10% chance of breaking
                                 will only have a 1% chance of breaking if your
-                                skill is at 50.000.)
-                                (only concerns ammo for slings).
+                                skill is at 50.000.
 
-                                Adds chance for your shots to ricochet, even
-                                multiple times, hitting multiple enemies.
-                                Note that magic and ethereal ammo fades away
-                                the moment it hits, and never ricochets.
+                                At 50 you will get an additional bonus of
+                                +1 extra might.
+
+                                Artifact ammunition never breaks.
 
                                 Note that the explosion of exploding ammo will
                                 still hit "reflecting" monsters.
 
-                                Artifact ammunition never breaks.
+                                Slings only (does not apply to bow- or xbow-
+                                mastery):
+                                Adds chance for your shots to ricochet, even
+                                multiple times, hitting multiple enemies.
+                                Note that magic and ethereal ammo fades away
+                                the moment it hits, and never ricochets.
 
         .Bow-mastery            At 12.5, 25, 37.5, 50 you will get +1 extra
                                 shot per round each.
                                 Otherwise same as Sling-mastery, except no
                                 ricochetting.
 
-        .Crossbow-mastery       At 25 and 50 you will get +1 extra shot AND
-                                +1 extra-might-bonus each.
+        .Crossbow-mastery       At 25 and 50 you will get +1 extra shot,
+                                at 12.5 and 37.5 you will get +1 extra might.
                                 Otherwise same as Sling-mastery, except no
                                 ricochetting.
 
@@ -11675,6 +11779,7 @@ Archer          -
 Paladin         18/10   10      2               1
                 18/20   10      2               1-2 (depends on weapon)
                 18/30   10      3               2
+                18/20   18/10   3               2
 
 Ranger          similar to priest, also:
                 18/50   10      3               2-3 (depends on weapon)
@@ -11885,15 +11990,18 @@ F: flag list
     The flags are translated to mimic abilities as follows:
     RES_xxx     Gives the mimic the specific resistance.
     IM_xxx      Gives the mimic the specific immunity! If a form offers
-                more than 1 immunity, one will be picked randomly, the
-                remaining ones will turn into resistances. Potions of
-                self-knowledge are helpful here.
-                Note that you can set the desired immunity in 'm' menu ->
+                more than 1 immunity, the immunities will be checked against
+                the preferences you set, if none match or if you set it to none
+                then one will be picked randomly. The remaining ones will turn
+                into resistances. Potions of self-knowledge are helpful here to
+                find out which one you got, or you could just suffer damage of
+                the according type on purpose to test it out.
+                You can set the desired immunity in 'm' menu ->
                 'Use innate power' -> 'Set preferred immunity'. It will be
                 picked if the form you polymorph into can provide it.
                 If you are already using a form that can provide the immunity
                 that you switch to, that immunity will become the active one
-                immediately without the need to re-polymorphing.
+                immediately without the need for re-polymorphing.
     PASS_WALL   Will allow the mimic to pass walls like a ghost.
                 These immaterial forms also drain the hit points of their
                 user.
@@ -13972,25 +14080,22 @@ skill in the skill screen ('G'). It determines how well a character can make
 use of magical devices such as wands, staves, rods and activatable items.
 
 The Magic Device ability is not limited to a maximum value, although the
-player won't be able to increase it infinitely. The scale is:
-  0+    Bad
-  12+   Poor
-  18+   Fair
-  30+   Good
-  36+   Very good
-  42+   Excellent
-  54+   Superb
-  84+   Heroic
-  108+  Legendary
+player won't be able to increase it infinitely.
+While a low magic device ability might be sufficient to use supportive devices
+during breaks from combat, you will probably want superb, heroic or even
+legendary magic device ability if you intend to use magic devices as weapons
+in combat effectively. Otherwise your failure chance might be too high and
+therefore your damage output lacking.
 
 In detail, the magic device ability does this...
 -makes it easier to use wands, staves and rods and to activate items:
-  If random(1 to (skill - baseitemlevel)) > 3 then you will successfully
+  If random(1 to (skill - baseitemlevel)) > 2 then you will successfully
   use the item. (There's always a slim chance to succeed even if your
-  chances should be zero.) The base item level is from k_info.txt and caps
-  at 50. It is NOT the (often higher) level displayed on the item that you
-  see when looking at it in-game (ie the level shown in curly brackets).
-  Confusion halves your skill, EASY_USE doubles it.
+  chances should be zero.) The base item level is from k_info.txt. It is NOT
+  the (often higher) level displayed on the item that you see when looking at
+  it in-game (ie the level shown in curly brackets).
+  Confusion halves your skill, EASY_USE roughly doubles it and adds a small,
+  flat bonus.
 -speeds up recharging of rods:
   Skill in percent is added to the recharge rate; caps at skill 100,
   which means +100% recharge rate (approximately).
@@ -14005,6 +14110,13 @@ The magic device skill does the following...
 
 Magic device skill and ability have no effect on the damage output of traps
 loaded with a magic device.
+
+Rods, equippable items and true artifacts have more high level item types and
+are therefore on average harder to use. (For true artifacts their base level
+from a_info.txt counts, ie what is displayed at 'Found around depth:' in ~6.)
+Although there are also many low level true artifacts which accordingly will be
+much easier to activate.
+Staves and wands have more lower level types available in comparison.
 
 
 
@@ -14129,6 +14241,7 @@ The techniques are as follows:
         more effective accordingly, since half of your turn could be utilized
         by the auto-retaliator if you keep time intervals between each step.)
         Running (shift + directional keys) is not affected.
+        (Starting to sprint does not cost energy.)
     Taunt               2 stamina
         Attempts to draw attention of humanoid mobs, causing them to attack
         you. Might require more than one try sometimes until they fall for it,
@@ -14137,13 +14250,16 @@ The techniques are as follows:
         Note that this can also be used to make scared monsters agressive,
         and -if you and an ally both stand next to the same monster- to draw
         its attention from your ally and make it attack you instead.
+        (Taunting costs a quarter of a turn of energy.)
     Spin                8 stamina
         A sweep that hits all adjacent monsters and may stun them if they don't
         resist. You might even perform more than one complete sweep circle,
         hitting some or all monsters multiple times, based on your number of
         blows/round!
+        (Spinning around costs a turn of energy.)
     Berserk             10 stamina
         Similar to potions of berserk strength, also giving you +1 blow/round.
+        (Entering berserk rage does not cost energy.)
 
     Rogue-specific fighting techniques:
     -----------------------------------
@@ -14153,10 +14269,12 @@ The techniques are as follows:
         must be standing next to you and also next to the monster, instead of
         you. Not all monsters can be fooled though. Some monsters might resist,
         but probably fall for it if you give it another try.
+        (Distracting costs half a turn of energy.)
     Flash bomb          4 stamina
         You throw down a flash bomb that causes a flash of light, blinding
         your opponents for a short time, giving you opportunity to escape or
         kill them off while they are running around in confused state.
+        (Throwing a flash bomb costs a turn of energy.)
     Shadow run          10 stamina, kings/queens only!
         You will move at blinding speed, your silhouette turning shadowy.
         Ranged attacks will hardly be able to pin you down, and you will act
@@ -14168,6 +14286,7 @@ The techniques are as follows:
         until broken.
         Note that stamina does not regenerate while shadow running.
         Shadow running includes sprinting!
+        (Starting to shadow-run does not cost energy.)
 
     Shooting techniques:
     --------------------
@@ -14177,11 +14296,13 @@ The techniques are as follows:
         If that spot is inside a room, the whole room will be lit up.
         This technique consumes 1 flask of oil and your shot/arrow/bolt.
         Note that this destroys magic ammunition too.
+        (Preparing a flare missile costs a turn of energy.)
     Precision shot      7 stamina
         You aim your next shot carefully, costing you a turn. The next shot
         you fire however will receive a great damage bonus, even more so
         against fleeing opponents. Useful opener against sleeping monsters.
         Aiming will be interrupted by most actions, including walking.
+        (Aiming precisely costs a turn of energy.)
     Create ammunition   -
         Create ammunition for your currently equipped ranged weapon from
         bones, skeletons or broken sticks in your inventory or from a pile of
@@ -14197,6 +14318,7 @@ The techniques are as follows:
         collect a large stack of materials and use the skill on that stack
         (the total weight of that inventory slot determines the stack size).
         The level of the raw materials has no effect on the outcome.
+        (Creating ammunition costs a turn of energy.)
     Double-shot         1 stamina/5 turns (random) while using it actively
         Toggle, making you enter or leave double-shot mode. While active, you
         will fire 2 projectiles at once on each shot, dealing way less damage
@@ -14206,11 +14328,13 @@ The techniques are as follows:
               you get stamina back you'll start firing double-shots again.
               To permanently leave double-shot mode, you have to toggle it
               explicitely in the 'm' menu.
+        (Double-shooting does not cost more energy than shooting normally.)
     Barrage             9 stamina
         Prepares to fire a powerful multi-shot which will cost you half a
         turn. It stuns the target (if it doesn't resist stunning attacks).
         Because 6 shots are fired at once you will need at least as many
         projectiles in your quiver in order to use it.
+        (Firing a barrage costs half a turn of energy.)
 
     Note: The ability 'fire-till-kill' is available to any class and not
     considered to be a special shooting technique. It appears directly in the
@@ -15177,15 +15301,34 @@ DOESN'T WORK ON EGOS / ARTS:
 'Amulets of Telepathic Awareness', 'Rings of Polymorphing' and
 Dragon Scale Mails 'of Defense'!
 
+THE BASE ITEM MATTERS, ENCHANTMENTS DO NOT (except for jewelry, see below):
+
+-You will want to use the cheapest base item version you can find, because
+it will get rerolled randomly anyway. This means that you can even use cursed
+items, it doesn't matter. For example there is no difference between "arting" a
+ring of extra attacks (+3) and a ring of extra attacks (-1) {cursed}.
+In fact, you should art the cursed one, because you can still get money out of
+the (+3) one by selling it to a store.
+However, jewelry that has +hit, +dam or +AC mods is a special case, read on:
+
 HOW IT WORKS ON JEWELRY:
 
--In general, it's not always a good idea to try to turn a ring or amulet that
+-In general, it's not a good idea to try to turn a ring or amulet that
 has high bonus numbers into an artifact, like for example a ring of speed
-(+11) because these numbers will get erased and randomly re-rolled.
+(+11) because these numbers will get erased and randomly re-rolled. Your great
+speed ring will not get more than +7 speed as a randart, much likely less, so
+speed rings in particular are very poor targets for artifact creation.
+So if you want to use the scroll on say a ring of extra attacks, you should
+actually use the cheapest one you can find, like (+1), or even a cursed one.
+It doesn't matter, because it will get rerolled randomly anyway, and your
+cursed version could just as likely end up as an awesome (+3) high end randart
+ring of extra attacks.
+However... read on:
 
 -On jewelry (+to-hit,+to-dam) and [+AC] will stay the same (for example a ring
 of slaying (+10,+15) will keep the (+10,+15)).
-(Any dice (xdy) as well as _base_ AC [x,+0] on jewelry will always become 0.)
+(Any dice (xdy) as well as _base_ AC [x,+0] on jewelry will always become 0,
+but there is currently no jewelry in the game that has damage dice or base AC.)
 
 HOW IT WORKS ON NON-JEWELRY:
 
@@ -15234,6 +15377,22 @@ However, there are certain exceptions:
    -Experience drain removes hold-life
    -attribute mali remove the according sustenance (STR/INT/WIS/DEX/CON/CHR)
 
+MULTI-HUED DRAGON SCALE MAIL IMMUNITIES:
+
+-As a specialty, the immunities on MHDSM are actually *retained*! They are not
+rerolled randomly but survive the artifying process. So you can pick a MHDSM
+with two immunities of your choice and attempt to use an artifact creation
+scroll on it to make it acquire additional powers (it cannot gain any further
+immunities though, since 2 are the maximum for any type of item).
+Note that MHDSM are poor targets for artifact creation though, because their
+immunities and resistances already account for a high amount of 'item power',
+meaning that it will be very hard to get good additional powers on them from
+the artifact creation process.
+
+POWER DRAGON SCALE MAIL:
+
+As mentioned above, it is impossible to gain any additional powers on PDSM, so
+don't waste your artifact creation scroll on it!
 
 DISCOUNTED ITEMS:
 
@@ -15545,12 +15704,16 @@ PvP-mode characters may obtain item rewards by killing a lot of opponents (see
 Dungeon Keeper will give parchments to the winners that can be turned in at the
 mayor's office for reward items.
 
-Reward items are different from items obtained via extermination orders, as
-normal drops or from acquirement scrolls in the way that they are specifically
-tailored to fit your character relatively well. There is still a random factor
-though.
+Reward items are different from all other items (those obtained from
+extermination orders, monsters, chests, acquirement scrolls or even
+artifact creation scrolls) in the way that they are specifically tailored
+to fit your character relatively well.
+There is still some randomness playing a part in it though, so the outcome will
+always vary and not necessarily be exactly what you wished for.
 
-What you must actively do BEFORE turning in a deed for a reward item is:
+Since the resulting item will be affected by your character and its skill chart,
+what you must actively do BEFORE turning in a deed for a reward item is:
+
 - spend skill points! Never get a reward item without having spent any skill
   points. Make sure that you have at least 3.000 in your vital skill(s) so the
   reward-creating algorithm notices it.
@@ -15567,6 +15730,8 @@ What you must actively do BEFORE turning in a deed for a reward item is:
   Regarding weapon weight, note that a weapon reward will usually not give you
   less attacks per round than the weapon you are already wielding (if any). If
   you don't wield one, it aims for 3 attacks per round as default.
+
+Aside from these, randomness is always a factor so the result may vary.
 
 
 
@@ -16000,6 +16165,8 @@ SOLUTION:   This can have several reasons. On disconnection a message box will
                     May especially happen on not-so-great connections if you
                     die and the server tries to send a large bunch of death
                     dump information to your client.
+            "Server closed the connection"
+                    Maybe a firewall or bad network problem.
 
 PROBLEM 08: I am disconnected from the server with an error message, this
             happens before I can even start playing.
@@ -16487,5 +16654,15 @@ PROBLEM 46: Testing your character's damage-per-second (dps) on the target
             into the target dummy instead of using the melee auto-retaliator.
 SOLUTION:   You are experiencing game engine limits regarding the world surface
             (including all towns, like Bree). See (8.7) for details.
+
+PROBLEM 47: The TomeNET-Updater for Windows gives a message about captcha when
+            I try to update sound pack or music pack.
+SOLUTION:   Unfortunately the updater cannot defeat captchas of one-click
+            hosters from where the audio packs are downloaded.
+            This means that you just have to retry after some time has passed,
+            for example an hour, and hope that you won't get a captcha request
+            then.
+            (In general, captcha requests tend to pop up when the file is very
+            frequently accessed.)
 
 ==============================================================================
