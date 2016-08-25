@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 25. July 2014 - written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.5.7a - official websites are:
+| Latest update: 21. September 2014 - written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.5.7b - official websites are:
 | http://www.tomenet.net/ (main site),
 | http://koti.mbnet.fi/mikaelh/tomenet/ and http://www.c-blue.de/rogue.html
 |
@@ -105,7 +105,8 @@ Contents
     (5.2)   Ranged weapons, brands
     (5.2a)  Fire-till-kill mode
     (5.3)   Slaying vs brands
-    (5.4)   Martial Arts, brands
+    (5.3a)  Martial Arts, brands
+    (5.4)   Application of attack-affecting item mods
     (5.5)   Weight of weapons and armour
     (5.6)   Resistances & caps, Immunities, Susceptibilities
     (5.7)   Qualitative classification of items, identifying & selling items
@@ -331,6 +332,12 @@ or glance at (7.3) first ;)
 (0.2) Command reference & key sets
 ----------------------------------
 Can be different depending on OS / configuration.
+This chapter consists of three subsections:
+Command keys, Text editing keys, Slash commands.
+
+
+Command keys
+------------
 
 Key combinations with CTRL key can be entered in the macro menu by prefixing
 the key with a '^' symbol. For example, a swap-macro in normal key set could be
@@ -481,6 +488,9 @@ V       V       enter 'cloaking mode'. This can only be used by rogues.
                 Cloaking will also increase your searching, greatly increase
                 your stealth, but decrease your speed. Sneakiness skill may
                 very slightly reduce the decrease.
+                If you attack a monster while cloaked, it'll count as backstab,
+                making full use of your 'Backstabbing' skill if you have
+                trained it. See (6.2) for 'Backstabbing' details!
                 Note: Cloaking has no effect on shoplifting; it breaks on
                 entering any shop.
                 Note: Although ESP is supposed to detect cloaked targets, for
@@ -572,6 +582,16 @@ P       O       party screen. Form/disband/modify a party with other players
 
 H       CTRL+G  re-apply client-side and (if 'auto_inscribe' option is enabled)
                 server-side auto-inscriptions to an item.
+
+CTRL+U  CTRL+F  Displays/exits the audio mixer settings. (Also see (2.1a).)
+                Note: Mixer settings are saved automatically, provided you use CTRL+X to quit.
+                (Compare troubleshooting section (8.8), problem 21.)
+
+CTRL+C  CTRL+Q  Toggles music. (Shortcut for toggling it in the mixer settings.)
+
+CTRL+N  CTRL+V  Toggles audio. (Shortcut for master toggle in the mixer settings).
+                Note: If you press this while in chat prompt, you can cycle forward
+                through lines you previously typed (also see CTRL+P).
 
 
 SPACE   Stop executing repeatable actions such as searching, tunnelling or
@@ -739,8 +759,8 @@ CTRL+O  view previous chat messages.
 
 CTRL+X  save your character & quit the game. (You should do this in town!)
         This also automatically saves some settings, like window positions on
-        MS-Windows, or mixer settings (CTRL+U to change), and you will be asked
-        to save a chat log.
+        MS-Windows, or mixer settings (CTRL+U to change, CTRL+F on rogue-like
+        key map), and you will be asked to save a chat log.
         Note that if you exit the game just by clicking on the 'x' button in
         the game window's titlebar, these extra features will be skipped, and
         any changes in settings or window positions will be discarded.
@@ -760,16 +780,6 @@ CTRL+T  take a screen shot. See /screenshot command below.
 TAB or CTRL+I
         displays lag-o-meter.
 
-CTRL+U  Displays/exits the audio mixer settings. (Also see (2.1a).)
-
-CTRL+C  Toggles music. (Shortcut for toggling it in the mixer settings.)
-
-CTRL+N  Toggles audio. (Shortcut for master toggle in the mixer settings).
-        Note: If you press this while in chat prompt, you can cycle forward
-        through lines you previously typed (also see CTRL+P).
-Note: Mixer settings are saved automatically, provided you use CTRL+X to quit.
-(Compare troubleshooting section (8.8), problem 21.)
-
 ^       Allows to enter a CTRL character as command.
 
 \       Enter a command, bypassing the client's key map.
@@ -784,6 +794,26 @@ Note: Mixer settings are saved automatically, provided you use CTRL+X to quit.
         (Currently targets the most hurt player who is in your party, or the
         most wounded player in general if you aren't in a party.)
 
+
+Text editing keys
+-----------------
+
+When typing in a line of text (eg to chat), the following control keys are
+available for text editing:
+
+CTRL+P/N    Cycle through your message history.
+
+CTRL+V/B    Move cursor to beginning/end of line.
+
+CTRL+Q/W    Move cursor back/forward by one word.
+CTRL+E      Delete word before the cursor.
+
+CTRL+A/S    Move cursor back/forward by one character.
+CTRL+D      Delete character under the cursor.
+
+
+Slash commands
+--------------
 
 There are also some commands that can be entered with ':' like a chat line.
 They all start with a slash '/' hence they're called slash commands:
@@ -947,7 +977,8 @@ They all start with a slash '/' hence they're called slash commands:
  (/leave,/quit)
 
 /fe         Repeat the level feeling. See (4.8) for more information.
- (/feeling)
+ (/feeling) If you aren't eligible for receiving a floor feeling, you will
+            instead get the message "You feel nothing special.".
 
 /fill       fill an 'Empty Bottle' in your inventory with the water from a
             fountain. You must stand on the fountain to do this.
@@ -1330,19 +1361,20 @@ Word-of-Recall scrolls:
                 /rec -350
                 /rec 32 32        <- notice: No komma between the coordinates!
 
-    NOTE: You must've already been at that depth or deeper in order to teleport
-    there via WoR!
+    NOTES:
+    1) You must've already been at that depth or deeper in order to teleport
+       there via WoR!
+    2) In order to recall to a place on the world map, you need to have been
+       there before, NOT while you were dead (ghost), but while you were
+       alive! So don't try to travel to Gondolin as a ghost, the priest over
+       there will reject you and you won't remember the place when you return
+       and revive in Bree.
 
-    IMPORTANT: In order to recall to a place on the world map, you need to
-    have been there before, NOT while you were dead (ghost), but while you
-    were alive! So don't try to travel to Gondolin as a ghost, the priest
-    over there will reject you and you won't remember the place when you
-    return and revive in Bree.
-
-    Example, a player is in Bree (32,32) and wants to recall to Orc Cave -300ft
-    which we assume is at (31,25) and he has already been at 31,25 before, so
-    he can use Word-of-recall to get there. He has his WoR scrolls inscribed
-    '@R' and now types the following chat commands in order:
+    EXAMPLE:
+    A player is in Bree (32,32) and wants to recall to Orc Cave -300ft which we
+    assume is located at (31,25) and he has already been at 31,25 before, so he
+    can use Word-of-recall to get there. He has his WoR scrolls inscribed '@R'
+    and now types the following chat commands in order:
         /rec 31 25
         (he waits until that kicked in and transported him to Orc Cave surface)
         /rec -300
@@ -1784,6 +1816,12 @@ Wormy       Wormtongue, Agent of Saruman. He drops great items.
 
 -Some special shops' features may currently not be available.
 
+-Some monster abilities are currently not available/implemented:
+ BO_POIS, HAND_DOOM, RAISE_DEAD.
+
+-Some item abilities are currently not available/implemented:
+ LEVELS.
+
 
 
 (1) Introduction
@@ -1986,6 +2024,9 @@ For weapons which damage dice and to-dam bonus will not be counted (ie non-
 SLAY/KILL EVIL/UNDEAD weapons) you'll see the message:
 "The Ringwraith is IMPERVIOUS to the mundane weapon."
 
+Note: Having those slay/kill mods on gloves instead of the weapon does not
+      help! They will not count.
+
 Martial Arts users can fight relatively efficiently against Nazguls, but their
 chance to receive Black Breath is higher than for weapon users.
 
@@ -2063,6 +2104,11 @@ The only prerequisite is that you must have '7-Zip' installed, a great, free,
 open source archiver that beats WinRAR and WinZIP easily. You can get it from
 www.7-zip.org.
 Important: You should exit the game before attempting to update it!
+Note for LINUX:
+If the packages in your repository do not provide '7zG' (the graphical user
+interface of 7-zip) then you'll need to compile it yourself. For details see
+(2.1a) and there "a) Automatic audio pack installation - LINUX". That paragraph
+has short instructions on how to compile 7-zip from source in Linux.
 
 
 Installation from scratch:
@@ -2153,8 +2199,9 @@ You can get the source from www.tomenet.net, also see (1.1).
 How to compile the game binary:
 Go into '/tomenet/src' where the file 'makefile' is located.
 
-Make sure you have the C-devel, X11-devel, ncurses, ncurses-devel and crypt
-libraries installed. The package names are usually:
+Dependencies, that you must make sure you have installed:
+C-devel, X11-devel, ncurses, ncurses-devel and crypt libraries.
+The package names are usually:
 build-essential, xorg-dev, libncurses5, libncurses5-dev, libgcrypt11,
 libc6-dev.
 
@@ -2371,6 +2418,23 @@ Step 1:
  Note that some Linux distributions (Ubuntu) have another package called
  p7zip-full and the package p7zip is lacking certain parts. In that case
  install p7zip-full.
+ UPDATE: Ubuntu seems to no longer provide the graphical user interface of 7zip
+ 7zG in either of these packages, so you'll have to download the source instead
+ directly from the project page (on sourceforge) and compile it yourself:
+  http://sourceforge.net/projects/p7zip/files/p7zip/
+  pick the folder with the latest version and download the 'src_all' source
+  archive, not the 'linux_bin' binary archive (it doesn't contain 7zG!).
+ Short compilation/installation instructions:
+  Extract the source archive and enter its directory.
+  For 32-bit Linux, do:
+   cp makefile.linux_x86_asm_gcc_4.X makefile.machine
+  For 64-bit Linux, instead do:
+   cp makefile.linux_amd64_asm makefile.machine
+  Then do:
+   make all4
+  And last but not least:
+   sudo make install
+  That's it. Try entering '7zG' into the terminal to verify that it worked.
 
 Step 2:
  Download the files 'TomeNET-soundpack.7z' and/or 'TomeNET-musicpack.7z' and
@@ -2385,7 +2449,8 @@ Step 3:
 Step 4:
  After it's done it should tell you to restart your client. (You might also
  get disconnected automatically, if the auto-installation takes a while. That
- is fine.) Just restart the game and press CTRL+U to look at the audio mixer.
+ is fine.) Just restart the game and press CTRL+U to look at the audio mixer
+ (or CTRL+F if you're using rogue-like key map).
  It should tell you that sound and/or music pack have been installed.
 
 In case you want to install the packs manually instead of using auto-install,
@@ -2430,9 +2495,9 @@ or music zip file is to:
    If you were extracting a sound pack or if you already installed a music pack
    previously then you will be prompted to overwrite files - choose "yes".
    Wait for the extraction process to finish.
-5. Start or restart TomeNET and press CTRL+U in the game to view the audio
-   mixer screen. If everything went smoothly it should say that a sound or a
-   music pack or both have been found.
+5. Start or restart TomeNET and press CTRL+U (or CTRL+F on rogue-like key map)
+   in the game to view the audio mixer screen. If everything went smoothly it
+   should say that a sound or a music pack or both have been found.
    If you don't have sound, make sure that your TomeNET.ini file (it's in your
    TomeNET folder, double-click it to view, can be opened with any normal text
    editor) says 'Sound=1' which it should by default if you haven't modified it
@@ -2446,17 +2511,19 @@ folder lib/xtra/sound/ and lib/xtra/music/ respectively, which contain config
 files and further subfolders for either sound effects or background music.
 
 Now start or restart the game, and you should have sound.
-If you don't have sound, press CTRL+U for audio mixer: It should say that sound
-and music pack have been detected if everything went alright, otherwise you see
-a red error message.
+If you don't have sound, press CTRL+U for audio mixer (or CTRL+F if you're
+using rogue-like key map):
+It should say that sound and music pack have been detected if everything went
+alright, otherwise you see a red error message.
 Also verify  that your config file ("TomeNET.ini" on MS Windows, ".tomenetrc"
 in your home folder on Linux or Mac OS X) has 'Sound' set to '1'.
 
 
 (2.1b) Audio controls and config options
 ----------------------------------------
-You can control mixer settings with CTRL+U key (or use CTRL+C to toggle music
-and CTRL+N to toggle the master mixer on/off).
+You can control mixer settings with CTRL+U key on normal keymap and CTRL+F on
+rogue-like key map (or use CTRL+C to toggle music and CTRL+N to toggle the
+master mixer on/off, CTRL+V instead of CTRL+N on rogue-like key map).
 
 Note: Mixer settings are saved automatically, provided you use CTRL+X to quit.
 (Compare troubleshooting section (8.8), problem 21.)
@@ -3178,9 +3245,9 @@ This line consists of the following icons that may show up:
                    accuracy with your ranged weapon.
     Light-red 'F'  You are martial arts user and your backpack is too
                    heavy, so that you don't receive Free Action from MA!
-                   See (5.4) for more detailed information.
+                   See (5.3a) for more detailed information.
     Yellow (       You are martial arts user and your armour is too heavy.
-                   You might receive various penalties (see (5.4)).
+                   You might receive various penalties (see (5.3a)).
                    NOTE: Up to client version 4.4.2 this can stand for both,
                    the meaning described above and the meaning of 'Blue ('
                    described below. Starting with 4.4.2a, these two were
@@ -3198,7 +3265,7 @@ This line consists of the following icons that may show up:
                    mindcrafter school spells, reducing your MP. Only affects
                    characters who have trained in one or more of the
                    mindcrafter schools.
-Also see (5.4) and especially (5.5) for more information about encumberment,
+Also see (5.3a) and especially (5.5) for more information about encumberment,
 and for specific details about penalties that are applied.
 
 
@@ -5571,19 +5638,22 @@ A monster trap consists of
 
 Each kind of trap kit requires different items serving as ammunition:
 Catapult Trap Kit       -       Sling ammo (fires with 2x base might).
+ (orange)
 Arrow Trap Kit          -       Arrows (fires with 3x base might).
+ (red)
 Bolt Trap Kit           -       Bolts (fires with 4x base might).
+ (bright red)
 Fumes Trap Kit          -       Potions. The effects are very similar to the
-                                effects when throwing a potion at a monster,
+ (dark blue)                    effects when throwing a potion at a monster,
                                 the trap will greatly increase the potion's
                                 effectiveness though, by generating a thick
                                 fume that envelops nearby creatues and
                                 possibly gets inhaled as well.
 Magic Trap Kit          -       Scrolls or runes. Even scrolls that are usually
-                                only used on other items might have effects on
+ (violet)                       only used on other items might have effects on
                                 certain creatures.
 Device Trap Kit         -       Wands/Staves/Rods.
-                                The charges of wands and staves will be
+ (slate)                        The charges of wands and staves will be
                                 decreased by 1 each time the trap sets off.
                                 Rod-traps will have timeouts, same as the rod
                                 itself.
@@ -5789,6 +5859,12 @@ you or following players entering that floor will still get that same feeling.
 Or if a powerful monster spawns later on on an initially "boring place" level,
 it'll remain to feel like a boring place, despite the new monster that might
 actually make it pretty non-boring now..
+
+
+You can check the floor feeling again anytime with the '/feel' command. If you
+weren't eligible for receiving a floor feeling (because you didn't spend enough
+time on the previous floor) then this command will just tell you:
+  "You feel nothing special.".
 
 
 If you are in the Ironman Deep Dive Challenge dungeon, you will get a feeling
@@ -6245,7 +6321,8 @@ If you carry out the extermination order you received, you will be rewarded
 with a good or great item, depending on the difficulty (monster level) and
 chance.
 The item does not depend on your race, class, skills or luck in any way,
-it's completely random.
+it's completely random. It's quality is also on average lower than the items
+obtained from winning events (read further below about events).
 If you fail to carry out your order in time, the order will be cancelled and
 you can just get a new one if you want to. There is no penalty.
 
@@ -6264,6 +6341,11 @@ Events (use /evinfo and /evsign commands to get information and to sign up)
 ---------------------------------------------------------------------------
 Note: Item rewards depend on your character, see (8.5) for more information
       about item rewards.
+
+Make sure that you aren't inside a dungeon that does not allow normal usage of
+word-of-recall when an event begins that you signed up for, or you will fail to
+join the event! (Eg ironman, forcedown, no-recall dungeons, even if you're on
+the final floor and could use word-of-recall.)
 
 Highlander Tournament (pvp, only one can win, 2+ participants)
     When you see a message, announcing a Highlander Tournament, type "/evinfo"
@@ -6325,6 +6407,10 @@ Highlander Tournament (pvp, only one can win, 2+ participants)
     points spent. So you should not turn in the deed before you actually spent
     your skill points. For example if you spend several points into
     sword-mastery then _if_ you receive a weapon it will actually be a sword.
+    See (8.5) for details!
+    Highlander Tournament rewards can theoretically end up with a higher item
+    value in gold than rewards from other events. Reward items cannot be sold
+    to stores though.
 
 Arena Monster Challenge (no losses or gains, for testing your abilities)
     The wizards of Arena Monster Challenge (tm) have prepared a spectacular
@@ -6386,7 +6472,7 @@ Dungeon Keeper (everyone can win, 1+ participants)
     Winner parchments can be turned in for either an item or a temporary luck
     buff (about 30 minutes duration). The item will depend on how you have
     spent your skill points, so make sure to distribute some skill points first
-    before turning in a parchment for an item reward.
+    before turning in a parchment for an item reward. See (8.5) for details!
     The winner parchments can also be given to other characters, but those will
     only be able to exchange them for a luck buff, not for an item-
 
@@ -6399,6 +6485,8 @@ Dungeon Keeper (everyone can win, 1+ participants)
     -If you stand still for a turn, you can 'run' over one adjacent floor grid
      as quickly as you can double-tap a movement key (maybe create a macro).
     -Players usually do not start next to rooms that have escape beacons.
+    -Don't OCD this dungeon. Your goal is to pass through as many rooms as
+     possible, not to cover areas "cleanly".
 
 
 Asides from extermination orders and events, there is another, permanently
@@ -6538,6 +6626,7 @@ Ironman Deep Dive Challenge (IDDC)
     Therefore, if you need to log out and stop playing, you should first clear
     as many monsters as you can on your current floor before logging out. That
     way you won't "waste" any experience points.
+    Note that dungeon towns never turn stale.
 
     Monsters cannot spawn 'live' in the IDDC, but only at the time of creation
     of each dungeon floor. Summon staves cannot be recharged in the IDDC and
@@ -6774,9 +6863,10 @@ Also, you'll be more prone to disarming attacks.
 Similar is possible for shields. If you try to use a shield which is too heavy
 for you, you'll get another warning message:
 "You have trouble wielding such a heavy shield".
-That means you will hardly be able to deflect anything, and also you'll get
-less Armour Class increase from it than it usually provides. Even if your
-shield has magical reflection ability, you won't be able to utilize it.
+That means you will hardly be able to deflect anything with this shield and
+won't get get any 'reflection' ability from it, if it provides this.
+All other abilities you gain from it are not affected though (eg resistances
+or stat boni), you will benefit from these just fine.
 
 Your character might have a chance to parry attacks with his weapon and block
 attacks with his shield, provided he uses one.
@@ -6960,8 +7050,8 @@ the type of sling, bow or crossbow).
 
 
 
-(5.4) Martial Arts, brands
---------------------------
+(5.3a) Martial Arts, brands
+---------------------------
 The "auto-retaliator" (see 4.1a) also works if you fight bare-handed.
 
 Training Martial Arts will give you..
@@ -7107,10 +7197,33 @@ attack against them.
 
 
 
+(5.4) Application of attack-affecting item mods
+-----------------------------------------------
+While item abilities such as resistances or stat boosts are always applied,
+magical mods that affect attacks might not be.
+Such mods are:
+
++to-hit, +to-dam, extra attacks, critical hits, vampiric, slays and brands.
+
+These mods on weapons are only applied to attacks done with that particular
+weapon.
+Except for 'extra attacks', which generally increases your number of attacks
+and will not discriminate which weapon will be used for attacking if you are
+dual-wielding - both weapons always have a 50% chance each blow.
+
+These mods on other items, like gloves or rings, will affect all weapons,
+even ranged ones, and also martial arts!
+Exceptions:
+ - +to-dam boni will not be applied to ranged weapons, only to melee attacks.
+ - Extra attacks are not applied to ranged weapons, only to melee attacks.
+ - Vampirism effect will be weaker (compare table at the end of (5.15)).
+
+
+
 (5.5) Weight of weapons and armour
 ----------------------------------
 Weight of items in your inventory or equipment can have great effect on
-martial artists. If you use martial arts, also see (5.4) for more information.
+martial artists. If you use martial arts, also see (5.3a) for more information.
 
 Even if you're not using martial arts, there are certain types of encumberment
 which may affect your character:
@@ -7923,11 +8036,12 @@ NO_MAGIC ('Antimagic shell')
         Raises your saving throw to 95%, making you nearly immune to any
         malicious magical influence (like paralysation or slowness, but also to
         monsters cursing you). Also prevents you from using any magic device or
-        casting spells.
+        casting spells. You can still use scrolls and potions though.
 ANTIMAGIC ('Antimagic field')
         Prevents you from using any magic device or casting spells, also
         prevents nearby monsters and other players from casting spells (but
-        not from using magic devices).
+        not from using magic devices). You can still use scrolls and potions
+        though.
         The field has less influence on _party members_ who try to cast.
         The radius is approximately the field power / 9, and is cumulative
         to the 'Antimagic' skill. The field power is the chance of
@@ -8057,6 +8171,7 @@ Dark Sword      Dark Swords have a so-called 'antimagic field', which
                 prevents the user from using magic devices or casting spells,
                 and also has a chance to interrupt nearby monsters and players
                 who try to cast spells but doesn't affect their magic devices.
+                You can still use scrolls and potions though.
                 The chance to interrupt spellcasters is 30% minus 3/5 of the
                 to-hit and to-dam values of the dark sword. Example:
                 A Dark Sword (+3,+7) has 30 - (3+7) * 3/5 = 24% chance of
@@ -8213,6 +8328,7 @@ Chauve-Souris   Turns you into a fruit bat. Quaff another one to be restored
                 to your original form. A wand/rod of polymorph might help too.
                 Make sure you don't resist nexus if someone tries to polymorph
                 you back. Or just use 'Morph Restoration' service.
+                Characters with 'Fruit Bat' body modification are immune.
 Enlightenment   Illuminates and maps the whole level and reveals all objects.
                 It also identifies all of the user's items.
 *Enlightenment* Raises your intelligence and wisdom, detect treasures,
@@ -8298,7 +8414,7 @@ Remove Curse    Breaks lesser curses on items, allowing you to unwear or
 Recharging      Recharges a magical rod/wand/staff (see (5.22)).
 Rune of Protection  Creates a warding glyph on the floor that stops monsters
                     from crossing the field or summoning on it.
-Protection from evil    Repels evil creatures that try to attack you.
+Protection from evil    Repels evil creatures that try to attack you in melee.
                         See the prayer 'Protection from evil' in (6.8)!
 *Destruction*   Causes a local earthquake, nearly completely wiping the area
                 of monsters and objects.
@@ -8368,8 +8484,11 @@ Vermin Control  Stops breeders on the map from multiplying. Doesn't have effect
 Wilderness Mapping  Maps the wilderness area around the worldmap sector you
                     are currently within. These scrolls also sometimes carry
                     an inscription telling the location of a hidden dungeon.
-Cancellation    Don't use it! It can heavily disenchant magic items in your
-                inventory and/or equipment.
+Cancellation    Don't use it! It will heavily disenchant and blast all sorts of
+                magic items in your inventory and render them worthless,
+                including magic devices.
+                Artifacts (and Stormbringer) are unaffected.
+                Your equipment is unaffected.
 Golem Creation  Allows you to create a golem which follows you and which you
                 can control to some extent, see (8.3) for more information.
 Parchments      These contain informations about the game, they won't
@@ -8422,7 +8541,8 @@ Healing         Staves:
                 Heals 100 to 350 hit points, depending on magic device skill,
                 cures stun and cuts.
 Dragon's Breath These wands fire a ball of dragon odem (more powerful than
-                normal ball spell wands.)
+                normal ball spell wands.) - randomly on each cast one of:
+                Fire, frost, lightning, acid or poison.
 Restoration     Restores experience points (aka live levels) and drained stats,
                 ie STR/INT/WIS/DEX/CON/CHR.
 Havoc           Fires balls or beams of random type, the exact outcome is hard
@@ -8584,6 +8704,17 @@ Device of theft prevention
 Climbing set        Allows you to travel over mountain fields.
                     Info for mimics & co: In order to be able to use it, your
                     appearance form must have arms and fingers. (Equip it!)
+Ale and wine        Will satisfy your hunger somewhat, and may have random side
+                    effects:
+                    Confusion, stun, hallucinations, 1 point of sanity damage,
+                    paralysation, fear, blindness (methyl? ew), vomitting if
+                    your stomach isn't relatively empty, temporary stat
+                    decrease (except for strength), slowness,
+                    heroism, berserk, speed.
+                    Note that the unique dwarven ale of the Khazad is vastly
+                    superiour to normal ale or wine, and will mostly affect the
+                    drinker positively, not ever causing negative side effects
+                    besides possible confusion.
 Fortune Cookie      Gives you a line of wisdom.
 Sprig of Athelas    Eat this one to cure Black Breath (see 1.5 for more
                     information about Black Breath),
@@ -8661,6 +8792,11 @@ Teleportation rings: Explode for teleportation.
 ------------------------------------
 (For information about the 'timeout' on true artifacts, see 'Artifact resets'
 further below.)
+
+Artifacts of any type cannot be enchanted by any means, nor harmed by elemental
+attacks of any type. Also they have a high chance to resist disenchantment
+effects. (If the player actually resists disenchantment already then they are
+completely safe.)
 
 Artifact types in general
 -------------------------
@@ -8762,13 +8898,22 @@ and also
 You'd get a small luck bonus, or 'set bonus'. The more artifacts of similar
 name you equip the greater the luck bonus will be.
 The exact luck boni for those 'artifact sets' starting at two items are:
-4, 9, 16, 25, 36, 40 (cap). So it's basically the amount of artifacts squared.
-Different sets don't stack, only the biggest set counts.
 
-Artifacts of any type cannot be enchanted by any means, nor harmed by elemental
-attacks of any type. Also they have a high chance to resist disenchantment
-effects. (If the player actually resists disenchantment already then they are
-completely safe.)
+  Number of artifacts equipped  |  Luck bonus
+  ------------------------------+-------------
+                    2           |    + 3
+                    3           |    + 6
+                    4           |    +10
+                    5           |    +15
+                    6           |    +21
+                    7           |    +28
+                    8           |    +36
+                    9 or more   |    +40 (cap)
+
+..which is actually the sum of all numbers from 1 up to the number of artifacts
+you have equipped. Eg 2 artifacts -> 1+2 = 3. 4 artifacts -> 1+2+3+4 = 10.
+
+Multiple equipped sets don't stack, only the biggest set counts!
 
 
 Artifact resets
@@ -8822,7 +8967,7 @@ floor. Items that IGNORE_COLD also resist impact damage.
 Usually items that contain wood, leather or stuff are susceptible to fire and
 acid, while things that consist only of metal are just susceptible to acid.
 
-                    Acid    Elec    Fire    Cold    Impact  Water
+                    Acid    Elec    Fire    Cold    Impact* Water
 -----------------------------------------------------------------
 Arrows              x               x
 Bolts               x               x
@@ -8880,6 +9025,16 @@ Handbooks           x               x                       x
 Tomes               x               x
 Greater Crystals
 Custom Books        x               x
+
+*Impact-based attacks:
+These do not hurt items in your inventory. For example impact hounds breathing
+at you will not destroy any potions in your backpack.
+However, there are some cases where impact-type destruction can happen to your
+inventory items:
+1) Falling through a trap door/chasm without having 'Feather Falling'.
+2) Rocket attacks, if you do not resist both, shards AND sound!
+3) Inferno/detonation damage, if you do not resist both, shards and sound.
+   However, inferno and detonation damage cannot be caused by monsters.
 
 Items ignore certain elements if they have the according resistance due to ego
 powers, for example a leather shield of resist fire will ignore fire.
@@ -9582,6 +9737,8 @@ be 1 in 800 in that case.
 Some example values, assuming 0.000 'Digging' skill
 and unenchanted (ie (+0,+0)) digging tools with (+1) to digging:
 ----------------------------------------------------------------
+
+Without a digging tool..
 -You always have a chance to remove rubble and organic material, even without
  a digging tool. Might take quite a while if your strength is low though.
 -You cannot tunnel through granite wall without a digging tool if your STRength
@@ -9592,15 +9749,17 @@ and unenchanted (ie (+0,+0)) digging tools with (+1) to digging:
  below 18/60.
 -You cannot tunnel through sand walls without a digging tool if your STRength
  is below 18/20.
+
+With a digging tool..
+-You can tunnel through all materials other than granite walls with just a
+ basic shovel even if your STRength is only 3.
+ (For quartz, you have a 3% chance to succeed at 18/50 STR with the shovel
+  and at 18/10 STR with a pick. If you use an enchanted shovel (+9,+9) (+1)
+  however, you already have a 3% chance to succeed at only 5 STR.)
 -You cannot tunnel through granite with a shovel if your STRength is
  below 18/30.
 -You cannot tunnel through granite with a pick if your STRength is
  below 12.
--You can tunnel through all other materials with just a basic shovel even if
- your STRength is only 3.
- (For quartz, you have a 3% chance to succeed at 18/50 STR with the shovel
-  and at 18/10 STR with a pick. If you use an enchanted shovel (+9,+9) (+1)
-  however, you already have a 3% chance to succeed at only 5 STR.)
 
 You can tunnel through all tunneable materials, no matter your strength, with..
 -a (+1) shovel that has +hit and +dam enchanted to a total of at least +15.
@@ -9876,7 +10035,11 @@ Note that not every skill is available to every profession (class).
                                 boni from dual-wielding, critical-strike,
                                 area-searching and cloaking.
                                 Lets you wear heavier armour without getting
-                                a penalty to to-hit or sneakiness
+                                a penalty to to-hit or sneakiness from being
+                                movement-encumbered.
+                                Note that Combat skill does NOT affect the
+                                continuous ranged-to-hit reduction based on
+                                armour weight.
                                 (See (5.5) for details about encumberment.)
 
                                 Note that Martial Arts penalties from heavy
@@ -9953,6 +10116,8 @@ Note that not every skill is available to every profession (class).
                                 Crit boni on weapons only apply to the weapon
                                 itself, while bonus on other items such as
                                 gloves or rings count for all kind of attacks.
+                                (Same goes for slaying/brand mods on items by
+                                the way.)
                                 For weapon users, the weight of their weapon
                                 affects their critical hits:
                                 If your weapon is lighter than 10.0 lb, your
@@ -10097,7 +10262,7 @@ Note that not every skill is available to every profession (class).
                                 Under certain conditions MA abilities cannot
                                 be used and lose their effect. About this and
                                 for more information about Martial Arts in
-                                general, see (5.4)!
+                                general, see (5.3a)!
 
     .Interception               Ability to interfere with adjacent enemies.
                                 Can prevent them from teleporting, casting,
@@ -10141,6 +10306,13 @@ Note that not every skill is available to every profession (class).
                                 Interception chance caps at 80% (cap is
                                 applied after all other penalties have been
                                 factored in, at the very end of calculation).
+
+                                Note that multiple players trying to intercept
+                                the same monster does not result in 'stacking'
+                                of their interception chances:
+                                The player who has (under given circumstances
+                                such as being blinded etc) the best chance to
+                                intercept will override the others.
 
     +Archery                    Improves ranged to-damage bonus.
                                 Allows you to learn some shooting techniques
@@ -10340,6 +10512,8 @@ Note that not every skill is available to every profession (class).
                                 this skill you won't be able to use any spells
                                 or magic devices (wands, staves, rods, items
                                 that can be activated) anymore!
+                                Being antimagic still allows you to use scrolls
+                                and potions though.
 
                                 An antimagic field will also shorten the
                                 duration of certain magical temporary buffs
@@ -10621,8 +10795,26 @@ Note that not every skill is available to every profession (class).
                                 your chance to find items, for the items to
                                 be good or even great, and affects the amount
                                 of cash if you mine treasure.
+
+                                In particular, every 10 digging skill you will
+                                have a chance to find an additional pile of
+                                cash from mining a treasure vein, up to 6 piles
+                                if you're lucky at skill 50.000 (provided your
+                                dungeon floor depth is greater than half of
+                                your digging skill, otherwise the number of
+                                piles is limited to depth/5, eg 5 piles for
+                                dungeon level 25, while starting at dungeon
+                                level 26 you may uncover the full amount of 6
+                                piles if your skill is actually 50.000).
+
                                 Depending on the skill, you might also uncover
-                                special things.
+                                unusual features such as fountains or
+                                staircases or somewhat more often (compared to
+                                finding just random items from digging) find
+                                chests, runes or heavy material pieces suitable
+                                for golem creation.
+                                The quality of objects found also depends on
+                                your digging skill.
 
                                 Certain tools such as shovels, picks and
                                 mattocks will also increase your digging speed
@@ -10796,7 +10988,7 @@ Blows/Round
     on your strength, dexterity, your class, your weapon.
     Spending points in specific weapon masteries will give you an additional
     blow at 25 and at 50 (like sword or blunt mastery).
-    Tables of blows/round limits are at (5.4) for martial arts, and at (6.5)
+    Tables of blows/round limits are at (5.3a) for martial arts, and at (6.5)
     and (6.5a) for melee weapons.
 Shots/Round
     How often per round you are able to use your ranged weapon.
@@ -11068,7 +11260,8 @@ Warrior is strongly recommended.
     and suck its blood to sustain themselves. Vampires resist darkness, but
     are susceptible to light and certain purifying and anti-evil effects, be it
     on items such as scrolls, on magic devices, or on equipment such as weapons
-    and light sources (which may drain their hit points if equipped).
+    and light sources (which may drain their hit points if equipped, even if
+    the vampire acquired resistance to light).
     They fear the sun light and any other kind of blessed light source, since
     it burns them, draining their hit points.
     They don't actually need a light source, since they are able to determine
@@ -11678,7 +11871,7 @@ To that maximum of blows per round further boni are added, like extra blows
 from a specific weapon-type mastery or from rings of extra attacks or magical
 influence from priest prayer 'Zeal'.
 Note that these blows/round limits don't count for Martial Arts users (as long
-as they fight barehanded). See (5.4) for a table of MA attacks.
+as they fight barehanded). See (5.3a) for a table of MA attacks.
 "Parrying" is done with weapons, while "blocking" is done with a shield;
 See (6.11) for details about parry and block.
 
@@ -11761,6 +11954,9 @@ Warrior         18      10      2               1
                 18/40   18/10   4               2
                 18/50   all     3               2
                 18/70..110  *   3-4             3 (depends on weapon)
+                and for polearms (spears):
+                18/40   18/10   3
+                18/70   10      3
 
 Istar           -
 
@@ -11773,6 +11969,8 @@ Rogue           15      18/10   2               2
 
 Mimic           similar to priest, also:
                 18/30   18/10   3               2
+                and for polearms (spears):
+                18/70   10      3
 
 Archer          -
 
@@ -11830,6 +12028,7 @@ more potions to cure it.
 
 If your sanity is lowered, there's an increasing chance that flashbacks will
 storm your head, leaving you with mad visions for a while..
+("A flashback storms your head!")
 
 When your sanity suffers from an attack, you'll see a light red message in the
 message window telling you so, instead of the usual white or yellow combat
@@ -12055,6 +12254,8 @@ F: flag list
     BASH_DOOR   This form can bash doors
                 (useful to forms that cannot open doors, see OPEN_DOOR flag).
     HURT_LITE   This form will take 2x damage from light attacks.
+    HAS_LITE    If this monster either doesn't have a torso or can actually
+                breathe light, it will give you +1 light radius.
 
     For all racial flags such as ANIMAL, SPIDER, EVIL, DEMON etc please see the
     list of racial abilities further below.
@@ -12205,6 +12406,8 @@ Ent:
     Speed malus (will be reduced), swimming, pass trees.
 Draconian:
     Feather falling, levitation.
+    Intrinsic breath weapon - you can only use it if you're actually in dragon
+    form (including dragonriders) or in any reptilian form (including Hydras).
 
 
 (6.7a) Polymorph rings ('Ring of Polymorphing of <form>'):
@@ -13011,7 +13214,9 @@ Priest schools:
                     Required skill level for first spell level: 11.
 
     Protection from evil.
-                    Repels evil creatures that try to attack you.
+                    Evil creatures that try to attack you in melee might get
+                    repelled, thereby preventing them from actually hitting
+                    you.
                     Works very well, as long as the creature isn't of a higher
                     level than you.
                     Required skill level for first spell level: 12.
@@ -13038,7 +13243,9 @@ Priest schools:
                     Required skill level for first spell level: 40.
 
     BONI:           Protects the player from undead at 30, from demons at 40,
-                    and from evil in general at 50. Better than the spell.
+                    and from evil in general at 50. Works similar to the
+                    'protection from evil' spell, but has better effect on
+                    monsters of higher level.
 
 
 - Holy Curing
@@ -14371,11 +14578,12 @@ office in Bree, you will get a semi-random excellent item for free, to start
 your career with. Semi-random because it partially depends on your skill point
 distribution, so before turning in your parchment for an item at the office,
 make sure you hit SHIFT+G and distribute your skill points to your liking.
+For details about how this item is generated, see (8.5) Reward item creation,
+it actually uses the same mechanics.
 
 PvP-mode characters are called 'Gladiators' and use special rulesets that make
 it easier to rise in levels and less of a hassle when you get actually killed
 by an opponent! The special rules that apply are as follows:
-
 
 -PVP chars have only one life and no ghost, ie are erased on death same as
  no-ghost chars. However, they play more fast-paced and are quickly brought up
@@ -15140,6 +15348,9 @@ the monsters that you encounter, so you will be able to decide if you should
 attack or flee.
 In my opinion playing TomeNET can be called "the art not to die".
 
+Note: As an everlasting character you can somewhat cheat death by activating
+"Instant Resurrection" in any temple, see (4.5a) for details and drawbacks.
+
 
 
 (8.2) Character Dumps
@@ -15300,6 +15511,13 @@ DOESN'T WORK ON EGOS / ARTS:
 -Watch out: 'Indestructible' and 'Cursed' rings are ego items too, so are
 'Amulets of Telepathic Awareness', 'Rings of Polymorphing' and
 Dragon Scale Mails 'of Defense'!
+
+-Ammo that is '(exploding)' is actually not an ego item! Contrary to intuition,
+ it is technically just a pval. This means that you can artify basic ammo that
+ is '(exploding)'.
+ Note that using exploding ammo instead of non-exploding ammo for artifact
+ creation does not affect whether or not the resulting randart will actually be
+ exploding or not, so it does not matter.
 
 THE BASE ITEM MATTERS, ENCHANTMENTS DO NOT (except for jewelry, see below):
 
@@ -16664,5 +16882,22 @@ SOLUTION:   Unfortunately the updater cannot defeat captchas of one-click
             then.
             (In general, captcha requests tend to pop up when the file is very
             frequently accessed.)
+
+PROBLEM 48: On Linux/X11 I get 100% cpu usage unless I disable audio (with the
+            '-q' command-line option). This usually happens with more special
+            audio hardware.
+SOLUTION:   Change the audio sample rate in '.tomenetrc' config file to match
+            your audio hardware's native sample rate. Most on-board sound chips
+            use 48000 aka 48kHz, but if you encounter this problem you probably
+            use a more sophisticated system that might run at higher rates such
+            as 96000 aka 96kHz.
+
+PROBLEM 49: On Linux/X11 I get 100% cpu usage when switching workspace away
+            from TomeNET when I have 'recall_flicker' option enabled.
+SOLUTION:   This is suspected to be a problem with 'Awesome' window manager.
+            The only workaround so far is to disable recall_flicker or use a
+            different window manager.
+            AMD graphics drivers have also been suspected but this is currently
+            pure speculation.
 
 ==============================================================================
