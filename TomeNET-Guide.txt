@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 26. February 2013 - written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.5.3 - official websites are:
+| Latest update: 17. May 2013 - written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.5.3b - official websites are:
 | http://www.tomenet.net/ (main site),
 | http://koti.mbnet.fi/mikaelh/tomenet/ and http://www.c-blue.de/rogue.html
 |
@@ -37,6 +37,7 @@ Contents
 (1) Introduction
     (1.1)   What is TomeNET? (Where can I get the latest sources?)
     (1.1a)  Where do I get in contact?
+    (1.1b)  How do I set up IRC chat?
     (1.2)   What is a rogue-like game?
     (1.2a)  Where do I find more information about rogue-like games?
     (1.3)   Goal and progress of TomeNET players
@@ -1202,6 +1203,15 @@ Word-of-Recall scrolls:
     over there will reject you and you won't remember the place when you
     return and revive in Bree.
 
+    Example, a player is in Bree (32,32) and wants to recall to Orc Cave -300ft
+    which we assume is at (31,25) and he has already been at 31,25 before, so
+    he can use Word-of-recall to get there. He has his WoR scrolls inscribed
+    '@R' and now types the following chat commands in order:
+        /rec 31 25
+        (he waits until that kicked in and transported him to Orc Cave surface)
+        /rec -300
+        (this will bring him to the desired depth, from the surface).
+
 Weapons, devices and spells:
     @O and its variants control the 'auto-retaliator' which is a mechanism
        designed to make your character automatically attack targets that are
@@ -1612,9 +1622,50 @@ with other players and developers via the following media:
       The channels #tomenet, #tomenet.iron and #tomenet.arcade relay chat from
       and to the main/ironman/arcade server, allowing you to read what's going
       on in-game, and to chat with players simply with any IRC client.
+      See below (1.1b) for how to set up IRC chat in detail.
 -Voice chat via mumble, get it from http://mumble.sourceforge.net/.
       IP is 'europe.tomenet.net', port is '23348', password is 'tomenet'.
       For details see "(2.4) Installing voice chat".
+
+
+(1.1b) How to set up IRC chat
+-----------------------------
+First you need to install an IRC client to connect to IRC chat networks:
+
+Windows: Most popular client is probably mIRC.
+
+Linux: Popular IRC clients for Linux are Pidgin (actually rather a multi-
+       protocol messaging tool, pretty nifty), x-chat (GUI), Konversation (KDE
+       GUI) or irssi (command-line).
+
+Mac OSX: For example Colloquy, X-Chat Aqua or Linkinus.
+
+After installing your preferred IRC chat client, enter an username of your
+choice and set it up to connect to the "Freenode" IRC network.
+(For detailed help on Internet Relay Chat visit www.irchelp.org.)
+
+After you established a connection to Freenode, have your client join the
+so-called "channels" named:
+
+ #tomenet           (this is the main chat channel)
+ #tomenet.iron      (if you are also interested in the ironman server)
+ #tomenet.arcade    (if you wanna know what's going on on the arcade server!)
+
+Joining a channel will relay chat from and to the respective TomeNET server,
+allowing you to read what's going on in-game, and to chat with the players.
+(Note that not all kinds of messages are actually relayed, for example AFK
+messages are not.)
+
+Usually all IRC clients offer a possibility to configure them to connect a
+specific network (Freenode) and to join specific channels (#tomenet etc.)
+automatically on startup, so you don't have to do it manually each time you
+start the IRC client.
+
+Most clients also allow you to setup auto-reconnect, which is useful if you
+experience frequent disconnections from the IRC network. Although in that case
+you should rather check why that happens - make sure you aren't trying to
+connect to a very far away Freenode server but to one that is close to your
+location, compare:  http://freenode.net/irc_servers.shtml
 
 
 
@@ -4777,6 +4828,17 @@ different shop. Shops in different towns are run by different owners although
 they may use the same number '1'..'9' and '+' for their entrance symbols.
 If the item is worth more than 300,000 Au maybe you can find a fellow player
 who is wealthy and in urgent need of your items.
+
+Shops regularly change their inventory on a random basis: Roughly every 33
+seconds there is a chance that some items might get dropped and/or some new
+items might get added to the store inventory.
+This "store maintenance" stacks up to 10 times while no player is actually
+visiting the store.
+That means that shop-scumming can be done as fast as checking every ~33 seconds
+for best results if you don't mind the effort, and on the other hand allows for
+pretty relaxed scumming by checking about every 5 1/2 minutes.
+Or anywhere between 33 seconds and 5 1/2 minutes, as you personally prefer.
+
 See (5.7) for more information about ID, *ID* and shops!
 
 
@@ -5351,6 +5413,7 @@ example giving all your party members access to it). You need to stand directly
 next to the house door to do this.
 If you sell a house you get half the money back it cost you to buy it, or
 actually even a bit less than half, depending on your charisma.
+(When that house is sold, all items that are still inside are erased.)
 
 The door colour of private houses will indicate the door permissions,
 ie which players may access it:
@@ -5759,8 +5822,11 @@ Ironman Deep Dive Challenge (IDDC)
     seconds during which it could be killed if in an unsafe place.
     Dungeon towns in general are free of any monster spawns.
 
-    Mimicry users gain +1 extra kill credit on each kill, effectively
-    learning forms twice as fast.
+    Mimicry users gain +9 extra kill credit on each kill, effectively
+    learning forms TEN TIMES as fast. (However, if that character decides to
+    withdraw from the challenge at a static town, it loses 2/3 of those extra
+    kill credits again, still not a bad deal.)
+
     Everlasting and non-everlasting characters can team up and trade items
     while they are inside the ironman deep dive dungeon.
     Level requirements on items are not in effect while inside the ironman deep
@@ -5784,7 +5850,8 @@ Ironman Deep Dive Challenge (IDDC)
     you log on, which will prevent you from getting any experience, items or
     gold until you move on by taking a staircase to the next floor.
     Monsters cannot spawn 'live' in the IDDC, but only at the time of creation
-    of each dungeon floor. Summon staves cannot be recharged in the IDDC.
+    of each dungeon floor. Summon staves cannot be recharged in the IDDC and
+    polymorphing magic does not work.
 
     NOTE: If you use stolen enchant scrolls on an item while you are in a town,
     then the item will get a 100% off discount. If you want to use stolen
@@ -7129,10 +7196,13 @@ LUCK ('It affects your luck')
         -opening chests
         -finding items in the dirt by digging.
         'Good' means that an item has enchantments to hitchance, damage or
-        armour class. How much exactly it has isn't affected by luck!
+        armour class. How much exactly it has isn't affected by luck (well, it
+        is by your personal ooc luck I guess :-p).
         'Great' means that an item has ego powers or is an artifact. Luck does
         not affect how great its ego power or artifact abilities will be!
         Note: Luck has NO effect on 'acquirement' and 'artifact creation'.
+        Note: Luck does NOT affect which base item type drops, ie whether it is
+        a dragon scale mail or a cloth hat.
 NO_MAGIC ('Antimagic shell')
         Raises your saving throw to 95%, making you nearly immune to any
         malicious magical influence (like paralysation). Also prevents
@@ -7175,7 +7245,9 @@ CHAOTIC ('It produces chaotic effects')
         c) confuse target (very likely).
         d) teleport target away.
         e) polymorph target.
-        f) clone target.
+        f) clone target aka duplicate the monster it hits. Note that the clone
+           does not give experience, drop items, or give form credit for
+           mimicry users.
         Note that most of these have an *extremely* low chance to occur.
         Most of the time the vampirism or confusion effect is chosen.
 IMPACT ('It can cause earthquakes')
@@ -7433,7 +7505,7 @@ Rumour          Makes a random rumour come to your character's (and everyone
                 else's characters') mind. Has no further effect and is not
                 necessarily true even.
 Blessing/Holy Chant/Holy Prayer
-                Increases your AC by 10/15/20, also increases your to-hit
+                Increases your AC by 8/14/20, also increases your to-hit
                 bonus. (Temporarily)
 Life            Resurrects another player's ghost if standing on a directly
                 adjacent field to you when you read it. Does not work inside
@@ -7575,6 +7647,9 @@ Cheques         These are automatically generated in player stores when someone
 
 Wands/Rods/Staves
 -----------------
+Clone Monster   Duplicates a monster. The duplicate, aka 'clone', does not give
+                experience, drop items, or count as form credit for mimicry
+                users.
 Genocide        See 'Scrolls'.
 *Destruction*   See 'Scrolls'.
 Wonder          Wands of wonder cast random magic spells.
@@ -7949,19 +8024,31 @@ completely safe.)
 
 Artifact resets
 ---------------
-Depending on the server settings, an 'artifact reset' occurs usually every
-three months, starting on 1st january.
-This reset will erase all true artifacts players carry, and therefore make all
-of them findable again, since there can only exist one of each true artifact at
-a time. So the main purpose is to prevent characters from hoarding true arts
-indefinitely.
-Also, art resets can cause a sort of art rush (like gold rush but with true
-artifacts), because everyone will be in a race to find the low-level yet useful
-ones which have a relatively high drop chance.
-You do not need to sell all your true artifacts before the reset occurs,
-because characters will automatically get paid the full value of the artifacts,
-which is even more than you'd get in shops (because charisma and shop keeper
-race factors in in stores, reducing the price you get).
+The old system of resetting all true artifacts at once every 3 months has been
+replaced by a new "fluent" reset system:
+
+Artifacts will last for 4 weeks after they have been found (ie dropped by a
+monster/chest/just being generated on the dungeon floor, and picked up by a
+player), after which they will "time out" and disappear. This timer is specific
+for each single true artifact, depending on when it is found (again).
+
+No compensation is given when an artifact times out and disappears, since that
+would encourage hoarding, so sell an artifact to a store in time before it
+actually vanishes.
+
+To check the timeout of an artifact, inspect it ('I' to inspect).
+For your character to 100% "know" if an artifact is a true artifact or not it
+needs to *Identify* the item. So this will be required to see the timer on it.
+
+The timer will also continue to run out while the owner/carrier of an artifact
+is offline.
+Trading artifacts between characters has no effect on the timeout.
+
+Grond and Morgoth's crown do not time out.
+Artifacts that can only be found by winners (kings/queens/emperors/empresses)
+have triple timeout delay (12 weeks).
+All artifact timeout delays are further doubled on the Ironman server (8 weeks
+for regular true artifacts, 24 weeks for winners-only true artifacts).
 
 
 
@@ -9719,26 +9806,33 @@ Take care on the following combinations:
 (6.2a) Maiar skill modifications
 --------------------------------
 Maiar start with a low-profile skill chart, which gets boosted or diminished
-depending on their alignment on initiation.
+depending on their alignment (enlightened vs corrupted) on initiation.
 
-Note: After getting boosted as stated below, a skill's gain ratio will be
-      capped at 2.000.
+(Low-profile means that their "good" and "evil" skills - the four holy schools,
+necromancy, traumaturgy and the three auras - are all reduced to 70% of the
+character classes' usual ratio.)
 
 Modifications for becoming 'enlightened':
     Necromancy, traumaturgy and aura of death become disabled.
+
     Sword, blunt and polearm skill x 1.3.
-    The four priestly schools x 2.4.
+    The four holy schools x 2.1.
     Divination school x 1.7.
     Light and mana runes x 2.0.
     Fear and shivering aura x 3.0.
+
 Modifications for becoming 'corrupted':
-    The four priestly schools become disabled.
+    The four holy schools become disabled.
+
     Axe and martial arts skill x 1.3.
     Fire, air, conveyance school x 1.7.
     Udun school x 2.0.
     Darkness and nether runes x 2.0.
     Necromancy and traumaturgy x 3.0.
     The three aura skills x 3.0.
+
+Note: After a skill's gain ratio has been boosted as stated above, it will be
+      capped against a maximum value of 2.000, which cannot be exceeded.
 
 
 
@@ -10024,7 +10118,8 @@ Warrior is strongly recommended.
     providing them specific intrinsic resistances and elemental breath, which
     they can use if they have sufficient stamina and which is a physical
     ability of theirs, not a magic spell. This breath weapon cannot be used
-    while polymorphed, except if the form is a reptile or dragon.
+    while polymorphed, except if the form is a reptile (including Hydras) or an
+    actual dragon (including dragonriders).
     The resistances obtained from a trait stay, even while polymorphed.
     Draconians receive a bonus on 'Thought Contact', 'Polearm-Mastery' and
     'Magic devices'.
@@ -10045,7 +10140,7 @@ Warrior is strongly recommended.
     Law         Shards          shards (5), sound (15)
     Chaos       Chaos           confusion (5), chaos (15), disenchantment (20)
     Balance     Disenchantment  disenchantment (10), sound (20)
-
+    
 - Kobold
     These somewhat smallish dog-faced humanoids resist poison intrinsically.
     They are able to take most roles, being somewhat better at archery than
@@ -10112,6 +10207,7 @@ Warrior is strongly recommended.
     guide elves and man by gaining their trust. Appearing in such shape, their
     abilities will seem somewhat superior in all aspects and they also possess
     infra-vision.
+
     Maiar have a choice of ascending to enlightenment, or submit to corruption
     of the promise of demonic powers. To determine their fate, they must kill
     either a candlebearer, a servant of good (to become corrupted), or a
@@ -10130,16 +10226,21 @@ Warrior is strongly recommended.
     If a Maia generates the dungeon level, there will be a guaranteed spawn, so
     if you are in a party with non-Maiar, make sure you are the first one
     taking the staircase so you generate the level.
+
     Maiar are able to train in the 'Astral' school, an exclusive divine magic
     which has spells of different effect depending on the caster's alignment.
-    Initiation to either enlightened or corrupted beings will decide the effect
-    of astral spells, extra abilities, and also their skill chart layout!
+    Some astral spells use intelligence for determining their spell failure
+    rates, some use wisdom.
+    Initiation to either enlightened or corrupted beings, or during their first
+    few character levels the lack thereof, will decide the effect of astral
+    spells.
     Maiar can be any class that can utilize mana. They get the best shop prices
     of all races since they are either greatly respected or feared by all other
     creatures.
     They gain experience extremely slowly, and rarely need to feed before
     initiation. Afterwards they have no more need for any worldly food at all.
     Alignment-dependant boni are..
+
     Enlightened:
         Able to see invisible and resisting light, while being susceptible to
         evil-based attacks.
@@ -10148,18 +10249,19 @@ Warrior is strongly recommended.
         At level 50 they will be able to fly, become resistant to poison,
         electricity, cold and be enveloped in an aura of frost and lightning;
         also, their melee attacks will slay evil opponents intrinsically.
+
     Corrupted:
         Resist fire and darkness while being susceptible to good-based attacks.
         +2 bonus HP for each level above 20.
         At level 50 they will become resistant to poison, immune to fire, and
         be enveloped in a fiery aura.
-    Some astral spells use intelligence for determining their spell failure
-    rates, some use wisdom.
+
     Maiar start with a low profile skill chart which gets boosted on initiation
     depending on their alignment. Their skills will be adjusted so that they
     remain as close to their previous values as possible while the character
     gets back any skill points that are freed up due to higher skill ratios
     after the initiation took place, see (6.2a) for details.
+
     Maia get a bonus on 'Sneakiness' and 'Stealth' no matter the alignment.
 
 
@@ -10400,10 +10502,12 @@ vary. For example a warrior cannot learn magic spells.
     of their opponents (see (6.12)), accessible via 'm' key or macro wizard.
 
     Hint: Enchanting your ranged weapon to-damage is especially effective,
-    because the enchantment will be multiplied by the weapons multiplier.
+    because the enchantment will be multiplied by the weapons multiplier, so
+    buy enchant to-dam scrolls from the alchemy store as soon as you can afford
+    them.
     Also make sure to have an ample supply of 'Scrolls of Phase Door'.
     Pick one of the three ranged masteries (Bow/Crossbow/Sling) and always
-    keep it maximized. Keep your Archery skill maximized too.
+    keep it maximized.
 
 - Paladin
     Paladins are a combination of warrior and priest. Holy knights that
@@ -10557,7 +10661,11 @@ vary. For example a warrior cannot learn magic spells.
     runespells. However, having the physical runes present can mitigate spell
     backlash and are required for the 'sigil' type runespell.
 
-    Hint: If you want to test rune combinations that pose a risk of going wrong
+    Hint: Runespells cause backlash on failure if you don't have the physical
+    runes in your inventory. For that reason you should use basic elemental
+    spells in the beginning, against which you can easily acquire the required
+    resistance, for example by buying a ring or amulet from the magic store.
+    If you want to test rune combinations that pose a risk of going wrong
     badly, do so in the arena of the 'Arena Monster Challenge' event so you
     will get away unscathed.
 
@@ -10719,7 +10827,7 @@ Mimic           similar to priest, also:
 Archer          -
 
 Paladin         18/10   10      2               1
-                18/20   10      2               2
+                18/20   10      2               1-2 (depends on weapon)
                 18/30   10      3               2
 
 Ranger          similar to priest, also:
@@ -11362,8 +11470,9 @@ wear/wield full equipment:
 
 Forms you can already get in Bree town:
 ---------------------------------------
-Village idiot    1  Its slightly erratic movement can be a bit annoying but it
-                    will give a speed bonus which can be useful when fighting.
+Village idiot    1  Its pretty weak and has slightly erratic movement which can
+                    be a bit annoying but it gives a speed bonus which can be
+                    somewhat useful when fighting.
 Mean-looking mercenary
 Battle-scarred veteran
                  1  They can improve your initial HP (hit points) and AC
@@ -11372,8 +11481,9 @@ Battle-scarred veteran
 
 Further forms:
 --------------
-Note: All of these actually occur in packs (although some of them might also
-appear on their own) making them even easier to attain, except for 'Tengu'.
+Note: Nearly all of these actually occur in packs (although some of them might
+      also sometimes appear on their own) making them even easier to attain.
+
 Small kobold     1  Actually very weak, but it has poison resistance. This way
 (or other kobolds)  this form may help you to kill Rotting corpses (see below)
                     which have poisonous melee attacks. ;)
@@ -11399,7 +11509,7 @@ Phantom warrior  8  Useful only for shamans because it has no limbs:
                     poison immunity, and you won't bleed from cuts.
 Tengu           10  High HP, good AC, can blink/teleport and more, resists fear
                     and fire, can fly. A secret tip for form hunters!
-                    (Does not occur in packs unlike the other monsters listed.)
+                    (Does not occur in packs.)
 Master yeek     12  Although everyone knows that Yeek = weak, this particular
                     kind of Yeek can cast some interesting magic spells.
                     And as a plus it's actually immune to acid.
@@ -11410,6 +11520,7 @@ Illusionist and Druid
                     These two monsters appear somewhat rarely though.
                     (Later on, 'Mage' is a mid-level form that also provides
                     haste spell and is actually more common to find.)
+                    (These two do not occur in packs.)
 Ogre            13  This form can cross thick woods and mountain terrain.
                     Note that Ogres also count as giants which means that
                     shamans can use this form too.
@@ -11431,6 +11542,7 @@ Umber hulk      16  Shamans can use full equipment in this form, others cannot.
                     won't bleed if you get cut, and its melee attacks may have
                     a slight confusion-effect (which can make fighting it a bit
                     dangerous sometimes).
+                    (Does not occur in packs.)
 Forest troll    17  High HP, good AC, can pass trees, gives 'HP regeneration'.
 Elite uruk      20  Good HP, very high melee damage, good AC, +1 extra shot,
                     poison immunity.
@@ -11438,6 +11550,7 @@ Dark-elven Lord 20  Good HP, resists darkness but is susceptible to light-based
                     attacks. Moves fast and even has a 'Haste' spell in his
                     array of spells that boosts his speed further.
                     This monster occurs somewhat rarely.
+                    (Does not occur in packs.)
 
 (The number is the monster level and therefore the amount of monsters you need
 to kill to learn the form.)
@@ -12448,20 +12561,39 @@ equipment.
 
 Runespell Failure & Backlash:
 -----------------------------
-Runemasters can only truly fail enchantment type spells. Other spell types
-instead cause backlash against the caster when they would otherwise fail. 
-Having a physical rune corresponding to the invoked element or both runes of
-a combination element shields the runemaster from this backlash. When 
-lacking one or both of these physical runes, the caster of may experience 
-backlash. Keeping physical runes may become especially important once 
-damaging effects of runespells begin to outpace the runemaster's intrinsic 
-durability; resisting one's own spells can be an important factor for 
-survival in critical situations.
+Runemasters can only truly fail sigil type (item-enhancing) spells. Spell
+failure instead causes elemental backlash against the caster, while the
+effects of the spell, if it is not a sigil type spell, resolve normally.
+Having a physical rune corresponding to the invoked element shields the
+runemaster from this backlash, at the cost of the physical rune. When 
+lacking these physical runes (or if they are inscribed !R), the caster of
+may experience backlash. Keeping physical runes is especially important
+once the damaging effects of runespells begin to outpace the runemaster's
+intrinsic durability; resisting one's own spells can be an important factor
+for survival in critical situations. For this reason, beginner runemasters
+are advised to use basic elemental spells that they can easily acquire the
+according resistance for. Inscribing a rune with !R will prevent the rune
+from being consumed to shield the runemaster from a backlash, beware!
 
 INTelligence, DEXterity, and skill level affect spell failure rates for 
 runespells. Runespell type generally governs the level of a runespell,
 and is further modified by the spell modifier and then only somewhat by the 
-resulting element of the spell.
+resulting element of the spell (if at all). Highly experienced and talented
+runemasters may achieve 0% spell failure rates, but should be cautioned
+against stunned and blinded statuses, which will each increase runespell
+failure, and thus the chance of backlash directly.
+
+
+Other Uses for Runes:
+---------------------
+Aside from preventing backlash, runes are used as components in runespells.
+Both glyph and sigil type runespells require a single rune (after backlash
+rune destruction, if applicable) to achieve their effects. Any glyph spell
+may be cast on a rune glyph to disarm it and recover the original physical
+rune at no additional rune cost. Sigil spells on the other hand consume a 
+rune forever, remaining in effect only so long as the runemaster continues
+to wear/wield the enhanced equipment. An additional sigil spell on the same
+equipment overrides the previous one, consuming a new rune as before. 
 
 
 Macros & Spell Construction:
@@ -12528,8 +12660,9 @@ Auto-retaliation:
 -----------------
 If you inscribe @O[a-g][a-g] on a rune in your inventory, you will retaliate
 with a spell of the selected modifier and type. For example, if you set the 
-inscription to @Oab on a rune of light, the 'bolt' spell type will be 
-selected, with a 'minimized' spell modifier.
+inscription to @Oab on a rune of light, the 'beam' spell type will be 
+selected, with a 'minimized' spell modifier. It is advised to use the !R 
+inscription to prevent your last rune from being consumed in spell failure.
 
 Although you can set most spells for retaliation, some spells may make poor 
 choices for auto-retaliation. Retaliation defaults to a bolt spell if the
@@ -12540,11 +12673,22 @@ for retaliation, and default to bolts (their ID letter becomes letter 'a').
 Hints:
 ------
 The casting adjective will further elaborate on the difficulty of a spell
-compared to your skill. Ideally, you should try to choose spells where the
-average outcome is 'efficiently', or better. These are 'safe' spells, and tend
-to be more efficient than spells that you 'incompetently', or 'clumsily'
-cast. You can use the mkey * display to see a list of spell failure rates.
-The macro wizard can also be used to assess the attributes of spells.
+compared to your skill. Ideally, choose spells where the average outcome
+is 'efficiently', or better, or cast while at near full HP and with the
+according resistance. You can use the mkey * display to see a list of spell
+failure rates, or go through the macro wizard to display the specific
+attributes of spells.
+
+Beginners may wish to play a race with intrinsic resistance to their element
+or elements of choice, or choose combinations of skills to produce a 'base'
+element, and purchase rings/amulets from the magic shop to resist these.
+For example, light is resisted by elves, so an elf runemaster who trains in 
+light runemastery may evoke runes of light relatively safely. Training chaos
+runemastery as well would unlock the combination element fire, a 'base'
+element, and Rings of Fire Resistance are readily available in magic shops.
+
+Note that different elemental damage types are reduced more or less when
+resisted, see (5.6) Resistances & caps, Immunities, Susceptibilities for info.
 
 
 
@@ -12552,74 +12696,75 @@ The macro wizard can also be used to assess the attributes of spells.
 -----------------------
 Runemastery covers a breadth of effects, catalogued in the tables below.
 See section (5.6) for more information about elemental attacks.
-**All projected spells are of radius 2, as with priest/druid spells!**
 
 Basic Elements
 --------------
-A table of every element achievable through use of a single rune:
+A table of every element achievable through use of a single rune, with their 
+associated sign spell type effects, and enhanced sign spell effects:
 -------------------------------------------------------------------------------
-Rune     | Rune     | Element        | Sign Spell         | Enhanced            
+Rune     | Rune     | Element        | Sign Spell          | Enhanced Effect   
 -------------------------------------------------------------------------------
-Light    | Light    | Light          | Call Light         | Starlight
-Darkness | Darkness | Darkness       | Call Darkness      | Invisibility
-Nexus    | Nexus    | Nexus          | Teleportation      | **Projected**
-Nether   | Nether   | Nether         | Mass Genocide      | Genocide
-Chaos    | Chaos    | Chaos          | Polymorph Self     | **Projected**
-Mana     | Mana     | Mana           | Remove Curses      | *Remove Curses*
+Light    | Light    | Light          | Call Light          | Starlight
+Darkness | Darkness | Darkness       | Call Darkness       | Invisibility
+Nexus    | Nexus    | Nexus          | Blink               | Teleportation
+Nether   | Nether   | Nether         | Mass Genocide       | Genocide
+Chaos    | Chaos    | Chaos          | Polymorph Self      | Chaos Brand
+Mana     | Mana     | Mana           | Remove Curses       | Remove *Curses*
 
 Combination Elements
 --------------------
-A table of every element achievable through use of a combination of runes:
+A table of every element achievable through use of a combination of runes, with
+their associated sign spell type effects, and enhanced sign spell effects:
 -------------------------------------------------------------------------------
-Rune     | Rune     | Element        | Sign Spell         | Enhanced            
+Rune     | Rune     | Element        | Sign Spell          | Enhanced Effect    
 -------------------------------------------------------------------------------
-Light    | Darkness | Confusion      | Reflection         | **Projected**
-Light    | Nexus    | Inertia        | Local Tele-away    | Anchor (No-tele)
-Light    | Nether   | Lightning      | Resist Electricity | **Projected**
-Light    | Chaos    | Fire           | Resist Fire        | **Projected**
-Light    | Mana     | Water          | Regeneration       | **Projected**
-Darkness | Nexus    | Gravity        | Local Tele-to      | Teleport Forward
-Darkness | Nether   | Frost          | Resist Cold        | **Projected**
-Darkness | Chaos    | Acid           | Resist Acid        | **Projected**
-Darkness | Mana     | Poison         | Resist Poison      | **Projected**
-Nexus    | Nether   | Time           | Haste Self         | **Projected**
-Nexus    | Chaos    | Sound          | Shatter (Disarm)   | Shatter (Beam)
-Nexus    | Mana     | Shards         | Earthquake         | Dig
-Nether   | Chaos    | Disenchantment | Dispel Magic       | **Projected**
-Nether   | Mana     | Force          | Shield             | **Projected**
-Chaos    | Mana     | Plasma         | Resist Elec/Fire   | **Projected**
+Light    | Darkness | Confusion      | Monster Confusion   | Recharging
+Light    | Nexus    | Inertia        | Anchor              | Reverse Tele-To
+Light    | Nether   | Lightning      | Resist Electricity  | Lightning Brand
+Light    | Chaos    | Fire           | Resist Fire         | Fire Brand
+Light    | Mana     | Water          | Neutralize Poison   | Regeneration
+Darkness | Nexus    | Gravity        | Area Teleport-To    | Reverse Tele-To
+Darkness | Nether   | Frost          | Resist Cold         | Frost Brand
+Darkness | Chaos    | Acid           | Resist Acid         | Acid Brand
+Darkness | Mana     | Poison         | Resist Poison       | Poison Brand
+Nexus    | Nether   | Time           | Haste               | Stasis
+Nexus    | Chaos    | Sound          | Disarm              | Disarming
+Nexus    | Mana     | Shards         | Earthquake          | Dig
+Nether   | Chaos    | Disenchantment | Unmagic             | Cancellation
+Nether   | Mana     | Force          | Mystic Shield       | Reflection
+Chaos    | Mana     | Plasma         | Base Resistance     | Elemental Brand
 
 Spell Modifiers
 ---------------
 A table of every spell modifier. Modifiers alter the nature of a spell, 
 influencing level, cost, fail rate, damage, casting time, radius, and duration.
 -------------------------------------------------------------------------------
-Name       | Description
+Name       | Lvl | Description                                                 
 -------------------------------------------------------------------------------
-Minimized  | Decreased damage, radius, duration, cost and failure rate.
-Lengthened | Increased duration, cost and failure rate. Decreased damage.
-Compressed | Decreased radius, duration and failure rate. Increased damage.
-Moderate   | Comparable to traditional spells in all aspects.
-Expanded   | Increased radius, duration, cost and failure rate. 
-Brief      | Decreased damage, duration, failure rate and casting time.
-Maximized  | Increased damage, radius, duration, cost and failure rate.
-Enhanced   | Comparable to moderate, except increased cost. Varies spell type.
+Minimized  | + 0 | Less damage, radius, duration, cost and failure rate.
+Lengthened | + 2 | More duration, cost and failure rate. Less damage.
+Compressed | + 3 | Less radius, duration and failure rate. More damage.
+Moderate   | + 5 | Comparable to traditional spells in all aspects.
+Expanded   | + 7 | More radius, duration, cost and failure rate. Project buffs.
+Brief      | + 8 | Less damage, duration, failure rate and half casting time.
+Maximized  | +10 | More damage, radius, duration, cost and failure rate.
+Enhanced   | +10 | Comparable to moderate, more cost. Alters the spell type.
 
 Spell Types
 -----------
 A table of every spell type. Type controls the form of the runespell, also
 influencing level, cost, fail rate, damage, casting time, radius, and duration.
 -------------------------------------------------------------------------------
-Name       | Description
+Name       | Lvl | Description                           | Enhanced            
 -------------------------------------------------------------------------------
-Bolt       | Hits a single target in line of effect. Enhanced: Non-reflecting.
-Beam       | Hits every target in line of effect. Enhanced: Damage over time.
-Cloud      | Damages an area over time. Enhanced: Follows the caster.
-Ball       | Instantly damages an area. Enhanced: Full damage over the area.
-Sign       | Provides some temporary or instant effect. Enhanced: See table.
-Glyph      | Detonates when broken. Max 10. Enhanced: Warding Glyph. (No limit)
-Sigil      | Adds a resist to a weapon/armor. Uses a rune. Enhanced: See table.
-Wave       | Radiates outward from the caster. Enhanced: Hits line of sight.
+Bolt       |   1 | Hits a target in line of effect.      | Non-reflecting.
+Beam       |   5 | Hits every target in line of effect.  | Damage over time.
+Cloud      |  10 | Damages an area over time.            | Follows the caster.
+Ball       |  15 | Instantly damages an area.            | Full area damage.
+Sign       |  20 | Instant or temporary element effects. | See element tables.
+Glyph      |  25 | Set or retrieve a rune as a glyph.    | No rune/explosion.
+Sigil      |  30 | Resist enhancement. Consumes a rune.  | See boni table. 
+Wave       |  35 | Radiates outward from the caster.     | Hits line of sight.
 
 Enhanced Sigil Boni
 -------------------
@@ -12627,7 +12772,8 @@ A table cross referencing boni to element and item TVAL (type value). Boni are
 restricted as with artifact creation regarding PVAL modifiers. Stat boni have 
 a chance to include a sustain, and boni occuring both generally and on the 
 item type are more likely to occur. Some weapon/helm boni are specific to mage
-staves, boomerangs, and crowns (not noted here, see (8.4) Artifact Creation).
+staves, boomerangs, and crowns (see (8.4) Artifact Creation).
+
 Non-enhanced sigils produce the projection's according resist.
 
 Abbreviations (in order of appearance):
@@ -12643,15 +12789,14 @@ Va - Vampirism
 RR - 1 Resist (acid/elec/fire/cold/pois/conf/blin/shar/soun/neth/nexu/disi)
 Ch - Chaotic
 Rm - Regen mana
-MP - Max mana increase (PVAL Required)
-Ba - Base resist (acid/elec/fire/cold)
+MP - Max mana increase (PVAL Required) [Helm -- Crowns ONLY]
 FA - Free action
 W+ - Wisdom bonus (PVAL Required)
 I+ - Intelligence bonus (PVAL Required)
 NT - Anti-teleportation (no-tele)
-Im - Immunity (plasma -> fire OR electricity)
-Br - Brand (plasma -> fire OR electricity)
-Au - Aura (plasma -> fire OR electricity)
+Im - Immunity
+Br - Brand
+Au - Aura
 D+ - Dexterity bonus (PVAL Required)
 S+ - Strength bonus (PVAL Required)
 Rh - Regen health
@@ -12666,6 +12811,8 @@ Fe - Fear resist
 Cr - Critical bonus (PVAL Required)
 Vo - Vorpal (Quaking if blunt)
 AM - Anti-magic shell
+Re - Reflection
+Ba - Base resist (acid/elec/fire/cold)
 
 -------------------------------------------------------------------------------
 Element        | General | Weap | Shield | Armor | Cloak | Helm | Glove | Boot
@@ -12675,7 +12822,7 @@ Darkness       | BlSI    | SI   |        |       | In    | BlIf |       |
 Nexus          | Su      | SK   |        |       |       |      | SK    |      
 Nether         | HL      | Va   |        | HL    | HL    |      | Va    |      
 Chaos          | RR      | Ch   |        |       |       |      |       |      
-Mana           | Rm      |      | Ba     | Ba    | Ba    | Rm   | MP    |      
+Mana           | Rm      |      |        |       |       | MPRm | MP    |      
 -------------------------------------------------------------------------------
 Confusion      | FA      | W+I+ |        |       |       | W+I+ | FA    |      
 Inertia        | FANT    |      |        |       |       |      |       |      
@@ -12690,8 +12837,8 @@ Time           | SuSp    | EA   |        |       |       |      | EA    | Sp
 Sound          | Sl      |      |        | Sl    | Sl    | Fe   |       | Sl   
 Shards         |         | CrVo |        |       |       |      | Cr    |      
 Disenchantment | AM      |      |        |       |       |      |       |      
-Force          | Su      |      |        |       |       |      |       |      
-Plasma         | Im      |      |        |       | Au    |      | Br    |      
+Force          | Su      |      | Re     | Re    |       |      |       |      
+Plasma         | S+D+    |      | Ba     | Ba    | Ba    |      |       |      
 
 
 
@@ -12989,13 +13136,14 @@ raw numbers:
 "You have a slight chance of blocking."         Below 14% chance.
 "You have a significant chance of blocking."    Below 23% chance
 "You have a good chance of blocking."           Below 33% chance.
-"You have a very good chance of blocking."      Below 44% chance.
-"You have an excellent chance of blocking."     Below 55% chance.
-"You have a superb chance of blocking."         55% chance or better
-                                                (60% is highest reachable)
+"You have a very good chance of blocking."      Below 43% chance.
+"You have an excellent chance of blocking."     Below 48% chance.
+"You have a superb chance of blocking."         48-50% chance (the highest reachable).
+
 Note: To achieve an extraordinarily high block chance above 30% you'll
       have to enter a defensive combat stance, and your class should be
-      fairly skilled at blocking. See the note below.
+      fairly skilled at blocking and/or your shield should have a high
+      block chance. See the note below.
 
 
 Additional information:
@@ -13159,16 +13307,22 @@ stat and 'Health' skill will further improve regeneration speed.
 (6.13) PvP mode
 ---------------
 PvP stands for "Player vs player". This describes the act of player characters
-fighting each other, usually to death. In that regard, it is quite different
-to the 'blood bond' duel, which always ends without anyone getting hurt.
+fighting each other, usually to the death.
+In that regard, it is quite different to the 'blood bond' duel, which always
+ends without anyone getting hurt for real.
 
 If you want to fight other players to death in a real pvp match, create a
 'pvp-mode' character. It's an option during the character creation process,
 much like 'everlasting mode' or 'normal mode'.
 
-PvP-mode characters use the /pvp command to enter/leave the pvp arena. This
-arena also releases monsters from time to time. The entry point of a player is
-random, because he gets teleported on arrival.
+PvP-mode characters can use the /pvp command to enter/leave the pvp arena.
+This arena also releases monsters from time to time. The entry point of a
+player is random, because he gets teleported on arrival.
+
+Note that you don't HAVE to use the pvp arena. PvP characters are always
+automatically hostile to all other PvP characters everywhere, for example you
+could surprise an opponent in a normal dungeon while he tries to kill a unique
+monster for items. The only safe zones are towns.
 
 Before you go and fight others to the death, look at your inventory. You will
 see a parchment "Gladiator's Entrance". When you turn this in at the mayor's
@@ -13221,6 +13375,8 @@ by an opponent! The special rules that apply are as follows:
 -teleportation will be suppressed during combat, phase door is allowed though.
 -while in a fight with another pvp-char, you cannot teleport away easily
  (takes about 30 seconds to wear off, or just enter a town to reset).
+-PvP characters are unaffected by certain effects caused by other players:
+ Hallucination, Life force drain (exp drain), Stat drain, Nexus scrambling.
 
 
 
@@ -14018,7 +14174,8 @@ and can push past weaker monsters, they can bash doors. They can dig through
 rock, they are immune to cold, electricity and poison, they don't know fear
 and can neither be confused nor paralyzed. They are immune to teleportation
 attacks. Golems have always the maximum possible hit dice. Further, golems
-count as '100 %clones', hence giving no experience if someone kills them.
+count as '100 %clones', hence giving no experience, items or form credit (for
+mimicry users) if someone kills them.
 Golems always attack by hitting with their arms for raw physical damage.
 A golem has the same level as its owner had at the time of creation.
 Golem owners don't get experience for monsters killed by the golem.
