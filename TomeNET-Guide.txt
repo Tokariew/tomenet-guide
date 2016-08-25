@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 6. August 2012 - written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.4.9b - official websites are:
+| Latest update: 5. December 2012 - written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.4.9c - official websites are:
 | http://www.tomenet.net/ (main site),
 | http://koti.mbnet.fi/mikaelh/tomenet/ and http://www.c-blue.de/rogue.html
 |
@@ -281,6 +281,9 @@ compile the game under '(2.1) Installing TomeNET'.
  is still awaiting account validation by an admin.
  Also, if a grey '(O)' is in front of a player name, it means that player is
  using an outdated client. It's very important to keep your client up to date!
+ If another player's character level is displayed in light blue colour, that
+ means he is within sensible level range of you to form a party! Press SHIFT+P
+ for party menu. One of you has to create the party and add the other one.
 -Note that your character's "speed" may change. Speed is the factor telling you
  how fast your character can move, fight or perform any other kind of action.
  If your character's speed gets increased (for example by drinking a potion of
@@ -322,6 +325,9 @@ SHIFT+<direction key>
         usually indicates whether it is on or off.)
         You can also run by pressing the dot '.' followed by a direction key.
 
+;       ;       The 'walk' command, it allows you to walk one step. This is not
+                really needed for anything usually, since you can just press
+                the directional keys given above instead for walking.
 
 i       i       display your inventory. You can then press SHIFT + inventory
                 slot letter to paste that item name into chat.
@@ -438,14 +444,18 @@ k       CTRL+D  destroy an item. (Note that artifacts are indestructible.)
 G       G       skills screen.
 B       f       bash/force something (ie a stuck door).
 l       x       look at a player/monster/object (use direction keys for
-                targetting).
-                (Note that the look command also sets the entity you are
-                currently looking at as your target, even if it wouldn't make
-                much sense because you are for example just looking at another
-                player who isn't even hostile towards you.
+                targetting). Similar to targetting, while looking you can press
+                'p' to switch to manual cursor positioning, allowing you to
+                look at a specific grid, then press 'l' again to confirm.
+                (Unimportant side note: The look command also sets the entity
+                you are currently looking at as your target, even if it would
+                not make much sense because you are for example just looking at
+                another player who isn't even hostile towards you.
                 This means that you will aim at the entity you looked at in
                 case the '*t' command is unable to acquire a new valid 'real'
-                target when you use a ranged attack that requires a target.)
+                target when you use a ranged attack that requires a target.
+                This behaviour has no real effect on gameplay though it just
+                looks odd in those rare cases it happens :-p.)
 j               attempt to steal from players (not recommended!).
 U       O       use undead powers (use this if you died and became a ghost).
                 Using these will drain your experience. If you ran out of
@@ -462,7 +472,7 @@ p       p       Concentrate on opening your mind for telekinesis.
                 Certain spells of the mindcrafter class might also require
                 players in the same party to open their minds in order to work
                 or to affect them as intended.
-h               buy/sell a house or change house parameters. See (4.10).
+h               sell/buy a house or change house parameters. See (4.10).
 P       O       party screen. Form/disband/modify a party with other players
                 here. In a party you will share experience points if you are
                 within 7 character levels to each other and on the same
@@ -501,6 +511,10 @@ SPACE   Stop executing repeatable actions such as searching, tunnelling or
         Also, if a grey '(O)' is in front of a player name, it means that
         player is using an outdated client. It's very important to keep your
         client up to date! (Same command as ~a)
+        If another player's character level is displayed in light blue colour,
+        that means he is within sensible level range of you to form a party!
+        Press SHIFT+P for party menu. One of you has to create the party and
+        add the other one.
 %       edit your macros.
 &       edit your auto-inscriptions.
 =       edit your preferences.
@@ -878,6 +892,7 @@ or shorter: /tym [rs]
             Also, it can only be used ONCE per level, so make sure you get your
             skill point distribution right on the second attempt.
 /version    Displays the server version.
+ (/ver)
 
 
 
@@ -1071,6 +1086,7 @@ NOTE: In addition to this user-defined client-side auto-inscription list, there
 Art         Artifact. Those can be 'Static arfifacts' from the a_info.txt
             file, also called 'True Arts'. Or they may be 'Randomly generated
             artifacts' also called 'Randarts'.
+            In game you can press  ~ 6  to search for any static artifact.
             (See (7.4) for more info about spoiler files.)
             Winners who beat Morgoth, Lord of Darkness will usually not
             be able to use static artifacts, but rely on randarts instead.
@@ -1087,6 +1103,8 @@ Cheeze      Questionable action, not quite cheating but close to it.
             This can be transferring items to a store character (mule)
             or exploiting weaknesses in the game design instead of
             reporting them to the forum.
+DEW         Dark-elven warlock. A very deadly monster that comes in packs and
+            shoots high-damage mana bolts, glass cannon style.
 Dive        A trip into the dungeon, usually quite deep compared to the
             diver's character level.
 DSM         Dragon Scale Mail. Legendary pieces of armour.
@@ -1136,22 +1154,22 @@ mlevel, rlevel
             and therefore be higher than you'd expect. This happens when you
             meet the monster on a floor that is far deeper than the level the
             monster usually starts to occur on.
-            r-level is the base monster level, which is given for each monster
-            in r_info.txt. It describes the minimum floor level a monster is
-            usually found on (although 'out-of-depth' occurances may be
-            possible).
-            Example: According to r_infot.txt, Ancient Red Dragons have a base
-            level of 41. That means you'll usually start seeing them on dungeon
-            floors of level 41 (2050 ft) and deeper, although there's always a
-            slim chance that you meet a monster earlier than its base level
-            (called OoD encounter). Now that means that Ancient Red Dragons
-            have an r-level of 41. However, if you meet an Ancient Red Dragon
-            on a much deeper dungeon floor, say 2400 ft, which would be the
+            r-level is the base monster level, which you can see in game if you
+            press  ~ 7  and search for a particular monster.
+            It describes the minimum floor level a monster is usually found on
+            (although 'out-of-depth' occurances may be possible).
+            Example: According to ~7, Ancient Red Dragons have a base level of
+            41. That means you'll usually start seeing them on dungeon floors
+            of level 41 (2050 ft) and deeper, although there's always a slim
+            chance that you meet a monster earlier than its base level (called
+            OoD encounter). So we know now that the r-level of Ancient Red
+            Dragons is 41. However, if you meet an Ancient Red Dragon on a
+            much deeper dungeon floor, say 2400 ft, which would be the
             equivalent to level 48, when you look at the dragon you'll see it
             says level 42 instead of the expected 41. This means the dragon's
             level was actually slightly boosted because the dungeon floor's
             level was that much higher than the dragon's. So while the rlev
-            of this dragon is still 41, his real level, the mlev, is 42.
+            of this dragon is still 41, its real level, the mlev, is 42.
             Some formulas used by the game use mlev, some use rlev.
             (Note: This is similar to klevel vs olevel for items.)
 Morgy       Morgoth, Lord of Darkness. Final boss enemy in TomeNET.
@@ -1165,7 +1183,7 @@ Nest        Originally also just called 'pits', nests only differ from pits in
 olevel      see klevel.
 OoD         Out-of-depth. Means a monster or an item encounter that happened at
             a surprisingly shallow level, opposed to the base level for that
-            monster (given in r_info.txt) or item (given in k_info.txt) where
+            monster (shown in ~7) or item (given in k_info.txt) where
             you would usually start expecting to find it.
             Vaults often containing OoD monsters and items, increasing threat
             and reward for the brave.
@@ -1195,8 +1213,9 @@ PvP         Player vs player. Describes the act of player characters fighting
             creation process, much like 'everlasting mode' or 'normal mode'.
             For more information about pvp mode, see (6.13).
 Randart     Randomly generated artifact. As opposed to 'Truearts' which are
-            also called 'Static arts' from the file a_info.txt. See 'Art'
-            at the top of this section for more information.
+            also called 'Static arts' from the file a_info.txt (you can search
+            static arts by pressing  ~ 6  in game). See 'Art' at the top of
+            this section for more information.
             See (5.9b) for more information about artifacts.
 Res         Resistance.
 Room        The dungeon contains many rooms connected by passages. Some of the
@@ -1765,7 +1784,7 @@ unpack audio packs to your TomeNET/lib/xtra/ folder. Make sure the game isn't
 running while you do.
 
 Note: Some people have reported that the program 'WinRAR' seems to cause
-      problems in some cases, not being able to handle zip files correctly.
+      problems in some cases, giving them "file corrupted" errors.
       A powerful free and open source program that is guaranteed to work is
       '7zip' (a sourceforge project at the time of writing) downloadable at:
       http://www.7-zip.org/
@@ -2288,7 +2307,9 @@ allows you to move diagonally too, which is very important.
 
 You can wear/wield items with 'w' (weapons, armour, light source..)
 You can pickup items with 'g'. Drop items with 'd'. Destroy items with 'k'.
-You can see a list of players who are currently online with '@' key.
+You can see a list of players who are currently online with '@' key. Other
+ players eligible to form a party with you have their level displayed in light
+ blue colour in this list. Press SHIFT+P to invoke the party menu.
 You can chat with other players (say hello ^^) with ':' key.
 
 The top right window will give an overview of your character attributes and
@@ -2751,7 +2772,7 @@ inventory slot).
 However, TomeNET is multiplayer and real-time. This means you don't have
 enough time to look at your inventory and search the correct letters for items
 which you might need *this instance* to avoid certain death. Often situations
-get hectic, for example if all of a sudden a dark-elven warlock comes around
+get hectic, for example if all of a sudden dark-elven warlocks come around
 the corner while you are engaging a pack of wolves, then you need kind of a
 panic button that quickly transports you out of trouble.
 
@@ -4327,9 +4348,11 @@ The 1..9 are standard shops, namely..
                         resurrect a player at the temple when he dies, removing
                         the need to wait for some higher level player to come
                         and rescue him. In turn, the experience penalty will be
-                        50% instead of the usual 35%. However, the player will
-                        need to have enough cash to pay an instant resurrection
-                        fee when he dies, which is:
+                        50% instead of the usual 35%. Insta-res also keeps all
+                        your items except for the usual chance to lose a few of
+                        them on death, which is the same as on normal deaths.
+                        However, the player will need to have enough cash to
+                        pay an instant resurrection fee when he dies, which is:
                         Dungeonlevel * dungeonlevel * 10 + 10 gold pieces.
                         The money is automatically deducted from the purse or
                         the bank account as required. If the player does not
@@ -4351,7 +4374,7 @@ The 1..9 are standard shops, namely..
 9       Book Store      Sells books for istari, priests and all other (hybrid)
                         magic users. Book stores in higher-level towns on
                         average also tend to sell higher-level spells.
-+       These are different everywhere. Some examples are..
++       These are different everywhere. Some examples are mainly..
         Mayor's Office (in Bree)
                         Allows you to turn in deed parchments you won in
                         tournaments or on other occasions for a reward.
@@ -4384,6 +4407,9 @@ The 1..9 are standard shops, namely..
                         In the hazardous city of Khazad-Dum is a store that
                         offers some goods found to be useful by the miners
                         in the mountain depths.
+
+        ..and various miscellaneous store services, of which some currently may
+        not have an actual effect.
 
 Shops that buy and sell items will have a price limit that they will pay for
 an item a players wants to sell. The limit varies from 50,000 to 300,000 Au
@@ -4542,21 +4568,35 @@ Nether Realm                 |  Zu-Aon               | Ring of Phasing
 
 (4.6) Pits and vaults
 ---------------------
-Usually monsters are found on their corresponding depth. You can browse the
-file r_info in lib\game inside your TomeNET directory to find out which
-monster occurs where. However there are some exceptions, where you can find
-monsters out-of-depth, meaning that you will encounter way more powerful
-enemies. That can be very dangerous but also very rewarding. Out-of-depth
-monsters usually occur inside of so-called "pits" and "vaults". Pits are large
-rooms, surrounded by a rectangle-shaped passage, containing monsters picked by
-a pit-specific criterium (troll pit, zoo pit...).
+Usually monsters are found on their corresponding depth. You can press ~7 to
+find out which monster occurs where. However there are some exceptions, where
+you can find monsters "out-of-depth" (ood), meaning that you will encounter way
+more powerful enemies than would usually occur on a particular depth.
+That can be very dangerous but also very rewarding. Out-of-depth monsters
+sometimes occur inside of so-called "pits" and very likely inside "vaults".
 
-Vaults are (sometimes extremely large) structures of rooms and passages, mostly
-surrounded by permanent walls that cannot be damaged.
+Pits are large rooms, surrounded by a rectangle-shaped passage, containing
+monsters picked by a pit-specific criterium (troll pit, zoo pit...).
+Usually pits are very welcome means for gaining experience or items (like orc
+pits, troll pits, dragon pits), except for a few high-danger pits, such as
+jelly/mold/mimic pits, humanoid pits or undead pits (called 'graveyards').
+Zoos (animal pits) can sometimes also be relatively dangerous.
+
+Vaults are (sometimes extremely large) fixed structures of rooms and passages,
+mostly surrounded by permanent walls that cannot be damaged.
+They are usually filled to the brim with traps and nasty monsters. Using means
+of trap detection and monster sensing allows you to spot vaults easily, if its
+wall structure or permanent walls (not all vaults have those) doesn't already
+give it away.
+Another very early indication for a vault on your dungeon level are the floor
+feelings displayed in yellow colour, see (4.8).
 
 A vault can be a real adventure of its own! If your character isn't very
 powerful compared to the dungeon level, you better stay out of vaults if their
 structure doesn't allow easy monster killing.
+Note that some monsters can destroy walls and thereby dig their way out of a
+vault, if they are awake. So in case of dangerous vaults you better stay at a
+distance or even leave the level.
 
 Besides pits and vaults, there are also special rooms with features inside,
 see 'Pit', 'Vault' or 'Room' in (0.4).
@@ -5272,7 +5312,7 @@ Miscellaneous challenges
 There are certain other challenges that neither really count as quests nor as
 events:
 
-Ironman Deep Dive Challenge
+Ironman Deep Dive Challenge (IDDC)
     There is exactly one designated huge ironman dungeon (or tower) on each
     server, normal one and rpg server, which is 127 levels in size and does not
     allow recalling in between, except for two 'dungeon towns' which will
@@ -5315,6 +5355,10 @@ Ironman Deep Dive Challenge
     Level requirements on items are not in effect while inside the ironman deep
     dive challenge either.
 
+    If the party leader dies inside the IDDC, the party isn't disbanded but
+    ownership of the party is transferred to another party member. (Same as on
+    RPG server.)
+
     NOTE: The Deep Dive dungeon requires your character to have zero experience
     points in order to be eligible to enter.
     To fulfil that requirement you may not collect more than 300 Au (gold
@@ -5325,6 +5369,45 @@ Ironman Deep Dive Challenge
 
     Monsters cannot spawn in the wilderness sector of the dungeon, so you can
     just idle at the entrance, waiting for team mates.
+
+
+Seasonal events
+---------------
+At certain times of the year, some seasonal events will occur for a couple of
+days each. The exact time of the day when they start can vary depending on your
+time zone, even a date difference of +/-1 day is possible for that reason:
+
+Halloween
+    Running from 30th October to the end of 1st November.
+    The server will recall all players (20 minutes ahead warning will be
+    displayed) and restart. After that, Halloween is live and costumes can be
+    found and stored costumes can be worn again.
+    Townspeople will actually give experience (!) but also have a fear-causing
+    'touch' attack. They can't really harm you, though.
+    Randomly, the Great Pumpkin will appear on dungeon levels, either with low
+    or medium or high amount of hit points, depending on the location.
+    The event is aiming at intermediate-level characters. The pumpkin always
+    spawns shallower than dungeon level 40. Players who are too high level
+    (above 35 on main, above 40 on RPG) will not be able to hunt him, for the
+    others he will still be tough and might require teamwork.
+    The Great Pumpkin does not cause any damage but still has a few annoying
+    spells at its disposal. It is level 127 and therefore can drop any item in
+    the game, and usually drops very good. Please share fairly. ;)
+    When a player defeats the Great Pumpkin, everyone will get a message about
+    it. The Great Pumpkin will start randomly respawning again some time later.
+    Also it will stay night on the world's surface until Halloween ends.
+
+Christmas
+    Running from 24th December to 25th December.
+    The server will recall all players (20 minutes ahead warning will be
+    displayed) and restart, after which the event is live.
+    During christmas, costumes can be worn again and you might even find Santa
+    Claus costumes. Also, Santa Claus will spawn in town and drops great stuff
+    when you uh.. kill him. :)
+
+New year's eve
+    Running from 31st December to 1st January.
+    Fireworks will be launched into the sky of the town of Bree.
 
 
 
@@ -6228,6 +6311,7 @@ Disenchantment  This attack does massive damage and can also disenchant your
                 Resistance will cut damage to 6/7..6/12 and prevent
                 disenchantment of your equipment.
                 Breath damage is monster HP/6, it caps at 500.
+                Disenchantment bolts do 25+(4d5)+(level*3/2) damage.
                 If disenchantment hits items on the floor, it can even reduce
                 their magical (+X) pval bonus.
                 Artifacts have a chance to resist disenchantment.
@@ -6774,8 +6858,12 @@ Weapons of Morgul       These are terribly cursed weapons that aren't good for
                         Note that this weapon can auto-recurse itself when you
                         move it between equipment and inventory, so when you
                         uncursed it drop it to the ground right away!
+                        If you find a weapon of morgul, inscribe it '!w' to
+                        prevent wielding it accidentally.
 Weapons of Nothingness  Similarly terribly cursed as weapons of Morgul. You
                         are unable to strike while wielding this weapon.
+                        Fortunately you can just drop or destroy these weapons
+                        via 'd'/'k' keys just like any other items, right away.
                         See 'Weapons of Morgul' right above on how to break the
                         curse of this weapon to get rid of it.
                         Note that this weapon can auto-recurse itself when you
@@ -6849,6 +6937,12 @@ Healing         Cures blindness, cuts, confusion, stun, poison; heals 300 HP.
 *Healing*       Cures blindness, cuts, confusion, stun, poison; heals 700 HP.
 Restore Mana    Restores 500 SP.
 *Restore Mana*  Restores 1000 SP.
+Restore Life Levels
+                Restores your experience, if it has been drained. You can see
+                that your experience has been drained by it being displayed in
+                yellow colour instead of the usual light green.
+                Note that this potion does not restore experience you lost by
+                dying (there is no way to restore experience loss by death).
 Curing          Heals some HP, removes blindness/confusion/stun, cures
                 poison/cuts/hallucinations, heals some insanity,
                 cures being gorged, restores all your stats (except exp).
@@ -7102,10 +7196,30 @@ Amulet of Anti-Teleportation    If worn it will suppress all attemps to
                                 and then immediately kick in as soon as the
                                 amulet is taken off. This allows for some
                                 interesting tactics..
+Rings of Lordly Protection      Resist poison, disenchantment, life drain and
+                                give free action (immunity to paralysis).
+Elemental rings (flames, frost, acid, lightning)
+                    Provide the according resistance and can be activated for
+                    temporary resistance too, thereby temporarily giving you
+                    "double resistance" (see (5.17) for details).
+Amulet of the Moon      Gives infra-vision, the power to see invisible, and it
+                        can be activated to sleep monsters nearby.
+                        It also improves your +hit and +dam boni.
+Amulet of Terken        Gives the power to see invisible, free action, and
+                        improves your searching (usually by quite a lot).
 
 
 Misc
 --
+Spell scroll        Although called "scrolls" they actually persist and can be
+                    used infinite times. They may however get destroyed by
+                    certain damage effects (most notably fire and acid)
+                    same as regular scrolls. Spell scrolls ignore water damage
+                    though, which can harm regular scrolls.
+Spell crystal       They are like "spell scrolls", except they are used for
+                    mindcrafter spells. A specialty of spell crystals is that
+                    they ignore fire damage (and water damage, same as spell
+                    scrolls).
 Codex, Spellbook, Grimoire
                     These are magic books that may contain magic spells of any
                     type and school, be it for mages, priests, druids or
@@ -7292,6 +7406,7 @@ True artifacts
 --------------
 True artifacts are predefined in the a_info.txt file and will always sell for
 their defined value even if they have not been *identified*.
+You can search a list of all true artifacts in game, by pressing  ~ 6 .
 
 True Artifacts are unique. If an artifact is owned by a player, noone else can
 find it anymore until it's lost (for example if the player dies) or sold to a
@@ -7867,6 +7982,8 @@ See (0.2) for more information about cloaking.
 
 (5.17) How abilities, resistances and boni stack
 ------------------------------------------------
+(Also see (5.6) for basic information about damaage types and resistances.)
+
 The same resistance from two or more items in your equipment don't add to each
 other. For example you only need one item that provides fire resistance. If
 you equip two such items you won't get better resistance than with just one
@@ -9945,9 +10062,8 @@ Note that not every skill is available to every profession (class).
                                 You also inherit the monsters abilities,
                                 weaknesses and resistances!
                                 See section (6.7) for more info.
-                                To find out details about a monster form
-                                look into the file r_info.txt in your
-                                tomenet/lib/game directory!
+                                To find out details about a monster form,
+                                press  ~ 7  in game or consult a spoiler file.
                                 (See (7.4) for more info about spoiler files.)
     .Magic-device               Ability to use magic devices (wands,rods,etc.)
                                 without failing. Also increases their power.
@@ -10178,7 +10294,7 @@ Note that not every skill is available to every profession (class).
                                 Also gives you a chance to salvage a trap kit
                                 from any trap when you disarm it!
 +Health                         Increases your hit point regeneration rate:
-                                (skill_level * 2)% chance to regenerate 1,5x
+                                (skill_level * 2)% chance to regenerate 1.5x
                                 the normal amount of HP per turn (stacks with
                                 REGEN items).
                                 Increases your hit points by 2 for each point.
@@ -10586,8 +10702,9 @@ Warrior is strongly recommended.
 - Vampire
     These powerful undead creatues move out in the night to hunt living prey
     and suck its blood to sustain themselves. Vampires resist darkness, but
-    are susceptible to light. They fear the sun light and any other kind of
-    blessed light source, since it burns them, draining their hit points.
+    are susceptible to light and certain purifying and anti-evil effects.
+    They fear the sun light and any other kind of blessed light source, since
+    it burns them, draining their hit points.
     They don't actually need a light source, since they are able to determine
     their close surroundings even in complete darkness. This ability grows
     when the vampire rises in character-levels.
@@ -11001,6 +11118,8 @@ vary. For example a warrior cannot learn magic spells.
     Also make sure to create a macro for your fighting technique 'Sprint' when
     you learn it, which you do pretty early on. It is great for catching
     annoying monsters that try to keep their distance from you. (See (6.12).)
+    As martial artists, druids do not require any armour early on in the game,
+    it could even lower their AC instead of improving it.
     Always keep your Martial Arts skill maximized.
 
 - Shaman
@@ -11136,38 +11255,38 @@ Istar       -5  +3   0  +1  -2  +1       +0      +35%       1
             30  36  30   2  20  16  34  20              bad      bad
              7  13   9   0   0   0  15  15
 Priest      -1  -3  +3  -1   0  +2       +4      +20%       4
-            25  30  32   2   8  16  48  35              poor     poor
+            25  25  32   2   8  16  48  35              poor     poor
              7  10  12   0   0   0  20  15
 Rogue       +2  +1  -2  +3  +1  -1       +5      +15%       5
-            45  32  28   5  32  24  60  66              superb   fair
+            45  28  28   5  32  24  60  66              superb   fair
             15  10  10   0  10  10  40  40
 Mimic       +1   0   0  +1  +1  -4       +6      +30%       5
-            25  35  28   1  18  18  60  46              good     good
-             9  10  10   0   0   0  40  30
+            25  34  28   1  18  18  60  46              good     good
+             9  10  10   0   0   0  40  25
 Archer      +1   0  +2  +3  +1  -1       +5      +10%       3
-            30  32  28   2  20  24  56  82              fair     fair
-             8  10  10   0   0   0  30  55
+            30  22  28   2  20  24  56  72              fair     fair
+             8   7  10   0   0   0  30  50
 Paladin     +3  -3  +1   0  +2  +2       +8      +30%       5
             10  21  54   1  16  13  60  40              good     superb
-             2   4  10   0   2   0  35  10
+             2   8  10   0   2   0  35  10
 Ranger      +2  +2  -1  +1  +2   0       +7      +35%       5
             34  32  30   5  30  30  50  60              superb   fair
             10  10  10   0   5  15  30  45
 Adventurer   0   0   0   0   0   0       +6      +25%       4
-            20  20  20   3  15  15  50  50              fair     fair
+            20  22  20   3  15  15  50  50              fair     fair
             10  10  10   0   5   5  25  25
 Druid       +1   0  +2  -2  -2  +1       +5      +40%       4
-            30  40  30   4  25  25  50  44              fair     fair
-             8   5  10   0   5  10  20  25
+            30  35  30   4  25  25  50  44              fair     fair
+             8  11  10   0   5  10  20  25
 Shaman       0  +1  +2  -2   0   0       +3      +45%       4
-            10  13  30   4  30  20  45  23              poor     poor
+            10  30  30   4  30  20  45  23              poor     poor
              0  11  10   0   5   3  20  12
 Runemaster  +1  +2  -3  +3  -3  -3       +5      +20%       4
-            10  20  20   2  30  20  45  40              fair     fair
+            10  23  20   2  30  20  45  40              fair     fair
              0  11  10   0   5   3  20  20
 Mindcrafter +2  +2   0   0   0  +1       +6      +25%       5
-            30  30  36   3  35  14  55  45              good     fair
-             0   5   5   0   3   3  26  18
+            30  28  36   3  35  14  55  45              good     fair
+             0   9   5   0   3   3  26  25
 
 
 For melee characters, it's especially vital to know how many blows per round
@@ -11297,15 +11416,15 @@ If a mimic wields a weapon while using a form which usually cannot use weapons
 the number of blows per round will be set to 1 (regardless of extra attacks).
 (This only really applies to druids, shamans or perma-cursed weapons (5.14)).
 
-To find out the special abilities of a monster form, consult the file
-/lib/game/r_info.txt in your tomenet directory, and look up the monster.
-(See (7.4) for more info about spoiler files.)
+To find out the special abilities of a monster form, press  ~ 7  in game or
+consult a spoiler file. (See (7.4) for more info about spoiler files.)
 It's abilities will transform to the mimic's body as follows.
 
 
-Form aspects derived from r_info.txt monster definitions file
-(you find this file in TomeNET/lib/game/ folder, view it in any text editor):
------------------------------------------------------------------------------
+Form aspects as specified in  ~ 7  monster lore:
+(Make sure to keep your r_info.txt spoiler file up to date, as the lore
+displayed via ~7 is derived from it.)
+-----------------------------------------------------------------------
 W: depth : rarity : corpse weight : experience for kill
   depth:
     The depth is also the basic level of these monsters. It tells you how
@@ -11406,7 +11525,7 @@ B: attack method : attack effect : damage
        (Effects only work with melee attacks!)
     b) The player uses a weapon but the monster doesn't have an
        equipment slot for melee weapons, because it has no arms or is
-       immaterial - see the E:... line of that monster in r_info.txt).
+       immaterial.
 
     Melee to-damage bonus also depends on the monster form:
     The monster damage dice for each attack are multiplied and the products
@@ -11515,8 +11634,8 @@ so you might want to create macros for them.
 
 
 Further, certain races get additional fixed abilities
-(even if they are not explicitely mentioned in r_info.txt):
------------------------------------------------------------
+(even if they are not explicitely mentioned in ~7):
+-----------------------------------------------------
 Bats            Feather falling (levitation).
 Elves           Resist light.
 Dark-Elves      Resist darkness.
@@ -11540,7 +11659,7 @@ All evil creatures
                 Becomes susceptible to certain 'good' or 'holy' effects.
 All undead creatures
                 Resist darkness, blindness, poison (usually immunity, depends
-                on r_info flags);
+                on ~7 flags);
                 can't bleed (no_cut), infra-vision +1, insanity attacks are
                 reduced by a little bit.
                 Becomes susceptible to 'life', which concerns some healing or
@@ -11550,11 +11669,11 @@ All undead creatures
                 Take 2x damage from holy orbs or holy fire and suffer
                 from many 'good' effects/spells (even more so than demons).
 All greater demons (capital 'U')
-                Resist poison (usually immunity, depends on r_info flags).
+                Resist poison (usually immunity, depends on ~7 flags).
                 Take 2x damage from holy orbs or holy fire and suffer
                 from a couple of 'good' effects/spells (similar to undead).
 All non-living creatures
-                Resist poison (usually even immune, depends on r_info flags)
+                Resist poison (usually even immune, depends on ~7 flags)
                 and fear; insanity attacks are reduced somewhat.
 All vampires and vampiric monsters (vampire bats and others)
                 Vampires are susceptible to light.
@@ -11564,7 +11683,7 @@ All vampires and vampiric monsters (vampire bats and others)
                 (half their attacks are hits, the other half is biting).
                 For details see '(5.15) Vampirism'.
 All angels      Resist light, blindness and poison (usually immunity, see
-                r_info flags), resist fear, resist confusion, see invisible,
+                ~7 flags), resist fear, resist confusion, see invisible,
                 strong resistance to insanity-inducing attacks.
                 Note: 'Fallen Angel' doesn't get light/confusion resistances.
 
@@ -12304,6 +12423,21 @@ Holy Defense
                     and from evil in general at 50. Better than the spell.
 
 Holy Curing
+    Cure Wounds     Heals a fixed amount of hit points of a friendly target,
+                    which is capped at 14d8, the same amount a potion of cure
+                    critical wounds actually heals.
+                    Required skill level for first spell level: 3.
+                    In addition to healing hit points, it will start curing
+                    status ailments at higher spell levels:
+                    Lv4: Cures cuts and blindness.
+                    Lv10: Also cures confusion.
+                    Lv24: Also cures stun.
+                    (Since this is a bolt spell, use the 'target friendly' key,
+                    which is '('. See command reference section (0.2) for
+                    details about this key.
+                    To target yourself, use a macro that clears your current
+                    target via '*q' and picks direction '5' which will then be
+                    your current grid.)
     Healing         Heals a percentage of hit points.          (auto-project)
                     Required skill level for first spell level: 3.
     Remove Curses   Removes curses.
@@ -12417,7 +12551,8 @@ Physical Lore
 Mindcraft schools:
 ------------------
 Psycho-Power
-    Psychic Hammer  Telekinetic power focussed to bash an enemy, stunning him.
+    Psychic Hammer  Telekinetic power focussed to bash an enemy,
+                    damaging and stunning him.
                     Required skill level for first spell level: 1.
     Psychokinesis   Destroys traps by psychokinetic manipulation.
                     Required skill level for first spell level: 3.
@@ -12740,7 +12875,8 @@ Here you can..
     The guild creator will receive a 'Guild Key' which designates him as the
     guild master. In case the guild master dies, another guild member may
     fetch the key to become the new guild master.
-    (Currently guilds look cool and have a dedicated guild chat.)
+    (Apart from the dedicated guild chat, guilds currently don't do anything
+    except looking cool.)
 
     The following slash commands are available to manage your guild, only the
     guild master may use them:
@@ -13532,7 +13668,7 @@ Some monsters that people often get killed by are:
 
 -Dark-Elven Warlocks. These belong to the few monsters that can cast mana
  bolts, which inflict very high damage. Even worse, DEW (Dark-Elven Warlocks)
- can appear in packs. Beware!
+ appear in packs. Beware!
 
 -Will o' the wisps are very hard to spot and catch, their curses are
  devastating.
@@ -13545,6 +13681,13 @@ Some monsters that people often get killed by are:
 -The Stormbringer, an animated blade that bears mad fury within. It swings
  so powerful that it can knockout its enemies with ease. Defeating it,
  however, will make it usable to its defeater!
+
+-Dracolichs and Spectral Tyrannosaurs. They have high hit points and are able
+ to breathe nether, which means their damage will be maxed out.
+ A dark/light green blinking D is actually a Death Drake, and although it can
+ also breathe nether it is much less dangeours than a Dracolich because of its
+ low hit points. Dracolichs and especially Spectral Tyrannosaurs can occur on
+ fairly low levels (usually 55 and 46) which makes them a very nasty surprise.
 
 The most powerful representant of each class:
 -Ranger chieftains are tough opponents who can nail you on the spot and
@@ -13563,19 +13706,20 @@ The most powerful representant of each class:
 -(Grand) Master thieves, very fast and stealthy they steal your possessions!
 
 -Unique enemies. If you see a monster blinking in different colours, before
- trying to kill it you should examine the text file "r_info.txt" located in
- the lib\game directory to find out if it is a certain unique enemy. Then look
- up his abilities and make sure you are prepared to fight him.
- If possible, consult fellow players for their opinions.
- (See (7.4) for more info about spoiler files.)
+ trying to kill it you should consult other players or 'l'ook at the monster,
+ to find out whether it is an unique monster. If so, then you should examine
+ it by pressing  ~ 7  in game to look up its abilities and make sure you are
+ prepared to fight him. If possible, consult fellow players for their opinions.
+ (You can also check r_info.txt, see (7.4) for more info about spoiler files.)
 
 -If you see an enemy that you don't know anything about and that could pose a
  threat (especially if it's inside a vault!), STAY AWAY and consult either an
- experienced player or look into the file r_info.txt in your tomenet/lib/game
- directory to find out what the opponent is capable of. The safest (and most
- boring and least rewarding) way to play is to avoid vaults! Vaults can
- contain an enemy against whom you don't have the slightest chance of
- winning. Vaults however can also contain great treasure!
+ experienced player or look it up by pressing  ~ 7  to find out what the
+ opponent is capable of.
+ The safest (and most boring and least rewarding) way to play is to avoid
+ vaults! Vaults can contain an enemy against whom you don't have the slightest
+ chance of winning. Vaults however can also contain great treasure!
+ (See (4.6) for more information about vaults.)
 
 -The most powerful monsters of the demon realm, the dragonkind and the
  heavenly planes, namely Star-spawns of Cthulu, Great Wyrms of Power,
@@ -13693,10 +13837,12 @@ In the folder tomenet/lib/game you find several data files containing
 various information about all monsters, items and other features of TomeNET.
 These files are named X_info.txt and can be read via a normal text editor.
 The most important files are:
+a_info.txt  contains all artifacts.
+            (You can also access this information in-game by pressing ~6 .)
 r_info.txt  contains all monsters.
+            (You can also access this information in-game by pressing ~7 .)
 k_info.txt  contains all base item types.
 e_info.txt  contains all ego item types.
-a_info.txt  contains all artifacts.
 All files contain a block of information, either at the beginning or at the
 very end, which explains the meaning of each discrete info-line.
 
@@ -14866,10 +15012,25 @@ PROBLEM 32: When trying to extract a music or sound pack to my xtra folder in
             work correctly.
 SOLUTION:   See (2.1a) for details on how to install audio packs. Also note
             that some people have reported that the program 'WinRAR' seems to
-            cause problems in some cases, not being able to handle zip files
-            correctly. A powerful free and open source program that is
-            guaranteed to work is '7zip' (a sourceforge project at the time
-            of writing) downloadable at:  http://www.7-zip.org/
+            cause problems in some cases, giving them "file corrupted" errors.
+            A powerful free and open source program that is guaranteed to work
+            is '7zip' (a sourceforge project at the time of writing)
+            downloadable at:  http://www.7-zip.org/
+
+PROBLEM 33: On OSX when entering the game (right after picking a character) in
+            big_map mode with already large (46 lines) main window, the window
+            will suddenly become small (24 lines) again.
+            As of the time of writing this, the exact cause is still unknown.
+            A workaround is to perform the following steps:
+            -turn off big_map mode and save the '=' options
+            -exit client with CTRL+X (so it will save the main window height)
+            -log on again, turn on big_map mode, save the '=' options.
+            -from now on, always exit the game via the window close button in
+             the window's titlebar, never via CTRL+X. That way, your .tomenetrc
+             config file is never overwritten and hence your client will always
+             start with only 24 lines, switching back to correct big_map mode
+             only when you actually log in with a character, thus circumventing
+             the bug.
 
 
 
