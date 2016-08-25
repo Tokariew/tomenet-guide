@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 8. Dec 2010 - written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.4.6a - official websites are:
+| Latest update: 10. May 2011 - written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.4.6b - official websites are:
 | http://www.tomenet.net/ (main site),
 | http://koti.mbnet.fi/mikaelh/tomenet/ and http://www.c-blue.de/rogue.html
 |
@@ -84,10 +84,12 @@ Contents
     (4.10)  Houses
     (4.10a) Player stores
     (4.11)  Malicious effects players can suffer
+    (4.11a) Drain effects
     (4.12)  Malicious effects monsters can suffer
     (4.13)  Quests and Events
 (5) Item and monster details
     (5.1)   Melee weapons, brands
+    (5.1a)  Melee weapon types
     (5.2)   Ranged weapons, brands
     (5.2a)  Fire-till-kill mode
     (5.3)   Slaying vs brands
@@ -98,6 +100,7 @@ Contents
     (5.8)   Special abilities of items
     (5.9)   What does item xxx do exactly?
     (5.9a)  Activatable items
+    (5.9b)  Artifacts
     (5.10)  Destruction of items by elemental attacks
     (5.11)  Armour Class vs monster attacks, damage caps
     (5.12)  Monster attack types and brands
@@ -109,6 +112,7 @@ Contents
     (5.18)  Monster auras
     (5.19)  Experience-draining items
     (5.20)  Runes & Runemastery
+    (5.21)  Digging
 (6) Character details
     (6.1)   Attributes
     (6.2)   Skills, opposed skills
@@ -127,6 +131,7 @@ Contents
     (6.11)  Parrying and blocking
     (6.12)  Fighting/shooting techniques
     (6.13)  PvP mode
+    (6.14)  Miscellaneous character properties
 (7) Tactics & strategy
     (7.1)   Preparing the inventory for diving into the dungeon
     (7.2)   Preparing the equipment for diving into the dungeon
@@ -160,8 +165,9 @@ compile the game under '(2.1) Installing TomeNET'.
 -Either run 'TomeNET-main.bat' to directly connect to official main server
  (recommended), or run TomeNET.exe and choose a server (Enter 85.118.45.235
  to connect to the official main server).
- NOTE: The official main server may appear in the server list as
- "totem.ielf.org" instead of "tomenet.servegame.com". Don't worry about this.
+ NOTE: The official main server's hostname is "europe.tomenet.net",
+       the meta server's hostname is "meta.tomenet.net" (the meta server is the
+       server that presents you the list of actual game servers).
 
  -Create a character, Half-Troll warrior is good for beginners.
  The server should now allow you to manually choose your stats.
@@ -276,7 +282,8 @@ Walk into a direction:
         1   2   3               b   j   n               B   J   N
 
 You can also use the arrow keys instead of the Numpad keys for movement.
-(Pressing '5' will make your character try and pick up an item).
+(Pressing '5' will make your character try and pick up an item, same as
+pressing 'g').
 
 SHIFT+<direction key>
         runs into that direction. Numlock must probably be turned off,
@@ -364,6 +371,7 @@ V       V       enter 'cloaking mode'. This can only be used by rogues.
                 Note: Although ESP is supposed to detect cloaked targets, for
                 now it's still set to overrides ESP of other players for the
                 sake of PvP usage, similar to invisibility.
+                (Also see (5.16) for details on 'normal' invisibility.)
 A       A       activate an item. Usually an artifact, a dragon scale mail or
                 a ring of polymorphing (shapechanging).
 T or +  +       tunnel through an obstacle or a wall.
@@ -477,16 +485,21 @@ SPACE   Stop executing repeatable actions such as searching, tunnelling or
 '       lets you peek at the equipment of party members or players within
         sight.
 #       displays the high scores (same as ~c).
+        (Note: If you press this while browsing any text you can jump to a
+        line number of your choice.)
 |       displays the unique monster list (same as ~1).
 X       quickly swap between two equippable items. They must be inscribed
-        '@w0'. (It's basically just the macro 'w0' bound to shift+x key.)
-_       drink from a fountain. You must stand on the fountain to do this.
+        '@x0'. (It's basically just the macro 'x0' bound to shift+x key.)
+_       Two uses, regarding a) fountains or b) item piles:
+        Main: Drink from a fountain. You must stand on the fountain to do this.
         Fountains can have good/bad/no effects. There is no fountain of death,
         neither one of detonations, so you won't get instakilled.
         If you see a message 'You feel less thirsty' that means the fountain
         was just plain water. A message 'You have quenched your thirst' means
         that the fountain had no effect on you, although it wasn't water.
         (Same as /sip command.)
+        Secondary: If you press _ while standing on an item or a pile of items,
+        you will get a message what item is currently below your feet.
 ?       invoke an in-game help screen
 !       look at the in-game bulletin board. Players can write lines of text to
         it by using the /bbs <text> command.
@@ -494,6 +507,8 @@ K       forcibly combines a level 0 item in your inventory with other items of
         the same type that aren't level 0. Be warned, that this will change the
         level of all the items involved to 0.
 CTRL+P  view previous messages.
+        Note: You can also press this when in chat prompt, to cycle backward
+        through lines that you previously typed (also see CTRL+N).
 CTRL+O  view previous chat messages.
 CTRL+X  save your character & quit the game. (You should do this in town!)
         This also automatically saves some settings, like window positions on
@@ -516,6 +531,8 @@ TAB or CTRL+I
 CTRL+U  Displays/exits the audio mixer settings. (Also see (2.1a).)
 CTRL+C  Toggles music. (Shortcut for toggling it in the mixer settings.)
 CTRL+N  Toggles audio. (Shortcut for master toggle in the mixer settings).
+        Note: If you press this while in chat prompt, you can cycle forward
+        through lines you previously typed (also see CTRL+P).
 Note: Mixer settings are saved automatically, provided you use CTRL+X to quit.
 (Compare troubleshooting section (8.6), problem 21.)
 
@@ -794,17 +811,17 @@ All items:
     You can inscribe an item by pressing '{' and uninscribe it with '}'.
 
 The !* inscription:
-    '*' is a 'wild card' which means it stands for multiple choices at once.
-    Inscribing an item '!*' will prevent any of these action on it:
-!d  prevent dropping an item
-!k  prevent killing (destroy) an item
-!v  prevent throwing an item
-!t  prevent taking an item off
-(!h prevent selling a house key. Keys usually aren't used anymore though.)
-!s  prevent selling an item to shop (!s).
-    For example, if you wear an artifact and you want to avoid (d)ropping it,
-    (t)aking it off or (v) throwing it away accidentally you could either
-    inscribe it  !dtv  or just  !*  . ('!*'  also implies  '!='.)
+    '*' is a 'wild card' which stands for multiple inscriptions at once,
+    inscribing an item '!*' will do all of these checks:
+!d  Prevent dropping an item.
+!k  Prevent killing (destroying) an item.
+!s  Prevent selling an item to shop (!s).
+    For example, if you found an artifact and you want to avoid (d)ropping it,
+    (s)elling it, or (v) throwing it away accidentally you could either
+    inscribe it  !dsv  or just  !*  .
+!v  Prevent throwing an item away.
+!=  Automatically pick the item up from the floor.
+(!h Prevent selling a house key. Keys usually aren't used anymore though.)
 
 A very useful inscription for (heavily) cursed items:
 !w  prevent wielding/wearing an item. This is very useful if you carry a
@@ -952,6 +969,7 @@ Art         Artifact. Those can be 'Static arfifacts' from the a_info.txt
             be able to use static artifacts, but rely on randarts instead.
             Depending on the server settings, fallen winners might also not be
             able to use static arts.
+            See (5.9b) for more information about artifacts.
 Auto-ID     A special ability of some items. If you equip an item that grants
             you 'Auto-ID' all items you touch will automatically be
             identified! Items who grant their wielder Auto-Identification are
@@ -1062,6 +1080,7 @@ PvP         Player vs player. Describes the act of player characters fighting
 Randart     Randomly generated artifact. As opposed to 'Truearts' which are
             also called 'Static arts' from the file a_info.txt. See 'Art'
             at the top of this section for more information.
+            See (5.9b) for more information about artifacts.
 Res         Resistance.
 Room        The dungeon contains many rooms connected by passages. Some of the
             rooms are of special shape. Especially rooms containing a further,
@@ -1152,13 +1171,15 @@ Wormy       Wormtongue, Agent of Saruman. He drops great items.
 
 (1.1) What is TomeNET? (Where can I get the latest sources?)
 ------------------------------------------------------------
-It's an extremely advanced online multiplayer rogue-like role-playing game,
-derived from MAngband (Multiplayer-Angband). TomeNET bases on the stories of
-J.R.R. Tolkien mainly "The Lord Of The Rings", hence the name "the Troubles of
-Middle Earth" or alternatively "the Tales of Middle Earth". The final goal in
-TomeNET is to destroy the fallen god Melkor who is known by the name of
-Morgoth, Lord of Darkness. The official websites are mentioned in the first
-couple of lines of this guide.
+TomeNET is an extremely advanced online multiplayer rogue-like role-playing
+game, derived from MAngband (Multiplayer-Angband). It's based on the stories of
+J.R.R. Tolkien mainly, hence the name "the Troubles of Middle Earth" or
+alternatively "the Tales of Middle Earth".
+The final goal in TomeNET is to destroy the fallen god Melkor who is known by
+the name of Morgoth, Lord of Darkness. The official websites are mentioned in
+the first couple of lines of this guide.
+Note that ToME and TomeNET although both coming from similar roots are actually
+quite different games that are maintained by different persons/teams.
 
 If you want to download the source code, you can get it via CVS, avoid any
 snapshot tarballs and stuff. The repository is at http://angband.oook.cz/.
@@ -1261,6 +1282,7 @@ ghost will be destroyed too, even if you are everlasting! Beware!
 If you team up against him, he will grow stronger for every additional player
 who enters his dungeon level. Growing stronger in fact means that he gains a
 hit point and speed bonus. If a player leaves his level, he will weaken again.
+See the following paragraph (1.6) for more information.
 
 A very dangerous thing about Nazgul is that weapons get quickly destroyed if
 they come in contact with these corrupted beings.
@@ -1273,7 +1295,8 @@ since these resist Nazgul greatly! The Stormbringer also resists like an
 artifact. (It doesn't matter if the artifact is a random or a static one.)
 If your weapon gets destroyed you'll receive a warning message:
 "Your weapon *DISINTEGRATES*!" or "Your weapon is destroyed !"
-(The permanently cursed weapon 'Mighty Hammer of Grond' cannot be destroyed.)
+(The permanently cursed weapon 'Mighty Hammer of Grond' cannot be destroyed.
+See (5.9b) for more information about artifacts.)
 
 Your weapon itself will not damage the Nazgul if it doesn't have one of the
 mods SLAY_EVIL, SLAY_UNDEAD or KILL_UNDEAD. However, you might still be able
@@ -1314,6 +1337,9 @@ will always provide invisibility (5.16) and experience drain (5.19).
  be teleported to town instead and Morgoth will remain on the level.
 -If more than one player is on his floor, he will be a bit thougher than he
  appears to a solo player, depending on the number of players facing him.
+ In details, for each additional player besides the first player joining his
+ level, Morgoth gains +20000 hit points and +6 speed. So if a team of three
+ challenges him, he will have 30000+2*20000 = 70000 HP and 30+2*6 = 42 speed.
 -There are no obstacles that can hold Morgoth back for long.
 
 See (1.5) for more information about Morgoth.
@@ -1335,6 +1361,11 @@ the mundane world.
 Go to http://www.tomenet.net/ (or one of our personal pages) to download the
 latest client. Extract it to a new directory, preserving the pathnames.
 
+(Note: If you decide to download the 'test client' instead of the client of the
+latest stable version number, be aware that it might stop working correctly
+unexpectedly because it's undergoing development, possibly forcing you to
+redownload it.)
+
 
 Windows:
 --------
@@ -1342,10 +1373,8 @@ You may edit the file "TomeNET.ini" and do some changes to your likings, like
 setting up window positions (note that the game will remember window positions
 changed via dragging the windows around, which is an easier way), or choosing
 font size (look into lib/xtra/font directory to see available fonts).
-If it's not already disabled by default, it is recommended to turn off
-graphics ("GRAPHICS=0"). Further you can specify an account name and password
-of your own choice. That will relieve you from entering them every time
-you join a TomeNET internet server.
+Further you can specify an account name and password to be filled in
+automatically, and various other things.
 
 Last but not least, you may use the following command-line options:
 -p<Port>                for example -p19348
@@ -1354,8 +1383,14 @@ Last but not least, you may use the following command-line options:
 <ip address>            for example 85.118.45.235
 
 
-Linux:
-------
+Linux (compiling from source):
+------------------------------
+(For using the pre-compiled client instead, see further below.)
+
+You can get the source from www.tomenet.net or directly from CVS via
+  cvs -d:pserver:anonymous@angband.oook.cz:/var/cvs/tome co tomenet
+also see (1.1).
+
 How to compile the game binary:
 Go into '/tomenet/src' where the file 'makefile' is located.
 
@@ -1368,6 +1403,9 @@ libsdl-mixer-devel, libsdl, libsmpeg. Usual package names (SDL version 1.2):
 libsdl-mixer1.2, libsdl-mixer1.2-dev, libsdl1.2debian, libsdl1.2-dev,
 (preferably libsdl1.2debian-pulseaudio, eg under Ubuntu), libsmpeg0,
 libsmpeg-dev.
+If you don't want to use audio, edit the makefile and compare the two
+paragraphs titled 'Without SDL' and 'With SDL' and edit the makefile
+accordingly, to compile it without SDL audio support.
 
 Enter these two lines:
         make clean
@@ -1380,13 +1418,34 @@ Go up one level into your '/tomenet' folder. There type:
         ./tomenet
 to start the game.
 
-If you don't want 6 windows or if you want MORE (up to 8), just edit the file
-'main-x11.c' and comment out/uncomment the lines starting on
-        #define GRAPHICS_TERM_...
-near the beginning of the file as you like, then compile the binary again.
 
-You can use environment variables to set font sizes and window sizes for each
-of the up to 8 windows separately:
+Linux (using pre-compiled binary):
+----------------------------------
+Make sure that ncurses and crypt libraries are installed, package names are
+usually libncurses5 and libgcrypt11. Type:
+        ./tomenet
+to start the game.
+
+
+Configure TomeNET on Linux:
+---------------------------
+To configure which windows are visible and what font they use, edit the file
+.tomenetrc which you also must move from tomenet folder into your home folder
+for it to become active! (Or specify alternative location via -f command-line
+option, see below.)
+About setting font sizes, some possible fonts are:
+4x6, 5x7, 5x8, 6x9, 6x10, 6x12, 7x13, 7x14, 8x13, 9x15, 10x20, 12x24,
+depending on your system.
+
+Note: If x,y positioning of windows doesn't work on your system, you can use
+other means such as KDE's native window positioning (right-click the windows
+and modify the "special window settings" or "special application settings") or
+the tool Devilspie (should be in your default repository) if you're on Gnome
+instead.
+
+
+Alternatively to using the .tomenetrc file for window configuration, you can
+also set environment variables. These settings will override .tomenetrc:
 TOMENET_X11_FONT_SCREEN (height and width of main window cannot be changed)
 TOMENET_X11_WID_MIRROR, TOMENET_X11_HGT_MIRROR, TOMENET_X11_FONT_MIRROR
 TOMENET_X11_WID_CHOICE, TOMENET_X11_HGT_CHOICE, TOMENET_X11_FONT_CHOICE
@@ -1399,12 +1458,9 @@ Use the 'export' command to set them, eg:
         export TOMENET_X11_FONT_SCREEN=8x13
         export TOMENET_X11_WID_TERM_4=80
         export TOMENET_X11_HGT_TERM_4=24
-It's a good idea to make a little script file for this.
-Some possible font sizes are:
-4x6, 5x7, 5x8, 6x9, 6x10, 6x12, 7x13, 7x14, 8x13, 9x15, 10x20, 12x24
-depending on your system.
 TOMENET_X11_FONT sets one font globally for all windows. It's overridden by
 the window-specific font variables listed above though.
+
 
 Last but not least, you may use the following command-line options:
 -f<config file>         use a different config file than ~/.tomenetrc
@@ -1421,12 +1477,6 @@ If your name contains spaces, it is neccessary to put a '\' in front of each.
 Example:
         ./tomenet -p18348 -lIron\ Man geheimer 85.118.45.235
 ..if your account name is 'Iron Man'.
-
-
-To automatically position your TomeNET windows in a certain manner on Linux,
-on KDE this can be done natively by right-clicking the windows and modifying
-the "special window settings" or "special application settings", while on Gnome
-you can use a helper tool such as Devilspie to achieve the same.
 
 
 (2.1a) Installing sound and music packs
@@ -1524,9 +1574,11 @@ or that are especially important are listed in detail here:
 (1 & 2) User Interface Options
     Rogue-like commands (rogue_like_commands)
         Toggles between normal key set and traditional rogue-like key set.
+
     Suppress server messages as far as possible (taciturn_messages)
         Will prevent some of the not-so-important server messages to be
         shown, for example 'You have <item>' when picking up an item.
+
     Don't display 'flavours' in item names (short_item_names)
         A 'Black Potion of Speed' will just be shown as a 'Potion of Speed'.
 
@@ -1534,6 +1586,7 @@ or that are especially important are listed in detail here:
         Will provide a predefined (on server-side) set of item-inscriptions
         that will be applied automatically to some selected items, which are
         word-of-Recall items, various scrolls and a few potions.
+
     Hide unusable skills (hide_unusable_skills)
         Skills that your character cannot use will not be displayed in the
         skill menu invoked by 'G' key.
@@ -1547,9 +1600,23 @@ or that are especially important are listed in detail here:
 
     Automatically open doors (easy_open)
         Your character attempts to open a door just by you moving into it.
-!!! Scroll the screen more frequently (wide_scroll_margin)
-!!!     Should always be enabled! Will reduce probability for off-screen kills,
-!!!     since the screen scrolls much earlier when you come close to a border!
+
+    Scroll the screen more frequently (wide_scroll_margin)
+        Should always be enabled! Will reduce probability for off-screen kills,
+        since the screen scrolls much earlier when you come close to a border!
+
+    Clear @-inscriptions on taking item ownership (clear_inscr)
+        When you pick up items that belonged to another player, any '@...'
+        inscriptions will be rendered effectless by replacing the @ by a space.
+        This is a security feature that is intended to prevent the inscriptions
+        from interfering with the inscriptions on your own items.
+        For example, your potions of healing might be inscribed @q1. If you now
+        pick up a potion of heroism that someone else also inscribed @q1, it
+        will be used the next time you press your 'q1' macro, because heroism
+        potions are sorted in in the inventory before healing potions, which
+        might cost your life if unlucky.
+        Alternatively if you have this option turned off, you can just use the
+        '}' key to uninscribe the items you get from someone else.
 
     Thin down screen flush signals to avoid freezing (thin_down_flush)
         Enabled by default, this discards all 9 of every 10 flush signals, so
@@ -1859,7 +1926,8 @@ This line consists of the following icons that may show up:
                    separated into yellow and blue '(' icon.
     Blue (         You're a rogue or using primarily rogueish skills such
                    as dodging or dual-wield which depend on especially
-                   flexible armour, but your armour is exceeding that limit!
+                   flexible armour (meaning: Your total armour weight must not
+                   be too high), but your armour is exceeding that limit!
                    You will lose some of the benefits, see (5.5)!
     Violet (       Your armour is so heavy that it reduces your MP.
                    This only affects classes that have a mana pool.
@@ -1951,6 +2019,8 @@ to get similar behaviour as in one of the chat modes just for one line:
 #:      Sends the following text to everyone on your dungeon level.
         Note: While in town this will instead become a /say.
 %:      Sends the following text to yourself (has some use in macros).
++:      Sends the following text to the last person who whispered us a private
+        message, so it's sort of a 'reply' function.
 
 
 Note that you can use CTRL+p and CTRL+n while in chat mode (':' key),
@@ -2030,9 +2100,13 @@ a Ration of Food {0,+}
     Note that you usually can neither trade nor sell items that are level 0.
     Food is an exception to this rule, since it can be traded (but not sold).
 
-a Chain Mail {0,+} [14,+0]
+a Chain Mail {0,+} (-2) [14,+0]
     The {..} part is already known, it's the same as for the ration described
     above. What's new is the [..] part, which all types of armour have:
+
+    The (-2) part is a to-hit malus. This armour reduces your to-hit value by
+    2, because of its bulkiness. Lighter armour has -1 or no to-hit malus,
+    heavier armour may have even more than -2.
 
     Rectangular brackets [..] describe 'Armour Class' or short AC. AC is a
     number that tells you how well the item helps to protect you when a monster
@@ -2124,6 +2198,22 @@ a Wooden Torch {0,+} (with 2500 turns of light)
     a fresh torch from your inventory to your almost depleted one, thereby
     refueling it (this makes sense if you are using a torch that provides
     special magic powers).
+
+If you buy a shovel or pick from store '1' to dig up treasure veins, it looks
+like this:
+a Pick {+,1} (0,+2) (+1)
+    The to-hit and to-dam bonus do not count for fighting, but instead slightly
+    help digging. The main factor though is the (+1). For digging tools, this
+    bonus describes their main digging power. The to-hit and to-dam effect is
+    rather small compared to this main factor. Also, the weight of your digging
+    tool also has a little effect (the heavier the better).
+Later on in the game you might find 'ego' digging tools, for example:
+a Pick of Digging {+,9} (+5,+9) (+1) (+3)
+    It's basically same as the normal pick, except it has a second (+3) mod at
+    the end. This belongs to the 'of Digging' suffix and, same as the (+1),
+    further increases the digging ability, in the same way the (+1) does.
+    So overall you can just view it as if it was a Pick (+4) (1 plus 3).
+(See (5.21) for details about digging.)
 
 
 
@@ -2619,6 +2709,9 @@ The wizard will lead you through three steps with detailed on-screen
 instructions, allowing you to create macros from a couple of pre-defined
 command choices which should cover almost all situations.
 
+If the option 'Rogue-like commands' is set to 'yes' when creating a macro in
+the macro wizard, rogue-like command keys will be used in the macro action.
+
 (The macro type, ie command/hybrid/normal will be chosen automatically for you,
 same as when using Quick'n'Dirty macro creation.)
 
@@ -2638,7 +2731,8 @@ target, which you can do by pressing 't' again to choose the closest hostile
 entity.
 
 There are, however, more ways to specify a direction or to use the target
-command, especially since client 4.4.6 which added the '-' option.
+command, especially since client 4.4.6 which added the '-' option, and 4.4.6b
+which added the '+' option.
 Details follow:
 
 The 'Set Target' command (key '*') that sets a target for spells or item uses
@@ -2660,6 +2754,10 @@ answered with..
   -'-' key to use a previously acquired target or cancel the spell/item use/
        shot if there is no valid target currently set. The '-' option is only
        available in client version 4.4.6 and higher.
+  -'+' key, same as '-' except that it won't cancel the action if no valid
+       target was found, but prompt you for manual input instead (hit ESC to
+       cancel, 5 to target your own grid, or any direction key to fire into
+       that direction).
 
        Note that the key '-' is not a command key, but just gets ignored when
        pressed elsewhere than in direction-requests. This means that you can
@@ -3102,14 +3200,6 @@ Note: If a player enters a static-by-death floor, the floor timer will be
       staticness. This timer-reset happens the moment a player enters that
       floor. How long he stays or when he leaves again has no effect.
 
-Be aware that some or even all equipment and inventory might be lost forever
-if you die in places which don't provide enough surrounding free room to drop
-all of your items, for example a dense forest (green tree fields) or mountain
-regions (brown ^ fields)!
-
-Last but not least, non-validated players and characters below level 5 don't
-drop their items on death, their loot will vanish forever.
-
 Hint: The same timing that applies for static-by-death floors is also valid
       for static-by-save&exit floors, ie floors where a player logged out
       instead of doing that in town.
@@ -3117,10 +3207,30 @@ Hint: The same timing that applies for static-by-death floors is also valid
       don't log on too early or you will reset the timer as mentioned above.
 
 
+What happens to your loot
+-------------------------
+If you die, all of your items are dropped to the floor at the place of your
+death. Some items from your inventory or even an item from your equipment might
+get lost, but most of it should be waiting for you to pick it up again after
+someone came and revived you.
+Note however that if you float up or down with your ghost while noone stays on
+the level to keep it, the level will usually immediately change and be lost and
+all your items with it!
+(Only a ghost's death or death of a character which has only 1 life will turn a
+floor static as described further above.)
+If you stood in a place where there is no room for your items to drop, for
+example inside a dense forest (green tree fields) or mountain regions (brown ^
+fields) then your items will be scattered randomly over the whole level.
+
+Last but not least, non-validated players and characters below level 5 don't
+drop their items on death, their loot will vanish forever.
+
+
 Ghosts
 ------
 You can continue playing as a ghost, getting a slight experience penalty,
 but that's not recommended. Instead, you should go for resurrection!
+Ghosts also do not share experience with party members on the same floor.
 
 Ghosts can float up and down freely (just hit '<' or '>' key as if you take
 a staircase), so they can quickly float out of the dungeon without having to
@@ -3211,8 +3321,8 @@ You can now either press one of the 8 direction keys to fire into that
 direction, or you press the asterisk '*' followed by a 't' to designate the
 closest enemy as your target, which usually is what you want.
 Since version 4.4.6 the game also supports '-' to fire at a previously set
-target if it still exists, or cancel the action, see (3.7d) for details about
-targetting.
+target if it still exists, or cancel the action; 4.4.6b further added the '+'
+key; see (3.7d) for details about targetting.
 
 To learn how to create a macro instead of typing all these letters every time
 you want to launch a ranged attack, look at '(3.7) Creating macros for ranged
@@ -3568,27 +3678,33 @@ Oceans-         blue '%' fields.
 --------------------------------
 If you create a new character, it will start in 'Bree', a town located at
 position 32,32 on the world map (same position on all servers!).
+
 The world map however, ranging from 0,0 (bottom left corner) to 63,63
 (top right corner), bears several other towns that you can find and
 explore. These towns often contain different shops (some are said to offer
 *Identify* service or even a cure to Black Breath) and harder dungeons.
+
 However, they might also be a very dangerous place to stay, compared to Bree.
 In general you can say the harder the local dungeon entrance of a town the
 more dangerous monsters can spawn within the town! Bree is the only town that
 contains just more or less harmless townsfolk.
 The worst are Khazad-dum and Lothlorien, if you go here be _very_ cautious.
 Monsters that appear here might look like harmless novice paladins or snagas
-but are in fact of a higher level and more powerful.
+but are in fact of a higher level and more powerful. Also, dangerous monsters
+can spawn in those towns: While Gondolin and Minas Anor can already have nasty
+Mindcrafters, Khazad-Dum and Lothlorien may also spawn the infamous Grand
+Swordsmasters which have killed many characters that went AFK outside the inns.
 However, it has been observed that people who figured out how to climb high
 mountains travelled to Khazad-dum despite their low level for a strange
-reason >:-) .
+reason >:-).
 Even if you decide to stay in Gondolin, which is relatively harmless,
 don't go afk for a longer time or even a snaga archer might kill you with his
 ranged attacks. Always a nasty surprise..
 
 Despite the hazards of higher level towns, towns in general act as a safe zone,
 preventing PK attacks and stop your character's food consumption, meaning that
-you cannot die by starvation while in town.
+you cannot die by starvation while in town. Towns also put experience drain on
+hold, which is important for players wearing Nazgul Rings Of Power for example.
 
 
 Shops:
@@ -3654,6 +3770,8 @@ who is wealthy and in urgent need of your items.
 See (5.7) for more information about ID, *ID* and shops!
 
 
+Towns
+-----
 Here is a list of towns and their corresponding local dungeons:
 
 Town        |Depth/Level|   Local dungeons    | Depth/Level      |Required
@@ -3677,7 +3795,11 @@ your character enters those depths, it should already have boosted speed so
 the slowdown won't bother you but come in handy. For example if you enter
 Mordor you will notice a slowdown to to approx. 1/2 standard time.
 
+
+Dungeons
+--------
 Also, there are several dungeons that aren't bound to a town. Here's a list:
+
 Dungeon                         |   Depth/Level         | Min. required player
                                 |                       |   level to enter
 --------------------------------+-----------------------+---------------------
@@ -3705,15 +3827,15 @@ Nether Realm                    | 8300..9800/166..196   |       40 (*)
 The official main server usually has one or several 'ironman' dungeons
 (see (4.8)), their entrances (stairs) waiting to be discovered by some bold
 explorers.
-Such custom dungeons appear as 'wilderness' in the "Recall depths and Towns"
-list, the minimum required character level to enter is usually 0.
+Such custom dungeons appear as 'Wilderness' in the "Recall depths and Towns"
+list, and usually have no minimum required character level to enter.
 
-(*) To enter the Nether Realm a player must carry the 'King'/'Queen' title,
+((*) To enter the Nether Realm a player must carry the 'King'/'Queen' title,
 acquired by beating Morgoth, Lord of Darkness.
 Each floor in the Nether Realm gives a +2% bonus to experience from monster
 kills.
 The amount of experience is already very high even without the depth-bonus,
-since creatures in the Nether Realm are of a very high level.
+since creatures in the Nether Realm are of a very high level.)
 
 
 
@@ -3892,19 +4014,20 @@ floor to receive an extra feeling on entering the next floor.
 These extra level feelings (displayed in yellow) are:
 
   "What a terrifying place.."
-      means a) there's a highly ood monster or
-      b) a great vault and some ood monster on the level.
+      means a) there's a highly ood monster (20+ levels) or
+      b) a great vault and some ood monster (10..19 levels) on the level.
 
   "You sense an air of danger.."
-      means there's a freely roaming (*) ood monster on the level,
-      and also the level has a vault on it somewhere.
+      means there's a freely roaming ood monster (10..19 levels)
+      on the level, and also the level has a vault on it somewhere.
 
   "Feels somewhat dangerous around here.."
       means there's a vault or a rather dangerous monster pit or nest
       on the level.
 
   "There's a sensation of challenge.."
-      means there's a freely roaming (*) slightly ood monster on the level.
+      means there's a freely roaming slightly ood monster (10..19 levels)
+      on the level.
 
   "There's a special feeling about this place.."
       means there's a unique monster on the level.
@@ -3912,7 +4035,10 @@ These extra level feelings (displayed in yellow) are:
   "What a boring place.."
       means nothing of the above apply to this level.
 
-(*) "freely roaming" means that the monster isn't generated inside a vault.
+Explanations:
+"Freely roaming" means that the monster isn't generated inside a vault.
+"Ood" means out of depth, ie a monster which is of higher level than the actual
+dungeon level it spawned on.
 
 Note that you will only get one, ie the strongest of these feelings applying
 to your dungeon level, meaning feelings higher up the list will take precedence
@@ -4174,6 +4300,51 @@ Poison  -Poisoned       The player will continuously lose Hit Points.
                         poisoned (compare (5.6)).
 
 
+(4.11a) Drain effects
+---------------------
+Apart from the effects listed above which are indicated in the status bar at
+the bottom of the main window, there are three 'drain' effects that can occur.
+These can be caused by items, monsters or terrain, and are:
+
+Experience drain ('Drains your life force')
+    Having 'Hold Life' does not protect against this.
+    If you equip multiple items that drain experience, the total drain will
+    diminish with each further item though instead of adding up, so for example
+    using two rings of power will be less severe than than one might expect.
+    If experience drain hits the threshold for your current character level, it
+    will not drain any further, so you cannot lose a level from it. Beware
+    however, that you are not hit by another life draining effect that lowers
+    your experience further below the level threshold, or the experience drain
+    will kick in again.
+    Experience drain is on hold while you are in town areas.
+    All the rings of power that are dropped by Nazgul drain experience (and
+    turn you invisible).
+
+Mana drain ('Drains your magic')
+    Drains your mana pool.
+
+Hit point drain ('Drains your hit points')
+    Drains your hit points down to zero, then stops. This means that this
+    effect won't kill you, but can make it extremely risky to go AFK in an
+    unsafe place. Well, going AFK in an unsafe place can kill you anyway.
+    HP drain stacks and is given by:
+     -Items that just drain your HP
+     -Items that have strong good powers and you use them as a Vampire
+     -The sun, when it's day and you're a Vampire and out in the open without
+      a protective mummy wrapping
+     -Monster forms that provide wall-passing (wraith form)
+     -Being entombed in walls, ie stuck without the ability to pass through them
+    HP drain can be countered by HP regeneration, which can be gained from:
+     -'Regeneration' ability (flag), gained from items or as racial/form bonus
+     -Health skill
+     -Holy Curing school bonus
+     -Nature school spell
+     -Biofeedback from fire stones
+    which all stack too.
+
+Also see (5.17) for how these drain effects stack or may be cancelled out.
+
+
 
 (4.12)  Malicious effects monsters can suffer
 ---------------------------------------------
@@ -4265,6 +4436,32 @@ Arena Monster Challenge
     to the floor right the moment the event finally ends, you will lose it
     because everyone gets teleported to town automatically and the arena is
     removed (and your weapon with it).
+    Apart from that, inventory and equipment cannot be damaged/destroyed or
+    disenchanted in this event.
+
+
+Miscellaneous challenges
+------------------------
+There are certain other challenges that neither really count as quests nor as
+events:
+
+Ironman Deep Dive Challenge
+    There is exactly one designated huge ironman dungeon (or tower) on each
+    server, normal one and rpg server, which is 99 levels in size and does not
+    allow recalling in between.
+    This means, it's extremely likely that you will die before making it
+    through all 99 floors and become able to recall back out.
+    This dungeon serves as a challenge of how far you can make it before death!
+    The level reached will be recorded in the mayor's office in Bree ('n' key
+    inside the office, to view the records).
+    To provide some support, this dungeon will have 'town levels' occur at
+    random, meaning that the whole level is actually not a normal dungeon level
+    but a wild town. Monsters may still spawn on it though!
+    Since you cannot recall out before reaching the 99th floor, in case you
+    need to leave you'll just have to log out inside of the dungeon. For this,
+    keep in mind that your character will, as usually when logging out outside
+    of towns, stay in the game for about 30 more seconds during which it could
+    be killed if you log out in an unsafe place.
 
 
 
@@ -4378,6 +4575,35 @@ In general, the bigger a weapon the more you may parry, while the bigger a
 shield the more you will block!
 Last but not least, training "Weaponmastery" skill will also increase your
 parry chance a good deal.
+
+
+(5.1a) Melee weapon types
+-------------------------
+As mentioned previously, there are four weapon classes:
+Swords, axes, blunt weapons, polearms.
+
+You may wonder which one to choose and why. In general, if your character is
+especially skilled at one of the four masteries you might want to pick that one
+to save skill points.
+
+Also, priests cannot use edged weapons that aren't 'blessed' (a special magical
+property, ie ego-power), so they'll usually use blunt weapons only.
+
+However, if you have a choice or don't care about a few skill points more, you
+may want to consider the following table to help you make a decision:
+
+
+Type        1h/1.5+2h abundance   2h top damage/weight
+------------------------------------------------------
+Swords      very high / medium    medium / medium
+Axes        medium / medium       high / heavy
+Blunt       medium / high         high / very heavy
+Polearms    low / high            high / medium
+
+
+For example if you stick with dual-wielding two weapons, you might want to go
+with swords and definitely not with polearms, since there are a lot of 1h
+swords, and very few 1h polearms.
 
 
 
@@ -4559,8 +4785,8 @@ Here's a table to tell you the values for str_wgt:
         14          12                      30          18/50-18/220+
         15          13
 
-The armour weight limit is 5.0 lb + Martial Arts skill level * 0.4 lb.
-So for MA 50 it is 5.0 + 20.0 = 25.0 lb.
+The armour weight limit is 5.0 lb + Martial Arts skill level * 0.42 lb.
+So for MA 50 it is 5.0 + 21.0 = 26.0 lb.
 If your armour becomes too heavy, you will see this warning message:
 "Your armour weight strains your martial arts performance."
 
@@ -4732,7 +4958,9 @@ You will receieve a warning message, telling you:
 To move freely, you may wear 10.0 lbs of armoury plus a strength-factor plus
 6 * your combat skill. Strength factor is 0.6 * str_hold (see table above to
 find your str_hold). So the top weight limit is
+
 10.0 + 0.6 * 50 (combat) + 0.6 * 100 (str_hold) = 100.0 lbs.
+
 
 Some special abilities depend on armour weight too. Those are..
 -dodge chance from 'Dodging' skill.
@@ -4741,9 +4969,12 @@ Some special abilities depend on armour weight too. Those are..
 -extra blow/round bonus from dual-wielding two weapons.
 -area searching for the 'Rogue' class (exclusive ability).
 -cloaking mode for the 'Rogue' class (exclusive ability).
+
 If the armour becomes too heavy to perform those, a message will appear:
 "The weight of your armour strains your flexibility and awareness."
-The weight limit is 20.0 + (Combat skill / 10) lbs.
+
+This 'rogueish weight limit' (the skills are mostly used by rogues) is:
+20.0 + (Combat skill * 6 / 50) lbs, ie max 26.0 lbs.
 
 
 Glove encumberment (concerning magic)
@@ -4980,7 +5211,8 @@ Chaos           Chaos attacks can also have nasty side-effects if you don't
                 -Confuse you.
                 -Let you hallucinate.
                 -Drain some experience. Resisting 'Nether' will also prevent
-                 this.
+                 this. Having 'Hold Life' will also provide some protection
+                 against life draining.
                 Resisting chaos will also make you resist confusion attacks.
                 Resisting chaos will prevent hallucination from certain mind
                 blast attacks.
@@ -4996,12 +5228,15 @@ Darkness        Darkness effects can blind you if you don't resist it.
                 Resistance will cut damage to 4/7..4/12.
                 Breath damage is monster HP/6. Darkness breath caps at 400.
                 Darkness Storms (balls) do (level*5)+(10d10) damage.
-Nether          Having 'Hold Life' can protect from experience loss.
-                Resistance will cut damage to 6/7..6/12 and prevent life
-                draining (experience loss).
+Nether          Nether is kind of 'the element of undead' - most higher level
+                undead creatures will have a nether attack of some sort.
+                Resistance will cut damage to 6/7..6/12 and prevent all life
+                draining (experience loss) from nether attacks.
                 Breath damage is monster HP/6. Nether breath caps at 550.
                 Nether bolts do 30+(5d5)+(level*3/2) damage.
                 Nether balls do 50+(level*4)+(10d10) damage.
+                If you lack nether resistance, having 'Hold Life' ability can
+                at least offers some protection from experience loss.
 Disenchantment  This attack does massive damage and can also disenchant your
                 equipped items, lowering their to-hit/to-dam/to-ac bonus!
                 It can also destroy ethereal ammunition.
@@ -5077,13 +5312,15 @@ Radiation/Nuke/ This is a poisonous attack (player suffers pure poison damage)
                 - your equipment will be safe from acidic damage.
                 Breath damage is monster HP/3 and caps at 800.
                 Nuke balls (radiation balls) do (level*3)+(10d6) damage.
-Rocket          Rockets combine shard & sound effects with heat influence on
-                your inventory and shard damage to the player. Rockets do
-                insane damage.
+Rocket          Rockets combine fire, shard & sound effects and can also damage
+                your inventory. Rockets do insane damage if unresisted:
                 Rocket damage is monster HP/4, it caps at 800.
-                Shard and sound resistance will lower damage to 5/6 each,
-                fire resistance will lower damage to 4/5, fire immunity to
-                3/4 (overriding fire resistance).
+                Shard and sound resistance will lower damage by 1/6 each,
+                fire resistance will lower damage by 1/5, fire immunity by
+                1/4 (overriding fire resistance). These reductions stack (as in
+                they are consecutively applied to the damage).
+                Shard resistance will prevent cuts, sound resistance will
+                prevent getting stunned.
                 (Rockets are treated internally like breathing.)
 
 
@@ -5153,6 +5390,7 @@ Items are classified by
 -sometimes you may find an artifact which can have quite a bunch of
  different powers combined! Artifacts can be recognized by them carrying
  a name. Example: The War Maul 'Turmil' or The Whip of Gothmog.
+ (See (5.9b) for more information about artifacts.)
 
 If you find an item, it's 'unidentified'. That means you see only the
 basic item type.
@@ -5251,18 +5489,7 @@ Shop prices in general may slightly vary depending on the shop owner's race
 and your character's race.
 
 Sometimes an item turns out to be an artifact!
-Artifacts are unique. If an artifact is owned by a player, noone else
-can find it anymore until it's lost (for example if the player dies)
-or sold to a shop. Depending on a server's configuration artifacts
-usually stay a while in the shop and can be bought by other players
-before they finally disappear from the stock.
-
-There are static artifacts and random artifacts ('randarts').
-Static artifacts are predefined and have fixed abilities. Their number
-therefore is limited.
-In case all static artifacts are found, players can still find randomly
-generated artifacts so a server won't run out of artifacts.
-Artifacts of any type cannot be enchanted by any means.
+See (5.9b) for more information about artifacts.
 
 If a player holds an unidentified item long enough he/she might get
 a 'feeling' about it. The more points in 'Combat' skill the player has
@@ -5339,7 +5566,7 @@ LUCK ('The item increases your luck')
         items when...
         -killing monsters
         -opening chests
-        -finding items in the dirt by (magical or physical) digging.
+        -finding items in the dirt by digging.
         'Good' means that an item has enchantments to hitchance, damage or
         armour class. How much exactly it has isn't affected by luck!
         'Great' means that an item has ego powers or is an artifact. Luck does
@@ -5371,11 +5598,13 @@ CHAOTIC ('Your weapon produces chaotic effects')
         On hitting, you have a 50% chance to do one of the following:
         a) drain life (VAMPIRIC, see (5.15)) (very likely)
         b) earthquake (see (5.13))
+           (Can be suppressed with !E inscription)
         c) confuse target (very likely)
         d) teleport target away
         e) polymorph target
 IMPACT ('It can cause earthquakes')
         Causes earthquakes if the damage is > 50. (See (5.13).)
+        (Can be suppressed with !E inscription)
 WOUNDING ('It is very sharp and makes your foes bleed.')
         Has additional to-hit/to-dam bonus.
 Weapons of Spinning
@@ -5442,19 +5671,17 @@ Dark Sword      Dark Swords have a so-called 'antimagic field', which
                 The radius of the antimagic field is several fields (chance
                 to interrupt spells, divided by 9), getting smaller if the
                 chance is smaller than 30%.
-                (Radius and field strength are cumulative with Antimagic
-                skill and will hence add to each other.)
                 Dark Swords never give more than 30% AM, even if tohit and
                 todam boni added together result in a negative number.
                 They also never give 'negative antimagic', 0% AM is the
                 minimum, even if tohit+todam are greater than its AM.
                 AC boni on Dark Swords won't affect the antimagic field.
-                The antimagic chance of a dark sword stacks with the
-                Antimagic skill (see 6.2).
+                The antimagic chance and field radius of a dark sword stacks
+                with the 'Antimagic' skill (see 6.2).
 Bluesteel Blade Cannot rust (not damaged by water attacks) and are especially
                 sharp (see 'VORPAL' under (5.8)).
 Shadow Blade    Resists darkness, cannot be damaged by acid or water, provides
-                a fixed stealth bonus of +2..
+                a fixed stealth bonus of +2.
 Blade of Chaos  Resists chaos and produces chaotic effects (see (5.8)).
 Hunting Spear   Slays animals.
 Slaughter Axe   Slays animals.
@@ -5463,6 +5690,13 @@ Demon Hammer    Slays demons.
 Thunder Axe     Slays giants, provides lightning brand and resistance.
 Mace of Disruption      Slays undead.
 Scythe of Slicing       Slays dragons and animals.
+
+Weapons of Morgul       These are terribly cursed weapons that aren't good for
+                        anything, just try to get rid of them. Since they have
+                        a heavy curse on them, you need to either use a scroll
+                        of *remove curse* or use enchant scrolls to break it.
+                        For details about the enchant-scrolls trick, which is
+                        usually much cheaper, see paragraph '(5.14) Curses'.
 
 Magic ammunition (Magic Arrows, Magic Bolts, Magic Shots).
                 Those will return into your quiver magically, so just having
@@ -5646,15 +5880,19 @@ Acquirement     Gives you a great item. Reading it on deeper dungeon levels
                 Note that while some towns also have a high level, reading this
                 scroll in town won't guarantee a 'great' item, which will
                 be guaranteed if you read it in the dungeon.
-*Acquirement*   Gives you two or three great items. Reading it on deeper
-                dungeon levels produces better results mostly.
-                Note that while some towns also have a high level, reading this
-                scroll in town won't guarantee a 'great' item, which will
-                be guaranteed if you read it in the dungeon.
+*Acquirement*   Same as Acquirement, but gives you two or three great items.
 Fire/Ice/Chaos  Fires a ball of the according type around you. Make sure you
                 resist it or you will take damage too.
 Lottery         This might be your chance today to win the Jackpot!
-Vermin Control  Stops breeders on the map from multiplying.
+                Just read it, if you win any money, it will appear under/around
+                your character on the floor. You will always get a message that
+                tells you if you won or not.
+                A common question is if someone ever won the first prize and
+                how much it is:
+                Yes, several people have won it, although it happens extremely
+                rarely. The prize at the time of writing this is about 1.5M Au.
+Vermin Control  Stops breeders on the map from multiplying. Doesn't have effect
+                on certain non-natural breeders such as Unmakers.
 Wilderness Mapping  Maps the wilderness area around the worldmap sector you
                     are currently within. These scrolls also sometimes carry
                     an inscription telling the location of a hidden dungeon.
@@ -5784,6 +6022,9 @@ Codex, Spellbook, Grimoire
                         - Speed-up:     Speed bonus.
                         - Heroism:      10 more HP, to-hit bonus, resist fear.
                         - Temp res:     Temporary base and poison resistance.
+                    If you eat too many of them over a short period of time you
+                    might get poisoned by adrenaline overdose, with lethal
+                    outcome.
 Dwarven lanterns    Make you resist fear. Don't need to be fueled.
 Feanorian lamps     Make you resist fear and see the invisible. Don't need to
                     be fueled.
@@ -5793,7 +6034,8 @@ Mattock/Pick/Shovel Diggers, improving your digging capabilities.
                     Main factor is the (+diggingpower) mod though. (Equip it!)
                     If you lack any of these valuable digging tools, axes and
                     swords can help you hacking down trees or bushes (see
-                    'Digging' skill in (6.2)).
+                    'Digging' skill in (6.2) and (5.21) for more information
+                    about digging).
 Mummy Wrapping      Reduces your charisma slightly, and prevents other players
                     from seeing your equipment except for your melee and/or
                     ranged weapon. Also makes you look dark like being
@@ -5832,18 +6074,13 @@ Mushroom of Restoring
 Mushrooms with bad effects are also often poisonous.
 Lembas (elvish waybread)
                     Satisifies your hunger, cures poison and hallucinations.
-Firestones          Eath them only if you are a Draconian.
-                    They will randomly boost your powers for a short time.
-                    See (5.9) for firestone details. If you eat too many of
-                    them over a short period of time you might get poisoned
-                    by adrenaline overdose, with lethal results.
 Flint               Prevents your light from going out.
 Empty bottles       You can /fill these at fountains to turn them into
                     potions. (See 0.2 for more details.)
 Skeletons/Bones/Skulls  You can create ammunition from these if your Archery
-                        skill is sufficient.
+                        skill is sufficient (see (6.12)).
 Rubble ':' on the floor You can create sling ammo from this. You cannot pick
-                        up rubble, just stand next to it.
+                        up rubble, just stand next to it (see (6.12)).
 Guild key               See (6.9).
 Chests              Chests may contain treasures or items. Usually, chests
                     you find will have hidden traps on them. So what you do is
@@ -5888,6 +6125,84 @@ Moon amulets: Sleep monsters.
 Rage amulets: Berserk.
 Elemental rings: Breath the ring element and temporary resistance to it.
 Teleportation rings: Explode for teleportation.
+
+
+(5.9b) Artifacts
+----------------
+Some items are 'named', those possess especially great magic powers and are
+also called 'Artifacts'.
+Different from other items artifacts will pseudo-ID as 'special' (given
+sufficient combat/magic/archery skill) or as 'terrible' if they are cursed.
+
+Artifacts are unique. If an artifact is owned by a player, noone else can find
+it anymore until it's lost (for example if the player dies) or sold to a shop.
+Depending on a server's configuration artifacts usually stay a while in the
+shop and can be bought by other players before they finally disappear from the
+stock.
+
+The artifact name can either be given as a real name, for example:
+    The Dagger 'Nimthanc'
+or it can be in the form of a description like for example:
+    The Whip of Gothmog
+The 'The' indicates that this item is one of a kind, aka an artifact.
+
+To find out all about the magic powers of an artifact it needs to be
+*identified*, for example by a 'Scroll of *Identify*' or in one of the *ID*
+shops that occur in every town, which will usually cost around 2000..3000 gold.
+
+There are two types of artifacts, 'true artifacts' (also called 'static
+artifacts') and 'random artifacts' or short 'randarts'.
+
+True artifacts are predefined in the a_info.txt file and will always sell for
+their defined value even if they have not been *identified*.
+Usually true artifacts may not be dropped into a house (will just disappear!)
+and may not be carried by winners, ie characters that have beaten Morgoth.
+Since static artifacts are predefined and have fixed abilities, their number
+therefore is limited. Thanks to the existance of random artifacts, this won't
+be able to cause any shortage of artifacts that can be found though:
+
+Random artifacts are composed randomly and even if they happen to bear the same
+name might have totally different powers. Randarts need to be *identified* to
+sell for what they are really worth.
+Randarts can be dropped in houses and used by anyone just fine, with the
+exception that randarts that give a hit point bonus can only be found/created
+by winners (characters that have beaten Morgoth), and that the hit point bonus
+will not apply if a non-winner character happens to use them.
+
+As was just mentioned, randarts can actually be created by players, using a
+'Scroll of Artifact Creation' which are somewhat often sold in the 'Expensive
+Black Market' in Minas Anor, but also may very rarely spawn in normal black
+markets.
+The advantage of creating an artifact is that the player can determine the base
+item type he wants to use. For more information about artifact creation see
+(8.4).
+
+Artifacts greatly resist Nazguls, which cause most other weapons to break more
+or less instantly. So even if an artifact weapon you find seems not very
+appealing in particular you might want to keep it just for slaying Nazgul.
+(See (1.5) for more information about Nazgul.)
+
+Note: 'The Stormbringer' is not a real artifact but it will show the same
+resilience as true artifacts and random artifacts vs Nazgul.
+
+Some artifacts can be 'A'ctivated for a special effect. This will be shown
+in the list of its powers that you get when *identifying* it.
+
+If you wear/wield multiple artifacts of similar name, you will receive a luck
+bonus (see (5.8), 'LUCK', for details about luck). For example if you equip
+    The Whip of Gothmog    (which happens to be a true artifact)
+and also
+    The Hard Leather Armor 'Gothmog'    (which is actually a random artifact)
+You'd get a small luck bonus. The more artifacts of similar name you equip the
+greater the luck bonus will be.
+
+Artifacts of any type cannot be enchanted by any means, nor harmed by elemental
+attacks of any type. Also they have a high chance to resist disenchantment
+effects. (If the player actually resists disenchantment already then they are
+completely safe.)
+
+Artifact ammunition never breaks or (in case of boomerangs) falls down to the
+floor instead of returning. Artifact weapons are harder to get disarmed.
 
 
 
@@ -6029,34 +6344,25 @@ TERRIFY         fear.
 PARALYZE        free action.
 EXP_xx          hold life.
 LOSE_xxx        sustain stats.
-EAT_xxx         DEX,stealing skill.
-                Device of theft
-                prevention.
-                Won't help against
-                EAT_FOOD/EAT_LITE.
+EAT_xxx         DEX, stealing skill.
+                Device of theft prevention.
+                Won't help against EAT_FOOD/EAT_LITE.
 UN_BONUS        disenchantment.
 UN_POWER        none.(drains charges/energy from your items)
                 Magic Device skill helps to prevent draining though.
                 See (6.10) for more information about the Magic Device skill.
 TIME            time.
-DISEASE         poison. This attack
-                can also decrease
-                your constitution.
-SANITY          none. (mimics using a
-                WEIRD_MIND/EMPTY_MIND
-                form resist slightly)
+DISEASE         poison. This attack can also decrease your constitution.
+SANITY          none. (mimics using WEIRD_MIND/EMPTY_MIND form resist slightly)
 HALLU           chaos.
 PARASITE        <no effect>
-DISARM          fighting skill, weapons
-                worn 2-handed are
-                harder to disarm.
+DISARM          fighting skill.
+                Weapons worn 2-handed are harder to disarm (stacking).
+                Artifacts are also harder to disarm (stacking).
+                Heavily cursed items are quite hard to disarm (stacking).
 FAMINE          none. Makes you hungry.
-SEDUCE          none. Makes you take off
-                equipped items.
-SHATTER         hits & causes an
-                earthquake.
-                Very dangerous.
-                See (5.13).
+SEDUCE          none. Makes you take off equipped items.
+SHATTER         hits & causes an earthquake - very dangerous, see (5.13).
 
 Getting hit by higher undead creatures may also infect you with the
 Black Breath! (See 1.5 for more information about Black Breath.)
@@ -6100,6 +6406,10 @@ CURSED          can be broken by a regular 'remove curse'.
                 Item cannot be taken off until the curse is broken.
 HEAVY_CURSE     requires a strong '*remove curse*' to be broken.
                 Item cannot be taken off until the curse is broken.
+                On weapons, there is a high chance of resisting disarming.
+                See the hint regarding the use of enchant scrolls to break a
+                heavy curse instead of using a *rc* scroll, written at the
+                bottom of this paragraph!
 PERMA_CURSE     This curse can never be broken.
                 Item can never be taken off again! Mimics polymorphing into a
                 form that cannot wear the specific item won't succeed either.
@@ -6134,6 +6444,10 @@ can alternatively be broken by enchanting the item's stats above +0.
 Each enchantment of any of their stats (to-hit, to-dam, to-ac) above +0 has
 a certain chance to break the curse. This can often be cheaper than buying a
 *Remove Curse* scroll for HEAVY_CURSE items.
+This is an especially commonly used trick for getting rid of Morgul weapons.
+Just pick the stat that is already higher. Example:
+A Dagger of Morgul (-33,-15) -> You'd enchant its damage to +0 or higher,
+since it requires you to buy less scrolls (15) than going for to-hit (33).
 
 
 
@@ -6222,11 +6536,21 @@ If another player is invisible and not of higher level than you..
          a shadow cloak;
         -you see him 'flicker' if you lack seeing invisible or if he's wearing
          a shadow cloak (or both). He will fade in and out of your sight.
-         The lower his level, the more often you will be able to see him.
          If you want to look at his equipment with the  '  key, then you'll
          need some timing, might take several tries.
 Invisibility (on players) overrides ESP. So it does help in a (blood bond)
 duel even if the opponent has ESP.
+The effect of invisibility is greatly reduced in PvP but still gives an edge.
+
+
+Cloaking:
+---------
+The ability to cloak themselves is exclusive to rogues and automatically
+acquired at level 15. This will effectively render them invisible, but it is in
+fact NOT the "Invisibility" that has been described above.
+Cloaking overrides any detection mechanism, a cloaked player can only be seen
+by party members, or while the cloaking is weakened because the cloaked player
+performed certain (noisy) actions. (Also see (0.2) for more information.)
 
 
 
@@ -6266,10 +6590,14 @@ In fact, they add up / stack. Those are:
 -Drain mana ('Drains your magic'. Note that 'mana regeneration' (also called
  mana-charging) does NOT stack. So it can cancel out the effect of only ONE
  item that drains mana, not of any more.)
+ See (4.11a) for more information.
 -Drain hit points ('Drains your health'. note that 'regeneration' does NOT
  stack, so it can cancel out the effect of only ONE item that drains hit
  points, not of any more. However, the 'Health' skill is able to further
  increase your regeneration rate.)
+ See (4.11a) for more information.
+-Drain experience ('Drains your life force'.
+ See (4.11a) for more information.
 -Extra light radius
 
 
@@ -6476,12 +6804,63 @@ gain the first few levels of a new runemaster.
 
 
 
+(5.21) Digging
+--------------
+Your chance to successfully tunnel through an obstacle depends on the obstacle
+and your 'digging power'.
+
+Your digging power is calculated as follows:
+An equipped item that provides (+X) to digging will add 20*X.
+If you have a digging tool equipped, its weight is added (eg 25.0 lbs -> +25).
+If the digging tool is enchanted to hit or to damage, those values are added.
+The power value so far is now multiplied by a value between 1 and 2, depending
+on your 'Digging' skill (see (6.2)). If the skill is 0, the multiplier is 1, if
+it's 50, the multiplier is 2. Otherwise the value is linearly inbetween.
+After that, a bonus is added depending on your strength:
+Ranging from +0 at 3 over +10 at 18/10, +50 at 18/110 up to +100 at 18/***.
+
+If you don't have a digging tool equipped, your total digging power is halved.
+
+To dig through certain features, you have to win a random number roll of 1..x
+by having a digging power that is greater than the roll:
+Rubble      200
+Trees       400
+Bushes      300
+Ivy         200
+Dead trees  300
+Sandwalls   250 +  5
+Magma       400 + 10
+Quartz      800 + 20
+Granite    1600 + 40
+The +x is a fixed value that gets added to what you have to overcome.
+For example you cannot successfully tunnel through quartz if you don't
+have at least 21 digging power, since you have to overcome the +20.
+
+Tunnelling into walls that are actually secret doors will be treated as if
+you were 'searching' instead of tunnelling.
+Tunnelling into known doors will just try to open them instead.
+
+Tunnelling might reveal special floor features, items or gold, see
+'Digging' skill in (6.2) for details.
+Also see (3.4a) for more information on digging tool mods.
+
+If you haven't got a digging tool equipped, or if it's just a basic shovel (+1)
+then wielding a sword or especially an axe can work as pseudo-digger when you
+want to hack down organic material such as trees, bushes, ivy or spider webs.
+(Dual-wielding does not help, so two swords/axes can't dig better than just
+one. Wielding a 1.5-handed weapon in only 1 hand will decrease your digging
+chance though, so take off your shield for best results.)
+
+
+
 (6) Character details
 =====================
 (6.1) Attributes
 ----------------
-Depending on your race and class you will have different character attributes.
-The attributes are also called 'stats'.
+Characters have six 'attributes', also called 'stats', which are strength,
+intelligence, wisdom, dexterity, constitution and charisma.
+These depend on your race and class and the stat assignments you did during
+character creation process.
 
 Stats are displayed as values from 3 (minimum) to 18.
 (Note: This can be changed in TomeNET options, press key =5 and toggle
@@ -6796,12 +7175,7 @@ Note that not every skill is available to every profession (class).
                                 accessible via 'm', see (6.12) for details.
                                 Increases your chance to score critical hits.
                                 At 10 you may create ammunition from bones,
-                                skeletons and rubble on the floor (press 'm').
-                                (You can't pick up rubble; if you want to make
-                                ammunition from it, just stand next to it!)
-                                In order to create ammo, you need to wield the
-                                appropriate ranged weapon before you try:
-                                Bow/crossbow for bones, slings for rubble.
+                                skeletons and rubble on the floor (see (6.12)).
                                 Lets you pseudo-id ranged weapons and
                                 ammunition more often the higher the skill.
                                 If increased to at least 11, pseudo-id will
@@ -7037,9 +7411,9 @@ Note that not every skill is available to every profession (class).
                                 they will provide a great damage boost.
     .Dodging                    Ability to evade attacks. In order to get any
                                 benefits from doding skill at all, your armour
-                                mustn't be so heavy that you get a flexibility
-                                warning (compare (5.5)) and also you must not
-                                be using a shield.
+                                mustn't be too heavy. If it is, you will get a
+                                flexibility warning (compare (5.5)).
+                                Also, you must not be using a shield.
                                 There are various attacks that can be dodged:
                                 Melee attacks mostly, bolts, arrows and the
                                 likes (both magical and physical) shot by
@@ -7113,9 +7487,13 @@ Note that not every skill is available to every profession (class).
                                 Note that Health skill stacks with +LIFE items
                                 (compare '+LIFE' in (5.8)).
     .Swimming                   Allows you to swim even while carrying more
-                                weight and protect your items from water.
+                                weight and to better protect your items from
+                                water.
                                 Skill maxes at 01.000, with the ability to
                                 swim improving steadily while increasing it.
+                                At 0.0700 you become able to swim very swiftly
+                                if no monsters are within sight, enabling you
+                                to 'run' through water.
     .Climbing                   You need this at 01.000 to learn climbing.
     .Digging                    How well you are able to dig. Also affects
                                 your chance to find items, for the items to
@@ -7130,6 +7508,9 @@ Note that not every skill is available to every profession (class).
                                 axes will help a lot and swords somewhat, in
                                 case you have no good digging tool at hand.
                                 2-handed axes/swords even more than 1-handed.
+                                See (3.4a) for more information on digging
+                                tools and (5.21) for technical details on
+                                digging.
 
 The abilities Swimming, Digging and Climbing are also granted by items you
 can find. Those are for example items that grants you flying, so you may just
@@ -7246,8 +7627,8 @@ Blows/Round
     on your strength, dexterity, your class, your weapon.
     Spending points in specific weapon masteries will give you an additional
     blow at 25 and at 50 (like sword or blunt mastery).
-    Tables of blows/round limits are at (5.4) (for martial arts) and at (6.5)
-    (for melee weapons).
+    Tables of blows/round limits are at (5.4) for martial arts, and at (6.5)
+    and (6.5a) for melee weapons.
 Shots/Round
     How often per round you are able to use your ranged weapon.
     Spending points into specific archery skills will give you additional shots
@@ -7257,8 +7638,8 @@ Shots/Round
 Infra-Vision
     How far you can see warm-blooded monsters in the dark.
     10 ft equal a distance of 1 field.
-    Having this above zero can be very helpful for fighting monsters while you
-    are blinded, since IV still works then.
+    IV can be very helpful for spotting monsters outside of your light radius
+    that don't carry a light source themselves.
 
 These miscellaneous abilities can also change when your character progresses,
 depending on your +hit and +dam (concerning Fighting and Bows/Throws) or your
@@ -7281,8 +7662,7 @@ Disarming       Intelligence, dexterity, _'Disarming'_
 Magic Device    Intelligence, _'Magic-Device'_
 
 
-Note that your age, height, weight, social class and gender don't have
-influence on the gameplay at this time.
+For age, height, weight, social class and gender see (6.14).
 
 
 Apart from those generic abilities, there are several class- or race-specific
@@ -7499,13 +7879,13 @@ from skills or items yet).
 Human        0   0   0   0   0   0       10     100%     0ft
              0   0   0   0  10   0    0   0
 Half-Elf    -1  +1  +0  +1  -1  +1        9     110%    20ft
-             2   3   3   1  11   6   -1   5
+             2   5   3   1  11   6   -1   5
 Elf         -1  +2  +1  +1  -2  +2        8     120%    30ft
-             5   6   6   1  12   8   -5  15
+             5   6   6   2  12   8   -5  15
 Hobbit      -2  +2  +1  +3  +0  +1        7     115%    30ft
-            15  18  18   4  15  12  -10  20
+            15  12  18   4  15  12  -10  20
 Gnome       -1  +2  +0  +2  +1  -2        8     125%    40ft
-            10  12  12   3  13   6   -8  12
+            10  18  12   3  13   6   -8  12
 Dwarf       +2  -2  +2  -2  +2  -3       11     130%    50ft
              2   9   9  -1  10   7   15   0
 Half-Orc    +2  -1  +0  +0  +1  -4       11     115%    30ft
@@ -7513,7 +7893,7 @@ Half-Orc    +2  -1  +0  +0  +1  -4       11     115%    30ft
 Half-Troll  +4  -4  -2  -4  +3  -6       12     135%    30ft
             -5  -8  -8  -2   5  -1   20 -10
 Dunadan     +1  +2  +2  +2  +3  +2       10     170%     0ft
-             4   5   5   2  13   3   15  10
+             4   3   5   0  13   3   15  10
 High-Elf    +1  +3  -1  +3  +1  +3       10     250%    40ft
              4  20  20   3  14   3   10  25
 Yeek        -5  -5  -5  -5  -5  -3        7      80%     0ft
@@ -7521,13 +7901,13 @@ Yeek        -5  -5  -5  -5  -5  -3        7      80%     0ft
 Goblin       0  -1  -4  +4  +2  -5       10     120%    30ft
              2  -3  -3   0   8   2   12  -5
 Ent         +8  -4  +2  -4  +8  -4       14     320%     0ft
-             5   0  20  -6   4   5   15   5
-Draconian   +4  +2  +2  +1  +3  +2       12     350%     0ft
-             6   0  10 -16  10  30   15   5
-Dark-Elf     0  +2  +1  +3  +1  -6       10     140%    50ft
-             0   3   6   4   6  10   15  15
+            -4   0  20  -6   4   5   15   5
+Draconian   +4  +2  +2  +1  +3  +2       12     350%    50ft
+             0   0  10 -10  10  30   15   5
+Dark-Elf     0  +2  +1  +3  +1  -6       10     150%    80ft
+             7   3   6   4   6  10   15  15
 Vampire     +2   0  -3  -1   0  -6       11     220%   150ft
-            -4   0  20   2  13  -4   10 -10
+            -2   3  20   2  13  -4   10 -10
 
 
 
@@ -7537,9 +7917,15 @@ Depending on your class, your start-up equipment and your skill tree will
 vary. For example a warrior cannot learn magic spells.
 
 Adventurer
-    Adventurers can train nearly all skills, but are not very good in a
-    specific one. Their magical power is basing on their intelligence as well
-    as wisdom.
+    Adventurers are hardy and versatile, they have no preferred way of fighting
+    or magic, and can adapt to any situation at hand.
+    They have no big big strengths nor weaknesses.
+    Adventurers can train nearly all skills, but do not excel at any specific
+    one. The size of their mana pool depends on both their intelligence and
+    their wisdom in equal parts.
+    Adventurers are often hybrids that combine various features of different
+    and more distinct classes in one character, creating unusual mixtures of
+    abilities.
 
 Warrior
     A Warrior is a hack-and-slash character, who solves most of his problems
@@ -7547,20 +7933,27 @@ Warrior
     a magical device. Their prime stats are Strength and Constitution, and a
     good Dexterity can really help at times. A Warrior will be good at melee
     and bows, but bad at most other skills. A Warrior learns no magic but can
-    train to use magic devices. A warrior has more attacks per round than any
-    other class.
-    Warriors can decide to become 'Unbelievers' by spending points into
-    the 'Anti-magic' skill. As soon as they spend the first point here
+    train to use magic devices; also he may dual-wield two one-handed weapons
+    at once, although he will need to use light armour for this strategy to be
+    effective. Provided his strength is high enough, a two-handed weapon will
+    usually be preferable over dual-wielding if a warrior seeks to forego
+    defense to maximize damage, since it will still allow heavy armour at the
+    same time, which dual-wielding doesn't.
+    Warriors have more attacks per round than any other class.
+    They may decide to become 'Unbelievers' by spending points irreversibly
+    into the 'Anti-magic' skill. As soon as they spend the first point here
     they will immediately become unable to use any magic wand/staff/rod!
-    The full opposite of Sorcerers, Unbelievers so strongly despise magic that
+    The full opposite of sorcerers, unbelievers so strongly despise magic that
     not only do they refuse to use magic spells, they refuse all training in
     the use of magic items, which leaves them almost totally incompetent when
     trying to use a magic item, although they can still quaff potions and read
-    scrolls. Because they are so unattuned to magic, Unbelievers can prevent
-    magical gates from opening around them, eventually extending to a complete
-    suppression of teleportation abilities and all magic in the area around
-    them.
-    Warriors can also become monk-like fighters, by training the Martial Arts.
+    scrolls. Because they are so unattuned to magic, trained unbelievers will
+    suppress any sort of magic from occurring around them at high probability,
+    which is dubbed 'anti-magic field'. They can further strengthen it by
+    wielding a Dark Sword (see (5.9)).
+    Warriors can also choose to become monk-like fighters, by training the
+    'Martial Arts' skill. This will require them to wear no armour or only very
+    light armour later on.
     The warrior class is recommended for beginners.
 
 Istar (elvish word for Mage)
@@ -7598,17 +7991,15 @@ Priest
     after it's been brought up a few levels. Orcs are said to fear it a lot.
 
 Rogue
-    Rogues can backstab sleeping or fleeing monsters, and they can train
-    stealing items from shops and other players. Thanks to their high dexterity
-    they can often hit several times per round with light weapons.
-    Also, rogues are especially fond of dual-wielding two light one-handed
-    weapons at once.
     A Rogue is a character that prefers to live by cunning, but is capable of
     fighting their way out of a tight spot. The master of traps and locks, no
-    device is impossible for him to overcome. A rogue will learn to set many
-    kinds of traps as they become more experienced. Rogues have very high
-    stealth allowing them to sneak around many creatures without having to
-    fight, or to sneak up and get the first blow, backstabbing his opponent.
+    device is impossible for him to overcome.
+    Rogues have very high stealth allowing them to sneak around many creatures
+    without having to fight, or to sneak up and get the first blow,
+    backstabbing his opponent.
+    Also, rogues are especially fond of dual-wielding two light one-handed
+    weapons at once. They prefer light armour, since many of their special
+    abilities won't work well with heavy armour or two-handed weapons.
     A rogue's perception is higher than any other class, and usually they
     notice traps or secret doors without needing a search. Rarely will a
     rogue be unable to avoid or disarm a trap. Rogues also have the unique
@@ -7625,7 +8016,7 @@ Rogue
     untrackable to almost any monster, for exceptions see (0.2).
     Attacking, taking damage, and a couple of other actions immediately
     breaks cloaking, again see (0.2) for details.
-    Auto-retaliation is disabled while cloaked, except for the Stormbringer.
+    Auto-retaliation is disabled while cloaked.
     A rogue's primary stats are Intelligence and Dexterity.
 
 Mimic
@@ -7652,7 +8043,7 @@ Archer
     Archers are to bows what warriors are to melee. They are the best class
     around with any bow/xbow/sling, usually most familiar with bows.
     An Archer is very bad at melee, being only better than the Sorcerer.
-    Archers can create ammunition from the bones of their opponents.
+    Archers can create ammunition from the bones of their opponents (6.12).
     Hint: Enchanting your ranged weapon to-damage is especially effective,
     because the enchantment will be multiplied by the weapons multiplier.
 
@@ -7668,14 +8059,18 @@ Paladin
     intelligence can slightly help too.
 
 Ranger
-    Rangers are a combination of warrior, mage and archer. They are also
-    skilled trappers and devoted to nature. They cannot become Unbelievers.
-    They are good fighters, and quite effective with ranged weapons. They may
-    train Archery skill up to 10.000, which apart from increasing their damage
-    dealt also enables them to learn some of the techniques used by archers.
+    Rangers are able to fight well in close combat, they are adept at various
+    types of magic, and are skilled trappers too, devoted to nature.
+    They also display great performance with ranged weapons, able to train
+    Archery skill up to 10.000, which apart from increasing their damage dealt
+    also enables them to employ special techniques used by archers.
     Rangers have good stealth, perception, searching, saving throws, and are
     good with magical devices. Rangers can find several different ways out of
     any situation. They use intelligence for spellcasting, same as mages.
+    They are able to dual-wield two one-handed weapons, which requires light
+    armour to be efficient. This goes well with magic or archery, which also
+    would suffer from heavy armour.
+    Apart from adventurers, rangers are the most versatile of all classes.
     At level 20 rangers learn to find paths passing thick woods.
 
 Druid
@@ -7764,6 +8159,8 @@ Mindcrafter
     pressing 'p'. Pressing it again will return one's mind to normal.
     The effects of some necromancy skills are somewhat distracting to
     mindcrafters, so training them may require somewhat more effort.
+    They are able to detect 'Telepath' ego monsters via ESP, which usually are
+    able to conceal their presence telepathically vs all other classes.
     Hint: Mindcrafters have a powerful ranged attack spell they can use very
     early on, Psionic Blast. Look for it in the book store right away.
 
@@ -7831,7 +8228,7 @@ Runemaster  +1  +2  -3  +3  -3  -3       +5      +20%       4
             10  20  20   2  30  20  45  20              fair     fair
              0  11  10   0   5   3  20  10
 Mindcrafter  0  +2   0   0   0  +1       +6      +25%       5
-            30  30  36   3  35  14  45  35              good     fair
+            30  30  36   3  35  14  55  35              good     fair
              0   5   5   0   3   3  26  20
 
 
@@ -8131,6 +8528,10 @@ F: flag list
                 in general more trouble with 'good' effects than DEMON.
                 UNDEAD will also become susceptible to some 'life' effects,
                 regarding healing or cleansing mostly.
+                Also see further below, following the 'spell list' paragraph,
+                a list of intrinsical boni that all all demons or undead
+                creatures get even if the r_info does not list the according
+                flags.
     HURT_LITE   This form will take 2x damage from light attacks.
 
 S: spell list
@@ -8164,27 +8565,29 @@ so you might want to create macros for them.
 
 Further, certain races and classes get abilities (even if they are not
 mentioned in r_info.txt for monster forms):
-Bats        Feather falling (levitation)
-Elves       Resist light
-Dark-Elves  Resist darkness
-Hobbits     Dexterity bonus of +2 for not wearing shoes.
-Gnomes      Free action
+-------------------------------------------
+Bats        Feather falling (levitation).
+Elves       Resist light.
+Dark-Elves  Resist darkness.
+Hobbits     Dexterity bonus of +2 for not wearing shoes. (Or 'Halflings'.)
+Gnomes      Free action.
 (Dwarves    Blindness resistance, climbing at level 30.)
-High-Elves  Resist light, see invisible
-Yeeks       Feather falling (levitation)
+(High-Elves  Resist light, see invisible.)
+Yeeks       Feather falling (levitation).
 (Ents       Slow digestion, speed - 2, sensitive to fire, see invisible at
-            level 4, can swim, pass trees)
-All ghosts  See invisible, Infra-vision +3
-All orcs    Resist darkness
+            level 4, can swim, pass trees.)
+All ghosts  See invisible, Infra-vision +3.
+All orcs    Resist darkness.
 All trolls and giants
-            Sustain strength
+            Sustain strength.
 All dragonriders
             ESP_DRAGON at level 5, feather falling (levitation),
             flying at level 30.
 All evil creatures
             Becomes susceptible to certain 'good' or 'holy' effects.
 All undead creatures
-            Resist darkness, blindness, poison (usually immunity);
+            Resist darkness, blindness, poison (usually immunity, depends on
+            r_info flags);
             can't bleed (no_cut), infra-vision +1, insanity attacks are
             reduced by a little bit.
             Becomes susceptible to 'life', which concerns some healing or
@@ -8192,16 +8595,18 @@ All undead creatures
             However, at the same time they become gorged less quickly when
             for example quaffing lots of healing potions quickly.
 All greater demons (capital 'U')
-            Resist poison (in most cases immunity).
+            Resist poison (in most cases immunity, depends on r_info flags).
 All non-living creatures
-            Resist poison (usually even immune) and fear; insanity attacks
-            are reduced somewhat.
+            Resist poison (usually even immune, depends on r_info flags) and
+            fear; insanity attacks are reduced somewhat.
 All vampires and vampire bats
             Chance to drain life on attacking in melee.
             Vampire bat form has 100% chance to do a vampiric attack,
             real vampire forms have 50% chance (half their attacks are hits,
             the other half is biting). For details see '(5.15) Vampirism'.
-All angels  Resist light, blindness and poison (usually immunity).
+All angels  Resist light, blindness and poison (usually immunity, see r_info
+            flags), resist confusion, see invisible.
+Note: Fallen angels only get blindness and poison resistance/immunity.
 
 Keep in mind that by changing forms you can potentially lose abilities that
 you had in player form, because they were bound to your normal form.
@@ -8315,7 +8720,7 @@ Aranea                  a speedy greater spider;
 
 Level 25:
 ---------
-Wyvern                  speedy; can fly and passes most terrains;
+Wyvern                  speedy; can fly; passes most terrains;
                         25% poisonous attacks;
                         immune to poison; susceptible to 'good'
 
@@ -8351,7 +8756,7 @@ Elder aranea            speedy and smart (INT bonus) greater spider;
                         susceptible to 'good' and to light;
                         can't be confused or paralyzed;
                         regenerates HP quickly;
-                        has a medium array of spells to its disposal
+                        has a medium array of spells at its disposal
 
 Plasma hound            speedy;
                         resists plasma, sound; immune to fire;
@@ -8367,14 +8772,14 @@ Level 40:
                         has a small array of fire/fear spells
 
 Giant Roc               speedy giant bird; deals high damage;
-                        passes most terrains;
+                        can fly; passes most terrains;
                         immune to electricity; resists sound;
                         can't be paralyzed or confused;
 
 Lesser kraken           speedy, smart and very tough aquatic creature;
                         resists water greatly as well as lightning, cold,
                         darkness, poison;
-                        completely immune to either water attacks and poison;
+                        completely immune to either water attacks or poison;
                         can't be paralyzed or confused;
                         has a medium size array of spells;
 
@@ -8408,7 +8813,8 @@ Greater kraken          speedy, smart and extremely tough aquatic creature;
                         susceptible to 'good';
                         can cast from a large array of spells
 
-Jabberwock              fabulous very speedy and tough hybrid creature;
+Jabberwock              fabulous very speedy and tough hybrid creature that
+                        deals high damage;
                         can fly;
                         resists teleportation attacks and chaos;
                         can curse and breathe chaos
@@ -8691,7 +9097,7 @@ Mind
                     Required skill level for first spell level: 15.
     Sense Minds     Gives you temporary ESP.
                     Required skill level for first spell level: 30.
-    Telekinesis     Inscribe your book @P<Playername>, cast it, select an
+    Telekinesis I   Inscribe your book @P<Playername>, cast it, select an
                     item that you wish to teleport to the player's inventory.
                     The target player needs to concentrate by opening her/his
                     mind, see (0.2). It's dangerous to have the mind opened,
@@ -8927,7 +9333,7 @@ Psycho-Power
                     Required skill level for first spell level: 24.
     Psychic Warp    Attempts to teleport away your opponent.
                     Required skill level for first spell level: 30.
-    Telekinesis     Inscribe your book @P<Playername>, cast it, select an
+    Telekinesis II  Inscribe your book @P<Playername>, cast it, select an
                     item that you wish to teleport to the player's inventory.
                     The target player needs to concentrate by opening her/his
                     mind, see (0.2). It's dangerous to have the mind opened,
@@ -8963,7 +9369,7 @@ Thought Contact
     Stabilize Thoughts
                     Cures some insanity and removes effects.   (auto-project)
                     Required skill level for first spell level: 25.
-    Telekinesis     Inscribe your book @P<Playername>, cast it, select an
+    Telekinesis II  Inscribe your book @P<Playername>, cast it, select an
                     item that you wish to teleport to the player's inventory.
                     The target player needs to concentrate by opening her/his
                     mind, see (0.2). It's dangerous to have the mind opened,
@@ -9078,6 +9484,27 @@ Here you can..
     -The Great Pumpkin (Halloween special event monster)
     These two always give credit, no matter what level difference the players
     have.
+
+    Special case: A player who lost levels due to death plays together with
+    another player who is now just within range of his lowered level.
+    Example: Player A was level 45, but lost 5 levels due to dying twice and is
+    now level 40. He teams up with player B whose level is a regular 33.
+    What happens depends on the server settings, there are two rules:
+    a) the difference of player A's real level and his current level counts in
+       50%. So he'd be treated like a 40 + (45-40)/2 = 42 (rounded down) player
+       and player B wouldn't get any exp since he's not level 35 or higher.
+    b) if player B is way below player A's top level (default is more than 5
+       levels) the exp he gets will be cut down depending on the difference
+       between player B's current level and player A's top level, but he still
+       receives exp.
+    c) the server only looks at the highest reached level and compares the
+       current level of all team members to it. So it would compare player B's
+       33 to player A's 45 when it wants to determine if player B receives a
+       share of exp from player A, which is more than 7 levels apart, so player
+       B gets nothing.
+    The rule effective on the official servers is b), so teaming up with
+    everlasting characters that have lost a bunch of levels shouldn't be much
+    of an issue.
 
     A party owner may set access to one or more of his houses to 'party access'
     (use 'h' key next to the door) to allow all party members to access that
@@ -9251,7 +9678,7 @@ More on Blocking
 ----------------
 Many effects that normal armour usually doesn't protect from can actually be
 blocked, for example your character may quickly duck behind his shield just in
-time when an eye tries to gaze at your eyes to paralyze you.
+time when an eye tries to gaze at you to paralyze you.
 The bigger a shield, the more you can block. Depending on server settings,
 the actual block base chance will usually be displayed as a percentage in []
 brackets behind the shield's name, where AC is located for other types of
@@ -9335,6 +9762,7 @@ The techniques are as follows:
     Flare missile       2 stamina
         Prepares an oil-drenched shot for the next time you shoot, which will
         burn brightly, lighting up the area where it lands or hits a wall.
+        If that spot is inside a room, the whole room will be lit up.
         This technique consumes 1 flask of oil and your shot/arrow/bolt.
         Note that this destroys magic ammunition too.
     Precision shot      7 stamina
@@ -9344,16 +9772,20 @@ The techniques are as follows:
         Aiming will be interrupted by most actions, including walking.
     Create ammunition   -
         Create ammunition for your currently equipped ranged weapon from
-        bones in your inventory or rubble (':') next to your character.
-        If you wield a bow or crossbow, you'll need to have bones in your
-        inventory. If you wield a sling, you'll need to stand next to rubble.
-        The resulting ammunition type will match the ranged weapon you have
-        equipped.
+        bones, skeletons or broken sticks in your inventory or from a pile of
+        rubble (':') next to your character.
+        If you wield a bow or crossbow, you'll need to have bones, skeletons or
+        broken sticks and it'll create arrows if you wield a bow or bolts if
+        you wield a crossbow.
+        If you wield a sling, you'll need to stand next to rubble and it'll
+        create sling ammunition from it.
         The quality mainly depends on your archery skill and somewhat on your
         ranged mastery skill, but is still somewhat random.
         A random discount will be applied to the crafted ammo.
         If you want to create larger stacks of the same type of ammunition,
-        collect a large stack of bones and use the skill on that stack.
+        collect a large stack of materials and use the skill on that stack
+        (the total weight of that inventory slot determines the stack size).
+        The level of the raw materials has no effect on the outcome.
     Double-shot         1 stamina/turn while using it actively
         Toggle, making you enter or leave double-shot mode. While active, you
         will fire 2 projectiles at once on each shot, dealing way less damage
@@ -9377,7 +9809,6 @@ stat and 'Health' skill will further improve regeneration speed.
 
 (6.13) PvP mode
 ---------------
-
 PvP stands for "Player vs player". This describes the act of player characters
 fighting each other, usually to death. In that regard, it is quite different
 to the 'blood bond' duel, which always ends without anyone getting hurt.
@@ -9441,6 +9872,22 @@ by an opponent! The special rules that apply are as follows:
 -teleportation will be suppressed during combat, phase door is allowed though.
 -while in a fight with another pvp-char, you cannot teleport away easily
  (takes about 30 seconds to wear off, or just enter a town to reset).
+
+
+
+(6.14) Miscellaneous character properties
+-----------------------------------------
+Characters also have the following miscellaneous properties:
+
+-Sex
+-Age
+-Height
+-Weight
+-Social Class
+
+These currently have no effect in the game, and modifiying them has no effect
+either: Traps of aging, shrinking or growing may change these values but will
+not affect the gameplay in any way.
 
 
 
@@ -10196,6 +10643,7 @@ Last but not least, the golem is..
 
 (8.4) Artifact creation
 -----------------------
+(Also see (5.9b) for details about artifacts in general.)
 "Scrolls of Artifact Creation" count to the most wanted items in the game
 because of their power to turn a normal piece of equipment into a powerful
 random artifact. Often kings and queens look out for these since they are
@@ -10344,7 +10792,7 @@ Mage staves
 Boomerangs (also see 'Weapons' above)
         Extra shots
 Dark swords (also see 'Weapons' above)
-        Increased anti-magic (not over 30% in total)
+        Increased anti-magic (not over 30% in total, see (5.9)).
 Ammunition
         All elemental brands (acid/elec/fire/cold/poison)
         All SLAY mods
@@ -10536,6 +10984,8 @@ The differences between RPG ruleset and normal servers are as follows:
    to party owner, so parties won't get disbanded easily, making party-diving
    more effective.
   -Mimicry users have a very slim chance of insta-learning a form!
+   (Note that this also works 'in advance', ie while you have not yet the
+   required mimicry skill to actually see the learn-message show up.)
   -Item level restrictions are disabled and have no effect.
   -Quests can be acquired as early as at level 3 instead of level 5.
   -Quests usually require you to find fewer specimen.
@@ -10550,13 +11000,21 @@ The differences between RPG ruleset and normal servers are as follows:
 ---------------------
 Note: Some of these problems are deprecated and don't exist in this form or at
 all anymore. Some messages might also vary slightly.
+For trouble with lagging out or freezing up, see PROBLEM 25 and 28.
 
 PROBLEM 00: I am behind a firewall. What ports do I need to open in order to
             play TomeNET?
-SOLUTION:   You only need to allow an outgoing TCP/IP connection to remote
-            port 18348, that's the standard port servers run on. (If you'd
-            like to play on the RPG server, it's port 19348 instead of 18348.
-            See (8.5) for more information about RPG settings.)
+SOLUTION:   If you want to connect directly to a specific server by specifying
+            its address via command-line or config file, you only need to allow
+            an outgoing TCP/IP connection to remote port 18348, that's the
+            standard port servers run on. (If you'd like to play on the RPG
+            server, it's port 19348 instead of 18348. See (8.5) for more
+            information about RPG settings. For the Smash Arcade server it's
+            port 20348.)
+            If you want to make use of the server list that appears when you
+            don't specify a particular server, you additionally have to allow
+            the game to connect to the meta server which provides the server
+            list. For this, remote port 8801 TCP must also be opened.
             If you don't have access to the firewall, for example in school or
             at work, you can still try to set up an SSH tunnel or a socks
             proxy server (on either the firewall machine or your PC at home or
@@ -10576,7 +11034,7 @@ SOLUTION:   This is a typical problem on Windows XP. There are 3
              example C:\TomeNET\.. .
             -Make sure the path name does not contain any spaces!
             -to edit your "TomeNET.ini" file and specify a host directly by
-             specifying "HOST=tomenet.servegame.com".
+             specifying "HOST=europe.tomenet.net".
              Or you can even give the IP address "HOST=85.118.45.235".
 
 PROBLEM 02: I get to a server list, but it doesn't show any servers. It just
@@ -10590,7 +11048,7 @@ SOLUTION:   There are 2 possible solutions.
              longer period of time though, being very annoying.
              That the server isn't listed doesn't mean that it's down though.
              You should try to connect manually (press 'Q') to either:
-             tomenet.servegame.com
+             europe.tomenet.net
              or (if that doesn't work either) directly to its IP adress:
              85.118.45.235
 
@@ -10628,7 +11086,8 @@ SOLUTION:   Your LUA script files are outdated. Those files are responsible
             -If for some reason auto-update doesn't work for you,
              download the latest client again.
 
-PROBLEM 06: TomeNET seems to freeze up while playing.
+PROBLEM 06: TomeNET seems to freeze up while playing. (Also see PROBLEM 25 and
+            28, which offer different solutions for similar issues!)
 SOLUTION:   This can happen if your latency is relatively high and many
             messages are transported between the server and your client.
             In fact it's just your display that freezes up. In that state
@@ -10639,7 +11098,8 @@ SOLUTION:   This can happen if your latency is relatively high and many
             override the old connection, making your client quit with
             "resume connection" message.
 
-PROBLEM 07: I am disconnected during gameplay.
+PROBLEM 07: I am disconnected during gameplay. (Note: If it seems to be a
+            lag-out or freeze problem, also see PROBLEM 25 and 28!)
 SOLUTION:   This can have several reasons. On disconnection a message box will
             appear, telling you about the problem. The following messages
             might occur:
@@ -10788,6 +11248,10 @@ SOLUTION:   If you are behind a firewall make sure that the TCP ports
             blocked. (Well, the metaserver isn't needed to play - specify the
             game server via command-line or when asked for it after starting
             up the game then.)
+            The meta server's hostname is "meta.tomenet.net" and its IP is
+            actually the same as the official game servers (85.118.45.235);
+            In case there is a DNS problem somewhere in the internet you could
+            just edit TomeNET.ini and replace the hostname by its actual IP.
 
 PROBLEM 10: I'm not blocked by a firewall, but I still don't see the
             metaserver when I run Tomenet. Instead after waiting for a short
@@ -10796,13 +11260,13 @@ SOLUTION:   The meta-server might be down or a DNS problem might be occuring
             right now. This can happen from time to time. You don't need the
             meta-server to play TomeNET though.
             Just type in the hostname of the server you'd like to connect to,
-            for official main server:   tomenet.servegame.com
+            for official main server:   europe.tomenet.net
             If the hostname doesn't work you can also try entering its IP
             address 85.118.45.235.
             Make sure your TomeNET.ini file contains the correct server port,
             usually 18348! This port isn't needed if you use the meta-list to
             choose a server to connect to, but it's important if you connect
-            directly!
+            directly! (For linux the file is ".tomenetrc".)
             You can connect directly to a TomeNET server and skip the meta
             server list by running your Tomenet directly from the command-line
             (DOS window) within its folder, adding the server IP as a
@@ -10812,7 +11276,7 @@ SOLUTION:   The meta-server might be down or a DNS problem might be occuring
             right-clicking, dragging, releasing it. Edit this shortcut's
             properties and add the server IP to the command-line.)
             For official main server it would look like this:
-            TomeNET.exe tomenet.servegame.com
+            TomeNET.exe europe.tomenet.net
             If the hostname doesn't work for whatever reason you may try the
             IP adress:
             TomeNET.exe 85.118.45.235
@@ -10844,7 +11308,7 @@ PROBLEM 13: I seem to be able to login, create a new character or select a
             packet reply error.
 SOLUTION:   This might be caused by a misconfigured router (some D-Link models
             for example). Try to establish an SSH-tunnel from your PC behind
-            the router to a machine outside of your LAN for port 18348.
+            the router to a machine outside of your LAN for port 18348 (TCP).
             (This might even reduce lag under certain circumstances.)
 
 PROBLEM 14: I get kicked out with an error message after entering an account
@@ -10915,9 +11379,10 @@ PROBLEM 20: Are 'ToME' and 'TomeNET' similar?
 SOLUTION:   Despite similar name, the only thing these two games have in common
             is that they are both middle-earth themed, and some visuals might
             also be similar.
-            Other than that, the two games are very different in basically all
-            aspects! In other words: TomeNET is definitely not 'multi-player
-            ToME'.
+            Other than that, the two games are quite different in most aspects!
+            In other words: TomeNET is definitely not 'multi-player ToME'.
+            Also, the two games are maintained/developed by completely different
+            persons and teams.
 
 PROBLEM 21: My (mixer) settings or window positions (MS Windows only) aren't
             saved automatically as they should be, when I quit the game.
@@ -10961,7 +11426,7 @@ PROBLEM 24: When trying to macro F-keys, they don't seem to work properly.
 SOLUTION:   When playing on a notebook, check the state of the 'Fn' special
             shift key, and toggle it accordingly.
 
-PROBLEM 25: The connection is surprisingly laggy.
+PROBLEM 25: The connection is surprisingly laggy. (Also see PROBLEM 28!)
 SOLUTION:   -If you're on Wifi (WLAN) plug in an ethernet cable instead!
             Wireless LAN connections can be pretty unreliable and cause
             periodic lag from trying to re-scan for available networks.
@@ -10987,9 +11452,19 @@ SOLUTION:   You have about 20 minutes to complete the character creation
 
 PROBLEM 28: If I or other players nearby fire a lot of arrows or cast a lot
             of spells, my client lags or freezes somewhat.
+            Could also happen when taking staircases or when there are a lot of
+            monsters on the screen.
 SOLUTION:   Try to reduce or even disable flush-waits, by toggling the client
             options 'thin_down_flush' and if that's not enough also
             'disable_flush'. For details about these, see (2.3).
+
+PROBLEM 29: I accidenally closed one of the sub-windows and now it's gone.
+            How do I get it back?
+SOLUTION:   Closing a sub-window sets it to 'invisible'. To change that, close
+            TomeNET first, then edit the file 'TomeNET.ini' in any text editor,
+            locate the particular window, and you'll see a line saying
+            "Visibility=0". Change the 0 to 1 and start TomeNET again.
+
 
 
 ==============================================================================
