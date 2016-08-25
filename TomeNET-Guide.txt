@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 3. Mar 2010 - written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.4.4a - official websites are:
+| Latest update: 20. Mar 2010 - written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.4.4b - official websites are:
 | http://www.tomenet.net/ (main site),
 | http://koti.mbnet.fi/mikaelh/tomenet/ and http://www.c-blue.de/rogue.html
 +---
@@ -373,6 +373,17 @@ P               party screen. Form/disband/modify a party with other players
                 levels instead of 7.
 
 /       in general use an item (combines q,r, etc..).
+        This can be useful if you run out of macros for a specific action,
+        for example if you already use @m0...@m9 and still have more spell
+        books/scrolls in your inventory, you can inscribe the remaining ones
+        @/0...@/9. Or you could create a macro /0*t and bind it to a certain
+        key, and then inscribe a useful wand or staff @/0 without having to pay
+        attention to whether you're currently using a wand or staff there (or
+        rod, of course), as a sort of 'special power button', for example a
+        staff of slow monsters (very handy at low levels) or a wand of light
+        to kill orcs, jellies, and other light-sensitive critters.
+        Note that in the spell book example above, you could of course just use
+        call-by-name instead so you won't need any inscriptions at all (3.9b) !
 ~       display further information of your character.
         Point (3) here is especially helpful for mimics:
         The number shown in round brackets before each monster name is the
@@ -448,9 +459,12 @@ CTRL+R  redraw the screen (do this if it's messed up for some reason).
  (/refresh, /ref)
 CTRL+T  take a screen shot. See /screenshot command below.
 TAB or CTRL+I
-        Displays lag-o-meter.
-!       Look at the in-game bulletin board. Players can write lines of text to
+        displays lag-o-meter.
+!       look at the in-game bulletin board. Players can write lines of text to
         it by using the /bbs <text> command.
+K       forcibly combines a level 0 item in your inventory with other items of
+        the same type that aren't level 0. Be warned, that this will change the
+        level of all the items involved to 0.
 
 There are also some commands that can be entered with ':' like a chat line.
 They all start with a slash '/':
@@ -828,8 +842,8 @@ EA          Extra Attacks. Rings, gloves or weapons which increase your number
             of blows per round with melee weapons. Quite expensive.
 FA          Free Action (immunity to paralysis).
 FF          Feather falling (Levitation).
-Gorth       Room in the dungeon, divided into 4 chambers. Similar to a pit.
-            (See 4.6)
+Gorth       Room in the dungeon, divided into 4 chambers, similar to a pit.
+            Also see 'Room', 'Pit' and (4.6).
 GV          Greater Vault. (See 4.6)
 GCV         Greater Checkerboard Vault (looks remotely like a checkerboard).
 ID, *ID*    Identify and *Identify* magic respectively, which is used to
@@ -886,6 +900,12 @@ mlevel, rlevel
             (Note: This is similar to klevel vs olevel for items.)
 Morgy       Morgoth, Lord of Darkness. Final boss enemy in TomeNET.
             See (1.5) for details.
+Nest        Originally also just called 'pits', nests only differ from pits in
+            the monsters in them being strewn around in a randomly mixed manner
+            while pits contain 'organized' rings and circles of monsters.
+            The monsters in a nest are not completely random but follow certain
+            schemes. For example all monsters in a 'clones nest' are exactly
+            the same type. Also see 'pits'.
 olevel      see klevel.
 OoD         Out-of-depth. Means a monster or an item encounter that happened at
             a surprisingly shallow level, opposed to the base level for that
@@ -898,6 +918,10 @@ Party       A group of players who fight together and share experience.
             character levels to each other and on the same dungeon/tower level
             respectively the same worldmap/wilderness sector.
 Phase Door  A short-range teleportation.
+Pit         Pits contain monsters of a certain type, for example 'demon pits'
+            or 'orc pits', with the monsters in them being placed in a somewhat
+            'organized' manner of rings and circles. Also see 'Nest' or 'Room'.
+            Pits are often confused with special rooms.
 Pseudo-ID   If a player keeps an unidentified item for a longer time he might
             'feel' if the item is average, good, cursed or special. The item
             will automatically receive a 'pseudo-id inscription' then.
@@ -911,6 +935,12 @@ Randart     Randomly generated artifact. As opposed to 'Truearts' which are
             also called 'Static arts' from the file a_info.txt. See 'Art'
             at the top of this section for more information.
 Res         Resistance.
+Room        The dungeon contains many rooms connected by passages. Some of the
+            rooms are of special shape. Especially rooms containing a further,
+            inner room similarly to pits are thereby often confused with those,
+            mostly 'Gorths' (rooms divided into four chambers containing a
+            lot of monsters), 'Checkerboard-Rooms' (rooms containing a
+            checkerboard-like maze structure and a lot of monsters).
 rlevel      see mlevel.
 Scumming    Repeatedly using staircases up/downwards to make a level become
             recreated. Usually in hope of finding a specific monster on that
@@ -2136,15 +2166,22 @@ to their real functionality. They are:
   m for casting a spell
   n for drawing a rune
   p for setting up a trap
-  s for changing a stance 
+  s for changing a stance
   * for targetting the nearest monster
+  @...\ for using call-by-name (spell/item name must be between '@' and '\')
+
 Also, '\e)' is automatically prefixed, and the most fitting macro type
 automatically chosen (depending on the trigger key).
 
-Example: Assumed your book is inscribed @m1 as usual, and you want to cast
+Example 1: Assumed your book is inscribed @m1 as usual, and you want to cast
 spell a). What you can simply enter in the q'n'd field is:
-  m1a*
+     m1a*
 and it will automatically be expanded to the real macro '\e)m@11\r1a*t'.
+
+Example 2: Assumed you have the spell Manathrust somewhere in your books and
+want to cast it by name, what you enter in the q'n'd field is:
+    m@Manathrust\*
+and it will automatically be expanded to '\e)m@11\r@Manathrust\r*t', voila.
 
 
 
@@ -3096,12 +3133,18 @@ monster occurs where. However there are some exceptions, where you can find
 monsters out-of-depth, meaning that you will encounter way more powerful
 enemies. That can be very dangerous but also very rewarding. Out-of-depth
 monsters usually occur inside of so-called "pits" and "vaults". Pits are large
-rooms, surrounded by a rectangle-shaped passage, sometimes with special
-structure inside. Vaults are extremely large structures of rooms and passages,
-very often surrounded by permanent walls that cannot be damaged.
+rooms, surrounded by a rectangle-shaped passage, containing monsters picked by
+a pit-specific criterium (troll pit, zoo pit...).
+
+Vaults are (sometimes extremely large) structures of rooms and passages, mostly
+surrounded by permanent walls that cannot be damaged.
+
 A vault can be a real adventure of its own! If your character isn't very
 powerful compared to the dungeon level, you better stay out of vaults if their
 structure doesn't allow easy monster killing.
+
+Besides pits and vaults, there are also special rooms with features inside,
+see 'Pit', 'Vault' or 'Room' in (0.4).
 
 
 
@@ -3283,9 +3326,16 @@ These extra level feelings (displayed in yellow) are:
 Note that you will only get one, ie the strongest of these feelings applying
 to your dungeon level, meaning feelings higher up the list will take precedence
 over those below.
-Also, the feeling of a dungeon level will persist, even if its cause is
-removed. For example if the feeling indicates an OOD monster and you kill it,
+
+Also, the feeling of a dungeon level only indicate its status at the very
+moment of the level being created initially!
+
+This means the feeling will persist, even if its cause is removed or changed.
+For example if the feeling indicates an OOD monster and you kill it,
 you or following players entering that floor will still get that same feeling.
+Or if a powerful monster spawns later on on an initially "boring place" level,
+it'll remain to feel like a boring place, despite of the new monster that might
+actually make it pretty non-boring now..
 
 
 Vaults:
@@ -4873,8 +4923,8 @@ Genocide        Removes all monsters of a certain kind from the current level.
                 The race will be determined by the monster which stands
                 closest to you when firing off the spell. For each monster you
                 will suffer randomly from just 1 up to 4+(monsterlevel/8)
-				points of damage, which cannot be absorbed by any magic shield
-				or other protective effect!
+                points of damage, which cannot be absorbed by any magic shield
+                or other protective effect!
                 Depending on the server configuration, the caster's remaining
                 hit points might be halved (extra penalty) after the spell
                 finished (this penalty is enabled by default).
@@ -5150,7 +5200,7 @@ Staves      x               x
 Rods
 
 Lamps                       x
-Potions                     x       x       x       
+Potions                     x       x       x
 Flasks                              x       x
 Books/Tomes x               x                       x
 
@@ -6186,12 +6236,17 @@ Note that not every skill is available to every profession (class).
                                 sanity will be displayed as a bar.
                                 At 20 points you'll get the percentage
                                 displayed. At 40 the value will be shown.
-    .Swimming                   Allows you to swim even while carrying more
-                                weight.
     .Digging                    How well you are able to dig. Also affects
                                 your chance to find items, for the items to
                                 be good or even great, and affects the amount
                                 of cash if you mine treasure.
+                                Depending on the skill, you might also uncover
+                                special things.
+                                At 30, you'll get automatic treasure detection.
+    .Swimming                   Allows you to swim even while carrying more
+                                weight and protect your items from water.
+                                Skill maxes at 01.000, with the ability to
+                                swim improving steadily while increasing it.
     .Climbing                   You need this at 01.000 to learn climbing.
 
 The abilities Swimming, Digging and Climbing are also granted by items you
@@ -7367,11 +7422,12 @@ Firebird                speedy and tough; can fly and passes most terrains;
 
 (6.8) Magic spells and prayers
 ------------------------------
-Istari (mages), rangers, rogues, priests, paladins and even adventurers
-can cast magic spells or speak prayers. To do so, they need the according
-spell scrolls (which contain exactly one specific spell) or books (such as
-Codices, Spell Books, Grimoires, Handbooks or Tomes, that contain several
-different spells) in their inventory.
+Istari (mages), rangers, rogues, priests, paladins, druids, shamans,
+mindcrafters and even adventurers can cast magic spells, use telepathic powers
+(which are the same as spells, technically) or speak prayers.
+To do so, they need the according spell scrolls (which contain exactly one
+specific spell) or books (such as Codices, Spell Books, Grimoires, Handbooks
+or Tomes, that contain several different spells) in their inventory.
 
 Spell scrolls and some books can be purchased in store '9' (the 'book store',
 usually also sells 'Beginner Cantrips' and sometimes also Codices) or in
@@ -8145,33 +8201,45 @@ The techniques are as follows:
 
     Fighting techniques:
     --------------------
-    Sprint							7 stamina
+    Sprint              7 stamina
         Your character will be able to move faster, so you can catch up to
-        runners and other monsters that avoid you.
+        runners and other monsters that avoid you. Note: This does not affect
+        your SPEED stat, nor has anything to do with 'running' (shift+dir),
+        but means that moving one step will only cost you half a turn of
+        energy, allowing you to move two steps during each of your turns
+        instead of one!
         Running (shift + directional keys) is not affected.
     Taunt               2 stamina
         Attempts to draw attention of humanoid mobs, causing them to attack
         you. Might require more than one try sometimes until they fall for it,
-        depending on the monster.
+        depending on the monster. Some won't be affected at all even.
+        Most common targets are typically shaman and priest class monsters.
+        Note that this can also be used to make scared monsters agressive,
+        and -if you and an ally both stand next to the same monster- to draw
+        its attention from your ally and make it attack you instead.
     Spin                8 stamina
-        A sweep that hits all adjacent monsters and may stun them, basing on
-        your number of blows/round possibly even multiple times.
+        A sweep that hits all adjacent monsters and may stun them if they don't
+        resist. You might even perform more than one complete sweep circle,
+        hitting some or all monsters multiple times, based on your number of
+        blows/round!
     Berserk             10 stamina
         Similar to potions of berserk strength, also giving you +1 blow/round.
 
     Rogue-specific fighting techniques:
     -----------------------------------
     Distract            1 stamina
-        Your character will attempt to appear wimpy to adjacent monsters, in
-        hope of making them attack another player standing next to you
-        instead of you. Not all monsters can be fooled all the time though.
+        Your character will attempt to appear wimpy and a non-worthy target to
+        adjacent monsters, in hope of making them attack another player who
+        must be standing next to you and also next to the monster, instead of
+        you. Not all monsters can be fooled though. Some monsters might resist,
+        but probably fall for it if you give it another try.
     Flash bomb          4 stamina
         You throw down a flash bomb that causes a flash of light, blinding
         your opponents for a short time, giving you opportunity to escape or
         kill them off while they are running around in confused state.
     Shadow run          10 stamina, kings/queens only!
         You will move at blinding speed, your silhouette turning shadowy.
-        Ranged attacks will hardly be able to pin you down, and you will move
+        Ranged attacks will hardly be able to pin you down, and you will act
         at increased speed. You can even perform a backstab opening attack
         out of this state. Performing actions that require calm movements or
         anything that distracts or disrupts your attention from focussing on
@@ -8204,7 +8272,7 @@ The techniques are as follows:
               explicitely in the 'm' menu.
     Barrage             9 stamina
         Prepares to fire a powerful multi-shot which will cost you a whole
-        turn. It stuns the target.
+        turn. It stuns the target (if it doesn't resist stunning attacks).
 
     Note: The technique 'fire-till-kill' is available to any class, and
     does appear directly under 'm'. See (5.2a) for details.
