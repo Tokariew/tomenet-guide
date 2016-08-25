@@ -1,13 +1,13 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 21. December 2014 - written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.5.8a - official websites are:
-| http://www.tomenet.net/ (main site),
-| http://koti.mbnet.fi/mikaelh/tomenet/ and http://www.c-blue.de/rogue.html
+| Latest update: 1. February 2015 - written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.5.9 - official websites are:
+| http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
+| http://koti.mbnet.fi/mikaelh/tomenet/ (Mikael's TomeNET site)
 |
 | IF YOU GOT THIS GUIDE WITH THE PROGRAM DOWNLOAD, IE IN A CLIENT ZIP FILE,
-| THEN FIRST THING YOU SHOULD DO NOW IS GO TO www.tomenet.net AND DOWNLOAD THE
+| THEN FIRST THING YOU SHOULD DO NOW IS GO TO www.tomenet.eu AND DOWNLOAD THE
 | LATEST COPY OF THIS GUIDE TO MAKE SURE YOU AREN'T LOOKING AT OUTDATED INFO!
 |
 | If your text editor cannot display the guide properly (needs fixed-width font
@@ -20,7 +20,7 @@
 | Don't blame me if something differs or is missing; it shouldn't though.
 |
 | If you have any suggestions about the guide or the game, please use the /rfe
-| command in the game or write to the official forum on www.tomenet.net.
+| command in the game or write to the official forum on www.tomenet.eu.
 \
 
 
@@ -188,7 +188,7 @@ Contents
 If you are using Linux, you will find additional information about how to
 compile the game under '(2.1) Installing/updating TomeNET'.
 
--Get the latest client from the project's main official site www.tomenet.net.
+-Get the latest client from the project's main official site www.tomenet.eu.
  or from  http://koti.mbnet.fi/mikaelh/tomenet/getting-started.php (Mikael's
  site, which features a monster-search and other stuff).
  If you're on Microsoft Windows, it is recommended to get the installer package
@@ -197,7 +197,7 @@ compile the game under '(2.1) Installing/updating TomeNET'.
 -Either double-click 'TomeNET-direct.bat' to directly connect to official main
  server (recommended), or run TomeNET.exe and choose a server manually, for
  example enter 37.187.75.24 to connect to the official main server.
- NOTE: The official main server's hostname is "europe.tomenet.net".
+ NOTE: The official main server's hostname is "europe.tomenet.eu".
  (The Bat-file will always work properly, even if there are DNS problems which
  cause the server list not to show up properly.)
 
@@ -482,6 +482,10 @@ g       g       pick up an item from the floor. You have to stand on the item
                 the number pad while numlock is turned off. Gold is always
                 picked up automatically.
 
+K       CTRL+C  forcibly combines a level 0 item in your inventory with other
+                items of the same type that aren't level 0. Be warned, that
+                this will change the level of all the items involved to 0.
+
 C       C       see a character overview.
 
 L       W       look around your current sector/floor (use direction keys).
@@ -755,6 +759,8 @@ SPACE   Stop executing repeatable actions such as searching, tunnelling or
                 a bit irritating.
 
 :       type a chat message. To whisper privately, enter <player>:<text>
+        eg:  Gandalf:hi!  - actually the first few letters of the target
+        player's name are enough, like:  Gan:hi!
         You can also enter a slash command here.
         Press TAB to cycle between different chat modes, such as party-chat.
         For details about chat features see (3.3).
@@ -794,10 +800,6 @@ _       Two uses, regarding a) fountains or b) item piles:
 
 !       look at the in-game bulletin board. Players can write lines of text to
         it by using the /bbs <text> command.
-
-K       forcibly combines a level 0 item in your inventory with other items of
-        the same type that aren't level 0. Be warned, that this will change the
-        level of all the items involved to 0.
 
 CTRL+P  view previous messages.
         Note: You can also press this when in chat prompt, to cycle backward
@@ -916,6 +918,9 @@ They all start with a slash '/' hence they're called slash commands:
                      /convertexclusive <your-character-name>
                      for example:
                      /convertexclusive Gandalf
+                     If you still have a free exclusive character slot
+                     available then your character is moved to that slot,
+                     freeing up a generic character slot again.
 
 /coin       Flip a coin to get either heads or tails.
             The result is random and can be seen by other players who stand
@@ -1451,10 +1456,12 @@ Ammunition:
 Weapons that ricochet (sling ammo):
     !R          Prevents ricochetting.
 
-Scrolls of Identify, Rods/Staves of Perception:
+Scrolls/spell books of Identify (except for bag-ID), Rods/Staves of Perception:
     !X          If you pick up an unidentified item, you will automatically
                 read a scroll to identify it.
                 This inscription also works on 'The Stone of Lore'.
+                It does not work for Arcane Lore, since that is purely a bag ID
+                spell.
                 See (5.7) for more information about identification.
 
 An item that can be activated:
@@ -1602,7 +1609,7 @@ kinging     The process of beating Morgoth, the game boss, and thereby
 
  rekinging  Fallen winners, ie players who beat Morgoth but later on died and
             thereby lost their royal title again, can attempt to regain it by
-            teaming up with someone who has not yet killed Morgoth.
+            teaming up with someone who has not yet defeated Morgoth.
             If that person lands the killing blow, everyone in her/his party
             on the same floor will gain winner status again, even fallen kings.
             A player must be at least level 40 to get credit for beating
@@ -1803,7 +1810,7 @@ Unique      A monster that is named and exists only once. Although it can
             Queens, Emperors and Empresses. That means: The game will "forget"
             that you already defeated them, allowing you to defeat them once
             more. There are some exceptions though, the following monsters
-            will never respawn: The Nazguls, Sauron, Michael, Morgoth, and all
+            will never respawn: The Nazgul, Sauron, Michael, Morgoth, and all
             super-uniques that come after Morgoth, starting with Tik'srvzllat.
 
             This respawning happens (albeit very slowly) while you are logged
@@ -1824,12 +1831,12 @@ Wormy       Wormtongue, Agent of Saruman. He drops great items.
  command multiple times if one line is not sufficient for the amount of text
  you want to write.
  Alternatively, you can use the bug report section of the official forum at
- www.tomenet.net.
+ www.tomenet.eu.
  Please DO NOT write bugs in chat in the game.
 
 -If you have a suggestion, use the /rfe command instead. It's used the same way
  as the /bug command (see above).
- Alternatively, use the forum at www.tomenet.net.
+ Alternatively, use the forum at www.tomenet.eu.
 
 -Starting at version 4.4.5, TomeNET supports audio, that is, sound effects and
  background music. To find out more, read (2.1a).
@@ -1888,7 +1895,7 @@ the first couple of lines of this guide.
 Note that ToME and TomeNET although both coming from similar roots are actually
 quite different games that are maintained by different persons/teams.
 
-If you want to download the source code, you can get it from www.tomenet.net in
+If you want to download the source code, you can get it from www.tomenet.eu in
 the download section.
 
 
@@ -1897,7 +1904,7 @@ the download section.
 Apart from downloading the game client and playing, you can also get in contact
 with other players and developers via the following media:
 
--The forum at http://www.tomenet.net/.
+-The forum at http://www.tomenet.eu/.
 -IRC: Channel #tomenet on server irc.freenode.net (port 6667)
       (For help on Internet Relay Chat visit www.irchelp.org).
       The channels #tomenet, #tomenet.iron and #tomenet.arcade relay chat from
@@ -1906,7 +1913,7 @@ with other players and developers via the following media:
       See below (1.1b) for how to set up IRC chat in detail.
       See (0.2a) for commands you can send to the TomeNET IRC bot.
 -Voice chat via mumble, get it from http://mumble.sourceforge.net/.
-      IP is 'europe.tomenet.net', port is '23348', password is 'tomenet'.
+      IP is 'europe.tomenet.eu', port is '23348', password is 'tomenet'.
       For details see "(2.4) Installing voice chat".
 
 
@@ -1997,7 +2004,7 @@ dangers but also fantastic treasure. Players on the same server can also play
 together by forming parties and sharing their experience! Players will acquire
 new ranks as their experience grows, allowing them to learn new abilities and
 to become stronger. Morgoth is said not to show up until his servant Sauron,
-the Sorceror has been killed. (See 1.5 for more information about Morgoth.)
+the Sorceror has been defeated. (See 1.5 for more information about Morgoth.)
 
 On their journey through wilderness and remote towns, towers and dungeons,
 characters will gain experience points that increase their level up to 50.
@@ -2042,7 +2049,7 @@ When a player lands the killing blow on Morgoth, everyone else who is in her or
 his party and also on the same dungeon floor will get credit for winning the
 game too and receive a royal title accordingly. Even 'fallen winners' (players
 who have beaten Morgoth already but lost their royal title to death) can
-regain their title this way - by teaming up with someone who hasn't killed
+regain their title this way - by teaming up with someone who hasn't defeated
 Morgoth yet and making sure that that player lands the killing blow.
 Each player must be at least level 40 to get credit for beating Morgoth.
 
@@ -2076,7 +2083,7 @@ SLAY/KILL EVIL/UNDEAD weapons) you'll see the message:
 Note: Having those slay/kill mods on gloves instead of the weapon does not
       help! They will not count.
 
-Martial Arts users can fight relatively efficiently against Nazguls, but their
+Martial Arts users can fight relatively efficiently against Nazgul, but their
 chance to receive Black Breath is higher than for weapon users.
 
 If you come in contact with a Nazgul or a very powerful undead creature there
@@ -2104,11 +2111,11 @@ at close quarters combat. In general, do not underestimate Sauron's power!
 (1.3b) How to encounter the final boss: Morgoth, Lord of Darkness
 -----------------------------------------------------------------
 -Morgoth is found only at dungeon level 100 or deeper.
--He won't show up until you killed Sauron, the Sorceror, who is found at the
+-He won't show up until you defeated Sauron, the Sorceror, who is found at the
  bottom of Mt Doom (which is dungeon level 99).
 -Morgoth does not neccessarily spawn on each fitting dungeon level,
  sometimes you have to search for him, like for all other monsters/uniques.
--If a player who hasn't killed Sauron yet or who has already beaten Morgoth
+-If a player who hasn't defeated Sauron yet or who has already beaten Morgoth
  enters a dungeon level where Morgoth is currently on, Morgoth will instantly
  teleport to a different dungeon level.
 -If there's already another player on that level who has beaten Sauron but
@@ -2164,7 +2171,7 @@ Installation from scratch:
 --------------------------
 (Covered are Windows, Linux, OSX, FreeBSD.)
 
-Go to http://www.tomenet.net/ (or one of our personal pages) to download the
+Go to http://www.tomenet.eu/ (or one of our personal pages) to download the
 latest client. Extract it to a new directory, preserving the pathnames.
 
 (Note: If you decide to download the 'test client' instead of the client of the
@@ -2188,7 +2195,7 @@ There is also a manual in your TomeNET folder, the file is called
 in Wordpad, but either in Notepad or in any web browser of your choice, because
 Wordpad tends to warp the layout badly.
 Alternatively you can find the latest version of the manual online for browsing
-and easy searching, on the TomeNET homepage (http://www.tomenet.net/).
+and easy searching, on the TomeNET homepage (http://www.tomenet.eu/).
 
 If you're tech savvy, you could decide to edit the game configuration manually,
 but that is not really required. Continue reading below if you want to do that.
@@ -2239,9 +2246,9 @@ Linux (compiling from source):
 ------------------------------
 There are additional distribution-specific information on Mikael's website at:
 http://koti.mbnet.fi/mikaelh/tomenet/installation-linux.php
-(It's linked on www.tomenet.net -> "Links".)
+(It's linked on www.tomenet.eu -> "Links".)
 
-You can get the source from www.tomenet.net, also see (1.1).
+You can get the source from www.tomenet.eu, also see (1.1).
 
 How to compile the game binary:
 Go into '/tomenet/src' where the file 'makefile' is located.
@@ -2440,7 +2447,7 @@ Starting with version 4.4.5, TomeNET features a new SDL-based audio system,
 which provides sound effects and background music.
 
 To make use of it, all you have to do is download a sound and/or music pack and
-then install it. For downloading, go to www.tomenet.net and then click on
+then install it. For downloading, go to www.tomenet.eu and then click on
 'Downloads'.
 Read on for instructions how to install those once you downloaded them. There
 are two ways, automatically (client does it for you) and manually (you unzip
@@ -2517,7 +2524,7 @@ Note: Some people have reported that the program 'WinRAR' seems to cause
       '7zip' (a sourceforge project at the time of writing) downloadable at:
       http://www.7-zip.org/
 
-You can get the official sound pack on http://www.tomenet.net/ in the download
+You can get the official sound pack on http://www.tomenet.eu/ in the download
 section, and also look for player-made sound or music packs in the forum!
 
 On Microsoft Windows, the easiest way to do this after you downloaded a sound
@@ -2729,9 +2736,13 @@ By pressing the '=' key in game, you can access the options menu where you can
 tweak your client in some ways. Some of these options that aren't
 self-explaining or that are especially important are listed in detail here:
 
-(1 & 2) User Interface Options
+(1, 2, 3) User Interface Options
     Rogue-like commands (rogue_like_commands)
         Toggles between normal key set and traditional rogue-like key set.
+
+    Double height of the map shown in the main window (big_map)
+        Definitely enable this to see if you prefer it: It doubles the size of
+        the game-play area displayed in the main window.
 
     Suppress server messages as far as possible (taciturn_messages)
         Will prevent some of the not-so-important server messages to be
@@ -2776,18 +2787,29 @@ self-explaining or that are especially important are listed in detail here:
         Useful for example if there are many monsters around and you're a
         mimic in monster form, or just in general when you're in big_map mode.
 
+    Alert on taking damage while you are AFK (alert_afk_dam) and
+    alert on taking damage while looking around the map via 'locate' command
+    (alert_offpanel_dam). (The locate command is invoked with SHIFT+L on normal
+    key map and SHIFT+W on rogue-like key map.)
+
     A bunch of options for special visual effects and lighting.
         These options change how lighting is applied to lamp light and walls,
         lamp light colour and how walls are displayed depending on the font:
+
         font_map_solid_walls (depending on font displays walls as solid blocks)
         view_animated_lite (fire-based light sources flicker yellow-orange)
-        view_bright_lite2 (darkens wall grids out of sight)
-        view_yellow_lite (your light source lights up certain floor/wall grids)
-        view_bright_lite (darkens floor grids out of sight)
-        view_granite_lite (enables special lighting fx listed above for walls)
-        view_special_lite (enables special lighting fx listed above for floors)
 
-(3) Audio Options
+        wall_lighting (generally enables lighting/shading fx for walls:)
+        view_lamp_walls (your light source lights up certain wall grids)
+        view_shade_walls (darkens wall grids out of sight)
+
+        floor_lighting (generally enables lighting/shading fx for floors:)
+        view_lamp_floor (your light source lights up certain floor grids)
+        view_shade_floor (darkens floor grids out of sight)
+
+        view_lite_extra (lights up a few additional wall/floor types)
+
+(4) Audio Options
     (See (2.1a) for more information about sound and music.)
 
     A bunch of stuff here, mostly you might want to look at attack-sound effect
@@ -2796,7 +2818,7 @@ self-explaining or that are especially important are listed in detail here:
 
     no_shriek_sfx and no_house_sfx might be especially interesting too.
 
-(4 & 5) Game-Play Options
+(5, 6) Game-Play Options
     Use old target by default (use_old_target)
         If this is on, a ranged attack via *t5 or *t- will not pick a new
         (ie closer) target if the previously acquired target is still okay.
@@ -2804,10 +2826,6 @@ self-explaining or that are especially important are listed in detail here:
     Set 'AFK mode' automatically (auto_afk)
         Rogues might want to turn this off in order to sit out their blacklist
         timer in town.
-
-    Double height of the map shown in the main window (big_map)
-        Definitely enable this to see if you prefer it: It doubles the size of
-        the game-play area displayed in the main window.
 
     Prevent floating for a short while after death (safe_float)
         For a few turns after your character dies you cannot float up or down
@@ -2878,6 +2896,9 @@ self-explaining or that are especially important are listed in detail here:
         Should always be enabled! Will reduce probability for off-screen kills,
         since the screen scrolls much earlier when you come close to a border!
 
+    Get kicked out automatically by the game when starving and idle for 30
+        seconds. (idle_starve_kick)
+
 (8) Check Server Options
     Displays a list of the server rules and configuration.
 
@@ -2943,7 +2964,7 @@ Instructions to join the TomeNET Mumble server for voice chatting:
 -Go to menu 'Server' -> 'Connect' -> 'Add New..'
  and enter this server information to add the official TomeNET Mumble server:
  Label:     Choose any name you like, eg "TomeNET Voice Chat".
- Adress:    europe.tomenet.net
+ Adress:    europe.tomenet.eu
  Port:      23348
  Username:  Choose any name you like, it's your nickname on the Mumble server.
  Click 'Ok', select the newly added server in the list and click 'Connect'.
@@ -3120,7 +3141,7 @@ everlasting and a non-everlasting player!
 Non-everlasting and everlasting characters can't be in the same party.
 If an everlasting King/Queen dies, he won't be destroyed but lose the
 King/Queen status. To regain it, he needs to find another player who hasn't
-killed Sauron and Morgoth yet and team up with him, because those two won't
+defeated Sauron and Morgoth yet and team up with him, because those two won't
 (re)spawn for the everlasting player.
 Since it was often asked: Non-everlasting and everlasting players can revive
 each other without problems.
@@ -3255,6 +3276,37 @@ Below that, there are further status indicators such as
 -as well as your food indicator ('full' by default). Note that if you don't
  eat when you become hungry you might get paralyzed sporadically and eventually
  even die of starvation!
+
+In the lower middle to lower right area of the bottom status line of the main
+window, you find:
+-your speed (Normal, Slow or Fast)
+-your number of melee attacks per round (BpR aka blows per round)
+-your current depth or town. If you are in a town the town's name is displayed,
+ otherwise the dungeon depth (negative numbers) or tower height (positive
+ numbers) are shown, either in feet (each level equals 50 ft) or in levels,
+ depending on your configuration. So if you stand on the world surface (0 ft)
+ and enter a dungeon, you'd end up at -50 ft.
+ This number can also have different colour, indicating some things:
+ -A white number means no special effect.
+ -An orange number means that word-of-recall magic is pending.
+ -A yellow number means that your character's level is somewhat too high
+  compared to the dungeon/tower level you are on, and therefore you will get
+  greatly reduced amounts of experience points.
+ -A grey number means that your character's level is way too high compared to
+  the dungeon/tower level you are on, and therefore you will not get any
+  experience points at all here.
+ -When you spend about 2 minutes on a dungeon floor, a light blue asterisk '*'
+  will appear behind the depth indicator, or if you are in a town the town's
+  name will change colour to light blue.
+  This means that on the next dungeon floor you enter you will receive an extra
+  feeling, displayed in yellow colour, that tells you some rough information
+  about the dangers lurking there. For more information see (4.8).
+
+Note: There are certain areas in the game that inhibit teleportation, mostly
+so-called "no-teleport vaults". These areas are extremely dangerous because if
+a monster summons other monsters around you, you might not be able to escape!
+If you enter such a no-tele area, it will be indicated as described in (4.8)
+under "vault feelings".
 
 By the way: If you enter the game and find that you don't like your
 character and want to recreate it from scratch, you can suicide by pressing
@@ -3498,6 +3550,14 @@ a Ration of Food {0,+}
 
     Note that you usually can neither trade nor sell items that are level 0.
     Food is an exception to this rule, since it can be traded (but not sold).
+
+    For those interested in more details, that item level is roughly determined
+    based on the following factors:
+     - Base item level (the dungeon depth where it starts popping up)
+     - A slight increase for when it's found on even much deeper floors
+     - An increase depending on ego powers it possesses.
+    Some items have special level requirement calculations, for example the
+    level of a ring of speed is directly tied to its +speed value.
 
 a Chain Mail {0,+} (-2) [14,+0]
     The {..} part is already known, it's the same as for the ration described
@@ -4155,9 +4215,12 @@ NOTE: Whenever the macro wizard asks you to enter a partial name of an item to
 ----------------------------------------
 Whenever you use an attack spell or a wand or rod that cast bolts or balls,
 the game prompts you to enter a direction.
+Similarly, friendly spells such as 'cure wounds' require you to target another
+player (or yourself).
+So there are different targetting methods you can choose from:
 
-In our macros so far we have answered that question by specifying '*t' instead
-of an actual direction ie one of: 1,2,3,4,6,7,8,9.
+In our macros so far we have answered the 'which direction' question by
+specifying '*t' instead of an actual direction ie one of 1,2,3,4,6,7,8,9.
 We have learned that '*' means 'acquire target' and 't' means 'choose closest
 hostile target'. If there are two targets that are equally close, one that is
 awake is preferred over one that is alseep.
@@ -4201,6 +4264,14 @@ answered with..
        both, magic devices that take a direction and those that don't, since
        the '-' will just be ignored for those that don't.
 
+Friendly targetting:
+--------------------
+Sometimes you want to target a friendly player. For this you can use '('.
+That key currently targets the most hurt player who is in your party, or the
+most wounded player in general if you aren't in a party.
+After this target has been set, you can refer to it with '-', '+' or '5' same
+as for hostile targets you set with '*' explained above.
+
 Example macros:
 ---------------
   *tz0-     Will zap rod 0 at the closest hostile entity. If there is none,
@@ -4213,6 +4284,11 @@ Example macros:
             own location, ie '5'. This could be useful if you want to clear
             out piles of loot with a rod of acid balls, effectively destroying
             all lesser items that cannot resist acid and melt from it.
+  (m@11\r@Cure Wounds\r-
+            Will cast the spell 'Cure Wounds' (from the Holy Curing school)
+            at the most wounded friendly player. Will not do anything if no
+            player is nearby. Replace the '-' by a '5' to target yourself
+            if no other player is around.
 
 
 
@@ -4226,7 +4302,7 @@ queued keypresses that have to be processed.)
 An example macro set for fighters or archers:
 ---------------------------------------------
 This macro set is already in your /lib/user folder! If it's not there,
-download the latest client from www.tomenet.net or our personal pages.
+download the latest client from www.tomenet.eu or our personal pages.
 You can load this macro file by hitting % to invoke the macro menu,
 then enter 'l' to load a macro file, and specifying its filename,
 which is depending on your operating system:
@@ -4293,7 +4369,7 @@ The above macro set slightly changed to fit
 additional needs of a low level istar or other casters:
 -------------------------------------------------------
 This macro set is already in your /lib/user folder! If it's not there,
-download the latest client from www.tomenet.net or our personal pages.
+download the latest client from www.tomenet.eu or our personal pages.
 You can load this macro file by hitting % to invoke the macro menu,
 then enter 'l' to load a macro file, and specifying its filename,
 which is depending on your operating system:
@@ -4982,7 +5058,8 @@ For a list of dungeons and towers, see (4.5).
 
 Dungeon types
 -------------
-There are different types of dungeons:
+There are different types of dungeons, indicated by different
+staircase colours (also visible on the world map):
 
 -Normal dungeons. The main dungeons below the five cities Bree, Minas Anor,
  Gondolin, Lothlorien and Khazad-dum are such regular dungeons.
@@ -5956,7 +6033,9 @@ feeling as soon as you are about to enter the vault:
                                         The fact that you are standing within
                                         a no-tele area is also indicated by
                                         your (xx, yy) position display on the
-                                        lower left area of the main window
+                                        lower left area of the main window and
+                                        also your speed indicator on the bottom
+                                        status line of the main window
                                         turning from light green to dark grey!
                                         Also, the music will in most cases
                                         change from the normal theme of that
@@ -6500,7 +6579,7 @@ Arena Monster Challenge (no losses or gains, for testing your abilities)
     disenchanted in this event.
 
 Dungeon Keeper (everyone can win, 1+ participants)
-    (You should enable 'easy_open' option in  = 5  for this event, which is
+    (You should enable 'easy_open' option in  = 6  for this event, which is
     enabled by default, and lets you open doors simply be moving into them.)
 
     Characters who want to participate must not be of higher level than 14.
@@ -6527,7 +6606,8 @@ Dungeon Keeper (everyone can win, 1+ participants)
     After about 5 minutes, the dungeon floor however will crackle, and be
     flooded more and more with lava. Time is running out. Now the players who
     haven't escaped yet should hurry, before the maze is completely submerged
-    in lava.
+    in lava. Doors and the exit beacons will stay clear until the very final
+    push of lava occurs which then completely submerges everything.
     However, it seems the former keeper of this abandoned maze left behind a
     horrible guardian, the Horned Reaper. It can sense your presence and if it
     manages to catch you, there is no hope of survival.
@@ -6581,7 +6661,7 @@ Ironman Deep Dive Challenge (IDDC)
     If you make a 'slot-exclusive' IDDC character, it will start out with 300
     extra gold, and in turn automatically be unable to pick up any more gold or
     items of other players, and it won't get experience from eating bad food
-    either.
+    either. (It cannot buy houses either, but you won't need those anyway.)
 
     Players in the IDDC receive a 20% experience gain bonus in addition to the
     usual 15% experience bonus all ironman dungeons provide, so overall you
@@ -6640,15 +6720,16 @@ Ironman Deep Dive Challenge (IDDC)
     Although Sauron is the final guardian of Mt Doom, he may spawn in any theme
     in the IDDC, provided the floor depth is at least level 99.
     As in any other dungeon, Morgoth will only spawn if all players on a floor
-    have already killed Sauron. He may spawn in any theme, on floor depths of
-    level 100 or deeper. If Morgoth is killed, players on his floor will be
+    have already defeated Sauron. He may spawn in any theme, on floor depths of
+    level 100 or deeper. If Morgoth is defeated, players on his floor will be
     allowed to use Word-of-Recall to leave the dungeon if they wish!
     (Alternatively they may go on and recall at the final floor, which is
     level 127 aka -6350 ft.)
 
     An IDDC-slot-exclusive character that makes it out of the dungeon will be
     restricted to the world surface. If it attempts to enter any dungeon or
-    tower it will automatically retire instantly.
+    tower it will automatically retire instantly. Note that it cannot buy any
+    houses, but it won't need those anyway.
 
     Usually unique monsters may not spawn in two or more places in the game
     world at once, but the IDDC is actually an exception. In here, a unique
@@ -6670,6 +6751,9 @@ Ironman Deep Dive Challenge (IDDC)
     while they are inside the ironman deep dive dungeon.
     Level requirements on items are not in effect while inside the ironman deep
     dive challenge either, so item levels are meaningless.
+    An exception are items brought from outside the IDDC into it:
+    Apart from food and torches, these can only be dropped when a player
+    reaches at least dungeon floor #5.
 
     Party bonus experience is higher than outside of IDDC. This means that the
     experience you get per killed monster is much closer to the experience you
@@ -6706,10 +6790,10 @@ Ironman Deep Dive Challenge (IDDC)
     dungeon level instead.
 
     NOTE: You can use the command '/convertexclusive' to convert one of your
-    characters into a dedicated IDDC character, moving it to the specific
-    IDDC-only-character slot and freeing up the generic character slot.
-    This of course only works if you don't have an IDDC-exclusive character
-    already.
+    characters into a dedicated IDDC character, moving it to a specific
+    IDDC-only-character slot and freeing up the generic character slot again.
+    This of course only works if you still have a free IDDC-exclusive character
+    slot available.
 
 
 Seasonal events
@@ -6730,7 +6814,7 @@ Halloween
     or medium or high amount of hit points, depending on the location.
     If you cannot beat the high-HP version, you could try leaving the floor to
     reset it and hope to see the Pumpkin randomly respawn quickly afterwards in
-    easier form. The pumpkin will despawn on its own if it doesn't get killed
+    easier form. The pumpkin will despawn on its own if it doesn't get defeated
     before one hour has passed after it appeared. It will quickly respawn on
     another dungeon level in that case. About 5 minutes before it fades away,
     nearby players will get a warning message, saying that the Great Pumpkin
@@ -9075,7 +9159,7 @@ removed the curse (except if the base item type is already worthless).
 
 Artifacts vs Nazgul
 -------------------
-Artifacts greatly resist Nazguls, which cause most other weapons to break more
+Artifacts greatly resist Nazgul, which cause most other weapons to break more
 or less instantly. So even if an artifact weapon you find seems not very
 appealing in particular you might want to keep it just for slaying Nazgul.
 (See (1.3a) for more information about Nazgul.)
@@ -9708,7 +9792,8 @@ Some monsters have better chances to spot the player, depending on
                         orcs, trolls, stupid monsters are worse),
         -the vision power of the monster,
         -the level of the monster,
-        -player carrying a light source, doubles the chance of spotting him,
+        -player carrying a light source (not affected by vampires' "intrinsic
+         light"), doubles the chance of spotting him,
         -player wearing an aggravating item, further triples the chance.
 
 Invisibility also affects other players:
@@ -9953,9 +10038,9 @@ With a digging tool..
  (For quartz, you have a 3% chance to succeed at 18/50 STR with the shovel
   and at 18/10 STR with a pick. If you use an enchanted shovel (+9,+9) (+1)
   however, you already have a 3% chance to succeed at only 5 STR.)
--You cannot tunnel through granite with a shovel if your STRength is
+-You cannot tunnel through granite with a basic shovel if your STRength is
  below 18/30.
--You cannot tunnel through granite with a pick if your STRength is
+-You cannot tunnel through granite with a basic pick if your STRength is
  below 12.
 
 You can tunnel through all tunneable materials, no matter your strength, with..
@@ -11836,7 +11921,7 @@ create a character!):
     maximized!
     Make sure to create a macro for your fighting techniques 'Sprint' and
     'Taunt' when you learn them, which you do pretty early on. They are great
-    for catching annoying monsters that try to keep their distance from you.
+    for catching annoying monsters that try to keep their distance to you.
     (See (6.12) for details about fighting techniques.)
 
     Dual-wield trick if you lose your items on death:
@@ -11932,7 +12017,7 @@ create a character!):
 
     Hint: Make sure to create a macro for your fighting techniques 'Sprint' and
     'Taunt' when you learn them, which you do pretty early on. They are great
-    for catching annoying monsters that try to keep their distance from you.
+    for catching annoying monsters that try to keep their distance to you.
     (See (6.12) for details about fighting techniques.)
     Always keep your sword-mastery skill at maximum (if you don't go for an
     unusual build that uses martial arts instead).
@@ -12036,7 +12121,7 @@ create a character!):
     after it's been brought up a few levels. Orcs are said to fear it a lot.
     Also make sure to create a macro for your fighting techniques 'Sprint' and
     'Taunt' when you learn them, they are great for catching annoying monsters
-    that try to keep their distance from you. (See (6.12) for details.)
+    that try to keep their distance to you. (See (6.12) for details.)
     Pick one of the four weapon masteries (Sword/Blunt/Axe/Polearm), or Martial
     Arts if you don't want to use weapons, and always keep it maximized.
 
@@ -12068,7 +12153,7 @@ create a character!):
 
     Hint: Make sure to create a macro for your fighting techniques 'Sprint' and
     'Taunt' when you learn them, which you do pretty early on. They are great
-    for catching annoying monsters that try to keep their distance from you.
+    for catching annoying monsters that try to keep their distance to you.
     (See (6.12) for details about fighting techniques.)
     Since rangers can dual-wield and you start with light armour which is
     required for dual-wielding you might want to buy a secondary weapon right
@@ -12124,7 +12209,7 @@ create a character!):
     early on, Toxic Moisture. Look for it in the book store right away.
     Also make sure to create a macro for your fighting technique 'Sprint' when
     you learn it, which you do pretty early on. It is great for catching
-    annoying monsters that try to keep their distance from you. (See (6.12).)
+    annoying monsters that try to keep their distance to you. (See (6.12).)
     As martial artists, druids do not require any armour early on in the game,
     it could even lower their AC instead of improving it.
     Always keep your Martial Arts skill maximized.
@@ -13867,7 +13952,7 @@ Mindcraft schools:
                     Gives fear resistance, increases your saving throw and
                     gives especially increased chance to resist paralyzation,
                     confusion and slowness. Also gives heroism-like +hit bonus.
-                    Later on gives +1 extra attack.            (auto-project)
+                    At level 25 gives +1 extra attack.         (auto-project)
                     Required skill level for first spell level: 3.
 
     Self-Reflection Find out more about yourself.
@@ -13884,7 +13969,9 @@ Mindcraft schools:
                     Required skill level for first spell level: 25.
 
     Stabilize Thoughts
-                    Cures some insanity and removes effects.   (auto-project)
+                    Cures some insanity and removes effects:   (auto-project)
+                    -Fear and confusion at level 5,
+                    -Hallucinations at level 10.
                     Required skill level for first spell level: 25.
 
     Telekinesis II  Inscribe your book @P<Playername>, cast it, select an
@@ -15014,6 +15101,7 @@ by an opponent! The special rules that apply are as follows:
  (takes about 30 seconds to wear off, or just enter a town to reset).
 -PvP characters are unaffected by certain effects caused by other players:
  Hallucination, Life force drain (exp drain), Stat drain, Nexus scrambling.
+-They may not own more than one house.
 
 Note: Item rewards depend on your character, see (8.5) for more information
       about item rewards.
@@ -15902,7 +15990,7 @@ It doesn't matter where you are, what level you are, or whether your character
 has 'luck' or not when you read the scroll, the resulting artifact's power is
 always determined randomly and cannot be influenced by the player,
 except for hit point bonus available for characters that have 'winner' status
-(killed Morgoth), which can be suppressed by inscribing the artifact creation
+(defeated Morgoth), which can be suppressed by inscribing the artifact creation
 scroll '!L' (also see 'type-dependant mods' list further below).
 
 
@@ -16461,7 +16549,7 @@ Note: After logging in you may press '?' key for a help screen.
 
  If your client is older than 4.5.3 you probably don't have these macros.
  In that case you can download them at the bottom of the downloads page on
- www.tomenet.net and extract them to folder TomeNET/lib/user.
+ www.tomenet.eu and extract them to folder TomeNET/lib/user.
  But of course you should actually just update your whole client instead.
 *******************************************************************************
 
@@ -16676,7 +16764,7 @@ SOLUTION:   This is a typical problem on Windows XP. There are 3
              example C:\TomeNET\.. .
             -Make sure the path name does not contain any spaces!
             -to edit your "TomeNET.ini" file and specify a host directly by
-             specifying "HOST=europe.tomenet.net".
+             specifying "HOST=europe.tomenet.eu".
              Or you can even give the IP address "HOST=37.187.75.24".
 
 PROBLEM 02: I get to a server list, but it doesn't show any servers. It just
@@ -16690,7 +16778,7 @@ SOLUTION:   There are 2 possible solutions.
              longer period of time though, being very annoying.
              That the server isn't listed doesn't mean that it's down though.
              You should try to connect manually (press 'Q') to either:
-             europe.tomenet.net
+             europe.tomenet.eu
              or (if that doesn't work either) directly to its IP adress:
              37.187.75.24
 
@@ -16835,11 +16923,11 @@ SOLUTION:   Read the error message displayed in a message box on quitting.
             "Name already owned"
                     Account name already exists.
             "Your client is outdated. Please get the latest one from
-            http://www.tomenet.net/"
+            http://www.tomenet.eu/"
                     Download the latest client, see (0.1).
             "Server responds 'Unknown client version'. Server might
             be outdated or client is invalid. Latest client is at
-            http://www.tomenet.net/"
+            http://www.tomenet.eu/"
                     The server might be running an older
                     version than your client is.
             "Sorry, the game is full.  Try again later."
@@ -16905,7 +16993,7 @@ SOLUTION:   If you are behind a firewall make sure that the TCP ports
             blocked. (Well, the metaserver isn't needed to play - specify the
             game server via command-line or when asked for it after starting
             up the game then.)
-            The meta server's hostname is "meta.tomenet.net" and its IP is
+            The meta server's hostname is "meta.tomenet.eu" and its IP is
             actually the same as the official game servers (37.187.75.24);
             In case there is a DNS problem somewhere in the internet you could
             just edit TomeNET.ini and replace the hostname by its actual IP.
@@ -16917,7 +17005,7 @@ SOLUTION:   The meta-server might be down or a DNS problem might be occuring
             right now. This can happen from time to time. You don't need the
             meta-server to play TomeNET though.
             Just type in the hostname of the server you'd like to connect to,
-            for official main server:   europe.tomenet.net
+            for official main server:   europe.tomenet.eu
             If the hostname doesn't work you can also try entering its IP
             address 37.187.75.24.
             Make sure your TomeNET.ini file contains the correct server port,
@@ -16933,7 +17021,7 @@ SOLUTION:   The meta-server might be down or a DNS problem might be occuring
             right-clicking, dragging, releasing it. Edit this shortcut's
             properties and add the server IP to the command-line.)
             For official main server it would look like this:
-            TomeNET.exe europe.tomenet.net
+            TomeNET.exe europe.tomenet.eu
             If the hostname doesn't work for whatever reason you may try the
             IP adress:
             TomeNET.exe 37.187.75.24
@@ -16955,7 +17043,7 @@ PROBLEM 12: Every time I connect to the server it will automatically download
 SOLUTION:   Possibly write-protection on existing files or the folder.
             Workaround: Make sure you really have the latest LUA files in
             TomeNET's /lib/scpt folder (you can download them from
-            http://www.tomenet.net/ or our personal pages). Then set all LUA
+            http://www.tomenet.eu/ or our personal pages). Then set all LUA
             files in that directory to write-protected. This will prevent
             TomeNET from overwriting them with 0 Byte files.
 
@@ -17175,9 +17263,9 @@ PROBLEM 33: On OSX when entering the game (right after picking a character) in
             will suddenly become small (24 lines) again.
             As of the time of writing this, the exact cause is still unknown.
             A workaround is to perform the following steps:
-            -turn off big_map mode and save the '=' options
+            -turn off big_map mode (= key for options, page 5) and save options
             -exit client with CTRL+X (so it will save the main window height)
-            -log on again, turn on big_map mode, save the '=' options.
+            -log on again, turn on big_map mode, save the options again.
             -from now on, always exit the game via the window close button in
              the window's titlebar, never via CTRL+X. That way, your .tomenetrc
              config file is never overwritten and hence your client will always
