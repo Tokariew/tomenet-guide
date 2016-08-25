@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 20. Mar 2010 - written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.4.4b - official websites are:
+| Latest update: 28. Mar 2010 - written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.4.4c - official websites are:
 | http://www.tomenet.net/ (main site),
 | http://koti.mbnet.fi/mikaelh/tomenet/ and http://www.c-blue.de/rogue.html
 +---
@@ -462,6 +462,9 @@ TAB or CTRL+I
         displays lag-o-meter.
 !       look at the in-game bulletin board. Players can write lines of text to
         it by using the /bbs <text> command.
+c  while in a store:
+        Pastes an item to chat, including its currently displayed store price
+        and the symbol of the store.
 K       forcibly combines a level 0 item in your inventory with other items of
         the same type that aren't level 0. Be warned, that this will change the
         level of all the items involved to 0.
@@ -613,7 +616,7 @@ They all start with a slash '/':
             inscription. Helpful for looting in conjunction with /dis command.
             If a slot (a..w) is specified, it only tags the item in that
             particular inventory slot (if not yet inscribed already).
-	    Will not affect equipped items.
+            Will not affect equipped items.
 /tar <x> <y>
  (/target)
             Allows you to target a specific grid specified by X,Y as offset
@@ -623,7 +626,7 @@ They all start with a slash '/':
             in your backpack which are exactly '!k' (as done by /tag command).
             Ohterwise it removes inscriptions of all items which are exactly
             inscribed as specified by <inscription>.
-			Will not affect equipped items (except for '/untag *').
+            Will not affect equipped items (except for '/untag *').
 /untag *    Will remove all pseudo-id tags from your inventory items.
             Note: This will work on equipped items too!
 /at         Apply auto-inscription settings to current inventory.
@@ -2182,6 +2185,7 @@ Example 2: Assumed you have the spell Manathrust somewhere in your books and
 want to cast it by name, what you enter in the q'n'd field is:
     m@Manathrust\*
 and it will automatically be expanded to '\e)m@11\r@Manathrust\r*t', voila.
+Another example: 'm@Phase Door\'.
 
 
 
@@ -2418,6 +2422,8 @@ manathrust with '\e)m@11\r9a*t' you could also just make a macro
 '\e)m@11\r@Manathrust\r*t' without the need to inscribe your book.
 
 In fact you could make a macro '\e)m@Cast a spell\r@Manathrust\r*t'.
+
+Another example: '\e)m@11\r@Phase Door\r'.
 
 IMPORTANT: Keep in mind that call-by-name is actually case-sensitive!
 (So in the example above, 'manathrust' would not work.)
@@ -4299,6 +4305,8 @@ Chaos           Chaos attacks can also have nasty side-effects if you don't
                 -Drain some experience. Resisting 'Nether' will also prevent
                  this.
                 Resisting chaos will also make you resist confusion attacks.
+                Resisting chaos will prevent hallucination from certain mind
+                blast attacks.
                 Resistance will cut down damage to 6/7..6/12.
                 Breath damage is monster HP/6. Chaos breath caps at 600.
                 Raw chaos invocation (chaos ball) does (level*4)+(10d10) dam.
@@ -5993,6 +6001,8 @@ Note that not every skill is available to every profession (class).
                                 At 50, it will raise spell levels by 40%.
                                 (It won't raise the level of spells which you
                                 haven't learned yet.)
+                                Note that Spell-power does not affect druid
+                                or mindcrafter spells, nor runemastery.
     .Sorcery                    Learn to use spells of ALL magic schools at
                                 once, instead of training a particular branch!
 << For more information about learning spells, see (6.8) >>
@@ -6068,6 +6078,11 @@ Note that not every skill is available to every profession (class).
                                 steal until the shopkeepers stop to watch you
                                 so intensely. The watchlist runs out slower
                                 than the blacklist, but allows you to be AFK.
+                                Note that usually people don't want to be seen
+                                with stolen goods, which means that very
+                                expensive items, depending on their value, have
+                                a certain chance of their level becoming 0,
+                                making them untradable.
                                 Your chance to steal an item from a shop
                                 depends on your dexterity, your stealing skill
                                 and the price and weight of the item. Stealth
@@ -6772,6 +6787,8 @@ Druid
     Druids are able to call upon the mystical powers of nature and very good
     at it. Their wisdom is of primary importance to determine their mana and
     success chances when casting spells.
+    Druids fight using Martial Arts (the only melee skill they are able to
+    train) as well as spells.
     Druids can shapechange into several animal forms without having to fight
     or kill them in order to learn about their form. They learn one or more
     new forms at each character level that is dividable by 5. Druids are able
@@ -6780,7 +6797,9 @@ Druid
     fair enough; they despise the use of weapons though.
     A specialty of druids is, that they are still able to wear their full
     equipment even if their appearent shape is not human but of an animal.
-    Druids learn how to quickly pass through thick forest at level 10.
+    Druids learn how to quickly pass through thick forest at level 10 --
+    note though that they can already do this at level 5 by simply polymorphing
+    into an animal ('m' key), since all animals can pass forest easily.
     (Special note (compare 6.7): If they wield a weapon while using a form
     which usually cannot use weapons, they will only get 1 blow per round.)
     To recheck which forms you can transform into, use the /ex command.
