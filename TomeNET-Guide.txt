@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 13. June 2010 - written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.4.5 - official websites are:
+| Latest update: 20. June 2010 - written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.4.5b - official websites are:
 | http://www.tomenet.net/ (main site),
 | http://koti.mbnet.fi/mikaelh/tomenet/ and http://www.c-blue.de/rogue.html
 +---
@@ -1045,6 +1045,13 @@ Wormy       Wormtongue, Agent of Saruman. He drops great items.
 
 (0.5) Rumours, missing features, technical warnings (READ!)
 -----------------------------------------------------------
+-To report a bug, use /bug command in game. It allows you to type a line of
+ text to explain the bug or problem you encountered. You can use the /bug
+ command multiple times if one line is not sufficient for the amount of text
+ you want to write.
+ Alternatively, you can use the bug report section of the official forum at
+ www.tomenet.net.
+ Please DO NOT write bugs in chat in the game.
 -Starting at version 4.4.5, TomeNET supports audio, that is, sound effects and
  background music. To find out more, read (2.1a).
 -Usually characters expire (that means they are automatically deleted!)
@@ -1208,8 +1215,8 @@ If your weapon gets destroyed you'll receive a warning message:
 Your weapon itself will not damage the Nazgul if it doesn't have one of the
 mods SLAY_EVIL, SLAY_UNDEAD or KILL_UNDEAD. However, you might still be able
 to damage the Nazgul, if your raw to-dam bonus is high enough. Enchantments
-from rings or other items and the damage bonus from your skills will be the
-only factors which decide the damage you deal, in that case.
+from rings, gloves or other items and the damage bonus from your skills will
+be the only factors which decide the damage you deal, in that case.
 For weapons which damage dice and to-dam bonus will not be counted (ie non-
 SLAY/KILL EVIL/UNDEAD weapons) you'll see the message:
 "The Ringwraith is IMPERVIOUS to the mundane weapon."
@@ -2298,23 +2305,43 @@ the usual full macro.
 
 On entering the macro action, those characters will be automatically expanded
 to their real functionality. They are:
-  M for using a mimic's innate power
-  T for using a mimic's 'transform-into-specific' power. For example, enter:
-    T191
-    Which will become  \e)@m3\rc191\r  (transform into a Grizzly Bear).
+  P for using a mimic's innate power
+    Example:  Pd
+    Uses innate power 'd)', which is the first real innate spell after the
+    three polymorph powers themselves, which always comprise a) to c).
+  I for using a mimic's 'transform-into-specific' power.
+    Example:  I191
+    This will become  \e)@m3\rc191\r  (transform into a Grizzly Bear).
   F for employing a fighting technique
+    Example:  Fa
+    (Use fighting technique 'a)', which usually is 'taunt'.)
   S for employing a shooting technique
-  m for casting a spell
+    Example:  Sa
+    (Use shooting technique 'a)', which is probably 'flare'.)
+  M for casting a spell
+    Example:  M@Phase Door\
+    Becomes  \e)m@11\r@Phase Door\r  (cast spell 'Phase Door'.)
   R for drawing a rune
-  P for setting up a trap
+    Examples:  Rcbiaa  or  Rcb\raa  or Rc\raa  to draw 3 or 2 or just 1 rune.
+    (The last two 'a' being spell-power and spell-type respectively.)
+  T for setting up a trap
+    Example:  T13
+    Set up the monster trap inscribed '@m1' or '@1' loaded with item inscribed
+    '@m3' or '@3'. (Becomes '\e)m@10\r13'.)
   s for changing a stance
-  * for targetting the nearest monster
+    Example:  sa  (switches to stance 'a)' ie balanced combat stance.)
+  * for targetting the nearest monster. Usually you add this to any spell that
+    requires targetting.
+    Example:  m@Manathrust\*  (cast spell manathrust at nearest monster.)
   @...\ for using call-by-name (spell/item name must be between '@' and '\')
+    (Examples have been given above, in some spell casting explanations.)
+
 All other keys are taken over unmodified, like 'f' for firing a ranged weapon.
 
 Also, '\e)' is automatically prefixed, and the most fitting macro type
 automatically chosen (depending on the trigger key).
 
+Additional examples:
 Example 1: Firing your ranged weapon would just be..
         f*
     (which gets expanded to '\e)f*t'.)
@@ -3932,6 +3959,18 @@ becomes impossible/obstructed for any reason.
 The main use besides making ranged weapon usage more relaxed is that you are
 able to single out enemies you want to kill of big monster packs such as
 escorts.
+
+Fire-till-kill mode also works with spells and runes, same as with ranged
+weapons, except it may stop under additional conditions such as having no more
+mana or other effects that render you 100% unable to cast spells.
+While it will also stop if your spell requires a clear line of sight and would
+(while travelling to the target) hit other monsters on the way, some spells
+which don't travel to their destination but arrive instantly (most notably ball
+spells and mindcrafter spells) will not be affected by monsters crossing your
+line of sight.
+
+Concerning runecraft, fire-till-kill mode will also stop casting when your fail
+chance for the selected spell is over 60%.
 
 
 
@@ -6500,6 +6539,8 @@ Note that not every skill is available to every profession (class).
                                 sanity will be displayed as a bar.
                                 At 20 points you'll get the percentage
                                 displayed. At 40 the value will be shown.
+                                Note that Health skill stacks with +LIFE items
+                                (compare '+LIFE' in (5.8)).
     .Digging                    How well you are able to dig. Also affects
                                 your chance to find items, for the items to
                                 be good or even great, and affects the amount
@@ -7536,6 +7577,8 @@ All undead creatures
             reduced by a little bit.
             Becomes susceptible to 'life', which concerns some healing or
             cleansing effects for example.
+            However, at the same time they become gorged less quickly when
+            for example quaffing lots of healing potions quickly.
 All greater demons (capital 'U')
             Resist poison (in most cases immunity).
 All non-living creatures
