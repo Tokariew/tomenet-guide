@@ -1,17 +1,24 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 7. July 2010 - written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.4.5c - official websites are:
+| Latest update: 8. Oct 2010 - written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.4.5h - official websites are:
 | http://www.tomenet.net/ (main site),
 | http://koti.mbnet.fi/mikaelh/tomenet/ and http://www.c-blue.de/rogue.html
+|
+| IF YOU GOT THIS GUIDE WITH THE PROGRAM DOWNLOAD, IE IN A CLIENT-ZIP FILE,
+| THEN FIRST THING YOU SHOULD DO NOW IS GO TO www.tomenet.net AND DOWNLOAD THE
+| LATEST COPY OF THIS GUIDE TO MAKE SURE YOU AREN'T LOOKING AT OUTDATED INFO!
 +---
 | Welcome to this guide!
 | Although I'm trying, I give no guarantee that this guide
 | a) contains really every detail/issue about TomeNET and
 | b) is all the time 100% accurate on every occasion.
 | Don't blame me if something differs or is missing; it shouldn't though.
-| Please send in suggestions, criticism or comments to mail@c-blue.de.
+|
+| If you have any suggestions about the guide or the game, please use the /rfe
+| command in the game or write to the official forum on www.tomenet.net.
+|
 | It's recommended to read this guide using a fixed-width font (Courier on
 | MS Windows machines) to see proper spacing instead of warped tables.
 +---
@@ -49,6 +56,7 @@ Contents
     (3.2a)  The encumberment bar
     (3.3)   Behaviour, chat messages and chat modes
     (3.4)   Start-up equipment & how to use it
+    (3.4a)  Item basics
     (3.5)   Preparing the first time for fighting enemies
     (3.6)   Creating basic macros & inscribing items (IMPORTANT)
     (3.7)   Creating macros for ranged attacks & abilities (spells)
@@ -198,6 +206,8 @@ compile the game under '(2.1) Installing TomeNET'.
  right side of your keyboard, so the green light is off).
  If SHIFT+<direction> doesn't work on your system, you can press the dot '.'
  followed by a direction key. (If you use rogue-like keys, see section (0.2)!)
+ You can also use the arrow keys to move, but the numpad is better since it
+ allows you to move diagonally too, which is very important.
 -You can wear/wield your armour/weapons by pressing 'w' and choosing them
  from your inventory which is displayed in the bottom right window.
 -You can pick up items if you stand on them and press 'g'.
@@ -501,12 +511,24 @@ They all start with a slash '/':
             wearing off of temporary stat drain from traps) and eventually
             wear off, _except_ for blacklist timer from being caught by a shop
             owner on attempting to steal.
+            Also, other players cannot switch places with you by moving into
+            you, use teleportation or word-of-recall on you, infect you with
+            black breath by bumping into you, steal from you, form a blood bond
+            with you or attempt to polymorph you while you are afk.
 /afk <msg>  You can specify a reason that will be displayed to the other
             players, so they know why you are currently AFK or when you will
             be back.
 /bbs <text> Add a line of text to the in-game bulletin board system. Players
             can look at the board by pressing the '!' key.
             (You can verify or compare the date with the /time command.)
+            If <text> is omitted, the current BBS contents will be shown, same
+            as using the '!' key.
+/pbbs <text>    Same usage as /bbs, but only readable/writable for party
+                members. So it's a party-internal BBS.
+                To read its contents, type /pbbs without any <text>.
+/gbbs <text>    Same usage as /bbs, but only readable/writable for guild
+                members. So it's a guild-internal BBS.
+                To read its contents, type /gbbs without any <text>.
 /deal       Deals a card (completely random).
             The result is random and can be seen by other players who stand
             nearby.
@@ -609,18 +631,22 @@ They all start with a slash '/':
             Example: /mon D  ->  shows your greater dragons kill count.
 /motd       Shows the current server notes that are displayed at login.
  (/snotes)
+/news       Shows the login screen, same as ~f, but in monochrome.
 /note <account name>:<text>
             Leave a note to another player. Note: You have to specify his
             ACCOUNT NAME, not a character name. That way, no matter which of
             his characters he chooses to logon, he always gets the note.
-/news       Shows the login screen, same as ~f, but in monochrome.
 /note <account name>
             Delete all pending notes that were addressed to that player.
 /notes      Display all pending notes that you wrote to other players.
 /notep <text>
             Leave a note to the party you own.
+            If <text> is omitted, it will display the current note.
+            If <text> is just an '*' char, it will erase the current note.
 /noteg <text>
             Leave a note to the guild you own.
+            If <text> is omitted, it will display the current note.
+            If <text> is just an '*' char, it will erase the current note.
 /obj        Displays all objects known to you, same as ~4.
  (/object)
 /page <player-name>     Sends beeps to that player to help you getting his
@@ -630,9 +656,10 @@ They all start with a slash '/':
                         see problem 19 in the troubleshooting section (8.5).
 /play       Join/leave a mini-game (such as rugby on the field in Bree).
 /que        gives a quest! It needs to be fulfilled before a certain period
- (/quest)   of time passes. The player who completes it gets a great item
-            as reward. It will appear in your inventory and carry an
-            inscription indicating it's the quest reward.
+ (/quest)   of time passes (continues to expire even while not logged on).
+            The player who completes it gets a great item as reward. It will
+            appear in your inventory and carry an inscription indicating
+            it's the quest reward.
 /rec -550   recalls you to -550ft, using an item inscribed {@R}.
 /rec 32 32  recalls you to Bree (Town at 32,32 world map coordinates),
  (/recall)  using an item inscribed {@R}. See "(0.3) Important Inscriptions"
@@ -686,8 +713,12 @@ They all start with a slash '/':
             Ohterwise it removes inscriptions of all items which are exactly
             inscribed as specified by <inscription>.
             Will not affect equipped items (except for '/untag *').
-/untag *    Will remove all pseudo-id tags from your inventory items.
+            Note that some <inscription> parameters are special and therefore
+            reserved, those are:
+/untag *    will remove all inscriptions from all items in your inventory.
+/untag p    will remove all pseudo-id tags from your inventory items.
             Note: This will work on equipped items too!
+/untag u    will remove all unique-loot tags from your inventory items.
 /at         Apply auto-inscription settings to current inventory.
  (/autotag)
 /version    Displays the server version.
@@ -1199,6 +1230,10 @@ especially devastating to all living beings:
 If you get killed on a level where Morgoth, Lord of Darkness walks, your
 ghost will be destroyed too, even if you are everlasting! Beware!
 
+If you team up against him, he will grow stronger for every additional player
+who enters his dungeon level. Growing stronger in fact means that he gains a
+hit point and speed bonus. If a player leaves his level, he will weaken again.
+
 A very dangerous thing about Nazgul is that weapons get quickly destroyed if
 they come in contact with these corrupted beings.
 If you are a spell-caster who doesn't use his weapon to fight but just to
@@ -1358,6 +1393,12 @@ If your name contains spaces, it is neccessary to put a '\' in front of each.
 Example:
         ./tomenet -p18348 -lIron\ Man geheimer 85.118.45.235
 ..if your account name is 'Iron Man'.
+
+
+To automatically position your TomeNET windows in a certain manner on Linux,
+on KDE this can be done natively by right-clicking the windows and modifying
+the "special window settings" or "special application settings", while on Gnome
+you can use a helper tool such as Devilspie to achieve the same.
 
 
 
@@ -1668,6 +1709,11 @@ run by pressing the SHIFT key together with a direction key.
 IMPORTANT: To run (SHIFT+direction) make sure that the Numlock key above your
 number key pad on the right side of your keyboard is turned off. A green lamp
 will usually indicate whether it is on or off.
+Running will not work while awake monsters are in your line of sight, except
+for the starting town of Bree, where running is always possible.
+
+You can also use the arrow keys to move, but the numpad is better since it
+allows you to move diagonally too, which is very important.
 
 You can wear/wield items with 'w' (weapons, armour, light source..)
 You can pickup items with 'g'. Drop items with 'd'. Destroy items with 'k'.
@@ -1734,10 +1780,13 @@ Also see (0.2) for some details about suiciding.
 
 (3.2a) The encumberment bar
 ---------------------------
-
 Between AU and the mini lag-o-meter is a line indicating if you are encumbered
 in any way. This line is blank by default, but may start to show little
 coloured icons if your character becomes overburdened in some way.
+
+If you are new to the game, you can skip the rest of this chapter for now,
+as long as your encumberment bar doesn't show any icons in it, and continue
+reading at (3.3) down below.
 
 This line consists of the following icons that may show up:
 (Order: From left to right)
@@ -1805,12 +1854,7 @@ Example:    Hi!             <- goes to everyone
 In chat messages you can type a double colon '::' to force output of a normal
 colon ':' instead of having it interpreted as separator for a private chat
 message. Most smileys are recognized automatically and don't require you to
-enter a double colon ( ':)' will work equally to '::)' ). (If you want to send
-a private message to someone which starts with a smiley, you will have to
-enter a space between the private-separator colon and the smiley colon,
-example: 'D00d: :)' sends a private message to D00d, containing  ' :)'
-while 'D00d::)' will result in a public chat message looking like this
-'D00d:)' .)
+enter a double colon.
 
 You can use colours in messages. To change the message colour, put a {
 followed by a colour code somewhere into your message line.
@@ -1879,20 +1923,26 @@ Every new player has some items right from the beginning, stored in the
 inventory (bottom right window). As a warrior you will have a chain mail and
 a weapon, for example a sword.
 Start-up equipment always has level 0 and cannot be used by other players!
+
 You should now equip your start-up items, since they won't help you if
 they stay inside the backpack. Press the key 'w', you will be asked which
 item you would like to wear or wield, choose the letter in front of the item
 inside your inventory, for example e) if the sword is the fifth item in your
-backpack. Equip both, sword and armor this way. You can also equip a
-lightsource like a torch or lantern this way. If it is night in town that will
-help you to see anything. Inside a dungeon you should always make sure that you
-have a lightsource equippped.
+backpack. Equip both, sword and armor this way, or whatever items you start out
+with - some characters start with a cap and a cloak, others with an axe..
+You can also equip a lightsource like a torch or lantern this way. If it is
+night in town that will help you to see anything. Inside a dungeon you should
+always make sure that you have a lightsource equippped.
+
 Startup items that you don't want to use you may simply destroy with 'k'.
-The numbers '1' to '7', '9' and '+' stand for different shops that you can
-enter to sell or buy items. It is recommended that instead of using your
-torches, buy a brass lantern from store '1' (General Store), because a lantern
-provides more light, increasing your radius of sight in the darkness. Also buy
-a flask of oil for your lantern to refill it if it runs out of oil.
+In town, you can see rectangular blocks that rensemble buildings. These are the
+town stores. They each have an entrance, rensembled by a number '1' to '7' as
+well as '9' and '+' symbols. These are the different shops that you can enter
+to sell or buy items. It is recommended that instead of using your torches, buy
+a brass lantern from store '1' (General Store), because a lantern provides more
+light, increasing your radius of sight in the darkness. Also buy a flask of oil
+for your lantern to refill it if it runs out of oil (press SHIFT + f).
+
 Press '?' to see an in-game introduction and overview of the keys and commands
 that you may use. For example 'e' will show your currently equipped items.
 You can chat with other players using the ':' key. This way you can also enter
@@ -1902,6 +1952,139 @@ equipment. It's the "Gazette". Press 'r' to read it. It may contain some notes
 about the server or hints for newbies.
 
 
+(3.4a) Item basics
+------------------
+When you've logged in and look at your inventory (your backpack, basically),
+ie the items your character starts with, you will see various item names that
+give you some sort of idea what the item is good for, along with some cryptic
+numbers and brackets.
+The meaning of these will be explained here:
+
+a Ration of Food {0,+}
+    Pretty straightforward, this is an item that you can consume if you get
+    hungry. To do so, use SHIFT+e to 'eat' this item.
+    The {..} part means the following:
+
+    The number in it is the level required to use this item. 0 means that you
+    started out with this item, ie it was given to your character on birth.
+
+    The '+' symbol means that you OWN the item. If it was someone else's ration
+    then you would see his name written there instead of the '+', for example:
+    a Ration of Food {0,Gandalf}.
+    If the owner died and the item hasn't been picked up yet by someone else
+    who meets the level requirements, it will display a '-' instead of a name,
+    meaning it has been owned, but the owner died. Example:
+    a Ration of Food {0,-}.
+
+    If you own an item or found an item, then the level requirements won't
+    matter. Even if they are much higher than your level, you can still use it.
+
+    The level requirements are only important for TRADING an item:
+    If the character who receives the item is too low to match the level
+    requirement, he won't become the owner of the item and therefore will be
+    unable to use the item until he reaches the level. He can still carry the
+    item in his inventory though, but it will be displayed in dark grey to him,
+    indicating that it isn't usable yet.
+
+    Note that you usually can neither trade nor sell items that are level 0.
+    Food is an exception to this rule, since it can be traded (but not sold).
+
+a Chain Mail {0,+} [14,+0]
+    The {..} part is already known, it's the same as for the ration described
+    above. What's new is the [..] part, which all types of armour have:
+
+    Rectangular brackets [..] describe 'Armour Class' or short AC. AC is a
+    number that tells you how well the item helps to protect you when a monster
+    (or a player whom you duel) hits you.
+
+    The first number stands for the item's 'base AC'. All 'Chain Mails' have
+    the same base AC of 14. All 'Metal Caps' have a base AC of 3, and so on.
+
+    The second number, here a +0, can vary: It is this item's magical
+    enchantment. It is simply added to the base AC to determine the total AC
+    this item provides.
+
+    For example a Chain Mail [14,+3] is magically enchanted 3 times, and
+    therefore will provide you with 17 AC instead of just 14, ie 14+3.
+    Armour class helps for both: Reducing the chance to get hit, and reducing
+    the actual damage you suffer in case you are hit.
+
+    Likewise, if you fight an acidic monster for example, the acid might damage
+    your Chain Mail, and turn it into for example a Chain Mail [14,-2].
+    This Chain Mail only provides you with 12 AC. You can 'repair' it if you
+    want to, by buying 'Scrolls of enchant armour' from store 5 in town.
+    These will try to enchant a piece of armour, so if you are lucky you can
+    just use two of them on your armour and end up with a Chain Mail [14,+0]
+    again. Note that enchanting has a chance to fail, depending on how high
+    an item has been enchanted already.
+
+a Long Sword {0,+} (2d6) (+0,+0)
+    Again the {..} part is already know. What's new for all types of weapons is
+    the (2d6) and the (+0,+0) part:
+
+    Like in Dungeons & Dragons, on which rules some aspects of the game are
+    loosely based, when your character attacks a monster (or another player),
+    dice are cast to determine the amount of damage your blow deals.
+
+    The (2d6) mean that when you hit someone with this weapon, two dice of six
+    sides each are cast, so you may deal anything from 2 to 12 damage randomly.
+    (The real damage the target suffers can possibly be further reduced by the
+    target's armour class or protective magic.)
+
+    Similar to armour, weapons can be enchanted too. This is the second pair of
+    brackets: (+0,+0).
+
+    The first +0 means that this weapon has no magical enchantment to its hit
+    chance, ie how likely it is to hit a target.
+
+    The second +0 means that this weapon has no magical enchantment to the
+    damage it deals. Example:
+    a Long Sword (2d6) (+5,+6) would add 5 to your hit chance, which isn't very
+    much, but still better than nothing. Probably worth more is the fact that
+    it also adds 6 to your damage dealt!
+    This means on each attack it will deal 2d6 +6 damage, which would be
+    anything from 2+6 to 12+6, ie 8..18. As you can see, this is a considerable
+    improvement over 2..12 of an unenchanted Long Sword.
+
+    Note that training weapon-related skills will also add to your overall
+    +damage bonus. So your character might have +34 to-damage using a mere
+    Long Sword (2d6) (+9,+15), with the remaining +19 damage coming from your
+    'Sword-Mastery' skill that you trained.
+
+    Also note that often it can be better to wield lighter weapons instead of
+    heavier weapons, if you can attack more often during each round with them.
+    Example: A light dagger might allow you to attack 3 times, while a heavy
+    two-handed sword will only allow you one swing each turn. Here you will
+    have to do some math with the weapon dice, your total +damage from weapon
+    and skill, and the number of blows/round you get with each weapon, to find
+    out which setup is best for your character at a given time.
+
+a Long Bow {0,+} (x3) (+0,+0)
+    Ranged weapons all have a 'multiplier' given in the first pair of round
+    brackets, and the (+hit,+dam) enchantments already known from normal melee
+    weapons.
+
+    The multiplier, here x3, means two things:
+    a) how far you can shoot
+    b) by how much the damage dealt by your arrow (or shot or bolt, depending
+       on the weapon type) will be multiplied.
+    This means that enchanting a ranged weapon's damage is especially effective
+    because the +damage bonus will also be multiplied by the weapons's factor!
+    Example: a Long Bow (x3) (+2,+4) will actually add not +4 but 3x+4 = +12
+    damage to each shot! This is why archers should try to visit store 5 as
+    soon as possible to buy some 'Scrolls of enchant weapon to-dam' from it,
+    to enchant their bows or other ranged weapons.
+
+a Wooden Torch {0,+} (with 2500 turns of light)
+    Not much new here, except that this item has a 'timeout' given in turns.
+    After having this item equipped for 2500 turns (about half of that in
+    seconds, very roughly), the torch will be depleted and not produce any
+    more light, so you can drop/destroy/sell it, or press SHIFT+f to add
+    a fresh torch from your inventory to your almost depleted one, thereby
+    refueling it (this makes sense if you are using a torch that provides
+    special magic powers).
+
+
 
 (3.5) Preparing the first time for fighting enemies
 ---------------------------------------------------
@@ -1909,7 +2092,7 @@ Before you enter a dungeon by stepping onto a staircase leading into the earth
 (looks like this: '>') and pressing the staircase symbol '>' you will have to
 buy some more items for the following reasons:
 At the very beginning a single enemy who is a little bit stronger could kill
-you easily without you having a fair chance to escape. At the same time,
+you easily without you having a chance to escape. At the same time,
 slaying strong opponents at the very beginning will give very much experience,
 thus making your character rise in experience levels and in power very
 quickly!
@@ -1929,7 +2112,7 @@ So to prepare for hunting in the dungeon, buy:
 -Potion of Cure Light/Serious Wounds
 -Scroll of Phase Door
 The more you can buy of those the better. At least buy one potion of Heroism
-and Cure Light Wounds.
+and Cure Serious Wounds.
 And if you still have spare money (this one costs a lot) a
 -Scroll of Word-of-Recall. (See "(0.3) Important inscriptions" for more info.)
 
@@ -2326,7 +2509,7 @@ to their real functionality. They are:
     This will become  \e)@m3\rc191\r  (transform into a Grizzly Bear).
   F for employing a fighting technique
     Example:  Fa
-    (Use fighting technique 'a)', which usually is 'taunt'.)
+    (Use fighting technique 'a)', which usually is 'sprint'.)
   S for employing a shooting technique
     Example:  Sa
     (Use shooting technique 'a)', which is probably 'flare'.)
@@ -2344,7 +2527,7 @@ to their real functionality. They are:
     Example:  sa  (switches to stance 'a)' ie balanced combat stance.)
   * for targetting the nearest monster. Usually you add this to any spell that
     requires targetting.
-    Example:  m@Manathrust\*  (cast spell manathrust at nearest monster.)
+    Example:  M@Manathrust\*  (cast spell manathrust at nearest monster.)
   @...\ for using call-by-name (spell/item name must be between '@' and '\')
     (Examples have been given above, in some spell casting explanations.)
 
@@ -2360,16 +2543,16 @@ Example 1: Firing your ranged weapon would just be..
 
 Example 2: Assumed your book is inscribed @m1 as usual, and you want to cast
     spell a). What you can simply enter in the q'n'd field is:
-        m1a*
+        M1a*
     and it will automatically be expanded to the real macro '\e)m@11\r1a*t'.
 
 Example 3: Assumed you have the spell Manathrust somewhere in your books and
     want to cast it by name, what you enter in the q'n'd field is:
-        m@Manathrust\*
+        M@Manathrust\*
     and it will automatically be expanded to '\e)m@11\r@Manathrust\r*t', voila.
 
 Example 4: Casting phase door would be..
-        m@Phase Door\
+        M@Phase Door\
     (expanded to '\e)m@11\r@Phase Door\r'.)
 
 
@@ -2846,13 +3029,20 @@ of experience you will fade away (your character is erased then).
 =============
 (4.1) Running, picking up items, fighting
 -----------------------------------------
-If no monsters are within your sight, you are able to run. This
-feature was introduced to let you quickly cross empty areas, while it will
+To move around, use the number pad keys 1,2,3; 4,6; 7,8,9.
+You can also use the arrow keys to move, but the numpad is better since it
+allows you to move diagonally too, which is very important.
+
+If no monsters are within your line of sight, are those which are are soundly
+asleep, you are able to "run".
+This feature was introduced to let you quickly cross empty areas, while it will
 cease to work as long as you fight monsters. To run, press SHIFT+<direction>
 or type '.' followed by a direction. Running using SHIFT+<direction> will
 only work if Numlock is turned off. Numlock is the key labeled 'Num' above the
 number key pad on the right side of your keyboard. Usually a green lamp will
 indicate whether Numlock is on or off.
+An exception is the town of Bree, where you are always able to run, even if
+enemies are nearby.
 
 If you want to pick up an item from the floor, step on that field and press
 'g' (or press '5' on the numpad, while NUMLOCK must be on). For more
@@ -3016,10 +3206,10 @@ There are different types of dungeons. The main five are:
 -NO_UP. These dungeons won't allow you to go upwards, similar to ironman,
  just without the penalty of permanent ghost-death. You are allowed to use
  Word-of-Recall as well! Ghosts of dead players can float upwards.
- No-up dungeons/towers are marked by a red < or > symbol.
+ No-up dungeons/towers are marked by an orange < or > symbol.
 -FORCE_DOWN. Same as NO_UP, but you can only recall at the bottom of the
  dungeon, similar to ironman (except for the no-ghost death penalty).
- Force-down dungeons/towers are marked by an orange < or > symbol.
+ Force-down dungeons/towers are marked by a red < or > symbol.
 -Ironman. Ironman dungeons or towers won't allow you to recall or to use
  staircases that lead upwards! If you die in such a dungeon or tower you won't
  turn into a ghost either but get destroyed completely.
@@ -3214,7 +3404,8 @@ The 1..9 are standard shops, namely..
 8       The Inn         In Bree it's The Prancing Pony. Inside the inn,
                         players are relatively safe from monsters.
 9       Book Store      Sells books for istari, priests and all other (hybrid)
-                        magic users.
+                        magic users. Book stores in higher-level towns on
+                        average also tend to sell higher-level spells.
 +       These are different everywhere. Some examples are..
         Mayor's Office (in Bree)
                         Allows you to turn in deed parchments you won in
@@ -3688,6 +3879,7 @@ Stun    -Stun           Reduces to-hit and to-dam.
                         Reduces chance for successful spell-casting.
                         Prevents you from intercepting a monster (see (6.2)
                         'Interception' skill).
+                        Reduces chance to block or parry.
         -Heavy stun     Greatly reduces to-hit and to-dam.
                         Reduces your martial arts damage (because you cannot
                         perform MA special styles while stunned).
@@ -3730,7 +3922,8 @@ Slowing on monsters is currently a permanent effect. Very effective, although
         many higher monsters are immune to it. Also, it is currently
         cumulative (subject to change) and can be applied several times,
         although monsters might resist.
-Stun    Stun can be caused by special martial art attacks among other things.
+Stun    (Note that "stunned" and "dazed" are the same thing.)
+        Stun can be caused by special martial art attacks among other things.
         Stunned monsters have a harder time to successfully cast spells or hit
         you in melee combat. Also monsters cannot interfere with your actions
         while they are stunned. Many monsters are immune to stun, but also
@@ -3755,8 +3948,9 @@ Quests
 Kill quest
     To receive a kill quest, visit the major in the town hall (one of the '+'
     doors in town), or simply type "/quest" in the chat.
-    There is a certain time limit which is in most cases easily sufficient
-    though, especially if you have the according ESP ability.
+    There is a certain time limit which in most cases is easily sufficient,
+    especially if you have the according ESP ability.
+    The time will continue to run out even while you're not logged on.
     If you fulfil the kill quest you received, you will be rewarded with a
     good or great item, depending on the difficulty (monster level) and chance.
     If you fail to complete your quest, the quest will be dropped and you can
@@ -3949,10 +4143,10 @@ on an adjacent field, so use 'fire-till-kill' mode in general!
 
 The dice of ammunition are also effected by brands and slays same as normal 
 weapons but the additional damage is reduced to 2/5.
-Example: Ring of Acid will usually add 1x your melee base damage (dice).
-For ranged weapons it will add 1*2/5x of your base damage, so multiply your
-base damage by 1.4 instead of by 3 to get your total damage output.
-See (5.3) to get an easy overview.
+Example: Ring of Acid will usually add 1x your melee base damage (weapon dice).
+For ranged weapons it will add 1*2/5x of your base damage (arrow dice), so
+multiply the average arrow dice result by 1.4 instead of by 2 to get your total
+damage output. See (5.3) to get an easy overview.
 
 If you try to wield a ranged weapon that is too heavy for your character,
 meaning your 'STRength' stat isn't high enough yet, you'll get a warning
@@ -4019,6 +4213,9 @@ Kill Undead |       3         | It is a great bane of undead.
 Kill Dragon |       3         | It is a great bane of dragons.
 Kill Demon  |       3         | It is a great bane of demons.
 
+Same as in the 'brands' table, x2 will become x1.4 for ranged weapons and
+x1.33 for martial arts, while x3 will become x1.8 and x1.67 respectively.
+
 Giants, Undead, Trolls, Orcs, Dragons, Demons are all 'Evil'.
 
 If several multipliers match the highest one will be used.
@@ -4064,7 +4261,7 @@ of several points..
 
 The backpack weight limit includes the weight of your equipment and is
 depending on your strength and martial arts skill. It is
-(str_wgt * 2.0 lb) + (str_wgt * rounddown(skill * 0.12 lb)).
+10.0 lb + (str_wgt * 2.0 lb) + ((str_wgt + 5) * rounddown(skill * 0.1 lb)).
 
 Here's a table to tell you the values for str_wgt:
 (Warning message is: "You can't move freely due to your backpack weight.")
@@ -4107,7 +4304,7 @@ Martial Arts special combat moves have certain dice, similar to normal
 weapons. These dice are also effected by brands and slays same as normal 
 weapons but the additional damage is reduced to 1/3.
 Example: Ring of Acid will usually add 1x your base damage.
-For MA it will add 1/3x of your base damage, so multiply your base damage
+For MA it will add 1/3 of your base damage, so multiply your base damage
 by 1.33 instead of by 2 to get your total damage output.
 See (5.3) to get an easy overview.
 
@@ -5165,8 +5362,14 @@ Mass Genocide   Removes all monsters that are close to you.
                 immune to teleportation attacks cannot be genocided.
 Acquirement     Gives you a great item. Reading it on deeper dungeon levels
                 produces better results mostly.
+                Note that while some towns also have a high level, reading this
+                scroll in town won't guarantee a 'great' item, which will
+                be guaranteed if you read it in the dungeon.
 *Acquirement*   Gives you two or three great items. Reading it on deeper
                 dungeon levels produces better results mostly.
+                Note that while some towns also have a high level, reading this
+                scroll in town won't guarantee a 'great' item, which will
+                be guaranteed if you read it in the dungeon.
 Fire/Ice/Chaos  Fires a ball of the according type around you. Make sure you
                 resist it or you will take damage too.
 Lottery         This might be your chance today to win the Jackpot!
@@ -5303,6 +5506,9 @@ Mattock/Pick/Shovel Diggers, improving your digging capabilities.
                     (+to-hit, +to-dam) on digging tools as well as a high
                     weight help to further increase their effectiveness.
                     Main factor is the (+diggingpower) mod though. (Equip it!)
+                    If you lack any of these valuable digging tools, axes and
+                    swords can help you hacking down trees or bushes (see
+                    'Digging' skill in (6.2)).
 Mummy Wrapping      Reduces your charisma slightly, and prevents other players
                     from seeing your equipment except for your melee and/or
                     ranged weapon. Also makes you look dark like being
@@ -5446,7 +5652,7 @@ Armour class helps you twice:
  The more AC the better, it's weighed against the level of the attacking
  monster. If the monster is (heavily) stunned it gets penalties here.
 -It reduces the damage if a monster manages to hit you.
- This effect caps at 150 AC!
+ This effect caps at 200 AC.
 
 Monsters can score critical hits which can (depending on the attack type)
 result in a cutting or stunning effect against the player.
@@ -6240,10 +6446,12 @@ Note that not every skill is available to every profession (class).
                                 Artifact ammunition never breaks.
         .Bow-mastery            At 12.5, 25, 37.5, 50 you will get +1 extra
                                 shot per round each.
-                                Same as Sling-mastery regarding ammunition.
+                                Otherwise same as Sling-mastery, except no
+                                ricochetting.
         .Crossbow-mastery       At 25 and 50 you will get +1 extra shot AND
                                 +1 extra-might-bonus each.
-                                Same as Sling-mastery regarding ammunition.
+                                Otherwise same as Sling-mastery, except no
+                                ricochetting.
     .Boomerang-mastery          At 16.6, 33.3 and 50 you get +1 extra throw
                                 each. Boomerang-mastery also increases ranged
                                 to-damage bonus while using a boomerang, and
@@ -6579,6 +6787,13 @@ Note that not every skill is available to every profession (class).
                                 of cash if you mine treasure.
                                 Depending on the skill, you might also uncover
                                 special things.
+                                Certain tools such as shovels, picks and
+                                mattocks will also increase your digging speed
+                                greatly (independant of the skill), see (5.9).
+                                Also, when hacking through trees and bushes,
+                                axes will help a lot and swords somewhat, in
+                                case you have no good digging tool at hand.
+                                2-handed axes/swords even more than 1-handed.
     .Swimming                   Allows you to swim even while carrying more
                                 weight and protect your items from water.
                                 Skill maxes at 01.000, with the ability to
@@ -7119,12 +7334,13 @@ Paladin
     intelligence can slightly help too.
 
 Ranger
-    Rangers are a combination of warrior and mage. They are also skilled
-    trappers and devoted to nature. They cannot become Unbelievers.
-    They are good fighters, and quite effective with bows, second only to
-    Archers. Rangers have good stealth, perception, searching, saving
-    throws, and are good with magical devices. Rangers are a
-    jack-of-all-trades class who can find several different ways out of
+    Rangers are a combination of warrior, mage and archer. They are also
+    skilled trappers and devoted to nature. They cannot become Unbelievers.
+    They are good fighters, and quite effective with ranged weapons. They may
+    train Archery skill up to 10.000, which apart from increasing their damage
+    dealt also enables them to learn some of the techniques used by archers.
+    Rangers have good stealth, perception, searching, saving throws, and are
+    good with magical devices. Rangers can find several different ways out of
     any situation. They use intelligence for spellcasting, same as mages.
     At level 20 rangers learn to find paths passing thick woods.
 
@@ -7182,6 +7398,9 @@ Runemaster
     Runemasters are adept in some skills that are typical for rogues, although
     they lack their finesse.
     For more information about runes, see '(5.20) Runes & Runemastery'.
+    Note that runemasters don't need actual runes in their inventory to cast
+    rune spells. However, having the physical runes present increases the
+    chance to succeed greatly.
 
 Mindcrafter
     Mindcrafters are great melee fighters who additionally train the use of
@@ -7201,6 +7420,9 @@ Mindcrafter
     psychic energy.
     Mindcrafters will learn to resist sanity-draining effects a bit at level
     10, and somewhat better even at level 20.
+    A lot of their spells can actually be cast while blind (or even confused),
+    and their targetted spells often do not require a clean line of fire, since
+    they manifest whereever their mind is focussed on (eg Psionic Blast).
     Some of the mindcrafter's spells that interact with friendly targets,
     mostly his team mates, will require those to prepare and open their mind
     to become especially sensitive to telepathic contact. This is done by
@@ -7401,6 +7623,8 @@ W: depth : rarity : corpse weight : experience for kill
   depth:
     The depth is also the basic level of these monsters. It tells you how
     many of them you need to kill to learn mimicking their form.
+    The level has additional use for calculating the mimic's final hit points
+    regarding very high character levels (see 'hit points' below).
   corpse weight:
     The weight of the form has impact on its stealth. A huge form that weighs
     a lot will give a stealth penalty, while small and light forms may give a
@@ -7414,15 +7638,26 @@ I: speed : hit points : vision : armor class : alertness
     20% of the monster's speed malus below 110.
     So a monster moving at 130 speed will give the mimic +6 speed.
   hit points:
-    The monster's hit dice xdy are multiplied and then capped against ~2500,
-    so gain might decrease in higher regions. (Cap details: The monster HP is
-    calculated by the following formula before further calculations are made:
-    monster HP = 50000 / ((50000 / hdice*hsides) + 20) .)
+    The monster's hit dice xdy are multiplied and then somewhat capped against
+    ~2500, so HP gain might decrease in higher regions. (Cap details: The
+    monster HP is calculated by the following formula before further
+    calculations are made: monster HP = 50000 / ((50000 / hdice*hsides) + 20).)
     Now, if the mimic's HP are less then the result, the mimic's HP will
     become approx. ((3*x*y) + (2*normal_HP)) / 5. (2/5 monster HP, 3/5 player
     HP.) If the mimic's HP in player form (code 0) are greater than x*y, the
     resulting HP will be ((x*y * 4) + (mimic_HP * 1)) / 5.
     (1/5 monster HP, 4/5 player HP!)
+    A specialty: Players in very high character levels can see their hit points
+    'overtake' the monster form hit points, if the monster form level isn't
+    very high in comparison. Example: While a green dragonrider will provide a
+    great HP boost, if the player himself has reached say level 70 and has lots
+    of HP even in normal form, the green DR hit points won't add much anymore.
+    If however the monster has high hit points and also a very high level, the
+    monster HP will 'stay ahead' of the player hit points ie keep adding a
+    steady bonus that will put him well ahead of his player-form hit points.
+    So players of very high character level who want to retain a large bonus of
+    hit points will want to look for forms of monsters which are also of
+    relatively high level.
   armour class:
     Mimicking a monster is already a very difficult task. By changing
     shape, the usual armour class of the monster will magically influence
@@ -7454,18 +7689,20 @@ E: weapons : torso : arms : finger : head : leg
 
 B: attack method : attack effect : damage
   attack effect:
-    If the monster poisons or infects with disease, this will result in
-    a poison brand. Similar it's for fire/cold/lightning/acid attacks.
+    POISON,DISEASE,FIRE,COLD,ELEC,ACID:
+      If the monster poisons or infects with disease, this will result in
+      a poison brand. Similar it's for fire/cold/lightning/acid attacks.
     BLIND won't work on monsters that have NO_SLEEP, otherwise the target
-    will be confused.
+      will be confused.
     HALLUCINATION and CONFUSE won't work on monsters that have NO_CONF,
-    otherwise the target will be confused.
+      otherwise the target will be confused.
     TERRIFY won't work on monsters that have NO_FEAR, otherwise it'll
-    scare the target.
+      scare the target.
     PARALYZE won't work on monsters that have NO_STUN, otherwise it'll
-    stun the target.
+      stun the target.
     EXPxx means the monster drains life on attacking. The player will
-    receive HOLD_LIFE (resist life-draining attacks) from this form.
+      receive HOLD_LIFE (resist life-draining attacks) from this form.
+    SHATTER will result in a bonus to player's STRength attribute.
 
     Monster effects (like poisoning or paralyzing) are applied to
     the player's attacks with a probability that corresponds to their
@@ -7485,9 +7722,7 @@ B: attack method : attack effect : damage
 
     Melee to-damage bonus also depends on the monster form:
     The monster damage dice for each attack are multiplied and the products
-    are all added up, the result is divided by 4. If the monster can't use
-    melee weapons (no equipment slot for melee weapons), the result will
-    be doubled (after it was divided by 4).
+    are all added up, the result is divided by 4.
     The result is now capped against 200, the closer this graph comes towards
     200 the flatter the curve will become.
     This value is now compared against the player's melee to-damage bonus.
@@ -7523,10 +7758,10 @@ F: flag list
                 ((monsterlevel / 2) + 10) percent. The range of the anti-magic
                 field is increased by ((monsterlevel / 50) + 2) fields.
     ARROW_1, ARROW_2, ARROW_3
-                The player will receive an additional shot per round since the
-                monster seems to be good at shooting.
+                The player will receive an extra shot per round with slings or
+                bows since the monster seems to be good at shooting.
                 If the monster shoots 1_IN_3 or better, the player will
-                receive an additional extra shot with slings and bows.
+                receive an additional extra shot (with crossbows too).
     HURT_ROCK   Means that this creature has a rock-like skin and body.
                 Takes damage from Stone-To-Mud and takes more damage from
                 'disintegration' attacks, but at the same time resists shards!
@@ -7715,13 +7950,15 @@ Werebear                same as Grizzly Bear, but tougher
 
 Great eagle             speedy; can fly; passes most terrain types
 
-White shark             speedy aquatic form (requires deep water to breathe)
+Great White shark       speedy and tough aquatic form
+                        (aquatic means that it requires deep water to breathe
+                        and greatly resists water-based attacks)
 
 Aranea                  a speedy greater spider;
                         poisonous hits;
                         resists fire, completely immune to poison;
                         susceptible to light and to 'good' (creature is evil);
-                        has a small array of magic spells to its disposal
+                        has a small array of magic spells at its disposal
 
 Level 25:
 ---------
@@ -7743,7 +7980,8 @@ Level 30:
 Minotaur                tough and very speed; susceptible to 'good'
 
 Giant squid             tough and speedy aquatic creature;
-                        resists cold/acid;
+                        resists water greatly;
+                        resists cold/acid/lightning/poison;
                         can breathe lightning, acid and poison
 
 Level 35:
@@ -7753,14 +7991,6 @@ Level 35:
                         immune to poison;
                         can cast fear, poison ball, and breathe poison
 
-Plasma hound            speedy;
-                        resists plasma, sound; immune to fire;
-                        susceptible to cold;
-                        can't be cut/stunned/confused or paralyzed;
-                        can breathe plasma
-
-Level 40:
----------
 Elder aranea            speedy and smart (INT bonus) greater spider;
                         50% poisonous attacks;
                         resists darkness, fire, poison; immune to either fire
@@ -7770,16 +8000,30 @@ Elder aranea            speedy and smart (INT bonus) greater spider;
                         regenerates HP quickly;
                         has a medium array of spells to its disposal
 
+Plasma hound            speedy;
+                        resists plasma, sound; immune to fire;
+                        susceptible to cold;
+                        can't be cut/stunned/confused or paralyzed;
+                        can breathe plasma
+
+Level 40:
+---------
 11-headed hydra         speedy and toughest hydra; can swim;
                         fiery attacks;
                         immune to fire;
                         has a small array of fire/fear spells
 
-Lesser kraken           speedy, smart and very tough aquatic creature;
-                        immune to either water attacks and poison, resists the
-                        other, as well as lightning, cold and darkness;
+Giant Roc               speedy giant bird; deals high damage;
+                        passes most terrains;
+                        immune to electricity; resists sound;
                         can't be paralyzed or confused;
-                        has a medium size array of spells
+
+Lesser kraken           speedy, smart and very tough aquatic creature;
+                        resists water greatly as well as lightning, cold,
+                        darkness, poison;
+                        completely immune to either water attacks and poison;
+                        can't be paralyzed or confused;
+                        has a medium size array of spells;
 
 Level 45:
 ---------
@@ -7805,9 +8049,9 @@ Spectral Tyrannosaur    speedy undead animal;
                         can breathe nexus, poison and nether
 
 Greater kraken          speedy, smart and extremely tough aquatic creature;
-                        resists water attacks, cold, poison, lightning, acid,
-                        darkness; becomes immune to one of lightning/poison/
-                        water attacks;
+                        resists water attacks greatly, as well as cold, poison,
+                        lightning, acid, darkness;
+                        completely immune to one of lightning/poison/water;
                         susceptible to 'good';
                         can cast from a large array of spells
 
@@ -7848,6 +8092,8 @@ or Tomes, that contain several different spells) in their inventory.
 Spell scrolls and some books can be purchased in store '9' (the 'book store',
 usually also sells 'Beginner Cantrips' and sometimes also Codices) or in
 '7' (the 'black market' - very expensive but you often find tomes here!).
+Book stores in higher-level towns on average also tend to sell higher-level
+spells.
 
 Note that you must spend enough points into a particular magic school (or
 into sorcery) for the spell turning from grey into green in your spell book,
@@ -7952,7 +8198,7 @@ Fire
                     Required skill level for first spell level: 1.
     Fireflash       Conjures a fire ball.
                     Lv20: Turns into holy fire which is especially deadly to
-                          EVIL opponents.
+                          evil opponents.
                     Required skill level for first spell level: 10.
     Fiery Shield    Creates a shield of flames around you.
                     Required skill level for first spell level: 16.
@@ -8140,6 +8386,7 @@ Holy Offense
     Release Souls   *Dispels undead*.
                     Required skill level for first spell level: 10.
     Orb Of Draining Summons a holy orb, devouring monsters.
+                    This spell deals double damage against evil monsters.
                     Required skill level for first spell level: 20.
     Drain Life      Drains life from a non-undead and non-nonliving creature
                     and returns a part of it to your hit points.
@@ -8170,8 +8417,14 @@ Holy Defense
                     Required skill level for first spell level: 40.
     Martyrdom       Burns you in holy fire, making you invulnerable.
                     When your martyrium ends, you will be left close to death
-                    with up to 30 HP, depending on your maximum HP.
-                    (Remaining HP = MaxHP / 15, but never more than 30.)
+                    with 1/15 of your maximum HP, yet always at least 30 HP.
+                    Note that you cannot be healed in any way during martyr.
+                    Invulnerable here in detail means you won't take..
+                    -any hit point decreasing damage,
+                    -any sanity decreasing damage,
+                    -any malicious effects such as poisoning, fear, blindness,
+                     confusion, paralyzation, slowness, stun or cuts,
+                    -nexus, polymorph and teleportation effects.
                     The gods won't accept another martyrium until 1000 turns
                     have passed.
                     Note: To check whether you can use the spell again,
@@ -8298,9 +8551,8 @@ Psycho-Power
                     Required skill level for first spell level: 16.
     Autokinesis III Teleports you towards a party member with opened mind.
                     Required skill level for first spell level: 24.
-    Psi Storm       Psionic storm that damages and disturbs all minds within an
-                    area for a while, causing the usual random Psi side effects
-                    on all targets similar to Psionic Blast.
+    Feedback        Uses telekinetic effects to keep you hovering, granting
+                    levitation, and at 15 becomes sufficient for flying.
                     Required skill level for first spell level: 18.
     Pyrokinesis     Causes a severe inflammation to burn your opponent.
                     Required skill level for first spell level: 20.
@@ -8308,6 +8560,19 @@ Psycho-Power
                     Required skill level for first spell level: 24.
     Psychic Warp    Attempts to teleport away your opponent.
                     Required skill level for first spell level: 30.
+    Telekinesis     Inscribe your book @P<Playername>, cast it, select an
+                    item that you wish to teleport to the player's inventory.
+                    The target player needs to concentrate by opening her/his
+                    mind, see (0.2). It's dangerous to have the mind opened,
+                    since everyone can send you any items, so better close it
+                    again as soon as the desired telekinesis transaction is
+                    done. Example inscription: @PGandalf
+                    Required skill level for first spell level: 35.
+                    Shared spell (see above): Psycho-Power / Thought Contact.
+    Kinetic Shield  Uses telekinetic force to set up a shield around you that
+                    has a chance to repel physica attacks or projectiles,
+                    draining your mana each time.
+                    Required skill level for first spell level: 40.
 
 Thought Contact
     Clear Mind      Removes fear, confusion and hallucination. (auto-project)
@@ -8325,6 +8590,8 @@ Thought Contact
                     Required skill level for first spell level: 20.
     Telepathy       Senses the minds of creatures.
                     Required skill level for first spell level: 20.
+    Recognition     Identifies an item.
+                    Required skill level for first spell level: 25.
     Stabilize Thoughts
                     Cures some insanity and removes effects.   (auto-project)
                     Required skill level for first spell level: 25.
@@ -8336,11 +8603,16 @@ Thought Contact
                     again as soon as the desired telekinesis transaction is
                     done. Example inscription: @PGandalf
                     Required skill level for first spell level: 35.
+                    Shared spell (see above): Psycho-Power / Thought Contact.
 
 Mental Intrusion
     Psionic Blast   Blasts the target's mind with psionic energy.
                     Possibly causing various additional effects.
                     Required skill level for first spell level: 1.
+    Psi Storm       Psionic storm that damages and disturbs all minds within an
+                    area for a while, causing the usual random Psi side effects
+                    on all targets similar to Psionic Blast.
+                    Required skill level for first spell level: 18.
     Scare           Infuses your target's mind with fear.
                     Lv10: Becomes a ball effect.
                     Lv20: Affects all monsters in LoS.
@@ -8582,7 +8854,7 @@ More on Blocking
 ----------------
 Many effects that normal armour usually doesn't protect from can actually be
 blocked, for example your character may quickly duck behind his shield just in
-time when an eye tries to gaze in your eyes to paralyze you.
+time when an eye tries to gaze at your eyes to paralyze you.
 The bigger a shield, the more you can block. Depending on server settings,
 the actual block base chance will usually be displayed as a percentage in []
 brackets behind the shield's name, where AC is located for other types of
@@ -8676,6 +8948,15 @@ The techniques are as follows:
     Create ammunition   -
         Create ammunition for your currently equipped ranged weapon from
         bones in your inventory or rubble (':') next to your character.
+        If you wield a bow or crossbow, you'll need to have bones in your
+        inventory. If you wield a sling, you'll need to stand next to rubble.
+        The resulting ammunition type will match the ranged weapon you have
+        equipped.
+        The quality mainly depends on your archery skill and somewhat on your
+        ranged mastery skill, but is still somewhat random.
+        A random discount will be applied to the crafted ammo.
+        If you want to create larger stacks of the same type of ammunition,
+        collect a large stack of bones and use the skill on that stack.
     Double-shot         1 stamina/turn while using it actively
         Toggle, making you enter or leave double-shot mode. While active, you
         will fire 2 projectiles at once on each shot, dealing way less damage
@@ -8711,6 +8992,13 @@ much like 'everlasting mode' or 'normal mode'.
 PvP-mode characters use the /pvp command to enter/leave the pvp arena. This
 arena also releases monsters from time to time. The entry point of a player is
 random, because he gets teleported on arrival.
+
+Before you go and fight others to the death, look at your inventory. You will
+see a parchment "Gladiator's Entrance". When you turn this in at the mayor's
+office in Bree, you will get a semi-random excellent item for free, to start
+your career with. Semi-random because it partially depends on your skill point
+distribution, so before turning in your parchment for an item at the office,
+make sure you hit SHIFT+G and distribute your skill points to your liking.
 
 PvP-mode characters are called 'Gladiators' and use special rulesets that make
 it easier to rise in levels and less of a hassle when you get actually killed
@@ -9627,9 +9915,9 @@ Mage staves
         See invisible
         Random ESP
         Extra +mana capacity bonus
-Boomerangs (also see 'Weapons' above) 
+Boomerangs (also see 'Weapons' above)
         Extra shots
-Dark swords
+Dark swords (also see 'Weapons' above)
         Increased anti-magic (not over 30% in total)
 Ammunition
         All elemental brands (acid/elec/fire/cold/poison)
@@ -9716,7 +10004,7 @@ Body Armour (except for Dragon Scale Mails)
         Hit point bonus (+LIFE)   (*)
         Reduced weight
         Extra +AC bonus
-    Royal Heavy Armour (Mithril/Adamantite armour only usable by winners):
+    Royal Armour (Heavy mithril/adamantite armour only usable by winners):
     (these mods may spawn additionally to body armour specific mods above)
         Reflection
         Mana resistance
@@ -9731,16 +10019,16 @@ Light sources
         Increased light radius
         Everburning (no fuel needed; applies only if item usually needs fuel)
 
-(*): This mod (+LIFE) is only available if a winner (Queen/King/Empress/
-     Emperor) created the artifact or killed the monster which dropped the
-     artifact. The mod will only have effect on..
-     a) winners (Queens/Kings/Empresses/Emperors)
-     b) players whose current level is at least as high as the item level
-        (even if they are the rightful owner of the randart).
-     c) if the server as the 'Fallen Kings Etiquette' enabled, meaning that
-        players who won once but then died cannot use static artifacts either,
-        then they will be able to find and use +LIFE randarts if they are at
-        least level 50!
+(*): This mod (+LIFE) may only spawn on a randart (no matter how it is created,
+     be it via scroll or via killing of monsters) if either
+     a) the player is a winner (Queen/King/Empress/Emperor) or
+     b) the server has the 'Fallen Kings Etiquette' enabled, meaning that
+        players who won once but then died cannot use static artifacts either
+        (press '~' followed by 'd' to check the server settings), and the
+        player is actually a fallen winner who lost his title due to death,
+        AND his level is at least 50.
+     If a player actually wears/wields a +LIFE randart, the +LIFE mod will only
+     have an effect on winners (Queens/Kings/Empresses/Emperors).
 
 
 General mods:
@@ -10185,12 +10473,19 @@ SOLUTION:   When you quit the game while you are still inside a dungeon or a
             because you can't be sure what the situation around you will be
             the next time you log on again!
 
+PROBLEM 24: When trying to macro F-keys, they don't seem to work properly.
+            Especially, when hitting F1, a window about MS Windows Help/Support
+            pops up instead.
+SOLUTION:   When playing on a notebook, check the state of the 'Fn' special
+            shift key, and toggle it accordingly.
+
 
 
 (9) End of this guide
 ==============================================================================
 If TomeNET experiences changes/improvements you can also expect this guide to
 become updated shortly afterwards. Anyway, no guarantees ;)
-Please don't hesitate to send in bug reports or suggestions to mail@c-blue.de
+Please don't hesitate to send in bug reports or suggestions either via /rfe
+command in the game or write to the official forum on www.tomenet.net.
 or (even better) use the "/rfe" command in the game!
 ==============================================================================
