@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 14. January 2013 - written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.5.2 - official websites are:
+| Latest update: 30. January 2013 - written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.5.3 - official websites are:
 | http://www.tomenet.net/ (main site),
 | http://koti.mbnet.fi/mikaelh/tomenet/ and http://www.c-blue.de/rogue.html
 |
@@ -50,6 +50,7 @@ Contents
     (2.1d)  "Promoting" TomeNET on Steam ;)
     (2.2)   Starting TomeNET and getting to play on an internet server
     (2.3)   Client options
+    (2.3a)  Client options configuration files
     (2.4)   Installing voice chat
 (3) Creating a character & starting to play
     (3.1)   Creating a new character; character modes
@@ -146,6 +147,7 @@ Contents
     (6.8b)  Runes & Runemastery
     (6.8c)  Runespell tables
     (6.9)   Parties, Iron Teams, Guilds
+    (6.9a)  Guild halls
     (6.10)  Magic Device skill/ability details
     (6.11)  Parrying and blocking
     (6.12)  Fighting/shooting techniques
@@ -183,6 +185,7 @@ compile the game under '(2.1) Installing TomeNET'.
  and www.c-blue.de/rogue.html (my own site).
  The game client is named something like 'tomenet-???-client.zip', extract it
  to C:\TomeNET for example.
+
 -Either run 'TomeNET-main.bat' to directly connect to official main server
  (recommended), or run TomeNET.exe and choose a server (Enter 85.118.45.235
  to connect to the official main server).
@@ -190,7 +193,7 @@ compile the game under '(2.1) Installing TomeNET'.
        the meta server's hostname is "meta.tomenet.net" (the meta server is the
        server that presents you the list of actual game servers).
 
- -Create a character, Half-Troll warrior is good for beginners.
+-Create a character, Half-Troll warrior is good for beginners.
  The server should now allow you to manually choose your stats.
  In case you chose a (Half-Troll) warrior, try this:
   STR 18/30, CON as high as possible, INT as low as possible,
@@ -225,15 +228,18 @@ compile the game under '(2.1) Installing TomeNET'.
  (If you are new to the game, it is NOT recommended to choose one of these:
  Istar, Priest, Shaman, Adventurer.
  Details about how STR and DEX affect startup blows/round are given in (6.5a).)
+
 -Make sure you DO NOT chose 'PvP' mode. It's a restricted special thing that
  has nothing to do with the normal gameplay at all! (See (6.13) for info).
+
 -It's strongly recommended to not choose 'fruit bat' body either :).
 
  Now you're in the game and should see the town of Bree.
 
- -To chat, press the colon key ':' . Don't hesitate to ask other players
+-To chat, press the colon key ':' . Don't hesitate to ask other players
  if you have any problems with getting started.
  (For details about chat features see (3.3).)
+
 -To run, press SHIFT + <direction key> where direction keys are on
  the number pad 7,8,9, 4,6, 1,2,3. Running often requires that
  Numlock is turned off (press the 'Num' key above your number key pad on the
@@ -242,34 +248,44 @@ compile the game under '(2.1) Installing TomeNET'.
  followed by a direction key. (If you use rogue-like keys, see section (0.2)!)
  You can also use the arrow keys to move, but the numpad is better since it
  allows you to move diagonally too, which is very important.
+
 -You can wear/wield your armour/weapons by pressing 'w' and choosing them
  from your inventory which is displayed in the bottom right window.
+
 -You can pick up items if you stand on them and press 'g'. Items that are
  especially valuable in the beginning are magic wands and staves, so make sure
  to pick those up, identify them with a scroll of identify, and sell them to
  the magic shop in town.
+
 -You can drop items with 'd' or destroy items with 'k'.
+
 -You can enter stairs down/upwards by standing on them and pressing the
  corresponding key '<' or '>'.
+
 -You can press '?' to get an in-game help about keys and commands.
 
 -Nearby the town there's often a 'training tower' which is a good place
  to start because if you die there nothing will happen except a slight
  loss of experience and gold. Ask people where the dark-green '<' symbol
  (the tower entrance) is found. Usually to the lower-right of the town centre.
+
 -If you die outside of the training tower you will usually turn into a ghost.
  This ghost cant wear any items, so it's a good idea to care about being
  revived. To get revived, either visit the temple in town (it's a green '4')
  or ask another player to read a 'Scroll of Life' while standing next to you.
  While you're a ghost you can freely float up/down by pressing '<' and '>'.
--If you have any journals like 'Guide to Middle Earth' or 'The Gazette' in
+
+-If you have any parchments like 'Guide to Middle Earth' or 'The Gazette' in
  your inventory (bottom right window) you should read those by pressing 'r' to
  read.
+
 -If your character gains a new level it also gains skill points. To distribute
  those, invoke the skill screen with 'G'. (See 3.10, 6.2 and 7.5.)
+
 -If you don't like your character and want to delete it, you may commit
  suicide by pressing SHIFT+q or CTRL+k and double-confirming the following
  questions with 'y' and '@'.
+
 -To drop items, privately chat with other players, or advance beyond a certain
  level you will need an admin to 'validate' your account.
  Usually, all you have to do is to keep playing/stay online for a bit until an
@@ -278,6 +294,7 @@ compile the game under '(2.1) Installing TomeNET'.
  chatting (Admin's names are displayed in dark blue in the chat).
  If the server's intro screen mentions to send an email to an admin, try that
  and specify your account name in it.
+
 -Press '@' key to see a list of players who're currently online. Note that a
  yellow '(I)' before a name stands for 'invalid', and means that this player
  is still awaiting account validation by an admin.
@@ -286,6 +303,7 @@ compile the game under '(2.1) Installing TomeNET'.
  If another player's character level is displayed in light blue colour, that
  means he is within sensible level range of you to form a party! Press SHIFT+P
  for party menu. One of you has to create the party and add the other one.
+
 -Note that your character's "speed" may change. Speed is the factor telling you
  how fast your character can move, fight or perform any other kind of action.
  If your character's speed gets increased (for example by drinking a potion of
@@ -336,11 +354,13 @@ i       i       display your inventory. You can then press SHIFT + inventory
                 You can also type \\<slot letter> shortcut in chat to paste an
                 item right into some text you are writing, eg "\\a" for the
                 item in your inventory slot 'a)'.
+
 e       e       display your equipment. You can then press SHIFT + equipment
                 slot letter to paste that item name into chat.
                 You can also type \\<capital slot letter> shortcut in chat to
                 paste an item right into some text you are writing, eg "\\A"
                 for the item in your equipment slot 'a)'.
+
 I       I       inspects an item, showing its special abilities in case it
                 has some. To examine an item you must either have bought it
                 from a shop or *identified* it. Mages can learn *ID* spell
@@ -351,11 +371,15 @@ I       I       inspects an item, showing its special abilities in case it
                 If you examine weapons, it always tells you the weapon class
                 (sword/blunt/axe/polearm) as well as if it's 1-, 2- or
                 1,5-handed.
+
 w       w       wear/wield an item from your inventory (weapons, armour,
                 ammunition, tools, rings, amulets, etc).
+
 W       W       wear/wield an item, same as 'w', but tries to use the second
                 available slot in case two inventory slots are both egligible.
+
 t       T       take off an item.
+
 x               swap an item. This is basically like both "wear/wield" and
                 "take off" in one command. This makes only sense if it is used
                 with an item that has been _inscribed_ accordingly, for example
@@ -363,40 +387,58 @@ x               swap an item. This is basically like both "wear/wield" and
                 When the item is currently in the inventory, it will be
                 equipped. If it already is equipped though, then it will be
                 taken off.
+
 q       q       quaff a potion.
+
 r       r       read a scroll.
+
 E       E       eat. (Draconians can eat firestones to gain temporary special
                 abilities, see (5.9).)
+
 F       F       fuel your light source.
                 Use oil for lanterns, and torches to fuel another torch.
+
 f       t       fire ammo from your quiver.
+
 v       v       throw an item from your inventory.
+
 b       (P)     browse (peruse) a book.
+
 m       m       activate a skill (ie cast a magic spell, lay a trap, use an
                 ability, use a technique, polymorph into a monster form or
                 back to normal, cast a monster-spell while polymorphed,
                 enter a combat stance).
+
 a       z       use (aim) a magic wand.
+
 z       a       use (zap) a magic rod.
+
 u       Z       use a magic staff.
+
 g       g       pick up an item from the floor. You have to stand on the item
                 to do that. You can also pick up an item by pressing '5' on
                 the number pad while numlock is turned off. Gold is always
                 picked up automatically.
+
 C       C       see a character overview.
+
 L       W       look around your current sector/floor (use direction keys).
+
 M       M       display either the world map if you're not in a town or in a
                 dungeon, otherwise display a minimap of the town or of your
                 currentl dungeon level.
                 If you want to see the world map while you're in town or in
                 the dungeon, press ~ and choose "Wilderness map" there.
                 You can scroll around the map via directional keys.
+
 s       s       search adjacent fields, objects or walls for hidden traps or
                 doors.
+
 S       #       enter 'search mode'. You will search your adjacent fields once
                 each turn. If you stand next to a room and you want to find
                 its hidden door, turn this on and run along its walls until
                 you find it.
+
 V       V       enter 'cloaking mode'. This can only be used by rogues.
                 It will take a couple of turns to perfectly cloak your
                 physical appearance and body warmth pattern, after which you
@@ -419,15 +461,20 @@ V       V       enter 'cloaking mode'. This can only be used by rogues.
                 Note: Cloaking has no effect on shoplifting; it breaks on
                 entering any shop.
                 Note: Although ESP is supposed to detect cloaked targets, for
-                now it's still set to overrides ESP of other players for the
+                now it's still set to override ESP of other players for the
                 sake of PvP usage, similar to invisibility.
                 (Also see (5.16) for details on 'normal' invisibility.)
+
 A       A       activate an item. Usually an artifact, a dragon scale mail or
                 a ring of polymorphing (shapechanging).
+
 T or +  +       tunnel (dig) through an obstacle or a wall.
+
 R       R       rest. Your hit points, mana and stamina will regenerate faster
                 while resting.
+
 o       o       open something.
+
 c       c       close something.
 c   while in a store:
                 Paste an item name, its price and the store symbol into chat,
@@ -435,16 +482,23 @@ c   while in a store:
                 You can also type \\\<slot letter> shortcut in chat to paste an
                 item right into some text you are writing, eg "\\\a" for the
                 first item on the store page you are currently looking at.
+
 d       d       drop an item.
+
 $       $       drop some gold. You can use 'k' and 'm' for thousands or
                 millions, example: 3k -> drops 3000. 2m -> drops 2000000.
+
 D       D       disarm a trap. This yields experience points, depending on the
                 trap type. (Note that you won't get experience points for
                 disarming traps via magic spells or magic devices.)
                 Also see (4.7) for details about traps.
+
 k       CTRL+D  destroy an item. (Note that artifacts are indestructible.)
+
 G       G       skills screen.
+
 B       f       bash/force something (ie a stuck door).
+
 l       x       look at a player/monster/object (use direction keys for
                 targetting). Similar to targetting, while looking you can press
                 'p' to switch to manual cursor positioning, allowing you to
@@ -458,13 +512,17 @@ l       x       look at a player/monster/object (use direction keys for
                 target when you use a ranged attack that requires a target.
                 This behaviour has no real effect on gameplay though it just
                 looks odd in those rare cases it happens :-p.)
+
 j               attempt to steal from players (not recommended!).
+
 U       O       use undead powers (use this if you died and became a ghost).
                 Using these will drain your experience. If you ran out of
                 experience points, your ghost fades away (= you character will
                 be completely erased).
                 NOTE: Undead powers are currently not available.
+
 CTRL+S          spike a door (using iron spikes, the door will be jammed).
+
 p       p       Concentrate on opening your mind for telekinesis.
                 ("You open your mind.." and "You close your mind.")
                 You need to open your mind in order to receive items from
@@ -475,7 +533,9 @@ p       p       Concentrate on opening your mind for telekinesis.
                 Certain spells of the mindcrafter class might also require
                 players in the same party to open their minds in order to work
                 or to affect them as intended.
+
 h               sell/buy a house or change house parameters. See (4.10).
+
 P       O       party screen. Form/disband/modify a party with other players
                 here. In a party you will share experience points if you are
                 within 7 character levels to each other and on the same
@@ -486,12 +546,18 @@ P       O       party screen. Form/disband/modify a party with other players
 
 SPACE   Stop executing repeatable actions such as searching, tunnelling or
         disarming traps. Also stops fire-till-kill.
+
 < or >  go upstairs/downstairs. Press '>' to use a void gate (violet '+').
-        Void jump gates teleport you to their counterpart and vice versa.
+        Void jump gates teleport you to their counterpart and vice versa giving
+        you a message "You fall into the void. Brrrr! It's deadly cold.".
+        Draconians can get harmed by using void jump gates, see (6.4).
         If you take staircases up/down, you'll receive the stair-GoI buff,
         see (0.4) for details on that.
+
 {       inscribe an item.
+
 }       remove inscription from an item.
+
 /       in general, use an item (combines q,r, etc..).
         This can be useful if you run out of macros for a specific action,
         for example if you already use @m0...@m9 and still have more spell
@@ -504,10 +570,12 @@ SPACE   Stop executing repeatable actions such as searching, tunnelling or
         to kill orcs, jellies, and other light-sensitive critters.
         Note that in the spell book example above, you could of course just use
         call-by-name instead so you won't need any inscriptions at all (3.9b) !
+
 ~       display further information of your character.
         Point (3) here is especially helpful for mimics:
         The number shown in round brackets before each monster name is the
         number they have to enter for their 'Polymorph self into..' ability!
+
 @       displays a list of players currently on the server.
         Note that a yellow '(I)' before a name stands for 'invalid', and means
         that this player is still awaiting account validation by an admin.
@@ -518,8 +586,11 @@ SPACE   Stop executing repeatable actions such as searching, tunnelling or
         that means he is within sensible level range of you to form a party!
         Press SHIFT+P for party menu. One of you has to create the party and
         add the other one.
+
 %       edit your macros.
+
 &       edit your auto-inscriptions.
+
 =       edit your preferences.
         Most important entries here are..
         User Interface Options:
@@ -546,6 +617,7 @@ SPACE   Stop executing repeatable actions such as searching, tunnelling or
             "Scroll the screen more frequently" helps to avoid death by
                 attacks that came from off-screen. However, this option can be
                 a bit irritating.
+
 :       type a chat message. To whisper privately, enter <player>:<text>
         You can also enter a slash command here.
         Press TAB to cycle between different chat modes, such as party-chat.
@@ -553,34 +625,49 @@ SPACE   Stop executing repeatable actions such as searching, tunnelling or
         For details about slash commands, see further below in this paragraph.
         There is also a /say command for talking to players nearby, and a
         /shout command for waking up monsters! See further below.
+
 '       lets you peek at the equipment of party members or players within
         sight.
+
 #       displays the high scores (same as ~c).
         (Note: If you press this while browsing any text you can jump to a
         line number of your choice.)
+
 |       displays the unique monster list (same as ~1).
+
 X       quickly swap between two equippable items. They must be inscribed
         '@x0'. (It's basically just the macro 'x0' bound to shift+x key.)
+
 _       Two uses, regarding a) fountains or b) item piles:
-        Main: Drink from a fountain. You must stand on the fountain to do this.
+
+        a) Main: Drink from a fountain. You must be standing on the fountain.
         Fountains can have good/bad/no effects. There is no fountain of death,
         neither one of detonations, so you won't get instakilled.
         If you see a message 'You feel less thirsty' that means the fountain
         was just plain water. A message 'You have quenched your thirst' means
         that the fountain had no effect on you, although it wasn't water.
         (Same as /sip command.)
-        Secondary: If you press _ while standing on an item or a pile of items,
-        you will get a message what item is currently below your feet.
+        Fountains cannot have effects of potions which are of higher level than
+        the dungeon level where the fountain is.
+
+        b) Secondary: If you press _ while standing on an item or a pile of
+        items, you will get a message what item is currently below your feet.
+
 ?       invoke an in-game help screen
+
 !       look at the in-game bulletin board. Players can write lines of text to
         it by using the /bbs <text> command.
+
 K       forcibly combines a level 0 item in your inventory with other items of
         the same type that aren't level 0. Be warned, that this will change the
         level of all the items involved to 0.
+
 CTRL+P  view previous messages.
         Note: You can also press this when in chat prompt, to cycle backward
         through lines that you previously typed (also see CTRL+N).
+
 CTRL+O  view previous chat messages.
+
 CTRL+X  save your character & quit the game. (You should do this in town!)
         This also automatically saves some settings, like window positions on
         MS-Windows, or mixer settings (CTRL+U to change), and you will be asked
@@ -588,19 +675,26 @@ CTRL+X  save your character & quit the game. (You should do this in town!)
         Note that if you exit the game just by clicking on the 'x' button in
         the game window's titlebar, these extra features will be skipped, and
         any changes in settings or window positions will be discarded.
+
 Q or CTRL+K
         lets your character commit suicide (permanently deletes it!).
         Characters who suicide won't drop items except for artifacts (if the
         server has ANTI_ARTS_HOARD enabled then no item at all will be
         dropped), nor will they keep the level static as it happens on a
         normal 'final death' (see (3.11) for details about static levels).
+
 CTRL+R  redraw the screen (do this if it's messed up for some reason).
  (/refresh, /ref)
+
 CTRL+T  take a screen shot. See /screenshot command below.
+
 TAB or CTRL+I
         displays lag-o-meter.
+
 CTRL+U  Displays/exits the audio mixer settings. (Also see (2.1a).)
+
 CTRL+C  Toggles music. (Shortcut for toggling it in the mixer settings.)
+
 CTRL+N  Toggles audio. (Shortcut for master toggle in the mixer settings).
         Note: If you press this while in chat prompt, you can cycle forward
         through lines you previously typed (also see CTRL+P).
@@ -608,11 +702,15 @@ Note: Mixer settings are saved automatically, provided you use CTRL+X to quit.
 (Compare troubleshooting section (8.6), problem 21.)
 
 ^       Allows to enter a CTRL character as command.
+
 \       Enter a command, bypassing the client's key map.
         Also allows to enter ^ next to enter a CTRL character as command.
+
 )       Clears the command buffer of pending key presses (used in macros).
+
 *       Initiates targetting a monster, hostile player or location
         (used in macros).
+
 (       Initiates targetting a friendly player (used in macros).
         (Currently targets the most hurt player who is in your party, or the
         most wounded player in general if you aren't in a party.)
@@ -621,6 +719,7 @@ There are also some commands that can be entered with ':' like a chat line.
 They all start with a slash '/' hence they're called slash commands:
 
 /help       get a help about slash-commands.
+
 /afk        toggle AFK (away from keyboard) mode if you have to take a
             quick break from playing. If your character is currently on the
             blacklist of merchants (because you got caught stealing from a
@@ -636,20 +735,25 @@ They all start with a slash '/' hence they're called slash commands:
             you, use teleportation or word-of-recall on you, infect you with
             black breath by bumping into you, steal from you, form a blood bond
             with you or attempt to polymorph you while you are afk.
+
 /afk <msg>  You can specify a reason that will be displayed to the other
             players, so they know why you are currently AFK or when you will
             be back.
+
 /bbs <text> Add a line of text to the in-game bulletin board system. Players
             can look at the board by pressing the '!' key.
             (You can verify or compare the date with the /time command.)
             If <text> is omitted, the current BBS contents will be shown, same
             as using the '!' key.
+
 /pbbs <text>    Same usage as /bbs, but only readable/writable for party
                 members. So it's a party-internal BBS.
                 To read its contents, type /pbbs without any <text>.
+
 /gbbs <text>    Same usage as /bbs, but only readable/writable for guild
                 members. So it's a guild-internal BBS.
                 To read its contents, type /gbbs without any <text>.
+
 /convertexclusive    Attempts to convert your current character into a
                      slot-exclusive character (either PvP-mode or IDDC aka
                      Ironman Deep Dive Challenge). Warning: This process is NOT
@@ -657,15 +761,19 @@ They all start with a slash '/' hence they're called slash commands:
                      /convertexclusive <your-character-name>
                      for example:
                      /convertexclusive Gandalf
+
 /coin       Flip a coin to get either heads or tails.
             The result is random and can be seen by other players who stand
             nearby.
+
 /deal       Deals a card (completely random).
             The result is random and can be seen by other players who stand
             nearby.
+
 /dice       Roll some dice, you must specify a number of dice from 1 to 100.
             The result is random and can be seen by other players who stand
             nearby.
+
 /dis        DESTROYS every item in your inventory that has one of these
  (/dispose) inscriptions: terrible, cursed, uncursed, broken, worthless,
             average, good. Works only on items that actually can be destroyed.
@@ -674,30 +782,39 @@ They all start with a slash '/' hence they're called slash commands:
             Skips items which 
             inscription contains more than a pseudo-ID tag.
             Also see /tag and /untag. Note that artifacts cannot be destroyed.
+
 /dis a      DESTROYS items like /dis, and additionally destroys all items that
             have no inscription at all.
             Also see /tag and /untag.
+
 /dis b      DESTROYS items like '/dis a' does, but skips identified ego items.
             It also skips exploding ammo, although it isn't really an ego item.
+
 /dr [tag]   Without tag it equips all items in your inventory that are: not
 (/dress)    cursed, not {worthless}, not {terrible}, known to you.
             With tag it just equips all items that contain that tag in their
             name or inscription somewhere (even if they are cursed).
+
 /bed        Opposite of /dress.
  (/naked)
+
 (The /empty function is currently disabled)
 /empty <inventory slot>
             Empty a potion from your inventory, leaving an empty bottle.
             Example: /empty c   (if you have 'c) 3 potions of boldness', one
             will be emptied and 2 remain at 'c) 2 potions of boldness'.))
+
 /evinfo     Displays information about all ongoing events.
+
 /evinfo <#> Displays information about the specific event number #.
             Note: If you log out, your sign-up is cancelled automatically.
+
 /evsign <#> Signs you up for the event number #.
             Depending on the event, you might need to specify additional
             parameters after the number. If that is the case, you'll see
             a message telling you so, and speficying details what's missing.
             Note: If you log out, your sign-up is cancelled automatically.
+
 /ex or /examine or /extra
             Gives you detailed information about your character's status, such
             as how many actions you may perform per turn.
@@ -724,8 +841,6 @@ They all start with a slash '/' hence they're called slash commands:
               character;
             - which of your auras are currently active (if you have points in
               the corresponding aura skills);
-            - the deepest dungeon level you have ever
-              reached (same as checking '~7');
             - extremities your current monster form possesses (if you're
               transformed into a monster form at the moment). This can be
               helpful to figure out what types of items you may equip while in
@@ -740,74 +855,100 @@ They all start with a slash '/' hence they're called slash commands:
               automatically receive 1 experience point (to limit the amount
               of cash you can pick up before participating in certain events,
               such as Highlander Tournament or Ironman Deep Dive Challenge).
+
 /exit       Leaves the game, same as pressing CTRL+X.
  (/leave,/quit)
+
 /fe         Repeat the level feeling. See (4.8) for more information.
  (/feeling)
+
 /fill       fill an 'Empty Bottle' in your inventory with the water from a
             fountain. You must stand on the fountain to do this.
+
 /ftkon or /ftkoff
             Enables or disables fire-till-kill mode (see (5.2a)).
             Alternatively, you can toggle it in 'm' menu.
+
 /gleave     Leaves your guild. Same as pressing 'SHIFT+P' and 'd'.
  or /gquit
+
 /guild_adder <name of another player>
             Allows that player permanently to add other players to the guild
             too. Use the command a second time to revoke his rights again.
+
 /guild_cfg [<flag> [<value]]
             Shows you your current guild configuration and allows you to change
             it.
+
 /hou        Displays your houses, same as ~6.
  (/house)
+
 /ig <player name>
  (/ignore)  ignores all chat messages from the specified player. (Toggle)
             Also silences all paging attempts from that player.
+
 /ic         ignore all normal chat messages which are neither private messages
  (/ignchat) nor party messages. ('Private mode' will be displayed after the
             player's name in the player overview screen which can be invoked
             by pressing '@', indicating that this player currently cannot read
             normal chat messages.)
+
 /info <msg> Sets an informative message that is displayed to other players in
             '@' screen, similar to an afk-message, except this message is
             displayed when you're not afk.
             For example do:  /info Want to team up for Mordor!
             If you type /info without a message, it clears your info message.
+
 /leave      Leaves the game, same as pressing CTRL+X.
  (/exit, /quit)
+
 /lite a..w  Refills your light source with an item from your inventory.
             Usually it's easier to just press 'F' instead.
+
 /mar        Tells a prayer-user if he may use the prayer 'Martyrdom'.
  (/martyr)
+
 /me         Write an emote. Example: /me hides.
+
 /mon <monster character>
             Same as going to ~ menu and selecting 'Monsters':
             Will show your kill count of all matching monsters.
             Example: /mon D  ->  shows your greater dragons kill count.
+
 /motd       Shows the current server notes that are displayed at login.
  (/snotes)
+
 /news       Shows the login screen, same as ~f, but in monochrome.
+
 /note <account name>:<text>
             Leave a note to another player. Note: You have to specify his
             ACCOUNT NAME, not a character name. That way, no matter which of
             his characters he chooses to logon, he always gets the note.
+
 /note <account name>
             Delete all pending notes that were addressed to that player.
+
 /notes      Display all pending notes that you wrote to other players.
+
 /pnote <text>
             Leave a note to the party you own.
             If <text> is omitted, it will display the current note.
             If <text> is just an '*' char, it will erase the current note.
+
 /gnote <text>
             Leave a note to the guild you own.
             If <text> is omitted, it will display the current note.
             If <text> is just an '*' char, it will erase the current note.
+
 /obj        Displays all objects known to you, same as ~4.
  (/object)
+
 /page <player-name>     Sends beeps to that player to help you getting his
                         attention. (Using /ignore on a player will also
                         prevent getting paged by him.)
                         If you're on Linux and not hearing the page sounds,
                         see problem 19 in the troubleshooting section (8.6).
+
 /paint      (Also available by pressing 'h' for house menu.)
             Use a potion in your inventory to paint your house entrance in a
             similar colour. The potion is used up in the process. A potion of
@@ -819,73 +960,95 @@ They all start with a slash '/' hence they're called slash commands:
             Note that players of incompatible character mode (everlasting vs
             non-everlasting) won't see each other's house paint.
             (See (4.10a) for more information about player stores.)
+
 /play       Join/leave a mini-game (such as rugby on the field in Bree).
             Will at some point in the future be absorbed by /evsign and
             thereby become obsolete.
+
 /pleave     Leaves your party. Same as pressing 'SHIFT+P' and '5'.
  or /pquit
+
 /pstore     (Also available by pressing 'h' for house menu.)
             Attempts to enter a player store next to you, even if it's your own
             house. So this command is good for 'testing' your own store.
             Usually you simply enter another player's store by trying to enter
             his house, which will preset you with the store screen.
             (See (4.10a) for more information about player stores.)
+
 /pvp        Carries you into/out of the PvP arena. Only usable by pvp-mode
             chars. See (6.13) for details about PvP mode.
+
 /que        gives a quest! It needs to be fulfilled before a certain period
  (/quest)   of time passes (continues to expire even while not logged on).
             The player who completes it gets a great item as reward. It will
             appear in your inventory and carry an inscription indicating
             it's the quest reward. (See (4.13) for more info.)
+
 /quit       Leaves the game, same as pressing CTRL+X.
  (/exit, /leave)
+
 /rec -550   recalls you to -550ft, using an item inscribed {@R}.
 /rec 32 32  recalls you to Bree (Town at 32,32 world map coordinates),
  (/recall)  using an item inscribed {@R}. See "(0.3) Important Inscriptions"
             for more info about Word of Recall.
+
 /ref        redraw the screen (do this if it's messed up for some reason).
  (/refresh, or simply hit CTRL+R)
+
 /bug        report a bug to the admin(s).
+
 /rfe        Store a message/suggestion for the admin(s).
+
 /whisper <text>
             Speaks <text> in a low voice, so only players standing directly
             next to you can hear it.
+
 /say <text>
             Speaks <text> to players who are currently nearby your position,
             instead of sending your message to everyone on the server.
+
 /whisper <text>
             Whispers <text> to players currently standing right next to you.
             Others won't be able to hear it.
+
 /cough      You cough noisily. Will disturb the sleep of monsters or at least
             make it less deep..
+
 /shout <text>
             Shout <text> loudly, will wake up monsters.
+
 /scream <text>
             Same as /shout, but also aggravates monsters in your current
             line of sight. (Same effect as scroll of aggravate monsters,
             see (5.9)).
+
 /shot  or  /shot <filename>
  (/screenshot)
             Takes a screen shot to a html file. If <filename> is omitted, it
             writes to 'screenshot?????.xhtml' by default, where ????? are
             increasing numbers. You may also use CTRL+T.
             You can view those xhtml files in most webbrowsers.
+
 /sip        drink from a fountain. You must stand on the fountain to do this.
             Fountains can have good/bad/no effects. There is no fountain of
             death, neither one of detonations, so you won't get instakilled.
             (It's easier to press '_' instead of using the /sip command.
             Also see '_' key above, for additional information.)
+
 /stime      Tells you the current date and time (of the server, not of your
             local timezone).
+
 /tag [a..w] Tags all uninscribed items in your backpack by adding a '!k'
             inscription. Helpful for looting in conjunction with /dis command.
             If a slot (a..w) is specified, it only tags the item in that
             particular inventory slot (if not yet inscribed already).
             Will not affect equipped items.
+
 /tar <x> <y>
  (/target)
             Allows you to target a specific grid specified by X,Y as offset
             to your current character position.
+
 /testyourmight [rs]
 or shorter: /tym [rs]
             Displays damage and healing stats for your character, totals and
@@ -895,7 +1058,13 @@ or shorter: /tym [rs]
                   attacks that missed, were blocked/parried/dodged or
                   nullified by invulnerability, etc.
                   It however counts ALL attacks, for example aura hits too.
+
 /time       Tells you the current in-game time, same as /ex does.
+
+/trait      Allows outdated Draconian characters to acquire a lineage trait.
+            This cannot be reversed, so the player should pick carefully.
+            See (6.4) for a list of traits and what they do.
+
 /untag [<inscription>]
             If <inscription is omitted, it removes all inscriptions from items
             in your backpack which are exactly '!k' (as done by /tag command).
@@ -904,12 +1073,17 @@ or shorter: /tym [rs]
             Will not affect equipped items (except for '/untag *').
             Note that some <inscription> parameters are special and therefore
             reserved, those are:
+
 /untag *    will remove all inscriptions from all items in your inventory.
+
 /untag p    will remove all pseudo-id tags from your inventory items.
             Note: This will work on equipped items too!
+
 /untag u    will remove all unique-loot tags from your inventory items.
+
 /at         Apply auto-inscription settings to current inventory.
  (/autotag)
+
 /undoskills Allows you to undo the skill points you assigned in 'G' menu last
             time. Use this to correct points you accidentally put into a wrong
             skill.
@@ -917,6 +1091,7 @@ or shorter: /tym [rs]
             making it impossible to undo points spent previously.
             Also, it can only be used ONCE per level, so make sure you get your
             skill point distribution right on the second attempt.
+
 /version    Displays the server version.
  (/ver)
 
@@ -1120,39 +1295,56 @@ Art         Artifact. Those can be 'Static arfifacts' from the a_info.txt
             Depending on the server settings, fallen winners might also not be
             able to use static arts.
             See (5.9b) for more information about artifacts.
+
 Auto-ID     A special ability of some items. If you equip an item that grants
             you 'Auto-ID' all items you touch will automatically be
             identified! Items who grant their wielder Auto-Identification are
             highly sought after. Randart helmets or gloves sometimes have it.
             See (5.7) for more information about identification.
+
 BM          Black Market (Store '7').
+
 Cheeze      Questionable action, not quite cheating but close to it.
             This can be transferring items to a store character (mule)
             or exploiting weaknesses in the game design instead of
             reporting them to the forum.
+
 DEW         Dark-elven warlock. A very deadly monster that comes in packs and
             shoots high-damage mana bolts, glass cannon style.
+
 Dive        A trip into the dungeon, usually quite deep compared to the
             diver's character level.
+
 DSM         Dragon Scale Mail. Legendary pieces of armour.
+
 Excellents  Items that pseudo-identified as 'excellent'.
+
 EA          Extra Attacks. Rings, gloves or weapons which increase your number
             of blows per round with melee weapons. Quite expensive.
+
 FA          Free Action (immunity to paralysis).
+
 FF          Feather falling (Levitation).
+
 GoI         Globe of invulnerability. This only exists as 'Stair-GoI', see
             further below.
+
 Gorth       Room in the dungeon, divided into 4 chambers, similar to a pit.
             Also see 'Room', 'Pit' and (4.6).
+
 GV          Greater Vault. (See 4.6)
+
 GCV         Greater Checkerboard Vault (looks remotely like a checkerboard).
+
 ID, *ID*    Identify and *Identify* magic respectively, which is used to
             reveal magic properties of unknown items. Scrolls of ID can be
             bought in store 5.
             See (5.7) for more information about identification.
+
 Iron Team   A special type of party which can only be formed with newly
             created characters. Its members only gain experience if all
             members are online and on the same dungeon level.
+
 klevel, olevel
             Somewhat more technical terms, these stand for the exact type of
             item level that is meant in a certain context:
@@ -1170,9 +1362,12 @@ klevel, olevel
             which equals dungeon level 80, an actual amulet you find might have
             a level requirement (olev) of 30.
             (Note: This is similar to mlevel vs rlevel for monsters.)
+
 Loot        Items that have been dropped by dead monsters or players and
             are waiting to be picked up by someone. :)
+
 LV          Lesser Vault. (See 4.6)
+
 mlevel, rlevel
             Somewhat more technical terms, these stand for the exact type of
             monster level that is meant in a certain context:
@@ -1199,15 +1394,19 @@ mlevel, rlevel
             of this dragon is still 41, its real level, the mlev, is 42.
             Some formulas used by the game use mlev, some use rlev.
             (Note: This is similar to klevel vs olevel for items.)
+
 Morgy       Morgoth, Lord of Darkness. Final boss enemy in TomeNET.
             See (1.3) for details.
+
 Nest        Originally also just called 'pits', nests only differ from pits in
             the monsters in them being strewn around in a randomly mixed manner
             while pits contain 'organized' rings and circles of monsters.
             The monsters in a nest are not completely random but follow certain
             schemes. For example all monsters in a 'clones nest' are exactly
             the same type. Also see 'pits'.
+
 olevel      see klevel.
+
 OoD         Out-of-depth. Means a monster or an item encounter that happened at
             a surprisingly shallow level, opposed to the base level for that
             monster (shown in ~7) or item (given in k_info.txt) where
@@ -1218,46 +1417,59 @@ OoD         Out-of-depth. Means a monster or an item encounter that happened at
             vaults); unique monsters can actually only be up to 20 levels OoD
             (even in vaults) and, as a specialty, Great Wyrms of Power can only
             ever occur up to 10 levels OoD.
+
 Party       A group of players who fight together and share experience.
             In a party you will share experience points if you are within 7
             character levels to each other and on the same dungeon/tower level
             respectively the same worldmap/wilderness sector.
             You can invoke the party menu with shift+p key. See (6.9).
+
 Phase Door  A short-range teleportation.
+
 Pit         Pits contain monsters of a certain type, for example 'demon pits'
             or 'orc pits', with the monsters in them being placed in a somewhat
             'organized' manner of rings and circles. Also see 'Nest' or 'Room'.
             Pits are often confused with special rooms.
+
 Pseudo-ID   If a player keeps an unidentified item for a longer time he might
             'feel' if the item is average, good, cursed or special. The item
             will automatically receive a 'pseudo-id inscription' then.
             Pseudo-id intensity and speed depend on the 'Combat' skill.
             It does not matter whether the player is acting, afk or idle.
             See (5.7) for more information about identification.
+
 PvP         Player vs player. Describes the act of player characters fighting
             each other. If you want to fight other players to death, create a
             new 'pvp-mode' character. It's an option during the character
             creation process, much like 'everlasting mode' or 'normal mode'.
             For more information about pvp mode, see (6.13).
+
 Randart     Randomly generated artifact. As opposed to 'Truearts' which are
             also called 'Static arts' from the file a_info.txt (you can search
             static arts by pressing  ~ 6  in game). See 'Art' at the top of
             this section for more information.
             See (5.9b) for more information about artifacts.
+
 Res         Resistance.
+
 Room        The dungeon contains many rooms connected by passages. Some of the
             rooms are of special shape. Especially rooms containing a further,
             inner room similarly to pits are thereby often confused with those,
             mostly 'Gorths' (rooms divided into four chambers containing a
             lot of monsters), 'Checkerboard-Rooms' (rooms containing a
             checkerboard-like maze structure and a lot of monsters).
+
 rlevel      see mlevel.
+
 Scumming    Repeatedly using staircases up/downwards to make a level become
             recreated. Usually in hope of finding a specific monster on that
             depth. ('I scum 450..500 ft for Wormy'.)
+
 SI          See invisible.
+
 Specials    Items that pseudo-identify as 'special'. These are true arts or
             randarts.
+
 Static      A level that is static will not change if you leave it but stay
             the same, permanently until it is unstaticed.
             All levels remain static for a short period of time after the
@@ -1266,12 +1478,17 @@ Static      A level that is static will not change if you leave it but stay
             ultimatively without possibility of resurrection) for a longer
             while depending on the dungeon level, see (3.11) for details about
             static-by-death levels.
+
 Static Art  See 'Art' at the top of this section.
+
 Stair-GoI   Stair-globe of invulnerability. This describes the magical
-            protection that any player who takes a staircase up or down will
-            receive a temporary buff of +100 AC and high chance to deflect any
-            projections (bolts/balls/breaths/curses..) that hit him.
+            protection that any player who takes a staircase up or down or uses
+            word-of-recall will receive: A temporary buff of +100 armour class
+            and 40% chance to deflect any attacks that hit him. Attacks that
+            aren't deflected still get their damage halved.
+
 True Art    See 'Art' at the top of this section.
+
 Unique      A monster that is named and exists only once. Although it can
             respawn for another player who hasn't defeated it yet, each player
             will receive loot only once from it. So if you engage a unique
@@ -1298,8 +1515,10 @@ Unique      A monster that is named and exists only once. Although it can
             more. There are some exceptions though, the following monsters
             will never respawn: The Nazguls, Sauron, Michael, Morgoth, and all
             super-uniques that come after Morgoth, starting with Tik'srvzllat.
+
 WoR         Word-of-Recall (teleports you into the dungeon and back or on the
             world map). See "(0.3) Important inscriptions" for more info.
+
 Wormy       Wormtongue, Agent of Saruman. He drops great items.
 
 
@@ -1332,8 +1551,7 @@ Wormy       Wormtongue, Agent of Saruman. He drops great items.
 
 -If you press CTRL+X to save&exit the game, you should do that in a safe town.
  Dungeons might change while you are logged off, and the next time you log on
- you might find yourself stuck inside a wall, where the previous dungeon had a
- wide room.
+ you might find yourself in a nasty place if unlucky.
  Another problem is that if you don't leave in a town, your character will
  stay for another 20-30 seconds in the game before it finally disappears from
  the dungeon! If monsters were around, you might get killed easily during that
@@ -2041,9 +2259,19 @@ self-explaining or that are especially important are listed in detail here:
         Skills that your character cannot use will not be displayed in the
         skill menu invoked by 'G' key.
 
-    Also, (2) has all of the audio options. (See (2.1a) for more information.)
+    A bunch of options for special visual effects and lighting.
+        These options change how lighting is applied to lamp light and walls,
+        lamp light colour and how walls are displayed depending on the font:
+        font_map_solid_walls (depending on font displays walls as solid blocks)
+        view_animated_lite (fire-based light sources flicker yellow-orange)
+        view_bright_lite2 (darkens wall grids out of sight)
+        view_yellow_lite (your light source lights up certain floor/wall grids)
+        view_bright_lite (darkens floor grids out of sight)
+        view_granite_lite (enables special lighting fx listed above for walls)
+        view_special_lite (enables special lighting fx listed above for floors)
 
 (3) Audio Options
+    (See (2.1a) for more information about sound and music.)
     A bunch of stuff here, mostly you might want to look at attack-sound effect
     frequency. Some people don't like to have those be played on each single
     attack, so you can tweak them here.
@@ -2117,6 +2345,26 @@ self-explaining or that are especially important are listed in detail here:
     Here you can configure each of the program windows in detail.
     It is recommended that you have one dedicated window for 'Display chat',
     so you don't miss important messages during combat.
+
+
+(2.3a) Client options configuration files
+-----------------------------------------
+Don't forget to save options to a file after you changed them, so the change
+becomes persistent and will be remembered next time you log on.
+The following files will be automatically processed by TomeNET:
+
+global.opt                      global client options, will be loaded on all
+                                characters
+
+global-<operating system>.opt   client options for specific OS, can be used to
+                                have different options depending on whether
+                                a Linux client is running in X11 mode or as
+                                GCU terminal application. The file names would
+                                be global-x11.opt and global-gcu.opt.
+
+<character name>.opt            client options file that will be loaded for a
+                                particularly named character only, if you log
+                                on with it, eg "Gandalf.opt".
 
 
 
@@ -2406,33 +2654,33 @@ important stats:
 -starting with your race
 -your class
 -your current title
-(the title will change as you gain experience levels by fighting monsters),
+ (the title will change as you gain experience levels by fighting monsters),
 -followed by your character level
 -your amount of experience
 -and your cash ('Au' stands for Aurum, latin for gold)
 -the 'encumberment' bar (blank at the beginning)
 -a mini lag-o-meter bar displaying your 'ping' by coloured plusses, 1 plus
-symbol means your latency is below 50ms, each further plus symbol means 50ms
-more, so if you see +++ your latency is between 100 and 149 ms.
+ symbol means your latency is below 50ms, each further plus symbol means 50ms
+ more, so if you see +++ your latency is between 100 and 149 ms.
 -your 6 character attributes:
-STRength, INTelligence, WISdom, DEXterity, CONstitution, CHaRisma,
+ STRength, INTelligence, WISdom, DEXterity, CONstitution, CHaRisma,
 -your current sanity (sound means you are completely sane, this might drop, for
-example if a mindcrafter blasts your mind with psionic energy, leaving you
-mad)
+ example if a mindcrafter blasts your mind with psionic energy, leaving you
+ mad)
 -then comes your Armor Class (AC) which describes how well you are protected
-by all the armor you're currently wearing.
+ by all the armor you're currently wearing.
 -The next two values are most important and will change all the time while
-fighting monsters.
-They are your Hit Points (HP) and Mana Points (MP), current/maximum values.
-Mana points are very important for wizards, since they determine which spells
-and how many of them you can cast. The current hit points (Cur HP) tell you if
-you are injured. If they drop below zero you die!
-If they are the same as your Max HP then you are fully rested and physically
-healed.
+ fighting monsters.
+ They are your Hit Points (HP) and Mana Points (MP), current/maximum values.
+ Mana points are very important for wizards, since they determine which spells
+ and how many of them you can cast. The current hit points (Cur HP) tell you if
+ you are injured. If they drop below zero you die!
+ If they are the same as your Max HP then you are fully rested and physically
+ healed.
 -Next entry is your stamina (ST), if you chose a class that makes use of it.
-Stamina may allow you to employ special techniques accessed with 'm'.
+ Stamina may allow you to employ special techniques accessed with 'm'.
 -Below stamina is a 'flag bar' which displays certain combat-related modi of
-your character, if available to your class:
+ your character, if available to your class:
  -Combat stance (Bl = balanced, Df = defensive, Of = offensive, see (6.2))
  -Dual-wield mode (DH = dual-hand aka default, MH = main hand only, see (6.2))
  -Fire-till-kill toggle (FK = enabled, see (5.2a))
@@ -2440,10 +2688,10 @@ your character, if available to your class:
 
 Below that, there are further status indicators such as
 -your current world map location (sector 32,32 aka the starter town of 'Bree'
-when you log in for the first time) and the 'AFK' status indicator
+ when you log in for the first time) and the 'AFK' status indicator
 -as well as your food indicator ('full' by default). Note that if you don't
-eat when you become hungry you might get paralyzed sporadically and eventually
-even die of starvation!
+ eat when you become hungry you might get paralyzed sporadically and eventually
+ even die of starvation!
 
 By the way: If you enter the game and find that you don't like your
 character and want to recreate it from scratch, you can suicide by pressing
@@ -2526,7 +2774,7 @@ Please do not use foul language in chat. If you do, depending on the server
 settings you might end up in jail.
 Also, foul language is filtered by default. If you want to turn that off,
 press  = 2  and toggle the client option "censor_swearing". (Requires client
-version newer than 4.4.8a, or the 'test client' download.)
+version newer than 4.4.8a.)
 
 You can also enter slash commands in the chat line. For details about slash
 commands see (0.2).
@@ -2965,7 +3213,7 @@ These files are meant to store client options and configuration,
 you should NOT use them for macros:
 -----------------------------------
 pref.prf (global for all OS and users on the system)
-user.prf (global, for the specific user)
+*.opt files (client options configuration files, ending on ".opt")
 pref-<operating system>.prf (loaded if under the specific operating system)
 graf-<operating system>.prf OR font-<operating system>.prf
                             (loaded if using graphics / ascii font on the
@@ -3340,7 +3588,8 @@ the game prompts you to enter a direction.
 In our macros so far we have answered that question by specifying '*t' instead
 of an actual direction ie one of: 1,2,3,4,6,7,8,9.
 We have learned that '*' means 'acquire target' and 't' means 'choose closest
-hostile target'.
+hostile target'. If there are two targets that are equally close, one that is
+awake is preferred over one that is alseep.
 The '*' key can also be pressed as a command key, ie on its own without any
 direction request from the server. Press '*' and it will ask you to set a
 target, which you can do by pressing 't' again to choose the closest hostile
@@ -3988,7 +4237,7 @@ Spellbooks:
 
 Runes:          Auto-retaliate with the inscribed rune. The format is modifier
     @Oaa        then type. To retaliate with a combination of runes, use the 
-	            same inscription for both runes. See (6.8c) for details.
+	            combined rune. 'A' to activate runes for combining.
 
 Any item:
     @OMd        Use innate mimic power 'd)' (for example).
@@ -4093,10 +4342,11 @@ An experience penalty might be applied for killing monsters in the tower
 there is a newbie tower (also called 'Training Tower'), or you might search for
 it yourself. It's usually in Bree, to the lower right of the town centre.
 
-In general, when you take a staircase, your character will temporarily get a
-high Armour bonus (+100) and a chance to deflect enemy attacks, for a very
-short duration. This is an extra protection (also called 'stair-GoI', compare
-(0.4)) to help surviving nasty surprises.
+In general, when you take a staircase or use word-of-recall, your character
+will temporarily get a high Armour bonus (+100) and a chance to deflect enemy
+attacks and to reduce their damage, for a very short duration.
+This is an extra protection (called 'stair-GoI', compare (0.4)) to help
+surviving nasty surprises when entering a new dungeon level.
 Keep your scrolls of teleportation ready anyway!
 
 While in a town, you can invoke a map that shows the staircases upwards
@@ -5710,7 +5960,7 @@ depending on the character class . A table showing the blows/round limits
 is at section (6.5).
 
 There are four different classes of melee weapons,
-swords/daggers, blunt weapons, axes, polearms.
+swords/daggers, blunt weapons, axes, polearms. (Also see (5.1a) below!)
 You may examine a weapon by pressing 'I' to see its base class.
 Those again are divided into four sub-classes each:
 Single-handed, forced two-handed, should-be-wielded-two-handed,
@@ -7139,6 +7389,7 @@ Chauve-Souris   Turns you into a fruit bat. Quaff another one to be restored
                 Make sure you don't resist nexus if someone tries to polymorph
                 you back. Or just use 'Morph Restoration' service.
 Enlightenment   Illuminates and maps the whole level and reveals all objects.
+                It also identifies all of the user's items.
 *Enlightenment* Raises your intelligence and wisdom, detect treasures,
                 objects, secret doors, traps. Identifies all items. And tells
                 you about yourself like a potion of Self-Knowledge would do.
@@ -7153,8 +7404,9 @@ Detonations / Death
                 If thrown (press 'v' to throw an item) these potions show the
                 strongest effect by far of all potions - devastating!
                 Accordingly useful to be used in fumes traps.
-Invulnerability Will turn you partially invulnerable (50% chance to get hit,
-                50% damage reduction).
+Invulnerability Will turn you partially invulnerable (40% chance to fully
+                deflect any attack, 50% damage reduction if it still hits) and
+                increases armour class by 100 temporarily.
 Learning        Gives you 1..3 (random) additional skill points to spend.
 
 
@@ -7188,6 +7440,9 @@ Word of Recall  Use it to quickly travel from the town or the wilderness into a
                 spot a monster you want to kill just after you read a WoR.
                 Word-of-Recall scrolls can be exchanged between an everlasting
                 and a non-everlasting player!
+                After being recalled the player will receive 'stair-goi' (a
+                temporary extra protection from taking damage) for a short
+                amount of time, see (0.4) for details.
 Blood Bond      Inscribe this @P<playername>, for example @PGandalf, then read
                 it to form a blood bond between you and that player. (Only one
                 of you has to read a BB scroll, it's working bidirectional).
@@ -7311,7 +7566,8 @@ Curing          Cures being gorged, removes blindness/confusion/stun,
                 cures poison/cuts.
 Probing         Tells you hit points, melee attacks, speed and armour class of
                 monsters in your line of sight.
-Detection       Detects treasures, objects, traps, secret doors, creatures.
+Detection       Detects treasures, objects, traps, secret doors, and
+                non-invisible creatures.
 Perception      Identifies a specific item.
 *Perception*    *Identifies* a specific item, you guessed it..
 Enlightenment   Magically maps your surroundings.
@@ -7326,6 +7582,12 @@ Magi            Restores your intelligence and 500 mana points.
 Power           Dispels nearby monsters.
 Holiness        Dispels nearby evil. Also protects you from evil for a while.
                 Cures poison/cuts, removes fear/stun, heals you somewhat.
+Healing         Staves:
+                Heals 300 to 400 hit points, depending on magic device skill,
+                cures stun and cuts.
+                Rods:
+                Heals 100 to 350 hit points, depending on magic device skill,
+                cures stun and cuts.
 Dragon's Breath These wands fire a ball of dragon odem (more powerful than
                 normal ball spell wands.)
 Restoration     Restores experience points (aka live levels) and drained stats,
@@ -7384,6 +7646,8 @@ Elemental rings (flames, frost, acid, lightning)
                     Provide the according resistance and can be activated for
                     temporary resistance too, thereby temporarily giving you
                     "double resistance" (see (5.17) for details).
+                    They also brand your physical attacks with the according
+                    element.
 Amulet of the Moon      Gives infra-vision, the power to see invisible, and it
                         can be activated to sleep monsters nearby.
                         It also improves your +hit and +dam boni.
@@ -7705,57 +7969,64 @@ floor. Items that IGNORE_COLD also resist impact damage.
 Usually items that contain wood, leather or stuff are susceptible to fire and
 acid, while things that consist only of metal are just susceptible to acid.
 
-            Acid    Elec    Fire    Cold    Impact  Water
----------------------------------------------------------
-Arrows      x               x
-Bolts       x               x
+                    Acid    Elec    Fire    Cold    Impact  Water
+-----------------------------------------------------------------
+Arrows              x               x
+Bolts               x               x
 Pebbles
 Shots
 
-Slings      x               x
-Bows        x               x
-Crossbows   x               x
-Boomerangs  x               x
+Slings              x               x
+Bows                x               x
+Crossbows           x               x
+Boomerangs          x               x
 
-Swords      x
-Axes        x               x
-Blunt       x               x
-Polearms    x               x
+Swords              x
+Axes                x               x
+Blunt               x               x
+Polearms            x               x
 
-Helms       x
-Crowns      x
-Shields     x
+Helms               x
+Crowns              x
+Shields             x
 
-Boots       x               x
-Gloves      x               x
-Cloaks      x               x
-Soft Armour x               x
-Hard Armour x
+Boots               x               x
+Gloves              x               x
+Cloaks              x               x
+Soft Armour         x               x
+Hard Armour         x
 DSM Armour
 
-Scrolls     x               x                       x
-Parchments  x               x
-Chests      x               x
-Skeletons   x
-Bottles     x                       x       x
-Junks       x
+Scrolls             x               x                       x
+Parchments          x               x
+Chests              x               x
+Skeletons           x
+Bottles             x                       x       x
+Junk                x
 
-Rings               x
+Rings                       x
 Amulets
-Wands               x
-Staves      x               x
+Wands                       x
+Staves              x               x
 Rods
 
-Lamps                       x
-Potions                     x       x       x
-Flasks                              x       x
-Books/Tomes x               x                       x
+Lamps                               x
+Potions                             x       x       x
+Flasks                                      x       x
 
+Spell Scrolls       x               x                       x
+Spell Crystals      x
+Beginner Handbooks  x               x
+Handbooks           x               x                       x
+Tomes               x               x
+Greater Crystals
+Custom Books        x               x
 
-Items, even tomes, resist certain elements if they have the according
-resistance due to ego powers (for example a leather shield of resist fire)
-or -in case of tomes- according content :)
-For example a Tome of the Eternal Flame cannot be harmed by fire.
+Items ignore certain elements if they have the according resistance due to ego
+powers, for example a leather shield of resist fire will ignore fire.
+
+Some tomes or spellbooks will resist certain elements, for example a
+Tome of the Eternal Flame cannot be harmed by fire.
 
 
 
@@ -8364,8 +8635,8 @@ be 1 in 800 in that case.
 (5.21b) Digging - Common example values
 ---------------------------------------
 Some example values, assuming 0.000 'Digging' skill
-and unenchanted (ie (+0,+0)) digging tools:
--------------------------------------------
+and unenchanted (ie (+0,+0)) digging tools with (+1) to digging:
+----------------------------------------------------------------
 -You always have a chance to remove rubble and organic material, even without
  a digging tool. Might take quite a while if your strength is low though.
 -You cannot tunnel through granite wall without a digging tool if your STRength
@@ -8381,6 +8652,11 @@ and unenchanted (ie (+0,+0)) digging tools:
  (For quartz, you have a 3% chance to succeed at 18/50 STR with the shovel
   and at 18/10 STR with a pick. If you use an enchanted shovel (+9,+9) (+1)
   however, you already have a 3% chance to succeed at only 5 STR.)
+
+You can tunnel through all tunneable materials, no matter your strength, with..
+-a (+1) shovel that has +hit and +dam enchanted to a total of at least +15.
+-a (+1) pick that has +hit and +dam enchanted to a total of at least +6.
+-any (+2) digging tool or better (except if it has negative +hit/+dam values).
 
 
 (5.21c) Digging - Further information
@@ -8441,9 +8717,12 @@ Note: Rings of polymorphing cannot be recharged.
 
 When an item is recharged the result depends on the method of recharging and
 the item's base type level. For wands and staves it also depends on the current
-amount of charges in the device, to get the most out of it and to minimize the
-risk of a failure you should only recharge wands and staves that are already
-fully depleted ie have zero charges left.
+amount of charges in the device: To minimize the risk of a failure you should
+only recharge wands and staves that are already fully depleted ie have zero
+charges left.
+In general, higher recharge power and lower base item level result in...
+ -lower chance for the recharge process to fail,
+ -chance for gaining a higher amount of charges replenished.
 
 If unlucky, recharging may result in a failure. Even when recharging at highest
 magic spell level there is still a very slim chance for a failure to occur.
@@ -8453,6 +8732,7 @@ depending on your (bad) luck.
 So only recharge those when they are already fully depleted to minimize that
 risk.
 
+
 Means of recharging:
 -Scrolls            (60 power)
 -Thingol artifact   (60..100 power, depending on magic device skill)
@@ -8461,8 +8741,18 @@ Means of recharging:
 
 The power determines both, the chance of succeeding in recharging the item and
 the degree of recharging done to the item.
-Note: Staves 'of plenty' will receive about twice as many charges from
-      recharging, so look out for those.
+
+
+Staves and wands 'of plenty' will receive about twice as many charges from
+recharging (with the risk of breaking remaining unchanged) so look out for
+those!
+
+If you try to recharge a whole stack of devices in one go, the risk for it to
+fail is actually the same as if you recharged just a single item.
+You will get the amount of charges replenished to every single magic device in
+the stack, at a slight rate of diminishing returns.
+In other words: Recharging stacks is okay, it can save you a lot of scrolls of
+recharging, just don't go too crazy with the stacks size.
 
 
 
@@ -8958,7 +9248,7 @@ Note that not every skill is available to every profession (class).
                                 To find out details about a monster form,
                                 press  ~ 7  in game or consult a spoiler file.
                                 (See (7.4) for more info about spoiler files.)
-    .Magic-device               Ability to use magic devices (wands,rods,etc.)
+    .Magic device               Ability to use magic devices (wands,rods,etc.)
                                 without failing. Also increases their power.
                                 Speeds up recharging of rods you carry.
                                 See (6.10) for more information.
@@ -9027,11 +9317,13 @@ Note that not every skill is available to every profession (class).
                                 cloaking mode.
     .Stealth                    Increases your stealth, which determines
                                 if monsters can hear you from a distance
-                                or if you can sneak past them. Note that even
-                                Draconians can become stealthy by using this!
-                                (Without further +stealth items, stealth of a
-                                Draconian Adventurer will become 'poor' instead
-                                of 'bad' with Stealth at 26.000.)
+                                or if you can sneak past them.
+                                The stealth gain is half as much as from items
+                                that give +Stealth.
+                                If your character is really bad at stealth,
+                                like Draconians, it might seem as if the skill
+                                doesn't help. But if you invest a lot of points
+                                you will eventually see an improvement ;).
     .Stealing                   Ability to steal items from stores.
                                 If you get caught, you will be on the
                                 'blacklist of merchants' for a minute up
@@ -9275,7 +9567,7 @@ Take care on the following combinations:
         Weaponmastery   <->     Sorcery
         Archery         <->     Sorcery
         Martial Arts    <->     Sorcery
-        Anti-magic      <->     excludes any type of magic and magic-devices,
+        Anti-magic      <->     excludes any type of magic and magic devices,
                                 including mimicry.
                                 However, a mimicking player won't lose his
                                 current form on training in Anti-magic.
@@ -9411,7 +9703,7 @@ Stealth         Mimic form weight, stealth items, _'Stealth'_, cloaking,
 Perception      search items, _'Sneakiness'_
 Searching       search items, _'Sneakiness'_, cloaking
 Disarming       Intelligence, dexterity, _'Trapping'_
-Magic Device    Intelligence, _'Magic-Device'_
+Magic Device    Intelligence, _'Magic Device'_
 
 
 For age, height, weight, social class and gender see (6.14).
@@ -9584,18 +9876,39 @@ Warrior is strongly recommended.
     ways, except that they are really bad at moving stealthily. Similar to
     dragons, they can eat firestones to temporarily boost their powers.
     (See (5.9) for firestone details.)
+    Draconians need a very long time to gain further experience and need to eat
+    often. They have feather falling (levitation) instrinsically from birth.
     At level 5 they can spot dragons anywhere on the level. At level 6 they
     acquire an intrinsic telepathic vision of all nearby creatures, the radius
-    expands as they gain levels. They even gain intrinsic basic resistances,
-    fire at 10, cold at 15, acid at 20 and electricity at 25. At level 30
-    they learn how to fly. Draconians need a very long time to gain further
-    experience and need to eat often. They have feather falling (levitation)
-    instrinsically from birth.
-    They need to eat often and they may get hurt from the cold of the void when
-    taking void jump gates. Armour can help to mitigate this effect somewhat.
-    Draconians receive a bonus on 'Thought Contact' and a large bonus on
-    'Polearm-Mastery', 'Aura of Fear' and the magic schools 'Conveyance' and
-    'Fire'. Draconians also recieve a moderate bonus to 'Nexus' rune magic.
+    expands as they gain levels. At level 30 they learn how to fly.
+    Unlike other races, draconians are susceptible to the void connecting
+    void jump gates and may get hurt by it when they travel through it,
+    perceiving it as "cold" even if they resist or are immune to normal frost.
+    Armour can help to mitigate this effect somewhat.
+    Draconians possess a certain trait from birth, depending on their lineage,
+    providing them specific intrinsic resistances and elemental breath, which
+    they can use if they have sufficient stamina and which is a physical
+    ability of theirs, not a magic spell. This breath weapon cannot be used
+    while polymorphed, except if the form is a reptile or dragon.
+    Draconians receive a bonus on 'Thought Contact', 'Polearm-Mastery' and
+    'Magic devices'.
+
+    Table of their traits:
+    Lineage     Breath          Resistances/abilities
+    --------------------------------------------------------------------------
+    Blue        Lightning       lightning, brand (5), aura (15), immune (25)
+    White       Frost           frost, aura (15), immune (25)
+    Red         Fire            fire, immune (25)
+    Black       Acid            acid, immune (25)
+    Green       Poison          poison, immune (25)
+    Multi-hued  Random of       lightning (5), frost (10), fire (15),
+                those above     acid (20), poison (25)
+    Bronze      Confusion       confusion (5), paralysis (10), reflection (20)
+    Silver      Frost           cold (5), poison (10), reflection (20)
+    Gold        Sound           acid (5), sound (10), reflection (20)
+    Law         Shards          shards (5), sound (15)
+    Chaos       Chaos           confusion (5), chaos (15), disenchantment (20)
+    Balance     Disenchantment  disenchantment (10), sound (20)
 
 - Kobold
     These somewhat smallish dog-faced humanoids resist poison intrinsically.
@@ -9726,7 +10039,7 @@ Human        0   0   0   0   0   0      10      100%     0ft
 Half-Elf    -1  +1   0  +1  -1  +1       9      110%    20ft
              2   5   3   1  11   6  -1   5
 Elf         -1  +2  +1  +1  -2  +2       8      120%    30ft
-             5   6   6   2  12   8  -5  15
+             5   9   6   2  12   8  -5  15
 Hobbit      -2  +2  +1  +3   0  +1       7      115%    30ft
             15  12  18   4  15  12 -10  20
 Gnome       -1  +2   0  +2  +1  -2       8      125%    40ft
@@ -9748,7 +10061,7 @@ Goblin       0  -1  -4  +4  +2  -5      10      120%    30ft
 Ent         +8  -4  +2  -4  +8  -4      14      320%     0ft
             -4   0  20  -6   4   5   5 -20
 Draconian   +4  +2  +2  +1  +3  +2      12      350%    50ft
-             0   0  10 -10  10  10  15   5
+             0   7  10 -10  10  10  15   5
 Kobold      -1  -1   0  +2  +2  -2       8      115%    50ft
             10   5   0   4  15  15  -5  10
 Dark-Elf     0  +2  +1  +3  +1  -6      10      150%    80ft
@@ -9913,17 +10226,17 @@ vary. For example a warrior cannot learn magic spells.
     mimic has to kill 40 of them and have a mimicry skill of at least 20.
 
     To find out how many monsters you already killed and how many you need
-    in total to learn a form, press the '~' key followed by '3'.
+    in total to learn a form, press the '~' key followed by '2'.
     To polymorph into a form, press 'm' key, like casting a magic spell.
     (Forms that have DISBELIEVE ability are skipped when using the normal
     'Polymorph Self' spell. You have to use 'Polymorph Self Into..' if you
     want to use these forms.)
     To find out the special abilities of a monster form, see section (6.7).
     A list of useful low-level humanoid forms for weapon-using mimics is given
-    in (6.7c).
-    because those have a somewhat harder time to find usable forms early on
-    than martial artists who might just utilize easy-to-get forms such as fruit
-    bat, wild cat, crow or spiders right away for great effect.
+    in (6.7c) because weapon-using mimics have a somewhat harder time to find
+    usable forms early on than martial artists who might just utilize
+    easy-to-get forms such as fruit bat, wild cat, crow or spiders right away
+    for great effect.
 
     Mimics can get the highest amount of hit points of any class, even in the
     very long run ie at very high character levels far above 50, provided they
@@ -10098,15 +10411,15 @@ vary. For example a warrior cannot learn magic spells.
     although their lack of dedication leaves 'Weaponmastery' as an unattainable
     goal. Runemasters are adept in some skills that are typical for rogues, 
     although they lack their finesse. Runemasters are unable to to train in the
-    martial arts, but specialize in the use of boomerangs.
-    Runemasters are adept in some skills that are typical for rogues, although
-    they lack their finesse. Intelligence and dexterity are their primary
-    attributes too.
+    martial arts, but specialize in the use of boomerangs. High level users of
+    runecraft may even enhance their equipment (1 weapon, 1 armor) through the 
+    use of runic 'sigils', applying some resistance or boni according to the
+    applied element.
 
     For more information about runecraft, see '(6.8c) Runespell tables'.
     Note that runemasters don't need actual runes in their inventory to cast
-    runespells. However, having the physical runes present increases the
-    chance to succeed greatly, and are required for some runespells.
+    runespells. However, having the physical runes present can mitigate spell
+    backlash and are required for the 'sigil' type runespell.
 
     Hint: If you want to test rune combinations that pose a risk of going wrong
     badly, do so in the arena of the 'Arena Monster Challenge' event so you
@@ -11069,22 +11382,27 @@ by only half that amount. So if you want to increase a shared spell by say 5
 points, you either have to increase both of its schools by 5, or one of them
 by 10.
 
-Schools give certain permanent boni and abilities to the player, when trained
-to a certain extent. The boni are listed below each school.
+Magic and holy schools give certain permanent boni and abilities to the player,
+when trained to a certain extent. The boni are listed below each school.
 
 
 Istar schools:
 --------------
+
 - Mana
+
     Manathrust      Casts a powerful mana bolt.
                     Required skill level for first spell level: 1.
+
     Remove Curses   Removes all curses of carried/worn objects.
                     Lv20: Switches to *remove curses*.
                     Required skill level for first spell level: 20.
+
     Elemental Shield
                     Gives temporary resistance to the elements,
                     fire/cold/lightning/acid.                       (project)
                     Required skill level for first spell level: 20.
+
     Disruption Shield
                     Conjures a shield that protects you from taking damage.
                     Instead, the shield will consume your mana to absorb it.
@@ -11093,164 +11411,230 @@ Istar schools:
                     damage. Other classes will instead get 2 mana points
                     deducted for each damage point.
                     Required skill level for first spell level: 35.
-  BONI:             Mana resistance at 40.
+
+    BONI:           Mana resistance at 40.
+
 
 - Fire
+
     Globe of Light  Creates a globe of magical light.
                     Lv10: Damages monsters.
                     Lv25: Turns into a more powerful kind of light.
                     Required skill level for first spell level: 2.
+
     Fire Bolt       Fires a fire bolt at a target.
                     Required skill level for first spell level: 10.
+
     Fireflash       Conjures a fire ball.
                     Lv20: Turns into holy fire which is especially deadly to
                           evil opponents.
                     Required skill level for first spell level: 10.
+
     Fiery Shield    Creates a shield of flames around you.
                     Required skill level for first spell level: 16.
+
     Firewall        Creates a fire wall to incinerate monsters that cross it.
                     Required skill level for first spell level: 20.
-  BONI:             Fire resistance at 30,
+
+    BONI:           Fire resistance at 30,
                     Fire immunity at 50.
 
+
 - Water
+
     Frost Bolt      Fires a frost bolt at a target.
                     Required skill level for first spell level: 8.
+
     Tidal Wave      Summons a monstrous tidal wave.
                     Required skill level for first spell level: 16.
+
     Ice Storm       Engulfs you in a storm of roaring cold.
                     Lv15: Turns into a storm of shards of ice.
                     Required skill level for first spell level: 22.
+
     Ent's Potion    Fills your stomach.
                     Lv5: Removes fear.
                     Lv12: Makes you heroic.
                     Required skill level for first spell level: 6.
+
     Vapor           Fills the air around you with toxic moisture
                     (which does pure water damage, not poison).
                     Required skill level for first spell level: 2.
-  BONI:             Water resistance at 30,
+
+    BONI:           Water resistance at 30,
                     Passing water at 40,
                     Water immunity at 50.
 
+
 - Air
+
     Noxious Cloud   Fires a poison cloud at a designated target.
                     Lv30: Unbreath cloud, irresistable.
                     Required skill level for first spell level: 3.
+
     Lightning Bolt  Fires a lightning bolt at a target.
                     Required skill level for first spell level: 6.
+
     Wings of Wind   Grants levitation (feather falling).
                     Lv16: Lets you fly.
                     Required skill level for first spell level: 16.
                     Shared spell (see above): Air, Conveyance.
+
     Invisibility    Turns you invisible.
                     Required skill level for first spell level: 30.
+
     Poison Blood    Gives temporary poison resistance.
                     Lv10: Brands melee weapons with venom.
                     Required skill level for first spell level: 22.
+
     Thunderstorm    Throws thunder bolts at random monsters nearby.
                     (33% lightning, 33% sound, 33% light)
                     Required skill level for first spell level: 25.
-  BONI:             Feather falling at 30,
+
+    BONI:           Feather falling at 30,
                     Poison resistance at 40,
                     Flying at 50.
 
+
 - Earth
+
     Dig             Turns walls into mud.
                     Required skill level for first spell level: 12.
+
     Acid Bolt       Fires an acid bolt at a target.
                     Required skill level for first spell level: 12.
+
     Stone Prison    Creates a prison of granite walls around you.
                     Required skill level for first spell level: 25.
+
     Strike          Creates a force bolt that may stun enemies.
                     Lv12: it turns into a small ball.
                     Required skill level for first spell level: 25.
+
     Shake           Creates a local earthquake.
                     Required skill level for first spell level: 27.
-  BONI:             Shard resistance at 30,
+
+    BONI:           Shard resistance at 30,
                     Great damage reduction against earthquakes at 45.
 
+
 - Nature
+
     Grow Trees      Grows trees quickly around you.
                     Required skill level for first spell level: 6.
+
     Healing         Heals a percentage of your hit points.          (project)
                     Required skill level for first spell level: 10.
+                    In addition to healing hit points, it will start curing
+                    status ailments at higher spell levels:
+                    Lv4: Cures cuts and blindness.                  (project)
+                    Lv10: Also cures confusion.                     (project)
+                    Lv24: Also cures stun.                          (project)
+
     Recovery        Slows down the effect of poison.                (project)
                     Lv5: Neutralizes poison.                        (project)
                     Lv15: Heals cuts, cures confusion, blindness, stun (proj)
                     Lv20: Restores drained stats.                   (project)
                     Lv25: Restores lost experience.                 (project)
                     Required skill level for first spell level: 15.
+
     Regeneration    Increases your hit point regeneration rate.
                     Required skill level for first spell level: 20.
+
     Vermin Control  Prevents vermin from breeding any further on
                     your current level.
                     Required skill level for first spell level: 15.
-  BONI:             Regeneration (faster hit point regeneration, same as from
+
+    BONI:           Regeneration (faster hit point regeneration, same as from
                     items that provide regeneration) at 30,
                     Pass trees easily at 30,
                     Pass water easily at 40.
 
+
 - Conveyance
+
     Phase Door      Teleports you on a small scale range.           (project)
                     Required skill level for first spell level: 2.
+
     Disarm          Destroys doors and traps around you.
                     Required skill level for first spell level: 5.
+
     Teleport        Teleports you within the level.                 (project)
                     Required skill level for first spell level: 10.
+
     Teleport Away   Teleports a line of monsters away.
                     Lv10: Turns into a ball.
                     Lv20: Teleports away all monsters in sight.
                     Required skill level for first spell level: 23.
+
     Recall          Works like Word of Recall.                      (project)
                     Inscribe your spell scroll or book like you would inscribe
                     a scroll, in order to specify a destination.
                     Required skill level for first spell level: 30.
+                    Projecting this spell does not work on players who are AFK.
                     See "(0.3) Important inscriptions" for more info about
                     Word of Recall!
+
     Probability Travel
                     Renders you instable, allowing to pass walls and to
                     float upwards/downwards.
                     Required skill level for first spell level: 35.
-  BONI:             Resistance to teleportation attacks at 30.
+    BONI:           Resistance to teleportation attacks at 30.
+
 
 - Divination
-    Detect Monsters Detects all monsters nearby.                    (project)
+
+    Detect Monsters Detects all non-invisible monsters nearby.      (project)
                     Required skill level for first spell level: 3.
+
     Identify        Identifies items.
                     Lv17: Identifies all items that you carry/wear.
                     Lv27: Also identifies all items on the floor around you.
                     Required skill level for first spell level: 8.
+
     Greater Identify
                     *Identifies* an item.
                     Required skill level for first spell level: 35.
+
     Vision          Detects the dungeon layout around you.
                     Lv25: Maps and lights the whole level.
                     Required skill level for first spell level: 15.
+
     Sense Hidden    Detects traps.                                  (project)
                     Lv15: Lets you see invisible for a while.       (project)
                     Required skill level for first spell level: 5.
+
     Reveal Ways     Detects doors/stairs/ways within a radius.      (project)
                     Required skill level for first spell level: 9.
-  BONI:             Automatic identification at 50.
+
+    BONI:           Automatic identification at 50.
+
 
 - Temporal
+
     Magelock        Magically locks a door.
                     Lv40: Creates a Glyph of Warding on the ground that stops
                           monsters from crossing the field or summoning on it.
                     Required skill level for first spell level: 1.
+
     Slow Monster    Slows down a monster.
                     Lv20: Affects a zone.
                     Required skill level for first spell level: 10.
+
     Essence of Speed
                     Hastes you for a while.                         (project)
                     Required skill level for first spell level: 15.
+
     Banishment      Teleports away all monsters within sight.
                     Lv15: Locks monsters in stasis for a while.
                     Required skill level for first spell level: 30.
                     Shared spell (see above): Temporal, Conveyance.
-  BONI:             Time resistance at 50.
+
+    BONI:           Time resistance at 50.
+
 
 - Udun
+
     Genocide        Genocides all monsters of a race on the level.
                     Lv15: Alternatively genocides all monsters near you ("mass
                             genocide", choose 'y'. 'n' will do a normal geno).
@@ -11258,27 +11642,36 @@ Istar schools:
                     of this spell, please see (5.9) scroll of geno/mass geno.
                     (This spell uses WISDOM to determine fail-rates!)
                     Required skill level for first spell level: 25.
+
     Wraithform      Turns your form immaterial.                     (project)
                     Required skill level for first spell level: 35.
+
     Disenchantment Bolt
                     Conjures a powerful and nearly irresistible bolt.
                     Required skill level for first spell level: 40.
+
     Hellfire        Conjures a ball of hellfire which is especially deadly to
                     GOOD opponents.
                     Required skill level for first spell level: 20.
-  BONI:             Resist teleportation attacks at 30,
+
+    BONI:           Resist teleportation attacks at 30,
                     Hold life at 40.
 
+
 - Mind
+
     Confuse         Confuses a monsters.
                     Lv15: Turns into a ball.
                     Lv35: Affects all monsters in sight.
                     Required skill level for first spell level: 5.
+
     Stun            Stuns a monster.
                     Lv25: Turns into a ball.
                     Required skill level for first spell level: 15.
+
     Sense Minds     Gives you temporary ESP.
                     Required skill level for first spell level: 30.
+
     Telekinesis I   Inscribe your book @P<Playername>, cast it, select an
                     item that you wish to teleport to the player's inventory.
                     The target player needs to concentrate by opening her/his
@@ -11288,12 +11681,16 @@ Istar schools:
                     done. Example inscription: @PGandalf
                     Required skill level for first spell level: 30.
                     Shared spell (see above): Mind, Conveyance.
-  BONI:             Reduces confusion and hallucination at 30,
+
+    BONI:           Reduces confusion and hallucination at 30,
                     Reduce insanity influence at 40 and especially at 50.
 
+
 - Meta
+
     Recharge        Recharges a magic staff or wand.
                     Required skill level for first spell level: 5.
+
     Project Spells  Makes several spells and prayers affect other players too,
                     in a radius around you that grows bigger depending on the
                     'Project Spells' level.
@@ -11307,6 +11704,7 @@ Istar schools:
                     usually get out of the spell (eg healed HP amount,
                     duration of resistances, etc..).
                     Required skill level for first spell level: 10.
+
     Disperse Magic  Removes magical influences.
                     Lv1: Blindness.
                     Lv5: Confusion/Hallucination.
@@ -11314,59 +11712,75 @@ Istar schools:
                     Lv15: Stun/Cuts.
                     Lv20: Heroism/Berserk strength/Blessing/Shields/Fear.
                     Required skill level for first spell level: 15.
-  BONI:             Improves saving throw, the further it's trained above 20.
+
+    BONI:           Improves saving throw, the further it's trained above 20.
 
 
 Priest schools:
 ---------------
+
 - Holy Offense
+
     Curse           Randomly causes confusion damage or slowness or blindness.
                     Lv15: Turns from bolt into beam, passing through the
                           target and also hitting those behind.
                     Lv25: Affects all monsters in line of sight.
                     Required skill level for first spell level: 1.
+
     Holy Light      Creates a globe of pure light.
                     Lv3: Damages monsters.
                     Lv8: Calls a more powerful kind of light.
                     Required skill level for first spell level: 2.
                     Shared spell (see above): H.Offense, H.Support.
+
     Exorcism        Dispels nearby undead.
                     Lv20: Dispels nearby demons.
                     Lv30: Dispels nearby evil.
                     Required skill level for first spell level: 11.
+
     Release Souls   *Dispels undead*.
                     Required skill level for first spell level: 10.
+
     Orb of Draining Summons a holy orb, devouring monsters.
                     This spell deals double damage against evil monsters.
                     Required skill level for first spell level: 20.
+
     Drain Life      Drains life from a non-undead and non-nonliving creature
                     and returns a part of it to your hit points.
                     Required skill level for first spell level: 20.
+
     Doomed Grounds  Similar to 'Drain Life' but affects a whole area.
                     Required skill level for first spell level: 40.
-  BONI:             Adds slay undead at 30, slay demon at 40, slay evil at 50
+
+    BONI:           Adds slay undead at 30, slay demon at 40, slay evil at 50
                     to all melee and ranged attacks.
 
+
 - Holy Defense
+
     Blessing        Same effect as scroll of Blessing.         (auto-project)
                     Lv15: Same effect as scroll of Holy Chant. (auto-project)
                     Lv30: Same effect as scroll of Holy Prayer.(auto-project)
                     Required skill level for first spell level: 1.
+
     Holy Resistance Lets you resist heat.                      (auto-project)
                     Lv5: Lets you also resist cold.            (auto-project)
                     Lv10: Lets you also resist lightning.      (auto-project)
                     Lv15: Lets you also resist acid.           (auto-project)
                     Lv25: Lets you also resist poison.         (auto-project)
                     Required skill level for first spell level: 11.
+
     Protection from evil.
                     Repels evil creatures that try to attack you.
                     Works very well, as long as the creature isn't of a higher
                     level than you.
                     Required skill level for first spell level: 12.
+
     Glyph of Warding
                     Creates a rune on the ground that monsters cannot cross
                     nor summon on. Powerful monsters may break it.
                     Required skill level for first spell level: 35.
+
     Martyrdom       You burn in holy fire making you invulnerable for 15 turns.
                     When your martyrium ends, you will be left close to death
                     with a fraction of your hit points, at least 30 HP though.
@@ -11382,10 +11796,13 @@ Priest schools:
                     Note: To check whether you can use the spell again,
                     use the /martyr (or /mar) command.
                     Required skill level for first spell level: 40.
-  BONI:             Protects the player from undead at 30, from demons at 40,
+
+    BONI:           Protects the player from undead at 30, from demons at 40,
                     and from evil in general at 50. Better than the spell.
 
+
 - Holy Curing
+
     Cure Wounds     Heals a fixed amount of hit points of a friendly target,
                     which is capped at 14d8, the same amount a potion of cure
                     critical wounds actually heals.
@@ -11401,22 +11818,36 @@ Priest schools:
                     To target yourself, use a macro that clears your current
                     target via '*q' and picks direction '5' which will then be
                     your current grid.)
+
     Healing         Heals a percentage of hit points.          (auto-project)
                     Required skill level for first spell level: 3.
+                    In addition to healing hit points, it will start curing
+                    status ailments at higher spell levels:
+                    Lv4: Cures cuts and blindness.             (auto-project)
+                    Lv10: Also cures confusion.                (auto-project)
+                    Lv24: Also cures stun.                     (auto-project)
+
     Remove Curses   Removes curses.
                     Lv30: Removes heavy curses.
                     Required skill level for first spell level: 10.
+
     Cleansing Light Continuously heals every player who steps inside.
                     Required skill level for first spell level: 18.
+
     Curing          Slows down the effect of poison.
+                    Lv5: Cures being gorged.                   (auto-project)
                     Lv10: Neutralize poison.                   (auto-project)
                     Lv15: Cure confusion/blindness/stun.       (auto-project)
+                    Lv20: Cures hallucinations.                (auto-project)
                     Required skill level for first spell level: 3.
+
     Restoration     Restores stats.                            (auto-project)
                     Lv5: Restores experience.                  (auto-project)
                     Required skill level for first spell level: 26.
+
     Faithful Focus  Cure hallucinations and insanity.          (auto-project)
                     Required skill level for first spell level: 21.
+
     Resurrection    Resurrect another player's ghost. The resurrected player
                     will lose less experience the higher the spell level is.
                     Exp loss is usually 35% if revived in the temple or via
@@ -11424,19 +11855,24 @@ Priest schools:
                     Resurrection prayer exp loss goes down from 35% and caps
                     at 30%.
                     Required skill level for first spell level: 30.
+
     Soul Curing     Cures Black Breath (See 1.5 for more information about
                     Black Breath).                             (auto-project)
                     Required skill level for first spell level: 25.
-  BONI:             Improves HP regeneration rate extraordinarily the further
+
+    BONI:           Improves HP regeneration rate extraordinarily the further
                     it is trained above 30,
                     Half duration of various bad effects on the body at
                     30 (blindness, poison) / 40 (stun, cuts) / 50
                     (hallucination),
                     Less frequent suffering from black breath at 50.
 
+
 - Holy Support
+
     Remove Fear     Keeps your heart boldened for a while.     (auto-project)
                     Required skill level for first spell level: 1.
+
     Holy Light      Creates a globe of pure light.
                     Lv3: Damages monsters.
                     Lv8: Calls a more powerful kind of light.
@@ -11444,35 +11880,44 @@ Priest schools:
                     Note that this is a spell shared between offense and
                     support school, meaning that increases in one of those
                     school will increase the spell level by only half as much.
-    Sense Monsters  Detect monsters, see invisible for a while.
+
+    Sense Monsters  Detect non-invisible monsters, see invisible for a while.
                     Lv30: Gives full temporary ESP.
                     Required skill level for first spell level: 3.
+
     Sanctuary       Puts nearby monsters asleep.
                     Lv20: Lets all monsters in line of sight fall asleep.
                     Required skill level for first spell level: 3.
+
     Satisfy Hunger  Satisfies your hunger.                     (auto-project)
                     Required skill level for first spell level: 10.
+
     Sense Surroundings
-                    Detect monsters, see invisible for a while.
+                    Detect non-invisible monsters, see invisible for a while.
                     Lv15: Maps the dungeon around you.
                     Lv30: Gives clairvoyance (full enlightened map).
                           Gives full temporary ESP.
                     Required skill level for first spell level: 10.
+
     Zeal            Gives +1 extra attack per round for a while.    (auto-p.)
                     Lv10: Gives +2 EA.                         (auto-project)
                     Lv20: Gives +3 EA.                         (auto-project)
                     Note: The EA effect won't be applied to barehanded players
                     if they don't have Martial Arts skill of at least 01.000.
                     Required skill level for first spell level: 31.
-  BONI:             Keeps the hunger satisfied all the time at 40,
+
+    BONI:           Keeps the hunger satisfied all the time at 40,
                     Suppresses effects of DG_CURSE and TY_CURSE at 50.
 
 
 Druid schools:
 --------------
+
 - Arcane Lore
+
     Nature's Call   Quickly grows trees around you.
                     Required skill level for first spell level: 10.
+
     Toxic Moisture  Creates a cloud of toxic moisture at a designated target,
                     consisting of poisonous gas.
                     At level 20 it combines the surrounding air into the
@@ -11480,34 +11925,43 @@ Druid schools:
                     At level 30 it condenses the water and turns into
                     poisonous ice shards.
                     Required skill level for first spell level: 3.
+
     Ancient Lore    Identifies all items in your inventory.
                     Required skill level for first spell level: 20.
+
     Garden of the Gods
                     Transforms solid walls into green trees!
                     Required skill level for first spell level: 1.
+
     Call of the Forest
                     Dispels all animals from your line of sight.
                     Animals have a chance to resist, depending on their level.
                     Required skill level for first spell level: 1.
 
+
 - Physical Lore
+
     Forest's Embrace
                     Creates a cloud around you which heals everyone including
                     yourself over time.                        (auto-project)
                     Required skill level for first spell level: 18.
+
     Quickfeet       Temporarily boosts your speed.             (auto-project)
                     Required skill level for first spell level: 13.
+
     Herbal Tea      Satisfies your hunger.                     (auto-project)
                     Lv20: Restores your experience.            (auto-project)
                     Lv25: Restores your attributes.            (auto-project)
                     Lv35: Cures black breath!                  (auto-project)
                     Required skill level for first spell level: 3.
+
     Extra Growth    Increases your attributes temporarily.
                     Lv1: Increases strength.
                     Lv5: Also increases dexterity.
                     Lv10: Also increases constitution.
                     Lv20: Also increases intelligence.
                     Required skill level for first spell level: 15.
+
     Focus           Increases your accuracy, adding a bonus to your
                     melee-to-hit and ranged-to-hit.
                     Required skill level for first spell level: 1.
@@ -11515,27 +11969,38 @@ Druid schools:
 
 Mindcraft schools:
 ------------------
+
 - Psycho-Power
+
     Psychic Hammer  Telekinetic power focussed to bash an enemy,
                     damaging and stunning him.
                     Required skill level for first spell level: 1.
+
     Psychokinesis   Destroys traps by psychokinetic manipulation.
                     Required skill level for first spell level: 3.
+
     Autokinesis I   Teleports you within a small range.
                     Required skill level for first spell level: 5.
+
     Autokinesis II  Teleports you over a long range.
                     Required skill level for first spell level: 16.
+
     Autokinesis III Teleports you towards a party member with opened mind.
                     Required skill level for first spell level: 24.
+
     Feedback        Uses telekinetic effects to keep you hovering, granting
                     levitation, and at 15 becomes sufficient for flying.
                     Required skill level for first spell level: 18.
+
     Pyrokinesis     Causes a severe inflammation to burn your opponent.
                     Required skill level for first spell level: 20.
+
     Cryokinesis     Causes a dramatic temperature drop on your opponent.
                     Required skill level for first spell level: 24.
+
     Psychic Warp    Attempts to teleport away your opponent.
                     Required skill level for first spell level: 30.
+
     Telekinesis II  Inscribe your book @P<Playername>, cast it, select an
                     item that you wish to teleport to the player's inventory.
                     The target player needs to concentrate by opening her/his
@@ -11545,14 +12010,18 @@ Mindcraft schools:
                     done. Example inscription: @PGandalf
                     Required skill level for first spell level: 35.
                     Shared spell (see above): Psycho-Power / Thought Contact.
+
     Kinetic Shield  Uses telekinetic force to set up a shield around you that
                     has a chance to repel physical attacks or projectiles,
                     draining your mana each time.
                     Required skill level for first spell level: 40.
 
+
 - Thought Contact
+
     Clear Mind      Removes fear, confusion and hallucination. (auto-project)
                     Required skill level for first spell level: 3.
+
     Willpower       Boosts your willpower to unleash hidden potential,
                     improving both your performance and resilience.
                     Gives fear resistance, increases your saving throw and
@@ -11560,18 +12029,24 @@ Mindcraft schools:
                     confusion and slowness. Also gives heroism-like +hit bonus.
                     Later on gives +1 extra attack.            (auto-project)
                     Required skill level for first spell level: 3.
+
     Self-Reflection Find out more about yourself.
                     Required skill level for first spell level: 15.
+
     Accelerate Nerves
                     Speeds you up.
                     Required skill level for first spell level: 20.
+
     Telepathy       Senses the minds of creatures.
                     Required skill level for first spell level: 20.
+
     Recognition     Identifies an item.
                     Required skill level for first spell level: 25.
+
     Stabilize Thoughts
                     Cures some insanity and removes effects.   (auto-project)
                     Required skill level for first spell level: 25.
+
     Telekinesis II  Inscribe your book @P<Playername>, cast it, select an
                     item that you wish to teleport to the player's inventory.
                     The target player needs to concentrate by opening her/his
@@ -11581,6 +12056,7 @@ Mindcraft schools:
                     done. Example inscription: @PGandalf
                     Required skill level for first spell level: 35.
                     Shared spell (see above): Psycho-Power / Thought Contact.
+
 
 - Mental Intrusion
  (Note that psi attacks don't have any effect on angels, nonliving creatures,
@@ -11594,28 +12070,35 @@ Mindcraft schools:
  psi attack afterwards.
  if a monster does not resist a psi attack, it may suffer from additional
  effects besides confusion, such as fear, stun or sleep.)
+
     Psionic Blast   Blasts the target's mind with psionic energy.
                     Possibly causing various additional effects.
                     Required skill level for first spell level: 1.
+
     Psi Storm       Psionic storm that damages and disturbs all minds within an
                     area for a while, causing the usual random Psi side effects
                     on all targets similar to Psionic Blast.
                     Required skill level for first spell level: 18.
+
     Scare           Infuses your target's mind with fear.
                     Lv10: Becomes a ball effect.
                     Lv20: Affects all monsters in LoS.
                     Required skill level for first spell level: 1.
+
     Confuse         Infuses your target's mind with confusion.
                     Lv15: Becomes a ball effect.
                     Lv30: Affects all monsters in LoS.
                     Required skill level for first spell level: 3.
+
     Hypnosis        Puts your target's mind to sleep.
                     Lv20: Affects all monsters in LoS.
                     Required skill level for first spell level: 5.
+
     Drain Strength  Slows your target down, draining power from its muscles.
                     Lv10: Becomes a ball effect.
                     Lv20: Affects all monsters in LoS.
                     Required skill level for first spell level: 7.
+
     Psychic Suppression
                     Drains the target's psychic energy, impacting its ability
                     to cast spells temporarily, effectively silencing it for a
@@ -11630,6 +12113,7 @@ Mindcraft schools:
                     becomes immune to the effect for the same short amount of
                     time if the attempt was actually unsuccessful.
                     Required skill level for first spell level: 10.
+
     Remote Vision   Tries to forcibly enter all sentient creatures' minds on
                     the level, in order to use their vision to make the
                     dungeon structure known to yourself.
@@ -11638,6 +12122,7 @@ Mindcraft schools:
                     least 20, you will automatically infuse the knowledge
                     gained from the vision to all open-minded (see (0.2))
                     allied players who happen to be the same floor.
+
     Charm           Makes monsters in sight believe that you aren't an enemy,
                     preventing them most of the time from attacking you.
                     Monsters may resist or be immune to the initial cast.
@@ -11664,43 +12149,53 @@ a level 49 character with 1.000 in Astral Knowledge will still cast spells that
 deal damage and have effects as if the spell was actually at level 25 (the
 average value of 1 and 49). (Spell success chance uses the normal spell level
 though, as all other magic schools do, not the astral level.)
+
 - Astral Knowledge
+
     Power Bolt      Casts a bolt of electricity/mana/nether depending on your
                     alignment:
                     Still neutral -> electricity,
                     enlightened -> mana,
                     corrupted -> nether.
                     Required skill level for first spell level: 1.
+
     Power Ray       Casts a beam of electricity/light/darkness depending on
                     your alignment (see Power Bolt spell above).
                     Required skill level for first spell level: 5.
+
     Power Blast     Casts a ball of electricity/mana/nether depending on your
                     alignment (see Power Bolt spell above).
                     Required skill level for first spell level: 10.
+
     Relocation      Same as word-of-recall.
                     You may inscribe book '@R' etc. for the usual results.
                     Required skill level for first spell level: 22.
+
     Vengeance       Enlightened: Summons all party members on the same floor
                                  to you (as well as all monsters in line of
                                  sight) who have their mind opened.
                     Corrupted: Damages all monsters in line of sight.
                     (This spell uses WISDOM to determine fail-rates!)
                     Required skill level for first spell level: 30.
+
     Empowerment     Enlightened: Incite self-fury.
                     Corrupted: Increases own hit points temporarily.
                     (This spell uses WISDOM to determine fail-rates!)
                     Required skill level for first spell level: 40.
+
     The Silent Force
-                    Enlightened: Slows down monsters within sight and grants
-                                 temporary mana and time resistance.
+                    Enlightened: Slows down monsters within sight
+                                 and grants temporary time resistance.
                     Corrupted: Increases your chance to strike critically.
                     (This spell uses WISDOM to determine fail-rates!)
                     Required skill level for first spell level: 45.
+
     Sphere of Destruction
                     Enlightened: Conjures up a mana storm.
                     Corrupted: Conjures up raging inferno, which deals similar
                                damage as rockets do.
                     Required skill level for first spell level: 50.
+
     Gateway         Enlightened: Instantaneously word-of-recall for all party
                                  members on your dungeon level.
                     Corrupted: Creates a pair of connected void jump gates.
@@ -11769,22 +12264,27 @@ energy incumbent to a runespell instead erupts forth, damaging the caster in
 the form of a spell backlash. Physical runes can be used to mitigate this 
 backlash should a runespell fail, absorbing the excess energy of the spell 
 before crumbling into dust. Runes may be activated to combine or decombine in
-stacks with other runes, sharing level requirement and discount. 
+stacks with other runes, sharing level requirement and discount (use 'A'). 
 
 As runemastery does not rely on books or spell scrolls to guide its magic, 
 runespells may be cast while blinded, although at increased rate of failure.
 Spell failure likewise increases while stunned, or simply when attempting a
 powerful spell. While an istar is always prevented from casting outside of 
 his or her ability, a runemaster may continue making spell attempts until the 
-backlash proves fatal.
+backlash proves fatal. Runemasters are able to cast many kinds of spells, but
+it's important to note that some are much more difficult to manage than
+others. All runespells can either be projected at the world or a monster, or 
+directed at the caster for a different result. 
 
-Runemasters are able to cast many kinds of spells, but it's important to note
-that some are much more difficult to manage than others. All runespells can
-either be projected at the world or a monster, or directed at the caster for 
-a different result. In addition, runespells fueled by physical runes may be 
-used to enchant non-artifact equipment that is wielded by the runemaster. The
-strength and success rates of these enchantments depend both on the skill of
-the runemaster and the power of the item that would result.
+In addition, runespells fueled by physical runes may be used to emblazon 
+non-artifact equipment that is wielded by the runemaster. The strength and 
+success rates of these 'sigils' depend both on the skill of the runemaster 
+and the power of the item that would result. At most a runemaster may have 
+one armor sigil and one weapon sigil, jewelry sigils are a fine art that is 
+beyond even the most skilled of their class. Sigils vanish from the 
+equipment when dropped, sold, taken off, disarmed, etc. being linked 
+directly to the runemaster and the consumed physical rune for their power.
+(Sigil boni dependant on PVAL are restricted as for artifact creation.)
 
 Runemastery requires dexterous physical and intellectual manipulation of
 the rune forms, requiring high INT and DEX character stats. For this reason,
@@ -11897,8 +12397,8 @@ selected, with a 'minimized' spell modifier.
 
 Although you can set most spells for retaliation, some spells may make poor 
 choices for auto-retaliation. Retaliation defaults to a bolt spell if the
-rune is inscribed incorrectly. Glyph type spells cannot be used for 
-retaliation, and default to bolts (letter 'g' becomes letter 'a').
+rune is inscribed incorrectly. Sign/Glyph/Sigil type spells cannot be used 
+for retaliation, and default to bolts (their ID letter becomes letter 'a').
 
 
 Hints:
@@ -11906,7 +12406,7 @@ Hints:
 The casting adjective will further elaborate on the difficulty of a spell
 compared to your skill. Ideally, you should try to choose spells where the
 average outcome is 'efficiently', or better. These are 'safe' spells, and tend
-to be more efficient than spells that you 'barely manage to', or 'clumsily'
+to be more efficient than spells that you 'incompetently', or 'clumsily'
 cast. You can use the mkey * display to see a list of spell failure rates.
 The macro wizard can also be used to assess the attributes of spells.
 
@@ -11916,41 +12416,42 @@ The macro wizard can also be used to assess the attributes of spells.
 -----------------------
 Runemastery covers a breadth of effects, catalogued in the tables below.
 See section (5.6) for more information about elemental attacks.
+**All projected spells are of radius 2, as with priest/druid spells!**
 
 Basic Elements
 --------------
 A table of every element achievable through use of a single rune:
-------------------------------------
-Rune     |          | Element
-------------------------------------
-Light    |          | Light
-Darkness |          | Darkness
-Nexus    |          | Nexus
-Nether   |          | Nether
-Chaos    |          | Chaos
-Mana     |          | Mana
+-------------------------------------------------------------------------------
+Rune     | Rune     | Element        | Sign Spell         | Enhanced            
+-------------------------------------------------------------------------------
+Light    | Light    | Light          | Call Light         | Starlight
+Darkness | Darkness | Darkness       | Call Darkness      | Invisibility
+Nexus    | Nexus    | Nexus          | Teleportation      | **Projected**
+Nether   | Nether   | Nether         | Mass Genocide      | Genocide
+Chaos    | Chaos    | Chaos          | Polymorph Self     | **Projected**
+Mana     | Mana     | Mana           | Remove Curses      | *Remove Curses*
 
 Combination Elements
 --------------------
 A table of every element achievable through use of a combination of runes:
-------------------------------------
-Rune     | Rune     | Element        
-------------------------------------
-Light    | Darkness | Confusion
-Light    | Nexus    | Inertia
-Light    | Nether   | Lightning
-Light    | Chaos    | Fire
-Light    | Mana     | Water
-Darkness | Nexus    | Gravity
-Darkness | Nether   | Frost
-Darkness | Chaos    | Acid
-Darkness | Mana     | Poison
-Nexus    | Nether   | Time
-Nexus    | Chaos    | Sound
-Nexus    | Mana     | Shards
-Nether   | Chaos    | Disenchantment
-Nether   | Mana     | Force
-Chaos    | Mana     | Plasma
+-------------------------------------------------------------------------------
+Rune     | Rune     | Element        | Sign Spell         | Enhanced            
+-------------------------------------------------------------------------------
+Light    | Darkness | Confusion      | Reflection         | **Projected**
+Light    | Nexus    | Inertia        | Local Tele-away    | Anchor (No-tele)
+Light    | Nether   | Lightning      | Resist Electricity | **Projected**
+Light    | Chaos    | Fire           | Resist Fire        | **Projected**
+Light    | Mana     | Water          | Regeneration       | **Projected**
+Darkness | Nexus    | Gravity        | Local Tele-to      | Teleport Forward
+Darkness | Nether   | Frost          | Resist Cold        | **Projected**
+Darkness | Chaos    | Acid           | Resist Acid        | **Projected**
+Darkness | Mana     | Poison         | Resist Poison      | **Projected**
+Nexus    | Nether   | Time           | Haste Self         | **Projected**
+Nexus    | Chaos    | Sound          | Shatter (Disarm)   | Shatter (Beam)
+Nexus    | Mana     | Shards         | Earthquake         | Dig
+Nether   | Chaos    | Disenchantment | Dispel Magic       | **Projected**
+Nether   | Mana     | Force          | Shield             | **Projected**
+Chaos    | Mana     | Plasma         | Resist Elec/Fire   | **Projected**
 
 Spell Modifiers
 ---------------
@@ -11966,21 +12467,95 @@ Moderate   | Comparable to traditional spells in all aspects.
 Expanded   | Increased radius, duration, cost and failure rate. 
 Brief      | Decreased damage, duration, failure rate and casting time.
 Maximized  | Increased damage, radius, duration, cost and failure rate.
+Enhanced   | Comparable to moderate, except increased cost. Varies spell type.
 
 Spell Types
 -----------
 A table of every spell type. Type controls the form of the runespell, also
 influencing level, cost, fail rate, damage, casting time, radius, and duration.
 -------------------------------------------------------------------------------
-Name    | Description
+Name       | Description
 -------------------------------------------------------------------------------
-Bolt    | Hits a single target in line of effect.
-Beam    | Hits every target in line of effect.
-Cloud   | Damages an area over time.
-Ball    | Instantly damages an area.
-Wave    | Radiates outward from the caster.
-Storm   | Moves with the caster.
-Rune    | Detonates when broken.
+Bolt       | Hits a single target in line of effect. Enhanced: Non-reflecting.
+Beam       | Hits every target in line of effect. Enhanced: Damage over time.
+Cloud      | Damages an area over time. Enhanced: Follows the caster.
+Ball       | Instantly damages an area. Enhanced: Full damage over the area.
+Sign       | Provides some temporary or instant effect. Enhanced: See table.
+Glyph      | Detonates when broken. Max 10. Enhanced: Warding Glyph. (No limit)
+Sigil      | Adds a resist to a weapon/armor. Uses a rune. Enhanced: See table.
+Wave       | Radiates outward from the caster. Enhanced: Hits line of sight.
+
+Enhanced Sigil Boni
+-------------------
+A table cross referencing boni to element and item TVAL (type value). Boni are 
+restricted as with artifact creation regarding PVAL modifiers. Stat boni have 
+a chance to include a sustain, and boni occuring both generally and on the 
+item type are more likely to occur. Some weapon/helm boni are specific to mage
+staves, boomerangs, and crowns (not noted here, see (8.4) Artifact Creation).
+Non-enhanced sigils produce the projection's according resist.
+
+Abbreviations (in order of appearance):
+Gl - Glow (+1 light radius)
+Bl - Blind resist
+SI - See invisible
+If - Infravision (PVAL Required)
+In - Invisibility
+Su - Random sustain
+SK - Random slay/kill flag
+HL - Hold life
+Va - Vampirism
+RR - 1 Resist (acid/elec/fire/cold/pois/conf/blin/shar/soun/neth/nexu/disi)
+Ch - Chaotic
+Rm - Regen mana
+MP - Max mana increase (PVAL Required)
+Ba - Base resist (acid/elec/fire/cold)
+FA - Free action
+W+ - Wisdom bonus (PVAL Required)
+I+ - Intelligence bonus (PVAL Required)
+NT - Anti-teleportation (no-tele)
+Im - Immunity (plasma -> fire OR electricity)
+Br - Brand (plasma -> fire OR electricity)
+Au - Aura (plasma -> fire OR electricity)
+D+ - Dexterity bonus (PVAL Required)
+S+ - Strength bonus (PVAL Required)
+Rh - Regen health
+SD - Slow digestion
+Fl - Flying
+c+ - Charisma bonus (PVAL Required)
+C+ - Constitution bonus (PVAL Required)
+Sp - Speed (PVAL Required)
+EA - Extra attacks (PVAL Required)
+Sl - Stealth (PVAL required)
+Fe - Fear resist
+Cr - Critical bonus (PVAL Required)
+Vo - Vorpal (Quaking if blunt)
+AM - Anti-magic shell
+
+-------------------------------------------------------------------------------
+Element        | General | Weap | Shield | Armor | Cloak | Helm | Glove | Boot
+-------------------------------------------------------------------------------
+Light          | GlBlSI  | SI   |        |       |       | BlIf |       |      
+Darkness       | BlSI    | SI   |        |       | In    | BlIf |       |      
+Nexus          | Su      | SK   |        |       |       |      | SK    |      
+Nether         | HL      | Va   |        | HL    | HL    |      | Va    |      
+Chaos          | RR      | Ch   |        |       |       |      |       |      
+Mana           | Rm      |      | Ba     | Ba    | Ba    | Rm   | MP    |      
+-------------------------------------------------------------------------------
+Confusion      | FA      | W+I+ |        |       |       | W+I+ | FA    |      
+Inertia        | FANT    |      |        |       |       |      |       |      
+Lightning      | Im      | Br   |        |       | Au    |      | BrD+  |      
+Fire           | Im      | Br   |        |       | Au    |      | BrS+  |      
+Water          | ImRhSD  |      |        |       |       |      |       |      
+Gravity        | FA      |      |        |       |       |      |       | Fl
+Frost          | Im      | Br   |        |       | Au    |      | BrS+  |      
+Acid           | Im      | Br   |        |       |       |      | Brc+  |      
+Poison         | Im      | Br   |        | C+    |       |      | BrC+  |      
+Time           | SuSp    | EA   |        |       |       |      | EA    | Sp   
+Sound          | Sl      |      |        | Sl    | Sl    | Fe   |       | Sl   
+Shards         |         | CrVo |        |       |       |      | Cr    |      
+Disenchantment | AM      |      |        |       |       |      |       |      
+Force          | Su      |      |        |       |       |      |       |      
+Plasma         | Im      |      |        |       | Au    |      | Br    |      
 
 
 
@@ -11989,7 +12564,12 @@ Rune    | Detonates when broken.
 Press 'P' to display the party menu.
 Here you can..
 
+
+Parties:
+--------
 -Create or rename a party
+    Allows you to create a party if you aren't in one yet, or rename your
+    current party, provided you are the party owner.
     In a party you will share experience points if you are within 7 character
     levels to each other and on the same dungeon/tower level respectively
     the same worldmap/wilderness sector. A slight experience bonus is applied
@@ -12057,7 +12637,12 @@ Here you can..
     If you choose 'Create or rename a party' while already being in a party,
     you will be prompted to rename the party. Only the party owner can do this.
 
+    Specialty: Everlasting and non-everlasting players can team up while
+               inside the Nether Realm.
+
 -Create or rename an 'Iron Team' party
+    Allows you to create an iron team if you aren't in one yet, or rename your
+    current iron team, provided you are the party owner.
     An iron team is like a party with the following differences:
     An 'Iron Team' can only be formed with newly created characters. Its
     members will only get experience for killing monsters if ALL members
@@ -12066,8 +12651,14 @@ Here you can..
     If you choose this while already being in an iron team, you will be
     prompted to rename it. Only the iron team owner can do this.
 
--Add a player to party
+-Add a player to party / Add yourself to party
+    If you are in a party you will see the option "Add a player to party",
+    allowing you to add more players to your party.
     This can be done by all members of the party, not just by the owner!
+
+    If you aren't in a party, you will see "Add yourself to party" instead!
+    This will allow you to add this character to a party, provided that at
+    least one of your other characters is already a member of it.
 
 -Delete a player from your party
     This can only be done by the party owner.
@@ -12082,14 +12673,19 @@ Here you can..
     If the owner leaves his own party, the whole party is disbanded.
 
 
+Guilds:
+-------
 -Create a new guild
     You can create a guild with a character that is at least level 30.
     This costs 2,000,000 Au. A guild will stay, even if the owner dies.
     The guild creator will receive a 'Guild Key' which designates him as the
     guild master. In case the guild master dies, another guild member may
     fetch the key to become the new guild master.
-    (Apart from the dedicated guild chat, guilds currently don't do anything
-    except looking cool.)
+
+    A guild offers a dedicated guild chat, so players in a guild can organize
+    themselves in diving parties and still have a global chat if needed.
+
+    Guilds may have a guild hall, see (6.9a) below for more information.
 
     The following slash commands are available to manage your guild, only the
     guild master may use them:
@@ -12104,8 +12700,22 @@ Here you can..
         Shows you your current guild configuration if used without any parms
         and allows you to change it by specifying a flag.
 
--Add player to guild
-    Only the guild master can do this.
+    The same functionality as provided by these commands can simply be
+    accessed by pressing SHIFT+P and then choosing 'e)'.
+
+-Add player to guild / Add yourself to guild
+    Only the guild master or a designated 'adder' can do this.
+
+    If you are in a guild you will see the option "Add a player to guild",
+    which allows you to add another player to this guild. You need to be either
+    the guild master or one of the designated 'adders' to do this (and the
+    'adders' guild flag must be enabled).
+
+    If you aren't in a guild, you will see "Add yourself to guild" instead!
+    This will allow you to add this character to a guild, provided that at
+    least one of your other characters is either the guild master or one of the
+    'adders' designated by the guild master (and the 'adders' guild flag must
+    be enabled).
 
 -Remove player from guild
     Only the guild master can do this. If all members are removed including
@@ -12119,12 +12729,12 @@ Here you can..
     The next player from that guild who grabs the guild key becomes the new
     guild master.
 
-Note: In general, a player of a guild who grabs the guild key becomes the new
-      guild master.
-
-Note: Keys are indestructible, they can be lost though..
+A player of a leaderless guild who grabs the guild key becomes the new
+guild master. Keys are indestructible, they can be lost though..
 
 
+PvP outside of the dedicated 'PvP' character mode:
+--------------------------------------------------
 -Specify player to attack
     Now you are hostile to that player and you will hurt each other like
     when fighting a monster (this includes auto-retaliating and targetting).
@@ -12133,6 +12743,33 @@ Note: Keys are indestructible, they can be lost though..
 -Make peace
     Make peace with a player you are hostile too. Better pay attention that
     your opponent makes peace too.
+
+
+(6.9a) Guild halls
+------------------
+A guild may have a guild hall. That is a house owned by the guild, which will
+persist until the guild is disbanded or it is sold by the guild master.
+
+To get a guild hall, the current guild master must buy a house and transfer
+ownership to the guild. He does this by standing next to the house door,
+pressing 'h' key for house operations, and then choose '(2) Change house owner'
+followed by '(2) Guild'.
+
+After the ownership has been changed to the guild, the house no longer counts
+to houses owned by the guild master. So it does not affect his house limit nor
+will it be wiped if the guild master dies.
+
+The guild master is the only person who can change back ownership of the guild
+hall or even sell it if the guild for example wants to migrate to a bigger
+guild hall.
+
+The appromimate guild hall location can be viewed by all guild members by
+pressing SHIFT+P and then choosing 'e)'.
+
+The door of a guild hall is displayed in violet colour to all eligible members.
+Note that a guild hall can, same as party-accessible houses, have restrictions
+put on it such as minimum level required to enter, et cetera. These can only be
+installed or changed by the current guild master.
 
 
 
@@ -13650,6 +14287,20 @@ TomeNET 'engine'. :)
 Note: After logging in you may press '?' key for a help screen.
       The descriptions below are partially taken from that help file.
 
+
+*******************************************************************************
+ If you log on to an Arcade Server, your client will automatically attempt to
+ load the required macro file to play, which is
+  - 'arcade-win.prf' on Windows OS
+  - 'arcade-x11.prf' on X11 (Linux/OSX)
+
+ If your client is older than 4.5.3 you probably don't have these macros.
+ In that case you can download them at the bottom of the downloads page on
+ www.tomenet.net and extract them to folder TomeNET/lib/user.
+ But of course you should actually just update your whole client instead.
+*******************************************************************************
+
+
 On the Arcade server, you can play..
 
 
@@ -13661,18 +14312,25 @@ joysticks to allow you to run and fire in different directions. Unfortunately
 tomenet doesn't support joystick input. Here you must use special macros to
 shoot. For details press '?' in the game.
 
-To play Smash'em you need to download the Smash'em macros from the download
-page and place them in your TomeNET/lib/user folder.
-Controls are:
-    F1                  starts the game.
-    q,w,e               makes your character auto-fire in the according
-    a, ,d               direction.
+The Smash'em macros provide the following controls:
+
+    F1              starts the game.
+    F2              starts the game at level 4, skipping the early
+                    levels if you feel that those are too easy.
+
+    q,w,e           makes your character auto-fire in the according
+    a, ,d            direction (y key works same as z key).
     z,x,c
-    s                   stops firing.
-    CTRL+numpad         shifts the screen.
-    ,                   same as < key
-Type "play 2smash" in chat to start the game and skip the early levels if you
-feel that those are too easy.
+
+    s               stops firing/bandages.
+
+    ,               same as '<' key (ie go up one level).
+
+    numpad          movement.
+
+    Q               quit game.
+
+    TAB             switch macro set from "Smash'em" to "Tron".
 
 
 Tron
@@ -13683,21 +14341,36 @@ which results in their elimination.
 Power-ups will randomly spawn and increase the trail length.
 Up to four players can participate at once. For details press '?' in the game.
 
-To play Tron you need to download the Tron macros from the download page and
-place them in your TomeNET/lib/user folder.
-Controls are:
-    F3  enter arena.
-    F4  start game.
-    F5  list options.
-    F6  reduce game speed.
-    F7  increase game speed.
-    Q   quit game.
-    Arrow keys or numpad 2,4,6,8 or w,x,a,d are for movement.
+The Tron macros provide the following controls:
+
+    F3              enter arena.
+    F4              start game.
+
+    F5              list options.
+
+    F6              reduce game speed.
+    F7              increase game speed.
+
+    F9              reduce snake max length.
+    F10             increase snake max length.
+
+    F11             reduce amount of walls.
+    F12             increase amount of walls.
+
+    Arrow keys or   movement.
+    numpad 2,4,6,8
+
+    Q               quit game.
+
+    TAB             switch macro set from "Tron" to "Smash'em".
+
 Hit F4 as soon as at least two players have joined the areana via F3 key to
 start the actual match.
+
 To toggle an option, type "option" or "option on"/"option off" in chat.
 Speed can be changed via "moar speed"/"less speed",
-length can be changed via "moar length"/"less length".
+length can be changed via "moar length"/"less length",
+walls can be changed via "moar walls"/"less walls".
 
 
 Food Fight
