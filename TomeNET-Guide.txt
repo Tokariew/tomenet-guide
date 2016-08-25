@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 25. December 2011 - written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.4.8b - official websites are:
+| Latest update: 18. May 2012 - written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.4.8c - official websites are:
 | http://www.tomenet.net/ (main site),
 | http://koti.mbnet.fi/mikaelh/tomenet/ and http://www.c-blue.de/rogue.html
 |
@@ -45,8 +45,10 @@ Contents
     (2.1)   Installing TomeNET
     (2.1a)  Installing sound and music packs
     (2.1b)  Editing sound and music configuration
+    (2.1c)  "Promoting" TomeNET on Steam ;)
     (2.2)   Starting TomeNET and getting to play on an internet server
     (2.3)   Client options
+    (2.4)   Installing voice chat
 (3) Creating a character & starting to play
     (3.1)   Creating a new character; character modes
     (3.2)   The display (user-interface)
@@ -96,10 +98,11 @@ Contents
     (5.5)   Weight of weapons and armour
     (5.6)   Resistances & caps, Immunities, Susceptibilities
     (5.7)   Qualitative classification of items, identifying & selling items
+    (5.7a)  Types of Identification
     (5.8)   Special abilities of items
     (5.9)   What does item xxx do exactly?
     (5.9a)  Activatable items
-    (5.9b)  Artifacts
+    (5.9b)  Artifacts and artifact resets
     (5.10)  Destruction of items by elemental attacks
     (5.11)  Monster attack mechanism, Armour Class, damage caps
     (5.12)  Monster attack types and brands
@@ -113,6 +116,9 @@ Contents
     (5.20)  Runes & Runemastery
     (5.20a) Runemastery Tables
     (5.21)  Digging
+    (5.21a) Digging - Exact calculation
+    (5.21b) Digging - Common example values
+    (5.21c) Digging - Further information
     (5.22)  Recharging
 (6) Character details
     (6.1)   Attributes
@@ -126,7 +132,7 @@ Contents
     (6.7)   Mimicry details
     (6.7a)  Polymorph rings
     (6.7b)  Druid form details
-    (6.7c)  Useful low-level forms for weapon-using mimics
+    (6.7c)  Useful low-level humanoid forms for weapon-using mimics
     (6.8)   Magic spells and prayers
     (6.8a)  Spell failure rate
     (6.9)   Parties, Iron Teams, Guilds
@@ -141,6 +147,7 @@ Contents
     (7.3)   Surviving critical situations
     (7.4)   Spoiler files
     (7.5)   Monster tactics
+    (7.6)   Town/dungeon related hints
 (8) Miscellanous
     (8.1)   'The Art Not To Die'
     (8.2)   Character dumps
@@ -428,6 +435,9 @@ p       p       Concentrate on opening your mind for telekinesis.
                 they will receive an according message, telling them that
                 using telekinesis on you is currently not possible.
                 Hit 'p' again to stop concentrating and close your mind.
+                Certain spells of the mindcrafter class might also require
+                players in the same party to open their minds in order to work
+                or to affect them as intended.
 h               buy/sell a house or change house parameters. See (4.10).
 P       O       party screen. Form/disband/modify a party with other players
                 here. In a party you will share experience points if you are
@@ -731,6 +741,8 @@ They all start with a slash '/' hence they're called slash commands:
             to see that you run a player store. Further, you could choose the
             colour to indicate the type of items you offer, for example red
             for magic items similar to the red '6' town store.
+            Note that players of incompatible character mode (everlasting vs
+            non-everlasting) won't see each other's house paint.
             (See (4.10a) for more information about player stores.)
 /play       Join/leave a mini-game (such as rugby on the field in Bree).
             Will at some point in the future be absorbed by /evsign and
@@ -950,6 +962,7 @@ Weapons that ricochet (sling ammo):
 Scrolls of Identify, Rods/Staves of Perception:
     !X          If you pick up an unidentified item, you will automatically
                 read a scroll to identify it.
+                See (5.7) for more information about identification.
 
 An item that can be activated:
     @A1         pressing the keys 'A' and then '1' will activate that item.
@@ -1005,6 +1018,12 @@ or character name.
 If multiple matching files are found, the game will attempt to merge them
 accordingly.
 
+NOTE: In addition to this user-defined client-side auto-inscription list, there
+      is also a server-side auto-inscription feature that can be enabled via
+      client option 'auto_inscribe'.
+      This option will add a predefined set of auto-inscriptions that might be
+      generally useful for all types of characters, see (2.3) for details.
+
 
 
 (0.4) Typical slang/abbreviations
@@ -1022,6 +1041,7 @@ Auto-ID     A special ability of some items. If you equip an item that grants
             you 'Auto-ID' all items you touch will automatically be
             identified! Items who grant their wielder Auto-Identification are
             highly sought after. Randart helmets or gloves sometimes have it.
+            See (5.7) for more information about identification.
 BM          Black Market (Store '7').
 Cheeze      Questionable action, not quite cheating but close to it.
             This can be transferring items to a store character (mule)
@@ -1044,6 +1064,7 @@ GCV         Greater Checkerboard Vault (looks remotely like a checkerboard).
 ID, *ID*    Identify and *Identify* magic respectively, which is used to
             reveal magic properties of unknown items. Scrolls of ID can be
             bought in store 5.
+            See (5.7) for more information about identification.
 Iron Team   A special type of party which can only be formed with newly
             created characters. Its members only gain experience if all
             members are online and on the same dungeon level.
@@ -1126,6 +1147,7 @@ Pseudo-ID   If a player keeps an unidentified item for a longer time he might
             'feel' if the item is average, good, cursed or special. The item
             will automatically receive a 'pseudo-id inscription' then.
             Pseudo-id intensity and speed depend on the 'Combat' skill.
+            See (5.7) for more information about identification.
 PvP         Player vs player. Describes the act of player characters fighting
             each other. If you want to fight other players to death, create a
             new 'pvp-mode' character. It's an option during the character
@@ -1205,9 +1227,9 @@ Wormy       Wormtongue, Agent of Saruman. He drops great items.
  you might find yourself stuck inside a wall, where the previous dungeon had a
  wide room.
  Another problem is that if you don't leave in a town, your character will
- stay for another 20 seconds in the game before it finally disappears from the
+ stay for another 25 seconds in the game before it finally disappears from the
  dungeon! If monsters were around, you might get killed easily during those
- 20 seconds.
+ 25 seconds.
 -The items you find don't depend on your race or class but on monster level
  and depth and luck.
 -Don't drop artifacts inside houses if the server doesn't allow artifacts to
@@ -1439,6 +1461,16 @@ Last but not least, you may use the following command-line options:
 -w                      disables weather effects
 -u                      disables automatic LUA script updating
 -k                      don't disable numlock on client startup
+-m                      skip motd (message of the day) on login
+
+
+Linux (using pre-compiled binary):
+----------------------------------
+Make sure that ncurses and crypt libraries are installed, package names are
+usually libncurses5 and libgcrypt11.
+Enter the 'tomenet/' folder and type:
+        ./tomenet
+to start the game.
 
 
 Linux (compiling from source):
@@ -1456,7 +1488,8 @@ Go into '/tomenet/src' where the file 'makefile' is located.
 
 Make sure you have the C-devel, X11-devel, ncurses, ncurses-devel and crypt
 libraries installed. The package names are usually:
-xorg-dev, libncurses5, libncurses5-dev, libgcrypt11, libc6-dev.
+build-essential, xorg-dev, libncurses5, libncurses5-dev, libgcrypt11,
+libc6-dev.
 
 Since version 4.4.5 which supports music and sound via SDL, you also need
 libsdl-mixer-devel, libsdl, libsmpeg. Usual package names (SDL version 1.2):
@@ -1466,23 +1499,19 @@ libsmpeg-dev.
 If you don't want to use audio, edit the makefile and compare the two
 paragraphs titled 'Without SDL' and 'With SDL' and edit the makefile
 accordingly, to compile it without SDL audio support.
+NOTE: If you are compiling the above packages yourself, make sure that you
+install the specific audio format libs (smpeg, ogg..) _before_ you install
+libsdl-mixer, so its configure script will recognize those formats and enable
+support for the according file types.
 
 Enter these two lines:
         make clean
         make tomenet
 and the binary 'tomenet' will be created in this folder 'tomenet/src'.
 IMPORTANT NOW: If your makefile is an older version, you need to move the
-binary one level upwards, ie into '/tomenet' ! If your makefile is newer,
+binary one level upwards, ie into 'tomenet/' ! If your makefile is newer,
 it might already have done that for you automatically.
-Go up one level into your '/tomenet' folder. There type:
-        ./tomenet
-to start the game.
-
-
-Linux (using pre-compiled binary):
-----------------------------------
-Make sure that ncurses and crypt libraries are installed, package names are
-usually libncurses5 and libgcrypt11. Type:
+Go up one level into your 'tomenet/' folder. There type:
         ./tomenet
 to start the game.
 
@@ -1501,7 +1530,7 @@ Note: If x,y positioning of windows doesn't work on your system, you can use
 other means such as KDE's native window positioning (right-click the windows
 and modify the "special window settings" or "special application settings") or
 the tool Devilspie (should be in your default repository) if you're on Gnome
-instead.
+or Xfce or anything else.
 
 
 Alternatively to using the .tomenetrc file for window configuration, you can
@@ -1532,6 +1561,7 @@ Last but not least, you may use the following command-line options:
 -q                      turns off loading/initializing of audio ('quiet mode')
 -w                      disables weather effects
 -u                      disables automatic LUA script updating
+-m                      skip motd (message of the day) on login
 
 Full command-line example:
         ./tomenet -p19348 -lGandalf geheim -NGandalf 85.118.45.235
@@ -1540,6 +1570,82 @@ If your name contains spaces, it is neccessary to put a '\' in front of each.
 Example:
         ./tomenet -p18348 -lIron\ Man geheimer 85.118.45.235
 ..if your account name is 'Iron Man'.
+
+
+Mac OS X (using pre-compiled binary; tested with Snow Leopard 10.6.6):
+----------------------------------------------------------------------
+Run the file 'TomeNET.run' to start the game.
+
+
+Mac OS X (compiling from source; tested with Snow Leopard 10.6.6):
+------------------------------------------------------------------
+Basically use the same instructions as for Linux above. Additionally:
+
+-To actually install gcc you will need to install the 'xcode' package, which
+ contains gcc. Download the correct xcode version for your Mac OS X version
+ from developer.apple.com. For this you will first need to create a developer
+ account (choose the free account version of course).
+
+-Download the required packages (tar.gz/tar.bz2 files from ftp.gnupg.org,
+ ftp.gnu.org/pub/gnu and www.libsdl.org) listed in the Linux installation
+ instructions above and extract, compile and install them each via the usual
+   ./configure
+   make clean
+   make
+   sudo make install
+ command chain from a terminal window.
+ Note: libsdl_mixer can be found on www.libsdl.org too, by clicking on the
+ "Libraries" menu and searching for "mixer".
+
+ If you have trouble installing those source packages, you could try to simply
+ use MacPorts to fetch them, at http://www.macports.org/.
+
+Dependencies:
+-libgcrypt depends on libgpg-error, which you will need to install too.
+-libsdl_mixer may complain about missing dependencies (at least Ogg Vorbis is
+ required for TomeNET, since it's the official audio format - the rest is only
+ needed if you add custom audio files in the according file formats):
+  -Ogg Vorbis library (www.xiph.org -> libogg and libvorbis) for OGG file
+   support, which is what the official TomeNET audio files are.
+  -SMPEG library (icculus.org/smpeg) for MP3 file support. (libsdl_mixer's
+   configure script May also list additional notes regarding the environment
+   variable SMPEG_CONFIG, don't miss them.)
+  -MikMod library (mikmod.raphnet.net) for various module music support.
+  -FLAC library (flac.sourceforge.net) for FLAC file support.
+
+-If you mess with compiler-related environment variables and paths and for
+ whatever reason get a 'compiler cannot create executables' error when trying
+ to ./configure packages, just close the terminal and re-open it, to reset all
+ vars.
+
+It is recommended to use the makefile called 'makefile.osx' for compiling.
+If for whatever reason you try to use an unmodified Linux makefile to compile
+then you might run into the following problems:
+
+-ncurses starts hiding some internal properties at v5.7+ which causes a
+ dereference error when trying to compile main-gcu.c. This seems to be a
+ Mac OS X specific problem since only the ncurses shipping with Snow Leopard
+ has NCURSES_OPAQUE set to 1 while the Linux version has not.
+ To fix it, add
+   -DNCURSES_OPAQUE=0
+ to CFLAGS compiler options in the makefile.
+
+-For preprocessing LUA files the 'cpp' variant does not work, the 'gcc' variant
+ must be used instead: Edit the makefile, locate 'cpp' and comment out the two
+ cpp-related lines and uncomment the two gcc-related lines, if it's not already
+ like that by default.
+
+-If the LIBS linker flags in the makefile say '-lcrypt' that will cause an
+ error about library not being found. Change it to '-lgcrypt' to fix it.
+
+-If the LDFLAGS are empty the linker will throw a not-found error 22. Fix this
+ by moving (or copying) the -L... library search-folder parameters from LIBS to
+ LDFLAGS so it contains all lib paths.
+
+
+Configure TomeNET on Mac OS X:
+------------------------------
+See 'Configure TomeNET on Linux' above, it's basically the same.
 
 
 (2.1a) Installing sound and music packs
@@ -1645,6 +1751,16 @@ Note: Do not modify the file audio.lua, it has nothing to do with editing your
       be automatically restored next time you log on to the server.
 
 
+(2.1c) "Promoting" TomeNET on Steam ;)
+--------------------------------------
+In Steam's "Games" menu choose "Add a non-Steam game to my library".
+Browse for the TomeNET.exe file and check it.
+Click on "Add selected programs".
+
+Now you can start TomeNET from your Steam library of games like any other game,
+and if you do so then your Steam status will show that you are playing TomeNET!
+
+
 
 (2.2) Starting TomeNET and getting to play on an internet server
 ----------------------------------------------------------------
@@ -1722,6 +1838,22 @@ or that are especially important are listed in detail here:
         Will provide a predefined (on server-side) set of item-inscriptions
         that will be applied automatically to some selected items, which are
         word-of-Recall items, various scrolls and a few potions.
+        (These inscriptions are applied independantly of the custom auto
+        inscription feature you can access with '&' key.)
+        The server-side auto-inscriptions are currently:
+            Scrolls of Phase Door:      @r1
+            Scrolls of Teleportation:   @r2
+            Scrolls of Word-of-Recall:  @r3@R
+            Rods of Recall:             @z3@R
+            Scrolls of Identify:        @r5!X
+            Scrolls of Trap Detection:  @r8
+            Scrolls of Magic Mapping:   @r9
+            Scrolls of Satisfy Hunger:  @r0
+            Potions of Healing:         @q1
+            Potions of Speed:           @q2
+            Potions of Resistance:      @q3
+            Potions of Restore-L-Lev:   @q4
+        Note: Already inscribed items are not touched.
 
     Hide unusable skills (hide_unusable_skills)
         Skills that your character cannot use will not be displayed in the
@@ -1794,6 +1926,46 @@ or that are especially important are listed in detail here:
     Here you can configure each of the program windows in detail.
     It is recommended that you have one dedicated window for 'Display chat',
     so you don't miss important messages during combat.
+
+
+
+(2.4) Installing voice chat
+---------------------------
+While chatting in TomeNET is usually fine to communicate with other players and
+party members in particular, using a real voice chat via headset (headphones +
+microphone) can be much more effective, easier and more fun.
+
+To support voice chat, there is actually an official TomeNET 'Mumble' server
+running, Mumble being the name of the voice chat software. (The server part is
+actually called Murmur, Mumble is the name of the client part and the project
+name in general.)
+
+Mumble provides excellent voice quality at low bandwith usage, and is a free
+open source program, hence it is free of charge (both server and client).
+It also allows sending text messages in case you don't have a microphone, those
+can be automatically converted to speech, which is then read to the receipient.
+(This feature can be turned off in the menu 'Configure' -> 'Text-To-Speech'.)
+And same as Ventrilo or Teamspeak, Mumble allows for custom channel structures.
+Mumble is available for all major platforms, ie Windows, Linux and Mac OS X.
+
+Instructions to join the TomeNET Mumble server for voice chatting:
+-Plug in a headset.
+-Download the Mumble client from http://mumble.sourceforge.net/ and install it.
+ NOTE: If you are looking for the Linux version, it should be in your package
+ repository. No need to visit the sourceforge project website in this case.
+-Go through the audio configuration (Audio Wizard) and possibly set up a key to
+ push when you want your voice to be transmitted (or just select voice-
+ activation, which will automatically transmit your voice when you speak).
+-Go to menu 'Server' -> 'Connect' -> 'Add New..'
+ and enter this server information to add the official TomeNET Mumble server:
+ Label:     Choose any name you like, eg "TomeNET Voice Chat".
+ Adress:    europe.tomenet.net
+ Port:      23348
+ Username:  Choose any name you like, it's your nickname on the Mumble server.
+ Click 'Ok', select the newly added server in the list and click 'Connect'.
+
+That's it. To change to a certain chat channel, simply double-click it.
+You can only hear people in the same chat channel (or in a parent channel).
 
 
 
@@ -1875,7 +2047,7 @@ that gives you one more bpr i.e. 3 bpr and just discard your starting weapon.
 
 
 Now you can choose a difficulty level you wish to play on. Options are
-n) Normal  g) no Ghost  h) Hard  H) Hellish e) Everlasting
+n) Normal  g) no Ghost  H) Hellish  e) Everlasting
 It is recommended that you choose either n) to play a normal character or g)
 to play a normal character without a ghost.
 You can also choose e), that will give your character an infinite amount of
@@ -1908,17 +2080,17 @@ killed Sauron and Morgoth yet and team up with him, because those two won't
 Since it was often asked: Non-everlasting and everlasting players can revive
 each other without problems.
 
-Mode: 'Unworldly' (no-ghost) and 'Hellish' (no-ghost + hard)
-------------------------------------------------------------
+Mode: 'Unworldly' (no-ghost)
+----------------------------
 Unworldly characters are like normal characters, but they have only one life.
-Unworldly as well as hellish characters (who are a combination of 'no-ghost'
-and 'hard') will be completely annihilated and deleted on death.
+So if they die they cannot revive but are completely erased (no ghost will be
+created.)
+Note: This is the traditional rogue-like gaming mode.
 
-Mode: 'Hard' (like 'Normal' but with additional penalties) and 'Hellish':
--------------------------------------------------------------------------
-Hard characters and hellish characters get certain penalties in gameplay.
-These are:
--losing -1 to all stats
+Mode: 'Hellish' (extra hard no-ghost)
+-------------------------------------
+These are unworldly characters with extra penalties:
+-1 point malus on each of the 6 character attributes
 -healing is reduced by 25%
 -AC is reduced by 50%
 -ESP only works within radius of 20 squares
@@ -1931,8 +2103,8 @@ This is a special restricted mode that has nothing to do with normal gameplay.
 If you're new to the game, it's absolutely not recommended to choose this.
 More information about 'PvP' mode is given in (6.13).
 
-Hard / Unworldly characters will receive 25% bonus on their high score.
-Hellish (Hard + Unworldly) characters receive 50% bonus on their high score.
+Unworldly characters will receive 25% bonus on their high score.
+Hellish characters receive 50% bonus on their high score.
 
 
 Last you can choose a body modification. It's strongly recommended for
@@ -1941,7 +2113,7 @@ beginners to choose 'normal body' and NOT 'fruit bat'. ;)
 Body: 'Fruit bat' (Batty)
 -------------------------
 A fruit bat is like a normal character, just not in humanoid shape but in bat
-form! Fruit bats cannot wear certain equipment like boots, gloves or weapons.
+form! Fruit bats cannot equip weapons, body armour, boots or gloves.
 These restrictions won't change even if they choose a class which can make use
 if mimicry and thereby mimic a humanoid form (druid fruit bats would in fact be
 the most ineffective choice).
@@ -2161,7 +2333,6 @@ Character names in chat lines have different colours to indicate their status:
 
 White           Normal player.
 Light blue      Everlasting player.
-Slate (grey)    Hard-mode player.
 Dark grey       No-ghost / hellish player.
 Violet          Player character is king / queen.
 Dark blue       Player is admin.
@@ -2410,7 +2581,7 @@ the dungeon. If you find a potion/scroll unknown to your character you will
 have to either use it or sell it to a shop or use a scroll of identify to find
 out what it is.
 So to prepare for hunting in the dungeon, buy:
--Potion of Heroism
+-Potion of Heroism (maybe just one, for when you encounter a unique monster)
 -Potion of Cure Light/Serious Wounds
 -Scroll of Phase Door
 The more you can buy of those the better. At least buy one potion of Heroism
@@ -2829,6 +3000,8 @@ to their real functionality. They are:
   I for using a mimic's 'transform-into-specific' power.
     Example:  I191
     This will become  \e)@m3\rc191\r  (transform into a Grizzly Bear).
+    Clients of versions greater than 4.4.8c also support entering a monster
+    name instead of its code, example:  I@Fruit bat\
   F for employing a fighting technique
     Example:  Fa
     (Use fighting technique 'a)', which usually is 'sprint'.)
@@ -3095,7 +3268,7 @@ F12 use a magic device on the closest target        \e)*t/1-        @/1
 -   Cast phase door.                     \e)m@11\r@Phase Door\r    -none-
 0   Cast manathrust at nearest target \e)*tm@11\r@Manathrust\r-    -none-
 
-This low level istari might be armed with a sling to support his yet weak
+This low level istar might be armed with a sling to support his yet weak
 magic, so the F1 macro makes sense. Assuming that he uses the numpad keys for
 movement, the keys +, - and 0 were used to allow quick access to his basic
 spells. - and 0 use his startup book 'Beginner Cantrips' while the macro on
@@ -4014,6 +4187,7 @@ The 1..9 are standard shops, namely..
                         9x9 board for a one-time fee on each difficulty level.)
         Mass Identify Service
                         Will identify all items you currently carry for a fee.
+                        See (5.7) for more information about identification.
         *Identify* Service
                         Will *identify* an item for a fee.
                         See (5.7) for more information about ID, *ID*, shops!
@@ -4042,9 +4216,11 @@ who is wealthy and in urgent need of your items.
 See (5.7) for more information about ID, *ID* and shops!
 
 
-Towns
------
+Towns & Town Dungeons
+---------------------
 Here is a list of towns and their corresponding local dungeons:
+NOTE: Minimum level requirements for entering might be disabled, based on
+      the server's settings.
 
 Town        |Depth/Level|   Local dungeons    | Depth/Level      |Required
             |of the town|                     | of the local     |player level
@@ -4068,11 +4244,15 @@ the slowdown won't bother you but come in handy. For example if you enter
 Mordor you will notice a slowdown to to approx. 1/2 standard time.
 See (4.14) for more information about the in-game time system.
 
+Some advice regarding towns and town dungeons can be found at (7.6).
+
 
 Dungeons
 --------
-Also, there are several dungeons that aren't bound to a town. Here's a list:
-(The staircase colour in-game indicates the dungeon type, compare (4.3).)
+This paragraph is about dungeons that don't belong to any town.
+For dungeons that belong to specific towns, see the paragraph 'Towns' above.
+
+The staircase colour of a dungeon indicates the dungeon type, compare (4.3).
 
 'Depth/Level' describe a dungeon's starting level and final level. Depth is
 actually just a different way for expressing a dungeon floor level, so they're
@@ -4085,6 +4265,9 @@ tenth floor (ie -500 ft) in the Barrow-Downs dungeon (which starts at level 1).
 Since The Orc Cave goes from level 10 to level 23 that means it has 14 floors,
 so its final floor will be -700 ft which is of the same difficulty level as
 -1150 ft Barrow-Downs (ie level 23).
+
+NOTE: Minimum level requirements for entering might be disabled, based on
+      the server's settings.
 
 Dungeon                        |     Depth* / Level    | Min. required player
                                |  (*relative to Lv.1)  |   level to enter
@@ -4116,12 +4299,16 @@ explorers.
 Such custom dungeons appear as 'Wilderness' in the "Recall depths and Towns"
 list, and usually have no minimum required character level to enter.
 
-((*) To enter the Nether Realm a player must carry the 'King'/'Queen' title,
-acquired by beating Morgoth, Lord of Darkness.
-Each floor in the Nether Realm gives a +2% bonus to experience from monster
-kills.
-The amount of experience is already very high even without the depth-bonus,
-since creatures in the Nether Realm are of a very high level.)
+(*) Nether Realm details:
+-To enter the Nether Realm a player must carry the 'King'/'Queen' title,
+ acquired by beating Morgoth, Lord of Darkness.
+-Each floor in the Nether Realm gives a +2% bonus to experience from monster
+ kills. So hunting at -350ft in there will give a +14% exp bonus. (This bonus
+ is actually multiplied by the usual floor boni, instead of added. So you will
+ get even much more exp when hunting on a floor with a lot of 'bad' special
+ flags.)
+-Note that the amount of experience is already very high even without this
+ depth-bonus, since creatures in the Nether Realm are of a very high level.
 
 
 
@@ -4284,25 +4471,42 @@ and the item afterwards, effectively simply asking you to specify the item.
 
 
 
-(4.8) Level & vault feelings
-----------------------------
-Levels:
--------
+(4.8) Dungeon, floor & vault feelings
+-------------------------------------
+Dungeon feelings:
+-----------------
+Dungeons that haven't been visited for a while will start giving a temporary
+experience bonus, until the game perceives them as 'well explored' again.
+If you enter such a rarely visited dungeon you will be notified about the
+experience bonus by one of these dungeon feelings, displayed in light umber:
+
+  "This place has not been explored recently.":        +7% experience gain.
+
+  "This place has not been explored in a long time.":  +13% experience gain.
+
+  "This place has not been explored in ages.":         +20% experience gain.
+
+These boni stack with boni from 'bad' (orange) floor feelings explained below.
+
+
+Floor feelings:
+---------------
 Sometimes if you enter a new dungeon level your character will have a special
-feeling about it, displayed in orange text.
-The feelings are as follows:
+feeling about it, called 'level feelings' or 'floor feelings', displayed in
+orange text.
+These feelings are as follows:
 
-"You feel an imminent danger!" ->   This dungeon level is *way* higher than
-                                    your character level.
+  "You feel an imminent danger!" ->     This dungeon level is *way* higher
+                                        than your character level.
 
-"You feel a suppressive air." ->    You cannot use wraith form or probability
-                                    travel on this level.
-                                    (NO_MAGIC, +10% experience bonus!)
+  "You feel a suppressive air." ->      You cannot use wraith form or
+                                        probability travel on this level.
+                                        (NO_MAGIC, +10% experience bonus!)
 
-"The air seems distorted." ->       You cannot use genocide on this level!
-(formerly 'feeling of peace')       (NO_GENO, +5% experience bonus!)
+  "The air seems distorted." ->         You cannot use genocide on this level!
+  (formerly 'feeling of peace')         (NO_GENO, +5% experience bonus!)
 
-"You lose all sense of direction..." -> You won't be able to auto-map this
+  "You lose all sense of direction..." -> You won't be able to auto-map this
                                         dungeon, meaning that you won't
                                         remember the dungeon layout.
                                         You can only see your nearby
@@ -4310,15 +4514,15 @@ The feelings are as follows:
                                         line of sight.
                                         (NO_MAP, +15% experience bonus!)
 
-"You feel like a stranger..." ->    You cannot use magic mapping nor
-                                    clairvoyance here!
-                                    (NO_MAGIC_MAP, +10% experience bonus!)
+  "You feel like a stranger..." ->      You cannot use magic mapping nor
+                                        clairvoyance here!
+                                        (NO_MAGIC_MAP, +10% experience bonus!)
 
-"The walls here seem very solid." ->    You cannot destroy the dungeon
+  "The walls here seem very solid." ->  You cannot destroy the dungeon
                                         structure on this level.
                                         (NO_DESTROY, +5% experience bonus!)
 
-"You feel that your life hangs in the balance!" ->      ** Extremely dangerous
+  "You feel that your life hangs in the balance!" ->    ** Extremely dangerous
                                         to normal/everlasting players! **
                                         This only occurs on a level where
                                         Morgoth, Lord of Darkness resides,
@@ -4326,23 +4530,27 @@ The feelings are as follows:
                                         will to destroy.
                                         Players who die on this level will be
                                         completely extinguished and not even
-                                        their ghost will survive! Everlasting,
-                                        normal and hard-mode players will die
-                                        the same way as unworldly and hellish
-                                        ones!
+                                        their ghost will survive! Everlasting
+                                        and normal players will die the same
+                                        way as unworldly and hellish ones!
 
-"You don't sense a magic barrier here..." ->   This message only occurs in
+  "You don't sense a magic barrier here..." ->   This message only occurs in
                                         Ironman or no-recall dungeons/towers.
                                         It lets you know that you may use
                                         word-of-recall on this floor!
+                                        (This message is displayed in green
+                                        colour, not orange.)
 
 In addition to those orange level specialties, there are more feelings you
 may get about the danger a level poses. Those only appear if you spent some
 time (usually a few minutes) on the dungeon level you were coming from, so
 they won't be helpful while stair-scumming or probability-travelling quickly.
-The number telling you the current floor's depth in the bottom right corner of
-the main window will turn light blue when you spent enough time on your current
-floor to receive an extra feeling on entering the next floor.
+(Exception: On RPG-rule servers these will always be displayed, since all
+dungeons are ironman and stair-scumming is not possible.)
+The number telling you the current floor's depth (or a town name if you're in a
+town) in the bottom right corner of the main window will turn light blue when
+you spent enough time on your current floor to receive an extra feeling on
+entering the next floor.
 These extra level feelings (displayed in yellow) are:
 
   "What a terrifying place.."
@@ -4350,6 +4558,9 @@ These extra level feelings (displayed in yellow) are:
       with 40 actually being the maximum possible ood level shift, compare
       ood explanation in (0.4)) or
       b) a great vault and some ood monster (10..19 levels) on the level.
+      If you receive this message it will in most cases also change the normal
+      music theme of that dungeon to a special 'terrifying' music, making it
+      easier to notice quickly.
 
   "You sense an air of danger.."
       means there's a freely roaming ood monster (10..19 levels)
@@ -4389,11 +4600,12 @@ it'll remain to feel like a boring place, despite the new monster that might
 actually make it pretty non-boring now..
 
 
-Vaults:
--------
+Vault feelings:
+---------------
 Vaults can also bear a very dangerous feature that is displayed as dark grey
 feeling as soon as you are about to enter the vault:
-"The air in here feels very still." ->  Means that you cannot use any type of
+
+  "The air in here feels very still." ->  Means that you cannot use any type of
                                         teleportation, including word-of-
                                         recall while inside the vault. Beware!
                                         Further, Wraith Form and probability
@@ -4403,8 +4615,13 @@ feeling as soon as you are about to enter the vault:
                                         your (xx, yy) position display on the
                                         lower left area of the main window
                                         turning from light green to dark grey!
+                                        Also, the music will in most cases
+                                        change from the normal theme of that
+                                        dungeon to the same music played on
+                                        'terrifying' levels, for easier notice.
+
 As soon as you leave such a no-teleport-vault you'll receive this feeling:
-"Fresh air greets you as you leave the vault."
+  "Fresh air greets you as you leave the vault."
 
 
 
@@ -4553,6 +4770,16 @@ This item will appear in your store with an inscription "HelloCustomer". The
 "S@..." part is always omitted. This way, you can add short notes to the items
 you offer.
 
+You can use 'k' and 'M' to denote a multiplier of thousand and million
+respectively:
+  @S3k  will sell for 3000,
+  @S1M  will sell for 1000000.
+
+If you want to display items that are not for sale, eg create a 'museum', you
+can inscribe the items
+  @S-
+which will make them unsellable, yet they will be on display on your store.
+
 If another player buys your item, there will be a 10% fee that is cut from your
 profits.
 The rest of the price the customer paid will be imprinted into a cheque. This
@@ -4673,7 +4900,9 @@ Hit point drain ('Drains your hit points')
      -Monster forms that provide wall-passing (wraith form)
      -Being entombed in walls, ie stuck without the ability to pass through them
     HP drain can be countered by HP regeneration, which can be gained from:
-     -'Regeneration' ability (flag), gained from items or as racial/form bonus
+     -'Regeneration' ability (which is a flag, ie one source providing it is
+      enough and having more than one regen source won't increase the effect),
+      gained from items or as racial/form bonus
      -Health skill
      -Holy Curing school bonus
      -Nature school spell
@@ -4743,8 +4972,8 @@ Kill quest
     doors in town), or simply type "/quest" in the chat.
     There is a certain time limit which in most cases is easily sufficient,
     especially if you have the according ESP ability.
-    The time limit is actually one 'in-game day', which in real time lasts
-    slightly longer than an hour. (See (4.14) for more information about the
+    The time limit is actually two 'in-game days', which in real time lasts
+    somewhat above two hour. (See (4.14) for more information about the
     in-game time system.)
     The time will continue to run out even while you're not logged on.
     If you fulfil the kill quest you received, you will be rewarded with a
@@ -4890,8 +5119,8 @@ Usually a whole day (day + night, ie full 24h in-game time cycle) will last for
 slightly more than one hour real time.
 The sun will usually rise at around 6am, while night falls at around 7pm. Again
 use the /ex command to see the in-game time for your character.
-Quests (see (4.13)) usually have a time limit of one full in-game day, so you
-will have about 1 h to fulfil them.
+Quests (see (4.13)) usually have a time limit of two full in-game days, so you
+will have about 2.5 h to fulfil them.
 
 
 
@@ -5095,6 +5324,9 @@ ammunition it uses will not be added to ranged attacks, while +hit bonus will.
 This means for example that 'a Ring of Slaying (+10,+12)' will add +10 to both
 your melee hit chance and your ranged hit chance, but the +12 damage will only
 be added to your melee damage, not your ranged.
+
+Also see 'Armour weight (concerning ranged weapons)' further below in (5.5)
+for details about how wearing armour affects your ranged weapon accuracy.
 
 
 (5.2a)  Fire-till-kill mode
@@ -5423,6 +5655,20 @@ IMPORTANT: If you get the above flexibility warning message, that means your
            basically as if you don't have it equipped at all.
 
 
+Armour weight (concerning ranged weapons)
+-----------------------------------------
+If you wear a shield on your arm, no matter its weight and your strength, your
+hit chance with ranged weapons will be reduced by this encumberment. You will
+get an orange message saying
+"You find it hard to aim while carrying your shield."
+and a yellow '}' icon will appear in the encumberment bar.
+
+Also, the greater your total equipped armour weight is, the more your ranged
+to-hit bonus is reduced. This is a fluent, continuous process, and therefore
+it's not considered an 'encumberment' per se, ie you won't see any icons in
+the encumberment bar about this.
+
+
 Glove encumberment (concerning magic)
 -------------------------------------
 Wearing gloves as a sorceror may reduce your maximum mana points if they are
@@ -5575,6 +5821,12 @@ Poison          Poison resistance doesn't belong to the basic resistances but
                 caps at 800.
                 Stinking clouds, which are small poison balls, inflict 12d2
                 damage.
+Unbreath        A special type of poison, castable by mages and runemasters.
+                This one will just deprive the air of all oxygen, thereby also
+                damaging poison immune monsters.
+                The only monsters immune to this are those that do not require
+                to breathe, which means undead, greater demons, angels and
+                nonliving constructs.
 
 
 Make sure that you have the basic resistances as soon as possible, and poison
@@ -5614,8 +5866,10 @@ Hold Life       This will provide some protection against experience drain;
 Further, there are several high resistances:
 --------------------------------------------
 (Poison         was described above, at the end of the basic resistances.)
-Water           Water resistance is rare. Water attacks can stun and confuse
-                you if you don't resist them and usually do a lot of damage.
+Water           Water resistance is rare (an *ID*ed item will say
+                'it provides resistance to unleashed water').
+                Water attacks can stun and confuse you if you don't resist
+                them and usually do a lot of damage.
                 Resistance will cut damage to 1/3.
                 If you're a mimicking an aquatic monster the damage will be
                 further cut down to 1/4.
@@ -5982,6 +6236,44 @@ Again - if you want to look up what certain special items can/cannot do, see
 the spoiler files section (7.4) or further explanations in (5.8) and (5.9).
 
 
+(5.7a) Types of Identification
+------------------------------
+There are different stages and types of identification:
+a) pseudo-indentification.
+   This gives you one of the basic feelings like {good}, described above.
+b) identification via ID (eg by scroll, staff or shop service - or from trying
+   to use the item, if your character is able to observe any result, in which
+   case it might yield some experience even):
+   This actually does two types of identification!
+   1) It identifies the magical properties of an item, such as
+      +hit, +damage, +ac, names of ego powers or artifact power.
+      These values are then seen by any player who looks at the item after
+      it has been identified.
+   2) It identifies the flavour of an item (if it is a flavoured item) for
+      the particular player who identifies it.
+      Flavours are prefixes in the base item name, in particular:
+      -potion colours
+      -scroll titles
+      -ring/amulet materials
+      -magic device materials
+      So if you identify a 'clear potion' you will get to know that it's a
+      'clear potion of water'. However, this flavour is now only know to you.
+      Other characters who have not yet identified a clear potion on their own
+      will still not know that it's a 'clear potion of water'.
+c) identification via *ID* (eg by scroll, staff or shop service):
+   This is the same as ID but additionally reveals all details of all ego- or
+   artifact powers the item has.
+   This can lead to an increase in price if some of those powers were not
+   considered obvious, in which case stores wouldn't pay for them when you sell
+   the item. Non-obvious powers are those that are randomly occurring (those
+   don't exist on true artifacts).
+
+Note: There are certain effects that can make your character lose his knowledge
+      of items, which corresponds to 'unindentification' of types a) and b)1)
+      and also loses the additional knowledge gained from c) in the list above.
+      The flavour knowledge as described in b)2) is always preserved though.
+
+
 
 (5.8) Special abilities of items
 --------------------------------
@@ -6208,7 +6500,7 @@ Multi-hued Dragon Scale Mail    Gives base + poison resistance (base means
                                 fire/cold/lightning/acid) and two random
                                 immunities out of those five.
                                 For example one MHDSM might give fire and cold
-                                immunity, while a nother MHDSM gives poison and
+                                immunity, while another MHDSM gives poison and
                                 lightning immunity.
 Elven Cloak     Increases your stealth, searching ability and luck.
                 For details about luck see LUCK flag in (5.8).
@@ -6219,6 +6511,15 @@ Shadow Cloak    Makes you hard to spot for other players, regarding
                 yourself while being invisible vs. someone who is able to see
                 invisible creatures/players. See '(5.16) Invisibility'.
 Elven Gloves    Regenerate hit points and mana points.
+Royal Armour    Super-heavy armour that can only be worn by (fallen) winners,
+                'winner' meaning queens, kings, empresses and emperors.
+                (These armour pieces usually have a level requirement of 51 or
+                more and can have special boni not found on other armour.)
+                'Royal armour' is not a base item name itself but just
+                describes various types of adamantite and mithril heavy armour
+                or shields that will display
+                "It is to be used by royalties exclusively."
+                in violet colour when inspected/exmamined.
 
 
 Potions
@@ -6653,18 +6954,14 @@ Elemental rings: Breath the ring element and temporary resistance to it.
 Teleportation rings: Explode for teleportation.
 
 
-(5.9b) Artifacts
-----------------
+(5.9b) Artifacts and artifact resets
+------------------------------------
+Artifact types in general
+-------------------------
 Some items are 'named', those possess especially great magic powers and are
 also called 'Artifacts'.
 Different from other items artifacts will pseudo-ID as 'special' (given
 sufficient combat/magic/archery skill) or as 'terrible' if they are cursed.
-
-Artifacts are unique. If an artifact is owned by a player, noone else can find
-it anymore until it's lost (for example if the player dies) or sold to a shop.
-Depending on a server's configuration artifacts usually stay a while in the
-shop and can be bought by other players before they finally disappear from the
-stock.
 
 The artifact name can either be given as a real name, for example:
     The Dagger 'Nimthanc'
@@ -6676,17 +6973,44 @@ To find out all about the magic powers of an artifact it needs to be
 *identified*, for example by a 'Scroll of *Identify*' or in one of the *ID*
 shops that occur in every town, which will usually cost around 2000..3000 gold.
 
-There are two types of artifacts, 'true artifacts' (also called 'static
-artifacts') and 'random artifacts' or short 'randarts'.
+Some artifacts can be 'A'ctivated for a special effect. This will be shown
+in the list of its powers that you get when *identifying* it.
 
+Artifact ammunition never breaks or (in case of boomerangs) falls down to the
+floor instead of returning. Artifact weapons are harder to get disarmed.
+
+There are two classes of artifacts, 'true artifacts' (also called 'static
+artifacts') and 'random artifacts' or short 'randarts':
+
+
+True artifacts
+--------------
 True artifacts are predefined in the a_info.txt file and will always sell for
 their defined value even if they have not been *identified*.
+
+True Artifacts are unique. If an artifact is owned by a player, noone else can
+find it anymore until it's lost (for example if the player dies) or sold to a
+shop, or if the player drops it on the ground and leaves it behind.
+Depending on a server's configuration artifacts that are sold to shops usually
+stay a while in the shop and can be bought by other players before they finally
+disappear from the stock.
+
 Usually true artifacts may not be dropped into a house (will just disappear!)
 and may not be carried by winners, ie characters that have beaten Morgoth.
 Since static artifacts are predefined and have fixed abilities, their number
-therefore is limited. Thanks to the existance of random artifacts, this won't
-be able to cause any shortage of artifacts that can be found though:
+therefore is limited. Thanks to the existance of random artifacts (see below)
+this won't be able to cause any shortage of artifacts that can be found though.
 
+Static artifacts will also be erased if they are left on the ground and the
+dungeon level or worldmap sector gets 'unstaticed', that means it gets reset
+because no players have been on it for a while (can be a few seconds for world
+map sectors or dungeon floors that are left without any players on them, and up
+to many hours in case someone ghost-died on a dungeon level, which can render
+the dungeon level 'static' for that time to allow others to retrieve the loot).
+
+
+Random Artifacts
+----------------
 Random artifacts are composed randomly and even if they happen to bear the same
 name might have totally different powers. Randarts need to be *identified* to
 sell for what they are really worth.
@@ -6703,6 +7027,9 @@ The advantage of creating an artifact is that the player can determine the base
 item type he wants to use. For more information about artifact creation see
 (8.4).
 
+
+Artifacts vs Nazgul
+-------------------
 Artifacts greatly resist Nazguls, which cause most other weapons to break more
 or less instantly. So even if an artifact weapon you find seems not very
 appealing in particular you might want to keep it just for slaying Nazgul.
@@ -6711,9 +7038,9 @@ appealing in particular you might want to keep it just for slaying Nazgul.
 Note: 'The Stormbringer' is not a real artifact but it will show the same
 resilience as true artifacts and random artifacts vs Nazgul.
 
-Some artifacts can be 'A'ctivated for a special effect. This will be shown
-in the list of its powers that you get when *identifying* it.
 
+Bonus from wearing similarly named artifacts
+--------------------------------------------
 If you wear/wield multiple artifacts of similar name, you will receive a luck
 bonus (see (5.8), 'LUCK', for details about luck). For example if you equip
     The Whip of Gothmog    (which happens to be a true artifact)
@@ -6729,8 +7056,22 @@ attacks of any type. Also they have a high chance to resist disenchantment
 effects. (If the player actually resists disenchantment already then they are
 completely safe.)
 
-Artifact ammunition never breaks or (in case of boomerangs) falls down to the
-floor instead of returning. Artifact weapons are harder to get disarmed.
+
+Artifact resets
+---------------
+Depending on the server settings, an 'artifact reset' occurs usually every
+three months, starting on 1st january.
+This reset will erase all true artifacts players carry, and therefore make all
+of them findable again, since there can only exist one of each true artifact at
+a time. So the main purpose is to prevent characters from hoarding true arts
+indefinitely.
+Also, art resets can cause a sort of art rush (like gold rush but with true
+artifacts), because everyone will be in a race to find the low-level yet useful
+ones which have a relatively high drop chance.
+You do not need to sell all your true artifacts before the reset occurs,
+because characters will automatically get paid the full value of the artifacts,
+which is even more than you'd get in shops (because charisma and shop keeper
+race factors in in stores, reducing the price you get).
 
 
 
@@ -6982,7 +7323,7 @@ SHRIEK          Not a real spell but a physical action, some monsters can emit
                 well be reason enough to teleport out instantly.
 TRAPS           Again not a spell but nasty nevertheless. The monster casts a
                 3x3 'circle' of traps around you, watch where you step.
-UNMAGIC         This can be extremely nasty for Istari. Unmagic cancels nearly
+UNMAGIC         This can be extremely nasty for istari. Unmagic cancels nearly
                 all kind of magic effects your character is currently under,
                 such as speed from a speed potion and even Disruption Shield.
                 This won't affect classes much such as warriors and archers but
@@ -7318,14 +7659,14 @@ experience points permanently. Here are some details about that process:
 --------------------------
 Runes are magical symbols used to summon and manipulate the raw elemental
 forces which sustain the world of life. They are the motivating force behind
-the traditional systems of magic in TomeNET. The Istari's spell-scroll, for
+the traditional systems of magic in TomeNET. The istari spell-scrolls, for
 example, are composed of a series of complicated runes which both protect the
 mage from immediate harm, and create the desired effect: from fireballs to
 magical satiation.
 
 Runemasters are less methodical in their approach to magic. Having learned
 to summon elemental forces without the aid of the traditional precautions,
-limitations and potential inefficiencies of the complex Istari spell system,
+limitations and potential inefficiencies of the complex istari spell system,
 Runemasters deal directly with the 'pure' substance of magic, and are limited
 only by their wits, their strength and their skill.
 
@@ -8034,6 +8375,12 @@ Lvl | Rune ID | Description
 Your chance to successfully tunnel through an obstacle depends on the obstacle
 and your 'digging power'.
 
+If you're not interested in the exact formula, skip down to (5.21b) which has a
+table  with example values for certain scenarios.
+
+
+(5.21a) Digging - Exact calculation
+-----------------------------------
 Your digging power is calculated as follows:
 An equipped item that provides (+X) to digging will add 20*X.
 If you have a digging tool equipped, its weight is added (eg 25.0 lbs -> +25).
@@ -8048,7 +8395,7 @@ If you don't have a digging tool equipped, your total digging power is halved.
 
 To successfully dig through certain features, your digging power must be
 greater than the result of a random number roll "random(0..x-1) + y":
--------------------------------------------------------------------
+---------------------------------------------------------------------
 Rubble      200 +  0
 Ivy         200 +  0
 Bushes      300 +  0
@@ -8069,9 +8416,16 @@ be very lucky and hope for the random(0..799) roll for quartz to actually be a
 digging power of 21. So on each turn of tunnelling your chance to succeed would
 be 1 in 800 in that case.
 
-Some too-long-didn't-calculate values, assuming 0.000 'Digging' skill
+
+(5.21b) Digging - Common example values
+---------------------------------------
+Some example values, assuming 0.000 'Digging' skill
 and unenchanted (ie (+0,+0)) digging tools:
 -------------------------------------------
+-You cannot tunnel through granite wall without a digging tool if your STRength
+ is below 18/180.
+-You cannot tunnel through quartz without a digging tool if your STRength is
+ below 18/100.
 -You cannot tunnel through granite with a shovel if your STRength is
  below 18/30.
 -You cannot tunnel through granite with a pick if your STRength is
@@ -8082,6 +8436,9 @@ and unenchanted (ie (+0,+0)) digging tools:
   and at 18/10 STR with a pick. If you use an enchanted shovel (+9,+9) (+1)
   however, you already have a 3% chance to succeed at only 5 STR.)
 
+
+(5.21c) Digging - Further information
+-------------------------------------
 For digging through granite wall without having to wait for ages to succeed,
 you will definitely want a better digging tool than basic shovels or picks.
 For example ones 'of Digging', a magical ego power for digging tools.
@@ -8454,6 +8811,8 @@ Note that not every skill is available to every profession (class).
                                 than your secondary weapon.
                                 While enabled ('Dual-hand mode') you will
                                 attack with both weapons, picked randomly.
+                                Classes that are able to dual-wield are
+                                warriors, rangers and rogues.
     .Martial Arts               Ability to fight with bare hands.
                                 Slightly raises your character speed.
                                 Lets you attack with special combat styles.
@@ -8802,6 +9161,8 @@ Note that not every skill is available to every profession (class).
                                 You can check your average dodging chance
                                 against opponents of same level by pressing
                                 'm' and choosing "Check dodge chance".
+                                Depending on the server version you might see
+                                textual descriptions instead of raw numbers:
                                 "Almost no chance" means less than 5%,
                                 "Slight chance" -> less than 14%,
                                 "Significant chance" -> less than 23%,
@@ -9101,6 +9462,10 @@ Warrior is strongly recommended.
     They get bonus on 'Sling-Mastery', 'Sneakiness', 'Dodging' and a large
     bonus on 'Stealth'.
 
+    Note:
+    Since hobbits have low hit points you might consider training the skill
+    'Health' to make up for it, depending on which class you choose to play.
+
 - Gnome
     Gnomes are intrinsically protected to paralysis effects. Gnomes are smaller
     than dwarves but larger than halflings. They, like the hobbits, live in the
@@ -9175,6 +9540,10 @@ Warrior is strongly recommended.
     in all stats and have attributes similar to humans. However, to
     compensate Yeeks learn, and thus gain levels, extremely quickly.
     Yeeks don't receive boni or mali on any skills.
+
+    Note:
+    Since yeeks have low hit points you might consider training the skill
+    'Health' to make up for it, depending on which class you choose to play.
 
 - Goblin
     Goblins have a decidedly mixed reputation. They are almost always grinning,
@@ -9322,8 +9691,6 @@ Warrior is strongly recommended.
 Here is a table showing boni/mali of the different races:
 (Di:Disarming,      MD:Magic Device,        ST:Saving Throw,    St:Stealth,
 Pe:Perception (sight range), Sr:Searching,  Fi:Fighting,        BT:Bows/Throw)
-Note that Yeeks are limited to 4 melee attacks per round (not including boni
-from skills or items yet).
 
             STR INT WIS DEX CON CHR     HP die  Exp%  Infra-Vision
             Di  MD  ST  St  Pe  Sr  Fi  BT
@@ -9455,7 +9822,7 @@ vary. For example a warrior cannot learn magic spells.
     to destroy the evil that lurks within, and if treasure just happens to
     fall into their packs, well, so much more to the glory of their church!
     They are very good with magical devices, preferring to call them
-    instruments of their god, but are not as good as Istari in their use.
+    instruments of their god, but are not as good as istari in their use.
     Priests also have excellent saving throws due to divine intervention.
     Priests make decent fighters, preferring blunt weapons over edged ones.
     Wisdom is the priest's primary stat.
@@ -9535,7 +9902,8 @@ vary. For example a warrior cannot learn magic spells.
     'Polymorph Self' spell. You have to use 'Polymorph Self Into..' if you
     want to use these forms.)
     To find out the special abilities of a monster form, see section (6.7).
-    A list of useful low-level forms for weapon-using mimics is give in (6.7c)
+    A list of useful low-level humanoid forms for weapon-using mimics is given
+    in (6.7c).
     because those have a somewhat harder time to find usable forms early on
     than martial artists who might just utilize easy-to-get forms such as fruit
     bat, wild cat, crow or spiders right away for great effect.
@@ -9837,7 +10205,9 @@ DEX, given for both, lightest possible weapon and startup weapon:
 
 Class           STR     DEX     Light weapon    Startup weapon
 ------------------------------------------------------------------------
-Warrior         18/30   all     3               1-2 (depends on weapon)
+Warrior         18      10      2               1
+                18/10   all     2               1
+                18/30   all     3               1-2 (depends on weapon)
                 18/50   all     3               2
                 18/50   18/10   4               2
                 18/70..110  *   3-4             3 (depends on weapon)
@@ -10092,8 +10462,7 @@ F: flag list
     HURT_ROCK   Means that this creature has a rock-like skin and body.
                 Takes damage from Stone-To-Mud and takes more damage from
                 'disintegration' attacks, but at the same time resists shards!
-    WILD_WOOD or ANIMAL
-                The player (like the monster) can pass trees.
+    WILD_WOOD   The player (like the monster) can pass trees.
     WILD_MOUNTAIN or WILD_VOLCANO
                 The player (like the monster) can climb mountains.
     WILD_TOO without any other WILD_xxx flags:
@@ -10116,18 +10485,10 @@ F: flag list
     OPEN_DOOR   This form can open doors.
     BASH_DOOR   This form can bash doors
                 (useful to forms that cannot OPEN_DOORs!).
-    EVIL        Becomes susceptible to certain 'good' or 'holy' effects.
-    DEMON or UNDEAD
-                This form will take 2x damage from holy orbs or holy fire,
-                and suffer from various 'good' effects/spells. UNDEAD has
-                in general more trouble with 'good' effects than DEMON.
-                UNDEAD will also become susceptible to some 'life' effects,
-                regarding healing or cleansing mostly.
-                Also see further below, following the 'spell list' paragraph,
-                a list of intrinsical boni that all all demons or undead
-                creatures get even if the r_info does not list the according
-                flags.
     HURT_LITE   This form will take 2x damage from light attacks.
+
+    For all racial flags such as ANIMAL, SPIDER, EVIL, DEMON etc please see the
+    list of racial abilities further below.
 
 S: spell list
     These spells can be cast by the monster. Most of them are available to
@@ -10159,51 +10520,59 @@ Especially interesting spells of mimics are 'Blink' (Phase Door) and
 so you might want to create macros for them.
 
 
-Further, certain races and classes get abilities (even if they are not
-mentioned in r_info.txt for monster forms):
--------------------------------------------
-Bats        Feather falling (levitation).
-Elves       Resist light.
-Dark-Elves  Resist darkness.
-Hobbits     Dexterity bonus of +2 for not wearing shoes. (Or 'Halflings'.)
-Gnomes      Free action.
-(Dwarves    Blindness resistance, climbing at level 30.)
-(High-Elves  Resist light, see invisible.)
-Yeeks       Feather falling (levitation).
-(Ents       Slow digestion, speed - 2, sensitive to fire, see invisible at
-            level 4, can swim, pass trees.)
-All ghosts  See invisible, Infra-vision +3.
-All orcs    Resist darkness.
+Further, certain races get additional fixed abilities
+(even if they are not explicitely mentioned in r_info.txt):
+-----------------------------------------------------------
+Bats            Feather falling (levitation).
+Elves           Resist light.
+Dark-Elves      Resist darkness.
+Hobbits         Dexterity bonus of +2 for not wearing shoes. (Or 'Halflings'.)
+Gnomes          Free action.
+(Dwarves        Blindness resistance, climbing at level 30.)
+(High-Elves     Resist light, see invisible.)
+Yeeks           Feather falling (levitation).
+(Ents           Slow digestion, speed - 2, sensitive to fire, see invisible at
+                level 4, can swim, pass trees.)
+All animals     Able to pass trees.
+All spiders     Able to pass mountains, able to pass spider webs.
+All ghosts      See invisible, Infra-vision +3.
+All orcs        Resist darkness.
 All trolls and giants
-            Sustain strength.
+                Sustain strength.
 All dragonriders
-            ESP_DRAGON at level 5, feather falling (levitation),
-            flying at level 30.
+                ESP_DRAGON at level 5, feather falling (levitation),
+                flying at level 30.
 All evil creatures
-            Becomes susceptible to certain 'good' or 'holy' effects.
+                Becomes susceptible to certain 'good' or 'holy' effects.
 All undead creatures
-            Resist darkness, blindness, poison (usually immunity, depends on
-            r_info flags);
-            can't bleed (no_cut), infra-vision +1, insanity attacks are
-            reduced by a little bit.
-            Becomes susceptible to 'life', which concerns some healing or
-            cleansing effects for example.
-            However, at the same time they become gorged less quickly when
-            for example quaffing lots of healing potions quickly.
+                Resist darkness, blindness, poison (usually immunity, depends
+                on r_info flags);
+                can't bleed (no_cut), infra-vision +1, insanity attacks are
+                reduced by a little bit.
+                Becomes susceptible to 'life', which concerns some healing or
+                cleansing effects mostly.
+                However, at the same time they become gorged less quickly when
+                for example quaffing lots of healing potions quickly.
+                Take 2x damage from holy orbs or holy fire and suffer
+                from many 'good' effects/spells (even more so than demons).
 All greater demons (capital 'U')
-            Resist poison (in most cases immunity, depends on r_info flags).
+                Resist poison (usually immunity, depends on r_info flags).
+                Take 2x damage from holy orbs or holy fire and suffer
+                from a couple of 'good' effects/spells (similar to undead).
 All non-living creatures
-            Resist poison (usually even immune, depends on r_info flags) and
-            fear; insanity attacks are reduced somewhat.
-All vampires and vampire bats
-            Chance to drain life on attacking in melee.
-            Vampire bat form has 100% chance to do a vampiric attack,
-            real vampire forms have 50% chance (half their attacks are hits,
-            the other half is biting). For details see '(5.15) Vampirism'.
-All angels  Resist light, blindness and poison (usually immunity, see r_info
-            flags), resist fear, resist confusion, see invisible, strong
-            resistance to insanity-inducing attacks.
-            Note: 'Fallen Angel' doesn't get light/confusion resistances.
+                Resist poison (usually even immune, depends on r_info flags)
+                and fear; insanity attacks are reduced somewhat.
+All vampires and vampiric monsters (vampire bats and others)
+                Vampires are susceptible to light.
+                Chance to drain life on attacking in melee.
+                Vampire bats and mist have 100% chance to do a vampiric attack,
+                real vampire forms (and vampiric ixitxachitl) have 50% chance
+                (half their attacks are hits, the other half is biting).
+                For details see '(5.15) Vampirism'.
+All angels      Resist light, blindness and poison (usually immunity, see
+                r_info flags), resist fear, resist confusion, see invisible,
+                strong resistance to insanity-inducing attacks.
+                Note: 'Fallen Angel' doesn't get light/confusion resistances.
 
 Keep in mind that by changing forms you can potentially lose abilities that
 you had in player form, because they were bound to your normal form.
@@ -10366,7 +10735,7 @@ Wyvern                  speedy; can fly; passes most terrains;
                         immune to poison; susceptible to 'good'
 
 Multi-hued Hound        resists fire/cold/lightning/acid/poison and gets a
-(Code 512)              random immunity of those five on polymorphing;
+(Code 513)              random immunity of those five on polymorphing;
                         can't be confused or paralyzed;
                         can breathe the five elements mentioned above
 
@@ -10480,8 +10849,8 @@ Firebird                speedy and tough; can fly and passes most terrains;
                         can breathe fire and light
 
 
-(6.7c) Useful low-level forms for weapon-using mimics
------------------------------------------------------
+(6.7c) Useful low-level humanoid forms for weapon-using mimics
+--------------------------------------------------------------
 Mimics who use weapons have less choices for forms than martial arts users who
 do not need to rely on humanoid forms and can just utilize easy-to-get forms
 such as fruit bat, wild cat, crow or spiders right away for great effect.
@@ -10495,7 +10864,8 @@ Forms you can already get in Bree town:
 ---------------------------------------
 Village idiot    1  Its slightly erratic movement can be a bit annoying but it
                     will give a speed bonus which can be useful when fighting.
-Mean-looking mercenary / Battle-scarred veteran
+Mean-looking mercenary
+Battle-scarred veteran
                  1  They can improve your initial HP (hit points) and AC
                     (armour class) fairly well.
                     They both have slightly erratic movement though.
@@ -10624,8 +10994,8 @@ Schools give certain permanent boni and abilities to the player, when trained
 to a certain extent. The boni are listed below each school.
 
 
-Istari schools:
----------------
+Istar schools:
+--------------
 Mana
     Manathrust      Casts a powerful mana bolt.
                     Required skill level for first spell level: 1.
@@ -11465,8 +11835,9 @@ Parrying enemy attacks with a weapon, and blocking attacks with a shield.
 Press 'm' and choose 'Check block/parry chance' to see your actual ability
 to block or parry. In order to have this option appear in your 'm' menu, you
 need a combat skill greater than zero.
-The result will map to the following numbers:
 
+Depending on the server version you might see textual descriptions instead of
+raw numbers:
 "You cannot parry at the moment."               You aren't wielding a weapon.
 "You have almost no chance of parrying."        Below 5% chance.
 "You have a slight chance of parrying."         Below 10% chance.
@@ -11482,6 +11853,8 @@ Note: Above 30% can only be reached in defensive combat stance without a
       advantage to the weapon instead, increasing the parry chance.)
       Also your class needs to be fairly skilled at parrying (see below.)
 
+Depending on the server version you might see textual descriptions instead of
+raw numbers:
 "You cannot block at the moment."               You aren't wielding a shield.
 "You have almost no chance of blocking."        Below 5% chance.
 "You have a slight chance of blocking."         Below 14% chance.
@@ -11780,7 +12153,7 @@ Beginners (level 1)
 
 Low level character (up to 15)
 ------------------------------
-+ Several Rations of Food, Some Flasks of Oil
++ Several Rations of Food or Scrolls of Satisfy Hunger, some Flasks of Oil
 + Some Potions of Heroism
 + Some Potions of Cure Serious Wounds / Critical Wounds
   Note that Potions of Cure Critical Wounds also remove certain effects like
@@ -11931,6 +12304,9 @@ Low level character (up to 15)
   will become less powerful if used together with a shield, and some weapons
   cannot be used at all in conjunction with a shield. A fighter should have
   approx. 30..45 AC or more.
++ Buy a fire resistance ring as soon as possible because many monsters can use
+  fire spells early on. Also get an acid resistance amulet maybe, since acid
+  damage is especially nasty to your inventory and equipment.
 
 
 Medium level character (up to 25)
@@ -12349,6 +12725,35 @@ If a monster is low on HP or scared it might try to use escape spells and if
 it's low on HP or stunned it might emphasize heal spells (the chance to
 successfully cast those is also negatively affected by stun same as all other
 spells - compare (4.12)).
+
+
+
+(7.6) Town/dungeon related hints
+--------------------------------
+-Before going as deep as 1000 ft (ie dungeon level 20) or deeper, make sure
+ that you have 'free action' because many monsters will be able to try and
+ paralyze you.
+
+-For Mordor make sure you have the four base resistances and also free action.
+ You might also want to get nexus resistance as soon as possible because nexus
+ attacks can swap your six character attributes randomly.
+
+-For Paths of the Dead you should also have nether resistance and 'hold life'
+ because many undead monsters have nether-based attacks or can drain your
+ experience points.
+
+-When going even deeper the next resistance you want is probably chaos, since
+ it can deal excessive damage and potentially deadly side effects (experience
+ drain, hallucination and confusion) all at once. After that maybe comes
+ disenchantment resistance to protect your equipment, or sound resistance to
+ avoid getting knocked out by certain attacks such as sound, and especially
+ water and plasma (hound packs of those types can knock you out quickly).
+
+-In Gondolin mindcrafters and archers may spawn. You should enter the local
+ inn if you want to go AFK so you don't get killed by their ranged attacks.
+
+-Minas Anor, Lothlorien and especially Khazad-dum can spawn swordmasters or
+ even grand swordmasters, which can disarm you and deal heavy damage. Beware.
 
 
 
@@ -12848,6 +13253,7 @@ The differences between RPG ruleset and normal servers are as follows:
   -Quests usually require you to find fewer specimen.
   -Temporary luck bonus from deeds is somewhat longer.
   -Usually, scheduled artifact resets happen less frequently (if at all).
+   (See (5.9b) for more information about artifact resets.)
   -Halloween event allows players up to 40 instead of 35,
    and the Great Pumpkin spawns on floors up to level 49 instead of 39.
   -Stealing from stores is possible right away instead of requiring a certain
