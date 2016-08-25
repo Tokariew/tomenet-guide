@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 4. September 2011 - written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.4.7a - official websites are:
+| Latest update: 11. October 2011 - written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.4.8 - official websites are:
 | http://www.tomenet.net/ (main site),
 | http://koti.mbnet.fi/mikaelh/tomenet/ and http://www.c-blue.de/rogue.html
 |
@@ -109,7 +109,9 @@ Contents
     (5.18)  Monster auras
     (5.19)  Experience-draining items
     (5.20)  Runes & Runemastery
+    (5.20a) Runemastery Tables
     (5.21)  Digging
+    (5.22)  Recharging
 (6) Character details
     (6.1)   Attributes
     (6.2)   Skills, opposed skills
@@ -221,7 +223,10 @@ compile the game under '(2.1) Installing TomeNET'.
  allows you to move diagonally too, which is very important.
 -You can wear/wield your armour/weapons by pressing 'w' and choosing them
  from your inventory which is displayed in the bottom right window.
--You can pick up items if you stand on them and press 'g'.
+-You can pick up items if you stand on them and press 'g'. Items that are
+ especially valuable in the beginning are magic wands and staves, so make sure
+ to pick those up, identify them with a scroll of identify, and sell them to
+ the magic shop in town.
 -You can drop items with 'd' or destroy items with 'k'.
 -You can enter stairs down/upwards by standing on them and pressing the
  corresponding key '<' or '>'.
@@ -257,6 +262,14 @@ compile the game under '(2.1) Installing TomeNET'.
  is still awaiting account validation by an admin.
  Also, if a grey '(O)' is in front of a player name, it means that player is
  using an outdated client. It's very important to keep your client up to date!
+-Note that your character's "speed" may change. Speed is the factor telling you
+ how fast your character can move, fight or perform any other kind of action.
+ If your character's speed gets increased (for example by drinking a potion of
+ speed) you will see a green indicator (for example 'Fast +10') at the bottom
+ line of the main window.
+ If your character loses speed, for example by carrying around too many heavy
+ items in your inventory, you will see a light brown indicator (for example
+ 'Slow -3') at the bottom line instead.
 
 It is recommended that you continue reading at (3.2) now,
 or glance at (7.3) first ;)
@@ -338,7 +351,7 @@ g       g       pick up an item from the floor. You have to stand on the item
                 the number pad while numlock is turned off. Gold is always
                 picked up automatically.
 C       C       see a character overview.
-L or M  W or M  navigate on the map (use direction keys if using L).
+L, M    W, M    look around/display the map (use direction keys with L).
 s       s       search adjacent fields, objects or walls for hidden traps or
                 doors.
 S       #       enter 'search mode'. You will search your adjacent fields once
@@ -2644,7 +2657,7 @@ Here is a list of all available ability codes:
 6       Shooting techniques (see (6.12))
 8       Check your dodge chance (for dodging skill)
 (included in '6' now: 9       Create ammunition (for archery skill))
-10      Set a monster trap (for trapping skill)
+10      Set a monster trap (for trapping skill, see (4.7))
 11      Cast a magic spell / recite a holy prayer
 13      Change combat stance (for combat stances skill)
 14      Check your chances of parrying and blocking (for melee fighters,
@@ -3424,10 +3437,10 @@ Ranged weapons:
                 (Note: @O can either be on your ammunition or on the bow.)
 
 Magic devices:
-   @O           Auto-retaliate with it. (Wands, staves, rods.)
+    @O          Auto-retaliate with it. (Wands, staves, rods.)
 
 Spellbooks:
-   @Oc          You will auto-retaliate by casting the spell 'c)' from this
+    @Oc         You will auto-retaliate by casting the spell 'c)' from this
                 book (or any other spell, change the inscription accordingly).
                 IMPORTANT: If you cannot cast spells from the book or you
                 inscribe an unsuitable item, auto-retaliation will be disabled
@@ -3437,13 +3450,18 @@ Spellbooks:
 Runes:          See (5.20).
 
 Any item:
-   @OMd         Use innate mimic power 'd)' (for example).
+    @OMd        Use innate mimic power 'd)' (for example).
                 (Note that you cannot auto-retaliate with 'polymorph into...'
                 power aka 'c)', instead it will be treated like power 'b)' aka
                 'polymorph into next form with fitting extremities'.)
 
 If you want an auto-retaliation-enabling inscription to only work while you are
 around a town, add a 't' after the 'O', examples: '@Ot', '@Otb'.
+
+If you want to fall back on melee-autoretaliation in case you are out of mana,
+use 'Q' symbol instead of 'O'. Examples: '@Qt', '@Qtb'.
+This is useful for classes that may use attack spells yet can perform decently
+in close combat, such as paladin or mindcrafter.
 
 
 
@@ -3524,44 +3542,49 @@ the owner.
 To enter a dungeon, you look for the staircase symbol '>', step on it and press
 the '>' key to enter. Same for entering towers, except their staircase goes
 upwards instead of downwards, and hence is a '<' symbol instead of '>'.
+
 In Bree, there is often a so-called Training Tower, which is represented by a
 dark green '<'. Enter it by pressing the '<' key.
-Whenever you take staircases up/down, you'll receive the stair-GoI buff, see
-(0.4) for details on that.
 The training tower allows you to 'die' without suffering major consequences
 (except for a slight loss in experience and gold), and is easier in general.
 An experience penalty might be applied for killing monsters in the tower
 (usually 50%). You might ask other players in game (use ':' to chat) where/if
 there is a newbie tower (also called 'Training Tower'), or you might search for
 it yourself. It's usually in Bree, to the lower right of the town centre.
+
 In general, when you take a staircase, your character will temporarily get a
 high Armour bonus (+100) and a chance to deflect enemy attacks, for a very
-short duration. This is an extra protection to help surviving nasty surprises.
+short duration. This is an extra protection (also called 'stair-GoI', compare
+(0.4)) to help surviving nasty surprises.
 Keep your scrolls of teleportation ready anyway!
 
-While inside a town, you get a good overview including the staircases upwards
-and downwards by invoking the map by pressing SHIFT+'M' (capital M !).
+While in a town, you can invoke a map that shows the staircases upwards
+and downwards by pressing SHIFT+'M' (ie capital M).
 If you leave a town and explore the wilderness, M will bring up a map showing
 you towns and areas that you have explored so far.
 
-After you entered the dungeon, make sure again that you have equipped a light
-source! Note the bright dots around you, these are lightened fields within the
-radius of your light source. To look at your current dungeon/tower level or
-city, press 'L' and use direction keys to navigate on the map.
-Also know that there are interesting dungeons found in the wilderness that are
-not connected to a town at all!
+Before you enter a dungeon, make sure that you have equipped a light source!
+Note the bright dots around you, these are lightened fields within the
+radius of your light source. To look around your current dungeon/tower level
+or town, press 'L' and use direction keys to move your view panel. ESC key
+bring you back to normal view mode.
 
-When you enter the dungeon from within the starting town Bree, you will note
-in the main window instead of "Bree" your actual depth is displayed, telling
-you on which dungeon level you are. Each dungeon level is 50 feet deeper.
-Monsters have approximately the same level than the dungeon level they appear
-on. You should try to figure out how deep you can go without dying. The
-dungeon depth I can recommend is between 1/3 (if you are _very_ weak) of your
-own character level and 3/4 of your character level. You can also go deeper,
-in case you want to try diving quickly. On 750 ft you can encounter hounds
-(their symbol is a 'Z'). These don't have much Hit Points but give much
-experience. They are a valued target for divers.
+The wilderness actually bears many interesting dungeons apart from the usual
+well known town dungeons.
+
+When you enter the dungeon 'Barrow-Downs' in the starting town Bree, you will
+note in the main window instead of "Bree" your actual depth is displayed,
+telling you on which dungeon level you are. Each dungeon level is 50 feet
+deeper.
+Monsters have approximately the same level as the dungeon level they appear
+on. You should try to figure out how deep you can go without dying.
+The dungeon depth I can recommend is between 1/3 (if you are _very_ weak) of
+your own character level and 3/4 of your character level. You can also go
+deeper, in case you want to try diving quickly. On 750 ft you can often find
+hounds (their symbol is a 'Z' for 'Zephyrs'). These don't have many hit points
+but give a lot of experience, making them a valued target for divers.
 For a list of the dungeons see '(4.5) Towns'.
+
 
 Dungeon types
 -------------
@@ -3629,11 +3652,11 @@ dungeon or tower. Those have no further functionality and are coloured grey.
 Overview:
 Dungeon type  Death?  No-ghost? Recall          Staircase   Prob travel   +Exp
 ------------------------------------------------------------------------------
-Normal        yes     (char)    yes             yes         yes           0%
+Normal        yes     (char)    yes             yes         yes           + 0%
 No death      no      no        yes             yes         yes           -50%
 No recall     yes     (char)    no              yes         no            +10%
-No rec down   yes     (char)    upwards only    yes         upwards       +5%
-No up         yes     (char)    yes             downwards   downwards     +5%
+No rec down   yes     (char)    upwards only    yes         upwards       + 5%
+No up         yes     (char)    yes             downwards   downwards     + 5%
 Force down    yes     (char)    at bottom only  downwards   downwards     +10%
 Ironman       yes     yes       at bottom only  downwards   no            +15%
 Hellish       yes     yes       yes             yes         yes           +10%
@@ -4002,8 +4025,8 @@ type appended to it in { } brackets. It looks like this:
 ^ A potion of Constitution {Chaos Ball Trap}
 
 
-About trap sets (or trapkits):
-------------------------------
+About trap sets (or "trapping kits"):
+-------------------------------------
 The 'Trapping' skill allows a player to set up 'monster traps'.
 
 A monster trap consists of
@@ -4065,6 +4088,29 @@ makes it harder for monsters to disarm the trap. Trap sets and ammo that were
 disarmed by a monster cannot be recovered.
 
 You can disarm your own traps to get back the trap set (and ammunition).
+
+
+Hints for quick and easy handling:
+----------------------------------
+It is a good idea to inscribe trap kits and their loads.
+For example you could inscribe all trapping-related items  !=  so you will pick
+them up from the floor automatically when you want to retrieve trap sets that
+went off.
+
+Also you could inscribe the ammo/load items  @m1  so you can macro them easily.
+
+In the macro wizard you could even make a macro that prompts you for which trap
+kit to use if you enter a blank line (just hit ENTER key) when it asks you
+which item you want to load a trap with.
+
+Last but not least when your trapper is low level and you pick up all sorts of
+bad potions you could make a macro to load a fumes trap set with a potion
+inscribed  @m1 . Now make another macro that lets you inscribe all the bad
+potions you pick up  @m1  so you won't have to do that manually for each of
+them. That inscribing-macro could look like this:
+{-@m1\r
+where the '-' will cause the { inscribe command to prompt for inscription first
+and the item afterwards, effectively simply asking you to specify the item.
 
 
 
@@ -6063,9 +6109,6 @@ Blood Bond      Inscribe this @P<playername>, for example @PGandalf, then read
                 cancelled when the blood bond ends or when a player logs out.
                 Everyone on the server will be informed about the result:
                 "<A> wins the blood bond against <B>".
-                (Hit 'P' for party menu to declare war on someone after you
-                read blood bond. Making peace will be done automatically when
-                a blood bond ends!)
 Remove Curse    Breaks lesser curses on items, allowing you to unwear or
                 destroy them. Note that many items can be sold for good cash
                 as soon as they are uncursed!
@@ -6929,7 +6972,7 @@ experience points permanently. Here are some details about that process:
 Runes are magical symbols used to summon and manipulate the raw elemental
 forces which sustain the world of life. They are the motivating force behind
 the traditional systems of magic in TomeNET. The Istari's spell-scroll, for
-example, are composed of a series complicated runes which both protect the
+example, are composed of a series of complicated runes which both protect the
 mage from immediate harm, and create the desired effect: from fireballs to
 magical satiation.
 
@@ -6941,10 +6984,10 @@ only by their wits, their strength and their skill.
 
 This approach is not necessarily a safe one. Inexperienced Runemasters risk
 losing control of their spells, which can result in broken runes, physical
-damage, sickness, madness or even death.
+damage, sickness, madness or even death. (See Penalties & Backlash below.)
 
-These risks are compounded when the Runemaster is confused, stunned, cut, low
-on magical stamina or simply attempting a particularly dangerous spell. While
+These risks are compounded when the Runemaster is confused, stunned, low on
+magical stamina or simply attempting a particularly dangerous spell. While
 an Istar is always prevented from casting outside of his or her ability,
 Runemasters may continue making spell attempts with increased risks (drawing
 on his or her own health, if necessary), until the penalties are fatal.
@@ -6952,18 +6995,17 @@ on his or her own health, if necessary), until the penalties are fatal.
 Runemasters are able to cast many kinds of spells, but it's important to note
 that some are much more difficult to manage than others. All rune-spells can
 either be projected at the world or a monster, or directed at the Runemaster
-for a different result.
+for a different result. These are 'projection' and 'self' spells.
 
 Successful Runemasters will develop an affinity for a small number of runes.
 Eventually, they may come to a point where they can safely recite these runes
 from memory, especially when casting simple spells. However, having the
-physical runes present increases the chance of success, and spell efficiency
-increases with successfulness, so even high level Runemasters will usually
-carry their selected runes.
+physical runes present increases the chance of success, and mitigates many
+of the penalties of failing a rune-spell.
 
-Runemastery requires dexterious physical and intellectual manipulation of
+Runemastery requires dexterous physical and intellectual manipulation of
 the rune-forms, requiring high INT and DEX character stats. For this reason,
-Runemasters also make decent thieves and fighters: some rune-spells may even
+Runemasters also make decent thieves and fighters- some rune-spells may even
 boost the caster's combat abilities.
 
 To some extent, Runemasters will need to experiment to find out their own
@@ -6977,118 +7019,666 @@ To cast a rune-spell, enter the m-key menu and select 'Draw a rune'.
 
 Rune-spells are made up of three components:
     1. A combination of up to three runes
-    2. A spell-modifier
-    3. A spell-type, or format (bolt, ball, etc.)
+    2. A spell-modifier (minimized, brief, etc.)
+    3. A spell-type (bolt, ball, self, etc.)
 
 Each component has different associated costs; some of these can be viewed in
 the menu. When selecting runes, press return once you are finished, or enter
 the maximum of three runes and continue to the modifier selection. The menu
-will prompt for a direction if it is required after you're done.
-Note that only true runemasters will be able to draw the full amount of three
-runes, while other classes that train in rune skills can draw up to a maximum
-of two runes.
+will prompt for a direction if it is required after you're done. Note that
+only true Runemasters will be able to draw the full amount of three runes,
+while other classes that train in rune skills can draw up to a maximum of two
+runes.
+
+Each component has an associated level modifier, contributing to the overall
+average level of skill needed to cast or even attempt to cast a rune-spell.
+While selecting components with the m-key menu or the macro wizard, the color
+of each component can give you an estimate of the skill level needed for a
+particular spell. Keep in mind that it is impossible to attempt a rune-spell
+15 levels or higher above your effective average skill level, and that
+combining runes corresponding to skills that vary widely in level will result
+in a reduced average. Most rune combinations use the maximum level of the
+runes involved (see Trait Rules, below).
+
+You can discover new spell combinations and exceptions to many patterns by
+experimenting. Utilizing the color ratings of the m-key menu and macro wizard
+and keeping the physical runes required for a combination are often enough for
+safety, although having more resists can protect against backlash. Here is an
+approximation of the color system, assuming runes in inventory (add 5-10% fail
+for each missing rune):
+Blue   ->  Comfortable (10+ skill levels above)
+White  ->  Safe with Runes (Appropriate level)
+Yellow ->  Risky with Runes (1-5 skill levels below)
+Orange ->  Dangerous with Runes (6-14 skill levels below)
+Slate  ->  Impossible (15+ skill levels below, or no skill)
+
+
+Penalties & Backlash:
+---------------------
+Should your average skill level be much lower than the level of the specified
+rune-spell, or if a number of penalties have accrued- by casting while
+stunned, confused, from memory (no physical runes), or without enough
+MP, the risk of suffering backlash and other negative effects increases. In
+addition to an increased chance of outright failure of the rune-spell, high
+penalty levels also increase the danger of backlash effects. For this reason,
+experienced Runemasters will often try to minimize these penalties; having
+the physical runes for a rune-spell at hand is the first step in doing this.
+
+Keeping the correct runes in your inventory additionally serves to mitigate
+many of the more dangerous rune-spell backlash effects, breaking runes rather
+than the Runemaster. This is especially important once damaging effects of
+rune-spells begin to outpace the Runemaster's intrinsic durability; resisting
+one's own rune-spells can be an important factor for survival in critical
+situations.
+
+
+Gestalt, Null, Exploding Spells:
+--------------------------------
+Runemastery is often a chaotic and unstable approach to magic, and many of
+the spells weaved by Runemasters combine elements in unlikely ways, with
+flashy and varied results. Gestalt spells combine the basic elements of
+acid, electricity, fire, cold, and even poison, to create an effect with
+the properties of each that contributes. Examples include combining cold
+and acid to produce an element with both properties, 'rime', or combining
+electricity and fire to produce 'plasma', a higher level exceptional gestalt
+with an added stunning effect.
+
+Following similar trait rules, combining fire and cold results in a
+nullified spell, the opposing elements counteracting and consuming one
+another. It may be practical for aspiring runemasters to learn the
+properties associated with each element, and their relationships in
+combination, to aid in the discovery of new rune-spells.
+
+Exploding runespells encompass a powerful subcategory of the art, in which a
+projection such as a bolt, beam, ball, and even waves, clouds and storms
+strike the area around their targets with addition elemental damage. Instant
+effects (bolt, beam, ball) always explode and additionally explode when
+colliding with terrain, while timed effects (waves, clouds, storms) have a
+chance to explode each tick. Timed effects also explode in unique manners;
+a cloud explosion acts much like an instant effect when triggered, while
+waves have an increased radius with less damage, and storms have a reduced
+radius with more damage.
+
+
+Rune Schools, Families, Augments:
+---------------------------------
+A runemaster's choice of skills is a strong defining characteristic of the
+class; other classes training runemastery will never venture into the subtle
+realm of 3-rune spells and augmentation effects. Much like an Istar augments
+spells with spell-power, a true Runemaster will augment many spells with
+powers and effects drawn from choice schools, such as the evocation 'school'
+of fire and chaos. (See Table of Augments, below)
+
+Spell families are formed in 3-rune combinations that share the same effect,
+as well as common contributing runes. All single school 3-rune spells (spells
+that combine the two elements of a skill school, plus a third) form groups
+called families. A family of spells shares a common projection element and
+self spell, but recieves the benefit of any augment the runemaster can provide
+through choice of a third element. This results in a number of similar spells,
+with variable modifications based on the runemaster's skill with the third,
+augmenting, element.
+
+Augments require a minimum skill level in the rune with which the rune-spell
+takes as an augment. Additionally, not all augments appear in every family of
+spells, precisely because those elements are already in use within the spell
+to be augmented. Augments may also appear outside of families, such as is
+common with the time element in combination, resulting in family-like traits
+among many rune-spells (See Regarding Element Traits, Below). Augments scale
+linearly with rune skill level, and grant from 0% of their benefit and 200%
+of their drawback to 100% of each at skill level 50.
+
+
+Trait Rules:
+------------
+Fundamental rune elements [a-h] follow rules in combining with other elements.
+With the exception of single-school 2-rune spells (eg. acid/water, one skill)
+rune-spells generally follow the rules as outlined below.
+
+'Base' rune elements of acid, electricity, fire, and cold combine with each
+other in gestalt fashion and flavor other more powerful elements when combined.
+
+'Water' and 'Earth' are considered classical elements, combining with high
+elements to produce powerful attacks, and low elements for utility spells.
+
+'Chaos' and 'Nether' are elements of power, maintaining a high level of
+influence in combination. They average their level with combining elements.
+
+'Poison' as a gestalt will add a status ailment to a projected spell with a
+burst of dehabilitating gas (sleep, confusion, stun).
+
+'Nexus' works like an inverting element, changing weaker elements it is
+combined with into their polar opposites, eg. fire->cold and water->earth.
+
+'Force' in combination is always a minimum of level 20 (the minimum level of a
+stunning effect), with the exception of light and dark, level 5 combinations
+with chaos and nether, respectively.
+
+'Time' based spells assume the lower level of the other runes, despite
+including a high level rune itself. Time projections are often augmented with
+time.
+
+Although some rune combinations are an exception to these rules, all families
+of rune-spells abide by strict patterns that dictate their powers and effects.
+Minor exceptions abound however, due to the nature of the combining elements;
+the trinity of plasma, ice and thunder often make example of this.
+
+
+Macros & Spell Construction:
+----------------------------
+Runemastery macros look like this (key translation in parenthesis):
+(Note: The ability code for runemastery is 18.)
+
+'Projection' one to three rune-spells use the following format:
+    \e)*tm@18\r[a-h]\r[a-h][a-h]-
+    \e)*tm@18\r[a-h][a-h]\r[a-h][a-h]-
+    \e)*tm@18\r[a-h][a-h][a-h][a-h][a-h]-
+
+'Self' one to three rune-spells (spell type 'b') us the following format:
+    \e)m@18\r[a-h]\r[a-h]b
+    \e)m@18\r[a-h][a-h]\r[a-h]b
+    \e)m@18\r[a-h][a-h][a-h][a-h]b
+
+Note that you must choose at least one and up to three runes, one
+imperative modifier, and one spell type. If you choose three runes for a
+spell, the \r is not required. [a-h] denotes the choice of a letter from
+a to h inclusive, which represents a rune, modifier, or type.
+
+Here is a single-rune element example, using fire (one-rune, code 'c'):
+
+'Projection' with 'Fire':
+    \e)*tm@18\rc\rac-  (fire--minimized--bolt)
+
+Which is a minimized fire bolt, a projection targetting a single opponent.
+
+A fire ball spell looks like this:
+    \e)*tm@18\rc\rae-  (fire--minimized--ball)
+
+To increase the radius of the ball, adjust the modifier to something that
+sounds bigger (also increasing the level, difficulty and cost):
+
+A moderate fire ball:
+    \e)*tm@18\rc\rbe-  (fire--moderate--ball)
+
+Or an expanded fire ball:
+    \e)*tm@18\rc\rge-  (fire--expanded--ball)
+
+
+'Self' Spells with 'Fire':
+    \e)m@18\rc\rab     (fire--minimized--self)
+
+Which is a minimized resist fire spell, a self-spell affecting the caster.
+
+A lengthened resist fire spell:
+    \e)m@18\rc\rgb     (fire--lengthened--self)
+
+In the same way that you can increase or decrease a fire ball's radius, you can
+increase or decrease the duration of any timed spell by selecting 'lengthened'
+or 'brief'. Other modifiers may adjust the duration to a lesser extent.
+
+A brief resist fire spell:
+    \e)m@18\rc\rfb     (fire--brief--self)
+
+
+Occasionally, more complex spells such as 'teleport to' or 'stone-to-mud'
+require a special macro that deviates from the examples above.
+
+Teleport-to requires that you set a target before casting:
+    \e)*tm@18\rkl\rab  (force/time--minimized--self)
+
+Stone-to-Mud, a projection with no *t...- (manual target):
+    \e)m@18\rbh\rac    (water/earth--minimized--bolt)
+
+Advanced runemasters may wish to create macro sets which construct spells
+on the fly, swap macro sets containing preset rune-spells, or set up
+combinations of macros to chain together spells quickly and efficiently.
+Spells with a lowered casting time might even be combined in one macro,
+creating a 'dual-cast' effect (especially true with the 'brief' modifier).
+
+Note that every modifier has drawbacks associated with the benefits of using
+it: higher cost, level, reduced damage, increased failure rates- check the
+specifics in the m-key menu before you create a new macro.
+
+
+Auto-retaliation & burst type:
+------------------------------
+The 'burst' spell type is also called 'melee' spell. It is only usable on
+adjacent targets, a lashing-out of magical power at an opponent in melee range.
+It is technically a ball spell with a range and radius of a single tile.
+It is cheaper than a regular bolt, cannot be deflected, and usually does
+more damage. It may be difficult to use manually but it is very useful for
+auto-retaliation.
+As a runemaster gains levels, melee spells take less and less time to cast,
+and function similar to other melee weapons, with multiple blows (in this case,
+casts) per round. Note that melee spells affect the ground tile on which it is
+targetted, possibly resulting in damaged items or other terrain features.
+
+If you inscribe @O[a-h][a-h] on a rune, you will automatically retaliate with
+a spell of the selected modifier and type, or the rune element inscribed. For
+example, if you set the inscription to @Oaa on a rune of fire, the 'burst'
+spell type will be selected, with a 'minimized' spell modifier. This will
+result in retaliation with a minimized fire melee rune-spell.
+
+Inscribing multiple rune types with identical inscriptions will result with a
+retaliation spell that combines the elements of the inscribed runes. This takes
+the first rune found in your inventory with an @O[a-h][a-h] inscription, and
+checks for other runes with the same @O[a-h][a-h] inscription format.
+For example, an inventory like so, resulting in a moderate wave of ice:
+    a) 1 'Gelum' Rune of Cold {+,1} {@Obf}
+    b) 1 'Ostes' Rune of Earth {+,1} {@Oaa}
+    c) 1 'Mio' Rune of Water {+,1} {@Obf}
+Note that the earth rune in slot b) is skipped, as @Oaa does not match @Obf,
+which is the first inscription of a rune found in the runemaster's inventory.
+
+Note that although you can set any spell for retailation, some spells will be
+disabled, such as blink or teleport. Other spells that affect an area over time
+such as 'cloud' and 'storm' spells, and many self-spells with timed durations,
+make poor choices for auto-retaliation.
+
+You can omit the type parameter and just inscribe @O[a-h], which will use a
+'burst' spell as default. For example @Ob for a moderate burst.
+
+
+Rune traps:
+-----------
+Certain type 'self' spells will result in placing a 'rune trap'. That is an
+explosive charge of rune energy placed on the floor that will detonate when
+a monster runs across.
+
+Such traps are no longer under the full control of the runemaster: He cannot
+retract them, but he may attempt to disarm them as for any other trap.
+A runemaster has a much higher chance (usually succeeds) in disarming rune
+traps than other classes.
+
+Rune traps will remain drawing power from the rune master and thereby limiting
+the amount of concurrent rune traps he may set: Each rune trap taxes his amount
+of maximum mana, so when his mana pool capacity reaches zero that means he has
+set as many rune traps as possible at most.
+When a rune trap detonates its upkeep tax will be lifted from the mana pool.
+When a runemaster leaves the current level all rune traps will vanish and the
+upkeep tax be cancelled completely.
+
+
+Quickstart Guide:
+-----------------
+To get started, you'll probably want to macro a couple of minimized or
+moderate single rune (base element) attack spells; make sure the level isn't
+too high. Utilizing minimized burst auto-retaliation on a single element or
+(a bit riskier) minimized ball spells from full MP/HP can speed the early few
+levels. Runemasters excel at area damage, so be sure to take down packs of
+creatures while you still have starting runes to keep you safe from any major
+backlash effects. Keeping your MP high (use a mage staff, casters) is essential
+at early levels.
+
+Once you are around level 10, with enough skill to comfortably cast the basic
+elements of your choosing, macro a couple of spell types that work for a
+variety of situations. At this stage it is often best to invest more in potions
+than physical runes, as backlash is still minor, and the penalties for casting
+with HP not as severe. Risking high damage ball spells without MP to fuel them
+can be balanced by using a resist spell to reduce incoming backlash damage, and
+potions to sustain your HP.
+
+Around level 20, try to expand upon the variety of spell types and especially
+projection elements you have prepared. Build your macro set slowly as you gain
+levels, and be cautious when experimenting with new spells; not all self
+spells are beneficial, and unresisted backlash from your own projections can
+be lethal, especially when casting without runes or MP.
+
+
+Hints:
+------
+If you must experiment with high level spells, do this in a safe location
+(preferably somewhere that you are unable to be killed), bearing in mind that
+if you frequently fail or *fail* to cast a spell, you are not yet skillful
+enough to cast it: try a minimized version instead, or if that fails, increase
+your skill level and try again.
+
+The casting adjective will further elaborate on the difficulty of a spell
+compared to your skill. Ideally, you should try to choose spells where the
+average outcome is 'efficiently', or better. These are 'safe' spells, and tend
+to be more efficient than spells that you 'barely manage to', or 'clumsily'
+cast. (Note that this is not possible at skill level 1, where everything is
+dangerous.)
 
 If you choose the 'chaotic' modifier, the resulting damage, cost and duration
 will be increased or decreased by a random amount. This can result in very high
 damage spells at low cost. However, this spell modifier sometimes has negative
 side effects: use it with care.
 
+If you are a full caster (at least 3 schools), be sure to macro a glyph spell
+and carry mana potions. If you are a hybrid-melee, you will have less
+(especially so for 1 school Runemasters) versatility, but may still have access
+to additional utility through your school selection. Be sure to experiment with
+2-rune and 3-rune spells outside your school(s) at higher levels, because you
+will still be able to access lower-level utility.
 
-Macros:
+
+(5.20a) Runemastery Tables
+--------------------------
+Runemastery covers a breadth of spells and effects, covered in the tables below.
+
+Key
+---
+Names shortened in the table:
+Electricity  -> Elec
+Disintegrate -> Disi
+Acid/Elec/Fire/Cold/Poison -> Base (Any base/poison rune fits here)
+
+* - Duplicate Spell (Accessable through multiple combinations)
+
+Imperatives
+-----------
+A comprehensive effect listing of every spell modifier. Imperatives alter the
+nature of a spell, influencing level, cost, fail rate, damage, casting time, 
+radius, and duration. The 'chaotic' modifier uses a set of random values, 
+denoted by **.
+
+-------------------------------------------------------------------------------
+Mod | Name       | Cost | Fail | Damage | Casting Time | Radius | Duration
+-------------------------------------------------------------------------------
+ -1 | Minimized  |  50% | -10% |   60%  |     100%     |   -1   |    50%
+  0 | Moderate   | 100% | + 0% |  100%  |     100%     |   +0   |   100%
+  1 | Maximized  | 150% | +15% |  150%  |     100%     |   +1   |   130%
+  2 | Compressed | 150% | -10% |  130%  |     100%     |   -2   |    80%
+  2 | Expanded   | 130% | + 0% |  100%  |     100%     |   +2   |   130%
+  3 | Brief      | 130% | +10% |   60%  |      50%     |   +0   |    50%
+  3 | Lengthened | 150% | + 5% |   60%  |     100%     |   +0   |   160%
+  0 | Chaotic    |  **  |  **  |   **   |     100%     |   **   |    **%
+        
+
+Types
+-----
+A comprehensive effect listing of every spell type. Type controls the shape and
+area that a completed rune-spell will affect. Area of effect increases with
+level, but may be limited by projection elements.
+
+-------------------------------------------------------------------------------
+Level Modifier | Name  | Description
+-------------------------------------------------------------------------------
+       -3      | Melee | Quick burst attack at melee retaliation range.
+        0      | Self  | Affects the caster or creates some special effect.
+        1      | Bolt  | Hits a single target in line of effect.
+        2      | Beam  | Hits every target in line of effect. May be deflected.
+        3      | Ball  | Explodes about a single target in line of effect.
+        4      | Wave  | Radiates outward from the caster. Hits rapidly.
+        5      | Cloud | Damages an area of effect over time around the target.
+        7      | Storm | Creates a damaging area that moves with the caster.
+
+
+Effects
 -------
-In general it is recommended to just use the macro wizard (key 'z' in the macro
-menu). If you want to create macros manually though by all means read on.
+A comprehensive effect listing of every unique runespell. Duplicate spells not 
+listed here are the products of rune combinations with one or more elements that
+oppose each other, including:
 
-Runemastery macros look like this: (The magic number for runemastery is 18)
-    \e)*tm@18\ra\rac-
+Electricity/Water
+Fire/Cold
+Acid/Earth
+Water/Earth
+Nether/Time
 
-Which is fire--minimized--bolt, or a minimized fire bolt.
+Other overlapping effects are the product of the rune 'nexus', or the inclusion
+of chaos+nether, which creates the nexus element. Remember that rune order is
+irrelevant, eg. fire+chaos is the same as chaos+fire.
 
-Fire ball looks like this (key translation in brackets):
-    \e)*tm@18\ra\rae- (fire--minimized--ball;
-                       note: the 'size' determines max damage, radius, cost
-                             and chance for failure)
+Sorted by Level, Family, # of Runes
+-------------------------------------------------------------------------------
+Lvl | Projection | Explosions | Self-spell | Rune 1 | Rune 2 | Rune 3 | Augment
+-------------------------------------------------------------------------------
+  5 | Acid       |            | Resist     | Acid   |        |        |        
+  5 | Lightning  |            | Resist     | Elec   |        |        |        
+  5 | Fire       |            | Resist     | Fire   |        |        |        
+  5 | Frost      |            | Resist     | Cold   |        |        |        
+  5 | Gas        |            | Resist     | Poison |        |        |        
+  5 | Gestalt    |            | Resist(x2) | Acid   | Elec   |        |        
+  5 | Gestalt    | Time       | Resist(x2) | Acid   | Elec   | Time   | Time   
+  5 | Gestalt    |            | Resist(x2) | Acid   | Fire   |        |        
+  5 | Gestalt    | Time       | Resist(x2) | Acid   | Fire   | Time   | Time   
+  5 | Gestalt    |            | Resist(x2) | Acid   | Cold   |        |        
+  5 | Gestalt    | Time       | Resist(x2) | Acid   | Cold   | Time   | Time   
+  5 | Gestalt    | Blindness  | Resist(x2) | Acid   | Poison |        |        
+  5 | Gestalt    | Blindness  | Resist(x2) | Acid   | Poison | Time   | Time   
+  5 | Acid       | Time       | Rune Trap  | Acid   | Time   |        | Time   
+  5 | Gestalt    |            | Resist(x2) | Elec   | Cold   |        |        
+  5 | Gestalt    | Time       | Resist(x2) | Elec   | Cold   | Time   | Time   
+  5 | Gestalt    | Stun       | Resist(x2) | Elec   | Poison |        |        
+  5 | Gestalt    | Stun       | Resist(x2) | Elec   | Poison | Time   | Time   
+  5 | Lightning  | Time       | Rune Trap  | Elec   | Time   |        | Time   
+  5 | Gestalt    | Sleep      | Resist(x2) | Fire   | Poison |        |        
+  5 | Gestalt    | Sleep      | Resist(x2) | Fire   | Poison | Time   | Time   
+  5 | Fire       | Time       | Rune Trap  | Fire   | Time   |        | Time   
+  5 | Gestalt    | Slow       | Resist(x2) | Cold   | Poison |        |        
+  5 | Gestalt    | Slow       | Resist(x2) | Cold   | Poison | Time   | Time   
+  5 | Frost      | Time       | Rune Trap  | Cold   | Time   |        | Time   
+  5 | Slow       |            |            | Poison | Time   |        |        
+  5 | Light      |            | Light      | Chaos  | Force  |        |        
+  5 | Darkness   |            | Darkness   | Nether | Force  |        |        
+  5 | Elements   |            | Resistance | Base   | Base   | Base   |        
+-------------------------------------------------------------------------------
+ 10 | Lightning  |            | Resist     | Acid   | Nexus  |        | Nexus  
+ 10 | Lightning  | Water      |            | Elec   | Water  |        | Elec   
+ 10 | Acid       |            | Resist     | Elec   | Nexus  |        | Nexus  
+ 10 | Frost      |            | Resist     | Fire   | Nexus  |        | Nexus  
+ 10 | Fire       |            | Resist     | Cold   | Nexus  |        | Nexus  
+ 10 | Blindness  |            |            | Nether | Poison |        | Nexus  
+-------------------------------------------------------------------------------
+ 15 | Water      |            | Phase Door | Water  |        |        |        
+ 15 | Water      |            | Phase Door | Earth  | Nexus  |        | Nexus  
+ 15 | Shards     |            | Earthquake | Earth  |        |        |        
+ 15 | Shards     |            | Earthquake | Water  | Nexus  |        | Nexus  
+ 15 | Nexus      |            |            | Nexus  |        |        |        
+*15 | Nexus      |            |            | Chaos  | Nether |        |        
+ 15 | Lightning  | Lightning  | Brand      | Elec   | Earth  |        | Elec   
+ 15 | Unbreath   |            | Fly        | Poison | Nexus  |        |        
+ 15 | Corrosion  |            | Disarm     | Acid   | Earth  |        |        
+ 15 | Dig (Fire) |            | Dig Floor  | Fire   | Earth  |        |        
+ 15 | Shattering |            | Disarm     | Earth  | Cold   |        |        
+ 15 | Gestalt    |            | VerminCtrl | Poison | Water  |        |        
+ 15 | Gestalt    |            | VerminCtrl | Poison | Water  | Time   | Time   
+ 15 | Gestalt    |            | CurePoison | Poison | Earth  |        |        
+ 15 | Gestalt    |            | CurePoison | Poison | Earth  | Time   | Time   
+ 15 | Dig        |            | Heal       | Water  | Earth  |        |        
+ 15 | Dig        |            | Teleport   | Water  | Time   |        | Time   
+ 15 | Dig        |            | Memory     | Earth  | Time   |        | Time   
+ 15 | Sleep      |            | Anchor     | Nexus  | Time   |        |        
+ 15 | Rockets    |            |            | Fire   | Poison | Earth  |        
+ 15 | Dig (Fire) |            | Dig Floor  | Fire   | Earth  | Time   | Time   
+ 15 | Corrosion  |            | Disarm     | Acid   | Earth  | Time   | Time   
+ 15 | Shattering |            | Disarm     | Cold   | Earth  | Time   | Time   
+ 15 | Gestalt    |            | Resist(x2) | Acid   | Elec   | Nexus  |        
+ 15 | Nexus      | Dig        | Dig Floor  | Water  | Earth  | Nexus  |        
+-------------------------------------------------------------------------------
+ 20 | Force      |            | Deflection | Force  |        |        |        
+ 20 | Plasma     |            | Resist(x2) | Elec   | Fire   |        |        
+ 20 | Plasma     |            | Resist(x2) | Elec   | Fire   | Acid   | Acid   
+ 20 | Plasma     | Water      | Resist(x2) | Elec   | Fire   | Water  | Water  
+ 20 | Plasma     | Light      | Resist(x2) | Elec   | Fire   | Force  | Force  
+ 20 | Plasma     | Darkness   | Resist(x2) | Elec   | Fire   | Nether | Nether 
+ 20 | Plasma     | Sleep      | Resist(x2) | Elec   | Fire   | Poison | Poison 
+ 20 | Plasma     | Time       | Resist(x2) | Elec   | Fire   | Time   | Time   
+ 20 | Darkness   | Acid       | Obscurity  | Acid   | Nether |        |        
+ 20 | Acid       | Acid       | Brand      | Acid   | Force  |        | Acid   
+ 20 | Light      | Lightning  | Light      | Elec   | Chaos  |        |        
+ 20 | Teleport   | Lightning  | Zap Tele   | Elec   | Nether |        |        
+ 20 | Sound      |            | Sparkle    | Elec   | Force  |        |        
+ 20 | Sound      |            | Sparkle    | Elec   | Acid   | Force  | Acid   
+ 20 | Sound      |            | Sparkle    | Elec   | Cold   | Force  | Cold   
+ 20 | Sound      | Stun       | Sparkle    | Elec   | Poison | Force  | Poison 
+ 20 | Sound      | Confusion  | Sparkle    | Elec   | Force  | Chaos  | Chaos  
+ 20 | Sound      | Nether     | Sparkle    | Elec   | Force  | Nether | Nether 
+ 20 | Darkness   | Fire       | Obscurity  | Fire   | Nether |        |        
+ 20 | Fire       | Fire       | Brand      | Fire   | Force  |        | Fire   
+ 20 | Ice        |            | Frostweave | Cold   | Water  |        |        
+ 20 | Ice        |            | Frostweave | Cold   | Water  | Elec   | Elec   
+ 20 | Ice        | Slow       | Frostweave | Cold   | Water  | Poison | Poison 
+ 20 | Ice        | Shards     | Frostweave | Cold   | Water  | Earth  | Earth  
+ 20 | Ice        | Force      | Frostweave | Cold   | Water  | Force  | Force  
+ 20 | Ice        | Light      | Frostweave | Cold   | Water  | Chaos  | Chaos  
+ 20 | Ice        | Time       | Frostweave | Cold   | Water  | Time   | Time   
+ 20 | Light      | Frost      | Light      | Cold   | Chaos  |        |        
+ 20 | Frost      | Frost      | Brand      | Cold   | Force  |        | Cold   
+ 20 | Confusion  |            |            | Poison | Chaos  |        |        
+ 20 | Stun       |            |            | Poison | Force  |        |        
+ 20 | Water      |            | Levitation | Force  | Water  |        |        
+ 20 | Water      |            | Levitation | Force  | Water  | Poison | Poison 
+ 20 | Water      |            | Levitation | Force  | Water  | Chaos  | Chaos  
+ 20 | Water      |            | Levitation | Force  | Water  | Nether | Nether 
+ 20 | Missile    |            | Deflection | Force  | Earth  |        |        
+ 20 | Missile    | Acid       | Deflection | Force  | Earth  | Acid   |        
+ 20 | Missile    | Fire       | Deflection | Force  | Earth  | Fire   |        
+ 20 | Missile    | Frost      | Deflection | Force  | Earth  | Cold   |        
+ 20 | Missile    | Gas        | Deflection | Force  | Earth  | Poison |        
+ 20 | Teleport   | Nexus      | Warp Tele  | Nexus  | Force  |        |        
+ 20 | Chaos      | Elements   |            | Chaos  | Base   | Base   |        
+ 20 | Acid       | Wonder     |            | Acid   | Chaos  | Time   | Time   
+ 20 | Lightning  | Wonder     |            | Elec   | Chaos  | Time   | Time   
+ 20 | Frost      | Wonder     |            | Cold   | Chaos  | Time   | Time   
+ 20 | Poison     | Wonder     |            | Poison | Chaos  | Time   | Time   
+ 20 | Gestalt    | Force      |            | Acid   | Fire   | Force  |        
+ 20 | Gestalt    | Force      |            | Acid   | Cold   | Force  |        
+ 20 | Gestalt    | Blind      |            | Acid   | Poison | Force  |        
+ 20 | Gestalt    | Sleep      |            | Fire   | Poison | Force  |        
+ 20 | Gestalt    | Slow       |            | Cold   | Poison | Force  |        
+-------------------------------------------------------------------------------
+ 25 | Polymorph  |            |            | Water  | Chaos  |        |        
+ 25 | Clone      |            | Harm       | Water  | Nether |        |        
+ 25 | Inferno    |            |            | Earth  | Chaos  |        |        
+ 25 | Light      | Shards     | Light      | Cold   | Chaos  | Earth  |        
+ 25 | Darkness   | Shards     | Obscurity  | Acid   | Nether | Earth  |        
+*25 | Darkness   | Shards     | Obscurity  | Fire   | Nether | Earth  |        
+ 25 | Water      | Wonder     |            | Water  | Chaos  | Time   | Time   
+ 25 | Shards     | Wonder     |            | Shards | Chaos  | Time   | Time   
+ 25 | Gestalt    | Confusion  | VerminCtrl | Water  | Poison | Chaos  | Chaos  
+ 25 | Gestalt    | Confusion  | CurePoison | Earth  | Poison | Chaos  | Chaos  
+ 25 | Gestalt    | Darkness   | VerminCtrl | Water  | Poison | Nether | Nether 
+ 25 | Gestalt    | Darkness   | CurePoison | Earth  | Poison | Nether | Nether 
+ 25 | Gestalt    | Nether     |            | Acid   | Elec   | Nether |        
+ 25 | Gestalt    | Nether     |            | Acid   | Fire   | Nether |        
+ 25 | Gestalt    | Blind      |            | Acid   | Poison | Nether |        
+ 25 | Gestalt    | Stun       |            | Elec   | Poison | Nether |        
+ 25 | Gestalt    | Sleep      |            | Fire   | Poison | Nether |        
+-------------------------------------------------------------------------------
+ 30 | Power      |            | Brand      | Acid   | Water  |        |        
+ 30 | Annihilate |            | Trauma     | Cold   | Nether |        |        
+ 30 | Inertia    |            | Tele-to    | Force  | Time   |        |        
+ 30 | Disenchant |            | Dispel     | Nexus  | Chaos  |        |        
+ 30 | Disenchant |            | Dispel     | Nexus  | Chaos  | Acid   | Acid   
+ 30 | Disenchant |            | Dispel     | Nexus  | Chaos  | Elec   | Elec   
+ 30 | Disenchant |            | Dispel     | Nexus  | Chaos  | Cold   | Cold   
+ 30 | Disenchant |            | Dispel     | Nexus  | Chaos  | Water  | Water  
+ 30 | Disenchant |            | Dispel     | Nexus  | Chaos  | Earth  | Earth  
+ 30 | Disenchant |            | Dispel     | Nexus  | Chaos  | Force  | Force  
+ 30 | Disenchant |            | Dispel     | Nexus  | Chaos  | Time   | Time   
+ 30 | Mana       |            | Recharge   | Nexus  | Nether |        |        
+ 30 | Mana       |            | Recharge   | Nexus  | Nether | Acid   | Acid   
+ 30 | Mana       |            | Recharge   | Nexus  | Nether | Elec   | Elec   
+ 30 | Mana       |            | Recharge   | Nexus  | Nether | Fire   | Fire   
+ 30 | Mana       |            | Recharge   | Nexus  | Nether | Water  | Water  
+ 30 | Mana       |            | Recharge   | Nexus  | Nether | Earth  | Earth  
+ 30 | Mana       |            | Recharge   | Nexus  | Nether | Force  | Force  
+ 30 | Mana       |            | Recharge   | Nexus  | Nether | Time   | Time   
+ 30 | Light      | Acid       | Glyph      | Force  | Chaos  | Acid   |        
+ 30 | Light      | Frost      | Glyph      | Force  | Chaos  | Cold   |        
+ 30 | Light      | Nuke       | Glyph      | Force  | Chaos  | Poison |        
+ 30 | Darkness   | Acid       | Glyph      | Force  | Nether | Acid   |        
+ 30 | Darkness   | Fire       | Glyph      | Force  | Nether | Fire   |        
+ 30 | Darkness   | Fear       | Glyph      | Force  | Nether | Poison |        
+ 30 | Missile    | Chaos      | Deflection | Force  | Earth  | Chaos  |        
+ 30 | Missile    | Nether     | Deflection | Force  | Earth  | Nether |        
+ 30 | Nexus      | Nexus      |            | Nexus  | Chaos  | Nether | Nexus  
+-------------------------------------------------------------------------------
+ 35 | Chaos      |            |            | Chaos  |        |        |        
+ 35 | Nether     |            |            | Nether |        |        |        
+ 35 | Hellfire   |            | Scorch     | Fire   | Chaos  |        |        
+ 35 | Nuke       | Gas        | Brand      | Acid   | Chaos  |        |        
+ 35 | Wonder     |            |            | Chaos  | Time   |        |        
+ 35 | Time       | Annihilate |            | Nether | Time   |        |        
+ 35 | Light      | Light      | Circle     | Elec   | Earth  | Acid   | Acid   
+ 35 | Light      | Light      | Circle     | Elec   | Earth  | Fire   | Fire   
+ 35 | Light      | Light      | Circle     | Elec   | Earth  | Cold   | Cold   
+ 35 | Light      | Light      | Circle     | Elec   | Earth  | Poison | Poison 
+ 35 | Light      | Light      | Circle     | Elec   | Earth  | Water  | Water  
+ 35 | Light      | Light      | Circle     | Elec   | Earth  | Nexus  | Nexus  
+ 35 | Light      | Light      | Circle     | Elec   | Earth  | Force  | Force  
+ 35 | Light      | Light      | Circle     | Elec   | Earth  | Chaos  | Chaos  
+ 35 | Light      | Light      | Circle     | Elec   | Earth  | Nether | Nether 
+ 35 | Light      | Light      | Circle     | Elec   | Earth  | Time   | Time   
+ 35 | Stasis     |            | Satiation  | Cold   | Nether | Acid   | Acid   
+ 35 | Stasis     |            | Satiation  | Cold   | Nether | Elec   | Elec   
+ 35 | Stasis     |            | Satiation  | Cold   | Nether | Fire   | Fire   
+ 35 | Stasis     |            | Satiation  | Cold   | Nether | Poison | Poison 
+ 35 | Stasis     |            | Satiation  | Cold   | Nether | Water  | Water  
+ 35 | Stasis     |            | Satiation  | Cold   | Nether | Earth  | Earth  
+ 35 | Stasis     |            | Satiation  | Cold   | Nether | Nexus  | Nexus  
+ 35 | Stasis     |            | Satiation  | Cold   | Nether | Force  | Force  
+ 35 | Stasis     |            | Satiation  | Cold   | Nether | Chaos  | Chaos  
+ 35 | Stasis     |            | Satiation  | Cold   | Nether | Time   | Time   
+ 35 | Drain      |            | Berserk    | Poison | Nexus  | Acid   | Acid   
+ 35 | Drain      |            | Berserk    | Poison | Nexus  | Elec   | Elec   
+ 35 | Drain      |            | Berserk    | Poison | Nexus  | Fire   | Fire   
+ 35 | Drain      |            | Berserk    | Poison | Nexus  | Cold   | Cold   
+ 35 | Drain      |            | Berserk    | Poison | Nexus  | Water  | Water  
+ 35 | Drain      |            | Berserk    | Poison | Nexus  | Earth  | Earth  
+ 35 | Drain      |            | Berserk    | Poison | Nexus  | Chaos  | Chaos  
+ 35 | Drain      |            | Berserk    | Poison | Nexus  | Nether | Nether 
+ 35 | Drain      |            | Berserk    | Poison | Nexus  | Force  | Force  
+ 35 | Drain      |            | Berserk    | Poison | Nexus  | Time   | Time   
+ 35 | Gravity    |            | Summoning  | Force  | Time   | Acid   | Acid   
+ 35 | Gravity    |            | Summoning  | Force  | Time   | Elec   | Elec   
+ 35 | Gravity    |            | Summoning  | Force  | Time   | Fire   | Fire   
+ 35 | Gravity    |            | Summoning  | Force  | Time   | Cold   | Cold   
+ 35 | Gravity    |            | Summoning  | Force  | Time   | Poison | Poison 
+ 35 | Gravity    |            | Summoning  | Force  | Time   | Water  | Water  
+ 35 | Gravity    |            | Summoning  | Force  | Time   | Earth  | Earth  
+ 35 | Gravity    |            | Summoning  | Force  | Time   | Nexus  | Nexus  
+ 35 | Gravity    |            | Summoning  | Force  | Time   | Chaos  | Chaos  
+ 35 | Gravity    |            | Summoning  | Force  | Time   | Nether | Nether 
+-------------------------------------------------------------------------------
+ 40 | Time       |            | Haste Self | Time   |        |        |        
+ 40 | Disi       |            |            | Acid   | Water  | Elec   | Elec   
+ 40 | Disi       |            |            | Acid   | Water  | Fire   | Fire   
+ 40 | Disi       |            |            | Acid   | Water  | Cold   | Cold   
+ 40 | Disi       |            |            | Acid   | Water  | Poison | Poison 
+ 40 | Disi       |            |            | Acid   | Water  | Earth  | Earth  
+ 40 | Disi       |            |            | Acid   | Water  | Nexus  | Nexus  
+ 40 | Disi       |            |            | Acid   | Water  | Force  | Force  
+ 40 | Disi       |            |            | Acid   | Water  | Chaos  | Chaos  
+ 40 | Disi       |            |            | Acid   | Water  | Nether | Nether 
+ 40 | Disi       |            |            | Acid   | Water  | Time   | Time   
+ 40 | Detonation |            | Rune Trap  | Fire   | Chaos  | Acid   | Acid   
+ 40 | Detonation |            | Rune Trap  | Fire   | Chaos  | Elec   | Elec   
+ 40 | Detonation |            | Rune Trap  | Fire   | Chaos  | Cold   | Cold   
+ 40 | Detonation |            | Rune Trap  | Fire   | Chaos  | Poison | Poison 
+ 40 | Detonation |            | Rune Trap  | Fire   | Chaos  | Water  | Water  
+ 40 | Detonation |            | Rune Trap  | Fire   | Chaos  | Earth  | Earth  
+ 40 | Detonation |            | Rune Trap  | Fire   | Chaos  | Nexus  | Nexus  
+ 40 | Detonation |            | Rune Trap  | Fire   | Chaos  | Force  | Force  
+ 40 | Detonation |            | Rune Trap  | Fire   | Chaos  | Nether | Nether 
+ 40 | Detonation |            | Rune Trap  | Fire   | Chaos  | Time   | Time   
+ 40 | Meteor     |            |            | Water  | Earth  | Force  | Force  
+-------------------------------------------------------------------------------
 
-To increase the radius of the ball, adjust the modifier to something that
-sounds bigger (this will also increase the damage, difficulty and cost):
 
-A moderate fire ball:
-    \e)*tm@18\ra\rbe- (fire--moderate--ball)
+Augment Effects
+---------------
+A comprehensive effect listing of every augment. Augments increase towards the 
+listed benefit linearly with skill level in the associated rune school, from a
+minimum 200% of the drawback and 0% of the benefit at level 0. 
 
-Or a widened fire ball:
-    \e)*tm@18\ra\rge- (fire--widened--ball)
-
-
-Or some self-spells:
-
-Resist fire:
-    \e)m@18\ra\rbb (fire--moderate--self;
-                    note: 'moderate' here determines duration/cost/fail chance)
-
-(In the same way that you can increase or decrease a fire ball's radius, you
-can increase or decrease the duration of any timed spell by selecting
-'lengthened' or 'brief'. Some other modifiers will adjust the duration to a
-lesser extent.)
-
-Blink:
-    \e)m@18\rd\rab (water--minimized--self;
-                    note: the 'size' here determines radius, cost, fail chance)
-
-Note that if you choose three runes for a spell, the \r is not required.
-
-
-Autoretaliation & Melee spells:
--------------------------------
-If you inscribe @O[a-h] on a rune, you will automatically retaliate with a
-moderate spell of the selected type. Not specifying a letter is same as
-actually choosing 'a'. Here is a table again of the effect types:
-
-a - melee
-b - self
-c - bolt
-d - beam
-e - ball
-f - wave
-g - cloud
-h - storm
-
-So if you set the type to 'a' by inscribing a rune
- @Oa
-or (which is the same) just
- @O
-then the 'melee' spell type will be selected.
-
-A melee spell is a bolt spell with a range of a single tile. It is cheaper than
-a regular bolt, and usually does more damage, but is very difficult to use
-outside of autoretaliation.
-
-
-Hints:
-------
-You can find out other spell combinations by experimenting. Do this in a safe
-location (preferably somewhere that you are unable to be killed), best is by
-far during 'Arena Monster Challenge' event where really nothing happens to a
-character who 'dies' in the actual arena level.
-
-Bear in mind that if you frequently fail or *fail* to cast a spell, you are not
-yet skillful enough to cast it: try a minimized version instead, or if that
-fails, wait a few levels and try again.
-
-The casting adjective will give you an idea of the difficulty of a spell
-compared to your skill. Ideally, you should try to choose spells where the
-average is 'efficiently', or better. These are 'safe' spells, and tend to be
-more efficient than spells that you 'barely manage to', or 'clumsily' cast.
-(Note that this is not possible at skill level 1, where everything is
-dangerous.)
-
-Find a couple of combinations that work for a variety of effects, and then
-build your macro set slowly as you gain levels. The last thing you want to do
-is to have a high level spell like 'nuke ball' macroed at level five, and end
-up committing suicide when you accidentally hit the wrong key in the dungeon.
-
-To get started, you'll probably want to macro a couple of attack spells and
-possibly blink (phase door). You may also wait a melee or ranged weapon for
-when you run out of mana, at least in the beginning.
+-------------------------------------------------------------------------------
+Lvl | Rune ID | Description
+-------------------------------------------------------------------------------
+  1 | Acid    | 30% duration increase
+  1 | Elec    | 30% cost reduction
+  1 | Fire    | 20% damage/cost increase
+  1 | Cold    | 10% failure reduction
+  1 | Poison  | 20% energy decrease
+ 15 | Force   | +2 radius increase
+ 15 | Water   | 20% energy/damage decrease, 5% failure decrease
+ 15 | Earth   | 10% damage/cost increase, 10% duration increase
+ 25 | Chaos   | 40% damage/cost increase, 20% failure increase
+ 25 | Nether  | 40% damage/cost increase, -2 radius decrease
+ 25 | Nexus   | +4 radius increase, 40% duration decrease
+ 30 | Time    | 40% energy/damage decrease, 20% duration increase
 
 
 
@@ -7138,6 +7728,58 @@ want to hack down organic material such as trees, bushes, ivy or spider webs.
 (Dual-wielding does not help, so two swords/axes can't dig better than just
 one. Wielding a 1.5-handed weapon in only 1 hand will decrease your digging
 chance though, so take off your shield for best results.)
+
+
+
+(5.22) Recharging
+-----------------
+While electricity or disenchantment based attacks may deplete magic devices,
+they can usually also be magically recharged when necessary.
+Wands and staves will need to be actively recharged by the player when depleted
+while rods and other magic devices (jewelry, artifacts, special ego-powered
+items) will automatically recharge themselves over time, displaying 'charging'
+label or just '#' if the item name is very long and there's not enough space.
+
+
+Recharging can be done via shop service, a scroll, another magic device or a
+magic/rune spell. Devices that can be recharged are:
+
+-Wands
+-Staves
+-Rods
+-Certain jewelry (eg elemental rings)
+-Some artifacts
+-Items that possess certain activatable ego-powers (eg weapons of fury)
+
+For wands and staves recharging will replenish their charges, while for the
+other item types recharging will reduce their 'charging' delay.
+
+Note: Rings of polymorphing cannot be recharged.
+
+
+When an item is recharged the result depends on the method of recharging and
+the item's base type level. For wands and staves it also depends on the current
+amount of charges in the device, to get the most out of it and to minimize the
+risk of a failure you should only recharge wands and staves that are already
+fully depleted ie have zero charges left.
+
+If unlucky, recharging may result in a failure. Even when recharging at highest
+magic spell level there is still a very slim chance for a failure to occur.
+While a failed recharge may drain rods even further, wands and staves may even
+blow up completely. So only recharge those when they are already fully depleted
+to minimize that risk.
+
+Means of recharging:
+-Scrolls            (60 power)
+-Thingol artifact   (60..100 power, depending on magic device skill)
+-Shop service       (80 power)
+-Rune spell         (50 power)
+-Magic spell        (10..150 power)
+
+The power determines both, the chance of succeeding in recharging the item and
+the degree of recharging done to the item.
+Note: Staves 'of plenty' will receive about twice as many charges from
+      recharging, so look out for those.
 
 
 
@@ -7206,7 +7848,7 @@ Intelligence (INT)
     -Has influence on your mana pool size. (class-dependant)
     -How well can you cast spells that use INT to determine failure rate?
     -Has influence on your magic device handling skill.
-    -Has influence on your trap-disarming skill.
+    -Has influence on your trap-disarming ability.
     -Do you notice if someone tries to steal from you?
     Also see (6.10) for more information about the 'Magic Device' skill.
 Wisdom (WIS)
@@ -7228,7 +7870,7 @@ Dexterity (DEX)
     -How likely are items or money stolen from you?
     -Can you prevent getting stunned from bashing a door clumsily?
     -Allows you to try hard to swim and not drown in deep water.
-    -Has influence on your trap-disarming skill.
+    -Has influence on your trap-disarming ability.
 Constitution (CON)
     -How many HP (hit points) do you have? Very essential.
      Note that CON effect caps depending on your character level. Roughly:
@@ -7423,6 +8065,7 @@ Note that not every skill is available to every profession (class).
                                 averaged, and rounded up, then bpr bonus for
                                 dual-wielding is added.
                                 Example: 4bpr & 5bpr = 4.5bpr rounded to 5bpr.
+                                +1 bonus bpr for dual-wielding -> 6bpr total.
                                 Also by pressing 'm' you can disable/reenable
                                 dual-wield mode.
                                 While disabled ('Main-Hand mode') you will just
@@ -7584,14 +8227,12 @@ Note that not every skill is available to every profession (class).
         .Thought Contact        Learn mindcrafter spells of tought contact.
         .Mental Intrusion       Learn mindcrafter spells of mental intrusion.
     +Runecraft                  Determines how skillful you are in handling
-        .Fire and Cold          specific magical symbols or Runes.
-        .Acid and Water
-        .Lighning and Earth     For more info about runes, see
-        .Poison and Wind        '(5.20) Runes & Runemastery'.
-        .Mana and Chaos
-        .Force and Gravity
-        .Nether and Time
-        .Mind and Nexus
+        .Acid and Water         specific magical symbols or Runes.
+        .Lightning and Earth    For more info about runes, see
+        .Fire and Chaos         '(5.20) Runes & Runemastery'.
+        .Cold and Nether
+        .Poison and Nexus
+        .Force and Time
     .Mimicry                    Ability to shapechange into a monster!
                                 You also inherit the monsters abilities,
                                 weaknesses and resistances!
@@ -7801,13 +8442,7 @@ Note that not every skill is available to every profession (class).
                                 -invoke a mimic spell,
                                 -set a monster trap,
                                 -use a staircase.
-    +Disarming                  Improves your disarming ability, making it
-                                safer to disarm traps via the manual disarm
-                                command. (The experience you gain from manually
-                                disarming traps is not affected by the skill).
-                                Also gives you a chance to salvage a trap kit
-                                from any trap when you disarm it!
-        .Trapping               Improves your ability to set traps:
+    .Trapping                   Improves your ability to set traps:
                                 Gives you a higher chance to successfully
                                 place a trap if a monster is close to you and
                                 trying to interfere. Also, monsters will have
@@ -7815,6 +8450,13 @@ Note that not every skill is available to every profession (class).
                                 Last but not least you learn to optimize your
                                 traps for higher damage output.
                                 See (4.7) for details about monster traps.
+                                Trapping also improves your disarming ability,
+                                making it safer to disarm traps via the manual
+                                disarm command. (The experience you gain from
+                                manually disarming traps is not affected by the
+                                skill but only by the traps' level).
+                                Also gives you a chance to salvage a trap kit
+                                from any trap when you disarm it!
 +Health                         Increases your hit point regeneration rate:
                                 (skill_level * 2)% chance to regenerate 1,5x
                                 the normal amount of HP per turn (stacks with
@@ -8025,7 +8667,7 @@ Stealth         Mimic form weight, stealth items, _'Stealth'_, cloaking,
                 'Martial Arts', runecraft
 Perception      search items, _'Sneakiness'_
 Searching       search items, _'Sneakiness'_, cloaking
-Disarming       Intelligence, dexterity, _'Disarming'_
+Disarming       Intelligence, dexterity, _'Trapping'_
 Magic Device    Intelligence, _'Magic-Device'_
 
 
@@ -8046,21 +8688,21 @@ a new character level. You also might have certain intrinsic abilities.
 For Beginners a powerful yet simple race/class combination like Half-Troll
 Warrior is strongly recommended.
 
-Human
+- Human
     Humans are allrounders with no special weaknesses or strengths.
     Humans have no experience penalties and tend to go up levels faster than
     most other races. No racial adjustments or intrinsics occur to characters
     choosing human.
     Humans get a bonus on 'Interception' and 'Climbing'.
 
-Half-Elf
+- Half-Elf
     Half-elves tend to be smarter and faster than humans, but not as strong.
     Half-elves are slightly better at searching, disarming, saving throws,
     stealth, bows, and magic, but they are not as good at hand weapons.
     Half-elves resist light intrinsically.
     They get bonus on 'Bow-Mastery' and 'Interception'.
 
-Elf
+- Elf
     Elves resist light effects intrinsically and see invisible creatures.
     Elves are better magicians then humans, but not as good at fighting.
     They tend to be smarter and faster than either humans or half-elves and
@@ -8070,7 +8712,7 @@ Elf
     Elves get bonus on 'Bow-Mastery', 'Magic', 'Stealth', 'Dodging',
     'Calmness' and 'Sneakiness'.
 
-Hobbit
+- Hobbit
     Hobbits have their dexterity sustained. Further, they get a dexterity bonus
     from not wearing shoes! Hobbits, or Halflings, are very good at shooting,
     throwing, and have good saving throws. They also are very good at searching
@@ -8080,7 +8722,7 @@ Hobbit
     warm-blooded creatures at a distance. Hobbits resist black breath somewhat.
     They get bonus on 'Sling-Mastery', 'Stealth', 'Sneakiness' and 'Dodging'.
 
-Gnome
+- Gnome
     Gnomes are intrinsically protected to paralysis effects. Gnomes are smaller
     than dwarves but larger than halflings. They, like the hobbits, live in the
     earth in burrow-like homes. Gnomes make excellent Warlocks & Sorcerers, and
@@ -8091,7 +8733,7 @@ Gnome
     Gnomes receive bonus on 'Crossbow-Mastery', 'Magic', 'Dodging' and
     'Digging'.
 
-Dwarf
+- Dwarf
     Dwarves can never be blinded and at level 30 they learn to travel across
     even the highest mountain regions.
     Dwarves are the headstrong miners and fighters of legend. Since dungeons
@@ -8104,9 +8746,9 @@ Dwarf
     voices, arguing with themselves for no good reason, and screaming out
     challenges at nearby foes. In other words, dwarves have a miserable
     stealth.
-    They receive bonus on 'Axe-Mastery' and 'Digging'.
+    They receive a bonus on 'Axe-Mastery' and a large bonus on 'Digging'.
 
-Half-Orc
+- Half-Orc
     Because of their preference to living underground to on the surface,
     Half-orcs resist darkness intrinsically. They make excellent warriors and
     decent priests, but are terrible at magic. They are as bad as dwarves at
@@ -8117,7 +8759,7 @@ Half-Orc
     They get bonus on 'Weaponmastery', 'Backstabbing', 'Necromancy' and receive
     slight penalties on 'Magic' and 'Sorcery'.
 
-Half-Troll
+- Half-Troll
     Half-trolls have their strength sustained. They are very strong, but also
     very stupid and slow. They make great warriors and iffy priests. They are
     bad at searching, disarming, perception, and stealth. They are so ugly
@@ -8126,14 +8768,14 @@ Half-Troll
     receive large penalties on 'Archery', 'Magic' and 'Sorcery' and a light
     penalty on 'Critical-Strike'.
 
-Dunadan
+- Dunadan
     Dunadain have their constitution sustained. Dunadain are a race of hardy
     men from the West. This elder race surpasses human abilities in every
     field, especially constitution. However, being men of the world, very
     little is new to them, and levels are very hard for them to gain.
     A Dunadan gets bonus on 'Combat', 'Magic' and 'Archery'.
 
-High-Elf
+- High-Elf
     High-Elves can see the invisible and resist light and the flow of time
     intrinsically. They are a race of immortal beings dating from the
     beginning of time, masters of all skills, strong and intelligent, although
@@ -8143,7 +8785,7 @@ High-Elf
     High-Elves receive bonus on 'Bow-Mastery', 'Magic', 'Stealth', 'Calmness'
     and 'Dodging'.
 
-Yeek
+- Yeek
     Being weak and losing many childhood fights, they have learned the
     ability to float gently to the ground. They have intrinsic feather
     falling (same as 'levitation' effect).
@@ -8154,7 +8796,7 @@ Yeek
     compensate Yeeks learn, and thus gain levels, extremely quickly.
     Yeeks don't receive boni or mali on any skills.
 
-Goblin
+- Goblin
     Goblins resist darkness intrinsically. Goblins have a decidedly
     mixed reputation. They are almost always grinning, and more often than
     not you cannot tell whether or not they are eyeing you like a side of
@@ -8163,7 +8805,7 @@ Goblin
     Golbins have natural resistance to darkness.
     They receive bonus on 'Boomerang-Mastery' and 'Stealing'.
 
-Ent
+- Ent
     The Ents are a powerful race dating from the beginning of the world,
     eldest of all animals or plants who inhabit Arda. Spirits of the
     land, they were summoned to guard the forests of Middle-earth.
@@ -8173,18 +8815,19 @@ Ent
     of the Trees, they can learn to sense the presence of others, such
     as animals  at level 10, orcs at 15, trolls at 20, giants at 25,
     dragons at 30, demons at 40 and all evil-minded creatures at level 50.
-    Trees will slightly bend aside to let ents pass through.
-    At level 4 they learn to see invisible things.
-    They accumulate experience very slowly. Ents do not eat normal food, but
-    are able to consume liquids. Ents resist the force of unleashed water.
-    Ents are able to slowly replenish themselves by drawing nourishment from
-    the ground by entering 'R'esting mode, provided it's natural ground such
-    as grass, earth, mud or water.
+    At level 4 Ents learn to see invisible things. In general, they accumulate
+    experience very slowly and they do not eat normal food but they are able to
+    consume liquids. Trees will slightly bend aside to let ents pass through.
+    Ents are able to slowly replenish their nourishment by rooting themselves
+    into the ground by entering 'R'esting mode, provided it's natural ground
+    such as grass, earth, mud or water. Their food state will go up to 'Full'
+    that way.
+    Ents intrinsically resist the force of unleashed water.
     They get boni on 'Health', 'Calmness' and on the magic schools 'Earth' and
     'Water' and they receive a large penalty 'Fire' school, a small penalty on
     'Axe-mastery' and a very slight penalty on 'Sword-mastery'.
 
-Draconian
+- Draconian
     These humanoid half-breeds of dragon and man surpass common humans in all
     ways, except that they are really bad at moving stealthily. Similar to
     dragons, they can eat firestones to temporarily boost their powers.
@@ -8196,10 +8839,10 @@ Draconian
     they learn how to fly. Draconians need a very long time to gain further
     experience and need to eat often. They have feather falling (levitation)
     instrinsically from birth.
-    They receive bonus on 'Polearm-Mastery', 'Aura of Fear' and the magic
-    schools 'Conveyance' and 'Fire'.
+    They receive bonus on 'Polearm-Mastery', 'Aura of Fear', 'Thought Contact'
+    and the magic schools 'Conveyance' and 'Fire'.
 
-Dark-Elf
+- Dark-Elf
     Dark-Elves dwell below the surface in huge caverns of their underground
     city. The children are already drilled to become sworn enemies of most
     other races of the underground, and also of the hated Elves and High-Elves
@@ -8210,7 +8853,7 @@ Dark-Elf
     At level 20 they learn to see the invisible.
     They get bonus on 'Stealth', 'Dodging', 'Sneakiness' and 'Backstabbing'.
 
-Vampire
+- Vampire
     These powerful undead creatues move out in the night to hunt living prey
     and suck its blood to sustain themselves. Vampires resist darkness, but
     are susceptible to light. They fear the sun light and any other kind of
@@ -8230,7 +8873,7 @@ Vampire
     order to satisfy your hunger, which might be quite easy for melee classes
     but sometimes a hassle for ranged/caster classes.
     Vampires dislike blunt weapons, get a small penalty on divination magic,
-    but receive a bonus on all necromancy skills.
+    but receive a bonus on 'Mental Intrusion' and on all necromancy skills.
     They become able to turn into a bat at level 20.
     Vampires start with a mummy wrapping, because it can protect them from the
     sunlight (press 'w' to wear it). If they are moving on the world surface
@@ -8238,7 +8881,7 @@ Vampire
     they don't resist light or wear a mummy wrapping. Hint: Polymorphing into
     a vampire bat may improve hit point regeneration rate.
 
-Maia
+- Maia
     The Maiar are lesser spirits who are associated with one or more Valar, the
     greater gods. Being of divine origin they can shape themselves in fashion
     of elves or humans as they see fit, often acting as powerful wizards to
@@ -8344,7 +8987,7 @@ Maia        +2  +3  +3  +1  +1  +2      11      380%   100ft
 Depending on your class, your start-up equipment and your skill tree will
 vary. For example a warrior cannot learn magic spells.
 
-Adventurer
+- Adventurer
     Adventurers are hardy and versatile, they have no preferred way of fighting
     or magic, and can adapt to any situation at hand.
     They have no big big strengths nor weaknesses.
@@ -8359,7 +9002,7 @@ Adventurer
     utilize them you need to know exactly what you are trying to achieve and
     how you want to distribute their skill points to make them effective.
 
-Warrior
+- Warrior
     A warrior is a hack-and-slash character, who solves most of his problems
     by cutting them to pieces, but will occasionally fall back on the help of
     a magical device. His prime stats are strength and constitution, and a
@@ -8393,17 +9036,18 @@ Warrior
     somewhat higher level.
 
     Hint: On character creation increase your strength to 18/30 at the very
-    least and your dexterity to at least 10, to get a decent attack speed.
+    least to get a decent attack speed (3 blows per round with light weapons).
     Make sure to create a macro for your fighting techniques 'Sprint' and
     'Taunt' when you learn them, which you do pretty early on. They are great
     for catching annoying monsters that try to keep their distance from you.
     (See (6.12) for details about fighting techniques.)
     If you die and revive you could save a lot of money by foregoing heavy
-    armour for attack power by just buying some light armour and two cheap
-    1-handed weapons which you dual-wield (which requires light armour). This
-    should last you until you find some heavy armour and shield in the dungeon.
+    armour for attack power by just buying some light armour and two cheap and
+    very light 1-handed weapons such as daggers or whips which you dual-wield
+    (which requires light armour). This should last you until you find some
+    heavy armour and shield in the dungeon.
 
-Istar (elvish word for Mage)
+- Istar (elvish word for Mage)
     Istari use intelligence primarily, determining how much mana they have
     to cast spells and how low their failure rate is.
     They are the all-around best magicians, having the most powerful spells.
@@ -8416,7 +9060,7 @@ Istar (elvish word for Mage)
     survival difficult in the beginning. That's why this class is not
     recommended for beginners.
 
-Priest
+- Priest
     Priests use certain divine magic, uttered as prayers. Unlike mages they
     have a fair fighting potential with blunt or blessed weapons. Priests
     can learn many spells that are helpful to their party members. They use
@@ -8442,7 +9086,7 @@ Priest
     damage and also can't take a lot of punishment, so they aren't recommended
     for beginners.
 
-Rogue
+- Rogue
     A Rogue is a character that prefers to live by cunning, but is capable of
     fighting their way out of a tight spot. The master of traps and locks, no
     device is impossible for him to overcome.
@@ -8479,7 +9123,7 @@ Rogue
     for catching annoying monsters that try to keep their distance from you.
     (See (6.12) for details about fighting techniques.)
 
-Mimic
+- Mimic
     Mimics are melee fighters who can learn how to shapechange and use the form
     of any monsters (except for unique ones) they slay, thereby inheriting
     nearly all of the monster's abilities. That way they may even cast spells
@@ -8506,13 +9150,22 @@ Mimic
     To find out the special abilities of a monster form, see section (6.7).
     A list of useful low-level forms for weapon-using mimics is give in (6.7c)
     because those have a somewhat harder time to find usable forms early on
-    than martial artists who might just utilize easy to get forms such as fruit
-    bat, wild cat or spiders right away for great effect.
+    than martial artists who might just utilize easy-to-get forms such as fruit
+    bat, wild cat, crow or spiders right away for great effect.
+
+    Mimics can get the highest amount of hit points of any class, even in the
+    very long run ie at very high character levels far above 50, provided they
+    acquire an appropriate high-level form (preferably level 80 or better).
+    Low- and mid-level forms won't help high-level mimics that much to keep up
+    their advantage in hit points, ie the extra hit points they gain from such
+    forms will diminish as they continue to rise to very high character levels.
 
     Hint: Maybe there's a friendly mimicry-user around who can forge some
     'Rings of Polymorphing' for you from forms he or she no longer uses.
+    As for all shape-shifters going with fruit bat body modification is not
+    recommended, since it will restrict your equipment even if you polymorph.
 
-Archer
+- Archer
     Archers aren't good at fighting, but can deliever extremely high damage
     with their ranged weapons. They can die quickly too, however.
     Archers are to bows what warriors are to melee. They are the best class
@@ -8527,7 +9180,7 @@ Archer
     because the enchantment will be multiplied by the weapons multiplier.
     Also make sure to have an ample supply of 'Scrolls of Phase Door'.
 
-Paladin
+- Paladin
     Paladins are a combination of warrior and priest. Holy knights that
     fight evil with a variety of melee weapons and divine support.
     Their primary stats are thus strength for fighting and wisdom for making
@@ -8547,7 +9200,7 @@ Paladin
     'Taunt' when you learn them, they are great for catching annoying monsters
     that try to keep their distance from you. (See (6.12) for details.)
 
-Ranger
+- Ranger
     Second only to adventurers regarding versatility rangers excel at a lot of
     skills: They are able to fight well in close combat and may even dual-wield
     two one-handed weapons at once which requires light armour to be efficient.
@@ -8572,9 +9225,11 @@ Ranger
     (See (6.12) for details about fighting techniques.)
     Since rangers can dual-wield and you start with light armour which is
     required for dual-wielding you might want to buy a secondary weapon right
-    away, for example a cheap dagger. (See (6.2) for details on dual-wielding.)
+    away, for example a cheap dagger, or even dispose of your starter weapon
+    completely and go with two cheap and light weapons instead. (See (6.2) for
+    details on dual-wielding.)
 
-Druid
+- Druid
     Druids are able to call upon the mystical powers of nature and very good
     at it. Their wisdom is of primary importance to determine their mana and
     success chances when casting spells.
@@ -8603,7 +9258,7 @@ Druid
     you learn it, which you do pretty early on. It is great for catching
     annoying monsters that try to keep their distance from you. (See (6.12).)
 
-Shaman
+- Shaman
     Shamans are able to call upon both spiritual and magical powers, whatever
     they deem most appropriate. Their mind is also trained in a very versatile
     manner, allowing them to collect energy from intelligence or wisdom,
@@ -8627,8 +9282,10 @@ Shaman
     'Rings of Polymorphing' for you from forms he or she no longer uses.
     In the beginning shamans have few hit points and skill point distribution
     isn't easy either, that's why this class is not recommended for beginners.
+    As for all shape-shifters going with fruit bat body modification is not
+    recommended, since it will restrict your equipment even if you polymorph.
 
-Runemaster
+- Runemaster
     Runemasters use arcane symbols or 'runes' to summon pure elemental magic.
     They use their intelligence and dexterity to both manipulate and protect
     themselves from the fickle and dangerous forces of their art.
@@ -8651,7 +9308,7 @@ Runemaster
     badly, do so in the arena of the 'Arena Monster Challenge' event so you
     will get away unscathed.
 
-Mindcrafter
+- Mindcrafter
     Mindcrafters are great melee fighters who additionally train the use of
     telepathy to unleash spells formed by their psychic powers.
     Their intellect is supreme compared to primitive warriors, making them calm
@@ -9141,8 +9798,9 @@ All vampires and vampire bats
             real vampire forms have 50% chance (half their attacks are hits,
             the other half is biting). For details see '(5.15) Vampirism'.
 All angels  Resist light, blindness and poison (usually immunity, see r_info
-            flags), resist confusion, see invisible.
-            Note: 'Fallen Angel' doesn't get light resistance.
+            flags), resist fear, resist confusion, see invisible, strong
+            resistance to insanity-inducing attacks.
+            Note: 'Fallen Angel' doesn't get light/confusion resistances.
 
 Keep in mind that by changing forms you can potentially lose abilities that
 you had in player form, because they were bound to your normal form.
@@ -9413,10 +10071,13 @@ Firebird                speedy and tough; can fly and passes most terrains;
 (6.7c) Useful low-level forms for weapon-using mimics
 -----------------------------------------------------
 Mimics who use weapons have less choices for forms than martial arts users who
-do not need to rely on humanoid forms.
-To use weapons the form must be humanoid or very close to it. To make form-
-hunting a bit easier in the beginning here is a list of useful low-level forms
-that are humanoid and allow the player to wear/wield full equipment:
+do not need to rely on humanoid forms and can just utilize easy-to-get forms
+such as fruit bat, wild cat, crow or spiders right away for great effect.
+
+To use weapons however, the form must be humanoid or very close to it, which
+rules out animal forms. To make form-hunting a bit easier in the beginning here
+is a list of useful low-level forms that are humanoid and allow the player to
+wear/wield full equipment:
 
 Forms you can already get in Bree town:
 ---------------------------------------
@@ -9453,11 +10114,11 @@ Elite Uruk      20  Good HP, very high melee damage, +1 extra shot, poison
                     immunity.
 
 (The number is the monster level and therefore the amount of monsters you need
-kill to learn the form.)
+to kill to learn the form.)
 
-Of course some of these forms might also be useful for martial arts users,
-except for those forms that provide an extra shot, since martial artists cannot
-make use of ranged weapons.
+Of course some of these forms might also be useful for martial arts users.
+(Note that martial artists cannot make use of ranged weapons or weapons in
+general though, without losing their excellent bare-handed melee skills.)
 
 
 
@@ -9935,7 +10596,7 @@ Physical Lore
                     Lv15: Also increases strength.
                     Lv20: Also increases constitution.
                     Lv25: Also increases intelligence.
-                    Required skill level for first spell level: 10.
+                    Required skill level for first spell level: 15.
     Focus           Increases your accuracy, adding a bonus to your
                     melee-to-hit and ranged-to-hit.
                     Required skill level for first spell level: 1.
@@ -12172,14 +12833,24 @@ SOLUTION:   Macros or client options can be saved to various .prf files which
             make sure they don't get loaded if you don't intend them to.
             For example the file 'user.prf' usually carries your client options
             and overrides the default file 'options.prf'. However, if there's a
-            file 'user-x11.prf' (system-specific for Linux X11) that one in
-            turn will override settings in user.prf.
+            file 'user-x11.prf' (system-specific for Linux X11 - on Windows
+            systems it'd be 'user-win.prf' accordingly) that one in turn will
+            override settings in user.prf.
             An example regarding macro files: Let's say your character's name
             is 'Gandalf' and you saved your macros to 'Gandalf.prf' faithfully.
             However, since Gandalf is a human warrior, the client will also
             automatically load the files called 'Human.prf' and 'Warrior.prf'
             if those exist and also try to load a .prf file named like your
             account name.
+
+PROBLEM 31: After logging on, the file 'audio.lua' was updated automatically.
+            Now the wrong sound effects seem to be played for game events.
+SOLUTION:   Just log out and back in, and your sound should be fine again.
+            This typically happen if 'audio.lua' was updated.
+            On a side note: Also check if maybe the sound pack was updated too,
+            so you can redownload it and not miss out on newly added sound
+            effects. Usually an update to file 'audio.lua' means that the sound
+            pack has also been updated indeed.
 
 
 
