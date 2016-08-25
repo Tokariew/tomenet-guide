@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 9. December 2012 - written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.5.0 - official websites are:
+| Latest update: 22. December 2012 - written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.5.1 - official websites are:
 | http://www.tomenet.net/ (main site),
 | http://koti.mbnet.fi/mikaelh/tomenet/ and http://www.c-blue.de/rogue.html
 |
@@ -464,6 +464,7 @@ U       O       use undead powers (use this if you died and became a ghost).
                 NOTE: Undead powers are currently not available.
 CTRL+S          spike a door (using iron spikes, the door will be jammed).
 p       p       Concentrate on opening your mind for telekinesis.
+                ("You open your mind.." and "You close your mind.")
                 You need to open your mind in order to receive items from
                 other players by telekinesis. If you are not concentrating,
                 they will receive an according message, telling them that
@@ -612,7 +613,7 @@ Note: Mixer settings are saved automatically, provided you use CTRL+X to quit.
         (used in macros).
 (       Initiates targetting a friendly player (used in macros).
         (Currently targets the most hurt player who is in your party, or the
-        most hurt player in general if you aren't in a party.)
+        most wounded player in general if you aren't in a party.)
 
 There are also some commands that can be entered with ':' like a chat line.
 They all start with a slash '/' hence they're called slash commands:
@@ -647,13 +648,20 @@ They all start with a slash '/' hence they're called slash commands:
 /gbbs <text>    Same usage as /bbs, but only readable/writable for guild
                 members. So it's a guild-internal BBS.
                 To read its contents, type /gbbs without any <text>.
+/convertexclusive    Attempts to convert your current character into a
+                     slot-exclusive character (either PvP-mode or IDDC aka
+                     Ironman Deep Dive Challenge). Warning: This process is NOT
+                     REVERSIBLE! To attempt to convert your character, type:
+                     /convertexclusive <your-character-name>
+                     for example:
+                     /convertexclusive Gandalf
+/coin       Flip a coin to get either heads or tails.
+            The result is random and can be seen by other players who stand
+            nearby.
 /deal       Deals a card (completely random).
             The result is random and can be seen by other players who stand
             nearby.
 /dice       Roll some dice, you must specify a number of dice from 1 to 100.
-            The result is random and can be seen by other players who stand
-            nearby.
-/coin       Flip a coin to get either heads or tails.
             The result is random and can be seen by other players who stand
             nearby.
 /dis        DESTROYS every item in your inventory that has one of these
@@ -1635,17 +1643,22 @@ Depending on your system, some possible fonts are usually:
 4x6, 5x7, 5x8, 6x9, 6x10, 6x12, 7x13, 7x14, 8x13, 9x15, 10x20, 12x24.
 
 Last but not least, you may use the following command-line options:
+-c                      force command-line interface instead of X11 etc.
+                        Use it if you want to run the client within a terminal.
+-e                      Create file 'tomenet.log' instead of displaying
+                        error messages in the terminal
 -f<config file>         use a different config file than ~/.tomenetrc
 -i                      ignore the ~/.tomenetrc config file
--p<Port>                for example -p19348
 -l<Account> <Password>  for example -lGandalf geheim
+-m                      skip motd (message of the day) on login
 -N<character name>      for example -NDruidor
+-p<Port>                for example -p19348
 <ip address>            for example 85.118.45.235
 -q                      turns off loading/initializing of audio ('quiet mode')
--w                      disables weather effects
 -u                      disables automatic LUA script updating
--m                      skip motd (message of the day) on login
+                        (You should NOT use this option!)
 -v                      automatically save chat log on exit
+-w                      disables weather effects
 
 Full command-line example:
         ./tomenet -p19348 -lGandalf geheim -NGandalf 85.118.45.235
@@ -1739,12 +1752,17 @@ home folder, same as Linux.
 Starting with version 4.4.5, TomeNET features a new SDL-based audio system,
 which provides sound effects and background music.
 
-To make use of it, all you have to do is download (www.tomenet.net) and install
-a sound pack and/or a music pack. Read on for instructions how to do that:
+To make use of it, all you have to do is download a sound and/or music pack and
+then install it. For downloading, go to www.tomenet.net and then click on
+'Downloads'.
+Read on for instructions how to install those once you downloaded them. There
+are two ways, automatically (client does it for you) and manually (you unzip
+them to the correct location yourself):
 
 
-Automatic audio pack installation
----------------------------------
+a) Automatic audio pack installation
+------------------------------------
+(See paragraph above for where to download audio packs.)
 Starting with client version 4.4.9, there is an automatic installer for sound
 and music pack:
 
@@ -1776,8 +1794,9 @@ In case you want to install the packs manually instead of using auto-install,
 read on.
 
 
-Manual audio pack installation
--------------------------
+b) Manual audio pack installation
+---------------------------------
+(See first paragraph of (2.1a) above for where to download audio packs.)
 Instead of automatic installation explained above you can also just manually
 unpack audio packs to your TomeNET/lib/xtra/ folder. Make sure the game isn't
 running while you do.
@@ -1843,8 +1862,7 @@ and CTRL+N to toggle the master mixer on/off).
 Note: Mixer settings are saved automatically, provided you use CTRL+X to quit.
 (Compare troubleshooting section (8.6), problem 21.)
 
-Also be sure to press '=' key to have a look at the audio options, which are in
-'User Interface Options 2'.
+Also be sure to press '=' key to have a look at the audio options.
 
 If you want to temporarily disable all loading/initializing of audio then
 instead of editing the config file's 'Sound' entry you can just use the '-q'
@@ -1996,7 +2014,12 @@ self-explaining or that are especially important are listed in detail here:
 
     Also, (2) has all of the audio options. (See (2.1a) for more information.)
 
-(3 & 4) Game-Play Options
+(3) Audio Options
+    A bunch of stuff here, mostly you might want to look at attack-sound effect
+    frequency. Some people don't like to have those be played on each single
+    attack, so you can tweak them here.
+
+(4 & 5) Game-Play Options
     Set 'AFK mode' automatically (auto_afk)
         Rogues might want to turn this off in order to sit out their blacklist
         timer in town.
@@ -2136,7 +2159,7 @@ overview screen. 'N' is the normal way for creating a new character.
 'E' is for creating a so-called 'exclusive' (or 'dedicated') character:
 There are two character slots in your account that can be used for creating a
 character dedicated to each of these special ways of playing:
- a) Ironman Deep Dive Challenge (see (4.13) for details)
+ a) Ironman Deep Dive Challenge (IDDC, see (4.13) for details)
  b) Player versus Player (see 'PvP' further below in this section)
 If you create such an exclusive character, you will be unable to use it for
 anything else. The point of having exclusive character slots is to ensure that
@@ -4077,7 +4100,7 @@ For a list of dungeons and towers, see (4.5).
 
 Dungeon types
 -------------
-There are different types of dungeons. The main five are:
+There are different types of dungeons:
 
 -Normal dungeons. The main dungeons below the five cities Bree, Minas Anor,
  Gondolin, Lothlorien and Khazad-dum are such regular dungeons.
@@ -4142,6 +4165,9 @@ staircases.
 Sometimes you might find ruins of old staircases that don't lead to any
 dungeon or tower. Those have no further functionality and are coloured grey
 (make sure you don't confuse them with an ironman dungeon accidentally).
+
+There are rumours about a dungeon that will never let anyone escape from it
+again, ever.
 
 
 Overview:
@@ -4507,7 +4533,7 @@ NOTE: Minimum level requirements for entering might be disabled, based on
       the server's settings.
 
 Dungeon                        |     Depth* / Level    | Min. required player
-                               |  (*relative to Lv.1)  |   level to enter
+                               |  (*relative to Lv.1)  |   level to enter(**)
 -------------------------------+-----------------------+---------------------
 Death Fate                     |    50..  50/  1..1    |        1
 The Halls of Mandos            |    50..4900/  1..98   |        1
@@ -4528,7 +4554,10 @@ The Sacred Land Of Mountains   |  2000..2250/ 40..45   |       20
 Erebor                         |  2500..3050/ 50..61   |       35
 Dol Guldur                     |  2850..3550/ 57..71   |       28
 Mount Doom                     |  4250..5000/ 85..100  |       38
-Nether Realm                   |  8300..9800/166..196  |       40 (*)
+Nether Realm                   |  8300..9800/166..196  |       40 (***)
+
+(**) Minimum level requirements are usually disabled, so you can actually
+enter any dungeon you like at any character level.
 
 The official main server usually has one or several 'ironman' dungeons
 (see (4.8)), their entrances (stairs) waiting to be discovered by some bold
@@ -4538,7 +4567,7 @@ list, and usually have no minimum required character level to enter.
 There may also be certain special dungeons, related to events or jails, that
 show up under according names in the list.
 
-(*) Nether Realm details:
+(***) Nether Realm details:
 -To enter the Nether Realm a player must carry the 'King'/'Queen' title,
  acquired by beating Morgoth, Lord of Darkness.
 -Each floor in the Nether Realm gives a +2% bonus to experience from monster
@@ -5271,7 +5300,8 @@ The following actions may reward 1 XP without you noticing:
   -Eating a bad food ration.
   -Picking a lock.
   -Transferring items or money from another player to you.
-  -Picking up/earning more than 300 gold pieces.
+  -Picking up/earning more than 300 gold pieces (IDDC-exclusive characters are
+   unable to pick up ny gold at all, and in turn start out with 300 extra).
    Use the /ex command to see how much more gold you may pick up
 Killing townspeople in Bree however will not give you any experience.
 Stay clean!
@@ -5374,6 +5404,8 @@ Ironman Deep Dive Challenge (IDDC)
     magic spells you might be missing.
     Inside the challenge dungeon you can acquire a kill quest via /quest
     command at level 1 already, instead of the usual minimum level of 5.
+    Players in the IDDC receive a 20% experience gain bonus in addition to the
+    usual experience bonus all ironman dungeons provide.
 
     Since you cannot recall out before reaching the 127th floor (or in one of
     the static towns), in case you need to go offline you'll just have to log
@@ -5401,9 +5433,24 @@ Ironman Deep Dive Challenge (IDDC)
     1 xp for that.
     Use the /ex command to see how much more gold you may pick up.
 
-    If you make a 'slot-exclusive' IDDC character, it will automatically be
-    unable to pick up too much gold or items of other players and your
-    character won't get experience from eating bad food either.
+    If you log out in the IDDC and log back on before the level has changed,
+    you can continue business as usual. However, if you log off and wait until
+    the level has reset, then the level will be "stale" for you, the next time
+    you log on, which will prevent you from getting any experience, items or
+    gold until you move on by taking a staircase to the next floor.
+    Monsters cannot spawn 'live' in the IDDC, but only at the time of creation
+    of each dungeon floor. Summon staves cannot be recharged in the IDDC.
+
+    NOTE: If you use stolen enchant scrolls on an item while you are in a town,
+    then the item will get a 100% off discount. If you want to use stolen
+    scrolls to enchant your items and keep the items sellable, then you have
+    to take the staircase to leave the town, and read the scrolls in an actual
+    dungeon level instead.
+
+    If you make a 'slot-exclusive' IDDC character, it will start out with 300
+    extra gold, and in turn automatically be unable to pick up any more gold or
+    items of other players, and it won't get experience from eating bad food
+    either.
 
     Monsters cannot spawn in the wilderness sector of the dungeon, so you can
     just idle at the entrance, waiting for team mates.
@@ -7018,7 +7065,9 @@ Learning        Gives you 1..3 (random) additional skill points to spend.
 
 Scrolls
 -------
-Rumour          Entertains the audience.
+Rumour          Makes a random rumour come to your character's (and everyone
+                else's characters') mind. Has no further effect and is not
+                necessarily true even.
 Blessing/Holy Chant/Holy Prayer
                 Increases your AC by 10/15/20, also increases your to-hit
                 bonus. (Temporarily)
@@ -8909,6 +8958,12 @@ Note that not every skill is available to every profession (class).
                                 Trying to 'steal back' an item that was already
                                 owned by a player, ie an item that has been
                                 sold to the shop, is especially hard.
+                                Blacklist times, very roughly:
+                                Murderous look - 1 hour +
+                                Gazes at you angrily - 40 min +
+                                Looks at you suspiciously - 25 min +
+                                Looks at you disapprovingly - 10 min +
+                                Cool glance - less than 10 min.
     .Backstabbing               Lets you backstab enemies, afflicting high
                                 damage. Works if the opponent is asleep or
                                 running away in fear, exposing his back to you.
@@ -9439,11 +9494,15 @@ Warrior is strongly recommended.
     They resist time, darkness, nether, poison and it's hard to drain their
     life force. They also have partially life leeching (vampiric) attacks
     (see '(5.15) Vampirism' for more information).
+    They become able to turn into a bat at level 20.
     Vampires cannot eat normal food, instead they need to feed off living
     creatures. This means that you need to kill monsters in melee combat in
     order to satisfy your hunger, which might be quite easy for melee classes
     but sometimes a hassle for ranged/caster classes.
-    They become able to turn into a bat at level 20.
+    At level 40 they will need less and less food to sustain themselves.
+    Vampire royalties will require the least amount of food, independant of
+    their level, enabling them to survive a very long time without feeding -
+    even an item granting 'Slow Digestion' will not improve this any further.
     Vampires hate 'Blunt' weapons, get a penalty on 'Divination' magic school,
     but receive a bonus on 'Mental Intrusion' and a large bonus on 'Necromancy'
     and all aura skills and a small bonus on 'Traumaturgy'. They cannot use
@@ -9463,8 +9522,10 @@ Warrior is strongly recommended.
     darkling, a harbinger of demonkind (to become enlightened) before reaching
     level 20 or they will lose the ability to stay in the realm and their
     physical form will be destroyed.
-    They will also meet such a fate if they kill both of these kind
-    indiscriminately before having reached initiation, so take care.
+    They will also meet such a fate of being destroyed by indecisiveness if
+    they kill both of these kind indiscriminately before having reached
+    initiation, so take care. After they underwent initiation at level 20, they
+    may just kill all of them indiscriminately, same as any other monster.
     Using but their mind they can easily perceive both good and demonkind
     telepathically. The servants and harbingers of those factions that Maiar
     need to slay occur between dungeon level 12 and 20 (which correspond to
@@ -9708,7 +9769,8 @@ vary. For example a warrior cannot learn magic spells.
     Their primary stats are same as the warrior i.e. strength and constituion
     with dexterity coming in handy too.
     Intelligence is not of primary importance but it can help somewhat to
-    increase the mana pool for making use of monster spells/breaths.
+    increase the mana pool for making use of monster spells/breaths, and it
+    also affects the success chance when attempting to use a monster power.
     Mimics learn forms by killing as many of a certain monster type as that
     monster has high a level. Further, their 'Mimicry' skill must be at least
     1/2 of the monster level.
@@ -10330,6 +10392,8 @@ F: flag list
 S: spell list
     These spells can be cast by the monster. Most of them are available to
     the mimic too, some of them have slightly different effects.
+    The chance to successfully use such a monster power is affected by the
+    mimic's intelligence (INT).
     Depending on how frequently the monster is able to cast spells, the player
     gets boni on intelligence and mana! This only applies if the spells are in
     fact magic spells, not if the monster cannot do anything except firing
@@ -10717,13 +10781,17 @@ Small kobold     1  Actually very weak, but it has poison resistance. This way
                     Not really useful other than that.
 Novice mage      2  Sort of weak but has 'blink' spell (aka phase door) and
                     more.
+                    It occurs solo at depth 2, but in packs at depth 6!
+Novice priest    2  Sort of weak but can cast fear/curse and self-heal spells.
+                    It occurs solo at depth 2, but in packs at depth 6!
 Novice ranger    4  Can pass trees easily. Gives an extra shot with ranged
                     weapons. This can be pretty powerful early on if the
                     character has a decent 'bows/throws' ability or has a bow
                     that is well enchanted to-hit.
-Novice priest    6  Sort of weak but can cast heal/fear/curse spells.
-N. mindcrafter   8  Free action, resists confusion and slightly insanity too.
+                    It occurs solo at depth 4, but in packs at depth 8!
+N. mindcrafter   4  Free action, resists confusion and slightly insanity too.
                     Can cast blind/slow/confuse/fear spells.
+                    It occurs solo at depth 4, but in packs at depth 8!
 Rotting corpse   8  Free action, resists confusion/fear/cold, poison immunity,
                     brands melee attacks with poison, decent AC.
 Phantom warrior  8  Useful only for shamans because it has no limbs:
@@ -10736,6 +10804,13 @@ Tengu           10  High HP, good AC, can blink/teleport and more, resists fear
 Master yeek     12  Although everyone knows that Yeek = weak, this particular
                     kind of Yeek can cast some interesting magic spells.
                     And as a plus it's actually immune to acid.
+Illusionist and Druid
+                13  These two have an array of spells at their disposal, one of
+                    them being 'Haste' which speeds themselves up temporarily,
+                    which can be a very powerful asset.
+                    These two monsters appear somewhat rarely though.
+                    (Later on, 'Mage' is a mid-level form that also provides
+                    haste spell and is actually more common to find.)
 Ogre            13  This form can cross thick woods and mountain terrain.
                     Note that Ogres also count as giants which means that
                     shamans can use this form too.
@@ -10760,6 +10835,10 @@ Umber hulk      16  Shamans can use full equipment in this form, others cannot.
 Forest troll    17  High HP, good AC, can pass trees, gives 'HP regeneration'.
 Elite uruk      20  Good HP, very high melee damage, good AC, +1 extra shot,
                     poison immunity.
+Dark-elven Lord 20  Good HP, resists darkness but is susceptible to light-based
+                    attacks. Moves fast and even has a 'Haste' spell in his
+                    array of spells that boosts his speed further.
+                    This monster occurs somewhat rarely.
 
 (The number is the monster level and therefore the amount of monsters you need
 to kill to learn the form.)
@@ -10945,10 +11024,11 @@ Nature
                     Required skill level for first spell level: 6.
     Healing         Heals a percentage of your hit points.          (project)
                     Required skill level for first spell level: 10.
-    Recovery        Reduces poison duration.
-                    Lv10: Cures poison and cuts.                    (project)
-                    Lv20: Restores drained stats.
-                    Lv25: Restores lost experience.
+    Recovery        Slows down the effect of poison.                (project)
+                    Lv5: Neutralizes poison.                        (project)
+                    Lv15: Heals cuts, cures confusion, blindness, stun (proj)
+                    Lv20: Restores drained stats.                   (project)
+                    Lv25: Restores lost experience.                 (project)
                     Required skill level for first spell level: 15.
     Regeneration    Increases your hit point regeneration rate.
                     Required skill level for first spell level: 20.
@@ -11177,11 +11257,13 @@ Holy Curing
                     Required skill level for first spell level: 10.
     Cleansing Light Continuously heals every player who steps inside.
                     Required skill level for first spell level: 18.
-    Curing          Reduces poison duration.
-                    Lv10: Cure poison/cuts/stun/blindness/confusion.(auto-p.)
-                    Lv20: Restore stats.                       (auto-project)
-                    Lv25: Restore experience.                  (auto-project)
-                    Required skill level for first spell level: 16.
+    Curing          Slows down the effect of poison.
+                    Lv10: Neutralize poison.                   (auto-project)
+                    Lv15: Cure confusion/blindness/stun.       (auto-project)
+                    Required skill level for first spell level: 3.
+    Restoration     Restores stats.                            (auto-project)
+                    Lv5: Restores experience.                  (auto-project)
+                    Required skill level for first spell level: 26.
     Faithful Focus  Cure hallucinations and insanity.          (auto-project)
                     Required skill level for first spell level: 21.
     Resurrection    Resurrect another player's ghost. The resurrected player
@@ -13665,21 +13747,19 @@ SOLUTION:   Read the error message displayed in a message box on quitting.
                     version than your client is.
             "Sorry, the game is full.  Try again later."
                     Wow the game is really full!
-            "That nickname is already in use."
-                    Choose a different character name.
-            "The server didn't like your nickname, realname or hostname"
+            "Your accountname, username or hostname contains invalid characters"
             (or just "Net input error")
-                    Player characters are identified by 3 names:
-                    -Nickname (character's name)
-                    -Realname (account name)
+                    Player characters are identified by 4 names:
+                    -Character name
+                    -Account name
+                    -Username (The name they are logged on with on their PC)
                     -Hostname (The hostname of the connecting computer)
                     The hostname is not really important. However, make sure
-                    that all of these 3 names may only consist of letters,
+                    that all of these names may only consist of letters,
                     numbers, spaces, and all other characters with an ASCII
                     code between 32 (SPACE) and 122 ('z').
-                    The realname and hostname must not be empty. The nickname
-                    (character name) needs to start with a letter ('A'..'Z'
-                    or 'a'..'z').
+                    The username and hostname must not be empty. The character
+                    name needs to start with a letter ('A'..'Z' or 'a'..'z').
             "There is already another character from this user/machine on the
             server."
                     You tried to login with two characters from the same
@@ -13849,10 +13929,10 @@ SOLUTION A: You are probably using OSS. If your soundcard or soundchip doesn't
             Another example (to start the Opera webbrowser):    $> aoss opera
 SOLUTION B: If you are using X11, this problem may occur depending on your
             terminal configuration. You can try to change your configuration,
-            or you can press '=' key to go to Options/User Interface Options 2
-            and enable 'Use audio system for paging sounds'. This will result
-            in paging sounds being played via your sound card, instead of the
-            operating system's beep (requires TomeNET v4.4.5 or higher).
+            or you can press '=' key to go to Audio Options and enable
+            'Use audio system for paging sounds'. This will result in paging
+            sounds being played via your sound card, instead of the operating
+            system's beep (requires TomeNET v4.4.5 or higher).
             (See (2.1a) for more information about the audio system.)
 
 PROBLEM 20: Are 'ToME' and 'TomeNET' similar?
@@ -13999,6 +14079,34 @@ PROBLEM 33: On OSX when entering the game (right after picking a character) in
              start with only 24 lines, switching back to correct big_map mode
              only when you actually log in with a character, thus circumventing
              the bug.
+
+PROBLEM 34: On certain terminal emulators, TomeNET when run in ncurses-mode
+            ('-c' command-line option or just a GCU-only client) will display
+            wrong colours. This used to happen on Xfce4's 'Terminal' up till
+            TomeNET version 4.5.0 (but didn't happen on xterm).
+SOLUTION:   Since TomeNET 4.5.0a a hack has been added to work with Xfce4's
+            'Terminal' terminal emulator.
+            On other terminals where colours aren't correct, try exporting
+            the TERM environment variable with the value "xterm16-color".
+            For example run tomenet with this command (assumed you're inside
+            the same folder as the executable binary 'tomenet'):
+              TERM=xterm-16color ./tomenet -c
+
+PROBLEM 35: When running the client in terminal-mode, messages like
+            "ALSA lib pcm.c...:(snd_pcm_recover) underrun occurred"
+            pop up, but the sound/music actually works ok.
+            How to get rid of the messages?
+SOLUTION:   Either tweak your sound settings (buffer size etc.) so ALSA doesn't
+            get underruns anymore, or, if the audio actually sounds ok, you can
+            suppress the messages by starting TomeNET with '-e' option, for
+            example:
+              ./tomenet -c -e
+            This will redirect all messages which usually are sent to stderr
+            to a log file "tomenet.log" instead, which will be created in your
+            TomeNET folder.
+            Alternatively, you can just redirect all error out put to /dev/null
+            to completely discard it:
+              ./tomenet -c 2>/dev/null
 
 
 
