@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 21. September 2014 - written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.5.7b - official websites are:
+| Latest update: 24. October 2014 - written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.5.8 - official websites are:
 | http://www.tomenet.net/ (main site),
 | http://koti.mbnet.fi/mikaelh/tomenet/ and http://www.c-blue.de/rogue.html
 |
@@ -133,6 +133,7 @@ Contents
     (5.21c) Digging - Further information
     (5.22)  Recharging
     (5.23)  Wraithform
+    (5.24)  Item sharing rules and exceptions
 (6) Character details
     (6.1)   Attributes
     (6.2)   Skills, opposed skills
@@ -4681,6 +4682,20 @@ Those powers drain your experience. If you use them too often and run out
 of experience you will fade away (your character is erased then).
 
 
+Getting help
+------------
+Don't hesistate to ask other players online for help. You can press '@' to see
+who is currently logged on. To try and get the attention of someone who seems
+to be afk, you can try the  /page  command. It will make his game client beep
+three times.
+Write in normal chat (so everyone can read it) that you need help, the dungeon
+you are in, and the depth you are on, eg: "Help! I died in Mordor -50 ft!"
+Make sure your ghost is in a safe spot, preferably within walls, so most
+monsters will be unable to attack you. Avoid moving around until the player you
+called for a rescue confirms that he has cleared out the monsters and tells you
+where you should move next.
+
+
 
 (4) The world
 =============
@@ -8525,11 +8540,11 @@ Perception      Identifies a specific item.
 Enlightenment   Magically maps your surroundings.
 Polymorph       Polymorphs your target randomly into another form.
                 Doesn't works on players who resist nexus.
-Drain Life      Wand: Drains 10..20% life from your target, giving you 50% of
+Drain Life      Wand: Drains 10..20% life from your target, giving you 25% of
                 the drained life force.
-                Rod: Drains 15..30% life from your target, giving you 33% of
+                Rod: Drains 10..20% life from your target, giving you 25% of
                 the drained life force.
-Annihilation    Wand only: Drains 15..30% life from your target.
+Annihilation    Wand only: Drains 15..25% life from your target.
 Magi            Restores your intelligence and 500 mana points.
 Power           Dispels nearby monsters.
 Holiness        Dispels nearby evil. Also protects you from evil for a while.
@@ -9893,6 +9908,66 @@ and to escape dangerous situations easily (just retreat into walls).
 
 
 
+(5.24) Item sharing rules and exceptions
+----------------------------------------
+The following item sharing rules apply to a standard server configuration.
+It is possible that a server runs certain alterations of some aspects.
+
+
+Trading items between characters of different mode
+--------------------------------------------------
+Usually items cannot be exchanged between characters of different modes, eg
+everlasting mode, pvp mode and other modes.
+Normal mode and unworldly mode characters can exchange items though, they are
+basically unified as 'non-everlasting' mode aka 'scoreboard mode'.
+They too cannot exchange items with pvp mode characters though.
+Game pieces are an exception and can always be used by anyone.
+
+(If the server is running a non-standard configuration, it might be possible
+for everlasting or pvp characters to actually pick up items from other modes
+but not vice versa.)
+
+
+Trading zero-level items
+------------------------
+Level 0 items, which are either starter items, special boss drops or event
+reward items can only be used by the first owner and are unusable by anyone
+else. Certain event parchments can actually be traded despite being level 0.
+
+
+Exceptions for emergency cases
+------------------------------
+Certain items can be exchanged freely between incompatible modes to make rescue
+missions easier:
+Torches, food, scrolls of satisfy hunger, oil flasks, word-of-recall scrolls.
+These items will get a 100% discount when they are exchanged between modes.
+
+An exception for level 0 items are the following starter items:
+Torches, food, scrolls of satisfy hunger.
+They too will get a 100% discount and their level will actually change to 1.
+
+
+Special restrictions
+--------------------
+Items usually cannot be sent via telekinesis if the target player does not
+meet the item's level requirements.
+True artifacts usually cannot be picked up by a player who does not meet the
+item's level requirements.
+Some items can only be used by 'winners' (characters who have beaten Morgoth).
+These items cannot be sent via telekinesis to a non-winner either.
+
+
+Dungeon-specific exceptions
+---------------------------
+In the ironman deep dive challenge (IDDC) and in the Nether Realm dungeon,
+items can actually be traded between any character mode.
+Within the IDDC, item levels don't even have any effect!
+For the Nether Realm, the items must have been found within the Nether Realm.
+As soon as a character leaves the worldmap sector of the Nether Realm, the
+items lose their ability to be traded between incompatible character modes.
+
+
+
 (6) Character details
 =====================
 (6.1) Attributes
@@ -9939,7 +10014,8 @@ Draconian Istar has an intelligence cap of 18/100 + 2 (Draconian) + 3
 (Istar) = 18/150.
 
 Stats can be raised over the character's cap by equipment. The total possible
-maximum of an attribute is always 18/220 (40), which is displayed as 18/***.
+maximum of an attribute is always 18/220 (40), which is displayed as '18/***'
+or '**' if using linear_stats.
 
 Strength (STR)
     -How heavy may your weapon, bow or shield be? You can't fight with a
@@ -12043,8 +12119,8 @@ be able to cure insanity.
 ---------------------
 If a mimic polymorphs into a certain monster form, abilities and stats will be
 averaged between the normal ('@') body and the form. In most cases if the form
-is performing worse than @-form in a certain ability, the @-form will dominate
-and the ability will be only slightly worse than normal.
+is performing worse than @-form in a certain field, the @-form will dominate
+and the ability will be only slightly worse than normal, if even at all.
 The averaging is done because the mimic with all his equipment polymorphs into
 the target form. It's not like the polymorphing is done first and afterwards
 armour, weapon or jewelry is equipped.
@@ -12095,10 +12171,10 @@ I: speed : hit points : vision : armor class : alertness
     monster HP is calculated by the following formula before further
     calculations are made: monster HP = 50000 / ((50000 / hdice*hsides) + 20).)
     Now, if the mimic's HP are less then the result, the mimic's HP will
-    become approx. ((3*x*y) + (2*normal_HP)) / 5. (2/5 monster HP, 3/5 player
-    HP.) If the mimic's HP in player form (code 0) are greater than x*y, the
-    resulting HP will be ((x*y * 4) + (mimic_HP * 1)) / 5.
-    (1/5 monster HP, 4/5 player HP!)
+    become approx. 2/5 of that capped monster HP + 3/5 of the player's original
+    HP. If the mimic's HP in player form (code 0) are higher than the monster
+    HP then the monster HP will not have any adverse effect, instead the normal
+    HP will stay.
     A specialty: Players in very high character levels can see their hit points
     'overtake' the monster form hit points, if the monster form level isn't
     very high in comparison. Example: While a green dragonrider will provide a
@@ -12177,13 +12253,14 @@ B: attack method : attack effect : damage
     The monster damage dice for each attack are multiplied and the products
     are all added up, the result is divided by 4.
     The result is now capped against 200, the closer this graph comes towards
-    200 the flatter the curve will become.
+    200 the flatter the curve will become. Let's call the resulting monster
+    damage value 'monDam':
     This value is now compared against the player's melee to-damage bonus.
-    If (monDam > toDam) then newToDam = 1/2 toDam + 1/2 monDam.
-    If (monDam < toDam) then newToDam = 3/4 toDam + 1/4 monDam.
-    So the monster damage has only a small influence if it's lower than
-    the player's to-damage bonus, but it has a high influence if the
-    monster is more powerful than the player.
+    If (monDam > meleetoDam) then newToDam = 1/2 meleetoDam + 1/2 monDam.
+    If (monDam < meleetoDam) then newToDam = meleetoDam.
+    So, very similar to how HP are averaged, the monster damage has no
+    influence if it's lower than the player's melee to-damage bonus, but it
+    may provide a great boost if the monster is more powerful than the player.
 
 F: flag list
     The flags are translated to mimic abilities as follows:
@@ -12749,6 +12826,8 @@ Of course some of these forms might also be useful for martial arts users.
 (Note that martial artists cannot make use of ranged weapons or weapons in
 general though, without losing their excellent bare-handed melee skills.)
 
+Commonly seen advanced forms: Bloodletter of Khorne, Storm Giant, Dragonriders.
+
 
 
 (6.8) Magic spells and prayers
@@ -12911,7 +12990,7 @@ Istar schools:
 - Air
 
     Noxious Cloud   Fires a poison cloud at a designated target.
-                    Lv30: Unbreath cloud, irresistible.
+                    Lv30: Unbreath cloud, harder to resist.
                     Required skill level for first spell level: 3.
 
     Lightning Bolt  Fires a lightning bolt at a target.
@@ -13192,8 +13271,8 @@ Priest schools:
                     and returns a part of it to your hit points.
                     Required skill level for first spell level: 20.
 
-    Doomed Grounds  Similar to 'Drain Life' but affects a whole area.
-                    Required skill level for first spell level: 40.
+    Doomed Grounds  Similar to 'Drain Life', weaker, but affects a whole area.
+                    Required skill level for first spell level: 30.
 
     BONI:           Adds slay undead at 30, slay demon at 40, slay evil at 50
                     to all melee and ranged attacks.
@@ -13349,6 +13428,8 @@ Priest schools:
     Zeal            Gives +1 extra attack per round for a while.    (auto-p.)
                     Lv10: Gives +2 EA.                         (auto-project)
                     Lv20: Gives +3 EA.                         (auto-project)
+                    Friendly players around the caster that are affected by the
+                    spell will receive up to +2 EA depending on spell level.
                     Note: The EA effect won't be applied to barehanded players
                     if they don't have Martial Arts skill of at least 01.000.
                     Required skill level for first spell level: 31.
@@ -13866,7 +13947,7 @@ Auto-retaliation:
 -----------------
 If you inscribe @O[a-g][a-g] on a rune in your inventory, you will retaliate
 with a spell of the selected modifier and type. For example, if you set the
-inscription to @Oab on a rune of light, the 'beam' spell type will be
+inscription to @Oac on a rune of light, the 'ball’ spell type will be
 selected, with a 'minimized' spell modifier. It is advised to use the !R
 inscription to prevent your last rune from being consumed in spell failure.
 
@@ -13969,14 +14050,14 @@ influencing level, cost, fail rate, damage, casting time, radius, and duration.
 -------------------------------------------------------------------------------
 Name       | Lvl | Description                           | Enhanced
 -------------------------------------------------------------------------------
-Bolt       |   1 | Hits a target in line of effect.      | Non-reflecting.
-Beam       |   5 | Hits every target in line of effect.  | Damage over time.
-Cloud      |  10 | Damages an area over time.            | Follows the caster.
-Ball       |  15 | Instantly damages an area.            | Full area damage.
-Sign       |  20 | Instant or temporary element effects. | See element tables.
-Glyph      |  25 | Set or retrieve a rune as a glyph.    | No rune/explosion.
+Bolt       |   1 | Damages a single target.              | Beam variation.
+Cloud      |   5 | Damages an area over time.            | Storm variation.
+Ball       |  10 | Area damage decreasing with radius.   | No damage decrease.
+Sign       |  15 | Instant or temporary element effects. | See element tables.
+Glyph      |  20 | Set/retrieve a rune. Damaging glyph.  | No rune, no damage.
+Wave       |  25 | Radiates outward from the caster.     | Line of sight.
 Sigil      |  30 | Resist enhancement. Consumes a rune.  | See boni table.
-Wave       |  35 | Radiates outward from the caster.     | Hits line of sight.
+
 
 Enhanced Sigil Boni
 -------------------
@@ -15348,8 +15429,11 @@ the monsters that you encounter, so you will be able to decide if you should
 attack or flee.
 In my opinion playing TomeNET can be called "the art not to die".
 
-Note: As an everlasting character you can somewhat cheat death by activating
-"Instant Resurrection" in any temple, see (4.5a) for details and drawbacks.
+Notes:
+ - As an everlasting character you can somewhat cheat death by activating
+   "Instant Resurrection" in any temple, see (4.5a) for details and drawbacks.
+ - You can use the  /page  command to get someone's attention if he seems afk
+   and you need his help. This command will make his game client beep 3 times.
 
 
 
@@ -15572,6 +15656,9 @@ existed on the base item (example: 'everburning' mod being added to a feanorian
 lamp, which already has that by default ie needs no fuel), so if unlucky it
 might seem as if an item did not gain any mods, but in fact it just did not
 gain any NEW mods it didn't already possess.
+
+-'Activation' does not tax the base power either. It's a free property same as
+ignore-flags mentioned above. (Prominent example: Dragon scale mails.)
 
 -Note that any mod the base item type already possesses will definitely also be
 in the final randart.
@@ -15898,6 +15985,7 @@ Amulets cannot give more than +3 to stats.
 2-handed weapons cannot give more than +6 speed.
 
 Shields cannot gain +speed mod.
+Boomerangs cannot gain +speed mod.
 
 
 Technical internals
@@ -16894,10 +16982,11 @@ SOLUTION:   Change the audio sample rate in '.tomenetrc' config file to match
 
 PROBLEM 49: On Linux/X11 I get 100% cpu usage when switching workspace away
             from TomeNET when I have 'recall_flicker' option enabled.
+            (The system on which this happened had AMD graphics drivers, but
+            that might not be relevant.)
 SOLUTION:   This is suspected to be a problem with 'Awesome' window manager.
-            The only workaround so far is to disable recall_flicker or use a
-            different window manager.
-            AMD graphics drivers have also been suspected but this is currently
-            pure speculation.
+            However, if you use Gnome, starting Awesome through
+              gnome-session --session=awesome
+            has been reported to solve the problem.
 
 ==============================================================================
