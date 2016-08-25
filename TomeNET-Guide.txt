@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 24. October 2014 - written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.5.8 - official websites are:
+| Latest update: 21. December 2014 - written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.5.8a - official websites are:
 | http://www.tomenet.net/ (main site),
 | http://koti.mbnet.fi/mikaelh/tomenet/ and http://www.c-blue.de/rogue.html
 |
@@ -99,6 +99,8 @@ Contents
     (4.12)  Malicious effects monsters can suffer
     (4.13)  Extermination Orders, Events and Ironman Challenge
     (4.14)  In-game time system
+    (4.15)  Swimming
+    (4.16)  Teleportation
 (5) Item and monster details
     (5.1)   Melee weapons, brands
     (5.1a)  Melee weapon types
@@ -186,26 +188,24 @@ Contents
 If you are using Linux, you will find additional information about how to
 compile the game under '(2.1) Installing/updating TomeNET'.
 
--Get the latest client from the project's main official site www.tomenet.net
+-Get the latest client from the project's main official site www.tomenet.net.
  or from  http://koti.mbnet.fi/mikaelh/tomenet/getting-started.php (Mikael's
- site, which features a monster-search, and this nice introduction in pictures)
- and www.c-blue.de/rogue.html (my own site).
- The game client is named something like 'tomenet-???-client.zip', extract it
- to C:\TomeNET for example.
+ site, which features a monster-search and other stuff).
+ If you're on Microsoft Windows, it is recommended to get the installer package
+ instead of the zip archives.
 
--Either run 'TomeNET-direct.bat' to directly connect to official main server
- (recommended), or run TomeNET.exe and choose a server (Enter 37.187.75.24
- to connect to the official main server).
- NOTE: The official main server's hostname is "europe.tomenet.net",
-       the meta server's hostname is "meta.tomenet.net" (the meta server is the
-       server that presents you the list of actual game servers).
+-Either double-click 'TomeNET-direct.bat' to directly connect to official main
+ server (recommended), or run TomeNET.exe and choose a server manually, for
+ example enter 37.187.75.24 to connect to the official main server.
+ NOTE: The official main server's hostname is "europe.tomenet.net".
+ (The Bat-file will always work properly, even if there are DNS problems which
+ cause the server list not to show up properly.)
 
 -Create a character, Half-Troll warrior is good for beginners.
  The server should now allow you to manually choose your stats.
  In case you chose a (Half-Troll) warrior, try this:
-  STR _at least_ 18/30 (the game client will even suggest 18/40, but if you buy
-  a whip or a dagger right away and use that instead of your heavier starting
-  weapon, then 18/30 will be fine),
+  STR _at least_ 18/30 (to get a high number of attacks per round - the game
+  client will even suggest 18/40 for minimum STR),
   CON as high as possible, INT as low as possible,
   spare points into DEX (especially!), WIS or CHR.
  If you decided to play a paladin make sure you have at least DEX 10.
@@ -224,22 +224,29 @@ compile the game under '(2.1) Installing/updating TomeNET'.
  If you made a druid, put couple of points into all, DEX, STR and CON, and keep
   your WIS relatively high since it's important for druidic spell-casting.
   Some druids might value high starting WIS more than any of the other stats
-  for that reason even.
+  for that reason.
  Explanation:
    CON affects your hit points, more CON -> more HP.
    STR (and DEX) determine your number of attacks per round. 18/30 in STR is
-   enough to get 3 attacks per round with very light weapons, regardless of
-   how you modify your DEX. To get the 3 blows per round (bpr) you'll need to
-   sell your heavy sword and buy a light weapon (3.0 lb or less) like dagger
-   or whip. That is more efficient than 1 or 2 bpr with your original sword!
-   Later on when your character becomes more powerful you can switch back to
-   heavier weaponry.
+   enough for warriors to get 3 attacks per round with very light weapons
+   (daggers or whips) regardless of how you modify your DEX.
+   To get the 3 blows per round (bpr) you'll need to sell your heavy sword and
+   buy a light weapon (3.0 lb or less) like a dagger or whip. That is more
+   efficient than 1 or 2 bpr with your original sword! Later on when your
+   character becomes more powerful you can switch back to heavier weaponry.
    Warriors don't really need INT so you should reduce it to spend the points
    on other attributes. WIS isn't really needed either, but it can be useful
-   to endure sanity-reducing effects.
- (If you are new to the game, it is NOT recommended to choose one of these:
- Istar, Priest, Shaman, Adventurer.
+   to endure sanity-reducing effects and increase your saving throw against
+   certain detrimental effects.
  Details about how STR and DEX affect startup blows/round are given in (6.5a).)
+
+
+ ---- PLEASE NOTE: ----
+ If you are new to the game, it is NOT recommended to choose one of these:
+ Istar, Priest, Shaman, Adventurer.
+ The reason is that these classes are hard to play in the beginning -
+ compare introductory explanation in (6.5)!
+
 
 -Make sure you DO NOT chose 'PvP' mode. It's a restricted special thing that
  has nothing to do with the normal gameplay at all! (See (6.13) for info).
@@ -263,6 +270,8 @@ compile the game under '(2.1) Installing/updating TomeNET'.
 
 -You can wear/wield your armour/weapons by pressing 'w' and choosing them
  from your inventory which is displayed in the bottom right window.
+ To take off an equipped item, press 't'. The item will be returned to your
+ backpack (aka your inventory).
 
 -You can pick up items if you stand on them and press 'g'. Items that are
  especially valuable in the beginning are magic wands and staves, so make sure
@@ -274,11 +283,12 @@ compile the game under '(2.1) Installing/updating TomeNET'.
 -You can enter stairs down/upwards by standing on them and pressing the
  corresponding key '<' or '>'.
 
--You can press '?' to get an in-game help about keys and commands.
+-You can press '?' to get a short in-game help. The actual list of commands
+ and further info are contained in this guide.
 
--Nearby the town there's often a 'training tower' which is a good place
- to start because if you die there nothing will happen except a slight
- loss of experience and gold. Ask people where the dark-green '<' symbol
+-Nearby the starter town (Bree) there's often a 'training tower' which is a
+ good place to start because if you die there nothing will happen except a
+ slight loss of experience and gold. Ask people where the dark-green '<' symbol
  (the tower entrance) is found. Usually to the lower-right of the town centre.
 
 -If you die outside of the training tower you will usually turn into a ghost.
@@ -288,11 +298,11 @@ compile the game under '(2.1) Installing/updating TomeNET'.
  While you're a ghost you can freely float up/down by pressing '<' and '>'.
 
 -If you have any parchments like 'Guide to Middle Earth' or 'The Gazette' in
- your inventory (bottom right window) you should read those by pressing 'r' to
- read.
+ your inventory (bottom right window) you can read those by pressing 'r' to
+ read. They don't do anything, just a short read containing some information.
 
 -If your character gains a new level it also gains skill points. To distribute
- those, invoke the skill screen with 'G'. (See 3.10, 6.2 and 7.5.)
+ those, invoke the skill screen with SHIFT+G. (See 3.10, 6.2 and 7.5.)
 
 -If you don't like your character and want to delete it, you may commit
  suicide by pressing SHIFT+q or CTRL+k and double-confirming the following
@@ -302,19 +312,41 @@ compile the game under '(2.1) Installing/updating TomeNET'.
  level you will need an admin to 'validate' your account.
  Usually, all you have to do is to keep playing/stay online for a bit until an
  admin logs in, notices that you are new, and validates your account.
- If that doesn't seem to happen, ask an admin directly, when you see one
- chatting (Admin's names are displayed in dark blue in the chat).
- If the server's intro screen mentions to send an email to an admin, try that
- and specify your account name in it.
+ If that doesn't seem to happen, just ask in chat openly. Some players have
+ validation privileges too and can help you out.
 
--Press '@' key to see a list of players who're currently online. Note that a
- yellow '(I)' before a name stands for 'invalid', and means that this player
+-Press '@' key to see a list of players who're currently online.
+
+ A yellow '(I)' before a name stands for 'invalid', and means that this player
  is still awaiting account validation by an admin.
- Also, if a grey '(O)' is in front of a player name, it means that player is
- using an outdated client. It's very important to keep your client up to date!
+ A grey '(O)' is in front of a player name, it means that player is using an
+ outdated client. It's very important to keep your client up to date!
+
  If another player's character level is displayed in light blue colour, that
  means he is within sensible level range of you to form a party! Press SHIFT+P
  for party menu. One of you has to create the party and add the other one.
+
+ A name displayed in dark blue is an admin.
+ A name displayed in purple is a 'winner', ie a player who managed to beat the
+ game boss, Morgoth, the Lord of Darkness (and hasn't died since).
+ A name displayed in red is a ghost, ie a player who died. :(
+ A name displayed in dark grey is a player who is currently inside the special
+ 'Ironman Deep Dive Challenge' dungeon.
+
+-A few other important keys are:
+ ~  knowledge menu (all of your character's knowledge, plus artifact/monster
+    spoilers under ~6 and ~7 respectively.)
+ =  game options menu.
+ %  macro menu ('macros' are hotkeys, allowing you to bind certain actions to a
+    single key press). (More about macros in (3.6) up to (3.9b).)
+ SHIFT+P  form a party with your buddies. You share experience in a party and
+          you can always see each other on the map and your team mates' current
+          world location in the player list (accessed with '@' key).
+ SHIFT+L  look around the map. Very useful to locate team mates ;).
+ CTRL+U  the audio mixer menu (the hotkeys for toggling master/music work
+         outside of this menu too).
+ CTRL+X  quit the game. Safest way is to quit in a town, not in the dungeon!
+
 
 -Note that your character's "speed" may change. Speed is the factor telling you
  how fast your character can move, fight or perform any other kind of action.
@@ -325,8 +357,8 @@ compile the game under '(2.1) Installing/updating TomeNET'.
  items in your inventory, you will see a light brown indicator (for example
  'Slow -3') at the bottom line instead.
 
-It is recommended that you continue reading at (3.2) now,
-or glance at (7.3) first ;)
+You could continue reading at (3.2) now, which explains the user interface,
+or glance at (7.1), (7.2) or (7.3) first which explain some basic strategy.
 
 
 
@@ -585,14 +617,29 @@ H       CTRL+G  re-apply client-side and (if 'auto_inscribe' option is enabled)
                 server-side auto-inscriptions to an item.
 
 CTRL+U  CTRL+F  Displays/exits the audio mixer settings. (Also see (2.1a).)
-                Note: Mixer settings are saved automatically, provided you use CTRL+X to quit.
+                Note: Mixer settings are saved automatically, provided you use
+                CTRL+X to quit.
                 (Compare troubleshooting section (8.8), problem 21.)
 
+                Here you can set audio volume for sound effects and music or
+                mute them separately. The hotkeys for muting work outside of
+                the mixer screen too, during normal gameplay.
+
+                If you haven't installed a sound or music pack, you can do
+                that by running the TomeNET-Updater or by downloading packs
+                manually (for download links see the 'download' page on the
+                TomeNET homepage for official packs, or look in the forum for
+                user-made packs).
+
 CTRL+C  CTRL+Q  Toggles music. (Shortcut for toggling it in the mixer settings.)
+                This hotkey works outside of the mixer screen too.
 
 CTRL+N  CTRL+V  Toggles audio. (Shortcut for master toggle in the mixer settings).
-                Note: If you press this while in chat prompt, you can cycle forward
-                through lines you previously typed (also see CTRL+P).
+                This hotkey works outside of the mixer screen too.
+
+                Note: If you press this while in chat prompt, you will instead
+                cycle forwards through lines you previously typed - also see
+                CTRL+P key, which cycles backwards.
 
 
 SPACE   Stop executing repeatable actions such as searching, tunnelling or
@@ -754,7 +801,8 @@ K       forcibly combines a level 0 item in your inventory with other items of
 
 CTRL+P  view previous messages.
         Note: You can also press this when in chat prompt, to cycle backward
-        through lines that you previously typed (also see CTRL+N).
+        through lines that you previously typed (also see CTRL+N, which cycles
+        forwards).
 
 CTRL+O  view previous chat messages.
 
@@ -2178,7 +2226,7 @@ Last but not least, you may use the following command-line options:
 (Skip down to (2.1a) to continue reading.)
 
 
-Linux (using pre-compiled binary):
+Linux (using pre-compiled client):
 ----------------------------------
 Make sure that ncurses and crypt libraries are installed, package names are
 usually libncurses5 and libgcrypt11.
@@ -2189,8 +2237,6 @@ to start the game.
 
 Linux (compiling from source):
 ------------------------------
-(For using the pre-compiled client instead, see further below.)
-
 There are additional distribution-specific information on Mikael's website at:
 http://koti.mbnet.fi/mikaelh/tomenet/installation-linux.php
 (It's linked on www.tomenet.net -> "Links".)
@@ -2223,9 +2269,8 @@ Enter these two lines:
         make clean
         make tomenet
 and the binary 'tomenet' will be created in this folder 'tomenet/src'.
-IMPORTANT NOW: If your makefile is an older version, you need to move the
-binary one level upwards, ie into 'tomenet/' ! If your makefile is newer,
-it might already have done that for you automatically.
+IMPORTANT NOW: You need to move the binary 'tomenet' that was just created one
+               level upwards, so it's placed in the 'tomenet/' folder!
 Go up one level into your 'tomenet/' folder. There type:
         ./tomenet
 to start the game.
@@ -2975,8 +3020,13 @@ either his INTelligence or his WISdom, depending on the actual class. For more
 information about classes and their pros and cons see (6.5).
 Spellcasting involves using 'macros' (see (3.6)) and might be a bit difficult
 for beginners.
-Classes definitely NOT recommended for beginners are:
-Istar (mage), Priest, Shaman, Adventurer.
+
+
+ ---- PLEASE NOTE: ----
+ If you are new to the game, it is NOT recommended to choose one of these:
+ Istar, Priest, Shaman, Adventurer.
+ The reason is that these classes are hard to play in the beginning -
+ compare introductory explanation in (6.5)!
 
 
 Then you have to choose your race. Humans are good allrounders, while the other
@@ -3001,7 +3051,7 @@ Sometimes this requires you to get rid of your initial weapon and buy a very
 light weapon, for example one of these:
  -dagger or main gauche (sword class),
  -whip (blunt class),
- -hatchet (axe class) or
+ -cleaver (axe class) or
  -spear (polearm class).
 (For more information about the different weapon classes see (5.1a).)
 Sometimes it is even possible to start out with 3 bpr (warriors mostly).
@@ -5182,7 +5232,8 @@ Icy waste       white '.'
      ground might burn your items. Use word-of-recall to get out of here.
 (***) If your backpack is too heavy for you to swim then it'll be a big hassle
       to try and cross deep water without drowning. In that case just get an
-      item that allows you to levitate and you'll be fine.
+      item that allows you to levitate and you'll be fine. (See (4.15) for
+      details about swimming).
 
 
 
@@ -5772,6 +5823,7 @@ These feelings are as follows:
 
   "You feel an imminent danger!" ->     This dungeon level is *way* higher
                                         than your character level.
+                                        (Does not show in the IDDC.)
 
   "You feel a suppressive air." ->      You cannot use wraith form or
                                         probability travel on this level.
@@ -6560,10 +6612,10 @@ Ironman Deep Dive Challenge (IDDC)
     there can be only one (random) town at a time.
     Random towns cannot spawn before dungeon level 18 and not after dungeon
     level 99. They remain static for only 5 minutes after dying, all other
-    floors will remain static for at most 10 minutes, giving other players a
-    chance to loot items and money.
-    Floors remain static for 2 minutes after the last player has left them
-    by logging out or taking a staircase (or recalling if that is possible).
+    floors will remain static for 10 minutes, giving other players a chance to
+    loot items and money. An exception are floors 50 ft..350ft which only stay
+    static for 2 minutes, still giving you a chance to reconnect if you get
+    disconnected without the floor turning stale.
 
     Also, starting at dungeon level 8, a hidden library may appear randomly
     (that's a book store with a red '9' for entrance), allowing you to purchase
@@ -6673,22 +6725,33 @@ Halloween
     found and stored costumes can be worn again.
     Townspeople will actually give experience (!) but also have a fear-causing
     'touch' attack. They can't really harm you, though.
+
     Randomly, the Great Pumpkin will appear on dungeon levels, either with low
     or medium or high amount of hit points, depending on the location.
-    The event is aiming at intermediate-level characters. The pumpkin always
-    spawns shallower than dungeon level 40. Players who are too high level
-    (above 35 on main, above 40 on Ironman) will not be able to hunt him, for
-    the others he will still be tough and might require teamwork.
+    If you cannot beat the high-HP version, you could try leaving the floor to
+    reset it and hope to see the Pumpkin randomly respawn quickly afterwards in
+    easier form. The pumpkin will despawn on its own if it doesn't get killed
+    before one hour has passed after it appeared. It will quickly respawn on
+    another dungeon level in that case. About 5 minutes before it fades away,
+    nearby players will get a warning message, saying that the Great Pumpkin
+    "wails and seems to fade".
+
+    The Pumpkin is aiming at intermediate-level characters. It can spawn on any
+    dungeon floor shallower than dungeon level 40 (or 50 on Ironman server),
+    except it won't show up on the first 19 floors in the Ironman Deep Dive
+    Challenge.
+    Players who are too high level (above 35 on main, above 40 on Ironman) will
+    not be able to hunt him, for the others he will still be tough and might
+    require teamwork.
+
     The Great Pumpkin does not cause any damage but still has a few annoying
     spells at its disposal. It is level 127 and therefore can drop any item in
     the game, and usually drops very good. Please share fairly. ;)
-    The pumpkin can spawn on any dungeon floor in any dungeon that is shallower
-    than level 40 (or 50 on Ironman server), except it won't show up on the
-    first 19 floors in the Ironman Deep Dive Challenge.
     When a player defeats the Great Pumpkin, everyone will get a message about
     it. The Great Pumpkin will randomly respawn again some time later.
-    Also it will stay night on the world's surface until Halloween ends and
-    magic that lights up the world surface won't work.
+
+    During Halloween, it will stay deep night on the world's surface and magic
+    that lights up the world surface won't work.
 
 Christmas
     Running from 24th December to 25th December.
@@ -6777,6 +6840,122 @@ The sun will usually rise at around 6am, while night falls at around 7pm. Again
 use the /ex command to see the in-game time for your character.
 Extermination orders (see (4.13)) usually have a time limit of two full in-game
 days, so you will have about 2.5 h to carry them out.
+
+
+
+(4.15) Swimming
+---------------
+Some very light characters can swim without losing hit points occasionally
+('drowning). The weight limit includes equipment, backpack and the character's
+weight itself. For example an elf has no problems swimming through deep water.
+
+The heavier a character gets, the more often he will get a 'tick' of drowning
+inflicted on him, reducing his hit points. This is a continuous process that
+scales from 'no damage at all' at very low total weight to serious drowning for
+really heavily packed characters.
+
+Most races are too heavy to be able to swim perfectly out of the box, and even
+low-weight races will run into trouble when they store things in their backpack
+or wear a couple of items.
+However, this is often not a big problem because even though a character may
+not be able to swim perfectly, it'll still be sufficient to cross large rivers
+without taking much of a dip in hit points, if he isn't carrying or wearing a
+load of heavy items.
+
+
+If you're really too heavy and want to operate in watery surroundings though?
+Here are ways to improve your swimming capabilities:
+----------------------------------------------------
+
+Constitution or being undead (includes mimicked monster forms) will reduce the
+hit point damage, but not the drowning tick frequency.
+Strength and dexterity will randomly reduce the tick frequency but are still no
+guarantee for perfect swimming.
+
+The 'Swimming' skill is the easiest choice to reduce tick frequency, and it
+does so to zero ie perfect swimming, when maxed. at 0.700 you will become able
+to swim very fast, which can be compared to 'running' through the water in
+terms of speed. However, this costs precious skill points, so it's not a very
+popular way of getting good at crossing water.
+
+Mimics and especially druids can use an aquatic form or a form that can swim
+easily, and they will be able to cross water in the same way, without ever
+drowning. Another way is to use a form that grants wraithform or simply a form
+that grants levitation, which is a rather common ability.
+Rangers learn how to swim at great skill at level 25, Martial arts users will
+be able to swim easily at a martial arts skill of 30.000.
+Ents never drown since they're made of wood, while Draconians will actually
+gain intrinsic levitation at level 30.
+Characters training the magic 'Water' or 'Nature' school will acquire
+water-passing at 40.000, while 'Air' school grants levitation at 50.000.
+Other characters can rely on items that grant levitation, swimming (rare), or
+wraithform (by spell or item) to become able to cross water easily. Levitation
+is definitely the most popular choice, since you can 'fly' over water quickly.
+Wraithform is as good as levitation, but hard to acquire.
+
+In short: Obtaining levitation is probably the most popular way for crossing
+larger areas of water.
+
+
+
+(4.16) Teleportation
+--------------------
+Teleportation is the magical, instantaneous relocation of a player or monster.
+
+There are five main types of teleportation:
+-Phase door/blink
+  It follows the same rules as 'teleport self', it's just named differently to
+  indicate that it is limited to a rather short range (usually less than 20
+  grids away).
+  The spell available to players are usually called 'phase door' while the
+  spell used by monsters is usually called 'blink', but again that's just a
+  matter of naming.
+-Teleport self
+  The normal 'teleportation' as provided by scrolls, staves or used by monsters
+  which has a very long range and also tries to keep a certain minimum range to
+  make sure you actually get away from trouble.
+-Teleport other
+  It's basically the same as normal teleportation, except it does teleport a
+  targetted player/monster instead of the invoking player/monster himself.
+  If you get teleported by someone you cannot see, instead of his name you will
+  see this message: "Someone teleports you away!"
+-Teleport-to
+  Thes spell tries to move the targetted player or monster onto a grid next to
+  the caster. This can be nasty when monsters with dangerous melee attacks cast
+  teleport-to on a player who tried to keep his distance.
+-Word of recall
+  The only non-instantaneous teleportation spell and the one with the longest
+  range. After a certain 'charge' phase has elapsed it will teleport the player
+  over the world map or into or out of a dungeon.
+
+However, under certain conditions, teleportation spells may fail!
+In general for all teleportation attempts, these are:
+
+-Teleport spells cast onto others (teleport other, teleport-to) may get
+  resisted by the target depending on its saving throw, level or status.
+-Trying to teleport while engaged in pvp with a pvp-character. There will be
+ a cooldown of maybe half a minute after a pvp-mode fight until you can use
+ teleportation. If you try to flee by teleportation, you will receive a yellow
+ message: "There's no easy way out of this fight!" >:)
+-Trying on a special floor (for events or an experimental no-teleport dungeon).
+-Trying to teleport in a local no-teleport area.
+  When you enter such an area (no-tele vaults) you will see a message in dark
+  grey, saying "The air in here feels very still". When you try to teleport
+  you will get a message in bright red, saying:
+  "This location suppresses teleportation!"
+-Trying to teleport while having equipped an amulet of anti-teleportation or
+  activated a space-time-anchor effect. You will get an orange message, saying:
+  "You are surrounded by an anti-teleportation field!"
+-Trying to teleport on a floor that has no or only few free floor grids.
+  Teleportation magic tries hard to find a free destination grid, but if it is
+  unlucky due to a low number of available grids it might just fail. So it is
+  not recommended for example for an istar to cast stone prison all over the
+  level, filling it mostly up. This puts attempts to successfully teleport on
+  this level at hazard.
+  'Free' floor grid means a floor grid that doesn't have a monster or item on
+  it and is classified as 'floor' (water and lava count as floor too).
+  If a teleportation spell fails because it didn't find a free destination grid
+  you will see an orange message "The teleportation spell strangely fizzles!".
 
 
 
@@ -8421,7 +8600,7 @@ Remove Curse    Breaks lesser curses on items, allowing you to unwear or
                 Also, non- or uncursed items that induce random teleportation
                 can be inscribed .. to have the teleportation stop (compare
                 (0.3 Important Inscriptions).
-                (It gives you the message:
+                (Scrolls give you the message:
                 'You feel as if someone is watching over you.'.)
 *Remove Curse*  Breaks heavy curses. Note that curses (including heavy ones)
                 on weapons or armours can also be broken by enchanting one of
@@ -8529,8 +8708,8 @@ Genocide        See 'Scrolls'.
 *Destruction*   See 'Scrolls'.
 Wonder          Wands of wonder cast random magic spells.
 Starlight       Casts 8 beams of light in a star-shaped pattern.
-Curing          Cures being gorged, removes blindness/confusion/stun,
-                cures poison/cuts.
+Curing          Cures being gorged, poison and cuts,
+                removes blindness/confusion/stun/hallucinations.
 Probing         Tells you hit points, melee attacks, speed and armour class of
                 monsters in your line of sight.
 Detection       Detects treasures, objects, traps, secret doors, and
@@ -8550,10 +8729,10 @@ Power           Dispels nearby monsters.
 Holiness        Dispels nearby evil. Also protects you from evil for a while.
                 Cures poison/cuts, removes fear/stun, heals you somewhat.
 Healing         Staves:
-                Heals 300 to 400 hit points, depending on magic device skill,
+                Heals 250 to 400 hit points, depending on magic device skill,
                 cures stun and cuts.
                 Rods:
-                Heals 100 to 350 hit points, depending on magic device skill,
+                Heals 100 to 400 hit points, depending on magic device skill,
                 cures stun and cuts.
 Dragon's Breath These wands fire a ball of dragon odem (more powerful than
                 normal ball spell wands.) - randomly on each cast one of:
@@ -8691,9 +8870,11 @@ Mattock/Pick/Shovel Diggers, improving your digging capabilities.
                     weight help to further increase their effectiveness.
                     Main factor is the (+diggingpower) mod though. (Equip it!)
                     If you lack any of these valuable digging tools, axes and
-                    swords can help you hacking down trees or bushes (see
-                    'Digging' skill in (6.2) and (5.21) for more information
-                    about digging).
+                    swords can help you hacking down trees or bushes. For
+                    hacking away webs or ivy, certain polearms used for
+                    slashing (scythes and sickles) may help too, just as much
+                    as swords or axes. (see 'Digging' skill in (6.2) and (5.21)
+                    for more information about digging).
 Mummy Wrapping      Reduces your charisma slightly, and prevents other players
                     from seeing your equipment except for your melee and/or
                     ranged weapon. Also makes you look dark like being
@@ -9424,6 +9605,7 @@ Weapons and other items that you can equip may be 'vampiric' (see (5.8)),
 meaning that they drain life from your target.
 Mimics who use a vampire form and players of 'Vampire' race will also get a
 vampiric 'brand' on their melee attacks (see (6.7)).
+Vampirism does not work with magic, only with physical attacks.
 
 Vampiric life draining heals you with a part of the damage you afflicted on
 your target, almost each hit! The more damage you deal and the more attacks per
@@ -9806,9 +9988,11 @@ Also see (3.4a) for more information on digging tool mods.
 If you haven't got a digging tool equipped, or if it's just a basic shovel (+1)
 then wielding a sword or especially an axe can work as pseudo-digger when you
 want to hack down organic material such as trees, bushes, ivy or spider webs.
-(Dual-wielding does not help, so two swords/axes can't dig better than just
-one. Wielding a 1.5-handed weapon in only 1 hand will decrease your digging
-chance though, so take off your shield for best results.)
+Certain polearms that have a slashing effect (scythes and sickles) can help
+just as well as swords or axes against spider webs or ivy.
+(Dual-wielding does not help, so two weapons can't dig better than just one.
+Wielding a 1.5-handed weapon in only 1 hand will decrease your digging chance
+though, so take off your shield for best results.)
 
 
 
@@ -10105,14 +10289,17 @@ Note that not every skill is available to every profession (class).
 
 +Combat                         Lets you wear heavier armour without mana
                                 points penalty.
+
                                 Lets you wear heavier armour without losing
                                 dodge chance (gained from the 'Dodging' skill),
                                 or other roguish abilities like
                                 boni from dual-wielding, critical-strike,
                                 area-searching and cloaking.
+
                                 Lets you wear heavier armour without getting
                                 a penalty to to-hit or sneakiness from being
                                 movement-encumbered.
+
                                 Note that Combat skill does NOT affect the
                                 continuous ranged-to-hit reduction based on
                                 armour weight.
@@ -10142,25 +10329,34 @@ Note that not every skill is available to every profession (class).
                                 target (if attacking causes those).
                                 Reduces Fear/Stun/Confuse durations that you
                                 suffer from.
+
                                 Increases 'Fighting' and 'Bows/Throws'
-                                abilities, thereby increasing your chance to
-                                hit with melee, ranged weapons and when
-                                throwing an item.
+                                abilities somewhat, thereby increasing your
+                                chance to hit with melee, ranged weapons and
+                                when throwing an item and reducing your chance
+                                to get disarmed.
 
                                 If your Combat skill isn't zero, then you can
                                 press 'm' to check your base chance of
                                 parrying (weapon) and blocking (shield), see
                                 (6.11) for more details about parry/block.
 
-    +Weaponmastery              Improves your Fighting ability.
-                                Slightly increases melee to-dam and to-hit for
-                                armed combat. Increases your chance to score
+    +Weaponmastery              Slightly increases melee to-dam and to-hit for
+                                armed combat: Hit gets increased by 1/3 of your
+                                skill, damage by 1/10.
+                                Improves your 'Fighting' ability somewhat,
+                                thereby further increasing your chance to hit
+                                with melee weapons and reducing your chance to
+                                get disarmed.
+
+                                Slightly increases your chance to score
                                 critical hits in armed combat (Note: The skill
                                 'Critical-Strike' has much more effect.)
+
                                 Weaponmastery will also increase your parry
                                 chance a good deal (see (6.11) for details).
 
-        +Sword-mastery          Greatly improves to-dam/to-hit with swords.
+        +Sword-mastery          Greatly improves to-hit/to-dam with swords.
                                 At 25 and 50 you will get +1 blow per round
                                 while having a sword equipped.
 
@@ -10312,12 +10508,37 @@ Note that not every skill is available to every profession (class).
                                 attack with both weapons, picked randomly.
 
     .Martial Arts               Ability to fight with bare hands.
-                                Slightly raises your character speed.
-                                Slightly increases your Dodging skill.
+                                Martial arts users do not and cannot wield any
+                                weapons or they get penalised heavily, except
+                                for boomerangs.
+
+                                They also get an armour class bonus for each
+                                _unused_ equipment slot that can take a piece
+                                of armour. Until the skill has been trained
+                                quite a bit, armour will rather encumber them
+                                instead of help. For this reason, martial
+                                artists only wear very light armour or no
+                                armour at all in the beginning and do not need
+                                to rely on armour during the early game.
+
+                                Slightly raises your character's speed and
+                                stealth by +1 for every 10.000 skill increase -
+                                the increase might be less or even zero if you
+                                are encumbered in some way.
+
                                 Increases your chance of intercepting an enemy.
+                                The effectiveness is about 1/4 of what you get
+                                out of training the 'Interception' skill.
+                                If you train both, their effect will stack.
+
+                                Slightly increases your Dodging skill, simply
+                                by increasing your Martial Arts skill, as if
+                                'Dodging' was a parent skill of Martial Arts.
+
                                 Lets you attack with special combat styles.
                                 You get +1 extra attack at 1,10,20,30,40,45,50
                                 each, so up to +7 blows per round in total.
+
                                 At 10 you receive Feather Falling.
                                 At 15 your character gets fear resistance.
                                 At 20 your character gets confusion resistance.
@@ -10334,11 +10555,17 @@ Note that not every skill is available to every profession (class).
                                 depending on your MA skill) are affected by
                                 elemental brands, but slightly less than
                                 normal weapons (2/3 as much).
+                                Martial arts moves can have high damage dice
+                                of up to 8d7. Some moves have special effects
+                                such as slowing or stunning your opponent.
+                                Your character will use his Martial Arts moves
+                                automatically and somewhat randomly, but mostly
+                                choose the most powerful moves available.
 
-                                Under certain conditions MA abilities cannot
-                                be used and lose their effect. About this and
-                                for more information about Martial Arts in
-                                general, see (5.3a)!
+                                Under certain conditions (encumberment) MA
+                                abilities cannot be used and lose their effect.
+                                About this and for more information about
+                                Martial Arts in general, see (5.3a)!
 
     .Interception               Ability to interfere with adjacent enemies.
                                 Can prevent them from teleporting, casting,
@@ -10390,11 +10617,17 @@ Note that not every skill is available to every profession (class).
                                 such as being blinded etc) the best chance to
                                 intercept will override the others.
 
-    +Archery                    Improves ranged to-damage bonus.
+    +Archery                    Improves ranged to-damage bonus somewhat, by +1
+                                for every 5.000 increase in skill.
+                                Also increases 'Bows/Throws' ability somewhat,
+                                which in turn further increases hit chance.
+
                                 Allows you to learn some shooting techniques
                                 and the ability to create ammunition,
                                 accessible via 'm', see (6.12) for details.
+
                                 Increases your chance to score critical hits.
+
                                 At 20 the quality of your handmade ammunition
                                 becomes remarkably better.
 
@@ -10405,9 +10638,14 @@ Note that not every skill is available to every profession (class).
                                 the items. Before that, you can only
                                 distinguish between cursed and good.
 
-        .Sling-mastery          Increases hit chance (while using a sling).
+        .Sling-mastery          Increases hit chance (while using a sling) by
+                                +1 for every 2.000 skill increase.
+                                Also increases Bows/Throws ability somewhat,
+                                which in turn further increases hit chance.
+
                                 At 10,20,30,40,50 you will get +1 additional
                                 shot per round each (while using a sling).
+
                                 Also reduces the chance of your sling
                                 ammunition to shatter by up to 90% at 50.
                                 Example:
@@ -10440,10 +10678,12 @@ Note that not every skill is available to every profession (class).
                                 Otherwise same as Sling-mastery, except no
                                 ricochetting.
 
-    .Boomerang-mastery          At 16.6, 33.3 and 50 you get +1 extra throw
-                                each. Boomerang-mastery also increases ranged
-                                to-damage bonus while using a boomerang, and
-                                reduces the chance of a boomerang to break or
+    .Boomerang-mastery          At 16.6, 33.3 and 50 you get +1 extra throw.
+
+                                Increases ranged to-damage bonus when wielding
+                                a boomerang by +1 for every 2.500 increase.
+
+                                Reduces the chance of a boomerang to break or
                                 to fall to the ground instead of returning.
 
                                 Artifact boomerangs never break or fall down.
@@ -10453,8 +10693,10 @@ Note that not every skill is available to every profession (class).
    their school skill. Often their failure rate decreases, too. >>
 
 +Magic                          Increases your mana capacity.
+
                                 Lets you pseudo-id magic items, potions and
                                 scrolls faster the higher your skill is.
+
                                 If 'Magic' is at least at 11 points, you will
                                 get more distinctive feelings from pseudo-id,
                                 before that you only sense 'good' or 'cursed'.
@@ -10835,7 +11077,9 @@ Note that not every skill is available to every profession (class).
                                 (skill_level * 2)% chance to regenerate 1.5x
                                 the normal amount of HP per turn (stacks with
                                 REGEN items).
+
                                 Increases your hit points by 2 for each point.
+
                                 Also helps you to recover from temporary stats
                                 drain, hallucination, blindness, paralysis,
                                 confusion, slowness, poison and cuts faster.
@@ -10864,6 +11108,8 @@ Note that not every skill is available to every profession (class).
                                 At 0.700 you become able to swim very swiftly
                                 if no monsters are within sight, enabling you
                                 to 'run' through water.
+
+                                For more details about swimming see (4.15).
 
     .Climbing                   You need this at 01.000 to be able to climb.
 
@@ -10898,7 +11144,10 @@ Note that not every skill is available to every profession (class).
                                 Also, when hacking through trees and bushes,
                                 axes will help a lot and swords somewhat, in
                                 case you have no good digging tool at hand.
-                                2-handed axes/swords even more than 1-handed.
+                                2-handed weapons even more than 1-handed.
+                                For hacking away webs or ivy, certain polearms
+                                used for slashing (scythes and sickles) may
+                                help too, just as well as swords or axes.
                                 See (3.4a) for more information on digging
                                 tools and (5.21) for technical details on
                                 digging.
@@ -11113,8 +11362,24 @@ active or passive abilities, given in the race/class descriptions in (6.4) and
 Depending on your race, you might need different amounts of experience to gain
 a new character level. You also might have certain intrinsic abilities.
 
-For Beginners a powerful yet simple race/class combination like Half-Troll
-Warrior is strongly recommended.
+For Beginners a powerful yet simple race/class combination like Half-Troll,
+Half-Orc or Dwarven Warrior is strongly recommended. (Warrior being by far the
+most straight-forward and most forgiving class in the beginning.)
+
+The Maia race is not recommended for beginners due to its complexity.
+
+The Yeek race is not recommended for beginners because it's extraordinarily
+weak in all fields (its only upside being that it needs the least amount of
+experience of all races to gain levels).
+
+The Vampire race is not necessarily recommended for beginners due to its
+various quirks that you'll need to pay attention to (feeding, light sources,
+certain healing/curing effects that instead damage vampires).
+
+
+List of all races (make sure to read the paragraph about your race, when you
+create a character!):
+---------------------
 
 - Human
     Humans are allrounders with no special weaknesses or strengths.
@@ -11196,7 +11461,8 @@ Warrior is strongly recommended.
     Half-trolls have their strength sustained. They are very strong, but also
     very stupid and slow. They make great warriors and iffy priests. They are
     bad at searching, disarming, perception, and stealth. They are so ugly
-    that a Half-Orc grimaces in their presence. They need to eat often.
+    that a Half-Orc grimaces in their presence. They need to eat often but
+    they also regenerate hit point especially quickly.
     Half-Trolls get bonus on 'Blunt-Mastery', 'Health' and 'Swimming'. They
     receive a penalty on 'Critical-Strike' and large penalties on 'Archery',
     'Magic' and 'Sorcery'.
@@ -11258,7 +11524,8 @@ Warrior is strongly recommended.
     Ents are able to slowly replenish their nourishment by rooting themselves
     into the ground by entering 'R'esting mode, provided it's natural ground
     such as grass, earth, mud or water. Their food state will go up to 'Full'
-    that way.
+    that way. They cannot eat normal food but will feed greatly from drinking
+    potions that provide nourishment. They can never be gorged though.
     Ents intrinsically resist the force of unleashed water.
     They get bonus to 'Health' and a large bonus on 'Calmness' and on the magic
     schools 'Earth' and 'Water'. They receive a large penalty on 'Fire' school,
@@ -11300,10 +11567,13 @@ Warrior is strongly recommended.
     Green       Poison          poison, immune (25)
     Multi-hued  Random of       lightning (5), frost (10), fire (15),
                 those above     acid (20), poison (25)
-    Bronze      Confusion       confusion (5), paralysis (10), reflection (20)
-    Silver      Inertia         cold (5), poison (10), reflection (20)
-    Golden      Sound           acid (5), sound (10), reflection (20)
-    Law         Shards          shards (5), sound (15)
+    Bronze      Confusion       confusion (5), paralysis and electricity (10),
+                                reflection (20)
+    Silver      Inertia         cold (5), acid (10), poison (15),
+                                reflection (20)
+    Golden      Sound           fire (5), acid (10), sound (15),
+                                reflection (20)
+    Law         Shards          shards (5), paralysis (10), sound (15)
     Chaos       Chaos           confusion (5), chaos (15), disenchantment (20)
     Balance     Disenchantment  disenchantment (10), sound (20)
 
@@ -11356,6 +11626,8 @@ Warrior is strongly recommended.
     time, nether, poison, and it's hard to drain their life force.
     They also have partially life leeching (vampiric) attacks (see '(5.15)
     Vampirism' for more information).
+    Being undead, vampires don't drown as easily as other races, but the water
+    still has a somewhat damaging effect if they cannot swim at all.
     At level 20 they become able to turn into a bat. Vampire bats are fast, can
     fly (basically as effective as 'levitation'), and are more resistant to sun
     burn than the humanoid vampire form,
@@ -11492,6 +11764,38 @@ Maia        +2  +3  +3  +1  +1  +2      11      400%   100ft
 Depending on your class, your start-up equipment and your skill tree will
 vary. For example a warrior cannot learn magic spells.
 
+Classes most straight-forward/most forgiving to play for starters are:
+ -Warrior
+ -Rogue (dual-wielding sword-type weapons makes them powerful early on)
+ -Paladin (similarly tough as warriors)
+ -Druid (utilise their shapeshifting powers they gain every 5 levels!)
+ -Mindcrafter (just make sure to get Psionic Blast spell macroed right away)
+
+Intermediate starting difficulty:
+ -Archer (easy when teaming up with a meat shield who keeps monsters at bay)
+ -Mimic (mostly plays straight-forward like a warrior, but need to hunt for
+         monster forms which can be hard for beginners, especially if they
+         don't know much about monsters)
+ -Ranger (can do well in many fields such as melee, ranged weapons and spells,
+         somewhat similar to an adventurer).
+
+Hardest classes for beginners to play maybe:
+ -Adventurer (cause it's a jack of all trades so you can end up mediocre in
+             every regard if you don't know what you're doing)
+ -Shaman (triple-relation of forms, combat skills and magic spells)
+ -Priest (weak in almost all regards the beginning, but great early on party
+         asset if he gets the 'Cure Wounds' spell and uses it to heal his party
+         members from the back line)
+ -Istar (glass cannon in the beginning, so if you are out of mana at the wrong
+        time you could die fast)
+ -Runemaster (needs some time to get a grip of the spell system, and has not
+             that high hit points, ie glass cannonish).
+
+
+List of all classes (make sure to read the paragraph about your class, when you
+create a character!):
+---------------------
+
 - Warrior
     A warrior is a hack-and-slash character, who solves most of his problems
     by cutting them to pieces, but will occasionally fall back on the help of
@@ -11542,7 +11846,7 @@ vary. For example a warrior cannot learn magic spells.
     The lightest weapons of each class are:
     - Daggers (sword-mastery)
     - Whips (blunt-mastery)
-    - Hatchets (axe-mastery)
+    - Cleavers (axe-mastery)
     - Spears (polearm-mastery)
     Dual-wielding requires light armour. This should be adequate until you find
     some heavy armour in the dungeon, then you can switch back to 1-handed
@@ -12278,6 +12582,7 @@ F: flag list
                 If you are already using a form that can provide the immunity
                 that you switch to, that immunity will become the active one
                 immediately without the need for re-polymorphing.
+                (Note: IM_TELE actually always gives RES_TELE.)
     PASS_WALL   Will allow the mimic to pass walls like a ghost.
                 These immaterial forms also drain the hit points of their
                 user.
@@ -12381,7 +12686,7 @@ Gnomes          Free action.
 (High-Elves     Resist light, see invisible.)
 Yeeks           Feather falling.
 (Ents           Slow digestion, speed - 2, sensitive to fire, see invisible at
-                level 4, can swim, pass trees.)
+                level 4, can swim easily, pass trees.)
 All animals     Able to pass trees.
 All spiders     Able to pass mountains, able to pass spider webs.
 All ghosts      See invisible, Infra-vision +4 (stacks with undeads' +1 bonus).
@@ -12398,6 +12703,7 @@ All undead creatures
                 on ~7 flags);
                 can't bleed (no_cut), infra-vision +1, insanity attacks are
                 reduced by a little bit.
+                Drowning damage taken is halved.
                 Becomes susceptible to 'life', which concerns some healing or
                 cleansing effects mostly.
                 However, at the same time they become gorged less quickly when
@@ -12936,11 +13242,10 @@ Istar schools:
 - Fire
 
     Globe of Light  Creates a globe of magical light.
-                    Lv10: Damages monsters.
-                    Lv25: Turns into a more powerful kind of light.
-                          Its radius and damage begin to increase and it will
-                          damage not just monsters that are susceptible to
-                          light but all monsters.
+                    Lv10: Hurts monsters that are susceptible to light.
+                    Lv25: Calls a more powerful kind of light. This light
+                          hurts all types of monsters.
+                          Radius and damage will further increase.
                     Required skill level for first spell level: 2.
 
     Fire Bolt       Fires a fire bolt at a target.
@@ -13100,6 +13405,7 @@ Istar schools:
                     Renders you instable, allowing to pass walls and to
                     float upwards/downwards.
                     Required skill level for first spell level: 35.
+
     BONI:           Resistance to teleportation attacks at 30.
 
 
@@ -13250,8 +13556,10 @@ Priest schools:
                     Required skill level for first spell level: 1.
 
     Holy Light      Creates a globe of pure light.
-                    Lv3: Damages monsters.
-                    Lv8: Calls a more powerful kind of light.
+                    Lv3: Hurts monsters that are susceptible to light.
+                    Lv8: Calls a more powerful kind of light. This light
+                         hurts all types of monsters.
+                         Radius and damage will further increase.
                     Required skill level for first spell level: 2.
                     Shared spell (see above): H.Offense, H.Support.
 
@@ -14820,6 +15128,9 @@ Medium level character (up to 25)
 + Especially for clearing vaults you might find a staff of light, a wand of
   trap/door destruction and maybe a wand of teleport other useful. However,
   that would be 3 more inventory slots less to pick up loot :)
++ Potions of curing insanity (all types). If you find these, pick them up and
+  store them in your house! If you encounter a sanity-blasting monster you will
+  want to have these to restore your sanity after the fight.
 
 
 Higher characters (up to 35)
@@ -14833,51 +15144,46 @@ Higher characters (up to 35)
 + Several Scrolls of Phase Door
 + a Rod of Recall
   A rod cannot be destroyed by fire or acid, and you won't have to buy new
-  scrolls of WOR since the rod never runs out. Further, rods of recall are not
-  destroyed by traps, for example a "Trap of no return", which will burn all
-  your scrolls of WOR.
-+ Lots of Scrolls of Identify (up to 99!). Maybe later on a Rod of Perception.
-  A Rod of Perception does the same thing like a Scroll of Identify. A Rod of
-  Perception of Charging would be perfect. This one takes less time to
-  recharge! A Rod of Perception of the Istari..nearly godlike ;)
+  scrolls of WOR since the rod never runs out.
+  A rod of recall is especially useful to travel between towns, so you won't
+  burn through a lot of scrolls just for visiting all the town stores.
++ Lots of Scrolls of Identify (up to 99!). If you're great at handling magic
+  devices, maybe get a Rod of Perception. It does the same thing as a scroll of
+  Identify, but you might want one 'of charging' or 'of the istari'.
 + Several Potions of Speed
 + Potions of Healing
   These potions heal you way more than pots of cure critical wounds. However,
-  they are extremely expensive.
-+ a Staff of Teleportation
-+ 2 or 3 rods of trap location. Maybe a rod of door/stair location.
-+ Some Scrolls of Teleportation, maybe even fireproof.
-  In case your staff is destroyed these scrolls serve as backup. If they are
-  fireproof they really are a good insurance. However, you cannot read while
-  blind or confused or if you stand in darkness. (Maybe someone invents
-  scrolls with magically heated letters that you can read in the dark if you
-  have infra-vision.. ;)
+  they are more expensive.
++ Maybe rods for support: Trap location, disarming, detection.
++ Some Scrolls of Teleportation.
 + a "Sprig of Athelas"
-  This one cures "Black Breath", which infects you if you fight a ring wraith!
+  This one cures "Black Breath", which you can get infected with if you fight a
+  Nazgul (ring wraith)! Normal high undead monsters have a very slim chance too
+  to give you Black Breath.
   You can leave the sprig in your house since Black Breath saps your soul very
   slowly, so there should be enough time to finish business in the dungeon and
   recall to town afterwards to eat a sprig. (See 1.5 for more information
   about Black Breath.)
++ Scrolls of *Remove Curse*. These are expensive in the black market, but are
+  sometimes sold in the temple cheaply, so always check the temple when you
+  come by. You will want these for getting rid of heavily cursed items, such as
+  Nazgul rings of power that you don't use.
++ Potions of curing insanity. If you find these, pick them up and store them in
+  your house! If you encounter a sanity-blasting monster you will want to have
+  these to restore your sanity after the fight.
 
 
 Very high characters (36 and above)
 -----------------------------------
-+ Satisfy Hunger or Lembas
-+ Lots of Potions of Cure Critical Wounds
-  If you manage to get enough Potions of Healing then you won't need pots of
-  cure critical wounds anymore.
++ Satisfy Hunger scrolls or Lembas
 + Potions of Healing
 + Potions of Speed
-+ Potions of Berserk Strength
-+ Several Scrolls of Phase Door
-+ (Fireproof) Scrolls of Teleportation
-+ a Staff of Teleportation (but you should really get blindness resistance in
-  order to rely on Scrolls instead since they never fail.)
-+ a Rod of Recall
-+ 2 or 3 Rods of Trap Location. Maybe a Rod of Door/Stair Location.
-+ maybe a Rod of Illumination and a Rod of Disarming or Trap/Door Destruction
-  for clearing Vaults.
-+ Sprigs of Athelas
++ Scrolls of Teleportation
++ a Rod of Recall (mainly for travelling between towns).
++ Support rods, such as Trap Location, Detection or Disarming (especially
+  useful for clearing vaults).
++ Sprigs of Athelas, scrolls of *Remove Curse*, potions for curing insanity
+  (these supplies can be stored in your house, no need to carry them with you).
 
 
 
@@ -14892,7 +15198,7 @@ Beginners (level 1)
 + Lantern
   because it provides light within a radius of 2 fields instead of 1 field of
   a torch.
-+ A ranged weapon as soon as possible
++ A ranged weapon as soon as possible (a boomerang if you use martial arts).
   Don't forget the ammunition ;)
   Try to get a sling or even better a long bow as soon as possible,
   especially if you are weak at hand-to-hand combat.
@@ -14900,13 +15206,17 @@ Beginners (level 1)
   proceed quickly. Enchant the bow to (+hit,+dam) where +dam helps a lot to
   increase the total damage you inflict on enemies, since it's multiplied by
   the bow's power factor.
+  Note that martial arts users can only use boomerangs, other ranged weapons
+  will nullify their martial arts skills.
 + An appropriate melee weapon (except if using martial arts, eg Druids!)
-  Check out how many blows per round you get with a light Dagger, Whip,
-  Hatchet or Spear, depending on your favourite weapon class.
+  Check out how many blows per round you get with a light dagger, whip,
+  cleaver or spear, depending on your favourite weapon class. If you get more
+  bpr than with your starter weapon, switch!
   If your character has only one blow per round even with light weapons, choose
   a heavy weapon that can deal more damage in one blow. If your character is
   low on strength, pay attention that you don't buy a weapon that is too heavy
-  to use at all.
+  to use at all. You can press 'x' in shops to examine weapons (and all other
+  items), to check if you can benefit from buying it or not.
   If you have only 1 bpr, make sure to dual-wield if your character can do that
   because that will give you a bonus bpr. Don't forget that you cannot dual-
   wield with heavy armour. Rogues should always be dual-wielding.
@@ -14921,9 +15231,12 @@ Low level character (up to 15)
   will become less powerful if used together with a shield, and some weapons
   cannot be used at all in conjunction with a shield. A fighter should have
   approx. 30..45 AC or more.
+  Before buying a piece of armour in a shop, press 'x' to examine it. This will
+  tell you if you'd get encumbered wearing it.
 + Buy a fire resistance ring as soon as possible because many monsters can use
   fire spells early on. Also get an acid resistance amulet maybe, since acid
   damage is especially nasty to your inventory and equipment.
+  If you're an Ent, early on fire resistance is absolutely mandatory.
 
 
 Medium level character (up to 25)
@@ -14931,22 +15244,25 @@ Medium level character (up to 25)
 + Enchant your melee and ranged weapons to at least +8 to damage! Best would
   be (+9,+9) or maybe even (+10,+10). Going over +10 is not feasible with
   normal enchant scrolls, you can use *enchant* scrolls later on.
-  You might ask a very powerful priest or paladin to assist you, that way you
-  might save a great deal of money.... (This pala/priest thing is outdated,
-  sorry. However, you can ask a high level character if he/she helps you by
-  taking your weapons, armour and ammunition to one of the shops that offer
-  an enchantment-service. Those shops can enchant the items quite high,
-  depending on the level of the customer. It's costly though.. Don't sell
-  scrolls of *enchant weapon* or *enchant armour* if you find those, but use
-  them to enchant your items above +9 and up to +15!)
+  You could also ask a high level character if he/she helps you by taking your
+  weapons, armour and ammunition to one of the shops that offer an enchantment
+  service. Those shops can enchant the items quite high, depending on the level
+  of the customer. It's costly though..
+  Don't sell scrolls of *enchant weapon* or *enchant armour* if you find those,
+  but use them to enchant your items above +9 and up to +15!
 + A fighter should have approx. 40..70 AC or more.
-+ Get "Fear Resistance" also know as "Boldness"
-+ Get Free Action.
-  It prevents you from being paralyzed by traps or attacks.
++ Get "Fear Resistance" also know as "Boldness".
++ Get Free Action. You should have this before going much deeper than 1000 ft.
+  It prevents you from being paralyzed by traps or monsters.
 + Get the 4 basic resistances, which are: Lightning/Electricity, Acid,
-  Frost/Cold, Fire/Heat
+  Frost/Cold, Fire/Heat.
 + Consider buying a small house to store backup equipment or special items
   instead of carrying them around with you.
++ If you manage to find an item that lets you telepathically sense trolls, keep
+  it. Use it to locate troll pits, those tend to give a lot of experience!
+  Typical items that provide troll-ESP are dwarven helmets or weapons of
+  *slay troll*. (ESP = extra sensory perception, ie the ability to sense a
+  presence telepathically without a direct line of sight).
 
 
 Higher characters (up to 35)
@@ -14954,40 +15270,51 @@ Higher characters (up to 35)
 + A fighter should have approx. 65..100 AC or more.
 + Try to get a lantern of Brightness or even *Brightness*, a Dwarven Lantern
   or a Feanorian Lamp. These provide more light and/or don't need to be fueled
-  and cannot be extincted. They can also have some special abilities like
+  and cannot be extinguished. They may also have some special abilities like
   preventing you from getting overwhelmed by fear!
 + Get "See Invisible" if possible. Some very nasty monsters are invisible and
   "cold-blooded", that means they cannot be seen by infra-vision.
 + Get Poison Resistance! For example Boots of Mirkwood provide poison
-  resistance. Also Elven Armors often provide it. If you are trained in the
+  resistance. Also Elven armour often provide it. If you are trained in the
   art of mimicry, you could try to use the form of a monster which has poison
   resistance intrinsically. Drolems and other monsters might insta-kill you
   without poison resistance.
+  Elven armour also provides base resistance and has a chance to provide an
+  additional 'high' resistance, so it's really useful to get your resistances
+  covered. Elven armour is not that expensive and not that rare. If you can't
+  find any, ask other players or check the player stores (there tend to be a
+  lot of player stores around the town of Gondolin) for offers!
 + Try to Get Confusion Resistance, so you can always read teleport scrolls!
   Note that chaos resistance also provides confusion resistance.
 + Get Nexus Resistance. Nexus attacks can scramble your body, swapping your
   stats, which can mess up your character. (See 5.6.)
 + Try to get Blindness Resistance, so you can always read teleport scrolls!
   Helms or Caps of seeing give this!
++ Before venturing into Mordor you should have basic (fire/cold/lightning/acid)
+  and poison resistance and 'free action' (paralysis resistance).
+  Confusion resistance and nexus resistance are a plus.
 + Try to get Hold Life.
   This prevents your life force from being drained, making you lose experience
   and going back in character level. Cloaks of Teleri Hold Life and provide
-  Free Action.
-+ Get powerful ego weapons
-  like Gondolins or *Defenders*. These will provide lots of resistances and
-  other abilities as well as deliver extra damage to certain monsters. Even if
-  they give you 1 blow less per round than your normal weapon you should
-  consider these.
+  Free Action too.
++ Try to get items that provide ESP (extra sensory perception). ESP is a
+  telepathic power that allows you to sense monsters even though they aren't
+  in your line of sight! This is tremendously useful as you know what monsters
+  are lurking on the map and where, so you won't run into nasty surprises.
+  Typical item that provide ESP are:
+  Crowns of telepathy (full ESP!)
+  Weapons of *slay evil* (ESP evil), Weapons of Aman (ESP evil), Weapons of
+  Gondolin (ESP evil).
 
 
 Very high characters (36 and above)
 -----------------------------------
-+ A fighter should have at least 90 AC. He might also have already 130 AC at
-  level 36 if he is lucky.
++ A fighter should have at least 90 AC. He might also have already AC as hhigh
+  as about 130 at level 36 if he is lucky.
 + Get as many high resistances as you can.. You will want Nether, Nexus,
-  Disenchantment, Chaos, Sound for example. Note that for example Saruman and
-  many high undead monsters (L and W) have disenchanting melee attacks that
-  waste your equipment pretty badly if you don't resist disenchantment.
+  Disenchantment, Chaos, Sound for example. Note that Saruman and many high
+  undead monsters (L and W) have disenchanting melee attacks that waste your
+  equipment pretty badly if you don't resist disenchantment.
   Sound resistance will prevent stun effects, which if they accumulate can even
   knock you out completely, leaving you unable to do anything at all!
   Also, your damage and spell casting chance are reduced while stunned.
@@ -14995,29 +15322,33 @@ Very high characters (36 and above)
   Hounds, and *especially* Plasma Hounds.
   Note that "Feather Falling" provides resistance to gravity damage.
   ('Levitation' automatically includes feather falling, by the way.)
-  Nether and Chaos "only" drain your experience if not resisted (can be cured
-  with a potion of restore life levels or according magic). The great thing
-  about chaos resistance is that it includes confusion resistance! So if you
-  were wearing a ring of confusion resistance, just replace it with a ring of
-  chaos resistance and you are set.
-  to gravity damage.
+  Nether and Chaos drain your experience if not resisted (can be cured with a
+  potion of restore life levels or according magic). The great thing about
+  chaos resistance is that it includes confusion resistance! So if you were
+  wearing a ring of confusion resistance, just replace it with a ring of chaos
+  resistance and you are set.
 + Get "See Invisible", various nasty monsters are invisible.
-+ Get items that sustain your stats, for example a Robe of Permanence.
++ Get items that sustain your stats, for example a Robe of Permanence if you
+  wear light armour, or a kolla (it's a cloak) if you're a fighter class.
++ Get full ESP: Crowns of telepathy typically provide these.
+  Some classes have an ESP spell available so they don't need ESP items.
 + Get Randarts (randomly generated artifacts) or Artifacts (predefined
-  artifacts / static artifacts) as melee weapon
+  artifacts / static artifacts) for melee weapon:
   You will have to fight ring wraiths. Normal weapons, even those from
   Gondolin or the most powerful *Defenders* will quickly shatter if they come
-  in contact with those unbelievably corrupted creatures of terror and hate.
-  (I remember one day I lost 4 Gondolins that way, pure fun..) Your only way
-  to fight them is to equip an artifact since these resist ring wraiths
-  greatly.
+  in contact with those corrupted creatures of terror and hate.
+  Your only way to fight them is to equip an artifact since these resist ring
+  wraiths greatly - their chance of getting destroyed when striking a Nazgul is
+  1 in 1000, compared to a few hits for non-artifact weapons.
+  (Note that the 'Stormbringer' counts as an artifact in this regard.)
 + You will want items that permanently increase your speed!
   +10 speed or +20 speed will make you approximately twice or three times as
   fast as you usually are. Note that the curve will become flatter the higher
-  your speed is, so moving at more than +40 will not make that much of a
-  difference anymore, it migh tbe better to get +3 attacks or +10 critical hits
-  instead, if you have the possibility to acquire those (use the target dummy
-  in town to test your actual damage output and compare).
+  your speed is, so at some point, increasing your speed any further might be
+  less beneficial to you than boosting your attack speed (items that give extra
+  attacks) or your critical hit chance (items that give critical hits).
+  Use the target dummy in town to test your actual damage output and compare,
+  the /tym (test your might) command may prove useful.
 
 
 
@@ -16036,6 +16367,14 @@ what you must actively do BEFORE turning in a deed for a reward item is:
   Regarding weapon weight, note that a weapon reward will usually not give you
   less attacks per round than the weapon you are already wielding (if any). If
   you don't wield one, it aims for 3 attacks per round as default.
+- runemasters who receive a piece of armour will usually (as long as it's
+  reasonably possible regarding ego-power type and value) get one that provides
+  resistance to one of the elements they can conjure up with their runecraft
+  skills. For this special feature any skill greater than zero in a particular
+  rune element is sufficient, instead of the usual 3.000 threshold.
+  Resistances your character already possesses do not become prerequisites for
+  the item, so it will not end up redundant with Draconian resistances for
+  example.
 
 Aside from these, randomness is always a factor so the result may vary.
 
@@ -16778,10 +17117,18 @@ SOLUTION:   Try to reduce or even disable flush-waits, by toggling the client
 
 PROBLEM 29: I accidenally closed one of the sub-windows and now it's gone.
             How do I get it back?
-SOLUTION:   Closing a sub-window sets it to 'invisible'. To change that, close
-            TomeNET first, then edit the file 'TomeNET.ini' in any text editor,
-            locate the particular window, and you'll see a line saying
-            "Visibility=0". Change the 0 to 1 and start TomeNET again.
+SOLUTION:   Closing a sub-window sets it to 'invisible'. To change that, there
+            are two ways:
+            1) in game: Press = and then f for the window flags menu, select
+            the affected window and press 'v' to toggle its visibility. You
+            will need to restart the game for the change to take effect.
+            2) close TomeNET first, then edit the file 'TomeNET.ini' which is
+            located in your TomeNET folder with any text editor, locate the
+            particular window, and you'll see a line saying "Visibility=0".
+            Change the 0 to 1. Have a look at the X and Y coordinate of the
+            same window too and make sure they aren't negative. If they are,
+            just set them to 0. Save the ini file when you are done and start
+            TomeNET again.
 
 PROBLEM 30: Changes I do to my macros seem to not get saved or macros I deleted
             seem to still be there or client options I configured seem to reset
