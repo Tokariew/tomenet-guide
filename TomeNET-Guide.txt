@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 8. May 2010 - written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.4.4d - official websites are:
+| Latest update: 12. June 2010 - written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.4.5 - official websites are:
 | http://www.tomenet.net/ (main site),
 | http://koti.mbnet.fi/mikaelh/tomenet/ and http://www.c-blue.de/rogue.html
 +---
@@ -40,6 +40,7 @@ Contents
     (1.6)   How to encounter the final boss: Morgoth, Lord of Darkness
 (2) Installation & setup
     (2.1)   Installing TomeNET
+    (2.1a)  Installing sound and music packs
     (2.2)   Starting TomeNET and getting to play on an internet server
     (2.3)   Client options
 (3) Creating a character & starting to play
@@ -72,7 +73,7 @@ Contents
     (4.10)  Houses
     (4.11)  Malicious effects players can suffer
     (4.12)  Malicious effects monsters can suffer
-    (4.13)  Quests and Global Events
+    (4.13)  Quests and Events
 (5) Item and monster details
     (5.1)   Melee weapons, brands
     (5.2)   Ranged weapons, brands
@@ -220,7 +221,7 @@ compile the game under '(2.1) Installing TomeNET'.
 -If your character gains a new level it also gains skill points. To distribute
  those, invoke the skill screen with 'G'. (See 3.10, 6.2 and 7.5.)
 -If you don't like your character and want to delete it, you may commit
- suicide by pressing SHIFT+q or CTRL+c and double-confirming the following
+ suicide by pressing SHIFT+q or CTRL+k and double-confirming the following
  questions with 'y' and '@'.
 -To drop items, privately chat with other players, or advance beyond a certain
  level you will need an admin to 'validate' your account.
@@ -236,7 +237,8 @@ compile the game under '(2.1) Installing TomeNET'.
  Also, if a grey '(O)' is in front of a player name, it means that player is
  using an outdated client. It's very important to keep your client up to date!
 
-It is recommended that you continue reading at (3.2) now ;)
+It is recommended that you continue reading at (3.2) now,
+or glance at (7.3) first ;)
 
 
 
@@ -375,7 +377,11 @@ P               party screen. Form/disband/modify a party with other players
                 For winners (queens/kings/empresses/emperors) the range is 11
                 levels instead of 7.
 
-/       in general use an item (combines q,r, etc..).
+< or >  go upstairs/downstairs. Press '>' to use a void gate (violet '+').
+        Void jump gates teleport you to their counterpart and vice versa.
+{       inscribe an item.
+}       remove inscription from an item.
+/       in general, use an item (combines q,r, etc..).
         This can be useful if you run out of macros for a specific action,
         for example if you already use @m0...@m9 and still have more spell
         books/scrolls in your inventory, you can inscribe the remaining ones
@@ -391,33 +397,31 @@ P               party screen. Form/disband/modify a party with other players
         Point (3) here is especially helpful for mimics:
         The number shown in round brackets before each monster name is the
         number they have to enter for their 'Polymorph self into..' ability!
-X       quickly swap between two equippable items. They must be inscribed
-        '@w0'. (It's basically just the macro 'w0' bound to shift+x key.)
-{       inscribe an item.
-}       remove inscription from an item.
-_       drink from a fountain. You must stand on the fountain to do this.
-        Fountains can have good/bad/no effects. There is no fountain of death,
-        neither one of detonations, so you won't get instakilled.
-        If you see a message 'You feel less thirsty' that means the fountain
-        was just plain water. A message 'You have quenched your thirst' means
-        that the fountain had no effect on you, although it wasn't water.
+@       displays a list of players currently on the server.
+        Note that a yellow '(I)' before a name stands for 'invalid', and means
+        that this player is still awaiting account validation by an admin.
+        Also, if a grey '(O)' is in front of a player name, it means that
+        player is using an outdated client. It's very important to keep your
+        client up to date! (Same command as ~a)
 %       edit your macros.
-=       edit your preferences. (Contains many obsolete effectless entries.)
+&       edit your auto-inscriptions.
+=       edit your preferences.
         Most important entries here are..
         User Interface Options:
             "Rogue-like commands" will change your keyboard layout to
                 the original Rogue key definitions.
-        Disturbance Options:
-            Note that most of these aren't available in multi-player and
-            will be set server-side, so players can't change them.
+            "Flicker messages in recall" will allow you to see animated
+                messages in the bottom left window (message history).
+            "Always show lists in item/skill selection" will always show a
+                list of possible choices if you use commands that require you
+                to make a selection from a list of choices.
+            A lot of audio options; note that on systems where the /page
+            command won't produce a native beep sound, you can enable sound
+            system paging instead here! (Of course you can also enable it on
+            all other systems too, which might be nicer than the system beep).
         Game-Play Options:
             "Set 'AFK' mode automatically" will set you afk after some
                 minutes of inactivity.
-            "Flicker messages in recall" will allow you to see animated
-                messages in the bottom left window (message history).
-        Efficiency Options:
-            Mostly moved to server-side, hence obsolete.
-        TomeNET Options:
             "Automatically open doors" makes your character try to open a door
                 just by moving towards it.
             "Automatically disarm traps" makes your character try to disarm a
@@ -427,9 +431,6 @@ _       drink from a fountain. You must stand on the fountain to do this.
             "Scroll the screen more frequently" helps to avoid death by
                 attacks that came from off-screen. However, this option can be
                 a bit irritating.
-            "Always show lists in item/skill selection" will always show a
-                list of possible choices if you use commands that require you
-                to make a selection from a list of choices.
 :       type a chat message. To whisper privately, enter <player>:<text>
         You can also enter a slash command here.
         Press TAB to cycle between different chat modes, such as party-chat.
@@ -437,32 +438,20 @@ _       drink from a fountain. You must stand on the fountain to do this.
         For details about slash commands, see further below in this paragraph.
         There is also a /say command for talking to players nearby, and a
         /shout command for waking up monsters! See further below.
-@       displays a list of players currently on the server.
-        Note that a yellow '(I)' before a name stands for 'invalid', and means
-        that this player is still awaiting account validation by an admin.
-        Also, if a grey '(O)' is in front of a player name, it means that
-        player is using an outdated client. It's very important to keep your
-        client up to date!
 '       lets you peek at the equipment of party members or players within
         sight.
-< or >  go upstairs/downstairs. Press '>' to use a void gate (violet '+').
-        Void jump gates teleport you to their counterpart and vice versa.
-CTRL+P  view previous messages.
-CTRL+O  view previous chat messages.
-CTRL+X  save your character & quit the game. (You should do this in town!)
-(CTRL+C Displays your client-side frame rate.)
-Q or CTRL+K
-        lets your character commit suicide (permanently deletes it!).
-        Characters who suicide won't drop items except for artifacts (if the
-        server has ANTI_ARTS_HOARD enabled then no item at all will be
-        dropped), nor will they keep the level static as it happens on a
-        normal 'final death' (see (3.11) for details about static levels).
+#       displays the high scores (same as ~c).
+|       displays the unique monster list (same as ~1).
+X       quickly swap between two equippable items. They must be inscribed
+        '@w0'. (It's basically just the macro 'w0' bound to shift+x key.)
+_       drink from a fountain. You must stand on the fountain to do this.
+        Fountains can have good/bad/no effects. There is no fountain of death,
+        neither one of detonations, so you won't get instakilled.
+        If you see a message 'You feel less thirsty' that means the fountain
+        was just plain water. A message 'You have quenched your thirst' means
+        that the fountain had no effect on you, although it wasn't water.
+        (Same as /sip command.)
 ?       invoke an in-game help screen
-CTRL+R  redraw the screen (do this if it's messed up for some reason).
- (/refresh, /ref)
-CTRL+T  take a screen shot. See /screenshot command below.
-TAB or CTRL+I
-        displays lag-o-meter.
 !       look at the in-game bulletin board. Players can write lines of text to
         it by using the /bbs <text> command.
 c  while in a store:
@@ -471,6 +460,31 @@ c  while in a store:
 K       forcibly combines a level 0 item in your inventory with other items of
         the same type that aren't level 0. Be warned, that this will change the
         level of all the items involved to 0.
+CTRL+P  view previous messages.
+CTRL+O  view previous chat messages.
+CTRL+X  save your character & quit the game. (You should do this in town!)
+        This also automatically saves some settings, like window positions on
+        MS-Windows, or mixer settings, and you will be asked to save a chat
+        log.
+        Note that if you quit the game just by clicking on the 'x' button in
+        the game window's titlebar, these extra features will be skipped, and
+        any changes in settings or window positions will be discarded.
+Q or CTRL+K
+        lets your character commit suicide (permanently deletes it!).
+        Characters who suicide won't drop items except for artifacts (if the
+        server has ANTI_ARTS_HOARD enabled then no item at all will be
+        dropped), nor will they keep the level static as it happens on a
+        normal 'final death' (see (3.11) for details about static levels).
+CTRL+R  redraw the screen (do this if it's messed up for some reason).
+ (/refresh, /ref)
+CTRL+T  take a screen shot. See /screenshot command below.
+TAB or CTRL+I
+        displays lag-o-meter.
+CTRL+U  Displays/exits the audio mixer settings. (Also see (2.1a).)
+CTRL+C  Toggles music. (Shortcut for toggling it in the mixer settings.)
+CTRL+N  Toggles audio. (Shortcut for master toggle in the mixer settings).
+Note: Mixer settings are saved automatically, provided you use CTRL+X to quit.
+(Compare troubleshooting section (8.5), problem 21.)
 
 There are also some commands that can be entered with ':' like a chat line.
 They all start with a slash '/':
@@ -494,7 +508,12 @@ They all start with a slash '/':
             can look at the board by pressing the '!' key.
             (You can verify or compare the date with the /time command.)
 /deal       Deals a card (completely random).
+            The result is random and can be seen by other players who stand
+            nearby.
 /dice       Roll some dice, you must specify a number of dice from 1 to 100.
+            The result is random and can be seen by other players who stand
+            nearby.
+/coin       Flip a coin to get either heads or tails.
             The result is random and can be seen by other players who stand
             nearby.
 /dis        DESTROYS every item in your inventory that has one of these
@@ -517,17 +536,54 @@ They all start with a slash '/':
             will be emptied and 2 remain at 'c) 2 potions of boldness'.))
 /ex or /examine or /extra
             Gives you detailed information about your character's status, such
-            as turn, speed, deepest dungeon level, sanity, body shape (this is
-            interesting if you are a shapechanger). Druids get additional info
-            about forms they can shapechange into.
+            as how many actions you may perform per turn.
+
+            A turn is a basic server timing unit, which for example is used to
+            display the amount of fuel in your light source, or which will make
+            you suffer poison damage each on each turn that passes if you're
+            poisoned.
+            Turns pass slower on deeper dungeon levels to make up for increased
+            monster and player speed, keeping the game playable in real-time.
+            A turn in Bree, ie on the world surface, will last somewhat between
+            1/2 and 2/3 seconds. You can also observe the passing of turns if
+            you watch your light source losing fuel (hit CTRL+R to refresh the
+            display, when taking measure points!).
+            (Note that the server also has a type of internal turn counter,
+            which counts a different sort of turns, one each frame. Usually,
+            the server will run at 100 fps, so these turns pass much faster.
+            It might be a bit confusing that both these units are just called
+            'turns' although they don't correlate, but you won't really have to
+            worry about internal turns at any point, only the 'character turns'
+            are of any importance and noticable by your character, for example,
+            as mentioned above, when you're poisoned, suffering from a cut,
+            waiting for your blacklist to run out, or any other matters.)
+
+            Additionally, /ex will also display the following information:
+            - how many resurrections you have left, if you are a normal-mode
+              character;
+            - which of your auras are currently active (if you have points in
+              the corresponding aura skills);
+            - the deepest dungeon level you have ever
+              reached (same as checking '~7');
+            - extremities your current monster form possesses (if you're
+              transformed into a monster form at the moment). This can be
+              helpful to figure out what types of items you may equip while in
+              this form.
+            - forms you have learned if you're a druid, and their according
+              polymorph codes so you don't have to look them up in (6.7a) if
+              you forgot them;
+            - runecraft status details, if you're adept in runemastery;
+            - pvp kills;
+            - the in-game time and date, and whether it is day or night.
+              (Note: If you want to know the server real-life time, use /time.)
 /fe         Repeat the level feeling. See (4.8) for more information.
  (/feeling)
 /fill       fill an 'Empty Bottle' in your inventory with the water from a
             fountain. You must stand on the fountain to do this.
-/geinfo     Displays information about all ongoing (global) events.
-/geinfo <#> Displays information about the specific event number #.
+/evinfo     Displays information about all ongoing events.
+/evinfo <#> Displays information about the specific event number #.
             Note: If you log out, your sign-up is cancelled automatically.
-/gesign <#> Signs you up for the global event number #.
+/evsign <#> Signs you up for the event number #.
             Depending on the event, you might need to specify additional
             parameters after the number. If that is the case, you'll see
             a message telling you so, and speficying details what's missing.
@@ -614,7 +670,7 @@ They all start with a slash '/':
             Fountains can have good/bad/no effects. There is no fountain of
             death, neither one of detonations, so you won't get instakilled.
             (It's easier to press '_' instead of using the /sip command.
-            Also see '_' above, for additional information.)
+            Also see '_' key above, for additional information.)
 /tag [a..w] Tags all uninscribed items in your backpack by adding a '!k'
             inscription. Helpful for looting in conjunction with /dis command.
             If a slot (a..w) is specified, it only tags the item in that
@@ -674,7 +730,7 @@ The !* inscription:
 A very useful inscription for (heavily) cursed items:
 !w  prevent wielding/wearing an item. This is very useful if you carry a
     cursed item in your inventory that you really don't want to equip by
-	accident.
+    accident.
 
 Useful for characters who wield a boomerang not for throwing it, but rather
 because it provides magical boni:
@@ -746,6 +802,12 @@ Spellbooks:
                 inscribe an unsuitable item, auto-retaliation will be disabled
                 completely!
                 (If 'c' is omittted, the first spell will be chosen.)
+
+Runes:
+    @Oa .. @Og  You will auto-retaliate by using the rune, where the letter
+                a..g determines the spell type ('b' would be self, 'c' would be
+                basic cheap bolt spell.. the letters correspond to the spell
+                selector).
 
 Ammunition:
     !=          will make your character auto-pickup the ammo from the floor.
@@ -983,6 +1045,8 @@ Wormy       Wormtongue, Agent of Saruman. He drops great items.
 
 (0.5) Rumours, missing features, technical warnings (READ!)
 -----------------------------------------------------------
+-Starting at version 4.4.5, TomeNET supports audio, that is, sound effects and
+ background music. To find out more, read (2.1a).
 -Usually characters expire (that means they are automatically deleted!)
  after 180 days of inactivity.
 -Items on the ground (especially in towns) often disappear automatically after
@@ -1008,6 +1072,12 @@ Wormy       Wormtongue, Agent of Saruman. He drops great items.
 -Some shops' features have not yet been implemented.
 -Stealing from monsters is not possible.
 -'LEVELS' and 'ULTIMATE' flag on unique items currently don't do anything.
+-When you've spend some time in town or on a dungeon floor, your depth number
+ in the bottom right corner will turn light-blue. This means that you will get
+ a special feeling on the next dungeon floor you enter, displayed in yellow.
+ That feeling will tell you about the threat of that particular floor, so you
+ may consider leaving it again if it sounds too nasty. See (4.8) for details.
+-The official web forum is located at http://www.tomenet.net/.
 
 
 
@@ -1153,6 +1223,10 @@ able to infect other players if you come too close to them. It will drain your
 stats and permanently drain your experience. Slowly, but steadily. There are
 several possibilities to cure Black Breath, for example Sprigs of Athelas.
 
+Each Nazgul will drop a ring of power, which is a random artifact ring bearing
+the Nazgul's name. These rings have a lot of random mods (ie abilities) and
+will always provide invisibility (5.16) and experience drain (5.19).
+
 
 
 (1.6) How to encounter the final boss: Morgoth, Lord of Darkness
@@ -1191,6 +1265,7 @@ the mundane world.
 Go to http://www.tomenet.net/ (or one of our personal pages) to download the
 latest client. Extract it to a new directory, preserving the pathnames.
 
+
 Windows:
 --------
 You may edit the file "TomeNET.ini" and do some changes to your likings, like
@@ -1201,6 +1276,13 @@ If it's not already disabled by default, it is recommended to turn off
 graphics ("GRAPHICS=0"). Further you can specify an account name and password
 of your own choice. That will relieve you from entering them every time
 you join a TomeNET internet server.
+
+Last but not least, you may use the following command-line options:
+-p<Port>                for example -p19348
+-l<Account> <Password>  for example -lGandalf geheim
+-N<character name>      for example -NDruidor
+<ip address>            for example 85.118.45.235
+
 
 Linux:
 ------
@@ -1247,15 +1329,51 @@ TOMENET_X11_FONT sets one font globally for all windows. It's overridden by
 the window-specific font variables listed above though.
 
 Last but not least, you may use the following command-line options:
--p<Port>        for example -p19348
--l<Name> <Pass>	for example -lGandalf geheim
-<ip address>    for example 85.118.45.235
+-f<config file>         use a different config file than ~/.tomenetrc
+-i                      ignore the ~/.tomenetrc config file
+-p<Port>                for example -p19348
+-l<Account> <Password>  for example -lGandalf geheim
+-N<character name>      for example -NDruidor
+<ip address>            for example 85.118.45.235
+
 Full command-line example:
-        ./tomenet -p19348 -lGandalf geheim 85.118.45.235
+        ./tomenet -p19348 -lGandalf geheim -NGandalf 85.118.45.235
+
 If your name contains spaces, it is neccessary to put a '\' in front of each.
 Example:
         ./tomenet -p18348 -lIron\ Man geheimer 85.118.45.235
 ..if your account name is 'Iron Man'.
+
+
+
+(2.1a) Installing sound and music packs
+---------------------------------------
+Starting with version 4.4.5, TomeNET features a new SDL-based audio system,
+which provides sound effects and background music.
+
+To make use of it, all you have to do is install a sound pack and/or a music
+pack to your lib/xtra/ folder.
+
+You can get the official sound pack on http://www.tomenet.net/ in the download
+section, and also look for player-made sound or music packs in the forum!
+After you downloaded a sound pack or a music pack, extract it to your lib/xtra/
+folder, preserving the ZIPs pathname structure. You should end up with a folder
+lib/xtra/sound/ and lib/xtra/music/ respectively, which contain config files
+and further subfolders for either sound effects or background music.
+
+Now start or restart the game, and you should have sound. You can control mixer
+settings with CTRL+U key (or use CTRL+C to toggle music and CTRL+N to toggle
+the master mixer on/off).
+
+Note: Mixer settings are saved automatically, provided you use CTRL+X to quit.
+(Compare troubleshooting section (8.5), problem 21.)
+
+Also be sure to press '=' key to have a look at the audio options, which are in
+'User Interface Options 2'.
+
+If you want to use your own sound and music, and create audio packs for other
+players, read sound.cfg and music.cfg in your lib/xtra/sound or lib/xtra/music
+folder to see how it's done and which formats are supported.
 
 
 
@@ -1320,34 +1438,26 @@ By pressing the '=' key, you can access the options menu where you can tweak
 your client in some ways. Some of these options that aren't self-explaining
 or that are especially important are listed in detail here:
 
-(Note: Some options stem from single-player Angband, and are deprecated or
-pointless for multi-player, and therefore don't have any effect. Those are
-displayed in dark grey instead of white.)
-
-(1) User Interface Options
+(1 & 2) User Interface Options
     Rogue-like commands (rogue_like_commands)
         Toggles between normal key set and traditional rogue-like key set.
+    Suppress server messages as far as possible (taciturn_messages)
+        Will prevent some of the not-so-important server messages to be
+        shown, for example 'You have <item>' when picking up an item.
     Don't display 'flavours' in item names (short_item_names)
         A 'Black Potion of Speed' will just be shown as a 'Potion of Speed'.
     Hide unusable skills (hide_unusable_skills)
         Skills that your character cannot use will not be displayed in the
         skill menu invoked by 'G' key.
 
-(2) Disturbance Options
+    Also, (2) has all of the audio options. (See (2.1a) for more information.)
 
-(3) Game-Play Options
+(3 & 4) Game-Play Options
     Set 'AFK mode' automatically (auto_afk)
         Rogues might want to turn this off in order to sit out their blacklist
         timer in town.
-
-(4) Efficiency Options
-
-(5) TomeNET Additional Options
     Automatically open doors (easy_open)
         Your character attempts to open a door just by you moving into it.
-    Suppress server messages as far as possible (taciturn_messages)
-        Will prevent some of the not-so-important server messages to be
-        shown, for example 'You have <item>' when picking up an item.
 !!! Scroll the screen more frequently (wide_scroll_margin)
 !!!     Should always be enabled! Will reduce probability for off-screen kills,
 !!!     since the screen scrolls much earlier when you come close to a border!
@@ -1502,7 +1612,11 @@ Body: 'Fruit bat' (Batty)
 -------------------------
 A fruit bat is like a normal character, just not in humanoid shape but in bat
 form! Fruit bats cannot wear certain equipment like boots, gloves or weapons.
-However they are twice as fast and their melee attacks are somewhat vampiric.
+These restrictions won't change even if they choose a class which can make use
+if mimicry and thereby mimic a humanoid form.
+However, fruit bats are twice as fast as normal characters at the beginning
+(they get a flat +10 speed bonus added) and their melee attacks are somewhat
+vampiric, making them leech life on each hit, replenishing their hit points.
 Fruit bats are said to make good explorers. If you're new to the game, it's
 absolutely not recommended to try and play fruit bat.
 
@@ -2132,6 +2246,7 @@ Here is a list of all available ability codes:
 15      Toggle 'Aura of Fear' if you have trained the according skill.
 16      Toggle 'Shivering Aura' if you have trained the according skill.
 17      Toggle 'Aura of Death' if you have trained the according skill.
+18      Draw a rune (for runemastery skill).
 
 After the ability code has been entered you need to press Enter to confirm it.
 In a macro, this is done by '\r' (one of the so-called escape sequences).
@@ -2176,6 +2291,9 @@ the usual full macro.
 On entering the macro action, those characters will be automatically expanded
 to their real functionality. They are:
   M for using a mimic's innate power
+  T for using a mimic's 'transform-into-specific' power. For example, enter:
+    T191
+    Which will become  \e)@m3\rc191\r  (transform into a Grizzly Bear).
   F for employing a fighting technique
   S for employing a shooting technique
   m for casting a spell
@@ -2184,20 +2302,28 @@ to their real functionality. They are:
   s for changing a stance
   * for targetting the nearest monster
   @...\ for using call-by-name (spell/item name must be between '@' and '\')
+All other keys are taken over unmodified, like 'f' for firing a ranged weapon.
 
 Also, '\e)' is automatically prefixed, and the most fitting macro type
 automatically chosen (depending on the trigger key).
 
-Example 1: Assumed your book is inscribed @m1 as usual, and you want to cast
-spell a). What you can simply enter in the q'n'd field is:
-     m1a*
-and it will automatically be expanded to the real macro '\e)m@11\r1a*t'.
+Example 1: Firing your ranged weapon would just be..
+        f*
+    (which gets expanded to '\e)f*t'.)
 
-Example 2: Assumed you have the spell Manathrust somewhere in your books and
-want to cast it by name, what you enter in the q'n'd field is:
-    m@Manathrust\*
-and it will automatically be expanded to '\e)m@11\r@Manathrust\r*t', voila.
-Another example: 'm@Phase Door\'.
+Example 2: Assumed your book is inscribed @m1 as usual, and you want to cast
+    spell a). What you can simply enter in the q'n'd field is:
+        m1a*
+    and it will automatically be expanded to the real macro '\e)m@11\r1a*t'.
+
+Example 3: Assumed you have the spell Manathrust somewhere in your books and
+    want to cast it by name, what you enter in the q'n'd field is:
+        m@Manathrust\*
+    and it will automatically be expanded to '\e)m@11\r@Manathrust\r*t', voila.
+
+Example 4: Casting phase door would be..
+        m@Phase Door\
+    (expanded to '\e)m@11\r@Phase Door\r'.)
 
 
 
@@ -3567,8 +3693,8 @@ Stun    Stun can be caused by special martial art attacks among other things.
 
 
 
-(4.13) Quests and Global Events
--------------------------------
+(4.13) Quests and Events
+------------------------
 Your character will have uncounted opportunities to participate in quests and
 events. While some events might be run by server admins or even fellow players
 and depend on their mood and spare time, other events are created by the game
@@ -3590,12 +3716,12 @@ Kill quest
     just get a new one if you want to. There is no penalty.
 
 
-Events (use /geinfo and /gesign commands to get information and to sign up)
+Events (use /evinfo and /evsign commands to get information and to sign up)
 ---------------------------------------------------------------------------
 Highlander Tournament
     This is an event rather than a quest. When you see a message, announcing
-    a Highlander Tournament, type "/geinfo" in the chat to find out more, and
-    use "/gesign" followed by the event number to sign up for participation.
+    a Highlander Tournament, type "/evinfo" in the chat to find out more, and
+    use "/evsign" followed by the event number to sign up for participation.
     It's a deathmatch with 10 minutes of preparation time, and only newly
     created characters with 0 experience may join it.
     The winner will receive a deed that can be 'r'ead, and turned in at Bree's
@@ -3897,7 +4023,7 @@ Here's a table to tell you the values for str_wgt:
         12          10                      26          18/30-18/39
         13          11                      28          18/40-18/49
         14          12                      30          18/50-18/220+
-        15          13                      
+        15          13
 
 The armour weight limit is 5.0 lb + Martial Arts skill level * 0.4 lb.
 So for MA 50 it is 5.0 + 20.0 = 25.0 lb.
@@ -4458,15 +4584,12 @@ according elemental attacks (ie cold ball vs fire hounds).
 
 Magical/monster attacks vs players:
 Players can be susceptible against an element too. For example Ents are
-susceptible to fire by nature. Immunity will completely cancel out the
-susceptibility. If an Ent wears an item of fire immunity it will suffer
-0 damage from fire attacks, same as any other character.
-If a susceptible player without immunity is hit by the according elemental
-damage type, the damage will be doubled!
-If a player is susceptible to an element and at the same time wears an item
-that provides resistance then both factor in: Damage = Damage * 2 / 3.
-(If the player also has temporary resistance then the damage will be
-multiplied by 1/3 once more, as usual.)
+susceptible to fire by nature. Resistance or immunity will completely cancel
+out the susceptibility, so one of the first things to do as an Ent is to visit
+the magic store and buy a ring of fire resistance, or any druid ego monster or
+later on arch-vile will give you a pretty hard time.
+If a susceptible player without resistance or immunity is hit by the according
+elemental damage type, the damage will be doubled!
 
 
 Branded attacks in PvP
@@ -4984,7 +5107,7 @@ Golem Creation  Allows you to create a golem which follows you and which you
 Parchments      These contain informations about the game, they won't
                 disappear if you read them.
 Deeds           Some of the parchments are deeds, which are used as rewards
-                for various purpose, such as global events (see (4.13)) and
+                for various purpose, such as events (see (4.13)) and
                 PvP fights of PvP-mode-characters (see(6.13)).
                 Press 'r' to read a deed, which will usually tell you what to
                 do with it. In most cases, you have to turn it in at the
@@ -5304,7 +5427,7 @@ BLIND           blindness.
 CONFUSE         confusion (or chaos).
 TERRIFY         fear.
 PARALYZE        free action.
-EXP_xx          hold life.      
+EXP_xx          hold life.
 LOSE_xxx        sustain stats.
 EAT_xxx         DEX,stealing skill.
                 Device of theft
@@ -5396,10 +5519,14 @@ AUTO_CURSE      occurs together with CURSED or HEAVY_CURSE.
 TY_CURSE        Randomly drains stats sometimes, even if the item is uncursed.
                 (TY_CURSE will stay, even if the 'normal' curse is broken!)
                 Lowers the items value by 15000 Au.
+                This curse will be on hold while you're in a town, and will
+                also occur rather rarely while you're on the world surface,
+                ie not within a dungeon or tower.
                 ("It carries an ancient foul curse.")
 DG_CURSE        Rarely summons a random monster on you, even if uncursed.
                 (DG_CURSE will stay, even if the 'normal' curse is broken!)
                 Greatly lowers the items value by 25000 Au.
+                This curse will be on hold while you're in a town.
                 ("It carries an ancient morgothian curse.")
 
 If 'CURSED' or 'HEAVY_CURSE' occurs on a weapon or armour piece, the curses
@@ -5534,9 +5661,9 @@ There are some abilities which are not flags although they might look like it.
 In fact, they add up / stack. Those are:
 -Extra shots (concerning ranged weapons)
 -Extra might (concerning ranged weapons)
--Drain mana ('Drains your magic'. Note that 'mana regeneration' does NOT
- stack. So it can cancel out the effect of only ONE item that drains mana, not
- of any more.)
+-Drain mana ('Drains your magic'. Note that 'mana regeneration' (also called
+ mana-charging) does NOT stack. So it can cancel out the effect of only ONE
+ item that drains mana, not of any more.)
 -Drain hit points ('Drains your health'. note that 'regeneration' does NOT
  stack, so it can cancel out the effect of only ONE item that drains hit
  points, not of any more. However, the 'Health' skill is able to further
@@ -5581,14 +5708,19 @@ experience points permanently. Here are some details about that process:
 -Experience drain from multiple items stacks, although it doesnt add in a
  linear way. So, wearing two rings of power won't drain twice as fast as one,
  but about 1,5x as fast.
--Experience drain is permanent. It cannot be restored by potions of 
- restore life levels.
+-Experience drain is not temporary, so it cannot be restored by potions of
+ restore life levels. To make up for it, you'll have to kill monsters..faster.
 -Experience drain won't go further than the experience you need at least to
  maintain your current character level. If you reach that experience border,
  experience drain will stop, even if you still have the items equipped.
  So you will not lose levels from experience drain.
  HOWEVER: If a monster or other effect drains your experience below your
  current level, the experience drain from items will kick in again!
+-Experience drain will happen much slower if you're on the world surface,
+ ie not inside a dungeon or tower.
+-Experience drain will completely hold while you're in a town, so you can just
+ take any time you want for shopping or sitting out blacklists, without losing
+ any experience at all.
 
 
 
@@ -5641,6 +5773,7 @@ capabilities.
 Rune-spells:
 ------------
 To cast a rune-spell, enter the m-key menu and select 'Draw a rune'.
+(Note: The ability code for drawing a rune is 18.)
 
 Rune-spells are made up of three components:
     1. A combination of up to three runes
@@ -6155,7 +6288,13 @@ Note that not every skill is available to every profession (class).
     .Backstabbing               Lets you backstab enemies, afflicting high
                                 damage. Works best if the opponent is
                                 sleeping. Requires sword-type weapons.
-    .Stealing                   Ability to steal (from shops)! Very nasty >:)
+                                If you dual-wield, you will also dual-backstab
+                                if the moster is either asleep, or you perform
+                                the attack from cloaking mode or shadow run.
+                                Although you'll deal somewhat less damage with
+                                each stab, since they are executed both at once
+                                they will provide a great damage boost.
+    .Stealing                   Ability to steal items from stores.
                                 If you get caught, you will be on the
                                 'blacklist of merchants' for a minute up
                                 to 2 hours, depending on the item you tried to
@@ -6163,7 +6302,7 @@ Note that not every skill is available to every profession (class).
                                 impossible to steal, and you will get BAD
                                 prices (blackmarket-like) in shops.
                                 Note that your blacklist timer won't decrease
-                                while you are /afk !!
+                                while you are 'AFK'!
                                 You'll also be on the 'watchlist', meaning
                                 that you can shop normally, but are unable to
                                 steal until the shopkeepers stop to watch you
@@ -6180,23 +6319,34 @@ Note that not every skill is available to every profession (class).
                                 and invisibility are also somewhat helpful.
                                 For example it's nearly impossible to steal a
                                 large piece of wood without the store owner
-                                noticing it, although it's not worth much :)
-                                There's always a minimum chance of 5% to fail!
+                                noticing it, although it's not worth much.
+                                There's always a minimum chance of 5% to fail.
                                 You need to be at least level 5 to steal.
                                 You have a chance to successfully steal an
                                 item even if your stealing skill is 0 and your
-                                dexterity low. Everyone could try to steal..
+                                dexterity low, so everyone could give it a try.
                                 If a shop offers an item more expensive than
                                 it actually is (black market) that has no
                                 effect on stealing. The 'normal' item value
                                 is used to calculate the chances.
                                 However, if an item is offered at reduced
                                 price, it'll be easier to steal it!
-                                It's more difficult to steal from special
-                                stores (expensive black market and especially
-                                rare footwear/jewellry/secret black market).
+                                It's more difficult to steal from certain
+                                stores, and impossible to steal from expensive
+                                black market (the one located somewhat hidden
+                                in Minas Anor), secret black market (the one
+                                you can only find in dungeons), rare footwear
+                                shop and rare jewelry shop (both in dungeons).
                                 It's a good idea to wear as many +DEX items
-                                as possible while trying to steal from a shop.
+                                as possible while trying to steal from a shop,
+                                since DEX is the main factor besides the skill.
+                                Additional notes:
+                                Stealing items which have a base value (with
+                                discount applied, as usual for stealing) not
+                                higher than your stealing_skill * 10 are
+                                especially easy to steal. Also, if you still
+                                get caught on such an item, the blacklist time
+                                will be much shorter too.
     +Dodging                    Ability to evade attacks. In order to get any
                                 benefits from doding skill at all, your armour
                                 mustn't be so heavy that you get a flexibility
@@ -6463,6 +6613,7 @@ Magic Device
     How well you can use magic items like wands, staves, rods (these are often
     especially hard to use) or activate magic items like Dragon Scale Mails.
     See (6.10) for more information.
+
 Blows/Round
     How often per round you are able to strike with your weapon. This depends
     on your strength, dexterity, your class, your weapon.
@@ -6481,6 +6632,27 @@ Infra-Vision
     10 ft equal a distance of 1 field.
     Having this above zero can be very helpful for fighting monsters while you
     are blinded, since IV still works then.
+
+These miscellaneous abilities can also change when your character progresses,
+depending on your +hit and +dam (concerning Fighting and Bows/Throws) or your
+character level or certain skills you invest points into.
+How much an ability changes when a property of your character (skill, level or
+weapon enchantments) it depends on changes, depends on your class: The relative
+numerical modifiers are given in the class table in (6.5).
+Here is a list which ability changes depend on which factors:
+(The factors in relation to the values in (6.5) are marked by underscores.
+All other factors listed here are further modifications, independant of (6.5).)
+
+Fighting        _'Combat'_, _'Weaponmastery'_, melee +hit boni
+Bows/Throw      _'Combat'_, _'Archery'_, ranged +hit boni
+Saving Throw    Wisdom, _level_, 'Meta', AM-shell
+Stealth         Mimic form weight, stealth items, _'Stealth'_, cloaking,
+                'Martial Arts', runecraft
+Perception      search items, _'Sneakiness'_
+Searching       search items, _'Sneakiness'_, cloaking
+Disarming       Intelligence, dexterity, _'Disarming'_
+Magic Device    Intelligence, _'Magic-Device'_
+
 
 Note that your age, height, weight, social class and gender don't have
 influence on the gameplay at this time.
@@ -6575,9 +6747,7 @@ Half-Troll
     Half-trolls have their strength sustained. They are very strong, but also
     very stupid and slow. They make great warriors and iffy priests. They are
     bad at searching, disarming, perception, and stealth. They are so ugly
-    that a Half-Orc grimaces in their presence. Half-trolls have their
-    strength sustained and also happen to be fun to play. They need to eat
-    often.
+    that a Half-Orc grimaces in their presence. They need to eat often.
     Half-Trolls get bonus on 'Blunt-Mastery', 'Health' and 'Swimming'. They
     receive larger penalties on 'Magic' and 'Sorcery'.
 
@@ -6699,7 +6869,7 @@ from skills or items yet).
 Human        0   0   0   0   0   0       10     100%     0ft
              0   0   0   0  10   0    0   0
 Half-Elf    -1  +1  +0  +1  -1  +1        9     110%    20ft
-             2   3   3   1  11   6   -1   6
+             2   3   3   1  11   6   -1   5
 Elf         -1  +2  +1  +1  -2  +2        8     120%    30ft
              5   6   6   1  12   8   -5  15
 Hobbit      -2  +2  +1  +3  +0  +1        7     115%    30ft
@@ -6725,8 +6895,8 @@ Ent         +8  -4  +2  -4  +8  -4       14     320%    50ft
 Thunderlord +6  +2  +1  +1  +3  +5       12     350%     0ft
              6   0  10 -16  10  30   15   5
 Dark-Elf     0  +2  +1  +3  +1  -6       10     140%    50ft
-             0   3   6   4  10   6   15  15
-Vampire     +2   0  -3  -1   0  -6       11     220%   100ft
+             0   3   6   4   6  10   15  15
+Vampire     +2   0  -3  -1   0  -6       11     220%   150ft
             -4   0  20   2  13  -4   10 -10
 
 
@@ -6927,26 +7097,27 @@ Runemaster
     For more information about runes, see '(5.20) Runes & Runemastery'.
 
 Mindcrafter
-    Mindcrafters are a fair melee fighters who specialize in use of telepathy
-    to unleash spells formed by their psychic powers. They have a lot of
-    possibilities to positively or negatively influence the minds of others,
-    and will have reduced repertoire if they are up against creatures of
-    little or no intelligence. Their primary stat attribute is intelligence,
-    which determines their spell fail rates as well as the most part of their
-    mana pool. Also somewhat affecting the mana pool are their secondary and
-    tertiary attributes charisma and wisdom, although especially wisdom is
-    hardly of any importance to become an able telepathy user.
-    Despite being focussed on sharpening their mind, they don't lack stealth
-    or close combat potential. Except that wearing very heavy head gear might
-    negatively impact their amount of psychic energy.
-    Mindcrafters will be able to resist sanity-draining effects a little bit
-    at level 10, and somewhat more even at level 20.
+    Mindcrafters are a good melee fighters who additionally train the use of
+    telepathy to unleash spells formed by their psychic powers.
+    They have a lot of possibilities to positively or negatively influence the
+    minds of others, their repertoire being somewhat more limited only if they
+    are up against creatures of little or no intelligence.
+    Their primary stat attribute is intelligence, which determines their spell
+    fail rates as well as the most part of their mana pool. Also somewhat
+    affecting the mana pool are their secondary and tertiary attributes,
+    charisma and wisdom, although especially wisdom is hardly of any importance
+    to become an able telepathy user.
+    They don't lack stealth and are adept at wearing decent armour, except that
+    putting on too heavy head gear might negatively impact their amount of
+    psychic energy.
+    Mindcrafters will learn to resist sanity-draining effects a bit at level
+    10, and somewhat better even at level 20.
     Some of the mindcrafter's spells that interact with friendly targets,
     mostly his team mates, will require those to prepare and open their mind
     to become especially sensitive to telepathic contact. This is done by
     pressing 'p'. Pressing it again will return one's mind to normal.
     The effects of some necromancy skills are somewhat distracting to
-    mindcrafters, so training them may require a slightly more effort.
+    mindcrafters, so training them may require somewhat more effort.
 
 
 If you raise in levels, you will get new titles. These are displayed between
@@ -6973,33 +7144,47 @@ Pe:Perception (sight range), Sr:Searching,  Fi:Fighting,        BT:Bows/Throw)
 
             STR INT WIS DEX CON CHR     HPdice  Exp%    Max. base blows/round
             Di  MD  ST  St  Pe  Sr  Fi  BT              Parrying/Blocking
+            Di  MD  ST  St  Pe  Sr  Fi  BT (relative modifiers, see (6.3))
 ------------------------------------------------------------------------------
 Warrior     +5  -2  -2  +2  +2  -1      +10       +0%       6
             25  18  18   1   2  14  70  55              superb   superb
+            10   7  10   0   0   0  45  45
 Istar       -5  +3  +0  +1  -2  +1       +0      +35%       1
             30  36  30   2  20  16  34  20              bad      bad
+             7  13   9   0   0   0  15  15
 Priest      -1  -3  +3  -1  +0  +2       +4      +20%       4
             25  30  32   2   8  16  48  35              poor     poor
+             7  10  12   0   0   0  20  20
 Rogue       +2  +1  -2  +3  +1  -1       +5      +15%       5
             45  32  28   5  32  24  60  66              superb   fair
+            15  10  10   0  10  10  40  30
 Mimic       +1  +0  +0  +1  +1  -4       +6      +30%       5
             25  35  28   1  18  18  60  66              good     good
+             9  10  10   0   0   0  40  30
 Archer      +1  +0  +2  +3  +1  -1       +5      +10%       3
             30  32  28   2  20  24  56  82              fair     fair
+             8  10  10   0   0   0  30  55
 Paladin     +3  -3  +1  +0  +2  +2       +8      +30%       5
             10  21  54   1  16  13  60  29              good     superb
+             2   4  10   0   2   0  35  10
 Ranger      +2  +2  -1  +1  +2  +0       +7      +35%       5
             34  32  30   5  30  30  50  60              superb   fair
+            10  10  10   1   5  15  30  35
 Adventurer   0   0   0   0   0   0       +6      +25%       4
             20  20  20   2  15  15  50  50              fair     fair
+            10  10  10   0   5   5  25  25
 Druid       +1   0  +2  -2  -2  +1       +5      +40%       4
             30  40  30   5  25  25  50  60              fair     fair
+             8   5  10   1   5  10  20  30
 Shaman       0  +1  +2  -2   0   0       +4      +45%       4
             10  13  30   5  30  20  45  20              poor     poor
+             0  11  10   0   5   3  20   5
 Runemaster  +1  +2  -3  +3  -3  -3       +5      +20%       4
             10  20  20   0  30  20  45  20              fair     fair
+             0  11  10   0   5   3  20  10
 Mindcrafter  0  +2   0   0   0  +1       +5      +25%       5
             30  30  36   2  35  14  45  35              good     fair
+             0   5   5   0   3   3  26  20
 
 
 For melee characters, it's especially vital to know how many blows per round
@@ -7300,6 +7485,7 @@ S: spell list
     +30% Mana bonus (of base mana, same way +MANA items work).
     If the creature is able to cast 1_IN_1, the player receives +5 INT and
     +40% Mana bonus (of base mana, same way +MANA items work).
+
     About specific spells:
     BR_xxx      (breathing) will give the according resistance to the player
                 (if that specific attack CAN be resisted at all).
@@ -7308,6 +7494,8 @@ S: spell list
     BR_INERTIA  gives free action.
     MIND_BLAST  Insanity attacks are reduced a little bit.
     BRAIN_SMASH Insanity attacks are reduced somewhat.
+    The mana costs of mimic spells are fixed, the success chance is relatively
+    fixed too although it benefits somewhat from 'Magic' skill.
 
 Especially interesting spells of mimics are 'Blink' (Phase Door) and
 'Teleport'. These usually cost very little mana and can be very helpful,
@@ -7443,7 +7631,7 @@ Multi-hued Hound        resists fire/cold/lightning/acid/poison and gets a
                         can't be confused or paralyzed;
                         can breathe the five elements mentioned above
 
-5-headed hydra          speedy; can swim;
+5-headed hydra          tough and speedy; can swim;
                         poisonous attacks; immune to poison;
                         can cast fear and poison ball
 
@@ -7741,9 +7929,8 @@ Mind
     Stun            Stuns a monster.
                     Lv25: Turns into a ball.
                     Required skill level for first spell level: 15.
-    Sense Minds     Detects all monsters nearby.                    (project)
-                    Lv30: Gives you temporary ESP.
-                    Required skill level for first spell level: 1.
+    Sense Minds     Gives you temporary ESP.
+                    Required skill level for first spell level: 30.
     Telekinesis     Inscribe your book @P<Playername>, cast it, select an
                     item that you wish to teleport to the player's inventory.
                     The target player needs to concentrate by opening her/his
@@ -7944,15 +8131,15 @@ Druid schools:
 --------------
 Arcane Lore
     Nature's Call   Quickly grows trees around you.
-                    Required skill level for first spell level: 12.
+                    Required skill level for first spell level: 10.
     Toxic Moisture  Creates a cloud of toxic moisture at a designated target.
                     At level 30 it turns into ice shards.
-                    Required skill level for first spell level: 4.
+                    Required skill level for first spell level: 3.
     Ancient Lore    Identifies all items in your inventory.
                     Required skill level for first spell level: 20.
     Garden of the Gods
                     Transforms solid walls into green trees!
-                    Required skill level for first spell level: 15.
+                    Required skill level for first spell level: 1.
     Call of the Forest
                     Dispels all animals from your line of sight.
                     Animals have a chance to resist, depending on their level.
@@ -8031,7 +8218,7 @@ Thought Contact
                     since everyone can send you any items, so better close it
                     again as soon as the desired telekinesis transaction is
                     done. Example inscription: @PGandalf
-                    Required skill level for first spell level: 30.
+                    Required skill level for first spell level: 35.
 
 Mental Intrusion
     Psionic Blast   Blasts the target's mind with psionic energy.
@@ -8730,6 +8917,18 @@ Very high characters (36 and above)
 (7.3) Surviving critical situations
 -----------------------------------
 
+Not getting into a critical situation:
+--------------------------------------
+Best thing is to not get into a critical situation at all.
+To help you estimate the threat of a particular dungeon floor, there are
+'feelings' your character may get when you enter the floor:
+When you've spend some time in town or on a dungeon floor, your depth number in
+the bottom right corner will turn light-blue. This means that you will get a
+special feeling on the next dungeon floor you enter, displayed in yellow.
+That feeling will tell you about the threat of that particular floor, so you
+may consider leaving it again if it sounds too nasty. See (4.8) for details.
+
+
 Map structures:
 ---------------
 There are certain situations and constellations that will occur often in a
@@ -8975,6 +9174,9 @@ Mistakes / Carelessness:
 -I do not recommend to drop food nor oil in exchange for loot if you're not
  planning to recall instantly after you picked up the loot.
 
+-If you team up, make sure that you stick closely together all the time.
+ Wandering off usually greatly increases both players' risk of death!
+
 -Learn from your mistakes. If you die, think about if you were taking too high
  a risk, and check if you overlooked anything, maybe you were missing
  essential items (cure critical wound potions to get rid of confusion and
@@ -9002,6 +9204,9 @@ Teamplay:
  supporters. Mages usually make a great team with whomever they team up.
  Keep your teammates in mind and don't teleport out if it meant
  certain death to them while you could still take some hits.
+
+-Make sure you stick together with your team mates. If you wander off instead
+ of staying close you will greatly increase your risk of dieing to something.
 
 
 
@@ -9272,6 +9477,8 @@ than general mods.
 
 Type-dependant mods:
 --------------------
+(Note: The probability of each mod varies, depending on the item type)
+
 Bows, crossbows, slings
         Extra shots
         Extra might
@@ -9412,6 +9619,8 @@ Light sources
 
 General mods:
 -------------
+(Note: The probability isn't equal for each mod)
+
         Bonus on any stats (has chance to include sustenance for that stat;
                             wisdom might also include 'Blessed' flag)
         Sustenances on any stats (has chance to include bonus for that stat)
@@ -9661,8 +9870,8 @@ SOLUTION:   Read the error message displayed in a message box on quitting.
                     updated. So make sure to try again after a few minutes.
                     If the server really seems to be down for a longer period
                     of time, us admins are probably not at home and you'll
-		    have to wait for a bit, sorry. Such downtimes basically
-		    never happen though.
+                    have to wait for a bit, sorry. Such downtimes basically
+                    never happen though.
             "Server didn't respond!"
                     The server is up, but something is awry. Wait for a few
                     minutes, there might be admins working on it at the
@@ -9799,8 +10008,12 @@ SOLUTION A: You are probably using OSS. If your soundcard or soundchip doesn't
             as parameter. Example:    $> aoss ./tomenet
             Another example (to start the Opera webbrowser):    $> aoss opera
 SOLUTION B: If you are using X11, this problem may occur depending on your
-            terminal configuration. At this time, all you can do is change
-            your configuration, sorry.
+            terminal configuration. You can try to change your configuration,
+            or you can press '=' key to go to Options/User Interface Options 2
+            and enable 'Use audio system for paging sounds'. This will result
+            in paging sounds being played via your sound card, instead of the
+            operating system's beep (requires TomeNET v4.4.5 or higher).
+            (See (2.1a) for more information about the audio system.)
 
 PROBLEM 20: Are 'ToME' and 'TomeNET' similar?
 SOLUTION:   Despite of similar name, the only thing these two games have in
@@ -9809,6 +10022,42 @@ SOLUTION:   Despite of similar name, the only thing these two games have in
             Other than that, the two games are very different in basically all
             aspects! In other words: TomeNET is definitely not 'multi-player
             ToME'.
+
+PROBLEM 21: My (mixer) settings or window positions (MS Windows only) aren't
+            saved automatically as they should be, when I quit the game.
+SOLUTION:   Don't use ALT+F4 or the 'x' button in the title bar of the game
+            window to quit the game. It will result in skipping the normal exit
+            routine, which asks you to save chat and which also saves certain
+            settings. Instead, use CTRL+X for 'save & quit' (compare 0.2).
+
+PROBLEM 22: When I try to login, I get a 'security violation'.
+SOLUTION:   Either your host name (that's your PC's network name you can set in
+            the Windows network settings) or network user name (usually same
+            you use to login with, UNIX-style) is empty, or your TomeNET account
+            name starts with an invalid character (must be A..Z).
+            Another possibility is that you are already logged in, and are now
+            trying to log in again from a different IP address. Resuming a
+            connection is possible, but must be done from the same IP address.
+
+PROBLEM 23: I just quit the game, and tried to log in again with another
+            character of mine, but I get an error message saying
+            "Multiple logins on the same account aren't allowed".
+SOLUTION:   When you quit the game while you are still inside a dungeon or a
+            tower, your character will stay in the game for around 20..30 more
+            seconds.
+            This prevents cheating by just quitting when a dangerous situation
+            occurs in gameplay.
+            During this time, if you try to login again, you can only use the
+            same character that is now sitting out the timeout, thereby
+            resuming your gameplay.
+            You cannot log in with any other character until the timeout of
+            20..30 seconds is over and your old character has finally been
+            taken offline by the server.
+            In general, you should avoid quitting the game outside of towns,
+            since it can put you in danger. Not only because your character
+            will stay in the game for a little while after you quit, but also
+            because you can't be sure what the situation around you will be
+            the next time you log on again!
 
 
 
