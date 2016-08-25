@@ -1,14 +1,17 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 8. Oct 2010 - written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.4.5h - official websites are:
+| Latest update: 28. Nov 2010 - written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.4.6 - official websites are:
 | http://www.tomenet.net/ (main site),
 | http://koti.mbnet.fi/mikaelh/tomenet/ and http://www.c-blue.de/rogue.html
 |
 | IF YOU GOT THIS GUIDE WITH THE PROGRAM DOWNLOAD, IE IN A CLIENT-ZIP FILE,
 | THEN FIRST THING YOU SHOULD DO NOW IS GO TO www.tomenet.net AND DOWNLOAD THE
 | LATEST COPY OF THIS GUIDE TO MAKE SURE YOU AREN'T LOOKING AT OUTDATED INFO!
+|
+| If your text editor cannot display the guide properly (needs fixed-width font
+| like for example Courier), simply open it in any web browser instead.
 +---
 | Welcome to this guide!
 | Although I'm trying, I give no guarantee that this guide
@@ -18,9 +21,6 @@
 |
 | If you have any suggestions about the guide or the game, please use the /rfe
 | command in the game or write to the official forum on www.tomenet.net.
-|
-| It's recommended to read this guide using a fixed-width font (Courier on
-| MS Windows machines) to see proper spacing instead of warped tables.
 +---
 | Latest changes of the guide are viewable easily by going directly to CVS:
 | http://angband.oook.cz/cgi-bin/cvsweb.cgi/tomenet/TomeNET-Guide.txt?cvsroot=tome
@@ -62,6 +62,8 @@ Contents
     (3.7)   Creating macros for ranged attacks & abilities (spells)
     (3.7a)  Ability codes [contained within (3.7)]
     (3.7b)  Quick'n'dirty macros
+    (3.7c)  The macro wizard
+    (3.7d)  Specifying directions and targets
     (3.8)   Example macro sets
     (3.9)   Macros with special keys
     (3.9a)  Creating a chat macro for your party
@@ -70,6 +72,7 @@ Contents
     (3.11)  Death, ghosts and looting
 (4) The world
     (4.1)   Running, picking up items, fighting
+    (4.1a)  Auto-retaliation
     (4.2)   Level and owner of items
     (4.3)   Dungeon and tower types, Ironman, Jail
     (4.4)   Terrain
@@ -79,6 +82,7 @@ Contents
     (4.8)   Level & vault feelings
     (4.9)   Navigating on maps
     (4.10)  Houses
+    (4.10a) Player stores
     (4.11)  Malicious effects players can suffer
     (4.12)  Malicious effects monsters can suffer
     (4.13)  Quests and Events
@@ -93,6 +97,7 @@ Contents
     (5.7)   Qualitative classification of items, identifying & selling items
     (5.8)   Special abilities of items
     (5.9)   What does item xxx do exactly?
+    (5.9a)  Activatable items
     (5.10)  Destruction of items by elemental attacks
     (5.11)  Armour Class vs monster attacks, damage caps
     (5.12)  Monster attack types and brands
@@ -112,8 +117,10 @@ Contents
     (6.5)   Classes/Professions, titles, melee blows/round
     (6.5a)  Start-up Blows/Round Table
     (6.6)   Sanity
-    (6.7)   Mimic details, polymorph rings
-    (6.7a)  Druid form details
+    (6.7)   Mimicry details, polymorph rings
+    (6.7a)  Polymorph rings
+    (6.7b)  Intrinsic abilities that aren't kept when changing forms
+    (6.7c)  Druid form details
     (6.8)   Magic spells and prayers
     (6.9)   Parties, Iron Teams, Guilds
     (6.10)  Magic Device skill/ability details
@@ -131,8 +138,8 @@ Contents
     (8.2)   Character dumps
     (8.3)   Golem creation
     (8.4)   Artifact creation
-    (8.5)   Troubleshooting
-(9) End of this guide
+    (8.5)   Alternative ruleset 'RPG Server'
+    (8.6)   Troubleshooting
 
 
 
@@ -297,11 +304,18 @@ w       w       wear/wield an item from your inventory (weapons, armour,
                 ammunition, tools, rings, amulets, etc).
 W       W       wear/wield an item, same as 'w', but tries to use the second
                 available slot in case two inventory slots are both egligible.
-t       T       take off items.
+t       T       take off an item.
+x               swap an item. This is basically like both "wear/wield" and
+                "take off" in one command. This makes only sense if it is used
+                with an item that has been _inscribed_ accordingly, for example
+                "@x4":
+                When the item is currently in the inventory, it will be
+                equipped. If it already is equipped though, then it will be
+                taken off.
 q       q       quaff a potion.
 r       r       read a scroll.
-E       E       eat. (Thunderlords, also known as Dragonriders, can eat
-                firestones to gain temporary special abilities, see (5.9).)
+E       E       eat. (Draconians can eat firestones to gain temporary special
+                abilities, see (5.9).)
 F       F       fuel your light source.
                 Use oil for lanterns, and torches to fuel another torch.
 f       t       fire ammo from your quiver.
@@ -352,7 +366,7 @@ V       V       enter 'cloaking mode'. This can only be used by rogues.
                 sake of PvP usage, similar to invisibility.
 A       A       activate an item. Usually an artifact, a dragon scale mail or
                 a ring of polymorphing (shapechanging).
-T or +  CTRL+T  tunnel through an obstacle or a wall.
+T or +  +       tunnel through an obstacle or a wall.
 R       R       rest. Your hit points and mana will regenerate faster while
                 resting.
 o       o       open something.
@@ -361,11 +375,18 @@ d       d       drop an item.
 $       $       drop some gold. You can use 'k' and 'm' for thousands or
                 millions, example: 3k -> drops 3000. 2m -> drops 2000000.
 D       D       disarm a trap.
-k       CTRL+D  destroy an item.
+k       CTRL+D  destroy an item. (Note that artifacts are indestructible.)
 G       G       skills screen.
 B       f       bash/force something (ie a stuck door).
 l       x       look at a player/monster/object (use direction keys for
                 targetting).
+                (Note that the look command also sets the entity you are
+                currently looking at as your target, even if it wouldn't make
+                much sense because you are for example just looking at another
+                player who isn't even hostile towards you.
+                This means that you will aim at the entity you looked at in
+                case the '*t' command is unable to acquire a new valid 'real'
+                target when you use a ranged attack that requires a target.)
 j               attempt to steal from players (not recommended!).
 U       O       use undead powers (use this if you died and became a ghost).
                 Using these will drain your experience. If you ran out of
@@ -379,7 +400,7 @@ p       p       Concentrate on opening your mind for telekinesis.
                 using telekinesis on you is currently not possible.
                 Hit 'p' again to stop concentrating and close your mind.
 h               buy/sell a house or change house parameters. See (4.10).
-P               party screen. Form/disband/modify a party with other players
+P       O       party screen. Form/disband/modify a party with other players
                 here. In a party you will share experience points if you are
                 within 7 character levels to each other and on the same
                 dungeon/tower level respectively the same worldmap/wilderness
@@ -387,6 +408,8 @@ P               party screen. Form/disband/modify a party with other players
                 For winners (queens/kings/empresses/emperors) the range is 11
                 levels instead of 7.
 
+SPACE   Stop executing repeatable actions such as searching, tunnelling or
+        disarming. Also stops fire-till-kill.
 < or >  go upstairs/downstairs. Press '>' to use a void gate (violet '+').
         Void jump gates teleport you to their counterpart and vice versa.
 {       inscribe an item.
@@ -494,7 +517,7 @@ CTRL+U  Displays/exits the audio mixer settings. (Also see (2.1a).)
 CTRL+C  Toggles music. (Shortcut for toggling it in the mixer settings.)
 CTRL+N  Toggles audio. (Shortcut for master toggle in the mixer settings).
 Note: Mixer settings are saved automatically, provided you use CTRL+X to quit.
-(Compare troubleshooting section (8.5), problem 21.)
+(Compare troubleshooting section (8.6), problem 21.)
 
 There are also some commands that can be entered with ':' like a chat line.
 They all start with a slash '/':
@@ -543,10 +566,12 @@ They all start with a slash '/':
             average, good. Works only on items that actually can be destroyed.
             Skips 'flavoured' items that are not known to you yet (example:
             'a blue potion {+,?}' or 'a malachite ring {+,?}').
-            Also see /tag and /untag.
+            Skips items which inscription contains more than a pseudo-ID tag.
+            Also see /tag and /untag. Note that artifacts cannot be destroyed.
 /dis a      DESTROYS items like /dis, and additionally destroys all items that
             have no inscription at all.
             Also see /tag and /untag.
+/dis b      DESTROYS items like '/dis a' does, but skips identified ego items.
 /dr         Wields all items in your inventory that are: not cursed,
  (/dress)   not {worthless}, not {terrible}, known to you.
 /bed        Opposite of /dress.
@@ -556,6 +581,14 @@ They all start with a slash '/':
             Empty a potion from your inventory, leaving an empty bottle.
             Example: /empty c   (if you have 'c) 3 potions of boldness', one
             will be emptied and 2 remain at 'c) 2 potions of boldness'.))
+/evinfo     Displays information about all ongoing events.
+/evinfo <#> Displays information about the specific event number #.
+            Note: If you log out, your sign-up is cancelled automatically.
+/evsign <#> Signs you up for the event number #.
+            Depending on the event, you might need to specify additional
+            parameters after the number. If that is the case, you'll see
+            a message telling you so, and speficying details what's missing.
+            Note: If you log out, your sign-up is cancelled automatically.
 /ex or /examine or /extra
             Gives you detailed information about your character's status, such
             as how many actions you may perform per turn.
@@ -592,7 +625,7 @@ They all start with a slash '/':
               helpful to figure out what types of items you may equip while in
               this form.
             - forms you have learned if you're a druid, and their according
-              polymorph codes so you don't have to look them up in (6.7a) if
+              polymorph codes so you don't have to look them up in (6.7c) if
               you forgot them;
             - runecraft status details, if you're adept in runemastery;
             - pvp kills;
@@ -602,14 +635,9 @@ They all start with a slash '/':
  (/feeling)
 /fill       fill an 'Empty Bottle' in your inventory with the water from a
             fountain. You must stand on the fountain to do this.
-/evinfo     Displays information about all ongoing events.
-/evinfo <#> Displays information about the specific event number #.
-            Note: If you log out, your sign-up is cancelled automatically.
-/evsign <#> Signs you up for the event number #.
-            Depending on the event, you might need to specify additional
-            parameters after the number. If that is the case, you'll see
-            a message telling you so, and speficying details what's missing.
-            Note: If you log out, your sign-up is cancelled automatically.
+/ftkon or /ftkoff
+            Enables or disables fire-till-kill mode (see (5.2a)).
+            Alternatively, you can toggle it in 'm' menu.
 /hou        Displays your houses, same as ~6.
  (/house)
 /ig <player name>
@@ -653,8 +681,25 @@ They all start with a slash '/':
                         attention. (Using /ignore on a player will also
                         prevent getting paged by him.)
                         If you're on Linux and not hearing the page sounds,
-                        see problem 19 in the troubleshooting section (8.5).
+                        see problem 19 in the troubleshooting section (8.6).
+/paint      (Also available by pressing 'h' for house menu.)
+            Use a potion in your inventory to paint your house entrance in a
+            similar colour. The potion is used up in the process. A potion of
+            water removes the paint again.
+            Painting your house can be useful for example to mark it for others
+            to see that you run a player store. Further, you could choose the
+            colour to indicate the type of items you offer, for example red
+            for magic items similar to the red '6' town store.
+            (See (4.10a) for more information about player stores.)
 /play       Join/leave a mini-game (such as rugby on the field in Bree).
+            Will at some point in the future be absorbed by /evsign and
+            thereby become obsolete.
+/pstore     (Also available by pressing 'h' for house menu.)
+            Attempts to enter a player store next to you, even if it's your own
+            house. So this command is good for 'testing' your own store.
+            Usually you simply enter another player's store by trying to enter
+            his house, which will preset you with the store screen.
+            (See (4.10a) for more information about player stores.)
 /que        gives a quest! It needs to be fulfilled before a certain period
  (/quest)   of time passes (continues to expire even while not logged on).
             The player who completes it gets a great item as reward. It will
@@ -727,8 +772,10 @@ They all start with a slash '/':
 /undoskills Allows you to undo the skill points you assigned in 'G' menu last
             time. Use this to correct points you accidentally put into a wrong
             skill.
-            Note: Logging off or gaining another level will reset undoskills,
+            NOTE: Logging off or gaining another level will reset undoskills,
             making it impossible to undo points spent previously.
+            Also, it can only be used ONCE per level, so make sure you get your
+            skill point distribution right on the second attempt.
 /pvp        Carries you into/out of the PvP arena. Only usable by pvp-mode
             chars. See (6.13) for details about PvP mode.
 
@@ -814,31 +861,11 @@ Word-of-Recall scrolls:
     over there will reject you and you won't remember the place when you
     return and revive in Bree.
 
-
-Weapons:
-    @Ox         Don't auto-retaliate with it. (The letter 'O', not the number)
-                It's recommended for spell-casters who just wear a weapon to
-                profit from its magical abilities to always inscribe it @Ox
-                so it won't accidentally get destroyed when fighting a Nazgul
-                and the auto-retaliator won't take over.
-
-Ranged weapons:
-    @O          Auto-retaliate with it (shooting ammo). ('O' is the letter)
-                (Note: @O can either be on your ammunition or on the bow.)
-
-Spellbooks:
-    @Oc         You will auto-retaliate by casting the spell 'c)' from this
-                book (or any other spell, change the inscription accordingly).
-                IMPORTANT: If you cannot cast spells from the book or you
-                inscribe an unsuitable item, auto-retaliation will be disabled
-                completely!
-                (If 'c' is omittted, the first spell will be chosen.)
-
-Runes:
-    @Oa .. @Og  You will auto-retaliate by using the rune, where the letter
-                a..g determines the spell type ('b' would be self, 'c' would be
-                basic cheap bolt spell.. the letters correspond to the spell
-                selector).
+Weapons, devices and spells:
+    @O and its variants control the 'auto-retaliator' which is a mechanism
+       designed to make your character automatically attack targets that are
+       standing directly adjacent to you.
+       For details about auto-retaliation see (4.1a)!
 
 Ammunition:
     !=          will make your character auto-pickup the ammo from the floor.
@@ -1137,7 +1164,7 @@ snapshot tarballs and stuff. The repository is at http://angband.oook.cz/.
 The cvs command-line to completely download the latest sources and files for
 TomeNET is:
 
-cvs -d:pserver:anonymous@t-o-m-e.net:/var/cvs/tome co tomenet
+cvs -d:pserver:anonymous@angband.oook.cz:/var/cvs/tome co tomenet
 
 You can browse the CVS with a normal web browser easily!
 Here's a shortcut to save you time of searching angband.oook.cz, since
@@ -1239,7 +1266,7 @@ they come in contact with these corrupted beings.
 If you are a spell-caster who doesn't use his weapon to fight but just to
 profit from its magical abilities then it's strongly recommended to inscribe
 the weapon @Ox to avoid auto-retaliation, see (0.3) about inscriptions and
-(4.1) about auto-retaliation.
+(4.1a) about auto-retaliation.
 If you rely on melee weapons you must try to get your hands on an artifact
 since these resist Nazgul greatly! The Stormbringer also resists like an
 artifact. (It doesn't matter if the artifact is a random or a static one.)
@@ -1401,7 +1428,6 @@ the "special window settings" or "special application settings", while on Gnome
 you can use a helper tool such as Devilspie to achieve the same.
 
 
-
 (2.1a) Installing sound and music packs
 ---------------------------------------
 Starting with version 4.4.5, TomeNET features a new SDL-based audio system,
@@ -1422,7 +1448,7 @@ settings with CTRL+U key (or use CTRL+C to toggle music and CTRL+N to toggle
 the master mixer on/off).
 
 Note: Mixer settings are saved automatically, provided you use CTRL+X to quit.
-(Compare troubleshooting section (8.5), problem 21.)
+(Compare troubleshooting section (8.6), problem 21.)
 
 Also be sure to press '=' key to have a look at the audio options, which are in
 'User Interface Options 2'.
@@ -1444,7 +1470,7 @@ After the meta-server has been queried, the list of available servers will
 appear in the main window. Choose a server that is near to your location to
 avoid high latency.
 (This step is reported to sometimes cause problems on Windows OS. If you don't
-see that list, or if other problems occur, see (8.5) for possible solutions.)
+see that list, or if other problems occur, see (8.6) for possible solutions.)
 
 Now you will be prompted to enter your account name and password. You can
 choose these freely, the server will save that information and use it to
@@ -1523,6 +1549,20 @@ or that are especially important are listed in detail here:
 !!! Scroll the screen more frequently (wide_scroll_margin)
 !!!     Should always be enabled! Will reduce probability for off-screen kills,
 !!!     since the screen scrolls much earlier when you come close to a border!
+
+    Thin down screen flush signals to avoid freezing (thin_down_flush)
+        Enabled by default, this discards all 9 of every 10 flush signals, so
+        it reduces the animation delays to 10%.
+        See below for an explanation of flush signals.
+
+    Disable delays from flush signals (disable_flush)
+        Completely disables the delay flush signals cause. Flush signals are
+        signals sent by the server to make the client wait for 1 ms, which is
+        used mainly to draw animations when casting spells or shooting,
+        like the arrow flying or the balls of explosions.
+        If you have a slow network or are lagging a lot, you may try to disable
+        this. Certain animations might visually suffer from doing so.
+
 
 (8) Check Server Options
     Displays a list of the server rules and configuration.
@@ -1724,7 +1764,7 @@ The top right window will give an overview of your character attributes and
 miscellanous abilities. The bottom right window will show the contents of your
 backpack, also called inventory. All characters except ghosts have a backpack.
 The bottom left window will show combat- chat- and server-messages. If most
-of the windows stay totally empty, see (8.5) for possible solutions.
+of the windows stay totally empty, see (8.6) for possible solutions.
 To the left border in the main window you see a short overview of your most
 important stats:
 -starting with your race
@@ -1871,7 +1911,7 @@ and looking for 'Flicker messages in recall' (recall_flicker). Set it to
 If you want to type the character '{' in a chat message, rather than using
 it for a colour code, type it twice '{{'. It will become '{'.
 
-Here is a list of colour codes (try not to annoy your fellow players :)
+Here is a list of colour codes (try not to annoy your fellow players :))
     d  black            b  blue             B  light blue
     D  dark grey        g  green            G  light green
     s  slate (grey)     r  red              R  light red (pink)
@@ -2525,9 +2565,6 @@ to their real functionality. They are:
     '@m3' or '@3'. (Becomes '\e)m@10\r13'.)
   s for changing a stance
     Example:  sa  (switches to stance 'a)' ie balanced combat stance.)
-  * for targetting the nearest monster. Usually you add this to any spell that
-    requires targetting.
-    Example:  M@Manathrust\*  (cast spell manathrust at nearest monster.)
   @...\ for using call-by-name (spell/item name must be between '@' and '\')
     (Examples have been given above, in some spell casting explanations.)
 
@@ -2538,22 +2575,91 @@ automatically chosen (depending on the trigger key).
 
 Additional examples:
 Example 1: Firing your ranged weapon would just be..
-        f*
+        f*t
     (which gets expanded to '\e)f*t'.)
 
 Example 2: Assumed your book is inscribed @m1 as usual, and you want to cast
     spell a). What you can simply enter in the q'n'd field is:
-        M1a*
+        M1a*t
     and it will automatically be expanded to the real macro '\e)m@11\r1a*t'.
 
 Example 3: Assumed you have the spell Manathrust somewhere in your books and
     want to cast it by name, what you enter in the q'n'd field is:
-        M@Manathrust\*
+        M@Manathrust\*t
     and it will automatically be expanded to '\e)m@11\r@Manathrust\r*t', voila.
 
 Example 4: Casting phase door would be..
         M@Phase Door\
     (expanded to '\e)m@11\r@Phase Door\r'.)
+
+
+(3.7c) The macro wizard
+-----------------------
+The easiest (and therefore most limited) way to create a macro is to invoke the
+built-in macro creation wizard. If you are new to the game and too impatient to
+figure out how to create macros manually, you might want to give this a try.
+
+To invoke it, enter the macro menu by pressing '%', then press 'z' to bring up
+the wizard.
+
+The wizard will lead you through three steps with detailed on-screen
+instructions, allowing you to create macros from a couple of pre-defined
+command choices which should cover almost all situations.
+
+(The macro type, ie command/hybrid/normal will be chosen automatically for you,
+same as when using Quick'n'Dirty macro creation.)
+
+
+(3.7d) Specifying directions and targets
+----------------------------------------
+Whenever you use an attack spell or a wand or rod that cast bolts or balls,
+the game prompts you to enter a direction.
+
+In our macros so far we have answered that question by specifying '*t' instead
+of an actual direction ie one of: 1,2,3,4,6,7,8,9.
+We have learned that '*' means 'acquire target' and 't' means 'choose closest
+hostile target'.
+The '*' key can also be pressed as a command key, ie on its own without any
+direction request from the server. Press '*' and it will ask you to set a
+target, which you can do by pressing 't' again to choose the closest hostile
+entity.
+
+There are, however, more ways to specify a direction or to use the target
+command, especially since client 4.4.6 which added the '.' option.
+Details follow:
+
+The 'Set Target' command (key '*') that sets a target for spells or item uses
+that follow, or which can be invoked as a sub-command from a 'Direction?'
+request, may be answered with..
+-------------------------------
+  -'q' key to drop current target without acquiring a new one.
+  -'t' or '5' key to choose closest hostile target.
+  -'p' to target a grid position manually via movement keys (1..9),
+       confirm with 't' or '5' key.
+
+The 'Direction?' request from commands that require a direction, may be
+answered with..
+---------------
+  -a direction key such as 1,2,3,4,6,7,8,9.
+   Note that direction '5' will only aim at yourself if you have no valid
+   target set. Otherwise, the '5' key will aim at your target instead.
+  -'*' key to invoke built-in target command (see above).
+  -'.' key to use a previously acquired target or cancel the spell/item use
+        if there is no valid target currently set. The '.' option is only
+        available in client version 4.4.6 and higher.
+
+Example macros:
+---------------
+  *tz0.     Will zap rod 0 at the closest hostile entity. If there is none,
+            the rod will not be zapped, conserving the rod's energy.
+  z0*t      Zaps rod 0 at the closest hostile entity. If there is none, the
+            rod will be zapped anyway, with yourself as target. This could
+            be useful if it's for example a Rod of Fire Balls and you are
+            being attacked in close combat by an invisible monster.
+  *qz05     Your current target is cleared and the rod 0 is zapped at your
+            own location, ie '5'. This could be useful if you want to clear
+            out piles of loot with a rod of acid balls, effectively destroying
+            all lesser items that cannot resist acid and melt from it.
 
 
 
@@ -2598,7 +2704,7 @@ F10 zap some rod                                    \e)z1           @z1
     (magic device must be high enough or
     you will keep failing; also see (6.10))
 F11 eat something.                                  \e)E1           @E1
-    (Thunderlords could inscribe some firestones
+    (Draconians could inscribe some firestones
     (see 5.9) instead of normal food, to quickly
     boost their powers if needed.)
 F12 use a wand on the closest target                \e)a1*t         @a1
@@ -2612,7 +2718,7 @@ are players always willing to spend many points on the 'Magic Device' skill.
 If you dislike the use of magic your character would have to rely completely
 on scrolls of teleportation instead. Just make sure you have confusion and
 blindness resistance then! (Those two aren't needed to use a staff.)
-If you play Thunderlord, kill Dragonriders because they tend to drop a large
+If you play Draconian, kill Dragonriders because they tend to drop a large
 amount of firestones. If a difficult combat starts, just eat several of them
 to get a larger amount of extra powers.
 (All macros in example_fighter.prf were defined as hybrid macros.
@@ -2902,7 +3008,7 @@ All characters start the game at level 1. At level 50 they are supposed to
 fight the bad boss of the game, Morgoth, Lord of Darkness.
 Depending on race and class, characters need to kill a different amount of
 monsters in order to reach the next level. Yeeks get experience fastest,
-while Thunderlords are slowest. (See (6.4) and (6.5).)
+while Draconians (and Maiar) are slowest. (See (6.4) and (6.5).)
 
 Each time your character gains a new level, (s)he also gains 5 skill
 points that you can distribute on your character's skills, press 'G' to invoke
@@ -3049,26 +3155,79 @@ If you want to pick up an item from the floor, step on that field and press
 information about finding, identifying and selling items, see (5.7).
 However, note that the keys can vary depending on your system configuration.
 
-You attack a monster with your equipped melee weapon by simply moving on
-the monster's field. Alternatively you can just stay still and let the
-monster approach you, if you stand still and an enemy is on an adjacent
-field (directly next to you, no space between you and the enemy) then your
-character will automatically attack it with the equipped melee weapon.
-This feature is called 'the auto-retaliator'. If you want to use ranged
-attacks you have several choices.
+You can attack a monster with your equipped melee weapon by simply moving on
+the monster's field, ie 'bumping' into the monster.
+A much better choice however, is to either just stand still and let the monster
+approach you, or -if the monster is asleep- just move next to the monster
+instead of bumping into it. In both situations, as soon as there is a monster
+directly next to you, you will automatically attack it!
+This is an important feature, called "auto-retaliation", see (4.1a) below!
+
+If you want to use ranged attacks then you have several choices:
 a) casting a magical spell ('m')
 b) throwing an item at a monster (or player) ('v')
 c) firing your equipped ranged weapon (sling, bow, crossbow) ('f')
 d) zapping a magical rod or aiming with a magical wand ('z', 'a')
-For all types of ranged attacks you'll need to designate a target. As soon as
-you finish casting an attack spell or if you press 'f' to fire an arrow/bolt/
-pebble/shot the game will ask you for a target or direction. You can now
-either press one of the 8 direction keys to fire into that direction, or you
-press the asterisk '*' followed by a 't' to designate the closest enemy as
-your target, which usually is what you want.
+For most types of ranged attacks you'll need to designate a target.
+
+As soon as you finish casting an attack spell or if you press 'f' to fire an
+arrow/bolt/pebble/shot the game will ask you for a target or direction.
+You can now either press one of the 8 direction keys to fire into that
+direction, or you press the asterisk '*' followed by a 't' to designate the
+closest enemy as your target, which usually is what you want.
+Since version 4.4.6 the game also supports '.' to fire at a previously set
+target if it still exists, or cancel the action, see (3.7d) for details about
+targetting.
+
 To learn how to create a macro instead of typing all these letters every time
-you want to launch a ranged attack, look at
-'(3.7) Creating macros for ranged attacks'.
+you want to launch a ranged attack, look at '(3.7) Creating macros for ranged
+attacks', or -much simpler- at '(3.7c) The Macro Wizard'.
+
+
+(4.1a) Auto-retaliation
+-----------------------
+If you stand still and an enemy is on an adjacent grid (directly next to you,
+no space between you and the enemy) then your character will automatically
+attack it with the equipped melee weapon.
+
+Instead of melee attacks, you can also configure the auto-retaliator to use
+other items. To do so, you use '@O...' (the letter 'O', not the number zero!)
+item inscriptions:
+
+Please note that you cannot use any sort of teleportation for auto-retaliation.
+
+Weapons:
+    @Ox         Don't auto-retaliate with it.
+                It's recommended for spell-casters who just wear a weapon to
+                profit from its magical abilities to always inscribe it @Ox
+                so it won't accidentally get destroyed when fighting a Nazgul
+                and the auto-retaliator won't take over.
+
+Ranged weapons:
+    @O          Auto-retaliate with it (shooting ammo).
+                (Note: @O can either be on your ammunition or on the bow.)
+
+Magic devices:
+   @O           Auto-retaliate with it. (Wands, staves, rods.)
+
+Spellbooks:
+   @Oc          You will auto-retaliate by casting the spell 'c)' from this
+                book (or any other spell, change the inscription accordingly).
+                IMPORTANT: If you cannot cast spells from the book or you
+                inscribe an unsuitable item, auto-retaliation will be disabled
+                completely!
+                (If 'c' is omittted, the first spell will be chosen.)
+
+Runes:          See (5.20).
+
+Any item:
+   @OMd         Use innate mimic power 'd)' (for example).
+                (Note that you cannot auto-retaliate with 'polymorph into...'
+                power aka 'c)', instead it will be treated like power 'b)' aka
+                'polymorph into next form with fitting extremities'.)
+
+If you want an auto-retaliation-enabling inscription to only work while you are
+around a town, add a 't' after the 'O', examples: '@Ot', '@Otb'.
 
 
 
@@ -3183,7 +3342,7 @@ dungeon depth I can recommend is between 1/3 (if you are _very_ weak) of your
 own character level and 3/4 of your character level. You can also go deeper,
 in case you want to try diving quickly. On 750 ft you can encounter hounds
 (their symbol is a 'Z'). These don't have much Hit Points but give much
-experience. They are a famous target for diver.
+experience. They are a valued target for divers.
 For a list of the dungeons see '(4.5) Towns'.
 
 Dungeon types
@@ -3211,8 +3370,9 @@ There are different types of dungeons. The main five are:
  dungeon, similar to ironman (except for the no-ghost death penalty).
  Force-down dungeons/towers are marked by a red < or > symbol.
 -Ironman. Ironman dungeons or towers won't allow you to recall or to use
- staircases that lead upwards! If you die in such a dungeon or tower you won't
- turn into a ghost either but get destroyed completely.
+ staircases that lead upwards or probability travel backwards!
+ If you die in such a dungeon or tower you won't turn into a ghost either but
+ get destroyed completely.
  Sending items via telekinesis to a player who is currently in an ironman
  dungeon/tower will only work if both players are on the same dungeon floor.
  To leave an ironman dungeon/tower you'll have to get to it's bottom
@@ -3226,6 +3386,7 @@ There are different types of dungeons. The main five are:
  -2050 ft, etc. Also, ALL dungeons will usually not allow recalling OUT until
  you reach a floor that is equivalent to at least dungeon level 20. Examples:
  At least -1000 ft in Barrow-Downs, at least -550 ft in The Orc Cave.
+ (See (8.5) for more information about RPG settings.)
 -Hellish. Players suffer no-ghost deaths inside hellish dungeons.
  Even if they're everlasting.
  Hellish dungeons/towers are marked by a fire-like flickering < or > symbol
@@ -3273,8 +3434,11 @@ destroyed.
 
 Floor-
 Dots '.' rensemble empty floor. Green dots are grass, brown ones dirt, grey
-ones stone or ash.
+ones stone or ash. Note that the colour also depends on the season - in summer
+or autumn, some grass might appear as yellow, when it's been suffering in the
+heat. ;)
 Red dots are lava, violet dots nether mist. These can be dangerous to cross!
+See a bit below for more details.
 
 Trees and bushes-
 Thick trees are rensembled by (mostly green, depending on the season) '#'.
@@ -3331,13 +3495,21 @@ White '^' are extremely high mountain chains that cannot be climbed.
 
 Lava-
 Red dots '.' are shallow lava, which will do heat damage to your character in
-regular intervals. This might also destroy items in your inventory in case
-you're not immune to fire.
+regular intervals.
 Red/orange/yellow '~' is deep lava, which deals a lot of heat damage.
+The fire damage lava inflicts might also destroy items in your inventory in
+case you're not immune to fire or at least double-resist fire - potions of
+resist heat are a cheap way to attain double resistance for a short time.
 
 Fountains-
 '_' are fountains. To drink from them use /sip command or press the '_' key.
 See (0.2) for more details.
+
+Nether mist-
+Violet dots designate nether mist. However, this usually only occurs in the
+Nether Realm, a place which is exclusively accessible to winners.
+Nether mist deals nether damage periodically, similar to how lava deals fire
+damage.
 
 
 Terrain features on the world map:
@@ -3536,7 +3708,6 @@ see 'Pit', 'Vault' or 'Room' in (0.4).
 (4.7) Traps & Trap sets
 -----------------------
 
-
 About traps:
 ------------
 At the beginning you will encounter traps that can do little damage, some will
@@ -3576,9 +3747,9 @@ Fumes Trap Set          -       Potions. The effects are very similar to the
                                 effectiveness though, by generating a thick
                                 fume that envelops nearby creatues and
                                 possibly gets inhaled as well.
-Magic Trap Set          -       Scrolls. Even scrolls that are usually only
-                                used on items might have effects on certain
-                                creatures.
+Magic Trap Set          -       Scrolls or runes. Even scrolls that are usually
+                                only used on other items might have effects on
+                                certain creatures.
 Device Trap Set         -       Wands/Staves/Rods.
                                 The charges of wands and staves will be
                                 decreased by 1 each time the trap sets off.
@@ -3838,9 +4009,77 @@ Note: The colour of house walls and doors are affected by day/night, so in the
 night the colours will not be accurate but darker, until you come close enough
 that the door is within your lamp's light radius.
 
+Special gimmick: You can press 'h' or use the /paint command to paint your
+house, see the "/paint" command in (0.2) for more information.
+
 WARNING:
 Items on the floor within a house don't form piles! If you drop too many
 items and space in the house runs out the dropped item may just disappear!
+
+
+(4.10a) Player stores
+---------------------
+Players can turn their houses into stores, which run automagically even while
+they aren't logged on. Other players can enter your store and buy items, but
+not sell any. You will receive cheques that you can turn in for money by simply
+reading them with 'r' key, same as scrolls. You can also 'I'nspect them.
+The prices customers will see listed when they enter your store are at least as
+high as in the Black Market, except that prices in player stores do not depend
+on race or charisma. You can further increase item's price by inscribing it, if
+you like:
+
+To turn a house into a player-store, simply put an item in it that carries the
+  @S
+inscription. This inscription means that this item will be put up for sale in
+your store.
+As soon as a house contains at least one item inscribed this way, if a player
+who does not have access to the house tries to open the door, he will be
+presented with a store screen where he can buy those inscribed items.
+
+If you want to set a higher price than the default price, you can inscribe the
+item with the price like this:
+  @S20000
+This will ask for 20000 gold, provided the minimum price isn't actually higher.
+
+Instead of setting a price, you can also add to the base price, by using the
+following inscription syntax:
+  @S+10000
+This will add 10000 gold to the default price that is asked for.
+
+Note that if you want to put up items with inscriptions longer than just the
+store-part, you need to terminate the store inscription with a dot. Examples:
+  Hello@S10000.Customer
+  @S.Good stuff
+This item will appear in your store with an inscription "HelloCustomer". The
+"S@..." part is always omitted. This way, you can add short notes to the items
+you offer.
+
+If another player buys your item, there will be a 10% fee that is cut from your
+profits.
+The rest of the price the customer paid will be imprinted into a cheque. This
+cheque is then placed into an available spot in that house. To turn a cheque
+into money, simply press 'r' to read it like you would read a scroll.
+You can also 'I'nspect a cheque to find out how much it's worth.
+
+There are two types of cheques:
+Normally, if an item or a whole pile is bought by someone, the item or pile
+will simply be replaced with a cheque accordingly, for you to withdraw.
+If however the customer buys only part of a pile of items, then another type
+of cheque will be used, called 'mass cheque' which uses one extra slot in your
+house and combines all sales of partial piles of items.
+While normal cheques are inscribed with details of the item that was sold, mass
+cheques only say 'various piled items' or something similar.
+So if you offer piles, make sure that you have at least one free space in your
+house, or you will lose the cheque!
+
+Usually, player stores may only pop up if a player doesn't have access to that
+house door. If you want to test your own player store though, you can just
+press 'h' key or use the /pstore command when standing next to your house door
+(see (0.2)).
+
+To indicate that your house is a player store, you can use 'h' key or the
+"/paint" command to paint your house entrance for other players to see!
+Please see (0.2) for more information about painting.
 
 
 
@@ -4002,7 +4241,7 @@ Arena Monster Challenge
 One of TomeNET's features is the "auto-retaliator". This means, if an enemy
 enters a field that is adjacent to you, you will automatically attack the foe
 with your equipped melee weapon. This is helpful against lags as well as for
-preventing RSI (Repetitive Strain Injury ;).
+preventing RSI ;) - for details about auto-retaliation please see (4.1a).
 
 Melee weapons have at least three stats, it's 'damage dice', 'to-hit' and
 'to-damage'. 'To-hit' helps you actually not miss an enemy, 'to-dam' increases
@@ -4136,8 +4375,7 @@ targetting mode and choosing nearest target, t means exiting target mode and
 remember currently selected target.
 To automatically pick up your arrows simply inscribe them:  !=
 Ranged weapons can also auto-retaliate, that means you will fire automatically
-at targets on sight. To make your ranged weapon behave like that, inscribe the
-bow or ammunition:  @O  (the letter 'O').
+at targets on sight. See (4.1a) for details about auto-retaliation.
 However, auto-retaliating with a ranged weapon works only if the enemy stands
 on an adjacent field, so use 'fire-till-kill' mode in general!
 
@@ -4177,6 +4415,10 @@ line of sight.
 
 Concerning runecraft, fire-till-kill mode will also stop casting when your fail
 chance for the selected spell is over 60%.
+
+To manually stop fire-till-kill without moving or performing any other action,
+just press the SPACE key. Note that SPACE also stops all other kinds of
+repeatable actions such as searching or tunnelling.
 
 
 
@@ -4224,7 +4466,7 @@ If several multipliers match the highest one will be used.
 
 (5.4) Martial Arts, brands
 --------------------------
-The "auto-retaliator" (see 5.1) also works if you fight bare-handed.
+The "auto-retaliator" (see 4.1a) also works if you fight bare-handed.
 
 Training Martial Arts will give you..
 -a bonus to-hit and to-dam.
@@ -4544,13 +4786,14 @@ There are four so-called 'basic resistances'. These are
 Fire/Heat               These attacks can burn items in your inventory.
                         They can also damage your equipment.
                         Without resistance it can reduce your strength.
-                        Fire immunity allows you to travel over lava without
-                        you or your inventory getting harmed.
                         Fire bolts do (level/3)+(9d8) damage.
                         Fire balls do (level*7/2)+10 damage.
                         Fire breaths do HP / 3 damage, capping at 1200.
                         Immunity or double resistance protects items in your
                         inventory from getting harmed (5.10).
+                        Potions of resist heat are a cheap way to attain
+                        double-resistance for a short time in order to pass
+                        lava streams without your inventory taking damage.
 Frost/Cold              These attacks can shatter potions.
                         Without resistance it can reduce your strength.
                         Frost bolts do (level/3)+(6d8) damage.
@@ -4605,7 +4848,8 @@ aura attacks like hitting someone who wears a cloak of immolation.
 To prevent side-effects of the attacks on your inventory from occurring you
 will need the according immunity! Resistance is only sufficient to protect
 your equipment, not your inventory.
-Magic rods are always immune to all kinds of attacks.
+While wands and staves can be destroyed by according elemental attacks, rods
+cannot be destroyed but only discharged (see elemental attack list above).
 
 Poison          Poison resistance doesn't belong to the basic resistances but
                 to the high resistances, yet is also very essential already
@@ -4670,18 +4914,18 @@ Sound           Sound attacks do less damage but can stun your or even knock
                 won't help you then.
                 Resistance will cut damage to 5/7..5/12.
                 Damage is be reduced by further 50% if bio-feedback is active.
-                (Bio-feedback is activated if a Thunderlord -also known as
-                Dragonrider- eats a firestone and gets the 'adrenaline'
-                message. See (5.9) for firestone details.)
+                (Bio-feedback is activated if a Draconian eats a firestone and
+                gets the 'adrenaline' message. See (5.9) for firestone
+                details.)
                 Sound resistance will protect you from stunning effects.
                 Breath damage is monster HP/6. Sound breath caps at 400.
 Shards          Shard attacks can cause nasty cuts that makes you bleed
                 heavily if you don't resist them.
                 Resistance will cut damage to 6/7..6/12.
                 Damage is be reduced by further 50% if bio-feedback is active.
-                (Bio-feedback is activated if a Thunderlord -also known as
-                Dragonrider- eats a firestone and gets the 'adrenaline'
-                message. See (5.9) for firestone details.)
+                (Bio-feedback is activated if a Draconian eats a firestone and
+                gets the 'adrenaline' message. See (5.9) for firestone
+                details.)
                 Shard resistance will protect you from cuts.
                 Breath damage is monster HP/6. Shard breath caps at 400.
 Nexus           Nexus attacks can have extremely nasty side-effects if you
@@ -5279,7 +5523,8 @@ Life            Resurrects another player's ghost if standing on a directly
                 Since it was often asked: Non-everlasting and everlasting
                 players can revive each other without problems.
 Aggravate Monsters
-                Wakes up all monsters in whose radius of awareness you are.
+                Wakes up all monsters within about twice the maximum sight
+                range (a constant defaulting to 20, so aggrav. radius is ~40).
                 Hastes all monsters in your line of sight (same as SHRIEK
                 spell or traps of aggravation or the "/scream" command).
 Word of Recall  Use it to quickly travel from the town to a dungeon or tower,
@@ -5389,6 +5634,10 @@ Deeds           Some of the parchments are deeds, which are used as rewards
                 Press 'r' to read a deed, which will usually tell you what to
                 do with it. In most cases, you have to turn it in at the
                 mayor's office in Bree (one of the '+' doors in town).
+Cheques         These are automatically generated in player stores when someone
+                buys an item. They can be 'I'nspected to check their value or
+                'r'ead to cash in the money.
+                For more information see (4.10a).
 
 
 Wands/Rods/Staves
@@ -5477,12 +5726,12 @@ Codex, Spellbook, Grimoire
                     Grimoires have the most space.
                     (Note that you cannot use these books if your game client
                     version is below 4.4.2!)
-(Small) Firestones  These can be eaten by Thunderlords and have various
-                    random effects (small firestones have reduced duration):
-                    - If the player is currently in dragon form he will just
-                      get some mana refilled.
-                    - If he is in non-dragon form, these temporary effects
-                      can apply:
+(Small) Firestones  These can be eaten by Draconians and players in dragon
+                    forms and have various random effects (small firestones
+                    have reduced duration):
+                    - If the player isn't a Draconian but he is currently in
+                      dragon form he will get some mana refilled.
+                    - If he is a Draconian, the following effects can apply:
                         - Adrenaline:   Consume way more food.
                                         Get STR/CON/DEX bonus.
                                         Get to-hit/to-dam bonus.
@@ -5547,7 +5796,7 @@ Mushroom of Restoring
 Mushrooms with bad effects are also often poisonous.
 Lembas (elvish waybread)
                     Satisifies your hunger, cures poison and hallucinations.
-Firestones          Eath them only if you are a Thunderlord (Dragonrider).
+Firestones          Eath them only if you are a Draconian.
                     They will randomly boost your powers for a short time.
                     See (5.9) for firestone details. If you eat too many of
                     them over a short period of time you might get poisoned
@@ -5568,6 +5817,41 @@ Chests              Chests may contain treasures or items. Usually, chests
                     or again use any sort of disarming magic.
                     The disarmed chest is finally safe to open with 'o' key.
                     Happy looting.
+
+
+(5.9a) Activatable items
+------------------------
+Many items can be activated (press 'A' to try).
+The chance of successful activation may or may not depend on various factors,
+such as..
+-your magic device skill vs the item type base level
+-whether you have trained your Antimagic skill
+-if you have the item equipped
+
+An activated item will usually have a cooldown (timeout) until it can be
+activated again. Items that need to be equipped to be activated usually won't
+recover while they aren't equipped.
+
+Many artifacts can be activated, as well as items of certain ego powers. But
+there are also some base item types that provide an activation effect.
+
+Base and ego types that can be activated and aren't described elsewhere:
+
+Cloaks of immolation: Temporary fire resistance.
+Cloaks of frostweaving: Temporary frost resistance.
+Cloaks of Lordly Resistanc: Temporary base+poison resistance.
+Dragon Scale Mails: According breath attack.
+Weapons of the Thunderlords: Teleportation.
+Weapons of Spinning: Spin attack.
+Fury weapons: Berserk.
+Noldor caps: Treasure detection.
+Spectral weapons: Wraithform.
+
+Serpent amulets: Poison breath.
+Moon amulets: Sleep monsters.
+Rage amulets: Berserk.
+Elemental rings: Breath the ring element and temporary resistance to it.
+Teleportation rings: Explode for teleportation.
 
 
 
@@ -6066,6 +6350,9 @@ Each component has different associated costs; some of these can be viewed in
 the menu. When selecting runes, press return once you are finished, or enter
 the maximum of three runes and continue to the modifier selection. The menu
 will prompt for a direction if it is required after you're done.
+Note that only true runemasters will be able to draw the full amount of three
+runes, while other classes that train in rune skills can draw up to a maximum
+of two runes.
 
 If you choose the 'chaotic' modifier, the resulting damage, cost and duration
 will be increased or decreased by a random amount. This can result in very high
@@ -6179,8 +6466,8 @@ An attribute is maxed out at 18/100 +/- racial/class modifiers.
 Examples:
 Human Adventurer has 18/100 + 0 + 0 = 18/100 cap for all stats, see (6.4) for
 race boni and (6.5) for class boni.
-Thunderlord Istari has an intelligence cap of 18/100 + 2 (Thunderlord) + 3
-(Istari) = 18/150.
+Draconian Istar has an intelligence cap of 18/100 + 2 (Draconian) + 3
+(Istar) = 18/150.
 
 Stats can be raised over the character's cap by equipment. The total possible
 maximum of an attribute is always 18/220 (40), which is displayed as 18/***.
@@ -6250,7 +6537,7 @@ If you rise in character levels by gaining experience, you also get skill
 points to distribute on various abilities. To invoke the skill system overview
 press 'G' (capital G!).
 If you make a mistake while distributing skill points, look up the /undoskills
-command in (0.2).
+command in (0.2). "/undoskills" can only be used once per level.
 
 Here is a list of the available skills and brief explanations to each one:
 Note that not every skill is available to every profession (class).
@@ -6377,8 +6664,10 @@ Note that not every skill is available to every profession (class).
                                                    for being in 'fury'.
                                 (A higher ranked stance features more of its
                                 benefits and/or less of its drawbacks.)
-    .Dual-Wield                 The ability to wield two weapons at once. This
-                                ability cannot be trained (it's a switch).
+        .Dual-Wield             The ability to wield two weapons at once. This
+                                ability cannot be trained, it's always at 1.000
+                                if your character's class can dual-wield, else
+                                at zero. (So it's basically a switch.)
                                 Dual-wielding will give you additional parry
                                 chance as well as a blows/round bonus
                                 (see (6.11) for details about parrying).
@@ -6405,6 +6694,67 @@ Note that not every skill is available to every profession (class).
                                 than your secondary weapon.
                                 While enabled ('Dual-hand mode') you will
                                 attack with both weapons, picked randomly.
+    .Martial Arts               Ability to fight with bare hands.
+                                Slightly raises your character speed.
+                                Lets you attack with special combat styles.
+                                You get +1 extra attack at 1,10,20,30,40,45,50
+                                each, so up to +7 blows per round in total.
+                                At 10 you receive Feather Falling (Levitation).
+                                At 15 your character gets fear resistance.
+                                At 20 your character gets confusion resistance.
+                                Gives you 'Free Action' (immunity to paralysis)
+                                at skill level 25.
+                                At 30 you're able to swim without problems.
+                                At 40 your movement is perfected enough to
+                                cross even highest mountains.
+                                At 50 a martial artist will learn the
+                                technique of flying!
+                                Under certain conditions MA abilities cannot
+                                be used and lose their effect, see (5.4)!
+                                The dice of martial arts special moves
+                                (which your character will use automatically
+                                depending on your MA skill) are affected by
+                                elemental brands, but slightly less than
+                                normal weapons (2/3 as much).
+                                Martial Arts gives you a chance / adds to your
+                                chance of intercepting an enemy! See
+                                'Interception' skill below.
+                                For more details about MA see section (5.4).
+                                Training Martial Arts skill will also slightly
+                                increase your Dodging skill.
+    .Interception               Ability to interfere with adjacent enemies.
+                                Can prevent them from teleporting, casting,
+                                summoning, running away. The chance to
+                                intercept an enemy is (2 * interception) +
+                                (martial_arts_skill / 2) - (enemy_level / 3).
+                                Example: Chance to intercept summoning of the
+                                Balrog of Moria with maxed interception is
+                                (2*50) + 0 - (50/3) = 84% base. Now since it's
+                                spellcasting it's reduced to 75%: 84%*75%=63%.
+                                For Morgoth it's (2*50)+0-(100/3) = 67% base.
+                                To intercept his spells it's 75% of 67% = 50%!
+                                (A maxed out martial artist would have 69%.)
+                                Note that this formula shows that interception
+                                is actually not that useful if you don't keep
+                                it at the maximum possible value all the time.
+                                Interception chance is recuded to 33% while
+                                you are blind.
+                                Interception chances also depend on what the
+                                enemy is trying to do. Certain actions are
+                                harder to intercept, those reduce the chance
+                                further, to..
+                                100%    for shooting
+                                 85%    for running (fleeing / stepping back)
+                                 75%    for casting a spell / summoning
+                                 50%    for teleporting / phasing (blinking)
+                                Note: While ball/bolt attacks are spells,
+                                      breathing is NOT.
+                                Interception chance caps at 80% (cap is
+                                applied after all other penalties have been
+                                factored in, at the very end of calculation).
+                                Note: You aren't able to intercept a monster's
+                                action while you are stunned. (Compare (4.11))
+                                Note: Monster level means 'rlevel' (see (0.4)).
     +Archery                    Improves ranged to-damage bonus.
                                 Allows you to learn some shooting techniques,
                                 accessible via 'm', see (6.12) for details.
@@ -6458,34 +6808,7 @@ Note that not every skill is available to every profession (class).
                                 reduces the chance of a boomerang to break or
                                 to fall to the ground instead of returning.
                                 Artifact boomerangs never break or fall down.
-    .Martial Arts               Ability to fight with bare hands.
-                                Slightly raises your character speed.
-                                Lets you attack with special combat styles.
-                                You get +1 extra attack at 1,10,20,30,40,45,50
-                                each, so up to +7 blows per round in total.
-                                At 10 you receive Feather Falling (Levitation).
-                                At 15 your character gets fear resistance.
-                                At 20 your character gets confusion resistance.
-                                Gives you 'Free Action' (immunity to paralysis)
-                                at skill level 25.
-                                At 30 you're able to swim without problems.
-                                At 40 your movement is perfected enough to
-                                cross even highest mountains.
-                                At 50 a martial artist will learn the
-                                technique of flying!
-                                Under certain conditions MA abilities cannot
-                                be used and lose their effect, see (5.4)!
-                                The dice of martial arts special moves
-                                (which your character will use automatically
-                                depending on your MA skill) are affected by
-                                elemental brands, but slightly less than
-                                normal weapons (2/3 as much).
-                                Martial Arts gives you a chance / adds to your
-                                chance of intercepting an enemy! See
-                                'Interception' skill below.
-                                For more details about MA see section (5.4).
-                                Training Martial Arts skill will also slightly
-                                increase your Dodging skill.
+<< For more information about learning spells, see (6.8) >>
 +Magic                          Improves your spellcasting abilities and
                                 increases your mana capacity.
                                 Lets you pseudo-id magic items, potions and
@@ -6493,6 +6816,49 @@ Note that not every skill is available to every profession (class).
                                 If 'Magic' is at least at 11 points, you will
                                 get more distinctive feelings from pseudo-id,
                                 before that you only sense 'good' or 'cursed'.
+    +Magic Schools
+        .Sorcery                Learn to use spells of ALL magic schools at
+                                once, instead of training a particular branch!
+        .Mana                   Learn spells of the Mana branch.
+        .Fire                   Learn spells of the Fire branch.
+        .Water                  Learn spells of the Water branch.
+        .Air                    Learn spells of the Air branch.
+        .Earth                  Learn spells of the Earth branch.
+        .Nature                 Learn spells of the Nature branch.
+        .Conveyance             Learn spells of the Conveyance branch.
+        .Divination             Learn spells of the Divination branch.
+        .Temporal               Learn spells of the Temporal branch.
+        .Udun                   Learn spells of the Udun branch.
+        .Mind                   Learn spells of the Mind branch.
+        .Meta                   Learn spells of the Meta branch.
+    +Prayer Schools
+        .Holy Offense           Learn prayers of the Holy Offense branch.
+        .Holy Defense           Learn prayers of the Holy Defense branch.
+        .Holy Curing            Learn prayers of the Holy Curing branch.
+        .Holy Support           Learn prayers of the Holy Support branch.
+    .Spell-power                Increases the power of learned spells by
+                                adding a bonus to the spell level.
+                                At 50, it will raise spell levels by 40%.
+                                (It won't raise the level of spells which you
+                                haven't learned yet.)
+                                Note that Spell-power does not affect magic of
+                                druids, mindcrafters, or runemasters.
+    +Druidic Schools
+        .Arcane Lore            Learn druid magic tought by arcane lore.
+        .Physical Lore          Learn druid magic tought by physical lore.
+    +Mindcraft Schools
+        .Psycho-Power           Learn mindcrafter spells of psycho-power.
+        .Thought Contact        Learn mindcrafter spells of tought contact.
+        .Mental Intrusion       Learn mindcrafter spells of mental intrusion.
+    +Runecraft                  Determines how skillful you are in handling
+        .Fire and Cold          specific magical symbols or Runes.
+        .Acid and Water
+        .Lighning and Earth     For more info about runes, see
+        .Poison and Wind        '(5.20) Runes & Runemastery'.
+        .Mana and Chaos
+        .Force and Gravity
+        .Nether and Time
+        .Mind and Nexus
     .Mimicry                    Ability to shapechange into a monster!
                                 You also inherit the monsters abilities,
                                 weaknesses and resistances!
@@ -6505,46 +6871,57 @@ Note that not every skill is available to every profession (class).
                                 without failing. Also increases their power.
                                 Speeds up recharging of rods you carry.
                                 See (6.10) for more information.
-    .Spell-power                Increases the power of learned spells by
-                                adding a bonus to the spell level.
-                                At 50, it will raise spell levels by 40%.
-                                (It won't raise the level of spells which you
-                                haven't learned yet.)
-                                Note that Spell-power does not affect druid
-                                or mindcrafter spells, nor runemastery.
-    .Sorcery                    Learn to use spells of ALL magic schools at
-                                once, instead of training a particular branch!
-<< For more information about learning spells, see (6.8) >>
-    .Mana                       Learn spells of the Mana branch.
-    .Fire                       Learn spells of the Fire branch.
-    .Water                      Learn spells of the Water branch.
-    .Air                        Learn spells of the Air branch.
-    .Earth                      Learn spells of the Earth branch.
-    .Meta                       Learn spells of the Meta branch.
-    .Conveyance                 Learn spells of the Conveyance branch.
-    .Divination                 Learn spells of the Divination branch.
-    .Temporal                   Learn spells of the Temporal branch.
-    .Mind                       Learn spells of the Mind branch.
-    .Nature                     Learn spells of the Nature branch.
-    .Udun                       Learn spells of the Udun branch.
-    .Holy Offense               Learn prayers of the Holy Offense branch.
-    .Holy Defense               Learn prayers of the Holy Defense branch.
-    .Holy Curing                Learn prayers of the Holy Curing branch.
-    .Holy Support               Learn prayers of the Holy Support branch.
-    .Arcane Lore                Learn druid magic tought by arcane lore.
-    .Physical Lore              Learn druid magic tought by physical lore.
-    .Psycho-Power               Learn mindcrafter spells of psycho-power.
-    .Thought Contact            Learn mindcrafter spells of tought contact.
-    .Mental Intrusion           Learn mindcrafter spells of mental intrusion.
-.Runemastery                    Determines how skillful you are in handling
-    .Fire and Cold              specific magical symbols or Runes.
-    .Acid and Water
-    .Lighning and Earth         For more info about runes, see
-    .Poison and Wind            '(5.20) Runes & Runemastery'.
-    .Mana and Chaos
-    .Force and Gravity
-    .Nether and Time
-    .Mind and Nexus
++Necromancy                     Drains life and mana from killed monsters,
+                                replenishing your HP and SP.
+                                Only works if you are able to see the target,
+                                and if you are not dead yourself.
+                                The amount of points gained depends on the
+                                skill and the target's level. To get maximum
+                                drain, the skill should be at least half as
+                                high as the monster level.
+                                Necromancy has no effect on undead and
+                                nonliving monsters.
+    .Traumaturgy                Drains mana from monsters when you inflict
+                                damage on them, replenishing your SP.
+                                Only works if you are able to see the target.
+                                The amount of points gained is a fraction of
+                                the damage points you inflicted and only
+                                depends on damage and skill.
+                                Traumaturgy has no effect on angels, undead,
+                                and nonliving monsters.
+    .Aura of Fear               Monsters that hit you are stroke by fear.
+    .Shivering Aura             Monsters that hit you are stunned.
+                                At a skill of 30 the aura is so strong that
+                                your melee attacks (weapon as well as martial
+                                arts will be branded by it. (Cold brand.)
+    .Aura of Death              Monsters that hit you are hit by waves
+                                of plasma and ice.
+                                At a skill of 40 the aura is so strong that
+                                your melee attacks (weapon as well as martial
+                                arts) will be branded by it.
+                                (Alternating fire or cold brand.)
+.Antimagic                      Generated from your strong disbelief in magic
+                                an anti-magic field surrounds you, preventing
+                                attempts from other casters to cast spells or
+                                summon monsters. This effect is cumulative
+                                with the anti-magic field of a Dark Sword.
+                                (See 5.9 for more info about dark swords.)
+                                It's capped at 75% chance of interrupting
+                                enemy spells.
+                                Note that as soon as you invest a point into
+                                this skill you won't be able to use any magic
+                                wands,staves or rods anymore!
+                                This skill also slightly affects your fellow
+                                party members (casters).
+                                Each point in Antimagic adds 1% to your
+                                AM chance, so the max gain is +50% from skill.
+                                Note: While ball/bolt attacks are spells,
+                                      breathing is NOT.
+                                Antimagic will also reduce the duration of all
+                                timed magic effects on you, be it good or bad.
+                                Warriors that specialize in Antimagic are
+                                called 'Unbelievers' (The Anti-magic powers
+                                result from their strong disbelief in magic).
 +Sneakiness                     Slightly increases your character speed
                                 (+7 at 50, so approx +1 every 7..8 points).
                                 Slightly increases perception and searching.
@@ -6554,31 +6931,10 @@ Note that not every skill is available to every profession (class).
     .Stealth                    Increases your stealth, which determines
                                 if monsters can hear you from a distance
                                 or if you can sneak past them. Note that even
-                                Thunderlords -also known as Dragonrider-
-                                can become stealthy by using this! (Without
-                                further +stealth items, stealth of a TL
-                                Adventurer will become 'poor' instead of 'bad'
-                                with Stealth at 26.000.)
-    .Disarming                  Improves your disarming ability.
-                                Also gives you a chance to salvage a trap kit
-                                from any trap when you disarm it!
-    .Trapping                   Improves your ability to set traps:
-                                Gives you a higher chance to successfully
-                                place a trap if a monster is close to you and
-                                trying to interfere. Also, monsters will have
-                                a harder time to discover your traps.
-                                Last but not least you learn to optimize your
-                                traps for higher damage output.
-                                See (4.7) for details about monster traps.
-    .Backstabbing               Lets you backstab enemies, afflicting high
-                                damage. Works best if the opponent is
-                                sleeping. Requires sword-type weapons.
-                                If you dual-wield, you will also dual-backstab
-                                if the moster is either asleep, or you perform
-                                the attack from cloaking mode or shadow run.
-                                Although you'll deal somewhat less damage with
-                                each stab, since they are executed both at once
-                                they will provide a great damage boost.
+                                Draconians can become stealthy by using this!
+                                (Without further +stealth items, stealth of a
+                                Draconian Adventurer will become 'poor' instead
+                                of 'bad' with Stealth at 26.000.)
     .Stealing                   Ability to steal items from stores.
                                 If you get caught, you will be on the
                                 'blacklist of merchants' for a minute up
@@ -6634,7 +6990,16 @@ Note that not every skill is available to every profession (class).
                                 especially easy to steal. Also, if you still
                                 get caught on such an item, the blacklist time
                                 will be much shorter too.
-    +Dodging                    Ability to evade attacks. In order to get any
+    .Backstabbing               Lets you backstab enemies, afflicting high
+                                damage. Works best if the opponent is
+                                sleeping. Requires sword-type weapons.
+                                If you dual-wield, you will also dual-backstab
+                                if the moster is either asleep, or you perform
+                                the attack from cloaking mode or shadow run.
+                                Although you'll deal somewhat less damage with
+                                each stab, since they are executed both at once
+                                they will provide a great damage boost.
+    .Dodging                    Ability to evade attacks. In order to get any
                                 benefits from doding skill at all, your armour
                                 mustn't be so heavy that you get a flexibility
                                 warning (compare (5.5)) and also you must not
@@ -6679,94 +7044,24 @@ Note that not every skill is available to every profession (class).
                                 still dodge them quite effectively though.
                                 Dodging also gets slightly increased when you
                                 put points into "Martial Arts" skill.
-        .Calmness               Ability to not get hindered by enemies.
+    .Calmness                   Ability to not get hindered by enemies.
                                 Adjacent foes can interfere if you try to..
                                 -shoot with ranged weapons,
                                 -use a void jumpgate,
                                 -invoke a mimic spell,
                                 -set a monster trap,
                                 -use a staircase.
-        .Interception           Ability to interfere with adjacent enemies.
-                                Can prevent them from teleporting, casting,
-                                summoning, running away. The chance to
-                                intercept an enemy is (2 * interception) +
-                                (martial_arts_skill / 2) - (enemy_level / 3).
-                                Example: Chance to intercept summoning of the
-                                Balrog of Moria with maxed interception is
-                                (2*50) + 0 - (50/3) = 84% base. Now since it's
-                                spellcasting it's reduced to 75%: 84%*75%=63%.
-                                For Morgoth it's (2*50)+0-(100/3) = 67% base.
-                                To intercept his spells it's 75% of 67% = 50%!
-                                (A maxed out martial artist would have 69%.)
-                                Interception chance is recuded to 33% while
-                                you are blind.
-                                Interception chances also depend on what the
-                                enemy is trying to do. Certain actions are
-                                harder to intercept, those reduce the chance
-                                further, to..
-                                100%    for shooting
-                                 85%    for running (fleeing / stepping back)
-                                 75%    for casting a spell / summoning
-                                 50%    for teleporting / phasing (blinking)
-                                Note: While ball/bolt attacks are spells,
-                                      breathing is NOT.
-                                Interception chance caps at 80% (cap is
-                                applied after all other penalties have been
-                                factored in, at the very end of calculation).
-                                Note: You aren't able to intercept a monster's
-                                action while you are stunned. (Compare (4.11))
-                                Note: Monster level means 'rlevel' (see (0.4)).
-+Necromancy                     Drains life and mana from killed monsters,
-                                replenishing your HP and SP.
-                                Only works if you are able to see the target,
-                                and if you are not dead yourself.
-                                The amount of points gained depends on the
-                                skill and the target's level. To get maximum
-                                drain, the skill should be at least half as
-                                high as the monster level.
-                                Necromancy has no effect on undead and
-                                nonliving monsters.
-    .Traumaturgy                Drains mana from monsters when you inflict
-                                damage on them, replenishing your SP.
-                                Only works if you are able to see the target.
-                                The amount of points gained is a fraction of
-                                the damage points you inflicted and only
-                                depends on damage and skill.
-                                Traumaturgy has no effect on angels, undead,
-                                and nonliving monsters.
-    .Aura of Fear               Monsters that hit you are stroke by fear.
-    .Shivering Aura             Monsters that hit you are stunned.
-                                At a skill of 30 the aura is so strong that
-                                your melee attacks (weapon as well as martial
-                                arts will be branded by it. (Cold brand.)
-    .Aura of Death              Monsters that hit you are hit by waves
-                                of plasma and ice.
-                                At a skill of 40 the aura is so strong that
-                                your melee attacks (weapon as well as martial
-                                arts) will be branded by it.
-                                (Alternating fire or cold brand.)
-.Antimagic                      Generated from your strong disbelief in magic
-                                an anti-magic field surrounds you, preventing
-                                attempts from other casters to cast spells or
-                                summon monsters. This effect is cumulative
-                                with the anti-magic field of a Dark Sword.
-                                (See 5.9 for more info about dark swords.)
-                                It's capped at 75% chance of interrupting
-                                enemy spells.
-                                Note that as soon as you invest a point into
-                                this skill you won't be able to use any magic
-                                wands,staves or rods anymore!
-                                This skill also slightly affects your fellow
-                                party members (casters).
-                                Each point in Antimagic adds 1% to your
-                                AM chance, so the max gain is +50% from skill.
-                                Note: While ball/bolt attacks are spells,
-                                      breathing is NOT.
-                                Antimagic will also reduce the duration of all
-                                timed magic effects on you, be it good or bad.
-                                Warriors that specialize in Antimagic are
-                                called 'Unbelievers' (The Anti-magic powers
-                                result from their strong disbelief in magic).
+    +Disarming                  Improves your disarming ability.
+                                Also gives you a chance to salvage a trap kit
+                                from any trap when you disarm it!
+        .Trapping               Improves your ability to set traps:
+                                Gives you a higher chance to successfully
+                                place a trap if a monster is close to you and
+                                trying to interfere. Also, monsters will have
+                                a harder time to discover your traps.
+                                Last but not least you learn to optimize your
+                                traps for higher damage output.
+                                See (4.7) for details about monster traps.
 +Health                         Increases your hit point regeneration rate:
                                 (skill_level * 2)% chance to regenerate 1,5x
                                 the normal amount of HP per turn (stacks with
@@ -6781,6 +7076,11 @@ Note that not every skill is available to every profession (class).
                                 displayed. At 40 the value will be shown.
                                 Note that Health skill stacks with +LIFE items
                                 (compare '+LIFE' in (5.8)).
+    .Swimming                   Allows you to swim even while carrying more
+                                weight and protect your items from water.
+                                Skill maxes at 01.000, with the ability to
+                                swim improving steadily while increasing it.
+    .Climbing                   You need this at 01.000 to learn climbing.
     .Digging                    How well you are able to dig. Also affects
                                 your chance to find items, for the items to
                                 be good or even great, and affects the amount
@@ -6794,11 +7094,6 @@ Note that not every skill is available to every profession (class).
                                 axes will help a lot and swords somewhat, in
                                 case you have no good digging tool at hand.
                                 2-handed axes/swords even more than 1-handed.
-    .Swimming                   Allows you to swim even while carrying more
-                                weight and protect your items from water.
-                                Skill maxes at 01.000, with the ability to
-                                swim improving steadily while increasing it.
-    .Climbing                   You need this at 01.000 to learn climbing.
 
 The abilities Swimming, Digging and Climbing are also granted by items you
 can find. Those are for example items that grants you flying, so you may just
@@ -7105,15 +7400,18 @@ Ent
     'Water' and they receive penalties on 'Fire' school, 'Axe-mastery' and a
     slight penalty on 'Sword-mastery'.
 
-Thunderlord (also known as Dragonrider)
-    Thunderlords can eat firestones to temporarily boost their powers.
+Draconian
+    These humanoid half-breeds of dragon and man surpass common humans in all
+    ways, except that they are really bad at moving stealthily. Similar to
+    dragons, they can eat firestones to temporarily boost their powers.
+    (See (5.9) for firestone details.)
     They have an intrinsic telepathic vision of all nearby creatures, the
     radius expands as they gain levels. At level 5 they can spot dragons
     anywhere on the level. They even gain intrinsic basic resistances,
     fire at 10, cold at 15, acid at 20 and electricity at 25. At level 30
-    they learn how to fly. Thunderlords are not very wise, and need a very
-    long time to gain experience. They need to eat often. Thunderlords have
-    feather falling (levitation) from birth. See (5.9) for firestone details.
+    they learn how to fly. Draconians need a very long time to gain further
+    experience and need to eat often. They have feather falling (levitation)
+    instrinsically from birth.
     They receive bonus on 'Polearm-Mastery', 'Aura of Fear' and the magic
     schools 'Conveyance' and 'Fire'.
 
@@ -7159,7 +7457,7 @@ Pe:Perception (sight range), Sr:Searching,  Fi:Fighting,        BT:Bows/Throw)
 Note that Yeeks are limited to 4 melee attacks per round (not including boni
 from skills or items yet).
 
-            STR INT WIS DEX CON CHR     HPdice  Exp%    Infra-Vision
+            STR INT WIS DEX CON CHR     HP die  Exp%    Infra-Vision
             Di  MD  ST  St  Pe  Sr  Fi  BT
 ------------------------------------------------------------------------------
 Human        0   0   0   0   0   0       10     100%     0ft
@@ -7186,9 +7484,9 @@ Yeek        -5  -5  -5  -5  -5  -3        7      80%     0ft
              0   0   0   0  10   0    0   0
 Goblin       0  -1  -4  +4  +2  -5       10     120%    30ft
              2  -3  -3   0   8   2   12  -5
-Ent         +8  -4  +2  -4  +8  -4       14     320%    50ft
+Ent         +8  -4  +2  -4  +8  -4       14     320%     0ft
              5   0  20  -6   4   5   15   5
-Thunderlord +6  +2  +1  +1  +3  +5       12     350%     0ft
+Draconian   +4  +2  +2  +1  +3  +2       12     350%     0ft
              6   0  10 -16  10  30   15   5
 Dark-Elf     0  +2  +1  +3  +1  -6       10     140%    50ft
              0   3   6   4   6  10   15  15
@@ -7364,7 +7662,7 @@ Druid
     (Special note (compare 6.7): If they wield a weapon while using a form
     which usually cannot use weapons, they will only get 1 blow per round.)
     To recheck which forms you can transform into, use the /ex command.
-    To see an overview of the forms and their abilities, see (6.7a).
+    To see an overview of the forms and their abilities, see (6.7c).
     Hint: Druids have a powerful ranged area attack spell they can use very
     early on, Toxic Moisture. Look for it in the book store right away.
 
@@ -7377,7 +7675,8 @@ Shaman
     dragons, taking on the shape of dragonriders. They can also appear as a
     spirit, elemental or ghost after they destroyed enough of them, while
     still using their full equipment! Shamans are always able to move straight
-    even if the creature in whose shape they appear usually doesn't.
+    even if the creature in whose shape they appear usually doesn't. They learn
+    elemental ('E') forms especially quickly.
     Shamans are excellent at magic and may have weaker combat abilities than
     rangers or paladins, but still don't need to hide from a melee. Their
     spiritual abilities allow them to easily train various aspects of
@@ -7455,7 +7754,7 @@ See (6.11) for details about parry and block.
 (Di:Disarming,      MD:Magic Device,        ST:Saving Throw,    St:Stealth,
 Pe:Perception (sight range), Sr:Searching,  Fi:Fighting,        BT:Bows/Throw)
 
-            STR INT WIS DEX CON CHR     HPdice  Exp%    Max. base blows/round
+            STR INT WIS DEX CON CHR     HP die  Exp%    Max. base blows/round
             Di  MD  ST  St  Pe  Sr  Fi  BT              Parrying/Blocking
             Di  MD  ST  St  Pe  Sr  Fi  BT (relative modifiers, see (6.3))
 ------------------------------------------------------------------------------
@@ -7482,21 +7781,21 @@ Paladin     +3  -3  +1  +0  +2  +2       +8      +30%       5
              2   4  10   0   2   0  35  10
 Ranger      +2  +2  -1  +1  +2  +0       +7      +35%       5
             34  32  30   5  30  30  50  60              superb   fair
-            10  10  10   1   5  15  30  35
+            10  10  10   0   5  15  30  35
 Adventurer   0   0   0   0   0   0       +6      +25%       4
-            20  20  20   2  15  15  50  50              fair     fair
+            20  20  20   3  15  15  50  50              fair     fair
             10  10  10   0   5   5  25  25
 Druid       +1   0  +2  -2  -2  +1       +5      +40%       4
-            30  40  30   5  25  25  50  60              fair     fair
-             8   5  10   1   5  10  20  30
-Shaman       0  +1  +2  -2   0   0       +4      +45%       4
-            10  13  30   5  30  20  45  20              poor     poor
+            30  40  30   4  25  25  50  60              fair     fair
+             8   5  10   0   5  10  20  30
+Shaman       0  +1  +2  -2   0   0       +3      +45%       4
+            10  13  30   4  30  20  45  20              poor     poor
              0  11  10   0   5   3  20   5
 Runemaster  +1  +2  -3  +3  -3  -3       +5      +20%       4
-            10  20  20   0  30  20  45  20              fair     fair
+            10  20  20   2  30  20  45  20              fair     fair
              0  11  10   0   5   3  20  10
-Mindcrafter  0  +2   0   0   0  +1       +5      +25%       5
-            30  30  36   2  35  14  45  35              good     fair
+Mindcrafter  0  +2   0   0   0  +1       +6      +25%       5
+            30  30  36   3  35  14  45  35              good     fair
              0   5   5   0   3   3  26  20
 
 
@@ -7596,8 +7895,8 @@ storm your head, leaving you with mad visions for a while..
 
 
 
-(6.7) Mimic details, polymorph rings
-------------------------------------
+(6.7) Mimicry details, polymorph rings
+--------------------------------------
 If a mimic polymorphs into a certain monster form, abilities and stats will be
 averaged between the normal ('@') body and the form. In most cases if the form
 is performing worse than @-form in a certain ability, the @-form will dominate
@@ -7874,8 +8173,8 @@ Example: An ent mimic won't drown in water, but if it polymorphs into an orc,
 it loses the intrinsic ability to pass water since orcs aren't made of wood.
 
 
-Polymorph rings:
-----------------
+(6.7a) Polymorph rings:
+-----------------------
 There are two types of polymorph rings, those which already provide a monster
 form and those which can still be forged by a mimic. Latter ones are named
 'Rings of Polymorphing of Player', while the first ones are named after the
@@ -7918,7 +8217,25 @@ If a player forges a ring, his magic device skill helps to obtain a high
 amount of energy in the ring.
 
 
-(6.7a) Druid form details
+(6.7b) Intrinsic abilities that aren't kept when changing forms
+---------------------------------------------------------------
+Characters keep certain racial abilities even if they change form, while some
+other abilities might not persist through polymorphing. The following abilities
+will NOT remain active when changing shape, ie are not "polymorph-proof":
+
+Hobbit:
+    +DEX bonus from not wearing shoes.
+Dwarf:
+    Climbing.
+Yeek:
+    Pass trees.
+Ent:
+    Speed malus (will be reduced), swimming, pass trees.
+Draconian:
+    Feather falling, flying.
+
+
+(6.7c) Druid form details
 -------------------------
 Note: Some forms can open doors, others may try to bash doors.
       Also, all animal forms are able to travel through woods.
@@ -8144,68 +8461,6 @@ to a certain extent. The boni are listed below each school.
 
 Istari schools:
 ---------------
-Earth
-    Dig             Turns walls into mud.
-                    Required skill level for first spell level: 12.
-    Stone Prison    Creates a prison of granite walls around you.
-                    Required skill level for first spell level: 25.
-    Strike          Creates a micro-ball of force, pushing monsters backwards.
-                    Lv12: it turns into a small ball.
-                    Required skill level for first spell level: 25.
-    Shake           Creates a local earthquake.
-                    Required skill level for first spell level: 27.
-  BONI:             Shard resistance at 30,
-                    Great damage reduction against earthquakes at 45.
-Air
-    Noxious Cloud   Fires a poison cloud at a designated target.
-                    Lv30: Unbreath cloud, irresistable.
-                    Required skill level for first spell level: 3.
-    Wings of Wind   Grants levitation (feather falling).
-                    Lv16: Lets you fly.
-                    Required skill level for first spell level: 16.
-                    Shared spell (see above): Air, Conveyance.
-    Invisibility    Turns you invisible.
-                    Required skill level for first spell level: 30.
-    Poison Blood    Gives temporary poison resistance.
-                    Lv10: Brands melee weapons with venom.
-                    Required skill level for first spell level: 22.
-    Thunderstorm    Throws thunder bolts at random monsters nearby.
-                    (33% lightning, 33% sound, 33% light)
-                    Required skill level for first spell level: 25.
-  BONI:             Feather falling at 30,
-                    Poison resistance at 40,
-                    Flying at 50.
-Water
-    Tidal Wave      Summons a monstrous tidal wave.
-                    Required skill level for first spell level: 16.
-    Ice Storm       Engulfs you in a storm of roaring cold.
-                    Lv15: Turns into a storm of shards of ice.
-                    Required skill level for first spell level: 22.
-    Ent's Potion    Fills your stomach.
-                    Lv5: Removes fear.
-                    Lv12: Makes you heroic.
-                    Required skill level for first spell level: 6.
-    Vapor           Fills the air around you with toxic moisture
-                    (which does pure water damage, not poison).
-                    Required skill level for first spell level: 2.
-  BONI:             Water resistance at 30,
-                    Passing water at 40,
-                    Water immunity at 50.
-Fire
-    Globe of Light  Creates a globe of magical light.
-                    Lv10: Damages monsters.
-                    Lv25: Turns into a more powerful kind of light.
-                    Required skill level for first spell level: 1.
-    Fireflash       Conjures a fire ball.
-                    Lv20: Turns into holy fire which is especially deadly to
-                          evil opponents.
-                    Required skill level for first spell level: 10.
-    Fiery Shield    Creates a shield of flames around you.
-                    Required skill level for first spell level: 16.
-    Firewall        Creates a fire wall to incinerate monsters that cross it.
-                    Required skill level for first spell level: 20.
-  BONI:             Fire resistance at 30,
-                    Fire immunity at 50.
 Mana
     Manathrust      Casts a powerful mana bolt.
                     Required skill level for first spell level: 1.
@@ -8225,6 +8480,92 @@ Mana
                     deducted for each damage point.
                     Required skill level for first spell level: 35.
   BONI:             Mana resistance at 40.
+
+Fire
+    Globe of Light  Creates a globe of magical light.
+                    Lv10: Damages monsters.
+                    Lv25: Turns into a more powerful kind of light.
+                    Required skill level for first spell level: 1.
+    Fireflash       Conjures a fire ball.
+                    Lv20: Turns into holy fire which is especially deadly to
+                          evil opponents.
+                    Required skill level for first spell level: 10.
+    Fiery Shield    Creates a shield of flames around you.
+                    Required skill level for first spell level: 16.
+    Firewall        Creates a fire wall to incinerate monsters that cross it.
+                    Required skill level for first spell level: 20.
+  BONI:             Fire resistance at 30,
+                    Fire immunity at 50.
+
+Water
+    Tidal Wave      Summons a monstrous tidal wave.
+                    Required skill level for first spell level: 16.
+    Ice Storm       Engulfs you in a storm of roaring cold.
+                    Lv15: Turns into a storm of shards of ice.
+                    Required skill level for first spell level: 22.
+    Ent's Potion    Fills your stomach.
+                    Lv5: Removes fear.
+                    Lv12: Makes you heroic.
+                    Required skill level for first spell level: 6.
+    Vapor           Fills the air around you with toxic moisture
+                    (which does pure water damage, not poison).
+                    Required skill level for first spell level: 2.
+  BONI:             Water resistance at 30,
+                    Passing water at 40,
+                    Water immunity at 50.
+
+Air
+    Noxious Cloud   Fires a poison cloud at a designated target.
+                    Lv30: Unbreath cloud, irresistable.
+                    Required skill level for first spell level: 3.
+    Wings of Wind   Grants levitation (feather falling).
+                    Lv16: Lets you fly.
+                    Required skill level for first spell level: 16.
+                    Shared spell (see above): Air, Conveyance.
+    Invisibility    Turns you invisible.
+                    Required skill level for first spell level: 30.
+    Poison Blood    Gives temporary poison resistance.
+                    Lv10: Brands melee weapons with venom.
+                    Required skill level for first spell level: 22.
+    Thunderstorm    Throws thunder bolts at random monsters nearby.
+                    (33% lightning, 33% sound, 33% light)
+                    Required skill level for first spell level: 25.
+  BONI:             Feather falling at 30,
+                    Poison resistance at 40,
+                    Flying at 50.
+
+Earth
+    Dig             Turns walls into mud.
+                    Required skill level for first spell level: 12.
+    Stone Prison    Creates a prison of granite walls around you.
+                    Required skill level for first spell level: 25.
+    Strike          Creates a force bolt that may stun enemies.
+                    Lv12: it turns into a small ball.
+                    Required skill level for first spell level: 25.
+    Shake           Creates a local earthquake.
+                    Required skill level for first spell level: 27.
+  BONI:             Shard resistance at 30,
+                    Great damage reduction against earthquakes at 45.
+
+Nature
+    Grow Trees      Grows trees quickly around you.
+                    Required skill level for first spell level: 6.
+    Healing         Heals a percentage of your hit points.          (project)
+                    Required skill level for first spell level: 10.
+    Recovery        Reduces poison duration.
+                    Lv10: Cures poison and cuts.                    (project)
+                    Lv20: Restores drained stats.
+                    Lv25: Restores lost experience.
+                    Required skill level for first spell level: 15.
+    Regeneration    Increases your hit point regeneration rate.
+                    Required skill level for first spell level: 20.
+    Vermin Control  Prevents vermin from breeding any further on
+                    your current level.
+                    Required skill level for first spell level: 15.
+  BONI:             Regeneration ability (Hit Points) at 30,
+                    Pass trees easily at 30,
+                    Pass water easily at 40.
+
 Conveyance
     Phase Door      Teleports you on a small scale range.           (project)
                     Required skill level for first spell level: 1.
@@ -8247,6 +8588,7 @@ Conveyance
                     float upwards/downwards.
                     Required skill level for first spell level: 35.
   BONI:             Resistance to teleportation attacks at 30.
+
 Divination
     Detect Monsters Detects all monsters nearby.                    (project)
                     Required skill level for first spell level: 1.
@@ -8266,24 +8608,43 @@ Divination
     Reveal Ways     Detects doors/stairs/ways within a radius.      (project)
                     Required skill level for first spell level: 9.
   BONI:             Automatic identification at 50.
-Nature
-    Grow Trees      Grows trees quickly around you.
-                    Required skill level for first spell level: 6.
-    Healing         Heals a percentage of your hit points.          (project)
+
+Temporal
+    Magelock        Magically locks a door.
+                    Lv30: Creates a Glyph Of Warding on the ground that stops
+                          monsters from crossing the field or summoning on it.
+                    Required skill level for first spell level: 1.
+    Slow Monster    Slows down a monster.
+                    Lv20: Affects a zone.
                     Required skill level for first spell level: 10.
-    Recovery        Reduces poison duration.
-                    Lv10: Cures poison and cuts.                    (project)
-                    Lv20: Restores drained stats.
-                    Lv25: Restores lost experience.
+    Essence of Speed
+                    Hastes you for a while.                         (project)
                     Required skill level for first spell level: 15.
-    Regeneration    Increases your hit point regeneration rate.
+    Banishment      Teleports away all monsters within sight.
+                    Lv15: Locks monsters in stasis for a while.
+                    Required skill level for first spell level: 30.
+                    Shared spell (see above): Temporal, Conveyance.
+  BONI:             Time resistance at 50.
+
+Udun
+    Genocide        Genocides all monsters of a race on the level.
+                    Lv15: Alternatively genocides all monsters near you ("mass
+                            genocide", choose 'y'. 'n' will do a normal geno).
+                    For details on the effects "genocide" and "mass genocide"
+                    of this spell, please see (5.9) scroll of geno/mass geno.
+                    (This spell uses WISDOM to determine fail-rates!)
+                    Required skill level for first spell level: 25.
+    Wraithform      Turns your form immaterial.                     (project)
+                    Required skill level for first spell level: 35.
+    Disenchantment Bolt
+                    Conjures a powerful and nearly irresistible bolt.
+                    Required skill level for first spell level: 40.
+    Hellfire        Conjures a ball of hellfire which is especially deadly to
+                    GOOD opponents.
                     Required skill level for first spell level: 20.
-    Vermin Control  Prevents vermin from breeding any further on
-                    your current level.
-                    Required skill level for first spell level: 15.
-  BONI:             Regeneration ability (Hit Points) at 30,
-                    Pass trees easily at 30,
-                    Pass water easily at 40.
+  BONI:             Resist teleportation attacks at 30,
+                    Hold life at 40.
+
 Mind
     Confuse         Confuses a monsters.
                     Lv15: Turns into a ball.
@@ -8305,40 +8666,6 @@ Mind
                     Shared spell (see above): Mind, Conveyance.
   BONI:             Reduces confusion and hallucination at 30,
                     Reduce insanity influence at 40 and especially at 50.
-Temporal
-    Magelock        Magically locks a door.
-                    Lv30: Creates a Glyph Of Warding on the ground that stops
-                          monsters from crossing the field or summoning on it.
-                    Required skill level for first spell level: 1.
-    Slow Monster    Slows down a monster.
-                    Lv20: Affects a zone.
-                    Required skill level for first spell level: 10.
-    Essence of Speed
-                    Hastes you for a while.                         (project)
-                    Required skill level for first spell level: 15.
-    Banishment      Teleports away all monsters within sight.
-                    Lv15: Locks monsters in stasis for a while.
-                    Required skill level for first spell level: 30.
-                    Shared spell (see above): Temporal, Conveyance.
-  BONI:             Time resistance at 50.
-Udun
-    Genocide        Genocides all monsters of a race on the level.
-                    Lv15: Alternatively genocides all monsters near you ("mass
-                            genocide", choose 'y'. 'n' will do a normal geno).
-                    For details on the effects "genocide" and "mass genocide"
-                    of this spell, please see (5.9) scroll of geno/mass geno.
-                    (This spell uses WISDOM to determine fail-rates!)
-                    Required skill level for first spell level: 25.
-    Wraithform      Turns your form immaterial.                     (project)
-                    Required skill level for first spell level: 35.
-    Disenchantment Bolt
-                    Conjures a powerful and nearly irresistible bolt.
-                    Required skill level for first spell level: 40.
-    Hellfire        Conjures a ball of hellfire which is especially deadly to
-                    GOOD opponents.
-                    Required skill level for first spell level: 20.
-  BONI:             Resist teleportation attacks at 30,
-                    Hold life at 40.
 
 Meta
     Recharge        Recharges a magic staff or wand.
@@ -8374,7 +8701,7 @@ Holy Offense
                     Lv15: Calls a more powerful kind of light.
                     Required skill level for first spell level: 1.
                     Shared spell (see above): H.Offense, H.Support.
-    Curse           Causes randomly slowness or confusion or damage.
+    Curse           Randomly causes confusion damage or slowness or blindness.
                     Lv15: Turns from bolt into beam, passing through the
                           target and also hitting those behind.
                     Lv25: Affects all monsters in line of sight.
@@ -8395,6 +8722,7 @@ Holy Offense
                     Required skill level for first spell level: 40.
   BONI:             Adds slay undead at 30, slay demon at 40, slay evil at 50
                     to all melee and ranged attacks.
+
 Holy Defense
     Blessing        Same effect as scroll of Blessing.         (auto-project)
                     Lv15: Same effect as scroll of Holy Chant. (auto-project)
@@ -8432,6 +8760,7 @@ Holy Defense
                     Required skill level for first spell level: 40.
   BONI:             Protects the player from undead at 30, from demons at 40,
                     and from evil in general at 50. Better than the spell.
+
 Holy Curing
     Healing         Heals a percentage of hit points.          (auto-project)
                     Required skill level for first spell level: 3.
@@ -8463,8 +8792,9 @@ Holy Curing
                     30 (blindness, poison) / 40 (stun, cuts) / 50
                     (hallucination),
                     Less frequent suffering from black breath at 50.
+
 Holy Support
-    Remove Fear     Keeps your heart boldened for a while      (auto-project)
+    Remove Fear     Keeps your heart boldened for a while.     (auto-project)
                     Required skill level for first spell level: 1.
     Holy Light      Creates a globe of pure light.
                     Lv3: Damages monsters.
@@ -8514,6 +8844,7 @@ Arcane Lore
                     Dispels all animals from your line of sight.
                     Animals have a chance to resist, depending on their level.
                     Required skill level for first spell level: 1.
+
 Physical Lore
     Forest's Embrace
                     Creates a cloud around you which heals everyone including
@@ -8570,7 +8901,7 @@ Psycho-Power
                     Required skill level for first spell level: 35.
                     Shared spell (see above): Psycho-Power / Thought Contact.
     Kinetic Shield  Uses telekinetic force to set up a shield around you that
-                    has a chance to repel physica attacks or projectiles,
+                    has a chance to repel physical attacks or projectiles,
                     draining your mana each time.
                     Required skill level for first spell level: 40.
 
@@ -8579,8 +8910,9 @@ Thought Contact
                     Required skill level for first spell level: 3.
     Willpower       Boosts your willpower to unleash hidden potential,
                     improving both your performance and resilience.
-                    Gives heroism and fear resistance, and chance to resist
-                    confusion, paralysis and slowness.
+                    Gives fear resistance, increases your saving throw and
+                    gives especially increased chance to resist paralyzation,
+                    confusion and slowness. Also gives heroism-like +hit bonus.
                     Later on gives +1 extra attack.            (auto-project)
                     Required skill level for first spell level: 3.
     Self-Reflection Find out more about yourself.
@@ -8606,6 +8938,17 @@ Thought Contact
                     Shared spell (see above): Psycho-Power / Thought Contact.
 
 Mental Intrusion
+ (Note that psi attacks don't have any effect on angels, nonliving creatures,
+ or empty-minded creatures, and that undead, stupid creatures and common
+ animals as well as weird-minded creatures may resist it. At the same time,
+ smart creatures might be hit especially hard.
+ Targets that might resist psi attacks, but which are already confused when
+ they get hit, get their chance to resist nullified by the confusion.
+ As a side effect, psi attacks themselves have a chance to cause confusion to
+ the target, thereby increasing their effect when the target is hit by another
+ psi attack afterwards.
+ if a monster does not resist a psi attack, it may suffer from additional
+ effects besides confusion, such as fear, stun or sleep.)
     Psionic Blast   Blasts the target's mind with psionic energy.
                     Possibly causing various additional effects.
                     Required skill level for first spell level: 1.
@@ -8630,7 +8973,17 @@ Mental Intrusion
                     Required skill level for first spell level: 7.
     Psychic Suppression
                     Drains the target's psychic energy, impacting its ability
-                    to cast spells temporarily.
+                    to cast spells temporarily, effectively silencing it for a
+                    short period of time.
+                    Chance to be successful depends on school skill vs monster
+                    level. Also, monsters that can't cast any spells as well as
+                    unique monsters of level 98 or above are unaffected.
+                    Monsters that are unique or powerful have an increased
+                    chance to resist.
+                    The target cannot be silenced again for a short while,
+                    until the effect runs out. Note that the target also
+                    becomes immune to the effect for the same short amount of
+                    time if the attempt was actually unsuccessful.
                     Required skill level for first spell level: 10.
     Remote Vision   Tries to forcibly enter all sentient creatures' minds on
                     the level, in order to use their vision to make the
@@ -8645,8 +8998,15 @@ Mental Intrusion
                     Monsters may resist or be immune to the initial cast.
                     While active, the spell drains your mana. The more monsters
                     you try to keep under control, the faster your mana is
-                    depleted. If your distance to the monsters becomes too big,
-                    the spell will break.
+                    depleted. If your distance to the monsters becomes too big
+                    or your mana is depleted then the spell will break.
+                    Sleeping monsters won't be affected or woken up by charm.
+                    Monsters which have already been hurt cannot be charmed.
+                    Psi-immune, unique, undead, empty-minded or non-living
+                    monsters cannot be charmed either.
+                    Monsters may have a chance to resist the attack, the higher
+                    the more of the following abilities they possess:
+                    Being smart, resisting confusion, being powerful.
                     Required skill level for first spell level: 33.
 
 
@@ -8688,7 +9048,8 @@ Here you can..
     house.
     If the owner dies, the whole party is disbanded. (Exception: On a server
     running 'RPG' rules the party ownership will be transferred to another
-    player in the party automatically.)
+    player in the party automatically. See (8.5) for more information about RPG
+    settings.)
     Be aware that his houses will be wiped too, so the party might lose quite
     an amount of items that way.
 
@@ -8829,8 +9190,8 @@ Note: To achieve an extraordinarily high block chance above 30% you'll
       fairly skilled at blocking. See the note below.
 
 
-NOTES:
-------
+Additional information:
+-----------------------
 Classes do differently well at parrying and blocking. To find out more, see
 the class overview table at the end of section (6.5).
 
@@ -9851,6 +10212,16 @@ For example it's hard to get extra mods on a Multi-hued Dragon Scale Mail, and
 in fact impossible to get any extra mod on a Power Dragon Scale Mail, so don't
 waste a scroll on this one.
 However, IGNORE_ flags on items are an exception and do not count into this.
+Also, when selecting randart mods, the game will not check if that mod already
+existed on the base item (example: 'everburning' mod being added to a feanorian
+lamp, which already has that by default ie needs no fuel), so if unlucky it
+might seem as if an item did not gain any mods, but in fact it just did not
+gain any NEW mods it didn't already possess.
+Note that any mod the base item type already possesses will definitely also be
+in the final randart. Examples: Shadow Blades and Witan Boots will always
+modify stealth, Demon Hammers will always have at least SLAY_DEMON mod (but can
+also end up 'upgraded' in case they randomly receive a KILL_DEMON mod from the
+artifact creation process).
 
 Also note that randarts cannot get more than two immunities in total.
 
@@ -9882,6 +10253,25 @@ type-dependant mods or general mods.
   mods.
 All types not listed under 'Type-dependant mods' will only gain general mods
 (for example all jewelry, ie rings and amulets).
+
+Last but not least certain mods will limit or even cancel certain other mods,
+sometimes following general rules, sometimes item-type specific rules:
+
+For example an item that provides critical strike and strength bonus might at
+first randomly obtain a +8 bonus for its critical strike mod, but then the
+strength mod will cut down the final randart bonus to a +5, because items
+aren't allowed to give more than +5 to any character stat (str, int, etc).
+
+Similarly, stealth is limited to +5 on most items except for cloaks, so you
+cannot get Witan Boots that give more than +5 to speed, since they also always
+modify stealth (because the base item type modifies stealth), and stealth is
+capped at +5.
+
+On boots, +speed mod takes precedence over most other limiting mods, which
+means that speed-limiting mods will be erased from the boots in most cases if
+they threaten to cut down the final pval. Note that mods provided by the base
+item type can never be removed, so the stealth mod will never be removed from
+Witan Boots and therefore always limit their speed to the stealth cap of +5.
 
 
 Type-dependant mods:
@@ -10072,7 +10462,55 @@ power is, the more likely the randart will be 'aggravating nearby creatures'.
 
 
 
-(8.5) Troubleshooting
+(8.5) Alternative ruleset 'RPG Server'
+--------------------------------------
+A server might be configured with a special ruleset called 'RPG Server' rules.
+Such a server will be listed on the meta server under
+  "TomeNET RPG ..."
+instead of just
+  "TomeNET ..."
+and when you connect to it and enter the character overview
+screen, at the bottom there will be a line reading
+  "The server is running 'RPG_SERVER' settings".
+
+In general, RPG rules are stricter than normal server configurations and could
+also be dubbed 'ironman' settings, since ironman dungeons are one of the most
+prevalent features of an RPG server.
+
+The differences between RPG ruleset and normal servers are as follows:
+  -Only one character is allowed per account.
+  -All characters are no-ghost mode, so they have only 1 life (ie 'unworldly').
+  -Usually, accounts expire slower (180 days instead of 60 days).
+  -The Training Tower is empty, no monsters or items spawn in there
+   (except for the Arena Monster Challenge event).
+  -Certain extra stores may spawn in the dungeons
+   ('Seasoned Tradesman', or specialized stores similar to town stores).
+  -All dungeons are ironman (see (4.3)):
+   -Bree's dungeon 'Barrow-Downs' is normal ironman,
+   -other town dungeons allow recalling every 500 ft (10 floors),
+   -non-town dungeons allow random recalling at a 20% chance per floor,
+   -on dungeon levels shallower than level 20 (eg easier than -1000 ft Bree),
+    recalling is impossible, overriding the above rules.
+  -Players may recall INTO dungeons to 50 ft + every 1000 ft, eg to 50 ft,
+   1050 ft, 2050 ft, ... .
+  -Players start with more gold (class-dependant) to buy supplies.
+  -Players additionally start with a few cure wounds potions.
+  -Players get a message in chat when party members take a staircase.
+  -If a party owner dies, someone else from the party is automatically promoted
+   to party owner, so parties won't get disbanded easily, making party-diving
+   more effective.
+  -Mimicry users have a very slim chance of insta-learning a form!
+  -Item level restrictions are disabled and have no effect.
+  -Quests can be acquired as early as at level 3 instead of level 5.
+  -Quests usually require you to find fewer specimen.
+  -Temporary luck bonus from deeds is somewhat longer.
+  -Usually, scheduled artifact resets happen less frequently (if at all).
+  -Halloween event allows players up to 40 instead of 35,
+   and the Great Pumpkin spawns on floors up to level 49 instead of 39.
+
+
+
+(8.6) Troubleshooting
 ---------------------
 Note: Some of these problems are deprecated and don't exist in this form or at
 all anymore. Some messages might also vary slightly.
@@ -10081,7 +10519,8 @@ PROBLEM 00: I am behind a firewall. What ports do I need to open in order to
             play TomeNET?
 SOLUTION:   You only need to allow an outgoing TCP/IP connection to remote
             port 18348, that's the standard port servers run on. (If you'd
-            like to play on the RPG server, it's port 19348 instead of 18348.)
+            like to play on the RPG server, it's port 19348 instead of 18348.
+            See (8.5) for more information about RPG settings.)
             If you don't have access to the firewall, for example in school or
             at work, you can still try to set up an SSH tunnel or a socks
             proxy server (on either the firewall machine or your PC at home or
@@ -10178,6 +10617,13 @@ SOLUTION:   This can have several reasons. On disconnection a message box will
                     and the client that just logged in will take over.
             "Killed by..."
                     Your character was finally killed/destroyed.
+            "Starving auto-kick"
+                    Your character was starving due to lack of food, and you
+                    were not moving or performing any action for some time, so
+                    the game assumed you were AFK and kicked your character out
+                    to prevent it from starving to death without you noticing.
+                    What you need to do: Log back in and eat something as soon
+                    as possible.
             "Starving to death"
                     You died to starvation.
             "Timeout 08"
@@ -10479,13 +10925,35 @@ PROBLEM 24: When trying to macro F-keys, they don't seem to work properly.
 SOLUTION:   When playing on a notebook, check the state of the 'Fn' special
             shift key, and toggle it accordingly.
 
+PROBLEM 25: The connection is surprisingly laggy.
+SOLUTION:   -If you're on Wifi (WLAN) plug in an ethernet cable instead!
+            Wireless LAN connections can be pretty unreliable and cause
+            periodic lag from trying to re-scan for available networks.
+            Alternatively you can try to configure your WLAN not to do that,
+            however, WLAN can still be pretty prone to lag sometimes.
+            -Test it on another PC on the same internet connection.
+            -Test it on a friend's internet connection.
+            -Check if it only happens on certain in-game actions you perform.
+            -Check if it only happens at a certain time of the day.
+            -Make sure you don't have downloads or uploads running in the
+            background.
+
+PROBLEM 26: I resized some TomeNET windows by dragging them with the mouse,
+            but it seems it doesn't have the desired effect.
+SOLUTION:   After having resized windows via mouse, restart the game once
+            by exiting with CTRL+X key.
+
+PROBLEM 27: While I am creating a new character, I got disconnected with a
+            "Timeout 04" error message.
+SOLUTION:   You have about 20 minutes to complete the character creation
+            process. If you exceed this time, you will timeout and get
+            disconnected.
+
+PROBLEM 28: If I or other players nearby fire a lot of arrows or cast a lot
+            of spells, my client lags or freezes somewhat.
+SOLUTION:   Try to reduce or even disable flush-waits, by toggling the client
+            options 'thin_down_flush' and if that's not enough also
+            'disable_flush'. For details about these, see (2.3).
 
 
-(9) End of this guide
-==============================================================================
-If TomeNET experiences changes/improvements you can also expect this guide to
-become updated shortly afterwards. Anyway, no guarantees ;)
-Please don't hesitate to send in bug reports or suggestions either via /rfe
-command in the game or write to the official forum on www.tomenet.net.
-or (even better) use the "/rfe" command in the game!
 ==============================================================================
