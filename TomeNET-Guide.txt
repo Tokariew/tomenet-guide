@@ -9426,7 +9426,7 @@ Deeds           Some of the parchments are deeds, which are used as rewards
                 do with it. In most cases, you have to turn it in at the
                 mayor's office in Bree (one of the '+' doors in town).
 *Destruction*   Causes a local earthquake, nearly completely wiping the area
-                of monsters and objects.
+                of monsters and objects (see (5.13) about earthquakes).
                 Extremely powerful magic which causes a searing blast of light
                 and a terrible shockwave that will blind you and knock you and
                 everyone else out.
@@ -10525,15 +10525,15 @@ be filled with rocks, to be cleared from previous obstacles (walls) and turn
 into empty floor fields, or to remain untouched and unchanged.
 
 Players don't take damage from their 'own' earthquakes, caused by their
-equipment or items (weapons of earthquakes, scrolls of *destruction*).
+equipment or items (for example weapons of earthquakes or scrolls of
+*destruction*).
 
 Earthquakes can deal up to 300 damage if you cannot evade the falling rocks
 and shifting ground: Depending on the number of unchanged (by the earthquake)
 empty fields that are adjacent to your character, there is a chance to 'evade'
 and take much less damage or even none at all. Earthquakes can also stun you.
 
-Items will usually be destroyed/lost, only very rarely you'll be able to grab
-one before it falls into a chasm and vanishes forever.
+Items will usually be destroyed/lost. Stairs and void jump gates are immune.
 
 Monsters killed by earthquakes do not yield experience, loot or other credit,
 same as goes for monsters erased by *destruction* or genocide.
@@ -12365,7 +12365,7 @@ Modifications for becoming 'enlightened':
     Sword, blunt and polearm skill x 1.3.
     The four holy schools x 2.1.
     Divination school x 1.7.
-    Light and mana runes x 2.0.
+    Light and mana runes x 1.7.
     Fear and shivering aura x 3.0.
 
 Modifications for becoming 'corrupted':
@@ -12374,7 +12374,7 @@ Modifications for becoming 'corrupted':
     Axe and martial arts skill x 1.3.
     Fire, air, conveyance school x 1.7.
     Udun school x 2.0.
-    Darkness and nether runes x 2.0.
+    Darkness and nether runes x 1.7.
     Necromancy and traumaturgy x 3.0.
     The three aura skills x 3.0.
 
@@ -14461,8 +14461,9 @@ by only half that amount. So if you want to increase a shared spell by say 5
 points, you either have to increase both of its schools by 5, or one of them
 by 10.
 
-Magic and holy schools give certain permanent boni and abilities to the player,
-when trained to a certain extent. The boni are listed below each school.
+Magic, holy and occult schools give certain permanent boni and abilities to
+the player, when trained to a certain extent. The boni are listed below each
+school.
 
 
 Istar schools:
@@ -14574,7 +14575,8 @@ Istar schools:
 - Air
 
     Noxious Cloud   Fires a poison cloud at a designated target.
-                    Lv30: Unbreath cloud, harder to resist.
+                    Lv30: Unbreath cloud, harder to resist since it prevents
+                    living creatures from actually breathing.
                     Required skill level for first spell level: 3.
 
     Lightning Bolt  Fires a lightning bolt at a target.
@@ -14865,15 +14867,19 @@ Priest schools:
                     This spell deals double damage against evil monsters.
                     Required skill level for first spell level: 20.
 
-    Drain Life      Drains life from a non-undead and non-nonliving creature
-                    and returns a part of it to your hit points.
-                    Required skill level for first spell level: 37.
+    Chaos Bolt      Channels the powers of chaos into a bolt attack.
+                    Required skill level for first spell level: 30.
+                    Shared spell (see above): H.Offense, O.Shadow.
 
     Doomed Grounds  Similar to 'Drain Life', weaker, but affects a whole area.
                     Required skill level for first spell level: 30.
+                    Shared spell (see above): H.Offense, O.Shadow.
+
+    Earthquake      Creates a local earthquake.
+                    Required skill level for first spell level: 42.
 
     BONI:           Adds slay undead at 30, slay demon at 40, slay evil at 50
-                    to all melee and ranged attacks.
+                    to all (physical) melee and ranged attacks.
 
 
 - Holy Defense
@@ -14895,6 +14901,13 @@ Priest schools:
                     Works very well, as long as the creature isn't of a higher
                     level than you.
                     Required skill level for first spell level: 12.
+
+    Dispel Magic    Removes magical influences.
+                    Lv1: Blindness/Confusion.
+                    Lv8: Confusion/Hallucination.
+                    Lv13: Speed/Slowness/Stun.
+                    Required skill level for first spell level: 18.
+                    This spell can be used even while confused or blind.
 
     Glyph of Warding
                     Creates a rune on the ground that monsters cannot cross
@@ -14930,6 +14943,9 @@ Priest schools:
                     monsters of higher level.
                     (This effect does not stack with the spell/scroll, but
                     overrides them.)
+                    If both Holy Defense and Shadow school are at least 45,
+                    chaos resistance is granted. (Note that chaos resistance
+                    also always implies confusion resistance.)
 
 
 - Holy Curing
@@ -14996,7 +15012,7 @@ Priest schools:
                     30 (blindness, poison) / 40 (stun, cuts) / 50
                     (hallucination).
                     Less frequent suffering from black breath,
-                    adds slay undead to all melee attacks and
+                    adds slay undead to all (phsyical) melee attacks and
                     -5% experience loss on getting revived (by whatever means,
                     but never goes below 30% total exp loss) at 50.
 
@@ -15043,6 +15059,116 @@ Priest schools:
 
     BONI:           Completely Suppresses DG_CURSE and TY_CURSE at 40.
                     Keeps the hunger satisfied all the time at 50.
+
+
+Occult schools:
+---------------
+- Shadow
+
+    Cause Fear      Scares your target.
+                    At level 17 it scares all nearby creatures.
+                    Required skill level for first spell level: 1.
+
+    Blindness       Blinds your target.
+                    At level 17 it blinds all nearby creatures.
+                    Required skill level for first spell level: 3.
+
+    Detect Invisible
+                    Detects all invisible creatures nearby.
+                    Required skill level for first spell level: 3.
+
+    Poisonous Fog   Creates a cloud of poisonous fog.
+                    Lv30: Unbreath cloud, harder to resist since it prevents
+                    living creatures from actually breathing.
+                    Required skill level for first spell level: 3.
+
+    Veil of Night   Causes your target to fall asleep instantly.
+                    At level 15 it expands around you.
+                    Required skill level for first spell level: 5.
+
+    Shadow Bolt     Channels shadow into a bolt attack.
+                    Required skill level for first spell level: 10.
+
+    Aspect of Peril
+                    Temporarily brands your weapon with poison.
+                    At level 10 it grants temporary poison resistance.
+                    Required skill level for first spell level: 14.
+
+    Shadow Gate     Teleports you to the nearest opponent in line of sight.
+                    Required skill level for first spell level: 24.
+
+    Shadow Shroud   Grants temporary invisibility.
+                    Required skill level for first spell level: 30.
+
+    Chaos Bolt      Channels the powers of chaos into a bolt attack.
+                    Required skill level for first spell level: 30.
+                    Shared spell (see above): H.Offense, O.Shadow.
+
+    Drain Life      Drains life from a non-undead and non-nonliving creature
+                    and returns a part of it to your hit points.
+                    Required skill level for first spell level: 37.
+
+    Doomed Grounds  Similar to 'Drain Life', weaker, but affects a whole area.
+                    Required skill level for first spell level: 40.
+                    Shared spell (see above): H.Offense, O.Shadow.
+
+    BONI:           At 30 grants darkness resistance and a stealth bonus that
+                    increases the further the school is trained.
+                    If both Holy Defense and Shadow school are at least 45,
+                    chaos resistance is granted. (Note that chaos resistance
+                    also always implies confusion resistance.)
+
+
+- Spirit
+
+    Cause Wounds    Causes wounds to open on your target, dealing instant
+                    damage.
+                    Required skill level for first spell level: 1.
+
+    Tame Fear       Keeps your heart boldened for a while.     (auto-project)
+                    Required skill level for first spell level: 1.
+
+    Starlight       Creates a globe of starlight around you.
+                    At level 10 it damages monsters that are susceptible to
+                    light.
+                    At level 20 it damages all monsters.
+                    Required skill level for first spell level: 2.
+
+    Trance          Causes all ghosts, spirits and elementals that see you
+                    to fall into a deep, spiritual sleep instantly.
+                    Required skill level for first spell level: 5.
+
+    Lightning Bolt  Conjures up spiritual power into a lightning bolt.
+                    Required skill level for first spell level: 10.
+
+    Spear of Light  Conjures up spiritual light into a powerful beam.
+                    Required skill level for first spell level: 10.
+
+    Lift Curses     Removes all curses of carried/worn objects.
+                    Lv20: Switches to *remove curses*.
+                    Required skill level for first spell level: 15.
+
+    Ethereal Eye    Detects all nearby creatures.
+                    Required skill level for first spell level: 20.
+
+    Possess         Tries to manipulate the mind of a monster to make it ignore
+                    you.
+                    At level 9 it turns into a ball.
+                    At level 17 it affects all monsters in sight.
+                    Required skill level for first spell level: 23.
+
+    Guardian Spirit
+                    Invokes your guardian spirit, guiding and protecting you.
+                    Your saving throw is maximised and you are protected from
+                    evil.
+                    At level 20 all physical attacks have a chance to miss you,
+                    at the cost of your mana.
+                    Required skill level for first spell level: 25.
+
+    BONI:           At 30 grants a firm hold on your life force.
+                    Adds slay undead to all your physical attacks at 40.
+                    -5% experience loss on getting revived (by whatever means,
+                    but never goes below 30% total exp loss) at 50.
 
 
 Druid schools:
@@ -15347,6 +15473,8 @@ though, as all other magic schools do, not the astral level.)
     The Silent Force
                     Enlightened: Slows down monsters within sight
                                  and grants temporary time resistance.
+                                 Note: This resistance does not stack
+                                       with permanent resistance.
                     Corrupted: Increases your chance to strike critically.
                     (This spell uses WISDOM to determine fail-rates!)
                     Required skill level for first spell level: 45.
@@ -15381,6 +15509,8 @@ Magic schools:
     Currently, the only magic spell using wisdom is 'Genocide'.
 Prayer schools:
     All holy spells depend on the spell level and your WISdom.
+Occult schools:
+    Some shadow and most spirit spells use WISdom, the others INTelligence.
 Mindcraft schools:
     All mind spells depend on the spell level and your INTelligence,
     except for 'Charm' which uses CHaRisma.
