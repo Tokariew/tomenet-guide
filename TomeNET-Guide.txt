@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 1. December 2005; written by C. Blue, http://www.c-blue.de/
+| Latest update: 15. April 2006; written by C. Blue, http://www.c-blue.de/
 | for TomeNET version v4.3.6, http://www.tomenet.net/
 | for latest information about TomeNET see http://www.c-blue.de/rogue.html
 | or join discussion in the forum on http://www.tomenet.net/
@@ -1516,8 +1516,8 @@ Note: The file example_fighter.prf is write-protected to avoid overwriting.)
 
 
 The above macro set slightly changed to fit
-additional needs of a low level istari or other casters:
---------------------------------------------------------
+additional needs of a low level istar or other casters:
+-------------------------------------------------------
 This macro set is already in your /lib/user folder! If it's not there,
 download the latest client from www.c-blue.de/rogue.
 You can load this macro file by hitting % to invoke the macro menu,
@@ -1617,7 +1617,7 @@ Miscellanous escape sequences:
                 Use this for macros which contain several commands in a row
                 which depend on each others execution. You might have to
                 adjust the delay to your personal latency, depending on your
-                internet connection.
+                internet connection and speed at which your character acts.
 
 (3.8a) Creating a chat macro for your party
 -------------------------------------------
@@ -1647,7 +1647,15 @@ There are two different ways to easily talk to your party.
     Using longer or shorter (at least 4 letters) strings works too of course,
     as long as there isn't a party of similar name which could get confused
     with yours.
-Solution (1.) is much easier than (2.) of course, and the recommended way.
+The best way in my opinion is to combine the two ways and to set up a macro
+which types   :!:   for you on a single key press automatically:
+    Enter the macro menu ('%'), enter a new action ('3'), enter the macro
+    :!:
+    hit the Enter key to accept it, create a command macro ('4'), choose a
+    key you wish to use for party chat from now on, and dump your macro ('2')
+    to a file which is loaded automatically, like '<Your charname>.prf', for
+    example Kinkan.prf. This way, no matter what your party is called, you
+    will always be able to chat to it by pressing a single key.
 
 
 
@@ -3431,6 +3439,9 @@ IMPACT ('It can cause earthquakes')
         Causes earthquakes if the damage is > 50. (See (5.13).)
 WOUNDING ('It is very sharp and makes your foes bleed.')
         Has additional to-hit/to-dam bonus.
+Weapons of Spinning
+        Spin around on activation, hitting every monster around you in a
+        radius of 1.
 CAPACITY (of Capacity) ('It can hold more mana.')
         No effect currently.
 CHEAPNESS (of Cheapness) ('It can cast spells for a lesser mana cost.')
@@ -5287,7 +5298,6 @@ F: flag list
                 since the monster seems to be good at shooting.
                 If the monster shoots 1_IN_3 or better, the player will
                 even receive 2 extra shots with bows!
-                (Note that the number of shots per round is capped at 5!)
     HURT_ROCK   Means that this creature has a rock-like skin and body.
                 Takes damage from Stone-To-Mud and takes more damage from
                 'disintegration' attacks, but at the same time resists shards!
@@ -6848,6 +6858,7 @@ SOLUTION:   You only need to open port 18348 for an outgoing TCP/IP
             at work, you can still try to set up an SSH tunnel or a socks
             proxy server (on either the firewall machine or your PC at home or
             any other PC outside. Ask google for info about how to do that).
+
 PROBLEM 01: I don't get to see a server list when I start TomeNET.
             Instead, I am immediately asked for account and password.
 SOLUTION:   This is a typical problem on Windows XP. There are 3
