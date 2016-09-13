@@ -1,8 +1,10 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 10. July 2003; written by C. Blue, http://www.c-blue.de/
+| Latest update: 2. Octobre 2003; written by C. Blue, http://www.c-blue.de/
 | for TomeNET version v4.1.7, http://www.tomenet.net/
+| for latest information about TomeNET see http://www.c-blue.de/rogue.html
+| or join discussion in the forum on http://www.tomenet.net/
 +---
 | Welcome to this guide!
 | Please send in suggestions, criticism or comments to mail@c-blue.de.
@@ -23,6 +25,7 @@ Contents
     (1.2)   What is a rogue-like game?
     (1.3)   Where do I find more information about rogue-like games?
     (1.4)   Goal and progress of TomeNET players
+    (1.5)   How to encounter the final boss: Morgoth, The Lord Of Darkness
 (2) Installation & setup
     (2.1)   Installing TomeNET
     (2.2)   Starting TomeNET and getting to play on an internet server
@@ -37,7 +40,7 @@ Contents
     (3.7)   An example macro set for warriors
     (3.8)   Macros with special keys
     (3.9)   Level-ups and skill points
-    (3.10)  Death and Ghosts
+    (3.10)  Death, ghosts and looting
 (4) The world
     (4.1)   Running, picking up items, fighting
     (4.2)   Level and owner of items
@@ -48,6 +51,7 @@ Contents
     (4.7)   Traps
     (4.8)   Level & vault feelings, Jail, Ironman
     (4.9)   Navigating on maps
+    (4.10)  Houses
 (5) Item details
     (5.1)   Melee weapons, brands
     (5.2)   Ranged weapons, brands
@@ -59,6 +63,7 @@ Contents
     (5.8)   Special abilities of items
     (5.9)   What does item xxx do exactly?
     (5.10)  Destruction of items by elemental attacks
+    (5.11)  Armour Class vs monster attacks
 (6) Character details
     (6.1)   Attributes
     (6.2)   Skills
@@ -159,7 +164,7 @@ t       T       take off items.
 q       q       quaff a potion.
 r       r       read a scroll.
 E       E       eat. (Thunderlords, also known as Dragonriders, can eat
-                firestones to gain temporary special abilities.)
+                firestones to gain temporary special abilities, see (5.9) .)
 F       F       fuel your light source.
 f       t       fire.
 v       v       throw.
@@ -202,7 +207,7 @@ U       O       use undead powers (use this if you died and became a ghost).
                 be completely erased).
 CTRL+S          spike a door (using iron spikes, the door will be jammed).
 
-h               buy/sell a house or change house parameters.
+h               buy/sell a house or change house parameters. See (4.10).
 P               party screen. Form/disband/modify a party with other players
                 here. In a party you will share experience points if you are
                 within 7 character levels to each other and on the same
@@ -249,22 +254,15 @@ _       drink from a fountain. You must stand on the fountain to do this.
             "Always show lists in item/skill selection" will always show a
                 list of possible choices if you use commands that require you
                 to make a selection from a list of choices.
-:       type a chat message. To whisper privately, enter <player>:<text> then.
-        Example:    Hi!             <- goes to everyone
-                    C. Blue:Hi!     <- goes to the character named 'C. Blue'
-        In chat messages you can type a double colon '::' to force output of a
-        normal colon ':' instead of having it interpreted as separator for a
-        private chat message. Most smileys are recognized automatically and
-        don't require you to enter a double colon ( ':)' will work equally to
-        '::)' ). (If you want to send a private message to someone which
-        starts with a smiley, you will have to enter a space between the
-        private-separator colon and the smiley colon, example: 'd00d: :)'
-        sends a private message to d00d, containing  ' :)' while 'd00d::)'
-        will result in a public chat message looking like this 'd00d:)' .)
+:       type a chat message. To whisper privately, enter <player>:<text>
+        You can also enter a slash command here.
+        For details about chat, see (2.3).
+        For details about slash commands, see further below in this paragraph.
 @       displays a list of players currently on the server.
 '       lets you peek at the equipment of party members or players within
         sight.
-<,>     go upstairs/downstairs.
+<,>     go upstairs/downstairs. Press '>' to use a void gate (violet '+').
+        Void jump gates teleport you to their counterpart and vice versa.
 SHIFT+<direction key>
         runs into that direction. Numlock must be turned off probably.
         You can also run by pressing the dot '.' followed by a direction key.
@@ -313,6 +311,13 @@ They all start with a slash '/':
  (/dress)   not {worthless}, not {terrible}, known to you.
 /mar        Tells a prayer-user if he may use the prayer 'Holy Martyr'.
  (/martyr)
+/note <player> <text>
+            Leave a note to another player.
+/notes      Display own pending notes.
+/notep <text>
+            Leave a note to the party you own.
+/noteg <text>
+            Leave a note to the guild you own.
 
 
 
@@ -344,6 +349,9 @@ Items that induce random teleportation, like a 'ring of teleportation' or
     The two dots can appear anywhere in the inscription, as long as they are
     not separated from each other. Example:
     A Long Sword Of The Thunderlords (2d5) (+10,+15) {NxFAReg..}
+
+Items that 'can cause Earthquakes':
+    !E          will make the item cause earthquakes randomly on striking.
 
 Word-Of-Recall scrolls:
     @R500       will teleport you to depth 500ft (tower).
@@ -409,7 +417,7 @@ Loot        Items that have been dropped by dead monsters or players and
             are waiting to be picked up by someone. :)
 LV          Lesser Vault.
 Morgy       Morgoth, the Lord of Darkness. Final boss enemy in TomeNET.
-            He won't show up until you killed Sauron, the sorceror.
+            See (1.5) for details.
 Party       A group of players who fight together and share experience.
             In a party you will share experience points if you are within 7
             character levels to each other and on the same dungeon/tower level
@@ -476,6 +484,10 @@ Wormy       Wormtongue, Agent of Saruman. He drops great items.
  become visible on the map. You still 'feel' it if you step on the pile
  though. So if you died and were revived, scan your loot piles on the ground
  carefully to not miss one of your items on the bottom of a pile.
+-Scrolls of House Creation don't work at this time and have been removed from
+ the game since they had no effect except for generating cash on being sold
+ to a shop.
+-Undead powers (for players' ghosts) are not available at the moment.
 
 
 
@@ -549,12 +561,38 @@ the sorceror has been killed.
 
 
 
+(1.5) How to encounter the final boss: Morgoth, The Lord Of Darkness
+--------------------------------------------------------------------
+-Morgoth is found only at dungeon level 100 or deeper.
+-He won't show up until you killed Sauron, The Sorceror (at dungeon level 99).
+-Morgoth and Sauron do not neccessarily spawn on each fitting dungeon level,
+sometimes you have to look a bit for him, like for all other monsters/uniques.
+-If a player who hasn't killed Sauron yet or who has already beaten Morgoth
+enters a dungeon level where Morgoth is currently on, Morgoth will instantly
+teleport to a different dungeon level.
+-If there's already another player on that level, who has beaten Sauron but
+not yet Morgoth, the 'intruder' player will be teleported to town instead and
+Morgoth will remain on the level.
+-If a party of players encounters him he will be a bit thougher than
+he appears to a solo player, depending on the size of the party.
+-There are hardly any walls that can hold Morgoth back for long.
+
+There are rumours of even more powerful beings than the Lord Of Darkness.
+Kings and Queens who seek new challenges shall try to enter the Nether Realm,
+a dungeon with dangers beyond imagination. Only those who destroyed Morgoth
+may enter. The Nether Realm can be very rewarding in terms of experience but
+also very deadly. Terrible foes are said to dwell there which aren't seen in
+the mundane world.
+
+
+
 (2) Installation & setup
 ========================
 (2.1) Installing TomeNET
 ------------------------
 Go to http://www.c-blue.de/rogue.html , download the latest client (version
-number is always v4.0.0, don't be confused).
+number sometimes stays the same although a minor update was made, it's at
+least 4.0.0 though).
 Extract it to a new directory, preserving the pathnames.
 You may edit the file "tomenet4.ini" and do some changes to your likings.
 If it's not already disabled by default, it is recommended to turn off
@@ -610,6 +648,47 @@ someone while he is fighting monsters he most likely won't notice your
 message. Politely try again after some time.
 You can scroll back the messages using CTRL+P, or look at chat-only messages
 using CTRL+O.
+
+You can also enter slash commands in the chat line. For details about slash
+commands see (0.2).
+
+To type a private message to someone, enter <name>:<text>
+Example:    Hi!             <- goes to everyone
+            C. Blue:Hi!     <- goes privately to the character named 'C. Blue'
+In chat messages you can type a double colon '::' to force output of a normal
+colon ':' instead of having it interpreted as separator for a private chat
+message. Most smileys are recognized automatically and don't require you to
+enter a double colon ( ':)' will work equally to '::)' ). (If you want to send
+a private message to someone which starts with a smiley, you will have to
+enter a space between the private-separator colon and the smiley colon,
+example: 'd00d: :)' sends a private message to d00d, containing  ' :)'
+while 'd00d::)' will result in a public chat message looking like this
+'d00d:)' .)
+
+You can use colours in messages. To change the message colour, put a {
+followed by a colour code somewhere into your message line.
+Example:
+        {pHi!               <- results in a 'poison-coloured' Hi!
+        I see some {vh {Bto the east
+                            <- results in "I see some h in the east"
+                               where the 'h' is violet. The rest of the
+                               message is light blue (standard colour).
+If you cannot see coloured messages in your secondary Tomenet windows other
+than the big main window, check your client option settings by typing  =3
+and looking for 'Flicker messages in recall' (recall_flicker). Set it to
+'yes'.
+If you want to type the character '{' in a chat message, rather than using
+it for a colour code, type it twice '{{'. It will become '{'.
+
+Here is a list of colour codes (try not to annoy your fellow players :)
+    d   black           b   blue            B   light blue
+    D   dark            g   green           G   light green
+    s   slate           r   red             R   light red (pink)
+    W   white           u   umber           U   light umber
+    w   bright white    y   yellow          o   orange          v   violet
+
+    a   acidic          c   cold            e   electric        f   fire
+    p   poison          L   light flicker   h   half-multi      m   multi
 
 
 
@@ -694,6 +773,9 @@ before they die, and they cannot wear certain equipment like boots, gloves or
 weapons. However they are twice as fast and hard to hit. Fruit bats are said
 to make good explorers.
 
+Hard / Unworldly characters will receive 25% bonus on their high score.
+Hellish (Hard + Unworldly) characters receive 50% bonus on their high score.
+
 Note that race and class will have influence on how much experience you will
 need to gain a new character level. For example, High-Elves already know a
 lot, so experience is hard to gain for them. In fact they will need 100% more
@@ -748,7 +830,8 @@ ghost/hellish character on mundane death).
 (3.3) Start-up equipment
 ------------------------
 Every new player has some items right from the beginning, stored in the
-inventory ("Recall" window). As a warrior you will have a Chain Mail and a Sword.
+inventory ("Recall" window). As a warrior you will have a Chain Mail and a
+Sword.
 Start-up equipment always has level 0 and cannot be used by other players!
 You should now equip your start-up items, since they won't help you if
 they stay inside the backpack. Press the key 'w', you will be asked which
@@ -788,13 +871,16 @@ Going deep down into the dungeon with a very low character level in hope of
 meeting a monster that gives lots of experience while at the same time is not
 too hard to kill is called "diving" and often is kind of suicide while
 sometimes very rewarding.
-However, buying certain items will greatly raise your chance to escape from
-dangerous situations alive or even slaying though opponents. Also, by buying
-an item like magic potions or scrolls you will remember how it looks like and
-instantly recognize it if you find some of the same type in the dungeon.
+However, buying certain items will greatly raise your chance of escaping from
+dangerous situations alive or even slaying tough opponents. Also, by buying
+an item (like magic potions or scrolls) your character will remember what it
+'looks like' and instantly recognize it if you find some of the same type in
+the dungeon. If you find a potion/scroll unknown to your character you will
+have to either use it or sell it to a shop or use a scroll of identify to find
+out what it is.
 So to prepare for hunting in the dungeon, buy:
 -Potion of Heroism
--Potion of Cure Light Wounds
+-Potion of Cure Light/Serious Wounds
 -Scroll of Phase Door
 The more you can buy of those the better. At least buy one potion of Heroism
 and Cure Light Wounds.
@@ -864,6 +950,15 @@ hungry.
 The next time you log on, you may load your previously saved macro file by
 invoking the macro menu again ('%'), choosing "(1) Load a user pref file" and
 entering the filename.
+
+Note that while it looks like overkill to create macro hotkeys for all lesser
+items that aren't of importance during combat, inscribing them can still be
+helpful, allowing to easily access them.
+Example: You inscribed your flasks of oil @F1 . Now if your lantern is running
+low on oil you just type the keys 'F' (to fill) and '1' instead of having to
+search your inventory for the correct slot letter the oil flasks reside at.
+Same goes for other items that aren't used in time-critical situations during
+combat but nevertheless regularly, like scrolls of identify.
 
 Loading macros automatically:
 -----------------------------
@@ -1109,7 +1204,7 @@ F9  quaff a potion of resistance                    \e)q4           @q4
     (an important thing later in the game)
 F10 zap some rod (dunno yet which one)              \e)z1           @z1
     (magic device must be high enough or you keep failing)
-F11 eat a firestone (Thunderlords only)             \e)E1           @E1
+F11 eat a firestone (Thunderlords only, (5.9))      \e)E1           @E1
 F12 use a wand on the closest target                \e)a1*t         @a1
     (magic device must be high enough or you keep failing)
 
@@ -1205,8 +1300,8 @@ For details about skill point distribution and the different skills see (6.2).
 
 
 
-(3.10) Death and Ghosts
------------------------
+(3.10) Death, ghosts and looting
+--------------------------------
 Normal/everlasting characters will turn into ghosts if they die. When you
 become a ghost, your title will change to 'Ghost' until you get revived.
 You can continue playing as a ghost, getting a slight experience penalty,
@@ -1239,11 +1334,23 @@ Ghosts have some special abilities, these are
 -they spot warm-blooded creatues easily
 -they resist darkness effects, blindness, poison, cold, fear and confusion
 -they cannot be cut since they don't bleed
--they resist insanity attacks.
+-they resist insanity attacks
+-they can pass solid walls and mountains
+-they can fly
+-they cannot use items
+-they cannot carry items except for the Book Of The Dead.
 
-Ghosts can access undead powers with 'U'.
+Ghosts can access undead powers with 'U' (currently not available, sorry).
 Those powers drain your experience. If you use them too often and run out
 of experience you will fade away (your character is erased then).
+
+If a character dies totally (no ghost to be resurrected) the level will
+(depending on the server configuration) stay static for a while to allow other
+players to retrieve his loot. The deeper the dungeon level, the longer it will
+stay static. It may take a whole day for very deep levels to 'unstatice'.
+
+If a player dies, an automatic chardump is generated in /lib/user called
+'<charname>-death.txt' (see 8.2).
 
 
 
@@ -1478,11 +1585,11 @@ To enter a dungeon your character must have the displayed minimum level.
 Otherwise you'll get a message like this "Suddenly you're grasped by an
 uncontrollable fear".
 
-The deeper you decend into the dungeons, the more time will be slowed down to
-make it easier to fight very fast monsters. By the time your character enters
-those depths, it should already have boosted speed so the slowdown won't
-bother you but come in handy. For example if you enter Mordor you will notice
-a slowdown to to approx. 1/2 standard time.
+The deeper you decend into the dungeons, the more the passing of time itself
+will be slowed down to make it easier to fight very fast monsters. By the time
+your character enters those depths, it should already have boosted speed so
+the slowdown won't bother you but come in handy. For example if you enter
+Mordor you will notice a slowdown to to approx. 1/2 standard time.
 
 Also, there are several dungeons that aren't bound to a town. Here's a list:
 Dungeon                         |   Depth/Level         |   Required player
@@ -1511,6 +1618,15 @@ Nether Realm                    | 8300..9850/166..197   |       40
 
 The Europe server currently also has an 'ironman' dungeon (see (4.8)):
 Wilderness                      |  100..1100/  2..22    |        0
+
+To enter the Nether Realm a player must carry the 'King'/'Queen' title,
+acquired by beating Morgoth, The Lord of Darkness.
+Each floor in the Nether Realm gives a +20% bonus to experience from monster
+kills.
+So fighting at 250ft would give 5*20% = +100% bonus, hence doubling the
+experience you gain. The amount of experience is already very high even
+without the depth-bonus, since creatures in the Nether Realm are of a very
+high level.
 
 
 
@@ -1631,6 +1747,21 @@ Negative depths in dungeons and positive heights in towers mean identical
 monster difficulties. Example: In Bree there's a tower and a dungeon. In the
 9th tower floor on 450ft you will usually find the same monsters as in the
 dungeon on level -450ft (9th dungeon level).
+
+
+
+(4.10) Houses
+-------------
+Press 'h' to buy or sell a house, or to change house parameters (for example
+giving all your party members access to it). You need to stand directly next
+to the house door to do this.
+The house doors can have different colours to you: 
+-a green house door indicates that you have access to it,
+-a brown house door indicates that the house is currently unowned
+ (so you may buy it)
+-a grey door indicates that this house is owned by someone and you don't have
+ access to it.
+If you forgot which houses you own, type ~6 to see a list of your houses.
 
 
 
@@ -1761,7 +1892,8 @@ message, telling you that your backpack isn't comfortable.
 Using a shield will nullify the special combat styles, reducing your damage.
 
 Using too heavy armour or using any melee or ranged weapon will disable your
-MA and all benefits completely.
+MA and all benefits completely. The armour weight limit is 10.0 lb + Martial
+Arts skill level * 0.5 lb. So for MA 50 it is 10.0 + 25.0 = 35.0 lb.
 
 Martial Arts special combat techniques have certain dice, similar to normal
 weapons. These dice are also effected by brands and slays same as normal 
@@ -1866,6 +1998,8 @@ If several multipliers match the highest one will be used.
 -----------------------
 If your melee weapon or ranged weapon is too heavy you will hardly be able
 to use it, resulting in reduced attack number per round and less damage.
+You will get the message "You have trouble wielding such a heavy weapon/bow"
+and probably your blows will drop to 1 and tohit/todam go near to zero.
 A weapon is too heavy for you if its weight is greater than the so-called
 str_hold value. Below is a table with the str_hold values, depending on a
 character's strength:
@@ -2008,9 +2142,9 @@ Hold Life       This will provide some protection against experience drain.
 Further, there are several high resistances. Those are
 Water           Water resistance is rare. Water attacks can stun and confuse
                 you if you don't resist them and usually do a lot of damage.
-                Resistance will cut damage to 2/3.
+                Resistance will cut damage to 1/3.
                 If you're a mimicking an aquatic monster the damage will be
-                further cut down to 3/4.
+                further cut down to 1/4.
                 If you don't wear a 'tarpaulin' items in your inventory might
                 be destroyed by the water (if they don't resist water).
                 Water bolts do (10d10)+level damage.
@@ -2021,8 +2155,8 @@ Sound           Sound attacks do less damage but can stun your or even knock
                 Resistance will cut damage to 5/7..5/12.
                 Damage is be reduced by further 50% if bio-feedback is active.
                 (Bio-feedback is activated if a Thunderlord -also known as
-                Dragonrider- eats a firestone
-                and gets the 'adrenaline' message.)
+                Dragonrider- eats a firestone and gets the 'adrenaline'
+                message. See (5.9) for firestone details.)
                 Sound resistance will protect you from stunning effects.
                 Breath damage is monster HP/6. Sound breath caps at 400.
 Shards          Shard attacks can cause nasty cuts that makes you bleed
@@ -2030,8 +2164,8 @@ Shards          Shard attacks can cause nasty cuts that makes you bleed
                 Resistance will cut damage to 6/7..6/12.
                 Damage is be reduced by further 50% if bio-feedback is active.
                 (Bio-feedback is activated if a Thunderlord -also known as
-                Dragonrider- eats a firestone
-                and gets the 'adrenaline' message.)
+                Dragonrider- eats a firestone and gets the 'adrenaline'
+                message. See (5.9) for firestone details.)
                 Shard resistance will protect you from cuts.
                 Breath damage is monster HP/6. Shard breath caps at 400.
 Nexus           Nexus attacks can have extremely nasty side-effects if you
@@ -2337,6 +2471,25 @@ FUEL_LITE ('It provides light radius when fueled')
 (NO_SEED 
         An ego item that is never created randomly (in terms of abilities
         or power).)
+CURSED  If you wield _any_ cursed item, you'll need to break the curse in
+        order to take it off again. Shops won't buy cursed items.
+        You need a Scroll Of Remove Curse or the according spell to uncurse
+        a CURSED item, or you can try enchanting one of its base boni
+        (tohit/todam/toac) above 0, assumed it HAS those.
+AUTO_CURSE
+        This item will re-curse itself if you equip it or pick it up or
+        take it off even. So make sure to drop an equipped auto-cursed item
+        to the ground after uncursing it, instead of just taking it off.
+HEAVY_CURSE
+        You need a Scroll Of *Remove Curse* or the according spell to break
+        this curse, or you can try enchanting one of its base boni
+        (tohit/todam/toac) above 0, assumed it HAS those.
+CURSE_NO_DROP
+        You cannot even drop this item while it's cursed.
+TY_CURSE
+        No effect, except for lowering the items value.
+DG_CURSE
+        No effect, except for greatly lowering the items value.
 
 
 
@@ -2379,13 +2532,13 @@ Cure Serious Wounds
 Cure Critical Wounds
                 Cures blindness, cuts, confusion, stun; heals 8d8 HP.
 Healing         Cures blindness, cuts, confusion, stun, poison; heals 300 HP.
-*Healing*       Cures blindness, cuts, confusion, stun, poison; heals 1200 HP.
+*Healing*       Cures blindness, cuts, confusion, stun, poison; heals 1000 HP.
 Restore Mana    Restores 500 MP.
 *Restore Mana*  Full mana restoration.
 Curing          Heals some HP, removes blindness/confusion/stun, cures
                 poison/cuts/paranoia (hallucinations), heals some insanity,
                 satisfies your hunger, restores all your stats (except exp).
-Life            Fully heals you, removes blindness/confusion/stun, cures
+Life            Heals 5000 HP, removes blindness/confusion/stun, cures
                 poison/cuts/paranoia (hallucinations), cures Black Breath,
                 restores all your stats (except experience).
 Experience      Gives you additionally half your experience plus 10,
@@ -2433,6 +2586,7 @@ Recharging      Recharges a magical rod/wand/staff.
 Rune of Protection  Creates a warding glyph on the floor that stops monsters
                     from crossing the field or summoning on it.
 Protection from evil    Repels evil creatures that try to attack you.
+                        See the prayer 'Protection from evil' in (6.8)!
 *Destruction*   Causes a local earthquake, nearly completely wiping the area
                 of monsters and objects. Can save you!
 Genocide        Removes all monsters of a certain kind from the current level.
@@ -2495,11 +2649,35 @@ Magi            Restores your intelligence and your mana.
 Power           Dispels nearby monsters.
 Holiness        Dispels nearby evil. Also protects you from evil for a while.
                 Cures poison/cuts, removes fear/stun, heals you somewhat.
+Dragon's Breath These wands fire a ball of dragon odem (more powerful than
+                normal ball spell wands.)
 Havoc           Fires balls or beams of chaos, the exact outcome is hard to
                 tell.. it's very powerful though.
 
 Misc
 --
+(Small) Firestones  These can be eaten by Thunderlords and have various
+                    random effects (small firestones have reduced duration):
+                    - If the player is currently in dragon form he will just
+                      get some mana refilled.
+                    - If he is in non-dragon form, these temporary effects
+                      can apply:
+                        - Adrenaline:   Consume way more food.
+                                        Get STR/CON/DEX bonus.
+                                        Get to-hit/to-dam bonus.
+                                        Sometimes get EA.
+                                        Get AC malus.
+                        - Biofeedback:  Consume more food.
+                                        Regenerate HP / heal cuts faster.
+                                        Reduce damage from arrows/missiles,
+                                        shards, sound and ice shards.
+                        - ESP:          You can see telepathically.
+                        - Physical Instability:     Probability Travel.
+                        - Fury:         40 more HP, speed bonus,
+                                        to-dam bonus, to-hit/to-ac malus.
+                        - Speed-up:     Speed bonus.
+                        - Heroism:      10 more HP, to-hit bonus, resist fear.
+                        - Temp res:     Temporary base and poison resistance.
 Mattock/Pick/Shovel Improves your digging capabilities.
 Tarpaulin           Prevents your inventory from taking water damage on
                     crossing water fields.
@@ -2508,6 +2686,7 @@ Sprig of Athelas    Eat this one to cure Black Breath,
                     also cures poison/stun/cuts.
 Firestones          Eath them only if you are a Thunderlord (Dragonrider).
                     They will randomly boost your powers for a short time.
+                    See (5.9) for firestone details.
 Flint               Prevents your light from going out.
 Empty bottles       You can /fill these at fountains to turn them into
                     potions.
@@ -2517,6 +2696,7 @@ Skeletons/Bones/Skulls  You can create ammunition from these if your Archery
 Rubble ':' on the floor You can create sling ammo from this. You cannot pick
                         up rubble, just stand next to it.
 Amulet of Anti-Magic    See '5.7 NO_MAGIC'
+
 Mushrooms with bad effects are also often poisonous.
 
 
@@ -2586,6 +2766,26 @@ Lamps                       x
 Potions                     x       x       x       x
 Flasks                              x       x
 Books/Tomes                                         x
+
+
+
+(5.11) Armour Class vs monster attacks
+--------------------------------------
+Armour class helps you twice:
+-It makes monsters miss you more often.
+ The more AC the better, it's weighed against the level of the attacking
+ monster. If the monster is (heavily) stunned it gets penalties here.
+-It reduces the damage if a monster manages to hit you.
+ This effect caps at 150 AC!
+
+Monsters can score critical hits which can (depending on the attack type)
+result in a cutting or stunning effect against the player.
+A monster scores a critical hit if it inflicts a damage which is very close to
+its theoretical maximum. Weaker monsters (that don't inflict high amounts of
+damage) aren't able to score critical hits at all.
+The power of the resulting cut/stun depends on the damage too.
+So a high armour class helps a lot, to avoid critical monster hits and to
+reduce their power.
 
 
 
@@ -2662,7 +2862,7 @@ Note that not every skill is available to every profession (class).
                                 beginning you will only feel 'cursed' or
                                 'good'. Raise combat skill over 10 to get
                                 more distinctive feelings. Lets you wear
-                                heavier armour without penalties.
+                                heavier armour without spell point penalties.
                                 A powerful warrior (combat>30) senses the use
                                 of ranged weapons and ammunition much better,
                                 even if (s)he's not comfortable with archery.
@@ -2678,6 +2878,14 @@ Note that not every skill is available to every profession (class).
         +Sword-mastery          Greatly improves to-dam/to-hit with swords.
                                 At 25 and 50 you will get +1 blow per round.
             .Critical-strike    Ability to score 2x/3x/4x damage hits.
+                                Critical strike skill works with light
+                                weapons. Weight cap is 10.0 lb, above this
+                                the chance to hit your target critically won't
+                                be worse than with a 10.0 lb weapon.
+                                Although your chance of hitting critical spots
+                                is better with lighter weapons, the damage of
+                                your critical strike -IF you manage to execute
+                                one- is higher if your weapon is heavier.
         .Axe-mastery            See Sword-mastery
         .Hafted-mastery         See Sword-mastery
         .Polearm-mastery        See Sword-mastery
@@ -2723,6 +2931,9 @@ Note that not every skill is available to every profession (class).
                                 depending on your MA skill) are affected by
                                 elemental brands, but slightly less (2/3 as
                                 much) as normal weapons.
+                                Martial Arts gives you a chance / adds to your
+                                chance of intercepting an enemy! See
+                                'Interception' skill below.
 +Magic                          Improves your spellcasting abilities and
                                 increases your mana capacity.
                                 Lets you pseudo-id magic items, potions and
@@ -2784,6 +2995,24 @@ Note that not every skill is available to every profession (class).
                                 noticing it, although it's not worth much :)
                                 There's always a minimum chance of 5% to fail!
                                 You need to be at least level 10 to steal.
+                                The chance to successfully steal an item is
+                                usually never smaller than 5%, even if your
+                                stealing skill is 0 and your dexterity low.
+                                If a shop offers an item more expensive than
+                                it actually is (black market) that has no
+                                effect on stealing. The 'normal' item value
+                                is used to calculate the chances.
+                                It's more difficult to steal from special
+                                stores (expensive black market and especially
+                                rare footwear/jewellry/secret black market).
+                                The calculation for successful stealing is
+                                very complicated. Some random examples:
+                                Speed pot, dex 18/70, skill 20 -> 70% chance.
+                                Heal pot, dex 18/50, skill 25 -> 65% chance.
+                                Massive Piece of Wood, dex 18/140, skill 40
+                                -> 15% (it's *heavy*, 250.0 lb).
+                                It's a good idea to wear as many +DEX items
+                                as possible while trying to steal from a shop.
     +Dodging                    Ability to evade attacks. Doesn't work well
                                 if you wear heavier armour.
         .Calmness               Ability to not get hindered by enemies.
@@ -2791,8 +3020,31 @@ Note that not every skill is available to every profession (class).
                                 you try to shoot with a bow.
         .Interception           Ability to interfere with adjacent enemies.
                                 Can prevent them from teleporting, casting,
-                                summoning, running away. Interception chance
-                                caps at 90%.
+                                summoning, running away. The chance to
+                                intercept an enemy is (2 * interception) +
+                                (martial_arts_skill / 2) - (enemy_level / 3).
+                                Example: Chance to intercept summoning of the
+                                Balrog of Moria with maxed interception is
+                                (2*50) + 0 - (50/3) = 84% base. Now since it's
+                                spellcasting it's reduced to 75%: 84%*75%=63%.
+                                For Morgoth it's (2*50)+0-(100/3) = 67% base.
+                                To intercept his spells it's 75% of 67% = 50%!
+                                (A maxed out martial artist would have 69%.)
+                                Interception chance is recuded to 33% while
+                                you are blind.
+                                Interception chances also depend on what the
+                                enemy is trying to do. Certain actions are
+                                harder to intercept, those reduce the chance
+                                further, to..
+                                100%    for shooting
+                                 85%    for running (fleeing / stepping back)
+                                 75%    for casting a spell / summoning
+                                 50%    for teleporting / phasing (blinking)
+                                Note: While ball/bolt attacks are spells,
+                                      breathing is NOT.
+                                Interception chance caps at 90% (cap is
+                                applied after all other penalties have been
+                                factored in, at the very end of calculation).
 +Necromancy                     Drains life from killed monsters
                                 (the skill level in HPs from each kill).
     .Aura power                 Increases the power of your auras.
@@ -2812,6 +3064,10 @@ Note that not every skill is available to every profession (class).
                                 wands,staves or rods anymore!
                                 Further, this skill also slightly affects
                                 your fellow party members (casters).
+                                Each point in Antimagic adds 1% to your total
+                                AM chance, so the max gain is +50% from skill.
+                                Note: While ball/bolt attacks are spells,
+                                      breathing is NOT.
 +Health                         Increases your hit point regeneration rate.
                                 If you spend 10 points into Health, your
                                 sanity will be displayed as a bar.
@@ -2920,6 +3176,8 @@ a new character level. You also might have certain intrinsic abilities.
 To see numerical tables about races and classes, visit http://www.tomenet.net/
 and click 'Doc' in the menu on the left.
 (Descriptions here are partially taken from www.tomenet.net )
+For Beginners a powerful but simple race/class combination like Half-Troll
+Warrior is strongly recommended.
 
 Human
     Humans are allrounders with no special weaknesses or strengths.
@@ -3028,12 +3286,14 @@ Thunderlord (also known as Dragonrider)
     fire at 10, cold at 15, acid at 20 and electricity at 25. At level 30
     they learn how to fly. Thunderlords are not very wise, and need a very
     long time to gain experience. They need to eat often. Thunderlords have
-    feather falling from birth.
+    feather falling from birth. See (5.9) for firestone details.
 
 
 Here is a table showing boni/mali of the different races:
 (Di:Disarming,      MD:Magic Device,        ST:Saving Throw,    St:Stealth,
 Pe:Perception (sight range), Sr:Searching,  Fi:Fighting,        BT:Bows/Throw)
+Note that Yeeks are limited to 4 melee attacks per round (not including boni
+from skills or items yet).
 
             STR INT WIS DEX CON CHR     HPdice  Exp%    Infra-Vision
             Di  MD  ST  St  Pe  Sr  Fi  BT
@@ -3101,6 +3361,7 @@ Warrior
     suppression of teleportation abilities and all magic in the area around
     them.
     Warriors can also become monk-like fighters, by training the Martial Arts.
+    The warrior class is recommended for beginners.
 Istari (elvish word for Mage)
     Istari use intelligence primarily, determining how much mana they have
     to cast spells and how low their failure rate is.
@@ -3109,8 +3370,10 @@ Istari (elvish word for Mage)
     difficult journey. On the downside, they are the worst fighters, being
     unable to use any weapon but a Mage Staff comfortably, and still unable
     to be anything even remotely approaching effective with it.
-    A Sorcerer also has the fewest hit points of any class, making survival
-    difficult in the beginning.
+    An Istari and especially Sorcerer (that's an Istari who specializes in
+    'Sorcery' skill) also has the fewest hit points of any class, making
+    survival difficult in the beginning.
+    This class is not recommended for beginners.
 Priest
     Priests use certain divine magic. Unless mages they have a fair
     fighting potential with hafted or blessed weapons. Priests can learn
@@ -3125,6 +3388,9 @@ Priest
     Priests also have excellent saving throws due to divine intervention.
     Priests make decent fighters, preferring blunt weapons over edged ones.
     Wisdom is the priest's primary stats.
+    Note that priests get a penalty for wielding non-hafted weapons, except
+    for BLESSED weapons which priests can use without problems independently
+    of their type.
 Rogue
     Rogues can backstab (works especially well in the dark) sleeping or
     fleeing monsters, and they can train stealing from shops, creatures
@@ -3205,7 +3471,7 @@ Pe:Perception (sight range), Sr:Searching,  Fi:Fighting,        BT:Bows/Throw)
             STR INT WIS DEX CON CHR     HPdice  Exp%    Blows/Round
             Di  MD  ST  St  Pe  Sr  Fi  BT
 ------------------------------------------------------------------------------
-Adventurer  +0  +0  +0  +0  +0  +0      +6      *100%       4
+Adventurer  +0  +0  +0  +0  +0  +0      +5      *100%       4
             20  20  20  2   15  15  50  50
 Warrior     +5  -2  -2  +2  +2  -1      +10     *100%       6
             25  18  18  1   2   14  70  55
@@ -3213,13 +3479,13 @@ Istari      -5  +3  +0  +1  -2  +1      +0      *130%       1
             30  36  30  2   20  16  34  20
 Priest      -1  -3  +3  -1  +0  +2      +3      *120%       4
             25  30  32  2   8   16  48  35
-Rogue       +2  +1  -2  +3  +1  -1      +7      *125%       5
+Rogue       +2  +1  -2  +3  +1  -1      +5      *125%       5
             45  32  28  5   32  24  60  66
 Mimic       +1  +0  +0  +1  +1  -4      +5      *125%       4
             25  35  28  7   18  18  60  66
 Archer      +1  +0  +2  +3  +1  -1      +4      *130%       3
             30  32  28  2   20  24  56  82
-Paladin     +3  -3  +1  +0  +2  +2      +9      *130%       5
+Paladin     +3  -3  +1  +0  +2  +2      +8      *130%       5
             10  21  54  1   16  13  60  29
 Ranger      +2  +2  -1  +1  +2  +0      +6      *135%       5
             34  32  30  5   30  30  50  60
@@ -3268,10 +3534,11 @@ I: speed : hit points : vision : armor class : alertness
   hit points:
     The monster's hit dice xdy are multiplied. Now, if the mimic's HP
     are less then the result, the mimic's HP will become approx.
-    ((x*y) + mimic_HP) / 2. This value is capped against ~2600, so gain
-    might decrease in higher regions. So 1/2 monster HP, 1/2 player HP.
-    If the mimic's HP are more than x*y, the resulting HP will be
-    ((x*y * 2) + (mimic_HP * 3)) / 5. So 2/5 monster HP, 3/5 player HP.
+    ((x*y) + mimic_HP) / 2. This value is capped against ~2700, so gain
+    might decrease in higher regions. (1/2 monster HP, 1/2 player HP.)
+    If the mimic's HP in player form (0) are greater than x*y, the
+    resulting HP will be ((x*y * 2) + (mimic_HP * 5)) / 7.
+    (2/7 monster HP, 5/7 player HP.)
   armour class:
     Mimicking a monster is already a very difficult task. By changing
     shape, the usual armour class of the monster will magically influence
@@ -3393,7 +3660,8 @@ F: flag list
     RAND_25     The player has +10% chance of moving randomly.
     RAND_50     The player has +20% chance of moving randomly.
     OPEN_DOOR   This form can open doors.
-    BASH_DOOR   This form can bash doors.
+    BASH_DOOR   This form can bash doors
+                (useful to forms that cannot OPEN_DOORs!).
     EVIL        This form will take 2x damage from holy orbs or holy fire.
     HURT_LITE   This form will take 2x damage from light attacks.
 S: spell list
@@ -3636,6 +3904,8 @@ Holy Defense
                     Lv15: Lets you also resist acid.                (project)
     Protection from evil.
                     Repels evil creatures that try to attack you.
+                    Works very well, as long as the creature isn't of a higher
+                    level than you.
     Glyph Of Warding
                     Creates a rune on the ground, stopping monsters.
     Eternal Martyr  Burns you in holy fire, making you invulnerable.
@@ -3673,6 +3943,8 @@ Holy Support
                     Lv20: Gives +3 EA.                              (project)
                     Note: The EA effect won't be applied to barehanded players
                     if they don't have Martial Arts skill of at least 01.000.
+                    Zeal also gives a slight speed bonus (+10 at 50 skill) to
+                    the caster.
 
 
 
@@ -3718,6 +3990,11 @@ Here you can..
 
 -Create a new guild
     This costs 2,000,000 Au. A guild will stay, even if the owner dies.
+    The guild creator will receive a 'Guild Key' which designates him as the
+    guild master. In case the guild master dies, another guild member may
+    fetch the key to become the new guild master.
+    (The guild creator used to receive Scrolls of House Creation. This has
+    been removed for now, see (0.5).)
 -Add player to guild
     Only the guild master or a dungeon wizard (administrator) can do this.
 -Remove player from guild
@@ -3743,11 +4020,12 @@ Beginners (level 1)
 Know that there are traps that can empty your stomach or drain the fuel of
 your light. If you don't have supplies then you might be doomed.
 + Potion of Heroism
-because it can approximately double the hitpoints of characters (depending on
-race/class) for a short period of time as well as greatly improve the chance
-to hit the opponent, which will raise the fighting potential for example
-against enemies like Farmer Maggot's dogs. Even if your character has a decent
-amount of Hit Points, these potions raise your fighting abilities a good deal.
+because it can approximately double the hitpoints of level 1 characters
+(depending on race/class) for a short period of time as well as greatly
+improve the chance to hit the opponent, which will raise the fighting
+potential for example against enemies like Farmer Maggot's dogs. Even if your
+character has a decent amount of Hit Points, these potions raise your fighting
+abilities a good deal.
 + Potion of Cure Light Wounds
 The become useless quickly while you gain some character levels since they
 don't heal very many HP (Hit Points). At the beginning they are very helpful
@@ -4013,84 +4291,133 @@ Coin pits (lots of '$' inside) can also contain very powerful mimics!
  time. If your health suddenly drops, teleport away at once.
 
 -Sometimes it might be a good idea to use a "Stone-to-mud" or "Trap/Door
-destruction" spell to open a door from a distance.
+ destruction" spell to open a door from a distance.
 
--For weaker characters it might be a good idea to stay around 1000..1500 ft and
-try to get enough stat potions (potions that raise your six primary stats, STR
-INT WIS DEX CON CHR) until they have a considerably high amount of hit points
-and/or combat potential before they dive deeper!
+-For weaker characters it might be a good idea to stay around 1000..1500 ft
+ and try to get enough stat potions (potions that raise your six primary
+ stats, STR INT WIS DEX CON CHR) until they have a considerably high amount
+ of hit points and/or combat potential before they dive deeper!
 
 Some monsters that people often get killed by are:
 
 -Druid monsters, for example druid snotlings or druid kobolds. They can appear
-at very low level and they are able to cast firebolts that insta-kill you
-(instantly kill you).
+ at very low level and they are able to cast firebolts that insta-kill you
+ (instantly kill you).
 
 -Elite Uruks, they fire extremely sharp arrows, always posing a high threat.
 
+-Chieftain/Warrior/Monk/Unbeliever monsters of any kind. You will often see
+ someone being killed by a hill troll monk or forest troll chieftain for
+ example.. Prepare to hit your phase door macro if you spot a shimmering
+ extraordinarily fast moving monster within a potentially dangerous mob.
+
+-Veteran archer/Master archer monsters of any kind can pose a very high
+ threat. Better get reflection ability if you are planning to fight these in
+ a ranged duel.
+
 -Hounds with breaths that need a high resistance or that cannot be resisted at
-all.
+ all.
 
 -Dark elven Warlocks. These belong to the few monsters that can cast mana
-bolts, which cannot be resisted and do very high damage. Even worse, DEW (Dark
-Elven Warlocks) can appear in packs. Beware!
+ bolts, which inflict very high damage. Even worse, DEW (Dark Elven Warlocks)
+ can appear in packs. Beware!
 
 -Colbrans. These are the lowest monsters that can "reflect". This means that
-missiles or magical bolt spells will be reflected onto the caster, which can
-insta-kill weak wizards that use hi-damage spells. (Note: Monster reflection
-was removed, so don't worry.)
+ missiles or magical bolt spells will be reflected onto the caster, which can
+ insta-kill weak wizards that use hi-damage spells. (Note: Monster reflection
+ was removed a while ago, so you don't have to worry about this one for now.)
+
+-Will o' the wisps are very hard to spot and catch, their curses are
+ devastating.
+
+-The Glass Golem drives everyone insane whom it manages to hit, high AC helps.
+
+-Drolems. A constructed dragon that will breathe poison for high damage and
+ takes a lot of hits before ceasing to function.
+
+-The Stormbringer, an animated blade that bears mad fury within. It swings
+ so powerful that it can knockout its enemies with ease. Defeating it,
+ however, will make it usable to its defeater!
+
+The most powerful representant of each class:
+-Ranger chieftains are tough opponents who can nail you on the spot and
+ use magic attacks as well as summon.
+-Knight Templars, powerful paladins who are immune to holy attacks and
+ are even able to call an angel for support.
+-Patriarchs, these unfaltering priestlords can summon and curse rapidly.
+-Master Mindcrafters, their ability to summon mighty support and to smash
+ your brain by psi attacks is feared.
+-Old sorcerors are able to summon ancient dragonkind and wyrms, beware!
+-(Grand) Swordsmasters, most skilled swordsmen that will disarm you easily.
+-(Grand) Master mystics, most powerful martial artists. With their special
+ techniques they can manage to stun you easily. Best remedy is high AC so
+ they won't hit you in the first place. Alternatively you can quaff potions
+ to remove any stun effect.
+-(Grand) Master thieves, very fast and stealthy they steal your possessions!
+
+-The most powerful monsters of the daemon realm, the dragonkind and the
+ heavenly planes, namely Star-spawns of Cthulu, Great Wyrms of Power,
+ balance keepers of the skies, sun and stars (Blades).
 
 -Further, players are often killed if they lack resistances and/or free action
-(against paralyzation) but nevertheless dive down into the dungeon very
-quickly.
+ (against paralyzation) but nevertheless dive down into the dungeon very
+ quickly.
 
 -Unique enemies. If you see a monster blinking in different colours, before
-trying to kill it you should examine the text file "r_info.txt" located in the
-lib\game directory to find out if it is a certain unique enemy. Then look up
-his abilities and make sure you are prepared to fight him.
+ trying to kill it you should examine the text file "r_info.txt" located in
+ the lib\game directory to find out if it is a certain unique enemy. Then look
+ up his abilities and make sure you are prepared to fight him.
 
 -If you see an enemy that you don't know anything about and that could pose a
-threat (especially if it's inside a vault!), STAY AWAY and consult either an
-experienced player or look into the file r_info.txt in your tomenet/lib/game
-directory to find out what the opponent is capable of. The safest (and most
-boring and least rewarding) way to play is to avoid vaults! Vaults can contain
-an enemy against which you don't have the slightest chance of beating it.
+ threat (especially if it's inside a vault!), STAY AWAY and consult either an
+ experienced player or look into the file r_info.txt in your tomenet/lib/game
+ directory to find out what the opponent is capable of. The safest (and most
+ boring and least rewarding) way to play is to avoid vaults! Vaults can
+ contain an enemy against which you don't have the slightest chance of beating
+ it.
 
 -Teleport out of trouble
-If you are not an antimagic-user, you should buy a staff of teleportation as
-soon as possible since it can take you out of dangerous situations.
-However, the staff is no guarantee :)
-After you bought it, try if you can actually use it well or if you keep
-failing! If you're not good at magic devices you might have to spend points
-into your 'Magic Device' skill.
-I recommend to always have at least 3 charges in the staff before diving into
-the dungeon.
+ If you are not an antimagic-user, you should buy a staff of teleportation as
+ soon as possible since it can take you out of dangerous situations.
+ However, the staff is no guarantee :)
+ After you bought it, try if you can actually use it well or if you keep
+ failing! If you're not good at magic devices you might have to spend points
+ into your 'Magic Device' skill.
+ I recommend to always have at least 3 charges in the staff before diving into
+ the dungeon.
+
+-Quaff potions of cure critical wounds or healing if you get (heavily) stunned
+ to prevent a lethal knockout in the next round! Further you can't use martial
+ arts special techniques while stunned, cutting your damage a lot.
+ Get sound resistance to not waste potions to cure stun effects from
+ water/sound/gravity/ice/plasma attacks.
 
 -Don't wait till you are a '1' or '0' before you try to teleport out.
-If you want to be on the safe side, teleport out when you are a '4' or '3'.
-Remember that your teleport staff may fail sometimes or that enemies may
-stun you for several turns!
+ If you want to be on the safe side, teleport out when you are a '4' or '3'.
+ Remember that your teleport staff may fail sometimes or that enemies may
+ stun you for several turns!
 
 -Before AND after a larger fight, check your inventory if you can carry on
-or if you have to return to town to stock up. A common problem is that some
-monsters can empty or burn up your teleport items, which you might overlook.
+ or if you have to return to town to stock up. A common problem is that some
+ monsters can empty or burn up your teleport items, which you might overlook.
 
 -If you are surrounded by huge piles of loot from dead monsters you might be
-tempted to drop cheaper items like phase door scrolls to make room for the
-precious loot, and go /afk to wait for pseudo-id. However, know that you
-_can_ all of a sudden be ambushed during that time by enemies. By enemies
-that _require_ you to use phase door..
+ tempted to drop cheaper items like phase door scrolls to make room for the
+ precious loot, and go /afk to wait for pseudo-id. However, know that you
+ _can_ all of a sudden be ambushed during that time by enemies. By enemies
+ that _require_ you to use phase door..
 
 -I do not recommend to drop food nor oil in exchange for loot if you're not
-planning to recall instantly after you picked up the loot.
+ planning to recall instantly after you picked up the loot.
 
 -Learn from your mistakes. If you die, think about if you were taking too high
-a risk, and check if you overlooked anything, maybe you were missing essential
-items (cure critical w. potions to get rid of confusion/blindness?). Next time,
-be more careful. Playing TomeNET means learning a lot about the monsters/items.
+ a risk, and check if you overlooked anything, maybe you were missing
+ essential items (cure critical w. potions to get rid of confusion/blindness).
+ Next time, be more careful. Playing TomeNET means learning a lot about the
+ monsters/items.
 
 -Team up with fellow players that are approximately at your character level.
-This means more fun and less danger. Your teammates can save your life.
+ This means more fun and less danger. Your teammates can save your life.
 
 
 
@@ -4235,7 +4562,7 @@ apply (see the description of the 3 command scrolls above).
 
 (8.4) Troubleshooting
 ---------------------
-PROBLEM:    I don't get to see a server list when I start TomeNET.
+PROBLEM 01: I don't get to see a server list when I start TomeNET.
             Instead, I am immediately asked for account and password.
 SOLUTION:   This is a typical problem on Windows XP. There are 3
             possible fixes:
@@ -4249,7 +4576,7 @@ SOLUTION:   This is a typical problem on Windows XP. There are 3
              example C:\tomenet-bin\.. .
             -to edit your "tomenet4.ini" file and specify a host directly by
              specifying "HOST=europe.tomenet.net".
-PROBLEM:    I get to a server list, but it doesn't show any servers. It just
+PROBLEM 02: I get to a server list, but it doesn't show any servers. It just
             says 'Press Q to enter a server manually' and that's it.
 SOLUTION:   There are 2 possible solutions.
             -There is currently no public TomeNET server running. That can
@@ -4263,14 +4590,14 @@ SOLUTION:   There are 2 possible solutions.
              europe.tomenet.net
              or (if that doesn't work either) directly to its IP address:
              213.186.35.70
-PROBLEM:    All windows except for the main window stay empty. (occurs on
+PROBLEM 03: All windows except for the main window stay empty. (occurs on
             Windows XP machines).
 SOLUTION:   Open tomenet4.ini file with a text editor, look for the window
             sections, change the fonts to the same settings (8x13) as in the
             [Main window] section: FontFile=8X13.FON , Font=8X13.FON .
             Also, you could adjust the width/height of the windows (to 80x24
             for example). Try other fonts too, maybe they work for you.
-PROBLEM:    I cannot browse (some) spell books, I see some LUA error messages
+PROBLEM 04: I cannot browse (some) spell books, I see some LUA error messages
             if I try or when I connect to the server.
 SOLUTION:   Your LUA script files are outdated. Those files are responsible
             for any spell-casting and some other things.
@@ -4284,13 +4611,13 @@ SOLUTION:   Your LUA script files are outdated. Those files are responsible
              is to just download a ZIP file containing the latest scripts
              and extract it to your /tomenet-bin/lib/scpt folder.
              You can get the latest scripts at www.c-blue.de/rogue.html .
-PROBLEM:    When I start TomeNET I don't see anything except a small hollow
+PROBLEM 05: When I start TomeNET I don't see anything except a small hollow
             yellow rectangle (the cursor). All windows stay black. It seems
             that the cursor reacts to my inputs by printing out some black
             hence invisible text.
 SOLUTION:   A rare problem that is not caused by TomeNET really. Restart your
             MS Windows system and the text should be visible again.
-PROBLEM:    TomeNET seems to freeze up while playing.
+PROBLEM 06: TomeNET seems to freeze up while playing.
 SOLUTION:   This can happen if your latency is relatively high and many
             messages are transported between the server and your client.
             In fact it's just your display that freezes up. In that state
@@ -4300,7 +4627,7 @@ SOLUTION:   This can happen if your latency is relatively high and many
             Or just start another instance of the game and log in, that will
             override the old connection, making your client quit with
             "resume connection" message.
-PROBLEM:    I am disconnected during gameplay.
+PROBLEM 07: I am disconnected during gameplay.
 SOLUTION:   This can have several reasons. On disconnection a message box will
             appear, telling you about the problem. The following messages
             might occur:
@@ -4348,7 +4675,7 @@ SOLUTION:   This can have several reasons. On disconnection a message box will
                     Can happen if you lag out or if packet loss occurs.
             "receive error in play"
                     Can happen if you lag out or if packet loss occurs.
-PROBLEM:    I am disconnected from the server with an error message, this
+PROBLEM 08: I am disconnected from the server with an error message, this
             happens before I can even start playing.
 SOLUTION:   Read the error message displayed in a message box on quitting.
             Here is a list of possible errors and solutions:
@@ -4396,13 +4723,43 @@ SOLUTION:   Read the error message displayed in a message box on quitting.
             "Sorry, the server is for members only."
                     Log in with 'guest'. You need to get an account for this
                     private server in order to play. 
+PROBLEM 09: I can't connect to the meta-server (the server that displays you
+            a list of online TomeNET servers) or a specific TomeNET server.
+            Instead my connection seems to time-out.
+SOLUTION:   If you are behind a firewall make sure that the TCP ports
+            8801 for metaserver and 18348 for the actual TomeNET server aren't
+            blocked. (Well, the metaserver isn't needed to play - specify the
+            game server via command-line or when asked for it after starting
+            up the game then.)
+PROBLEM 10: I'm not blocked by a firewall, but I still don't see the
+            metaserver when I run Tomenet. Instead after waiting for a short
+            period of time I'm asked to enter a server manually.
+SOLUTION:   The meta-server might be down or a DNS problem might be occuring
+            right now. This can happen from time to time. You don't need the
+            meta-server to play TomeNET though.
+            Just type in the IP adress of the server you'd like to connect to,
+            for europe enter:   213.186.35.70
+            Make sure your tomenet4.ini file contains the correct server port,
+            usually 18348! This port isn't needed if you use the meta-list to
+            choose a server to connect to, but it's important if you connect
+            directly!
+            You can connect directly to a TomeNET server and skip the meta
+            server list by running your Tomenet directly from the command-line
+            (DOS window) within its folder, adding the server IP as a
+            parameter. (In windows2k choose START/Run... and type 'cmd'
+            without quotation marks to open a command-line window.
+            Alternatively you can create a shortcut from your tomenet4.exe by
+            right-clicking, dragging, releasing it. Edit this shortcut's
+            properties and add the server IP to the command-line.)
+            For europe server it would look like this:
+            tomenet4.exe 213.186.35.70
 
 
 
 (9) End of this guide.
 ==============================================================================
-** Note that some information here can quickly be outdate because TomeNET is
-currently under development. So no guarantees ;) **
+** If TomeNET experiences changes/improvements you can also expect this guide
+to become updated shortly afterwards. Anyways, no guarantees ;) **
 Please don't hesitate to send in suggestions, criticism or comments to
 mail@c-blue.de
 ==============================================================================
