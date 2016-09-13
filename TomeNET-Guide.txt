@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 10. Dec 2003; written by C. Blue, http://www.c-blue.de/
+| Latest update: 9. Feb 2004; written by C. Blue, http://www.c-blue.de/
 | for TomeNET version v4.2.0, http://www.tomenet.net/
 | for latest information about TomeNET see http://www.c-blue.de/rogue.html
 | or join discussion in the forum on http://www.tomenet.net/
@@ -25,7 +25,7 @@ Contents
     (0.4)   Typical slang/abbreviations
     (0.5)   Rumours, missing features, technical warnings (READ!)
 (1) Introduction
-    (1.1)   What is TomeNET?
+    (1.1)   What is TomeNET? (Where can I get the latest sources?)
     (1.2)   What is a rogue-like game?
     (1.3)   Where do I find more information about rogue-like games?
     (1.4)   Goal and progress of TomeNET players
@@ -42,10 +42,12 @@ Contents
     (3.4)   Preparing the first time for fighting enemies
     (3.5)   Creating basic macros & inscribing items
     (3.6)   Creating macros for ranged attacks & abilities (spells)
+    (3.6a)  Ability codes [contained within (3.6)]
     (3.7)   An example macro set for warriors
     (3.8)   Macros with special keys
     (3.9)   Experience, level-ups and skill points
     (3.10)  Death, ghosts and looting
+    (3.11)  Malicious effects players can suffer
 (4) The world
     (4.1)   Running, picking up items, fighting
     (4.2)   Level and owner of items
@@ -73,6 +75,7 @@ Contents
     (5.13)  Earthquakes
     (5.14)  Curses
     (5.15)  Vampirism
+    (5.16)  Invisibility
 (6) Character details
     (6.1)   Attributes
     (6.2)   Skills
@@ -176,6 +179,7 @@ r       r       read a scroll.
 E       E       eat. (Thunderlords, also known as Dragonriders, can eat
                 firestones to gain temporary special abilities, see (5.9) .)
 F       F       fuel your light source.
+                Use oil for lanterns, and torches to fuel another torch.
 f       t       fire.
 v       v       throw.
 b       (P)     browse (peruse) a book.
@@ -221,7 +225,7 @@ h               buy/sell a house or change house parameters. See (4.10).
 P               party screen. Form/disband/modify a party with other players
                 here. In a party you will share experience points if you are
                 within 7 character levels to each other and on the same
-                dungeon/tower level respectively the same worldmap/wildernis
+                dungeon/tower level respectively the same worldmap/wilderness
                 sector. See (6.9) for details.
 
 /       in general use an item (combines q,r, etc..).
@@ -309,11 +313,15 @@ They all start with a slash '/':
             (It's easier to press '_' instead of using the /sip command.)
 /fill       fill an 'Empty Bottle' in your inventory with the water from a
             fountain. You must stand on the fountain to do this.
-(The following function is currently disabled for balancing reasons:
+/shout <text>
+            Shout <text> loudly, will wake up and aggravate nearby monsters.
+
+(The /empty function is currently disabled for balancing reasons:
 /empty <inventory slot>
             Empty a potion from your inventory, leaving an empty bottle.
             Example: /empty c   (if you have 'c) 3 potions of boldness', one
             will be emptied and 2 remain at 'c) 2 potions of boldness'.))
+
 /ig <player name>
  (/ignore)  ignores all chat messages from the specified player. (Toggle)
 /dice       Roll some dice, you must specify a number of dice from 1 to 100.
@@ -349,13 +357,14 @@ All items:
     You can uninscribe an item simply by pressing '{', then pressing the ENTER
     key (causes an 'empty' inscription, equal to no inscription at all).
     '*' is a 'wild card' which means it stands for all possible choices.
-    Inscribing an item '!*' will prevent any action on it. For example,
-    if you wear an artifact and you want to avoid (d)ropping it, (t)aking it
-    off or (v) throwing it away accidentally you could either inscribe it
-    !d!t!v or just !*  .
-    '!*' also implies '!=', so used on arrows it forces auto-pickup. Note that
-    !* or !s will NOT save your items from accidentally being (s)old in
-    stores.
+    Inscribing an item '!*' will prevent any of these action on it:
+    drop (!d) / kill (!k) / throw it (!v) / take off (!t).
+    For example, if you wear an artifact and you want to avoid (d)ropping it,
+    (t)aking it off or (v) throwing it away accidentally you could either
+    inscribe it  !d!t!v  or just  !*  .
+    '!*'  also implies  '!='  , so used on arrows it forces auto-pickup.
+    Note that  !*  or  !s  will NOT save your items from accidentally being
+    (s)old in stores.
 
 Items that induce random teleportation, like a 'ring of teleportation' or
 'weapon of the thunderlords':
@@ -449,7 +458,7 @@ Morgy       Morgoth, the Lord of Darkness. Final boss enemy in TomeNET.
 Party       A group of players who fight together and share experience.
             In a party you will share experience points if you are within 7
             character levels to each other and on the same dungeon/tower level
-            respectively the same worldmap/wildernis sector.
+            respectively the same worldmap/wilderness sector.
 Phase Door  A short-range teleportation.
 Pseudo-ID   If a player keeps an unidentified item for a longer time he might
             'feel' if the item is average, good, cursed or special. The item
@@ -496,6 +505,8 @@ Wormy       Wormtongue, Agent of Saruman. He drops great items.
  items that effect your 'Spell power' via SPELL flag).
 -Don't drop artifacts inside houses if the server doesn't allow artifacts to
  be dropped inside player houses, or you will simply lose the artifact!
+-Items on the floor within a house don't form piles! If you drop too many
+ items and space in the house runs out the dropped item may just disappear!
 -Monster traps (using the Trapping skill) lack a balanced implementation at
  the moment. (Weak)
 -The massive iron crown of Morgoth must not be worn by non-Kings/Queens!
@@ -513,8 +524,8 @@ Wormy       Wormtongue, Agent of Saruman. He drops great items.
 
 (1) Introduction
 ================
-(1.1) What is TomeNET?
-----------------------
+(1.1) What is TomeNET? (Where can I get the latest sources?)
+------------------------------------------------------------
 It's an extremely advanced online multiplayer rogue-like role-playing game,
 derived from MAngband (Multiplayer-Angband). TomeNET bases on the stories of
 J.R.R. Tolkien mainly "The Lord Of The Rings", hence the name "the Troubles of
@@ -522,8 +533,11 @@ Middle Earth" or alternatively "the Tales of Middle Earth". The final goal in
 TomeNET is to destroy the fallen god Melkor who is known by the name of
 Morgoth, Lord Of Darkness. The official website is http://www.tomenet.net/ .
 Latest version and information also available at http://www.c-blue.de/rogue/ .
+
 The source code is hosted at http://sourceforge.net/projects/pernband,
 module pm. Access it straight via CVS, avoid any snapshot tarballs and stuff.
+The cvs command-line to download the latest sources and files for TomeNET is:
+cvs -d:pserver:anonymous@cvs.pernband.sourceforge.net:/cvsroot/pernband co pm
 
 
 
@@ -769,12 +783,30 @@ weaker but cast spells the better the higher their intelligence is, so
 choosing a race that is very intelligent might be a good idea, while a race
 with high strength and constitution will be fitting a warrior profession.
 Now you will see your six basic attributes STRength, INTelligence, WISdom,
-DEXterity, CONstitution, CHaRisma. You have to determine how important they
-are for you by defining an order. The first attribute you choose will be
-raised most. However, know that all your stats are randomly modified slightly,
-each character that you create even with same race and class will be a bit
+DEXterity, CONstitution, CHaRisma.
+
+Depending on the server configuration, starting at TomeNET version 4.2.0,
+there are 2 alternative stages of character creation that may follow now.
+
+1) The old way - random stats:
+You see the short names for the 6 stats written from the left to the right
+on the very bottom of the screen, and you're asked to choose a stat order.
+You have to determine how important each of the 6 stats is to you by defining
+an order. The first attribute you choose will be raised most.
+However, know that all your stats are randomly modified slightly, each
+character that you create even with same race and class will be a bit
 different. Sometimes you are lucky and get really high attributes at the
-beginning. And sometimes you get more gold to start with.
+beginning. And sometimes you get more gold to start with. If you don't like
+the resulting stats after you finished character creation, suicide and start
+over.
+
+2) The new way since 4.2.0 - chosen stats:
+You see your 6 stats written below each other, followed by a base number (10).
+Right above them you see your free points (30) that you may distribute on the
+stats. Use the numpad (numlock turned on) to navigate and increase or decrease
+your stats until you used up all free points. Hit ESC when you're happy with
+your choice.
+
 Now you can choose a difficulty level you wish to play on. Options are
 n) Normal  f) Fruit bat  g) no Ghost  h) Hard  H) Hellish e) Everlasting
 It is recommended that you choose either n) to play a normal character or g)
@@ -796,14 +828,15 @@ resurrected can be limited.
 
 'Everlasting':
 --------------
-Create an everlasting character for infinite amount of resurrections.
+Create an everlasting character for an infinite amount of resurrections.
 Everlasting characters can become king/queen, but cannot enter the high-score.
-Other character types cannot pick up items that belong to everlasting
+Other character types cannot use items that belong to everlasting
 characters. Non-everlasting and everlasting characters can't be in the same
 party.
-If an everlasting King/Queen dies, (s)he won't be destroyed but lose the King
-status. To regain it, (s)he needs to find another player who hasn't killed
-Sauron and Morgoth yet and team up with him, because those two won't respawn.
+If an everlasting King/Queen dies, he won't be destroyed but lose the
+King/Queen status. To regain it, he needs to find another player who hasn't
+killed Sauron and Morgoth yet and team up with him, because those two won't
+(re)spawn for the everlasting player.
 
 'Unworldly' (no-ghost) and 'Hellish' (no-ghost + hard):
 -------------------------------------------------------
@@ -819,8 +852,8 @@ These are:
 -healing is reduced by 25%
 -AC is reduced by 50%
 -ESP only works within radius of 20 squares
--any speed changes above or below +0 is reduced by 50%
--max number of melee attacks is reduced by 1.
+-any speed changes above or below +0 are reduced by 50%
+-max number of melee attacks per round is reduced by 1.
 
 'Fruit bat':
 ------------
@@ -835,7 +868,7 @@ Hellish (Hard + Unworldly) characters receive 50% bonus on their high score.
 
 Note that race and class will have influence on how much experience you will
 need to gain a new character level. For example, High-Elves already know a
-lot, so experience is hard to gain for them. In fact they will need 100% more
+lot, so experience is hard to gain for them. In fact they will need 130% more
 experience than a human.
 
 Creation of your character is now finished and you are asked to press a key to
@@ -1017,6 +1050,12 @@ low on oil you just type the keys 'F' (to fill) and '1' instead of having to
 search your inventory for the correct slot letter the oil flasks reside at.
 Same goes for other items that aren't used in time-critical situations during
 combat but nevertheless regularly, like scrolls of identify.
+
+If two items have the same inscription, for example Potions of Cure Critical
+Wounds @q1 and Potions of Healing @q1, the item which is above the others in
+your inventory is chosen. So in this example you'd first use up all CCW
+potions, then use the healing potions because CCW are located above healing
+potions in your inventory.
 
 Loading macros automatically:
 -----------------------------
@@ -1219,30 +1258,41 @@ macros need to be rewritten to take account of this question.
 To avoid this, you can directly choose which skill (ie spell-casting) you
 want to use in your macros, by specifying the "ability code"!
 
+[(3.6a) Ability codes:]
 Here is a list of all available ability codes:
-8   Create ammunition (for archers)
-17  Cast monster spell (for mimics)
-43  Check your dodge chance
-47  Set a monster trap
-49  Cast a magic spell / recite a holy prayer
+8       Create ammunition (for archers)
+17      Cast monster spell (for mimics)
+43      Check your dodge chance
+47      Set a monster trap
+49/59   Cast a magic spell / recite a holy prayer (check your skill list
+        which number it is, might differ from these values)
 
+After the ability code has been entered you need to press Enter to confirm it.
+In a macro, this is done by '\r' (one of the so-called escape sequences).
 Example for a macro that directly specifies the ability code to cast the magic
 spell "a) Manathrust" from book "a) Beginner Cantrips" on the closest monster:
 
-m@49aa*t
+\e)m@49\r2a*t
 
 What does that mean?
+\e  ->  escape any pending input request, if there is any
+        (so we don't have to press ESC before casting the spell in case we're
+         currently 'L'ooking around or something)
+)   ->  clear the keyboard buffer (removes all pending keypresses that haven't
+        been processed yet due to slow character speed, so we become instantly
+        ready to perform our mana thrust spell _now_)
 m   ->  invoke an ability
 @   ->  specify an ability code directly
 49  ->  the code for 'cast a magic spell/recite a holy prayer'
-a   ->  cast from book "a)" (Beginner Cantrips)
+\r  ->  press Enter to confirm
+1   ->  cast from book 1 (inscription on the book must be @m1)
 a   ->  cast spell "a)" (Manathrust)
 *t  ->  choose the closest monster as target
 
-(That macro does exactly the same as:
-mbaa*t
+(That macro basically does the same as:
+mb1a*t
 ..assumed that entry 'b)' in the ability menu (invoked by 'm') is
-'b) Cast a spell'.)
+'b) Cast a spell'. Except for escaping and clearing the keyboard buffer.)
 
 
 
@@ -1357,28 +1407,38 @@ If your
         1..19                 decent exp is
                             gained everywhere
         20                           15
-        30                           20
-        40                           33
-        41                           36
-        42                           38
-        43                           41
-        44                           45
-        45                           49
-        46                           54
-        47                           60
-        48                           67
-        49                           77
-------  50                           90   ------
-        60                          110
-        70                          130
-        80                          150
-        90                          170
+        23                           17
+        25                           18
+        28                           22
+        30                           25
+        35                           30
+        40                           40
+        41                           43
+        42                           46
+        43                           50
+        44                           54
+        45                           59
+        46                           65
+        47                           72
+        48                           81
+        49                           92
+------  50                          100   ------
+        55                          110
+        60                          120
+        65                          130
+        70                          140
+        75                          150
+        80                          160
+        85                          170
+        90                          180
+        95                          190
+        98                          196
         99                    no exp gained
 If you are below the optimum depth, your experience gained will decrease.
-The experience gained will be multiplied by 10 / (10 + leveldifference).
-So for 5 levels missing to optimum depth you would get 10 / (10 + 5) = 67% of
-the optimum experience, at 10 levels difference you'd get 50%, 33% at 20, etc.
-At level 69 and higher, no dungeon except for the Nether Realm (see (4.5))
+The experience gained will be multiplied by 2 / (2 + leveldifference).
+So for 1 level missing to optimum depth you would get 2 / (2 + 1) = 67% of
+the optimum experience, at 2 levels difference you'd get 50%, 40% at 3, etc.
+At level 64 and higher, no dungeon except for the Nether Realm (see (4.5))
 will be deep enough to deliver optimal experience and your experience gain
 will slowly start to decrease while you further rise in character levels.
 The Nether Realm is by far the deepest dungeon in the game and allows players
@@ -1471,6 +1531,50 @@ Note that equipment and inventory might be lost forever if you die in a
 forest (within green tree fields) or in mountain regions (brown ^ fields)!
 Last but not least, non-validated players and characters below level 5 don't
 drop their items on death, their loot will vanish forever.
+
+
+
+(3.11)  Malicious effects players can suffer
+--------------------------------------------
+The player can suffer from various effects caused by monsters, traps or
+himself. Against several of these effects the 'Savint Throw' ability helps
+to decide whether it will be resisted or not (especially true for effects
+that are cast by monsters on the player).
+The various effects are:
+
+For 'Fear', 'Blindness', 'Confusion' and 'Paralysis' - please see (5.6).
+
+Hunger  -Gorged         Your speed gets reduced by 10.
+        -Full           While being /afk in 'Full' state or in normal state
+                        (normal = no food state is displayed, the 'Full'
+                        disappeared), your digestion will be stopped, allowing
+                        you to remain afk as long as you wish.
+        -Hungry
+        -Weak (yellow)
+        -Weak (orange)
+        -Weak (red)     You lose hit points and get paralyzed even with FA.
+                        If you hit a bowel cramps trap, you instantly enter
+                        this nutrition state. 'Slow Digestion' will help to
+                        not get insta-paralyzed!
+
+Slowdown        Monsters can cast spells or breathe (inertia) to slow down
+                the player. This effect is temporary. 'Free Action' helps
+                a bit to reduce the effect from inertia breath.
+
+Stun    -Stun           Reduces your martial arts damage (no styles).
+                        Also reduces to-hit and to-dam.
+        -Heavy stun     Reduces your martial arts damage (no styles).
+                        Also reduces to-hit and to-dam greatly.
+        -Knocked out    You cannot perform any action while knocked out,
+                        it leaves your character completely helpless.
+                        Beware! High AC helps to prevent it, see (5.11).
+
+Cut                     Cuts will make you lose HP continuously.
+(Graze, Light cut, Bad cut, Nasty cut, Severe cut, Deep gash, Mortal wound)
+
+Poison  -Poisoned       The player will continuously lose Hit Points.
+                        Resisting poison will prevent the player from getting
+                        poisoned (compare (5.6)).
 
 
 
@@ -1593,14 +1697,14 @@ Tower'), or you might search for it yourself.
 
 While inside a town, you get a good overview including the staircases upwards
 and downwards by invoking the map by pressing SHIFT+'M' (capital M !).
-If you leave a town and explore the wildernis, M will bring up a map showing
+If you leave a town and explore the wilderness, M will bring up a map showing
 you towns and areas that you have explored so far.
 
 After you entered the dungeon, make sure again that you have equipped a light
 source! Note the bright dots around you, these are lightened fields within the
 radius of your light source. To look at your current dungeon/tower level or
 city, press 'L' and use direction keys to navigate on the map.
-Also know that there are interesting dungeons found in the wildernis that are
+Also know that there are interesting dungeons found in the wilderness that are
 not connected to a town at all!
 
 When you enter the dungeon from within the starting town Bree, you will note
@@ -1621,16 +1725,24 @@ There are different types of dungeons. The main five are:
 -Normal dungeons. The main dungeons below the five cities Bree, Minas Anor,
  Gondolin, Lothlorien and Khazad-dum are such regular dungeons.
  Normal dungeons/towers are marked by a light grey < or > symbol.
--No-recall. These dungeons don't allow you to use Word-of-Recall nor
+-NO_RECALL. These dungeons don't allow you to use Word-of-Recall nor
  probability travel to change the level. The staircases are the only way.
  Sending items via telekinesis to a player who is currently in a no-recall
  dungeon/tower will only work if both players are on the same dungeon floor.
  Ghosts of dead players can still float up/down.
  No-recall dungeons/towers are marked by a light red < or > symbol.
--No-up / Force-down. These dungeons won't allow you to go upwards, same as
- ironman, just without the penalty of permanent ghost-death.
- Ghosts of dead players can float upwards.
+-NO_RECALL_DOWN. You may not recall into this dungeon/tower. You can use
+ recall to get out of it though. Probability travel works towards the surface
+ but not the towards the dungeon bottom/tower top. To Telekinesis the same
+ restrictions apply as for NO_RECALL. Ghosts may float freely.
+ Staircases are yellow.
+-NO_UP. These dungeons won't allow you to go upwards, similar to ironman,
+ just without the penalty of permanent ghost-death. You are allowed to use
+ Word-Of-Recall as well! Ghosts of dead players can float upwards.
  No-up dungeons/towers are marked by a red < or > symbol.
+-FORCE_DOWN. Same as NO_UP, but you can only recall at the bottom of the
+ dungeon, similar to ironman.
+ Force-down dungeons/towers are marked by an orange < or > symbol.
 -Ironman. Ironman dungeons or towers won't allow you to recall or to use
  staircases that lead upwards! If you die in such a dungeon or tower you won't
  turn into a ghost either but get destroyed completely.
@@ -1642,7 +1754,7 @@ There are different types of dungeons. The main five are:
 -Hellish. Players suffer no-ghost deaths inside hellish dungeons.
  Even if they're everlasting.
  Hellish dungeons/towers are marked by a fire-like flickering < or > symbol.
--No-death. The Training Tower in Bree has this flag. Players who die inside a
+-NO_DEATH. The Training Tower in Bree has this flag. Players who die inside a
  no-death dungeon won't turn into a ghost if they 'die' but just be teleported
  back to town! They still lose experience though.
  No-death dungeons/towers are marked by a green < or > symbol.
@@ -1652,7 +1764,7 @@ staircase colour. So a hellish ironman dungeon has hellish-looking staircases.
 Jail:
 Note that jails (if the server has one) don't allow any type of teleportation,
 nor will you turn into a ghost if you get killed there, instead you will get
-destroyed completely. Same as with 'iron man dungeons'.
+destroyed completely. Same as with 'ironman dungeons'.
 A jail usually has an ironman tower inside.
 
 Sometimes you might find ruins of old staircases that don't lead to any
@@ -1777,16 +1889,16 @@ ranged attacks. Always a nasty surprise..
 
 Here is a list of towns and their corresponding local dungeons:
 
-Town        |Depth/Level|   Local dungeons  |   Depth/Level     |Required
-            |of the town|                   |   of the local    |player level
-            |itself     |                   |   dungeon         |for entering
-------------+-----------+-------------------+-------------------+------------
-Bree        |   0 ft/  0| Training Tower    | +50..+400/ 1..10  |    1
-            |           | Barrow-Downs      |  50..1750/ 1..35  |    1
-Gondolin    |1000 ft/ 20| Mordor            |1700..3300/34..66  |   15
-Minas Anor  |2000 ft/ 40| Paths of the Dead |2000..3500/40..70  |   20
-Lothlorien  |3000 ft/ 60| Angband           |3350..6350/67..127 |   30
-Khazad-dum  |4000 ft/ 80| Angband           |3350..6350/67..127 |   30
+Town        |Depth/Level|   Local dungeons    | Depth/Level      |Required
+            |of the town|                     | of the local     |player level
+            |itself     |                     | dungeon          |for entering
+------------+-----------+---------------------+------------------+------------
+Bree        |   0 ft/  0|The Training Tower   | +50..+400/ 1..10 |    1
+            |           |Barrow-Downs         |  50..1750/ 1..35 |    1
+Gondolin    |1000 ft/ 20|Mordor               |1700..3300/34..66 |   15
+Minas Anor  |2000 ft/ 40|The Paths of the Dead|2000..3500/40..70 |   20
+Lothlorien  |3000 ft/ 60|Angband              |3350..6350/67..127|   30
+Khazad-dum  |4000 ft/ 80|Angband              |3350..6350/67..127|   30
 
 To enter a dungeon your character must have the displayed minimum level.
 Otherwise you'll get a message like this "Suddenly you're grasped by an
@@ -1803,20 +1915,20 @@ Dungeon                         |   Depth/Level         | Min. required player
                                 |                       |   level to enter
 --------------------------------+-----------------------+---------------------
 Death Fate                      |   50..  50/  1..1     |        1
-Halls of Mandos                 |   50..4900/  1..98    |        1
-Orc Cave                        |  500..1100/ 10..23    |        3
+The Halls of Mandos             |   50..4900/  1..98    |        1
+The Orc Cave                    |  500..1100/ 10..23    |        3
 Mirkwood                        |  550..1650/ 11..34    |        5
 The Old Forest                  |  650..1250/ 13..26    |        5
 The Helcaraxe                   | 1000..2000/ 20..41    |       10
 The Sandworm lair               | 1100..1500/ 22..30    |       12
-Heart of the Earth              | 1250..1850/ 25..37    |       10
-Maze                            | 1250..1900/ 25..38    |       15
+The Heart of the Earth          | 1250..1850/ 25..37    |       10
+The Maze                        | 1250..1900/ 25..38    |       15
 Cirith Ungol                    | 1250..2050/ 25..51    |       10
 The Land Of Rhun                | 1300..2050/ 26..41    |       13
 Moria                           | 1500..2550/ 30..50    |       15
 The Small Water Cave            | 1600..1750/ 32..35    |       15
 Submerged Ruins                 | 1750..2550/ 35..51    |       15
-Illusory Castle                 | 1750..2650/ 35..52    |       10
+The Illusory Castle             | 1750..2650/ 35..52    |       10
 The Sacred Land Of Mountains    | 2000..2250/ 40..45    |       20
 Erebor                          | 2500..3150/ 50..61    |       35
 Dol Guldur                      | 2850..3550/ 57..71    |       28
@@ -1825,7 +1937,7 @@ Nether Realm                    | 8300..9850/166..196   |       40 (*)
 
 The Europe server usually has one or several 'ironman' dungeons (see (4.8)),
 their entrances (stairs) waiting to be discovered by some bold explorers.
-Such custom dungeons appear as 'Wildernis' in the "Recall depths and Towns"
+Such custom dungeons appear as 'wilderness' in the "Recall depths and Towns"
 list, the minimum required character level to enter is usually 0.
 
 (*) To enter the Nether Realm a player must carry the 'King'/'Queen' title,
@@ -1927,17 +2039,22 @@ The feelings are as follows:
 "You feel an imminent danger!" ->   This dungeon level is *way* higher than
                                     your character level.
 "You feel a suppressive air..." ->  You cannot use magic on this level!
+                                    (NO_MAGIC, +10% experience bonus!)
 "You have a feeling of peace..." -> You cannot use genocide on this level!
-"You lose all sense of direction..." -> This means you won't be able to
-                                        auto-map this dungeon, meaning that
-                                        you won't remember the dungeon layout
-                                        but you're only able to see your
-                                        nearby surroundings within your
-                                        character's radius of sight.
+                                    (NO_GENO, +5% experience bonus!)
+"You lose all sense of direction..." -> You won't be able to auto-map this
+                                        dungeon, meaning that you won't
+                                        remember the dungeon layout.
+                                        You're can only see your nearby
+                                        surroundings within your character's
+                                        line of sight.
+                                        (NOMAP, +15% experience bonus!)
 "You feel like a stranger..." ->    You cannot use magic mapping nor
                                     clairvoyance here!
+                                    (NO_MAGIC_MAP, +5% experience bonus!)
 "The walls here seem very solid." ->    You cannot destroy the dungeon
                                         structure on this level.
+                                        (NO_DESTROY, +5% experience bonus!)
 Vaults:
 Vaults can also bear a very dangerous feature that is displayed as dark grey
 feeling as soon as you are about to enter the vault:
@@ -1953,8 +2070,8 @@ As soon as you leave such a no-teleport-vault you'll receive this feeling:
 (4.9) Navigating on maps
 ------------------------
 The world map is divided into 64 x 64 world map sectors. Each of these sectors
-has a size of 4 x 4 smaller sectors (screens). Dungeon levels or tower floors
-also have a size of 4 x 4 sectors, same as 1 world map sector. Monsters cannot
+has a size of 5 x 5 smaller sectors (screens). Dungeon levels or tower floors
+also have a size of 5 x 5 sectors, same as 1 world map sector. Monsters cannot
 cross world map sector borders! Keep this in mind while travelling.
 
 You can scroll around the level within the main window by pressing 'L'. This
@@ -1966,7 +2083,7 @@ need help.
 
 You can press 'M' to invoke a map that gives you a larger overview.
 If you press 'M' in a dungeon, tower or a town, you'll see the complete 4 x 4
-sectors. If you invoke the map while you're in the wildernis outside of towns,
+sectors. If you invoke the map while you're in the wilderness outside of towns,
 you will see a part of the 64 x 64 world map, centered around your current
 world map sector, displaying towns (yellow T), the sea (blue %), mountains (^)
 and other information.
@@ -1982,8 +2099,8 @@ Example: If it shows '-550ft' that means you've descended to the 11th level
 of the dungeon. The deeper you go, the more nasty monsters will show up.
 Negative depths in dungeons and positive heights in towers mean identical
 monster difficulties. Example: In Bree there's a tower and a dungeon. In the
-9th tower floor on 450ft you will usually find the same monsters as in the
-dungeon on level -450ft (9th dungeon level).
+2nd tower floor on 100ft you will usually find the same monsters as in the
+dungeon on level -100ft (2nd dungeon level).
 
 
 
@@ -1999,6 +2116,9 @@ The house doors can have different colours to you:
 -a grey door indicates that this house is owned by someone and you don't have
  access to it.
 If you forgot which houses you own, type ~6 to see a list of your houses.
+
+Items on the floor within a house don't form piles! If you drop too many
+items and space in the house runs out the dropped item may just disappear!
 
 
 
@@ -2099,7 +2219,7 @@ remember currently selected target.
 To automatically pick up your arrows simply inscribe them:  !=
 Ranged weapons can also auto-retaliate, that means you will fire automatically
 at targets on sight. To make your ranged weapon behave like that, inscribe the
-bow:  @O  (the letter 'O').
+_ammunition_ (not the bow):  @O  (the letter 'O').
 However, auto-retaliating with a ranged weapon works only if the enemy stands
 on an adjacent field, so it's pretty useless :)
 
@@ -2241,19 +2361,19 @@ Melee Weapon|       1               2               3                   6
 Ranged Weap.|       1               1.4             1.8                 3
 Martial Arts|       1               1.33            1.67                2.67
 
-Slaying     | Dice multiplier
-------------|----------------
-Slay Animal |       2
-Slay Giant  |       3
-Slay Undead |       3
-Slay Troll  |       3
-Slay Orc    |       3
-Slay Dragon |       3
-Slay Demon  |       3
-Slay Evil   |       2
-Kill Undead |       5
-Kill Dragon |       5
-Kill Demon  |       5
+Slaying     | Dice multiplier | Description
+------------|-----------------------------------------------------------------
+Slay Animal |       2         | It is esp. deadly against natural creatures.
+Slay Giant  |       3         | It is especially deadly against giants.
+Slay Undead |       3         | It strikes at undead with holy wrath.
+Slay Troll  |       3         | It is especially deadly against trolls.
+Slay Orc    |       3         | It is especially deadly against orcs.
+Slay Dragon |       3         | It is especially deadly against dragons.
+Slay Demon  |       3         | It strikes at undead with holy wrath.
+Slay Evil   |       2         | It fights against evil with holy fury.
+Kill Undead |       5         | It is a great bane of undead.
+Kill Dragon |       5         | It is a great bane of dragons.
+Kill Demon  |       5         | It is a great bane of demons.
 
 Giants, Undead, Trolls, Orcs, Dragons, Demons are all 'Evil'.
 
@@ -2451,7 +2571,7 @@ Chaos           Chaos attacks can also have nasty side-effects if you don't
                 -Drain some experience. Resisting 'Nether' will also prevent
                  this.
                 Resisting chaos will also make you resist confusion attacks.
-                Resistance will cut down damage to 6/9..6/15.
+                Resistance will cut down damage to 6/7..6/12.
                 Breath damage is monster HP/6. Chaos breath caps at 600.
                 Raw chaos invocation (chaos ball) does (level*4)+(10d10) dam.
 Light           Light effects can blind you if you don't resist it.
@@ -2478,6 +2598,7 @@ Disenchantment  This attack does massive damage and can also disenchant your
 Irresistable/extremely powerful effects:
 Force           Pure force impact (BR_WALL). Raw damage is monster HP/6.
                 Force impact (breath only) is capped at 200 and irresistable.
+                If you lack sound resistance you will get stunned.
 Inertia         Inertia attacks will slow you down a lot. There is no 'Inertia
                 resistance' but 'Free Action' will slightly reduce the
                 slowdown duration.
@@ -2685,8 +2806,7 @@ LIFE ('It affects your hit points')
         Sword of life (+2) increases your HP by 20%.
         LIFE items _add_ to each other, they aren't multiplied.
 AGGRAVATE ('It aggravates nearby creatures')
-        Wakes up all monsters in whose radius of awareness you are, hastes
-        monsters in your line of sight.
+        Wakes up all monsters in whose radius of awareness you are.
 LUCK ('The item increases your luck')
         If you are lucky, your chance to find better items increases.
         Luck caps at 40, having higher bonus won't help any more.
@@ -2700,16 +2820,18 @@ ANTIMAGIC ('Antimagic field')
         applies to nearby enemy spellcasters and other players. The
         field has less influence on _party members_ who try to cast.
         The radius is approximately the field power / 15. The field
-        power is the chance of suppressing a spell. It caps at 95%.
+        power is the chance of suppressing a spell. It caps at 80%.
 BLESSED ('It has been blessed by the gods')
         These weapons resist cursing. Priests can use blessed weapons
         without penalties, even if they are not 'hafted' (blunt).
 VAMPIRIC ('The weapon drains life from your victim')
         Drains life from your victim, which you gain as hit points.
         For details see '(5.15) Vampirism'.
-VORPAL ('Sharp' weapons)
-        Has a chance that weapon dice result is multiplied on hitting,
-        you'll see 'Your weapon cuts deep into your enemy'.
+VORPAL ('Sharp' weapons, 'It is very sharp and can cut your foes.')
+        Has a chance that the weapon damage dice result is multiplied on
+        hitting, you'll see 'Your weapon cuts deep into your enemy'.
+        The multiplication is done after brand/slay effects have been applied,
+        so brand/slay effects will increase VORPAL efficiency.
 CHAOTIC ('Your weapon produces chaotic effects')
         On hitting, you have a 50% chance to do one of the following:
         a) drain life (VAMPIRIC) (very likely)
@@ -2731,7 +2853,7 @@ CHARGING (of Charging) ('It regenerates its mana faster.')
         This magic device (rod) will take only 1/3 of the usual time to
         fully recharge.
 FAST_CAST (of Quickness) ('It can cast spells faster')
-        Magic device can be used twice as often over a period of time.
+        Using this magic device will only consume HALF a turn of your time.
 Istari (of the Istari)
         Combination of CAPACITY, CHARGING, CHEAPNESS and FAST_CAST.
 FUEL_LITE ('It provides light radius when fueled')
@@ -2772,6 +2894,11 @@ Dark Sword      Dark Swords have a so-called 'antimagic field', which
                 50-3-4 = 43% chance of interrupting spellcasters.
                 The radius of the antimagic field is several fields, getting
                 smaller if the chance is smaller than 50%.
+                Dark Swords never give more than 50% AM, even if tohit and
+                todam boni added together result in a negative number.
+                They also never give 'negative antimagic', 0% AM is the
+                minimum, even if tohit+todam are greater than its AM.
+                AC boni on Dark Swords won't affect the antimagic field.
 Magic Arrows    Those will return into your quiver magically, so you need only
                 one of them really. Same goes for artifact ammunition of any
                 type. (Magic Arrows can be destroyed by fire or acid though.)
@@ -2780,7 +2907,7 @@ Shadow Cloak    Makes you hard to spot for other players, regarding
                 b) them being able to look at your current equipment.
                 Shadow Cloaks work especially well to further disguise
                 yourself while being invisible vs. someone who is able to see
-                invisible creatures/players.
+                invisible creatures/players. See '(5.16) Invisibility'.
 
 Potions
 --
@@ -2801,20 +2928,22 @@ Cure Serious Wounds
 Cure Critical Wounds
                 Cures blindness, cuts, confusion, stun; heals 8d8 HP.
 Healing         Cures blindness, cuts, confusion, stun, poison; heals 300 HP.
-*Healing*       Cures blindness, cuts, confusion, stun, poison; heals 800 HP.
+*Healing*       Cures blindness, cuts, confusion, stun, poison; heals 700 HP.
 Restore Mana    Restores 500 MP.
 *Restore Mana*  Full mana restoration.
 Curing          Heals some HP, removes blindness/confusion/stun, cures
-                poison/cuts/paranoia (hallucinations), heals some insanity,
+                poison/cuts/hallucinations, heals some insanity,
                 satisfies your hunger, restores all your stats (except exp).
 Life            Heals 5000 HP, removes blindness/confusion/stun, cures
-                poison/cuts/paranoia (hallucinations), cures Black Breath,
+                poison/cuts/hallucinations, cures Black Breath,
                 restores all your stats (except experience).
 Experience      Gives you additionally half your experience plus 10,
                 or 100,000 experience points depending on what is less.
 Self-Knowledge  Tells you everything about yourself :)
 chauve-souris   Turns you into a fruit bat. Quaff another one to be restored
                 to your original form. A wand/rod of polymorph might help too.
+                Make sure you don't resist nexus if someone tries to polymorph
+                you back. Oh, and..undesired side-effects _might_ occur.
 Enlightenment   Illuminates and maps the whole level and reveals all objects.
 *Enlightenment* Raises your intelligence and wisdom, detect treasures,
                 objects, secret doors, traps. Identifies all items. Does the
@@ -2836,6 +2965,11 @@ Rumour          Entertains the audience.
 Life            Resurrects another player's ghost if standing on a directly
                 adjacent field to you when you read it. Does not work inside
                 vaults.
+                Also restores your experience points if they were drained.
+Aggravate Monsters
+                Wakes up all monsters in whose radius of awareness you are.
+                Hastes all monsters in your line of sight (same as SHRIEK
+                spell or traps of aggravation).
 Word of Recall  Use it to quickly travel from the town to a dungeon or tower,
                 it can also be used to travel between towns or on the worldmap
                 in general. See (0.3) Important Inscriptions.
@@ -2896,9 +3030,9 @@ Fire/Ice/Chaos  Fires a ball of the according type around you. Make sure you
                 resist it or you will take damage too.
 Lottery         This might be your chance today to win the Jackpot!
 Vermin Control  Stops breeders on the map from multiplying.
-Wildernis Mapping   Maps the wildernis area around the worldmap sector you are
-                    currently within. These scrolls also sometimes carry an
-                    inscription telling the location of a hidden dungeon.
+wilderness Mapping  Maps the wilderness area around the worldmap sector you
+                    are currently within. These scrolls also sometimes carry
+                    an inscription telling the location of a hidden dungeon.
 Cancellation    Don't use it! It can heavily disenchant magic items in your
                 inventory. It hasn't got a useful purpose.
 Parchments      These contain informations about the game, they won't
@@ -2964,9 +3098,16 @@ Mummy Wrapping      Reduces your charisma slightly, and prevents other players
                     infected by black breath.
 Tarpaulin           Prevents your inventory from taking water damage on
                     crossing water fields.
+Picklock            Improves your disarm ability.
+Money Belt          Prevents thieves from stealing your money.
+Device of theft prevention
+                    Prevents thieves from stealing from you.
+Climbing set        Allows you to travel over mountain fields.
 Fortune Cookie      Gives you a line of wisdom.
 Sprig of Athelas    Eat this one to cure Black Breath,
                     also cures poison/stun/cuts.
+Mushrooms of paranoia/cure paranoia
+                    Cause/remove fear, cause/reduce hallucinations.
 Firestones          Eath them only if you are a Thunderlord (Dragonrider).
                     They will randomly boost your powers for a short time.
                     See (5.9) for firestone details.
@@ -3109,7 +3250,7 @@ EAT_xxx         DEX,stealing skill.
                 Won't help against
                 EAT_FOOD/EAT_LITE.
 UN_BONUS        disenchantment.
-UN_POWER        none.(drains charges)
+UN_POWER        none.(drains charges/energy from your items)
 TIME            time.
 DISEASE         poison. This attack
                 can also decrease
@@ -3136,10 +3277,19 @@ Black Breath!
 
 (5.13) Earthquakes
 ------------------
-Earthquakes deals 300 damage if you cannot evade the falling rocks and
-shifting ground. Depending on the number of unchanged adjacent fields to the
-player there is a chance to evade and take much less damage. Earthquakes can
-also stun you.
+Earthquakes will cause ceilings to collapse and the ground to shift and crack,
+burying items, players and monsters and inflicting a lot of damage.
+All fields in a certain radius around the epicentre have a certain chance to
+be filled with rocks, to be cleared from previous obstacles (walls) and turn
+into empty floor fields, or to remain untouched and unchanged.
+
+Players don't take damage from their 'own' earthquakes, caused by their
+equipment or items (weapons of earthquakes, scrolls of *destruction*).
+
+Earthquakes can deal up to 300 damage if you cannot evade the falling rocks
+and shifting ground: Depending on the number of unchanged (by the earthquake)
+empty fields that are adjacent to your character, there is a chance to 'evade'
+and take much less damage or even none at all. Earthquakes can also stun you.
 
 
 
@@ -3154,13 +3304,14 @@ curse is broken, however.
 If you equip an unidentified item and it carries a curse your character will
 notice 'Oops, it feels deadly cold!'.
 
-There are five different types of curses:
+There are different types of curses:
 CURSED          can be broken by a regular 'remove curse'.
                 Item cannot be taken off until the curse is broken.
 HEAVY_CURSE     requires a strong '*remove curse*' to be broken.
                 Item cannot be taken off until the curse is broken.
 PERMA_CURSE     This curse can never be broken.
-                Item can never be taken off again!
+                Item can never be taken off again! Mimics polymorphing into a
+                form that cannot wear the specific item won't succeed either.
 CURSE_NO_DROP   these items cannot be dropped from inventory as long as the
                 curse isn't broken. CURSE_NO_DROP occurs together with
                 CURSED or HEAVY_CURSE or PERMA_CURSE.
@@ -3172,10 +3323,13 @@ AUTO_CURSE      occurs together with CURSED or HEAVY_CURSE.
                 broken. If you had the item equipped, don't take it off but
                 (d)rop it to the ground right from your equipment! Otherwise
                 it will recurse itself.
-TY_CURSE        No effect, except for lowering the items value by 15000 Au.
+TY_CURSE        Randomly drains stats sometimes, even if the item is uncursed.
+                (TY_CURSE will stay, even if the 'normal' curse is broken!)
+                Lowers the items value by 15000 Au.
                 ("It carries an ancient foul curse.")
-DG_CURSE        No effect, except for greatly lowering the items value by
-                25000 Au.
+DG_CURSE        Rarely summons a random monster on you, even if uncursed.
+                (DG_CURSE will stay, even if the 'normal' curse is broken!)
+                Greatly lowers the items value by 25000 Au.
                 ("It carries an ancient morgothian curse.")
 
 If 'CURSED' and 'HEAVY_CURSE' occurs on a weapon or armour piece, the curses
@@ -3194,24 +3348,69 @@ Mimics who use a vampire form will also get a vampiric 'brand' on their melee
 attacks (see (6.7)).
 
 Vampiric life draining heals you with a part of the damage you afflicted on
-your target! The more damage you deal and the more attacks per round you have,
-the more life you will leech back. There's a maximum amount of HP which you
-can leech from a victim per round (usually around 50..100).
+your target each hit! The more damage you deal and the more attacks per round
+you have, the more life you will leech back. There's a maximum amount of HP
+which you can leech from a victim per round (usually around 50..100).
 
 The best case is to have vampiric flag on a weapon, that will drain at maximum
 efficiency. If you use vampiric equipment like gloves, they will be a bit less
-efficient than an actual vampiric weapon, meaning that you won't leech _every_
-time you hit (although _if_ you do, then the leeched amount is the same).
-If you use ranged weapons, it doesn't matter which part is vampiric, the bow
-or the ammunition. It won't increase your over all life leeching if both are
-vampiric.
+efficient than an actual vampiric weapon, meaning that you won't leech on
+_every_ hit (the amount of leeched life per hit is not penalized though).
+For ranged weapons it doesn't matter which part is vampiric, the bow or the
+ammunition. It won't increase your over all life leeching if both are
+vampiric either.
 
 In general, vampiric flags don't stack from multiple items! Just the item that
 fits the situation better (weapons) overrides the weaker ones (non-weapons).
-Note that vampirism from mimicked forms works only works on melee combat and
-has 50% to go off (except for vampire bat which has 100%) due to a half of
-vampires' attacks being normal hits and the other half being biting which
-drains hit points.
+Note that vampirism from mimicked forms only works on melee combat and has a
+50% chance to go off (except for vampire bat which has 100%) due to a half of
+vampires' attacks being normal hits and the other half being biting (which
+does the actual leeching!).
+
+
+
+(5.16) Invisibility
+-------------------
+A player who is invisible is harder to spot for monsters, making them move
+eratically instead of directly targetting the player. This also helps against
+casters, archers or breathers who won't be able to target you as well (often)
+as they usually could. Being invisible costs your body a lot of effort,
+resulting in getting hungry quickly.
+
+Invisibility won't work at all on monsters that..
+        -are invisible too.
+        -special quest monsters (Sauron, Morgoth).
+        -are Dragonriders, they have ESP.
+        -nonliving monsters with empty mind (not using optical senses).
+
+All other monsters are randomly affected by the player's invisibility,
+meaning that they will only sometimes be able to spot him (they will see the
+player kind of 'flickering').
+The closer a monster is, the better its chances to spot the player.
+Some monsters have better chances to spot the player, depending on
+        -distance to the player,
+        -level of the player (higher level = harder to spot),
+        -monster class (Dragons, demons, undead, animals, never sleeping
+                        monsters and smart monsters are better at it;
+                        orcs, trolls, stupid monsters are worse),
+        -the vision power of the monster,
+        -the level of the monster,
+        -player carrying a light source, doubles the chance of spotting him,
+        -player wearing an aggravating item, further triples the chance.
+
+Invisibility also affects other players:
+If another player is invisible and of higher level than you..
+        -you can see him if you can see invisible and he's not wearing a
+         shadow cloak;
+        -otherwise he'll be completely invisible to you.
+If another player is invisible and not of higher level than you..
+        -you can see him easily if you can see invisible and he's not wearing
+         a shadow cloak;
+        -you see him 'flicker' if you lack seeing invisible or if he's wearing
+         a shadow cloak (or both). He will fade in and out if your sight.
+         The lower his level, the more often you will be able to see him.
+         If you want to look at his equipment then you'll need some timing,
+         might take several tries.
 
 
 
@@ -3285,27 +3484,30 @@ taken back.
 Here is a list of the available skills and brief explanations to each one:
 Note that not every skill is available to every profession (class).
 
-+Combat                         Ability to pseudo-ID items: You can sense if
-                                items are terrible, worthless, cursed,
-                                average, good, excellent or special. At the
-                                beginning you will only feel 'cursed' or
-                                'good'.
-                                Raise combat skill over 10 to get
-                                more distinctive feelings. Lets you wear
-                                heavier armour without spell point penalties.
-                                A powerful combattant (combat>30) senses the
++Combat                         Lets you wear heavier armour without spell
+                                point penalties.
+                                Ability to pseudo-ID items: You can sense
+                                if items are terrible, worthless, cursed,
+                                average, good, excellent or special.
+                                At the beginning you will only feel 'cursed'
+                                or 'good'.
+                                Raise combat skill to at least 11 to get
+                                more distinctive feelings about melee weapons
+                                and armour.
+                                A powerful combattant (combat 31) senses the
                                 use of ranged weapons and ammunition much
                                 better, even if (s)he's not comfortable with
                                 archery.
-                                A very powerful one (combat>40) can also sense
+                                A very powerful one (combat 41) can also sense
                                 the use of magical items much better.
                                 Increases Fear/Stun/Confuse duration of the
                                 target (if attacking causes those).
-                                Slightly increases to-hit bonus for all weapon
-                                types and to-damage bonus for melee weapons.
+                                Slightly increases melee and ranged to-hit
+                                bonus, and melee to-damage bonus.
     +Weaponmastery              Improves your Fighting ability.
-                                Slightly increases melee to-dam and to-hit.
-                                Increases your chance to score critical hits.
+                                Slightly increases melee to-dam and to-hit for
+                                armed combat. Increases your chance to score
+                                critical hits in armed combat.
         +Sword-mastery          Greatly improves to-dam/to-hit with swords.
                                 At 25 and 50 you will get +1 blow per round.
             .Critical-strike    Ability to score 2x/3x/4x damage hits.
@@ -3313,9 +3515,6 @@ Note that not every skill is available to every profession (class).
                                 swords, up to 10.0 lb. It improves the chance
                                 to score critical hits and adds to crit bonus
                                 from your equipment.
-                                NOTE:
-                                You can always score critical hits,
-                                independent on weapon class and crit-skill.
                                 The lighter a weapon is the more likely you
                                 will score a crit. Weight cap is 10.0 lb,
                                 above this the chance to hit your target
@@ -3325,6 +3524,10 @@ Note that not every skill is available to every profession (class).
                                 is better with lighter weapons, the damage of
                                 your critical strike -IF you manage to execute
                                 one- is higher if your weapon is heavier.
+                                NOTE:
+                                You can always score critical hits,
+                                independent on weapon class and crit-skill.
+                                The probability will be small though.
         .Axe-mastery            See Sword-mastery
         .Hafted-mastery         See Sword-mastery
         .Polearm-mastery        See Sword-mastery
@@ -3337,7 +3540,7 @@ Note that not every skill is available to every profession (class).
                                 50 in archery grants +1 'extra might',
                                 increasing your launcher's multiplier by 1.
                                 Lets you pseudo-id ranged weapons and
-                                ammunition easier if raised over 10.
+                                ammunition easier if raised to at least 11.
         .Sling-mastery          Imcreases hit chance with slings.
                                 At 16,32,48 you will get +1 additional shot
                                 per round each.
@@ -3371,7 +3574,7 @@ Note that not every skill is available to every profession (class).
 +Magic                          Improves your spellcasting abilities and
                                 increases your mana capacity.
                                 Lets you pseudo-id magic items, potions and
-                                scrolls easier if raised over 10.
+                                scrolls easier if raised to at least 11.
     .Magic-device               Ability to use magic devices (wands,rods,etc.)
                                 without failing. Also increases their power.
     .Spell-power                Increases the power of learned spells by
@@ -3421,17 +3624,20 @@ Note that not every skill is available to every profession (class).
                                 steal from a shop. During this time it's
                                 basically impossible to steal, and you will
                                 get BAD prices (blackmarket-style) in shops.
+                                Your blacklist timer won't decrease while you
+                                are /afk!!.
                                 Your chance to steal an item from a shop
                                 depends on your dexterity, your stealing skill
-                                and the price and weight of the item.
+                                and the price and weight of the item. Stealth
+                                and invisibility are also helpful.
                                 For example it's nearly impossible to steal a
                                 large piece of wood without the store owner
                                 noticing it, although it's not worth much :)
                                 There's always a minimum chance of 5% to fail!
                                 You need to be at least level 10 to steal.
-                                The chance to successfully steal an item is
-                                usually never smaller than 5%, even if your
-                                stealing skill is 0 and your dexterity low.
+                                You have a chance to successfully steal an
+                                item even if your stealing skill is 0 and your
+                                dexterity low. Everyone could try to steal..
                                 If a shop offers an item more expensive than
                                 it actually is (black market) that has no
                                 effect on stealing. The 'normal' item value
@@ -3439,19 +3645,16 @@ Note that not every skill is available to every profession (class).
                                 It's more difficult to steal from special
                                 stores (expensive black market and especially
                                 rare footwear/jewellry/secret black market).
-                                The calculation for successful stealing is
-                                very complicated. Some random examples:
-                                Speed pot, dex 18/70, skill 20 -> 70% chance.
-                                Heal pot, dex 18/50, skill 25 -> 65% chance.
-                                Massive Piece of Wood, dex 18/140, skill 40
-                                -> 15% (it's *heavy*, 250.0 lb).
                                 It's a good idea to wear as many +DEX items
                                 as possible while trying to steal from a shop.
     +Dodging                    Ability to evade attacks. Doesn't work well
                                 if you wear heavier armour.
         .Calmness               Ability to not get hindered by enemies.
-                                For example adjacent foes can interfere if
-                                you try to shoot with a bow.
+                                Adjacent foes can interfere if you try to..
+                                -shoot with ranged weapons
+                                -use a void jumpgate
+                                -invoke a mimic spell
+                                -set a monster trap.
         .Interception           Ability to interfere with adjacent enemies.
                                 Can prevent them from teleporting, casting,
                                 summoning, running away. The chance to
@@ -3476,11 +3679,11 @@ Note that not every skill is available to every profession (class).
                                  50%    for teleporting / phasing (blinking)
                                 Note: While ball/bolt attacks are spells,
                                       breathing is NOT.
-                                Interception chance caps at 90% (cap is
+                                Interception chance caps at 80% (cap is
                                 applied after all other penalties have been
                                 factored in, at the very end of calculation).
 +Necromancy                     Drains life from killed monsters
-                                (the skill level in HPs from each kill).
+                                (higher monster level and skill -> more HP).
     .Aura power                 Increases the power of your auras.
     .Aura of Fear               Monsters that hit you are stroke by fear.
     .Shivering Aura             Monsters that hit you are stunned.
@@ -3491,18 +3694,30 @@ Note that not every skill is available to every profession (class).
                                 attempts from other casters to cast spells or
                                 summon monsters. This effect is cumulative
                                 with the anti-magic field of a Dark Sword.
-                                It's capped at 90% chance of interrupting
+                                It's capped at 80% chance of interrupting
                                 enemy spells.
                                 Note that as soon as you invest a point into
                                 this skill you won't be able to use any magic
                                 wands,staves or rods anymore!
-                                Further, this skill also slightly affects
-                                your fellow party members (casters).
-                                Each point in Antimagic adds 1% to your total
-                                AM chance, so the max gain is +50% from skill.
+                                This skill also slightly affects your fellow
+                                party members (casters).
+                                Each point in Antimagic adds 0.8% to your
+                                AM chance, so the max gain is +40% from skill.
                                 Note: While ball/bolt attacks are spells,
                                       breathing is NOT.
-+Health                         Increases your hit point regeneration rate.
+                                Antimagic will also reduce the duration of all
+                                timed magic effects on you, be it good or bad.
+                                Warriors that specialize in Antimagic are
+                                called 'Unbelievers' (The Anti-magic powers
+                                result from their strong disbelief in magic).
++Health                         Increases your hit point regeneration rate:
+                                (skill_level * 2)% chance to regenerate 1,5x
+                                the normal amount of HP per turn (stacks with
+                                REGEN items).
+                                Also helps you to recover from temporary stats
+                                drain, hallucination, blindness, paralysis,
+                                confusion, slowness, poison, stun and cuts
+                                faster.
                                 If you spend 10 points into Health, your
                                 sanity will be displayed as a bar.
                                 At 20 points you'll get the percentage
@@ -3635,14 +3850,15 @@ Half-Elf
     Half-elves tend to be smarter and faster than humans, but not as strong.
     Half-elves are slightly better at searching, disarming, saving throws,
     stealth, bows, and magic, but they are not as good at hand weapons.
-    Half-elves do not receive any intrinsic abilities.
+    Half-elves resist light intrinsically.
     They get bonus on 'Bows-Mastery' and 'Trainig'.
 Elf
-    Elves resist light effects intrinsically. Elves are better magicians then
-    humans, but not as good at fighting. They tend to be smarter and faster
-    than either humans or half-elves and also have better wisdom. Elves are
-    better at searching, disarming, perception, stealth, bows, and magic,
-    but they are not as good at hand weapons.
+    Elves resist light effects intrinsically and see invisible creatures.
+    Elves are better magicians then humans, but not as good at fighting.
+    They tend to be smarter and faster than either humans or half-elves and
+    also have better wisdom.
+    Elves are better at searching, disarming, perception, stealth, bows, and
+    magic, but they are not as good at hand weapons.
     Elves get bonus on 'Bows-Mastery', 'Magic', 'Stealth', 'Dodging',
     'Calmness' and 'Sneakiness'.
 Hobbit
@@ -3751,7 +3967,7 @@ Thunderlord (also known as Dragonrider)
     fire at 10, cold at 15, acid at 20 and electricity at 25. At level 30
     they learn how to fly. Thunderlords are not very wise, and need a very
     long time to gain experience. They need to eat often. Thunderlords have
-    feather falling from birth. See (5.9) for firestone details.
+    feather falling (levitation) from birth. See (5.9) for firestone details.
     They receive bonus on 'Polearm-Mastery', 'Aura of Fear' and the magic
     schools 'Conveyance' and 'Fire'.
 
@@ -3785,7 +4001,7 @@ Dunadan     +1  +2  +2  +2  +3  +2      10      180%    0ft
             4   5   5   2   13  3   15  10
 High-Elf    +1  +3  -1  +3  +1  +3      10      230%    40ft            
             4   20  20  3   14  3   10  25
-Yeek        -5  -5  -5  -5  -5  -5      8       35%     0ft             
+Yeek        -5  -5  -5  -5  -5  -5      7       35%     0ft             
             0   0   0   0   10  0   0   0
 Goblin      +0  -1  -5  +4  +2  -5      11      115%    30ft            
             2   -3  -3  0   8   2   12  -5
@@ -3890,7 +4106,7 @@ Mimic
     To find out how many monsters you already killed and how many you need
     in total to learn a form, press the '~' key followed by '3'.
     To polymorph into a form, press 'm' key, like casting a magic spell.
-    To find out the special abilities of a monster form, see section (6.8).
+    To find out the special abilities of a monster form, see section (6.7).
 Archer
     Archers aren't good at fighting, but can deliever extremely high damage
     with their ranged weapons. They can die quickly too, however.
@@ -4159,7 +4375,7 @@ S: spell list
     BR_xxx      (breathing) will give the according resistance to the player
                 (if that specific attack CAN be resisted at all).
     BR_PLASMA   gives plasma & fire resistance.
-    BR_GRAVITY  gives feather falling.
+    BR_GRAVITY  gives feather falling (levitation).
     BR_INERTIA  gives free action.
     MIND_BLAST  Insanity attacks are reduced by 25%.
     BRAIN_SMASH Insanity attacks are reduced by 50%.
@@ -4190,7 +4406,8 @@ All orcs    Resist darkness
 All trolls and giants
             Sustain strength
 All dragonriders
-            ESP_DRAGON at level 5, feather falling, flying at level 30.
+            ESP_DRAGON at level 5, feather falling (levitation),
+            flying at level 30.
 All undead creatures
             Resist darkness, blindness, poison (usually immunity);
             can't bleed (no_cut), infra-vision +1, insanity attacks are
@@ -4221,12 +4438,6 @@ A player can use a ring that carries a monster form, by wearing it and
 activating it. The user needs a mimicry skill of at least 1/2 the level of
 the monster in order to activate the ring. After the form-change, if the
 ring is taken off, the character will polymorph back to his normal form.
-Rings of polymorphing have a certain chance to break after activation,
-depending on the user's mimicry skill (if the ring is indestructible or not
-does not matter here!). The ring breaks just after the player has been
-polymorphed. The chance of breaking (in percent) is:
-40 + (monster_level / 3) - (mimicry_skill / 5)
-so it'd be 50% for a level 60 monster at a mimicry skill of 50.
 
 Players can also create monster rings out of 'polymorph player' rings, by
 mimicking the according form, then wearing the ring and activating it.
@@ -4243,6 +4454,12 @@ form level              ring level
      30                     28
      60                     38
     100 (theoretical)       44
+
+Polymorph rings contain a certain amount of energy that cannot be changed.
+While using its form, the energy will decrease. If it reaches zero, the ring
+will disintegrate and the player will polymorph back to his standard form.
+If a player forges a ring, his magic device skill helps to obtain a high
+amount of energy in the ring.
 
 
 
@@ -4400,6 +4617,7 @@ Holy Defense
                     Lv5: Lets you also resist cold.                 (project)
                     Lv10: Lets you also resist lightning.           (project)
                     Lv15: Lets you also resist acid.                (project)
+                    Lv25: Lets you also resist poison.              (project)
     Protection from evil.
                     Repels evil creatures that try to attack you.
                     Works very well, as long as the creature isn't of a higher
@@ -4408,7 +4626,9 @@ Holy Defense
                     Creates a rune on the ground that monsters cannot cross
                     nor summon on. Powerful monsters may break it.
     Eternal Martyr  Burns you in holy fire, making you invulnerable.
-                    When your martyrium ends, you will be left with 1 HP.
+                    When your martyrium ends, you will be left close to death
+                    with up to 30 HP, depending on your maximum HP.
+                    (Remaining HP = MaxHP / 15, but never more than 30.)
                     The gods won't accept another martyrium until 1000 turns
                     have passed.
 Holy Curing
@@ -4423,6 +4643,10 @@ Holy Curing
                     Lv20: Fairly cure bad insanity.                 (project)
     Resurrection    Resurrect another player's ghost. The resurrected player
                     will lose less experience the higher the spell level is.
+                    Exp loss is usually 40% if revived in the temple or via
+                    life scroll.
+                    Resurrection prayer exp loss goes down from 40% and caps
+                    at 33%.
     Soul Curing     Cures Black Breath.                             (project)
 Holy Support
     Sense Monsters  Detect monsters, see invisible for a while.     (project)
@@ -4442,8 +4666,6 @@ Holy Support
                     Lv20: Gives +3 EA.                              (project)
                     Note: The EA effect won't be applied to barehanded players
                     if they don't have Martial Arts skill of at least 01.000.
-                    Zeal also gives a slight speed bonus (+10 at 50 skill) to
-                    the caster.
 
 
 
@@ -4455,7 +4677,7 @@ Here you can..
 -Form a party
     In a party you will share experience points if you are within 7 character
     levels to each other and on the same dungeon/tower level respectively
-    the same worldmap/wildernis sector. A slight experience bonus is applied
+    the same worldmap/wilderness sector. A slight experience bonus is applied
     for killing monsters in a party.
     Kings/Queens and normal players don't share experience in a party.
     'Anti-magic fields' of fellow party members have greatly reduced effect
@@ -4915,7 +5137,7 @@ The most powerful representant of each class:
 
 -The most powerful monsters of the daemon realm, the dragonkind and the
  heavenly planes, namely Star-spawns of Cthulu, Great Wyrms of Power,
- balance keepers of the skies, sun and stars (Blades).
+ balance keepers of the skies, sun and stars (Blades), Nether Realm guards.
 
 -Blinking 'A' (unique angels) or 'U' (powerful or unique demons) as well as
  bright coloured 'U' (greater demons) and blinking 'W' (zephyr lords or
@@ -4924,7 +5146,7 @@ The most powerful representant of each class:
  if those have dangerous breathing attacks.
  Some other dangerous demons are..
  Servitors of the outer gods, Lords of Change, Greater Balrogs,
- Bloodthirsters, Pit Fiends, Great Unclean Ones.
+ Bloodthirsters, Pit Fiends, Great Unclean Ones, Keepers of Secrets.
 
 -High undead can also pose a high threat and are responsible for many a death,
  those are Nightwalkers, Nightcrawlers, Nightwings and their likes.
@@ -4936,6 +5158,9 @@ The most powerful representant of each class:
  artifact since these resist Nazguls greatly!
  Dark Swords and ego weapons also have a certain chance to resist destruction.
  (Compare (1.5).)
+
+-Unique 'P' are often very dangerous, some say the most dangerous next to
+ Morgoth himself is Nodens, Lord of the Great Abyss.
 
 
 Mistakes / Carelessness:
@@ -5158,7 +5383,7 @@ reduce the stack to 1.
 
 ONLY WORKS ON STANDARD EQUIPMENT:
 -Artifact creation only works on items that can be equipped - with the
-exception of minor tool items like picklock, money belt, device of theft
+exception of tool items like diggers, picklock, money belt, device of theft
 prevention, tarpaulin, flint, mummy wrapping, climbing set. These won't work!
 
 DOESN'T WORK ON EGOS / ARTS:
@@ -5174,7 +5399,169 @@ has high bonus numbers into an artifact, like for example a ring of speed
 (+11) because these numbers will get erased and randomly re-rolled.
 On jewelry (+to-hit,+to-dam) and [+AC] will stay the same (for example a ring
 of slaying (+10,+15) will keep the (+10,+15)).
-(Any dice (xdy) as well as base AC [x,+0] on jewelry will always become 0.)
+(Any dice (xdy) as well as _base_ AC [x,+0] on jewelry will always become 0.)
+
+HOW IT WORKS ON NON-JEWELRY:
+All boni, to-hit/to-dam/to-ac and the pval/bpval (those (+x) bonus) are
+randomly rerolled. So it won't matter what stats the item has, only its
+base type is important.
+
+Mods on the final randart:
+--------------------------
+The item will gain a random number of random properties. The more powerful it
+becomes, the higher a chance of also becoming 'aggravating' will be.
+
+There is always a 10% chance that the resulting randart will be 'cursed'.
+Cursed randarts cannot be sold to shops even if the curse is broken. They gain
+only very few abilities, which are accompanied by different types of curses.
+
+Possible mods that randarts may get depend on its base type.
+Further, there are general mods that may appear on all items regardless of its
+type. For each applied mod there is a chance of 50% to be picked from either
+type-dependant mods or general mods.
+Ammunition (shots/pebbles, arrows, bolts) will never get general mods but only
+type-dependant ones.
+Boomerangs, bows, crossbows and slings usually get more type-dependant mods
+than general mods.
+
+Type-dependant mods:
+--------------------
+Bows, crossbows, slings
+        Extra shots
+        Extra might
+        +hit bonus
+        +dam bonus
+Weapons
+        Blessed (usable for priests without penalty)
+Weapons, (diggers,) boomerangs
+        Acid/elec/fire/cold brands
+        Increased damage dice
+        All SLAY mods (also have a chance to add the corresponding ESP)
+        All KILL (*SLAY*) mods (will also add the corresponding ESP)
+        See invisible
+        Extra attacks
+        Extra +hit and +dam bonus
+        Extra +AC bonus
+        Critical hit bonus
+        Vampiric life leech
+        Reduced weight
+Mage staves
+        Sustain wisdom
+        Sustain intelligence
+        See invisible
+        Random ESP
+        Extra +mana capacity bonus
+(Diggers
+        Increased digging power)
+Boomerangs
+        Extra shots
+Dark swords
+        Increased anti-magic (not over 50% in total)
+Ammunition (existing 'exploding' property will be erased on artifact creation)
+        All elemental brands (acid/elec/fire/cold/poison)
+        All SLAY mods
+        All KILL (*SLAY*) mods
+        Vampiric life leech
+        Exploding property. The type of explosion damage is randomly picked
+                            from this list:
+                            Acid, electricity, fire, cold, poison,
+                            light, dark, confusion, plasma, sound, shards,
+                            force, inertia, mana, meteor, ice, chaos, nether,
+                            nexus, time, gravity, stone-to-mud, teleport away,
+                            scare monster, nuke, stun, disintegration,
+                            hell fire.
+        Extra +hit and +dam bonus
+        +1 Extra damage side or dice
+Boots
+        Feather falling (levitation)
+        Flying
+        Climbing
+        Extra +AC bonus
+        Stealth
+        Speed
+        Reduced weight
+Gloves
+        Free action
+        Mana capacity bonus
+        Auto-ID
+        Strength bonus
+        Dexterity bonus
+        Extra attacks (+1 or +2)
+        Critical hit bonus
+        One of the elemental brands (acid/elec/fire/cold/poison) or SLAY mods
+        Vampiric life leeech
+        Extra +AC bonus
+        +hit and +dam bonus
+Caps, helms and crowns
+        Resist blindness
+        Auto-ID
+        All possible ESP mods (including ESP_ALL)
+        See invisible
+        Intelligence bonus
+        Wisdom bonus
+        Extra +AC bonus
+        Mana capacity bonus
+        Infra-vision
+        Faster mana regeneration
+        Resist confusion
+        Resist fear
+Shields
+        All basic resistances (acid/elec/fire/cold)
+        Reflection
+        Extra +AC bonus
+Cloaks
+        Stealth
+        Feather falling (levitation)
+        Flying
+        Chance for either lightning or fire aura and corresponding resistance
+        Chance for shard resistance
+        Invisibility
+        Extra +AC bonus
+Body Armour (except for Dragon Scale Mails)
+        Stealth
+        Hold life
+        Constitution bonus (has a chance to include constitution sustenance)
+        All basic resistances (acid/elec/fire/cold)
+        Reduced weight
+Light sources
+        Increased light radius
+        Everburning (no fuel needed; applies only if item usually needs fuel)
+
+General mods:
+-------------
+        Bonus on any stats (has chance to include sustenance for that stat;
+                            wisdom might also include 'Blessed' flag)
+        Sustenances on any stats (has chance to include bonus for that stat)
+        Stealth
+        Searching
+        Infra-Vision
+        Speed
+        Any base immunities (acid/elec/fire/cold)
+        Free action
+        Hold life
+        Any base resistances (acid/elec/fire/cold)
+        Any of these resistances:
+                Poison, Light, Dark, Blindness, Confusion, Shound,
+                Shards, Nether, Nexus, Chaos, Disenchantment
+        Feather falling
+        Glowing (+1 light radius)
+        See invisible
+        All possible ESP mods (including ESP_ALL)
+        Slow digestion
+        Faster mana regeneration
+        Faster HP regeneration
+        Anti-magic shell (Legendary saving throw, 95% cap)
+
+Technical stuff (no need to read this, basically :)-
+More details about how randart creation works internally:
+First, a 'target power' is chosen randomly, usually in the range from 40..120.
+Then, TomeNET tries several times to generate a randart that approximately
+fits into that target power. To do this, after a randart is randomly created,
+all its abilities are checked and calculated into a single number, the
+'artifact_power'. If this approximately matches the 'target power', the
+randart is finally created. If the numbers differ a lot, the randart is erased
+and randomly recreated until its powers are fitting. The higher the target
+power is, the more likely the randart will be 'aggravating nearby creatures'.
 
 
 
