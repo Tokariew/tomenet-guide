@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 16. August 2016 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 12. September 2016 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.6.2 - official websites are:
 | http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | http://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -936,8 +936,14 @@ They all start with a slash '/' hence they're called slash commands:
             power aka 'c)', instead it will be treated like power 'b)' aka
             'polymorph into next form with fitting extremities'.)
 
-/bed        Opposite of /dress.
- (/naked)
+/bed [*|<inscription>]
+ (/naked)   Opposite of /dress.
+            If no parameter is given, the character takes off everything from
+            body slot to feet slot.
+            If '*' is given as parameter, the character will take off all
+            equipped items.
+            If another parameter is given, the character will take off all
+            items that have this parameter occur in their inscription.
 
 /bbs <text>
             Add a line of text to the in-game bulletin board system. Players
@@ -2087,7 +2093,15 @@ with other players and developers via the following media:
 
 (1.1b) How to set up IRC chat
 -----------------------------
-First you need to install an IRC client to connect to IRC chat networks:
+Easiest method: Use the official webclient provided by the 'Freenode' IRC
+server. Start your internet browser and enter this URL:
+  https://webchat.freenode.net/?channels=%23tomenet
+You will be prompted to enter a chat name of your choice and to click the box
+saying "I'm not a robot", then you can click the "Connect" button and voila.
+(The channel name "#tomenet" should have already been filled in for you.)
+
+If you prefer to use a stand-alone IRC chat client instead of using a browser-
+based chat, here are some suggestions:
 
 Windows: Most popular client is probably mIRC.
 
@@ -4671,6 +4685,18 @@ Miscellanous escape sequences:
                 which depend on each others execution. You might have to
                 adjust the delay to your personal latency, depending on your
                 internet connection and speed at which your character acts.
+                NOTE: You must always specify TWO digits. For example if you
+                      want to wait for 200 ms, you need to enter "\w02" and
+                      NOT "\w2"!
+                Setting a too high delay is actually not necessarily bad:
+                For the most common use cases, wielding/taking off/swapping
+                items or polymorphing yourself, the server will actually send
+                an internal confirmation to the client when that action has
+                finished processing and the client will then exit the \w delay
+                early, so you're not losing any time that way. So if you have
+                a network connection that suffers of continuous lag spikes it
+                might even be an advantage to crank up the \w times. Actually
+                you should just switch your ISP though.
 
 
 (3.9a) Creating a chat macro for your party
