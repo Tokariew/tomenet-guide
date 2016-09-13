@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 30. November 2005; written by C. Blue, http://www.c-blue.de/
+| Latest update: 1. December 2005; written by C. Blue, http://www.c-blue.de/
 | for TomeNET version v4.3.6, http://www.tomenet.net/
 | for latest information about TomeNET see http://www.c-blue.de/rogue.html
 | or join discussion in the forum on http://www.tomenet.net/
@@ -81,6 +81,7 @@ Contents
     (5.16)  Invisibility
     (5.17)  How abilities, resistances and boni stack
     (5.18)  Monster auras
+    (5.19)  Experience-draining items
 (6) Character details
     (6.1)   Attributes
     (6.2)   Skills, opposed skills
@@ -3685,6 +3686,8 @@ Havoc           Fires balls or beams of random type, the exact outcome is hard
 
 Jewelry
 --
+Amulets of Adornment    They might be looking fancy, but they don't do
+                        anything and have no effect on your character.
 Talisman (Amulet)       Increases your luck, helps you finding better loot.
 Rings of Might          increase strength and constitution.
 Rings of Toughness      increase dexterity and constitution.
@@ -4158,6 +4161,24 @@ The warrior has lightning resistance, so the damage will be cut down to 1/3,
 which is 1 or 2.
 Since the warrior has 6 bpr, he will suffer between 6 and 12 (6*1 and 6*2)
 damage per turn while hitting the storm giant.
+
+
+
+(5.19) Experience-draining items
+--------------------------------
+Some items, such as rings of power or ethereal dragon scale mails drain your
+experience points permanently. Here are some details about that process:
+-Experience drain from multiple items stacks, although it doesnt add in a
+ linear way. So, wearing two rings of power won't drain twice as fast as one,
+ but about 1,5x as fast.
+-Experience drain is permanent. It cannot be restored by potions of 
+ restore life levels.
+-Experience drain won't go further than the experience you need at least to
+ maintain your current character level. If you reach that experience border,
+ experience drain will stop, even if you still have the items equipped.
+ So you will not lose levels from experience drain.
+ HOWEVER: If a monster or other effect drains your experience below your
+ current level, the experience drain from items will kick in again!
 
 
 
