@@ -1,9 +1,10 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 22. March 2007; written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.4.0, http://www.tomenet.net/
+| Latest update: 23. September 2007; written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.4.0b, http://www.tomenet.net/
 | for latest information about TomeNET see http://www.c-blue.de/rogue.html
+| and definitely Mikael's Site at http://koti.mbnet.fi/mikaelh/tomenet/
 | or join discussion in the forum on http://www.tomenet.net/
 +---
 | Welcome to this guide!
@@ -236,7 +237,9 @@ F       F       fuel your light source.
 f       t       fire.
 v       v       throw.
 b       (P)     browse (peruse) a book.
-m       m       activate a skill (ie cast a magic spell or use an ability).
+m       m       activate a skill (ie cast a magic spell, lay a trap, use an
+                ability, create ammunition, polymorph into a monster form or
+                back to normal, cast a monster-spell while polymorphed).
 a       z       use (aim) a magic wand.
 z       a       use (zap) a magic rod.
 u       Z       use a magic staff.
@@ -355,7 +358,7 @@ Q or CTRL+C or CTRL+K
         normal 'final death'.
 ?       invoke an in-game help screen
 CTRL+R  redraw the screen (do this if it's messed up for some reason).
- (/refresh)
+ (/refresh, /ref)
 !       Look at the in-game bulletin board. Players can write lines of text to
         it by using the /bbs <text> command.
 
@@ -377,36 +380,31 @@ They all start with a slash '/':
 /afk <msg>  You can specify a reason that will be displayed to the other
             players, so they know why you are currently AFK or when you will
             be back.
+/bbs <text> Add a line of text to the in-game bulletin board system. Players
+            can look at the board by pressing the '!' key.
+            You can use the /time command to check how old an entry is.
+/dice       Roll some dice, you must specify a number of dice from 1 to 100.
+            The result is random and can be seen by other players who stand
+            nearby.
+/dis        DESTROYS every item in your inventory that has one of these
+ (/dispose) inscriptions: terrible, cursed, uncursed, broken, worthless,
+            average, good. Works only on items that actually can be destroyed.
+/dis a      DESTROYS every item in your inventory that lacks an inscription!
+/dr         Wields all items in your inventory that are: not cursed,
+ (/dress)   not {worthless}, not {terrible}, known to you.
+(The /empty function is currently disabled)
+/empty <inventory slot>
+            Empty a potion from your inventory, leaving an empty bottle.
+            Example: /empty c   (if you have 'c) 3 potions of boldness', one
+            will be emptied and 2 remain at 'c) 2 potions of boldness'.))
 /ex         Gives you detailed information about your character's status, such
  (/examine) as turn, speed, deepest dungeon level, sanity, body shape (this is
             interesting if you are a shapechanger). Druids get additional info
             about forms they can shapechange into.
 /fe         Repeat the level feeling. See (4.8) for more information.
  (/feeling)
-/page <player-name>     Sends beeps to that player to help you getting his
-                        attention. (Can only be used if target player is afk).
-                        If you're on Linux and not hearing the page sounds,
-                        see problem 19 in the troubleshooting section (8.5).
-/que        gives a quest! It needs to be fulfilled before a certain period
- (/quest)   of time passes. The player who completes it gets a great item
-            as reward. It will appear right below the player on the ground.
-/sip        drink from a fountain. You must stand on the fountain to do this.
-            Fountains can have good/bad/no effects. There is no fountain of
-            death, neither one of detonations, so you won't get instakilled.
-            (It's easier to press '_' instead of using the /sip command.
-            Also see '_' above, for additional information.)
 /fill       fill an 'Empty Bottle' in your inventory with the water from a
             fountain. You must stand on the fountain to do this.
-/shout <text>
-            Shout <text> loudly, will wake up and aggravate nearby monsters.
-            (Same effect as scroll of aggravate monsters, see (5.9)).
-
-(The /empty function is currently disabled:)
-/empty <inventory slot>
-            Empty a potion from your inventory, leaving an empty bottle.
-            Example: /empty c   (if you have 'c) 3 potions of boldness', one
-            will be emptied and 2 remain at 'c) 2 potions of boldness'.))
-
 /ig <player name>
  (/ignore)  ignores all chat messages from the specified player. (Toggle)
             Also silences all paging attempts from that player.
@@ -415,19 +413,9 @@ They all start with a slash '/':
             player's name in the player overview screen which can be invoked
             by pressing '@', indicating that this player currently cannot read
             normal chat messages.)
-/dice       Roll some dice, you must specify a number of dice from 1 to 100.
-            The result is random and can be seen by other players who stand
-            nearby.
-/dis        DESTROYS everything without (non-system) inscription in your
- (/dispose) inventory.
-/rec -550   recalls you to -550ft, using an item inscribed {@R}.
-/rec 32 32  recalls you to Bree (Town at 32,32 world map coordinates),
- (/recall)  using an item inscribed {@R}. See "(0.3) Important Inscriptions"
-            for more info about Word of Recall.
-/dr         Wields all items in your inventory that are: not cursed,
- (/dress)   not {worthless}, not {terrible}, known to you.
 /mar        Tells a prayer-user if he may use the prayer 'Holy Martyr'.
  (/martyr)
+/me         Write an emote. Example: /me hides.
 /note <account name>:<text>
             Leave a note to another player. Note: You have to specify his
             ACCOUNT NAME, not a character name. That way, no matter which of
@@ -439,15 +427,31 @@ They all start with a slash '/':
             Leave a note to the party you own.
 /noteg <text>
             Leave a note to the guild you own.
-/bbs <text> Add a line of text to the in-game bulletin board system. Players
-            can look at the board by pressing the '!' key.
-            You can use the /time command to check how old an entry is.
-/time       Tells you the current date and time (of the server, not of your
-            local timezone). Useful to compare with bbs time stamps.
+/page <player-name>     Sends beeps to that player to help you getting his
+                        attention. (Can only be used if target player is afk).
+                        If you're on Linux and not hearing the page sounds,
+                        see problem 19 in the troubleshooting section (8.5).
+/que        gives a quest! It needs to be fulfilled before a certain period
+ (/quest)   of time passes. The player who completes it gets a great item
+            as reward. It will appear right below the player on the ground.
+/rec -550   recalls you to -550ft, using an item inscribed {@R}.
+/rec 32 32  recalls you to Bree (Town at 32,32 world map coordinates),
+ (/recall)  using an item inscribed {@R}. See "(0.3) Important Inscriptions"
+            for more info about Word of Recall.
+/shout <text>
+            Shout <text> loudly, will wake up and aggravate nearby monsters.
+            (Same effect as scroll of aggravate monsters, see (5.9)).
 /shot  or  /shot <filename>
  (/screenshot)
             Takes a screen shot to a html file. If <filename> is omitted, it
             writes to 'screenshot.html' by default.
+/sip        drink from a fountain. You must stand on the fountain to do this.
+            Fountains can have good/bad/no effects. There is no fountain of
+            death, neither one of detonations, so you won't get instakilled.
+            (It's easier to press '_' instead of using the /sip command.
+            Also see '_' above, for additional information.)
+/time       Tells you the current date and time (of the server, not of your
+            local timezone). Useful to compare with bbs time stamps.
 
 
 
@@ -869,8 +873,10 @@ Enter these two lines:
 	make clean
 	make tomenet
 and the binary 'tomenet' will be created in this folder 'tomenet/src'.
-IMPORTANT NOW: Move the binary one level upwards, ie into '/tomenet' !
-Type:
+IMPORTANT NOW: If your makefile is an older version, you need to move the
+binary one level upwards, ie into '/tomenet' ! If your makefile is newer,
+it might already have done that for you automatically.
+Go up one level into your '/tomenet' folder. There type:
         ./tomenet
 to start the game.
 
@@ -2169,6 +2175,10 @@ and is easier in general. An experience penalty might be applied for killing
 monsters in the tower (usually 50%). You might ask other players in game
 (use ':' to chat) where/if there is a newbie tower (also called 'Training
 Tower'), or you might search for it yourself.
+Usually when you take a staircase, your character will get a high Armour bonus
+(+100) and a chance to deflect enemy attacks, for a very short duration. This
+sometimes helps to survive nasty surprises. Keep your scrolls of teleportation
+ready anyway!
 
 While inside a town, you get a good overview including the staircases upwards
 and downwards by invoking the map by pressing SHIFT+'M' (capital M !).
@@ -2787,6 +2797,19 @@ Medium weapons which 'may' be used two-handed won't give malus if used
 single-handed, but you might get more blows per round if you wield them with
 both hands! Again check your character screen ('C') to spot any difference.
 
+If you try to wield a weapon that is too heavy for your character, meaning
+your 'STRength' stat isn't high enough yet, you'll get a warning message:
+"You have trouble wielding such a heavy weapon".
+This means you won't get any benefits from your 'Weaponmastery' skill, nor
+any extra blows per round at all, instead you'll be stuck with 1 blow/round.
+Also, you'll be more prone to disarming attacks.
+
+Similar is possible for shields. If you try to use a shield which is too heavy
+for you, you'll get another warning message:
+"You have trouble wielding such a heavy shield".
+That means you will hardly be able to deflect anything, and also you'll get
+less Armour Class increase from it than it usually provides.
+
 
 
 (5.2) Ranged Weapons, brands
@@ -2828,6 +2851,13 @@ Example: Ring of Acid will usually add 2x your melee base damage.
 For ranged weapons it will add 2*2/5x of your base damage, so multiply your
 base damage by 1.8 instead of by 3 to get your total damage output.
 See (5.3) to get an easy overview.
+
+If you try to wield a ranged weapon that is too heavy for your character,
+meaning your 'STRength' stat isn't high enough yet, you'll get a warning
+message:
+"You have trouble wielding such a heavy bow".
+That means you'll get neither any benefits from your 'Archery' skill nor from
+any particular ranged mastery (extra shots!) at all when using that weapon.
 
 
 
@@ -2932,7 +2962,7 @@ Here's a table to tell you the values for str_wgt:
 The armour weight limit is 5.0 lb + Martial Arts skill level * 0.4 lb.
 So for MA 50 it is 5.0 + 25.0 = 25.0 lb.
 If your armour becomes too heavy, you will see this warning message:
-"Your armor weight strains your martial arts performance."
+"Your armour weight strains your martial arts performance."
 
 
 Here's a table, for those who prefer this view:
@@ -3078,6 +3108,12 @@ To move freely, you may wear 10.0 lbs of armoury plus a strength-factor plus
 6 * your combat skill. Strength factor is 0.6 * str_hold (see table above to
 find your str_hold). So the top weight limit is
 10.0 + 0.6 * 50 (combat) + 0.6 * 100 (str_hold) = 100.0 lbs.
+
+Some special abilities depend on armour weight too, for the 'Rogue' class
+it's Area-Searching.
+If the armour becomes too heavy to perform those, a message will appear:
+"The weight of your armour strains your flexibility and awareness."
+The weight limit is 20.0 + (Combat skill / 10) lbs.
 
 Glove encumberment (concerning magic)
 -------------------------------------
@@ -4665,9 +4701,9 @@ Note that not every skill is available to every profession (class).
         .Boomerang-mastery      At 16.6, 33.3 and 50 you get +1 extra throw
                                 each. Boomerang-mastery Also increases ranged
                                 to-damage bonus while using a boomerang, and
-                                reduces the chance of a boomerang to break.
-                                Skill 0 -> 2% chance. Skill 50 -> 0,1% chance.
-                                Artifact boomerangs never break.
+                                reduces the chance of a boomerang to break or
+                                to fall to the ground instead of returning.
+                                Artifact boomerangs never break or fall down.
     .Martial Arts               Ability to fight with bare hands.
                                 Slightly raises you character speed.
                                 Lets you attack with special combat styles.
@@ -5389,6 +5425,7 @@ Druid
     Druids learn how to quickly pass through thick forest at level 10.
     (Special note (compare 6.7): If they wield a weapon while using a form
     which usually cannot use weapons, they will only get 1 blow per round.)
+    To recheck which forms you can transform into, use the /ex command.
 Shaman
     Shamans are able to call upon both spiritual and magical powers,
     whatever they deem most appropriate. Their mind is also trained in a very
@@ -7017,8 +7054,9 @@ random artifact. Often kings and queens look out for these since they are
 unable to use static artifacts, so they depend on rand-arts.
 The scrolls are very rarely found; occasions to buy one are fair in the
 expensive black market, but also the normal BM may sometimes offer some.
-It doesn't matter where you are when you read the scroll, the resulting
-artifact's power is always determined randomly.
+It doesn't matter where you are, what level you are, or whether your character
+has 'luck' or not when you read the scroll, the resulting artifact's power is
+always determined randomly.
 
 Here is some advice how to use these most valuable scrolls wisely:
 
