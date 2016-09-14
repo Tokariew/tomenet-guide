@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 20. March 2009; written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.4.2 (www.tomenet.net, usually outdated though).
+| Latest update: 7. April 2009; written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.4.2a (www.tomenet.net, usually outdated though).
 | For latest information about TomeNET see http://www.c-blue.de/rogue.html
 | and definitely Mikael's Site at http://koti.mbnet.fi/mikaelh/tomenet/
 | or join discussion forum at http://forum.t-o-m-e.net/ (TomeNET sections).
@@ -40,6 +40,7 @@ Contents
 (3) Creating a character & starting to play
     (3.1)   Creating a new character; character modes
     (3.2)   The display (user-interface)
+    (3.2a)  The encumberment bar
     (3.3)   Behaviour and chat messages
     (3.4)   Start-up equipment & how to use it
     (3.5)   Preparing the first time for fighting enemies
@@ -527,6 +528,7 @@ They all start with a slash '/':
             in your backpack which are exactly '!k' (as done by /tag command).
             Ohterwise it removes inscriptions of all items which are exactly
             inscribed as specified by <inscription>.
+/untag *    Will remove all pseudo-id tags from your inventory items.
 /time       Tells you the current date and time (of the server, not of your
             local timezone). Useful to compare with bbs time stamps.
 /undoskills Allows you to undo the skill points you assigned in 'G' menu last
@@ -1227,22 +1229,43 @@ backpack, also called inventory. All characters except ghosts have a backpack.
 The bottom left window will show combat- chat- and server-messages. If most
 of the windows stay totally empty, see (8.5) for possible solutions.
 To the left border in the main window you see a short overview of your most
-important stats, starting with your race, your class and your current title
+important stats:
+-starting with your race
+-your class
+-your current title
 (the title will change as you gain experience levels by fighting monsters),
-followed by your current character level, your amount of experience and your
-cash ('Au' stands for Aurum, latin for gold), your 6 character attributes,
-your current sanity (sound means you are completely sane, this might drop, for
+-followed by your character level
+-your amount of experience
+-and your cash ('Au' stands for Aurum, latin for gold)
+-the 'encumberment' bar (blank at the beginning)
+-a mini lag-o-meter bar displaying your 'ping' by coloured dots, 1 dot means
+you're < 50ms, further dots add 50ms each to that claim,
+-your 6 character attributes:
+STRength, INTelligence, WISdom, DEXterity, CONstitution, CHaRisma,
+-your current sanity (sound means you are completely sane, this might drop, for
 example if a mindcrafter blasts your mind with psionic energy, leaving you
-mad), then comes your Armor Class (AC) which describes how well you are
-protected by all the armor you currently wear. The last four values are most
-important and will change all the time while fighting monsters.
-They are your theoretical maximum of Hit Points (HP) and Spell Points (SP) as
-well as the current values of those.
+mad)
+-then comes your Armor Class (AC) which describes how well you are protected
+by all the armor you're currently wearing.
+-The next two values are most important and will change all the time while
+fighting monsters.
+They are your Hit Points (HP) and Mana Points (MP), current/maximum values.
 Spell points are very important for wizards, since they determine which spells
 and how many of them you can cast. The current hit points (Cur HP) tell you if
 you are injured. If they drop below zero you die!
 If they are the same as your Max HP then you are fully rested and physically
-healed. By the way: If you enter the game and find that you don't like your
+healed.
+-Next entry is your stamina (ST), if you chose a class that makes use of it.
+Stamina may allow you to employ special techniques accessed with 'm'.
+
+Below that, there are further status indicators such as
+-your current world map location (sector 32,32 aka the starter town of 'Bree'
+when you log in for the first time) and the 'AFK' status indicator
+-as well as your food indicator ('full' by default). Note that if you don't
+eat when you become hungry you might get paralyzed sporadically and eventually
+even die of starvation!
+
+By the way: If you enter the game and find that you don't like your
 character and want to recreate it from scratch, you can suicide by pressing
 'Q' (capital Q), followed by confirming the question if you really want to
 suicide with 'y' and then finally verify your suicide with '@' key. Often
@@ -1252,26 +1275,56 @@ that a suicided character is completely and permanently gone (as is a no-
 ghost/hellish character on mundane death).
 Also see (0.2) for some details about suiciding.
 
+
+(3.2a) The encumberment bar
+---------------------------
+
 Between AU and STR is a line indicating if you are encumbered in any way.
-This line consists of several little icons which have the following meaning:
+This line is blank by default, but may start to show little coloured icons
+if your character becomes overburdened in some way.
+
+This line consists of the following icons that may show up:
 (Order: From left to right)
-    Brown [ armour      Your armour is too heavy (tohit/sneakiness penalty).
-    Red weapon          Your weapon is too heavy for you.
-    Orange \ weapon     Your weapon isn't fit for your character (e.g. priest
-                        using non-edged non-blessed weapons like swords).
-    Yellow / weapon     You are using a 1,5-h weapon together with a shield.
-    Green | weapon      You are using a 1h weapon two-handed and get a small
-                        bonus from that (only works for some 1h weapons).
-    Red } weapon        Your ranged weapon is too heavy for you.
-    Yellow } weapon     You are using a shield on your arm, reducing your
-                        accuracy with your ranged weapon.
-    Light-red 'F'       You are martial arts user and your backpack is too
-                        heavy, so that you don't receive Free Action from MA!
-    Yellow [ armour     You're martial arts user and your armour is too heavy.
-    Violet [ armour     Your armour is so heavy that it reduces your SP.
-    Violet ] armour     Your gloves are not made for spellcasting, reducing
-                        your SP.
-Also see (5.4) for more information about encumberment.
+    Brown (        Your armour is too heavy (tohit/sneakiness penalty).
+    Red /          Your weapon is way too heavy for you.
+                   You will receive extreme penalties on melee combat.
+    Orange \       Your weapon isn't fit for your character (e.g. priest
+                   using non-edged non-blessed weapons like swords).
+                   You'll receive a big penalty on hit chance and damage.
+    Yellow /       You are using a 1,5-h weapon together with a shield.
+                   This is possible, but you will receive a penalty on
+                   hit chance and damage.
+    Green |        You are using a 1h weapon two-handed and get a small
+                   bonus from that (works only for some of the weapons).
+    Red [          Your shield is way too heavy for you.
+                   You will receive extreme penalties on block chance.
+    Red }          Your ranged weapon is way too heavy for you.
+                   You will receive extreme penalties on ranged combat.
+    Yellow }       You are using a shield on your arm, reducing your
+                   accuracy with your ranged weapon.
+    Light-red 'F'  You are martial arts user and your backpack is too
+                   heavy, so that you don't receive Free Action from MA!
+                   See (5.4) for more detailed information.
+    Yellow (       You are martial arts user and your armour is too heavy.
+                   You might receive various penalties (see (5.4)).
+                   NOTE: Up to client version 4.4.2 this can stand for both,
+                   the meaning described above and the meaning of 'Blue ('
+                   described below. Starting with 4.4.2a, these two were
+                   separated into yellow and blue '(' icon.
+    Blue (         You're a rogue or using primarily rogueish skills such
+                   as dodging or dual-wield which depend on especially
+                   flexible armour, but your armour is exceeding that limit!
+                   You will lose some of the benefits, see (5.5)!
+    Violet (       Your armour is so heavy that it reduces your MP.
+                   This only affects classes that have a mana pool.
+    Violet ]    a) Your gloves are not made for spellcasting or too heavy,
+                   reducing your MP.
+                b) Your headgear is too heavy, impacting your ability to cast
+                   mindcrafter school spells, reducing your MP. Only affects
+                   characters who have trained in one or more of the
+                   mindcrafter schools.
+Also see (5.4) and especially (5.5) for more information about encumberment,
+and for specific details about penalties that are applied.
 
 
 
@@ -3294,7 +3347,7 @@ Here's a table to tell you the values for str_wgt:
         15          13                      
 
 The armour weight limit is 5.0 lb + Martial Arts skill level * 0.4 lb.
-So for MA 50 it is 5.0 + 25.0 = 25.0 lb.
+So for MA 50 it is 5.0 + 20.0 = 25.0 lb.
 If your armour becomes too heavy, you will see this warning message:
 "Your armour weight strains your martial arts performance."
 
@@ -4366,6 +4419,26 @@ Amulet of Anti-Teleportation    If worn it will suppress all attemps to
 
 Misc
 --
+Codex, Spellbook, Grimoire
+                    These are magic books that may contain magic spells of any
+                    type and school, be it for mages, priests, druids or
+                    mindcrafters.
+                    However, these books start out empty, devoid of any spells
+                    and it's up to the player to add spells of his choice to
+                    them.
+                    To do so, he needs to find or buy spell scrolls in the
+                    library (store '9'), then press 'A' to activate the Codex,
+                    Spellbook or Grimoire, then choose the spell scroll he
+                    wants to transcribe into the book. The scroll will vanish
+                    and the spell will be permanently and irreversibly added
+                    to the book.
+                    Condition for this to work is that the book still has free
+                    space left, and that the player has actually learned the
+                    spell he wants to transcribe.
+                    Codices can carry the least amount of spells, while
+                    Grimoires have the most space.
+                    (Note that you cannot use these books if your game client
+                    version is below 4.4.2!)
 (Small) Firestones  These can be eaten by Thunderlords and have various
                     random effects (small firestones have reduced duration):
                     - If the player is currently in dragon form he will just
@@ -5085,10 +5158,12 @@ Note that not every skill is available to every profession (class).
                                 small though, if you don't have +critical hit
                                 items or this skill to help out. Critical hit
                                 bonus on items counts slightly more than the
-                                skill, and it is applied to melee AND ranged
-                                attacks!
-                                For ALL weapon users the weight of their
-                                weapon affects their critical hits:
+                                skill.
+                                Crit boni on weapons only apply to the weapon
+                                itself, while bonus on other items such as
+                                gloves or rings count for all kind of attacks.
+                                For weapon users, the weight of their weapon
+                                affects their critical hits:
                                 If your weapon is lighter than 10.0 lb, your
                                 chances to score a critical hit will further
                                 increase.
@@ -5941,11 +6016,11 @@ Priest
     of their type.
 
 Rogue
-    Rogues can backstab (works especially well in the dark) sleeping or
-    fleeing monsters, and they can train stealing items from shops, creatures
-    or players. Due to their high dexterity they can often hit several
-    times per round with light weapons. Also, rogues are especially fond of
-    dual-wielding two light one-handed weapons at once.
+    Rogues can backstab sleeping or fleeing monsters, and they can train
+    stealing items from shops, creatures or players. Due to their high
+    dexterity they can often hit several times per round with light weapons.
+    Also, rogues are especially fond of dual-wielding two light one-handed
+    weapons at once.
     A Rogue is a character that prefers to live by cunning, but is capable of
     fighting their way out of a tight spot. The master of traps and locks, no
     device is impossible for him to overcome. A rogue will learn to set many
@@ -6088,6 +6163,8 @@ Mindcrafter
     Despite being focussed on sharpening their mind, they don't lack stealth
     or close combat potential. Except that wearing very heavy head gear might
     negatively impact their amount of psychic energy.
+    Mindcrafters will be able to resist insanity-draining effects a little bit
+    at level 10, and somewhat more even at level 20.
     Some of the mindcrafter's spells that interact with friendly targets,
     mostly his team mates, will require those to prepare and open their mind
     to become especially sensitive to telepathic contact. This is done by
@@ -6343,8 +6420,8 @@ F: flag list
                 The player receives an aura.
     SUSCEPT_FIRE/SUSCEPT_COLD/SUSCEPT_ELEC/SUSCEPT_ACID/SUSCEPT_POIS
                 The player is susceptible against these attacks. Dangerous!
-    WIERD_MIND  Insanity attacks are reduced by 25%. (Overrides S-flags)
-    EMPTY_MIND  Insanity attacks are reduced by 50%. (Overrides S-flags)
+    WIERD_MIND  Insanity attacks are reduced a little bit. (Overrides S-flags)
+    EMPTY_MIND  Insanity attacks are reduced somewhat. (Overrides S-flags)
     AQUATIC     Gives superb water resistance.
     NEVER_MOVE  Using this form, the player won't be able to move (except for
                 teleportation/phasing/recalling).
@@ -6379,8 +6456,8 @@ S: spell list
     BR_PLASMA   gives plasma & fire resistance.
     BR_GRAVITY  gives feather falling (levitation).
     BR_INERTIA  gives free action.
-    MIND_BLAST  Insanity attacks are reduced by 25%.
-    BRAIN_SMASH Insanity attacks are reduced by 50%.
+    MIND_BLAST  Insanity attacks are reduced a little bit.
+    BRAIN_SMASH Insanity attacks are reduced somewhat.
 
 Especially interesting spells of mimics are 'Blink' (Phase Door) and
 'Teleport'. These usually cost very little mana and can be very helpful,
@@ -6414,12 +6491,12 @@ All dragonriders
 All undead creatures
             Resist darkness, blindness, poison (usually immunity);
             can't bleed (no_cut), infra-vision +1, insanity attacks are
-            reduced by 25%.
+            reduced by a little bit.
 All greater demons (capital 'U')
             Resist poison (in most cases immunity).
 All non-living creatures
             Resist poison (usually even immune) and fear; insanity attacks
-            are reduced by 50%.
+            are reduced somewhat.
 All vampires and vampire bats
             Chance to drain life on attacking in melee.
             Vampire bat form has 100% chance to do a vampiric attack,
@@ -6638,6 +6715,8 @@ Conveyance
                     Required skill level for first spell level: 35.
   BONI:             Resistance to teleportation attacks at 30.
 Divination
+    Detect Monsters Detects all monsters nearby.                    (project)
+                    Required skill level for first spell level: 1.
     Identify        Identifies items.
                     Lv17: Identifies all items that you carry/wear.
                     Lv27: Also identifies all items on the floor around you.
@@ -6653,9 +6732,6 @@ Divination
                     Required skill level for first spell level: 5.
     Reveal Ways     Detects doors/stairs/ways within a radius.      (project)
                     Required skill level for first spell level: 9.
-    Sense Monsters  Detects all monsters nearby.                    (project)
-                    Lv30: Gives you temporary ESP.
-                    Required skill level for first spell level: 1.
   BONI:             Automatic identification at 50.
 Nature
     Grow Trees      Grows trees quickly around you.
@@ -6684,6 +6760,9 @@ Mind
     Stun            Stunds a monster.
                     Lv25: Turns into a ball.
                     Required skill level for first spell level: 15.
+    Sense Monsters  Detects all monsters nearby.                    (project)
+                    Lv30: Gives you temporary ESP.
+                    Required skill level for first spell level: 1.
     Telekinesis     Inscribe your book @P<Playername>, cast it, select an
                     item that you wish to teleport to the player's inventory.
                     The target player needs to concentrate by opening her/his
@@ -6988,6 +7067,14 @@ Mental Intrusion
                     Drains the target's psychic energy, impacting its ability
                     to cast spells temporarily.
                     Required skill level for first spell level: 10.
+    Remote Vision   Tries to forcibly enter all sentient creatures' minds on
+                    the level, in order to use their vision to make the
+                    dungeon structure known to yourself.
+                    Required skill level for first spell level: 20.
+                    If your proficiency in 'Thought Contact' school is at
+                    least 20, you will automatically infuse the knowledge
+                    gained from the vision to all open-minded (see (0.2))
+                    allied players who happen to be the same floor.
 
 
 
@@ -7186,14 +7273,16 @@ The techniques are as follows:
     Fighting techniques:
     --------------------
     Sprint							7 stamina
-        Your character will be able to move faster even with monsters in view.
-        Normal running isn't affected.
+        Your character will be able to move faster, so you can catch up to
+        runners and other monsters that avoid you.
+        Running (shift + directional keys) is not affected.
     Taunt               2 stamina
         Attempts to draw attention of humanoid mobs, causing them to attack
-        you.
+        you. Might require more than one try sometimes until they fall for it,
+        depending on the monster.
     Spin                8 stamina
         A sweep that hits all adjacent monsters and may stun them, basing on
-        your number of blows/round.
+        your number of blows/round possibly even multiple times.
     Berserk             10 stamina
         Similar to potions of berserk strength, also giving you +1 blow/round.
 
@@ -7221,7 +7310,8 @@ The techniques are as follows:
     Flare missile       2 stamina
         Prepares an oil-drenched shot for the next time you shoot, which will
         burn brightly, lighting up the area where it lands or hits a wall.
-        This technique consumes 1 flask of oil.
+        This technique consumes 1 flask of oil and your shot/arrow/bolt.
+        Note that this destroys magic ammunition too.
     Precision shot      7 stamina
         You aim your next shot carefully, costing you a turn. The next shot
         you fire however will receive a great damage bonus, even more so
@@ -8057,10 +8147,9 @@ items will be added to the randart abilities when it comes to determining the
 total power of that random artifact. That means that you're less likely to see
 many additonal abilities on an item which already has several abilities in
 it's usual form.
--The following items will never get additional abilities when they are turned
-into an artifact, so don't waste your scrolls here:
-Multi-hued Dragon Scale Mail
-Power Dragon Scale Mail
+For example it's hard to get extra mods on a Multi-hued Dragon Scale Mail, and
+in fact impossible to get any extra mod on a Power Dragon Scale Mail, so don't
+waste a scroll on this one.
 
 
 Mods on the final randart:
