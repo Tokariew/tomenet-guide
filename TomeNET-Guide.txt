@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 23. September 2007; written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.4.0b, http://www.tomenet.net/
+| Latest update: 22. December 2007; written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.4.0e, http://www.tomenet.net/
 | for latest information about TomeNET see http://www.c-blue.de/rogue.html
 | and definitely Mikael's Site at http://koti.mbnet.fi/mikaelh/tomenet/
 | or join discussion in the forum on http://www.tomenet.net/
@@ -52,6 +52,7 @@ Contents
     (3.10)  Experience, level-ups and skill points
     (3.11)  Death, ghosts and looting
     (3.12)  Malicious effects players can suffer
+    (3.13)  Malicious effects monsters can suffer
 (4) The world
     (4.1)   Running, picking up items, fighting
     (4.2)   Level and owner of items
@@ -83,7 +84,7 @@ Contents
     (5.17)  How abilities, resistances and boni stack
     (5.18)  Monster auras
     (5.19)  Experience-draining items
-    (5.20)  Runes
+    (5.20)  Runes & Runemastery
 (6) Character details
     (6.1)   Attributes
     (6.2)   Skills, opposed skills
@@ -119,8 +120,8 @@ If you are using Linux, you will find additional information about how to
 compile the game under '(2.1) Installing TomeNET'.
 -Get the latest client from www.tomenet.net or www.c-blue.de/rogue.html
  (called 'tomenet-???-client.zip') and extract it (to C:\Tomenet for example).
--Either run 'tomenet4-europe.bat' to directly connect to europe server
- (recommended), or run tomenet4.exe and choose a server (Enter 62.210.141.11
+-Either run 'TomeNET-EU.bat' to directly connect to europe server
+ (recommended), or run TomeNET.exe and choose a server (Enter 62.210.141.11
  to connect to europe server).
 -Create a character, Half-Troll warrior is good for beginners.
  In case you choose Half-Troll warrior, read this:
@@ -227,6 +228,8 @@ I       I       inspects an item, showing its special abilities in case it
                 1,5-handed.
 w       w       wear/wield an item from your inventory (weapons, armour,
                 ammunition, tools, rings, amulets, etc).
+W       W       wear/wield an item, same as 'w', but tries to use the second
+                available slot in case two inventory slots are both egligible.
 t       T       take off items.
 q       q       quaff a potion.
 r       r       read a scroll.
@@ -239,7 +242,8 @@ v       v       throw.
 b       (P)     browse (peruse) a book.
 m       m       activate a skill (ie cast a magic spell, lay a trap, use an
                 ability, create ammunition, polymorph into a monster form or
-                back to normal, cast a monster-spell while polymorphed).
+                back to normal, cast a monster-spell while polymorphed,
+                enter a combat stance).
 a       z       use (aim) a magic wand.
 z       a       use (zap) a magic rod.
 u       Z       use a magic staff.
@@ -255,6 +259,30 @@ S       #       enter 'search mode'. You will search your adjacent fields once
                 each turn. If you stand next to a room and you want to find
                 its hidden door, turn this on and run along its walls until
                 you find it.
+V       V       enter 'cloaking mode'. This can only be used by rogues.
+                It will take a couple of turns to perfectly cloak your
+                physical appearance and body warmth pattern, after which you
+                will be completely invisible to monsters who use normal sight
+                or infra-vision.
+                Only a few monsters who are able to utilize ESP (telepathy) or
+                have especially powerful detection will still notice you.
+                Those are eyes, angels, nether guards, and unique monsters
+                which are both smart and powerful at once.
+                Taking damage (HP/sanity/experience), attacking, casting
+                spells, reading scrolls, tunneling, bashing, picking up/
+                opening/closing/dropping/destroying things, using
+                wands/staves/rods, activating items, or any other action that
+                causes noticable noise immediately breaks cloaking!
+                Auto-retaliation is disabled while cloaked, except for the
+                Stormbringer (which will break the effec of course).
+                Cloaking will also increase your searching, greatly increase
+                your stealth, but decrease your speed. Sneakiness skill may
+                very slightly reduce the decrease.
+                Note: Cloaking has no effect on shoplifting; it breaks on
+                entering any shop.
+                Note: Although ESP is supposed to detect cloaked targets, for
+                now it's still set to overrides ESP of other players for the
+                sake of PvP usage, similar to invisibility.
 A       A       activate an item. Usually an artifact, a dragon scale mail or
                 a ring of polymorphing (shapechanging).
 T,+     CTRL+T  tunnel through an obstacle or a wall.
@@ -342,6 +370,8 @@ _       drink from a fountain. You must stand on the fountain to do this.
         You can also enter a slash command here.
         For details about chat, see (2.3).
         For details about slash commands, see further below in this paragraph.
+        There is also a /say command for talking to players nearby, and a
+        /shout command for waking up monsters! See further below.
 @       displays a list of players currently on the server.
 '       lets you peek at the equipment of party members or players within
         sight.
@@ -359,6 +389,8 @@ Q or CTRL+C or CTRL+K
 ?       invoke an in-game help screen
 CTRL+R  redraw the screen (do this if it's messed up for some reason).
  (/refresh, /ref)
+TAB or CTRL+I
+        Displays lag-o-meter.
 !       Look at the in-game bulletin board. Players can write lines of text to
         it by using the /bbs <text> command.
 
@@ -413,6 +445,8 @@ They all start with a slash '/':
             player's name in the player overview screen which can be invoked
             by pressing '@', indicating that this player currently cannot read
             normal chat messages.)
+/lite a..w  Refills your light source with an item from your inventory.
+            Usually easier to just press 'F' instead.
 /mar        Tells a prayer-user if he may use the prayer 'Holy Martyr'.
  (/martyr)
 /me         Write an emote. Example: /me hides.
@@ -438,6 +472,13 @@ They all start with a slash '/':
 /rec 32 32  recalls you to Bree (Town at 32,32 world map coordinates),
  (/recall)  using an item inscribed {@R}. See "(0.3) Important Inscriptions"
             for more info about Word of Recall.
+/ref        redraw the screen (do this if it's messed up for some reason).
+ (/refresh, or simply hit CTRL+R)
+/rfe        Store a message for the admin(s). For example bug report of
+            feature suggestion.
+/say <text>
+            Speaks <text> to players who are currently nearby your position,
+            instead of sending your message to everyone on the server.
 /shout <text>
             Shout <text> loudly, will wake up and aggravate nearby monsters.
             (Same effect as scroll of aggravate monsters, see (5.9)).
@@ -469,11 +510,21 @@ All items:
 The !* inscription:
     '*' is a 'wild card' which means it stands for multiple choices at once.
     Inscribing an item '!*' will prevent any of these action on it:
-    drop (!d) / kill (!k) / throw it (!v) / take off (!t) / house operations
-    (selling a key, '!h') / selling an item to a shop (!s).
+!d  prevent dropping an item
+!k  prevent killing (destroy) an item
+!v  prevent throwing an item
+!t  prevent taking an item off
+(!h prevent selling a house key. Keys usually aren't used anymore though.)
+!s  prevent selling an item to shop (!s).
     For example, if you wear an artifact and you want to avoid (d)ropping it,
     (t)aking it off or (v) throwing it away accidentally you could either
     inscribe it  !dtv  or just  !*  . ('!*'  also implies  '!='.)
+
+The # inscription:
+    This one makes all following inscription be appended directly behind the
+    actual item name, instead of at the end of the item's full description.
+    It can be especially convenient if the item has a very long name.
+    Sometimes you can also use this to confuse your fellow players :-p
 
 Items that induce random teleportation, like a 'ring of teleportation' or
 'weapon of the thunderlords':
@@ -659,7 +710,6 @@ Wormy       Wormtongue, Agent of Saruman. He drops great items.
 -Items on the floor within a house don't form piles! If you drop too many
  items and space in the house runs out the dropped item may just disappear!
 -The massive iron crown of Morgoth must not be worn by non-Kings/Queens!
--Auto-retaliation with spell books is currently not working.
 -Sometimes if you pick up an item from a pile, the next item below doesn't
  become visible on the map. You still 'feel' it if you step on the pile
  though. So if you died and were revived, scan your loot piles on the ground
@@ -858,7 +908,7 @@ Extract it to a new directory, preserving the pathnames.
 
 Windows:
 --------
-You may edit the file "tomenet4.ini" and do some changes to your likings.
+You may edit the file "TomeNET.ini" and do some changes to your likings.
 If it's not already disabled by default, it is recommended to turn off
 graphics ("GRAPHICS=0"). Further you can specify an account name and password
 of your own choice. That will relieve you from entering them every time
@@ -921,7 +971,7 @@ Example:
 
 (2.2) Starting TomeNET and getting to play on an internet server
 ----------------------------------------------------------------
-To start the TomeNET client, run 'tomenet4-europe.bat' or 'tomenet4.exe'.
+To start the TomeNET client, run 'TomeNET-EU.bat' or 'TomeNET.exe'.
 (If you run the '.bat' file, the meta-server steps will be skipped and you
 will be directly connected to the main europe server instead.)
 Now TomeNET tries to connect to a meta-server which contains a list of all
@@ -1226,14 +1276,16 @@ If you want to type the character '{' in a chat message, rather than using
 it for a colour code, type it twice '{{'. It will become '{'.
 
 Here is a list of colour codes (try not to annoy your fellow players :)
-    d   black           b   blue            B   light blue
-    D   dark            g   green           G   light green
-    s   slate           r   red             R   light red (pink)
-    W   white           u   umber           U   light umber
-    w   bright white    y   yellow          o   orange          v   violet
+    d  black            b  blue             B  light blue
+    D  dark             g  green            G  light green
+    s  slate            r  red              R  light red (pink)
+    W  white            u  umber            U  light umber
+    w  bright white     y  yellow           o  orange           v   violet
 
-    a   acidic          c   cold            e   electric        f   fire
-    p   poison          L   light flicker   h   half-multi      m   multi
+    a  acidic           c  cold             e  electric         f   fire
+    p  poison           L  light flicker    h  half-multi       m   multi
+    A  dark flicker     S  sound            C  confusion        H   shards
+    I  invulnerability  M  disruption shield
 
 
 Character names in chat lines have different colours to indicate their status:
@@ -1608,11 +1660,12 @@ To avoid this, you can directly choose which skill (ie spell-casting) you
 want to use in your macros, by specifying the "ability code"!
 
 Here is a list of all available ability codes:
-9       Create ammunition (for archers)
-3       Cast monster spell (for mimics)
-8       Check your dodge chance
-10      Set a monster trap
+9       Create ammunition (for archery skill)
+3       Cast monster spell (for mimicry-users)
+8       Check your dodge chance (for dodging skill)
+10      Set a monster trap (for trapping skill)
 11      Cast a magic spell / recite a holy prayer
+13      Change combat stance (for combat stances skill)
 
 After the ability code has been entered you need to press Enter to confirm it.
 In a macro, this is done by '\r' (one of the so-called escape sequences).
@@ -2010,7 +2063,7 @@ drop their items on death, their loot will vanish forever.
 (3.12)  Malicious effects players can suffer
 --------------------------------------------
 The player can suffer from various effects caused by monsters, traps or
-himself. Against several of these effects the 'Savint Throw' ability helps
+himself. Against several of these effects the 'Saving Throw' ability helps
 to decide whether it will be resisted or not (especially true for effects
 that are cast by monsters on the player).
 The various effects are:
@@ -2034,15 +2087,21 @@ Slowdown        Monsters can cast spells or breathe (inertia) to slow down
                 the player. This effect is temporary. 'Free Action' helps
                 a bit to reduce the effect from inertia breath.
 
-Stun    -Stun           Reduces your martial arts damage (because you cannot
+Stun    -Stun           Reduces to-hit and to-dam.
+                        Reduces your martial arts damage (because you cannot
                         perform MA special styles while stunned).
-                        Also reduces to-hit and to-dam.
-        -Heavy stun     Reduces your martial arts damage (because you cannot
+                        Reduces chance for successful spell-casting.
+        -Heavy stun     Greatly reduces to-hit and to-dam.
+                        Reduces your martial arts damage (because you cannot
                         perform MA special styles while stunned).
-                        Also reduces to-hit and to-dam greatly.
+                        Greatly reduces chance for successful spell-casting.
         -Knocked out    You cannot perform any action while knocked out,
                         it leaves your character completely helpless.
                         Beware! High AC helps to prevent it, see (5.11).
+                        Note that AC only helps against melee-based stun
+                        (most famous monster is probably "The Stormbringer"),
+                        while stun from sound attacks can only be prevented
+                        by having sound resistance.
 
 Cut                     Cuts will make you lose HP continuously.
 (Graze, Light cut, Bad cut, Nasty cut, Severe cut, Deep gash, Mortal wound)
@@ -2050,6 +2109,36 @@ Cut                     Cuts will make you lose HP continuously.
 Poison  -Poisoned       The player will continuously lose Hit Points.
                         Resisting poison will prevent the player from getting
                         poisoned (compare (5.6)).
+
+
+
+(3.13)  Malicious effects monsters can suffer
+---------------------------------------------
+Monsters can be affected by similar effects as players.
+Those are:
+
+Fear, blindness, confusion, sleep, slowing, and stun.
+
+Fear is a temporary effect, causing the monster to flee. Many monsters turn
+        afraid if their hit points drop very low. Wears off after a while.
+Blindness and confusion are currently the same thing, resulting in erratic
+        movements and being unable to cast spells or attack. Usually only
+        low level monsters are prone to these.
+        They are temporary effects that wear off after a while.
+Sleep is especially nice if it's cast as an area effect. Gets you out of
+        trouble, although most higher monsters are immune to it.
+        Monsters will wake up after a while, depending on your stealth.
+        Sleep effects are NOT cumulative.
+Slowing on monsters is currently a permanent effect. Very effective, although
+        many higher monsters are immune to it. Also, it is currently
+        cumulative (subject to change) and can be applied several times,
+        although monsters might resist.
+Stun    Stun can be caused by special martial art attacks among other things.
+        Stunned monsters have a harder time to successfully cast spells or hit
+        you in melee combat. Many monsters are immune to stun, but also many
+        monsters - even of high level - are not.
+        Monsters can also be heavily stunned or knocked out, same as players.
+        Stun is temporary and will wear off, if no new stun effect is applied.
 
 
 
@@ -2783,19 +2872,24 @@ Those again are divided into four sub-classes each:
 Single-handed, forced two-handed, should-be-wielded-two-handed,
 may-be-wielded-two-handed. If you examine ('I') a weapon, it will tell you if
 it belongs to one of the latter three sub-classes:
-"It must be wielded two-handed"
-"It should be wielded two-handed"
-"It may be wielded two-handed"
+"It must be wielded two-handed" (MUST2H)
+"It should be wielded two-handed" (SHOULD2H)
+"It may be wielded two-handed" (COULD2H)
 
 While smaller melee weapons require only 1 hand to use them, some larger
 weapons need 2 hands. Using a shield together with those is not possible.
 Some larger weapons that should be used two-handed can also be used
 single-handed, but you will receive penalties to to-hit and to-dam bonus if
 you use it that way. Look at your character screen ('C') to compare the
-to-hit/to-dam boni and see if it's worth it.
+to-hit/to-dam boni and see if it's worth it. You'll see a warning message
+"You find it hard to fight with your weapon and shield.".
+
 Medium weapons which 'may' be used two-handed won't give malus if used
 single-handed, but you might get more blows per round if you wield them with
 both hands! Again check your character screen ('C') to spot any difference.
+You'll see "Without shield, your weapon feels especially easy to swing.".
+Depending on weapon weight, your strength and your dexterity, sometimes you
+get more blows/round from it, sometimes you don't.
 
 If you try to wield a weapon that is too heavy for your character, meaning
 your 'STRength' stat isn't high enough yet, you'll get a warning message:
@@ -2808,7 +2902,16 @@ Similar is possible for shields. If you try to use a shield which is too heavy
 for you, you'll get another warning message:
 "You have trouble wielding such a heavy shield".
 That means you will hardly be able to deflect anything, and also you'll get
-less Armour Class increase from it than it usually provides.
+less Armour Class increase from it than it usually provides. Even if your
+shield has magical reflection ability, you won't be able to utilize it.
+
+Depending on your server settings, your character might have a chance to parry
+attacks with his weapon and block attacks with his shield, provided he uses
+one. For more details about class-specific ability to utilize weapons and
+shields for parrying and blocking, see (6.5). In general, the bigger a weapon
+the more you may parry, while the bigger a shield the more you will block!
+Last but not least, training "Weaponmastery" skill will also increase your
+block chance a good deal.
 
 
 
@@ -2933,7 +3036,7 @@ of several points..
 -using a melee or ranged weapon or a shield will nullify the special combat
  styles, reducing your damage.
 -using a melee or ranged weapon or a shield or wearing too heavy armour will
- reduce your grab chance to zero.
+ reduce additional interception bonus gained from Martial Arts skill to zero.
 -using a heavy shield, melee or ranged weapon will nullify your speed and
  stealth bonus.
 
@@ -2974,7 +3077,8 @@ Heavy backpack       |               0                 0      0           0
 Heavy armour         |     0                           0           0     50%
 Any melee weapon     |                        0               0    0      0
 Any ranged weapon    |                        0               0    0      0
-Heavy shield/weapons |                        0        0           0
+Any shield           |                        0                    0
+Heavy shield/weapons |                                 0
 
 
 Martial Arts special combat techniques have certain dice, similar to normal
@@ -3098,8 +3202,8 @@ the most difficult one.
 Your total armour weight is the sum of the weight of any armour pieces worn
 on head (helmet), body, arm (a shield), hands, feet, and your cloak.
 
-Armour weight
--------------
+Armour weight (concerning combat)
+---------------------------------
 Wearing armour which is too heavy for you will reduce your to-hit bonus and
 speed bonus from 'Sneakiness' skill.
 You will receieve a warning message, telling you:
@@ -3109,8 +3213,13 @@ To move freely, you may wear 10.0 lbs of armoury plus a strength-factor plus
 find your str_hold). So the top weight limit is
 10.0 + 0.6 * 50 (combat) + 0.6 * 100 (str_hold) = 100.0 lbs.
 
-Some special abilities depend on armour weight too, for the 'Rogue' class
-it's Area-Searching.
+Some special abilities depend on armour weight too. Those are..
+-dodge chance from 'Dodging' skill.
+-critical hit bonus from 'Critical-strike' skill.
+-extra parry bonus from dual-wielding two weapons.
+-extra blow/round bonus from dual-wielding two weapons.
+-area searching for the 'Rogue' class (exclusive ability).
+-cloaking mode for the 'Rogue' class (exclusive ability).
 If the armour becomes too heavy to perform those, a message will appear:
 "The weight of your armour strains your flexibility and awareness."
 The weight limit is 20.0 + (Combat skill / 10) lbs.
@@ -3163,13 +3272,13 @@ value varies for the different types of attacks).
 
 Example:
 An Ancient Red Dragon breathes fire.
-He has 1500 HP. The fire breath would do approx. 500 damage.
+It has 1500 HP. The fire breath would do approx. 500 damage.
 The damage cap for fire attacks is 1200. So the value of 500 remains.
 Let's assume that your character resists fire. The damage will be cut down
 to 1/3 now, leaving 170 damage.
 Example 2:
 A Great Hell Wyrm :) breathes fire.
-He has 5000 HP. The fire breath would do approx. 1700 damage.
+It has 5000 HP. The fire breath would do approx. 1700 damage.
 Since 1700 is greater than the cap (1200) it becomes 1200.
 Let's assume your character resists fire. The damage will be cut down to 1/3,
 leaving approx. 400 damage.
@@ -3192,18 +3301,21 @@ Fire/Heat               These attacks can burn items in your inventory.
                         you or your inventory getting harmed.
                         Fire bolts do (level/3)+(9d8) damage.
                         Fire balls do (level*7/2)+10 damage.
+                        Fire breaths do HP / 3 damage, capping at 1200.
                         Immunity or double resistance protects items in your
                         inventory and equipment from getting harmed (5.10).
 Frost/Cold              These attacks can shatter potions.
                         Without resistance it can reduce your strength.
                         Frost bolts do (level/3)+(6d8) damage.
                         Cold balls do (level*2)+10 damage.
+                        Cold breaths do HP / 3 damage, capping at 1200.
                         Immunity or double resistance protects items in your
                         inventory and equipment from getting harmed (5.10).
 Lightning/Electricity   These attacks can destroy rings and amulets.
                         Without resistance it can reduce your dexterity.
                         Lightning bolts do (level/3)+(4d8) damage.
                         Lightning balls do (level*3/2)+8 damage.
+                        Lightning breaths do HP / 3 damage, capping at 1200.
                         Immunity or double resistance protects items in your
                         inventory and equipment from getting harmed (5.10).
 Acid                    These attacks can destroy items in your inventory.
@@ -3212,6 +3324,7 @@ Acid                    These attacks can destroy items in your inventory.
                         Without resistance it can reduce your charisma.
                         Acid bolts do (level/3)+(7d8) damage.
                         Acid balls do (level*3)+15 damage.
+                        Acid breaths do HP / 3 damage, capping at 1200.
                         Immunity or double resistance protects items in your
                         inventory and equipment from getting harmed (5.10).
 Breath damage before capping is monster HP/3. Damage of these attacks is capped
@@ -3230,10 +3343,11 @@ Poison          Poison resistance doesn't belong to the basic resistances but
                 be protected from poisoning effects.
                 Breath damage before capping is monster HP/3. Poison breath
                 caps at 800.
+                Stinking clouds, which are small poison balls, inflict 12d2
+                damage.
 
 Make sure that you have the basic resistances as soon as possible, and poison
-resistance before going far deeper than 1500 ft.
-Poison balls (also known as Stinking Clouds) do 12d2 damage.
+resistance before going into deeper Mordor.
 
 There are also five minor resistances:
 Fear            While you're afraid you won't be able to attack a target in
@@ -3795,15 +3909,22 @@ chauve-souris   Turns you into a fruit bat. Quaff another one to be restored
                 you back. Oh, and..undesired side-effects _might_ occur.
 Enlightenment   Illuminates and maps the whole level and reveals all objects.
 *Enlightenment* Raises your intelligence and wisdom, detect treasures,
-                objects, secret doors, traps. Identifies all items. Does the
-                same as a potion of Self-Knowledge.
+                objects, secret doors, traps. Identifies all items. And tells
+                you about yourself like a potion of Self-Knowledge would do.
 Augmentation    Raises all your stats.
+Lose Memories   Lose 25% experience (if Hold Life is missing).
+Ruination       Take 10d10 damage. All stats are decreased by 25 (restorable).
+Detonations / Death
+                Better not drink it (or you deserve it).
+                Also, handle with caution! Make sure those won't shatter in
+                your backpack when you're hit by potion-damaging effects, or
+                you might not see the next sunrise.
+                If thrown (press 'v' to throw an item) these potions show the
+                strongest effect by far of all potions - devastating!
+                Accordingly useful to be used in fumes traps.
 Invulnerability Will turn you partially invulnerable (50% chance to get hit,
                 50% damage reduction).
 Learning        Gives you 1..3 (random) additional skill points to spend.
-Lose Memories   Lose 25% experience (if Hold Life is missing).
-Ruination       Take 10d10 damage. All stats are decreased by 25 (restorable).
-Detonations     Better not drink it.
 
 
 Scrolls
@@ -3867,7 +3988,11 @@ Rune of Protection  Creates a warding glyph on the floor that stops monsters
 Protection from evil    Repels evil creatures that try to attack you.
                         See the prayer 'Protection from evil' in (6.8)!
 *Destruction*   Causes a local earthquake, nearly completely wiping the area
-                of monsters and objects. Can save you!
+                of monsters and objects.
+                Extremely powerful magic which causes a searing blast of light
+                and a terrible shockwave that will blind you and knock you and
+                everyone else out.
+                Use this as a last resort!
                 This magic will fail in towns or town-surrounding area within
                 a radius of 3 worldmap sectors.
 Genocide        Removes all monsters of a certain kind from the current level.
@@ -4004,20 +4129,20 @@ Feanorian lamps     Make you resist fear and see the invisible. Don't need to
 Mattock/Pick/Shovel Diggers, improving your digging capabilities.
                     (+to-hit, +to-dam) on digging tools as well as a high
                     weight help to further increase their effectiveness.
-                    The main factor is the (+diggingpower) mod though.
+                    Main factor is the (+diggingpower) mod though. (Equip it!)
 Mummy Wrapping      Reduces your charisma slightly, and prevents other players
                     from seeing your equipment except for your melee and/or
                     ranged weapon. Also makes you look dark like being
-                    infected by Black Breath.
+                    infected by Black Breath. (Equip it!)
 Tarpaulin           Prevents your inventory from taking water damage on
-                    crossing water fields.
-Picklock            Improves your disarm ability.
-Money Belt          Prevents thieves from stealing your money.
+                    crossing water fields. (Equip it!)
+Picklock            Improves your disarm ability. (Equip it!)
+Money Belt          Prevents thieves from stealing your money. (Equip it!)
 Device of theft prevention
-                    Prevents thieves from stealing items from you.
+                    Prevents thieves from stealing items from you. (Equip it!)
 Climbing set        Allows you to travel over mountain fields.
                     Info for mimics & co: In order to be able to use it, your
-                    appearance form must have arms and fingers.
+                    appearance form must have arms and fingers. (Equip it!)
 Fortune Cookie      Gives you a line of wisdom.
 Sprig of Athelas    Eat this one to cure Black Breath (see 1.5 for more
                     information about Black Breath),
@@ -4453,8 +4578,8 @@ experience points permanently. Here are some details about that process:
 
 
 
-(5.20) Runes
-------------
+(5.20) Runes & Runemastery
+--------------------------
 Runes are magical symbols, often hidden in ancient digging sites, or carried
 around by clueless creatures who are not aware of the power of these relicts.
 Runes can be combined to create powerful magical effects by skilled rune
@@ -4469,10 +4594,10 @@ When semi-skilled pseudo-professional folks use runes, there's quite a chance
 for them to break! General chance formula is:
 
 For bolts, beams and balls:
-(perfect_cast_level - skill_level) %, minimum is 0%.
+(perfect_cast_level - skill_level) %, minimum is 0.1%.
 
 For clouds:
-((perfect_cast_level - skill_level) * 2) %, minimum is 0%.
+((perfect_cast_level - skill_level) * 2) %, minimum is 0.1%.
 
 perfect_cast_level is 15 for bolts
                       25 for beams
@@ -4552,31 +4677,43 @@ Stats can be raised over the character's cap by equipment. The total possible
 maximum of an attribute is always 18/220 (40), which is displayed as 18/***.
 
 Strength (STR)
-    -How heavy may your weapon and bow be? You can't fight with a weapon that
-     is too heavy for you.
-    -How heavy may your armour be? You will lose mana or Martial Arts abilties
+    -How heavy may your weapon, bow or shield be? You can't fight with a
+     weapon that is too heavy for you.
+    -How heavy may your armour be? You will lose mana, boni or combat abilties
      if it's too heavy for you.
-    -How much damage do you inflict on enemies?
+    -How much damage do you inflict on enemies? (to-dam bonus)
     -Are you able to deliver several blows per round with your weapon?
+    -How much can you carry in your backpack without getting slowed you?
+    -How easily you can bash doors open.
+    -How far you can throw items.
+    -Allows you to try hard to swim and not drown in deep water.
+    -How easily you can dig.
 Intelligence (INT)
-    -How much mana for spellcasting do you have?
-    -How well can you cast spells?
-    -How well can you handle and use magic devices?
+    -Has influence on your mana pool size. (class-dependant)
+    -How well can you cast spells that use INT to determine failure rate?
+    -Has influence on your magic device handling skill.
+    -Has influence on your disarming skill.
+    -Do you notice if someone tries to steal from you?
     Also see (6.10) for more information about the 'Magic Device' skill.
 Wisdom (WIS)
-    -How well can you cast priest prayers? (certain spells that are for
-     priests)
+    -How well can you cast priest prayers or other spells that use WIS to
+     determine failure rate?
+    -Has influence on your mana pool size. (class-dependant)
     -How well can you resist malicious influences like poison, paralyzation,
-     or insanity?
+     or confusion? (Means, your Saving Throw is depending on your WIS.)
     -Wisdom directly increases your sanity. Be careful! If you're very low on
      sanity taking off a +wisdom item can mean your death, in case your sanity
      drops to 0 by taking off the item.
 Dexterity (DEX)
     -Has positive influence on your armour class and on your chance to hit
-     enemies, also quite important for ranged weapons.
+     enemies, also quite important for ranged weapons to-hit chance.
     -How well can you steal (from shops)? (A high DEX won't help much if your
      'Stealing' skill is zero by the way ;)
     -Are you able to deliver several blows per round with your weapon?
+    -How likely are items or money stolen from you?
+    -Can you prevent getting stunned from bashing a door clumsily?
+    -Allows you to try hard to swim and not drown in deep water.
+    -Has influence on your disarming skill.
 Constitution (CON)
     -How many HP (hit points) do you have? Very essential.
      Note that CON effect caps depending on your character level. Roughly:
@@ -4585,11 +4722,14 @@ Constitution (CON)
      increase as long as your character is level 20.
      At level 30, CON cap is 18/130, at level 40 it's 18/190, and at level
      45 and higher the full CON bonus is utilized for determining Hit Points.
+    -Also reduces the duration of poisonous effects on you.
+    -Reduces drowning (also for aquatic forms outside of water) effects.
 Charisma (CHR)
     -Do you get good prices in shops? :)
      Note that shop prices also depend on racial preferences of the
      shopkeepers vs their customers. It is said, that Half-Trolls have an
      especially hard time.
+    -Allows you to resist getting seduced.
 
 
 
@@ -4623,12 +4763,17 @@ Note that not every skill is available to every profession (class).
                                 will pseudo-id items.
                                 Increases Fear/Stun/Confuse duration of the
                                 target (if attacking causes those).
+                                Reduces Fear/Stun/Confuse durations that you
+                                suffer from.
                                 Slightly increases melee and ranged to-hit
                                 bonus, and melee to-damage bonus.
     +Weaponmastery              Improves your Fighting ability.
                                 Slightly increases melee to-dam and to-hit for
                                 armed combat. Increases your chance to score
                                 critical hits in armed combat.
+                                If your server has parrying enabled,
+                                Weaponmastery will also increase your parry
+                                chance a good deal.
         +Sword-mastery          Greatly improves to-dam/to-hit with swords.
                                 At 25 and 50 you will get +1 blow per round
                                 while having a sword equipped.
@@ -4640,6 +4785,9 @@ Note that not every skill is available to every profession (class).
                                 Critical-strike skill only helps light swords,
                                 not heavier than 10.0 lb., while critical-hits
                                 items will work with all weapons.
+                                Also, Critical-strike skill will not give you
+                                any benefits if your armour is so heavy that
+                                you get a flexibility warning (compare (5.5)).
                                 NOTES ABOUT CRITICAL HITS IN GENERAL:
                                 You can always score critical hits,
                                 independent on weapon class and crit-skill.
@@ -4668,6 +4816,48 @@ Note that not every skill is available to every profession (class).
         .Axe-mastery            See Sword-mastery
         .Hafted-mastery         See Sword-mastery
         .Polearm-mastery        See Sword-mastery
+        .Combat Stances         This ability cannot be trained, but it is
+                                increased automatically each time your
+                                character gains a level.
+                                Only warriors, mimics, paladins and rangers
+                                can learn certain stances.
+                                On certain skill levels, you will learn a new
+                                rank of a stance.
+                                Press 'm' to enter one of the combat stances
+                                you have learned. You will learn a couple of
+                                ranks of three basic combat stances, when you
+                                reach a certain character level i.e. skill.
+                                Each stance has advantages and disadvantages,
+                                those are:
+                                Defensive stance - you will block more,
+                                                 - intercept less often,
+                                                 - deal less damage.
+                                Offensive stance - you can stun opponents
+                                                   (compare (3.13)),
+                                                 - intercept more often,
+                                                 - parry and dodge less often.
+                                (A higher ranked stance features more of its
+                                benefits and/or less of its drawbacks.)
+    .Dual-Wield                 The ability to wield two weapons at once. This
+                                ability cannot be trained (it's a switch).
+                                Dual-wielding will give you additional parry
+                                chance as well as a blows/round bonus.
+                                You won't receive these boni if your armour is
+                                too heavy (see (5.5)). By dual-wielding, your
+                                character gains all magical abilities of both
+                                weapons at once (only very few don't stack)!
+                                In combat, a coin is flipped for each blow you
+                                deal, determining randomly which weapon will
+                                be used for that particular hit.
+                                Note that both weapons must be 1-handed.
+                                1,5- or 2-handed weapons cannot be used.
+                                To avoid confusion: If you use weapons with
+                                different blows/round, their bpr will get
+                                averaged, and rounded down, then bpr bonus for
+                                dual-wielding is added. That means you should
+                                avoid such bpr differences that are odd
+                                numbers, due to the loss on rounding them.
+                                Example: 4bpr & 5bpr = 4.5bpr rounded to 4bpr.
     +Archery                    Improves ranged to-damage bonus.
                                 Increases your chance to score critical hits.
                                 At 10 you may create ammunition from bones,
@@ -4730,6 +4920,8 @@ Note that not every skill is available to every profession (class).
                                 chance of intercepting an enemy! See
                                 'Interception' skill below.
                                 For more details about MA see section (5.4).
+                                Training Martial Arts skill will also slightly
+                                increase your Dodging skill.
 +Magic                          Improves your spellcasting abilities and
                                 increases your mana capacity.
                                 Lets you pseudo-id magic items, potions and
@@ -4787,10 +4979,14 @@ Note that not every skill is available to every profession (class).
                                 (0% break chance for rune on casting balls).
                                 At 50, it gives perfect cloud casting
                                 (0% break chance for rune on casting clouds).
-                                For more info about runes, see '(5.20) Runes'.
+                                For more info about runes, see
+                                '(5.20) Runes & Runemastery'.
 +Sneakiness                     Slightly increases your character speed
                                 (+7 at 50, so approx +1 every 7..8 points).
                                 Slightly increases perception and searching.
+                                Slightly reduces speed loss while in searching
+                                mode, and very slightly while in rogues'
+                                cloaking mode.
     .Stealth                    Increases your stealth, which determines
                                 if monsters can hear you from a distance
                                 or if you can sneak past them. Note that even
@@ -4841,20 +5037,34 @@ Note that not every skill is available to every profession (class).
                                 it actually is (black market) that has no
                                 effect on stealing. The 'normal' item value
                                 is used to calculate the chances.
+                                However, if an item is offered at reduced
+                                price, it'll be easier to steal it!
                                 It's more difficult to steal from special
                                 stores (expensive black market and especially
                                 rare footwear/jewellry/secret black market).
                                 It's a good idea to wear as many +DEX items
                                 as possible while trying to steal from a shop.
                                 Stealth and invisibility might also help.
-    +Dodging                    Ability to evade attacks. Doesn't work well
-                                if you wear heavier armour.
+    +Dodging                    Ability to evade attacks. In order to get any
+                                benefits from doding skill at all, your armour
+                                mustn't be so heavy that you get a flexibility
+                                warning (compare (5.5)) and also you must not
+                                be using a shield.
+                                Apart from that, your actual chance to dodge
+                                an attack depends on the total weight you are
+                                carrying around with you, that is, inventory
+                                and equipment added up, your dodging skill,
+                                and the opponent's level.
+                                You can check your average dodging chance
+                                against opponents of same level by pressing
+                                'm' and choosing "Check dodge chance".
         .Calmness               Ability to not get hindered by enemies.
                                 Adjacent foes can interfere if you try to..
-                                -shoot with ranged weapons
-                                -use a void jumpgate
-                                -invoke a mimic spell
-                                -set a monster trap.
+                                -shoot with ranged weapons,
+                                -use a void jumpgate,
+                                -invoke a mimic spell,
+                                -set a monster trap,
+                                -use a staircase.
         .Interception           Ability to interfere with adjacent enemies.
                                 Can prevent them from teleporting, casting,
                                 summoning, running away. The chance to
@@ -4941,8 +5151,7 @@ Note that not every skill is available to every profession (class).
                                 Increases your hit points by 2 for each point.
                                 Also helps you to recover from temporary stats
                                 drain, hallucination, blindness, paralysis,
-                                confusion, slowness, poison, stun and cuts
-                                faster.
+                                confusion, slowness, poison and cuts faster.
                                 If you spend 10 points into Health, your
                                 sanity will be displayed as a bar.
                                 At 20 points you'll get the percentage
@@ -4951,9 +5160,14 @@ Note that not every skill is available to every profession (class).
     .Digging                    Self-explaining
     .Climbing                   You need this at 01.000 to learn climbing.
 
-In my opinion, the sub-skills of 'Health' should be avoided. There are more
-important skills to care about. Also see (7.5) for suggestions about skill
-point distribution.
+The abilities Swimming, Digging and Climbing are also granted by items you
+can find. Those are for example items that grants you flying, so you may just
+fly over water instead of swimming across. Wands of stone-to-mud will turn any
+obstacle to mud that you could dig through, and some boots or a climbing set
+might grant you the ability to climb highest mountains. Dwarves also learn
+this ability automatically when they reach level 30.
+
+Also see (7.5) for suggestions about skill point distribution.
 
 Here is what the numbers mean (we will use the Axe-Mastery skill for this
 example:
@@ -4996,7 +5210,8 @@ Take care on the following combinations:
 (6.3) Abilities
 ---------------
 Depending on your race and class, you will be better or worse at certain
-abilities. You can see your abilities in the character screen (press 'C').
+generic abilities. You can see your abilities in the character screen
+(press 'C').
 
 Miscellaneous Abilities can range from Bad to Legendary:
 Bad         (red)
@@ -5033,14 +5248,16 @@ Stealth
     Determines if monsters will immediately wake up if you're nearby or if
     you are able to sneak past sleeping monsters without waking them.
 Perception
-    Determines how easily you spot hidden traps or doors on adjacent fields
-    without even searching for them.
+    Determines how often you have a chance to spot hidden traps or doors on
+    adjacent fields without even searching for them. Whether you really
+    discover something will depend on your Searching ability.
 Searching
     Determines how easily you spot hidden traps/doors on adjacent fields
-    while explicitely searching for them (with 's' or 'S').
+    while searching for them (with 's' or 'S'), or when you automatically
+    notice them due to your Perception ability.
 Disarming
     How well you can disarm traps (without setting them off), and how likely
-    you avoid them if you accidentally step on a field that contains one.
+    you avoid known traps if you accidentally step on them again.
 Magic Device
     How well you can use magic items like wands, staves, rods (these are often
     especially hard to use) or activate magic items like Dragon Scale Mails.
@@ -5068,6 +5285,11 @@ Infra-Vision
 
 Note that your age, height, weight, social class and gender don't have
 influence on the gameplay at this time.
+
+
+Apart from those generic abilities, there are several class- or race-specific
+active or passive abilities, given in the class/race descriptions in (6.4) and
+(6.5).
 
 
 
@@ -5119,7 +5341,8 @@ Gnome
     perception, and stealth. They have lower strength than humans so they are
     not very good at fighting with hand weapons. Gnomes have fair infra-vision,
     so they can detect warm-blooded creatures at a distance.
-    Gnomes receive bonus on 'Crossbow-Mastery', 'Magic' and 'Digging'.
+    Gnomes receive bonus on 'Crossbow-Mastery', 'Magic', 'Dodging' and
+    'Digging'.
 Dwarf
     Dwarves can never be blinded and at level 30 they learn to travel across
     even the highest mountain regions.
@@ -5166,8 +5389,8 @@ High-Elf
     their wisdom is sometimes suspect. They do very well in all professions.
     There are few things that they have not seen already, and experience is
     hard for them to gain.
-    High-Elves receive bonus on 'Bow-Mastery', 'Magic', 'Stealth', 'Dodging',
-    'Calmness' and 'Sneakiness'.
+    High-Elves receive bonus on 'Bow-Mastery', 'Magic', 'Stealth', 'Calmness',
+    'Sneakiness' and 'Dodging'.
 Yeek
     Being weak and losing many childhood fights, they have learned the
     ability to float gently to the ground. They have intrinsic feather
@@ -5234,7 +5457,8 @@ Vampire
     when the vampire rises in character-levels.
     Vampires are good fighters and decent mages. However, they are unable to
     utilize magic of water, nature or divination school. Neither can they make
-    use of mimicry techniques or holy spells.
+    use of mimicry techniques or holy spells. They are unable to try and
+    suppress magic, but can make use of items that provide antimagic effects.
     They resist darkness, nether, poison and cold and it's hard to drain their
     life force. They also have partially life leeching (vampiric) attacks
     (see '(5.15) Vampirism' for more information).
@@ -5349,9 +5573,10 @@ Priest
     of their type.
 Rogue
     Rogues can backstab (works especially well in the dark) sleeping or
-    fleeing monsters, and they can train stealing from shops, creatures
+    fleeing monsters, and they can train stealing items from shops, creatures
     or players. Due to their high dexterity they can often hit several
-    times per round with light weapons.
+    times per round with light weapons. Also, rogues are especially fond of
+    dual-wielding two light one-handed weapons at once.
     A Rogue is a character that prefers to live by cunning, but is capable of
     fighting their way out of a tight spot. The master of traps and locks, no
     device is impossible for him to overcome. A rogue will learn to set many
@@ -5364,9 +5589,18 @@ Rogue
     ability to train stealing from his fellow men, a dangerous but sometimes
     very rewarding profession. Rogues are better than warriors or paladins
     with magical devices, but still can not rely on their performance.
-    Rogues can also learn a few spells. When searching for hidden traps and
-    doors, they may spot them more easily, even from a distance!
-    A rogue's primary stats are Intelligence and Dexterity. 
+    Rogues can also learn a few spells. When searching for hidden traps, doors
+    and stairs, they may spot them more easily, even from a distance, which
+    increases when the rogue gains levels.
+    At level 15, rogues will learn another special ability: Cloaking mode.
+    (Press 'V' to make your character prepare for cloaking up / uncloaking.)
+    By cloaking their physical appearance and body warmth pattern perfectly,
+    which takes a certain time to get prepared, they become completely
+    untrackable to almost any monster, for exceptions see (0.2).
+    Attacking, taking damage, and a couple of other actions immediately
+    breaks cloaking, again see (0.2) for details.
+    Auto-retaliation is disabled while cloaked, except for the Stormbringer.
+    A rogue's primary stats are Intelligence and Dexterity.
 Mimic
     Mimics can learn how to shapechange and use monsters' forms, thus
     inheriting nearly all of the monster's abilities. Mimics learn forms
@@ -5464,7 +5698,7 @@ Runemaster
     to intercept and disarm things very well.
     Runemastery is not part of intrinsic magic but of hard scientific work,
     and hence only available to quite intelligent races.
-    For more information about runes, see '(5.20) Runes'.
+    For more information about runes, see '(5.20) Runes & Runemastery'.
 
 If you raise in levels, you will get new titles. These are displayed between
 your class name and your character level in the main window. If you die and
@@ -5481,37 +5715,47 @@ from a specific weapon-type mastery or from rings of extra attacks or magical
 influence from priest prayer 'Zeal'.
 Note that these blow/round limits don't count for Martial Arts users (as long
 as they fight barehanded). See (5.4) for a table of MA attacks.
+Parrying and blocking only has effect if your server has enabled the ability
+to parry or block (using weapon or shield) enemy attacks.
+In general parrying works better with larger weapons, while blocking works
+better with larger shields. So 2-hand weapons parry better than 1.5-handed,
+and those better than 1-handed. If you wield a 1-hand weapon WITHOUT a shield
+which feels especially easy to swing that way, you'll also get a parry bonus.
+Many effects that normal armour usually doesn't protect from can actually be
+blocked, for example your character may quickly duck behind his shield just in
+time when an eye tries to gaze in your eyes to paralyze you.
+"Weaponmastery" skill will further increase your parry chance a good deal.
 
 (Di:Disarming,      MD:Magic Device,        ST:Saving Throw,    St:Stealth,
 Pe:Perception (sight range), Sr:Searching,  Fi:Fighting,        BT:Bows/Throw)
 
-            STR INT WIS DEX CON CHR     HPdice  Exp%    max.Blows/Round
-            Di  MD  ST  St  Pe  Sr  Fi  BT              (from STR & DEX)
+            STR INT WIS DEX CON CHR     HPdice  Exp%    Max. base blows/round
+            Di  MD  ST  St  Pe  Sr  Fi  BT              Parrying/Blocking
 ------------------------------------------------------------------------------
 Adventurer   0   0   0   0   0   0       +6      +10%       4
-            20  20  20   2  15  15  50  50
+            20  20  20   2  15  15  50  50              fair     fair
 Warrior     +5  -2  -2  +2  +2  -1      +10       +0%       6
-            25  18  18   1   2  14  70  55
+            25  18  18   1   2  14  70  55              superb   superb
 Istar       -5  +3  +0  +1  -2  +1       +0      +35%       1
-            30  36  30   2  20  16  34  20
+            30  36  30   2  20  16  34  20              bad      bad
 Priest      -1  -3  +3  -1  +0  +2       +4      +20%       4
-            25  30  32   2   8  16  48  35
+            25  30  32   2   8  16  48  35              poor     poor
 Rogue       +2  +1  -2  +3  +1  -1       +5      +25%       5
-            45  32  28   5  32  24  60  66
+            45  32  28   5  32  24  60  66              superb   fair
 Mimic       +1  +0  +0  +1  +1  -4       +5      +40%       4
-            25  35  28   1  18  18  60  66
+            25  35  28   1  18  18  60  66              good     good
 Archer      +1  +0  +2  +3  +1  -1       +5      +15%       3
-            30  32  28   2  20  24  56  82
+            30  32  28   2  20  24  56  82              fair     fair
 Paladin     +3  -3  +1  +0  +2  +2       +8      +30%       5
-            10  21  54   1  16  13  60  29
+            10  21  54   1  16  13  60  29              good     superb
 Ranger      +2  +2  -1  +1  +2  +0       +7      +35%       5
-            34  32  30   5  30  30  50  60
+            34  32  30   5  30  30  50  60              good     fair
 Druid       +1   0  +2  -2  -2  +1       +5      +50%       4
-            30  40  30   5  25  25  50  60
+            30  40  30   5  25  25  50  60              fair     fair
 Shaman       0  +1  +2  -2   0   0       +5      +30%       4
-            10  13  30   5  30  20  45  20
+            10  13  30   5  30  20  45  20              poor     poor
 Runemaster  +1  +2  -3  +3  -3  -3       +5      +20%       4
-            10  20  20   0  30  20  45  20
+            10  20  20   0  30  20  45  20              fair     fair
 
 
 
@@ -5964,6 +6208,7 @@ Mana
     Disruption Shield
                     Conjures a shield that protects you from taking damage.
                     Instead, the shield will consume your mana to absorb it.
+                    Only Istari are able to really get the most out of it.
                     Required skill level for first spell level: 35.
   BONI:             Mana resistance at 40.
 Conveyance
@@ -6020,6 +6265,9 @@ Nature
                     Required skill level for first spell level: 15.
     Regeneration    Increases your hit point regeneration rate.
                     Required skill level for first spell level: 20.
+    Vermin Control  Prevents vermin from breeding any further on
+                    your current level.
+                    Required skill level for first spell level: 15.
   BONI:             Regeneration ability (Hit Points) at 30,
                     Pass trees easily at 30,
                     Pass water easily at 40.
@@ -6882,7 +7130,7 @@ Teamplay:
 
 (7.4) Spoiler files
 -------------------
-In the folder tomenet-bin/lib/game you find several data files containing
+In the folder tomenet/lib/game you find several data files containing
 various information about all monsters, items and other features of TomeNET.
 These files are named X_info.txt and can be read via a normal text editor.
 The most important files are:
@@ -6899,9 +7147,9 @@ end, which explains the meaning of each discrete info-line.
 ------------------------------
 Melee fighters should maximize (to get extra attacks and extra damage) one of
 the weapon masteries (Sword, Hafted, Polearm, Axes) or Martial Arts if they
-prefer this, and 'Interception'!
+prefer weaponless combat, and 'Interception'.
 Interception is especially important if they don't train Martial Arts, in
-order to prevent the target from summoning or casting spells.
+order to try and prevent their opponent from summoning or casting spells.
 Hybrid classes might choose to not fully train their chosen mastery to have
 spare skill points for spell casting or other skills.
 
@@ -6909,13 +7157,14 @@ Spellcasters might want to train Spell-Power additionally to their school
 spells to further boost their powers.
 
 Archers probably want to train Calmness to keep shooting adjacent enemies,
-without getting interrupted by them. And of course they should train one of
-the ranged-weapon masteries (Bows, Crossbows, Slings) to eventually get 3
+without getting intercepted by them. And of course they should train one of
+the ranged-weapon masteries (Bows, Crossbows, Slings) to eventually get some
 extra shots per round, and also train Archery up to 50 to get additional
 extra might.
 
 Spare skill points might be well invested into Stealth and Sneakiness,
-especially in Stealth if your stealth is rather low.
+especially in Stealth if your stealth is rather low and you tend to wake up
+every monster nearby early.
 
 
 
@@ -6927,17 +7176,18 @@ You died. Hm, very annoying indeed. If you are a "No-ghost" or "Hellish"
 character, then you are wiped out now. Otherwise you became a ghost on the
 same dungeon level as you died on. Your items are scattered on the floor, now
 what to do? The items will disappear forever if you leave that dungeon level
-and noone remains down there to "keep it static" or "hold the level", as the
-technical term are. If you think you really need the items, ask someone to get
-down to your dungeon level and either revive you there using a scroll of life
-or pick up your items and give them back to you in town.
-If your level is still very low, you can just decide to suicide and start
-over. That is sometimes easier. 
+and noone remains down there to "keep the level static" or "hold the level",
+as the technical terms are. If you think you really need the items, ask
+someone to get down to your dungeon level and either revive you there using a
+scroll of life or pick up your items and give them back to you in town after
+you revived in the town's temple (green '4').
+If your character level is still very low, you can just decide to suicide and
+start over. That is sometimes easier.
 In TomeNET you will often encounter new situations that can lead to death. The
-most important thing here is that you really keep in mind your mistakes of the
-past to prevent them from happening again. A key to winning is a firm
-knowledge of the monsters that you encounter, so you will be able to decide if
-you should attack or flee.
+most important thing here is that you keep in mind your mistakes of the past
+to prevent them from happening again. A key to winning is a firm knowledge of
+the monsters that you encounter, so you will be able to decide if you should
+attack or flee.
 In my opinion playing TomeNET can be called "the art not to die".
 
 
@@ -6949,7 +7199,7 @@ to http://angband.oook.cz/ ! You can create a character dump by invoking the
 character screen by pressing 'C' and then pressing 'f' (as it states at the
 bottom). These dumps are always interesting to see. Your character doesn't need
 to have achieved a high level for sending in a dump. Every level is fine.
-Character dumps are automatically created in your /tomenet-bin/lib/user folder
+Character dumps are automatically created in your /TomeNET/lib/user folder
 if your character dies. The filename is charactername-death.txt, for example
 Gandalf-death.txt. (no overwrite-check is performed.)
 
@@ -7289,9 +7539,9 @@ power is, the more likely the randart will be 'aggravating nearby creatures'.
 ---------------------
 PROBLEM 00: I am behind a firewall. What ports do I need to open in order to
             play TomeNET?
-SOLUTION:   You only need to open port 18348 for an outgoing TCP/IP
-            connection, that's the standard port. (If you'd like to play on
-            the RPG server, it's port 19348 instead of 18348.)
+SOLUTION:   You only need to allow an outgoing TCP/IP connection to remote
+            port 18348, that's the standard port servers run on. (If you'd
+            like to play on the RPG server, it's port 19348 instead of 18348.)
             If you don't have access to the firewall, for example in school or
             at work, you can still try to set up an SSH tunnel or a socks
             proxy server (on either the firewall machine or your PC at home or
@@ -7301,15 +7551,15 @@ PROBLEM 01: I don't get to see a server list when I start TomeNET.
             Instead, I am immediately asked for account and password.
 SOLUTION:   This is a typical problem on Windows XP. There are 3
             possible fixes:
-            -Use 'Win98 Compatibility Mode' (Create a link from tomenet4.exe,
+            -Use 'Win98 Compatibility Mode' (Create a link from TomeNET.exe,
              right-click it, choose 'properties', choose 'Compatibility'.
              This option is available natively on Windows XP systems; for
              Windows 2000 systems first try the other two points mentioned
              below, if they don't help, get the compatibility mode update
              from www.microsoft.com or from www.c-blue.de/appupd.exe ).
-            -Move the 'tomenet-bin' directory to your drive's root. For
-             example C:\tomenet-bin\.. .
-            -to edit your "tomenet4.ini" file and specify a host directly by
+            -Move the 'TomeNET' directory to your drive's root. For
+             example C:\TomeNET\.. .
+            -to edit your "TomeNET.ini" file and specify a host directly by
              specifying "HOST=europe.tomenet.net".
              Or you can even give the IP address "HOST=62.210.141.11".
 
@@ -7331,7 +7581,7 @@ SOLUTION:   There are 2 possible solutions.
 PROBLEM 03: All windows except for the main window stay empty. (occurs on
             Windows XP machines).
 SOLUTION:   Reasons are unknown. Sometimes a simple reboot helps. Otherwise:
-            Open tomenet4.ini file with a text editor, look for the window
+            Open TomeNET.ini file with a text editor, look for the window
             sections, change the fonts to the same settings (8x13) as in the
             [Main window] section: FontFile=8X13.FON , Font=8X13.FON .
             Also, you could adjust the width/height of the windows (to 80x24
@@ -7349,7 +7599,7 @@ SOLUTION:   Your LUA script files are outdated. Those files are responsible
              re-enter the server in order for them to take effect.
             -The first method doesn't work for everyone. Another possibility
              is to just download a ZIP file containing the latest scripts
-             and extract it to your /tomenet-bin/lib/scpt folder.
+             and extract it to your /TomeNET/lib/scpt folder.
              You can get the latest scripts at www.c-blue.de/rogue.html .
 
 PROBLEM 05: When I start TomeNET I don't see anything except a small hollow
@@ -7378,7 +7628,7 @@ SOLUTION:   This can have several reasons. On disconnection a message box will
                     This just shows up if you regularly quit your client.
             "Committed suicide"
                     You just committed suicide..
-            "resume conneection"
+            "resume connection"
                     This happens if you try to log in the same character with
                     two TomeNET clients at once, the older client will quit
                     and the client that just logged in will take over.
@@ -7498,6 +7748,8 @@ x           "The server didn't like your nickname, realname or hostname"
             "Network verify failed!"
                     May happen if you specify a wrong password or try to
                     create an account which already exists.
+                    Also happens (following a "No Verify Response") if your
+                    connection to the server is *really* bad.
             If you get kicked out with an error message on the character
             overview screen (which seems to be empty), also see PROBLEM 14.
 
@@ -7519,8 +7771,8 @@ SOLUTION:   The meta-server might be down or a DNS problem might be occuring
             Just type in the hostname of the server you'd like to connect to,
             for europe enter:   europe.tomenet.net
             If the hostname doesn't work you can also try entering its IP
-            adress 62.210.141.11.
-            Make sure your tomenet4.ini file contains the correct server port,
+            address 62.210.141.11.
+            Make sure your TomeNET.ini file contains the correct server port,
             usually 18348! This port isn't needed if you use the meta-list to
             choose a server to connect to, but it's important if you connect
             directly!
@@ -7529,20 +7781,21 @@ SOLUTION:   The meta-server might be down or a DNS problem might be occuring
             (DOS window) within its folder, adding the server IP as a
             parameter. (In windows2k choose START/Run... and type 'cmd'
             without quotation marks to open a command-line window.
-            Alternatively you can create a shortcut from your tomenet4.exe by
+            Alternatively you can create a shortcut from your TomeNET.exe by
             right-clicking, dragging, releasing it. Edit this shortcut's
             properties and add the server IP to the command-line.)
             For europe server it would look like this:
-            tomenet4.exe europe.tomenet.net
+            TomeNET.exe europe.tomenet.net
             If the hostname doesn't work for whatever reason you may try the
             IP adress:
-            tomenet4.exe 62.210.141.11
+            TomeNET.exe 62.210.141.11
 
-PROBLEM 11: The main window doesn't display the floor dots in certain
-            dungeons, like the Training Tower and Angband. Further, fields
-            are sometimes not redrawn correctly, resulting in fake 'trails'.
-SOLUTION:   Seems to happen on Windows XP machines sometimes.
-            Workaround (will slightly change the game's look):
+PROBLEM 11: The main window doesn't display the floor dots in town and in
+            certain dungeons, like the Training Tower and Angband. Further,
+            fields are sometimes not redrawn correctly, resulting in fake
+            'trails'.
+SOLUTION:   Seems to happen on Windows XP and Windows 2003 machines sometimes.
+            Workaround (will slightly change the game's look, ie those dots):
             Edit /lib/user/font-win.prf and comment out the lines which end on
             the string '\31' (should be 2 lines at the beginning of the file,
             those labelled 'Floors' and 'Invis Traps').
@@ -7607,7 +7860,7 @@ SOLUTION:   Make sure that TomeNET is NOT running while you try to install the
             ZIP (overwriting everything), then start TomeNET again.
 PROBLEM 19: On GNU/Linux OS, When someone uses the /page command to page me,
             I don't hear the three beeps.
-SOLUTION:   You are probably using OSS. If your soundcard or soundchip doesn't
+SOLUTION A: You are probably using OSS. If your soundcard or soundchip doesn't
             support mixing of multiple sources, that means only one program at
             a time can output sound. In that case, do the following:
             Make sure all your programs, like media players, instant
@@ -7619,6 +7872,9 @@ SOLUTION:   You are probably using OSS. If your soundcard or soundchip doesn't
             After installing 'aoss', just use call it with the OSS application
             as parameter. Example:    $> aoss ./tomenet
             Another example (to start the Opera webbrowser):    $> aoss opera
+SOLUTION B: If you are using X11, this problem may occur depending on your
+            terminal configuration. At this time, all you can do is change
+            your configuration, sorry.
 
 
 
