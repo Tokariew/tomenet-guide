@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 15. April 2006; written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.3.6, http://www.tomenet.net/
+| Latest update: 30. September 2006; written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.4.0, http://www.tomenet.net/
 | for latest information about TomeNET see http://www.c-blue.de/rogue.html
 | or join discussion in the forum on http://www.tomenet.net/
 +---
@@ -36,21 +36,21 @@ Contents
 (2) Installation & setup
     (2.1)   Installing TomeNET
     (2.2)   Starting TomeNET and getting to play on an internet server
-    (2.3)   Behaviour and chat messages
 (3) Creating a character & starting to play
     (3.1)   Creating a new character; character modes
     (3.2)   The display (user-interface)
-    (3.3)   Start-up equipment & how to use it
-    (3.4)   Preparing the first time for fighting enemies
-    (3.5)   Creating basic macros & inscribing items (IMPORTANT)
-    (3.6)   Creating macros for ranged attacks & abilities (spells)
-    (3.6a)  Ability codes [contained within (3.6)]
-    (3.7)   Example macro sets
-    (3.8)   Macros with special keys
-    (3.8a)  Creating a chat macro for your party
-    (3.9)   Experience, level-ups and skill points
-    (3.10)  Death, ghosts and looting
-    (3.11)  Malicious effects players can suffer
+    (3.3)   Behaviour and chat messages
+    (3.4)   Start-up equipment & how to use it
+    (3.5)   Preparing the first time for fighting enemies
+    (3.6)   Creating basic macros & inscribing items (IMPORTANT)
+    (3.7)   Creating macros for ranged attacks & abilities (spells)
+    (3.7a)  Ability codes [contained within (3.7)]
+    (3.8)   Example macro sets
+    (3.9)   Macros with special keys
+    (3.9a)  Creating a chat macro for your party
+    (3.10)  Experience, level-ups and skill points
+    (3.11)  Death, ghosts and looting
+    (3.12)  Malicious effects players can suffer
 (4) The world
     (4.1)   Running, picking up items, fighting
     (4.2)   Level and owner of items
@@ -82,6 +82,7 @@ Contents
     (5.17)  How abilities, resistances and boni stack
     (5.18)  Monster auras
     (5.19)  Experience-draining items
+    (5.20)  Runes
 (6) Character details
     (6.1)   Attributes
     (6.2)   Skills, opposed skills
@@ -113,6 +114,8 @@ Contents
 ==============
 (0.1) Start & play
 ------------------
+If you are using Linux, you will find additional information about how to
+compile the game under '(2.1) Installing TomeNET'.
 -Get the latest client from www.tomenet.net or www.c-blue.de/rogue.html
  (called 'tomenet-???-client.zip') and extract it (to C:\Tomenet for example).
 -Either run 'tomenet4-europe.bat' to directly connect to europe server
@@ -135,18 +138,22 @@ Contents
    Warriors don't really need INT so you should reduce it to spend the points
    on other attributes. WIS isn't really needed either, but it can be useful
    to resist sanity-reducing effects.
+ (If you are new to the game, it is NOT recommended to choose one of these:
+ Istar, Priest, Shaman, Adventurer.)
 -Make sure you choose [n]ormal mode (or [e]verlasting). Not 'fruit bat' :).
  Now you're in the game and should see the town (Bree) :)
 -To chat, press the colon key ':' . Don't hesitate to ask other players
  if you have any problems with getting started.
 -To run, press SHIFT+<direction key> where direction keys are on
  the number pad 7,8,9, 4,6, 1,2,3. Running often requires that
- numlock is turned off (press the 'num' key so the green light is off).
+ Numlock is turned off (press the 'Num' key above your number key pad on the
+ right side of your keyboard, so the green light is off).
  If SHIFT+<direction> doesn't work on your system, you can press the dot '.'
  followed by a direction key. (If you use rogue-like keys, see section (0.2)!)
 -You can wear/wield your armour/weapons by pressing 'w' and choosing them
  from your inventory which is displayed in the bottom right window.
 -You can pick up items if you stand on them and press 'g'.
+-You can drop items with 'd' or destroy items with 'k'.
 -You can enter stairs down/upwards by standing on them and pressing the
  corresponding key '<' or '>'.
 -Nearby the town there's often a 'newbie tower' which is a good place
@@ -162,7 +169,7 @@ Contents
  your inventory (bottom right window) you should read those by pressing 'r' to
  read.
 -If your character gains a new level it also gains skill points. To distribute
- those, invoke the skill screen with 'G'. (See 3.9, 6.2 and 7.5.)
+ those, invoke the skill screen with 'G'. (See 3.10, 6.2 and 7.5.)
 -If you don't like your character and want to delete it, you may commit
  suicide by pressing SHIFT+q or CTRL+c and double-confirming the following
  questions with 'y' and '@'.
@@ -172,6 +179,9 @@ Contents
  he is online (Admin's names are displayed in dark blue in the chat).
  The e-mail address is usually mentioned in the server's intro screen or just
  ask fellow players for it.
+
+It is strongly recommended that you don't stop reading here, but continue at
+(3.2) now >;)
 
 
 
@@ -196,7 +206,9 @@ Pressing '5' will cause you to spend a turn with doing nothing.
 
 SHIFT+<direction key>
         runs into that direction. Numlock must probably be turned off,
-        depending on your system.
+        depending on your system. (Numlock is the key labeled 'Num' above the
+        number key pad on the right side of your keyboard. A green lamp
+        usually indicates whether it is on or off.)
         You can also run by pressing the dot '.' followed by a direction key.
 
 
@@ -248,7 +260,8 @@ R       R       rest. Your hit points and mana will regenerate faster while
 o       o       open something.
 c       c       close something.
 d       d       drop an item.
-$       $       drop some gold.
+$       $       drop some gold. You can use 'k' and 'm' for thousands or
+                millions, example: 3k -> drops 3000. 2m -> drops 2000000.
 D       D       disarm a trap.
 k       CTRL+D  destroy an item.
 G       G       skills screen.
@@ -275,7 +288,7 @@ P               party screen. Form/disband/modify a party with other players
                 within 7 character levels to each other and on the same
                 dungeon/tower level respectively the same worldmap/wilderness
                 sector. See (6.9) for details.
-                For winners (queens/kings/empresses/emperors) the range is 10
+                For winners (queens/kings/empresses/emperors) the range is 11
                 levels instead of 7.
 
 /       in general use an item (combines q,r, etc..).
@@ -342,6 +355,9 @@ Q or CTRL+C or CTRL+K
         normal 'final death'.
 ?       invoke an in-game help screen
 CTRL+R  redraw the screen (do this if it's messed up for some reason).
+ (/refresh)
+!       Look at the in-game bulletin board. Players can write lines of text to
+        it by using the /bbs <text> command.
 
 There are also some commands that can be entered with ':' like a chat line.
 They all start with a slash '/':
@@ -365,8 +381,12 @@ They all start with a slash '/':
  (/examine) as turn, speed, deepest dungeon level, sanity, body shape (this is
             interesting if you are a shapechanger). Druids get additional info
             about forms they can shapechange into.
+/fe         Repeat the level feeling. See (4.8) for more information.
+ (/feeling)
 /page <player-name>     Sends beeps to that player to help you getting his
                         attention. (Can only be used if target player is afk).
+                        If you're on Linux and not hearing the page sounds,
+                        see problem 19 in the troubleshooting section (8.5).
 /que        gives a quest! It needs to be fulfilled before a certain period
  (/quest)   of time passes. The player who completes it gets a great item
             as reward. It will appear right below the player on the ground.
@@ -379,6 +399,7 @@ They all start with a slash '/':
             fountain. You must stand on the fountain to do this.
 /shout <text>
             Shout <text> loudly, will wake up and aggravate nearby monsters.
+            (Same effect as scroll of aggravate monsters, see (5.9)).
 
 (The /empty function is currently disabled:)
 /empty <inventory slot>
@@ -401,7 +422,7 @@ They all start with a slash '/':
  (/dispose) inventory.
 /rec -550   recalls you to -550ft, using an item inscribed {@R}.
 /rec 32 32  recalls you to Bree (Town at 32,32 world map coordinates),
- (/recall)  using an item inscribed {RR}. See "(0.3) Important Inscriptions"
+ (/recall)  using an item inscribed {@R}. See "(0.3) Important Inscriptions"
             for more info about Word of Recall.
 /dr         Wields all items in your inventory that are: not cursed,
  (/dress)   not {worthless}, not {terrible}, known to you.
@@ -418,6 +439,15 @@ They all start with a slash '/':
             Leave a note to the party you own.
 /noteg <text>
             Leave a note to the guild you own.
+/bbs <text> Add a line of text to the in-game bulletin board system. Players
+            can look at the board by pressing the '!' key.
+            You can use the /time command to check how old an entry is.
+/time       Tells you the current date and time (of the server, not of your
+            local timezone). Useful to compare with bbs time stamps.
+/shot  or  /shot <filename>
+ (/screenshot)
+            Takes a screen shot to a html file. If <filename> is omitted, it
+            writes to 'screenshot.html' by default.
 
 
 
@@ -425,8 +455,9 @@ They all start with a slash '/':
 ----------------------------
 All items:
     Inscribing an item with an '!' followed by a key will cause that key to
-    cease working on the item anymore.
-    Example: You inscribe a 'Scroll of Artifact Creation' this way:  !k!d
+    cease working on the item anymore. You may also specify several keys.
+    A space or other non-related character will end the '!-sequence'.
+    Example: You inscribe a 'Scroll of Artifact Creation' this way:  !kd
     Now you cannot destroy or drop the scroll anymore (keys to destroy and
     to drop an item are 'k' respectively 'd').
     You can inscribe an item by pressing '{' and uninscribe it with '}'.
@@ -438,8 +469,7 @@ The !* inscription:
     (selling a key, '!h') / selling an item to a shop (!s).
     For example, if you wear an artifact and you want to avoid (d)ropping it,
     (t)aking it off or (v) throwing it away accidentally you could either
-    inscribe it  !d!t!v  or just  !*  .
-    '!*'  also implies  '!='  , so used on arrows it forces auto-pickup.
+    inscribe it  !dtv  or just  !*  . ('!*'  also implies  '!='.)
 
 Items that induce random teleportation, like a 'ring of teleportation' or
 'weapon of the thunderlords':
@@ -496,7 +526,10 @@ Ammunition:
                 cursed or artefact ammo.) Wield the !M stack first, then also
                 wield the stack you want to merge with the equipped ammo.
 
-Scrolls of Identify:
+Weapons that ricochet (sling ammo):
+    !R          Prevents ricochetting.
+
+Scrolls of Identify, rods/staves of perception:
     !X          If you pick up an unidentified item, you will automatically
                 read a scroll to identify it.
 
@@ -522,8 +555,14 @@ resistances or abilities.
 
 (0.4) Typical slang/abbreviations
 ---------------------------------
-Art         Artifact from the a_info.txt file. Also called 'True Art'.
+Art         Artifact. Those can be 'Static arfifacts' from the a_info.txt
+            file, also called 'True Arts'. Or they may be 'Randomly generated
+            artifacts' also called 'Randarts'.
             (See (7.4) for more info about spoiler files.)
+            Winners who beat Morgoth, The Lord of Darkness will usually not
+            be able to use static artifacts, but rely on randarts instead.
+            Depending on the server settings, fallen winners might also not be
+            able to use static arts.
 Auto-ID     A special ability of some items. If you equip an item that grants
             you 'Auto-ID' all items you touch will automatically be
             identified! Items who grant their wielder Auto-Identification are
@@ -561,7 +600,9 @@ Pseudo-ID   If a player keeps an unidentified item for a longer time he might
             'feel' if the item is average, good, cursed or special. The item
             will automatically receive a 'pseudo-id inscription' then.
             Pseudo-id intensity and speed depend on the 'Combat' skill.
-Randart     Randomly generated artifact.
+Randart     Randomly generated artifact. As opposed to 'Truearts' which are
+            also called 'Static arts' from the file a_info.txt. See 'Art'
+            at the top of this section for more information.
 Res         Resistance.
 Scumming    Repeatedly using staircases up/downwards to make a level become
             recreated. Usually in hope of finding a specific monster on that
@@ -573,9 +614,18 @@ Static      A level that is static will not change if you leave it but stay
             the same, permanently until it is unstaticed.
             All levels remain static for a short period of time after the
             last player leaves them to prevent scumming.
+Static Art  See 'Art' at the top of this section.
+True Art    See 'Art' at the top of this section.
 Unique      A monster that is named and exists only once (although it can
-            respawn, each player will receive loot only once from it).
+            respawn for another player who hasn't defeated it yet, each player
+            will receive loot only once from it).
             Uniques often have large escorts.
+            Unique monsters will randomly respawn for winners, ie Kings,
+            Queens, Emperors and Empresses. That means: The game will "forget"
+            that you already defeated them, allowing you to defeat them once
+            more. There are some exceptions though, the following monsters
+            will never respawn: The Nazguls, Sauron, Michael, Morgoth, and all
+            super-uniques that come after Morgoth, starting with Tik'srvzllat.
 WoR         Word-Of-Recall (teleports you into the dungeon and back or on the
             world map). See "(0.3) Important inscriptions" for more info.
 Wormy       Wormtongue, Agent of Saruman. He drops great items.
@@ -732,10 +782,25 @@ profit from its magical abilities then it's strongly recommended to inscribe
 the weapon @Ox to avoid auto-retaliation, see (0.3) about inscriptions and
 (4.1) about auto-retaliation.
 If you rely on melee weapons you must try to get your hands on an artifact
-since these resist Nazgul greatly!
+since these resist Nazgul greatly! The Stormbringer also resists like an
+artifact. (It doesn't matter if the artifact is a random or a static one.)
 Dark Swords and ego weapons also have a certain chance to resist destruction,
 ego Dark Swords are the best non-artifact weapons against Nazgul.
-(It doesn't matter if the artifact is a random or a static one.)
+If your weapon gets destroyed you'll receive a warning message:
+"Your weapon *DISINTEGRATES*!" or "Your weapon is destroyed !"
+(The permanently cursed weapon 'Mighty Hammer of Grond' cannot be destroyed.)
+
+Your weapon itself will not damage the Nazgul if it doesn't have one of the
+mods SLAY_EVIL, SLAY_UNDEAD or KILL_UNDEAD. However, you might still be able
+to damage the Nazgul, if your raw to-dam bonus is high enough. Enchantments
+from rings or other items and the damage bonus from your skills will be the
+only factors which decide the damage you deal, in that case.
+For weapons which damage dice and to-dam bonus will not be counted (ie non-
+SLAY/KILL EVIL/UNDEAD weapons) you'll see the message:
+"The Ringwraith is IMPERVIOUS to the mundane weapon."
+
+Martial Arts users can fight relatively efficiently against Nazguls, but their
+chance to receive Black Breath is higher than for weapon users.
 
 If you come in contact with a Nazgul or a very powerful undead creature there
 is a chance that you will be infected by the Black Breath. This dark aura is
@@ -778,24 +843,80 @@ the mundane world.
 ------------------------
 Go to http://www.c-blue.de/rogue.html , download the latest client (version
 number sometimes stays the same although a minor update was made, it's at
-least 4.0.0 though).
+least 4.x.x though).
 Extract it to a new directory, preserving the pathnames.
+
+Windows:
+--------
 You may edit the file "tomenet4.ini" and do some changes to your likings.
 If it's not already disabled by default, it is recommended to turn off
 graphics ("GRAPHICS=0"). Further you can specify an account name and password
 of your own choice. That will relieve you from entering them every time
 you join a TomeNET internet server.
 
+Linux:
+------
+How to compile the game binary:
+Go into '/tomenet/src' where the file 'makefile' is located.
+Make sure you have X11, ncurses, ncurses-devel and crypt libraries installed.
+Enter these two lines:
+	make clean
+	make tomenet
+and the binary 'tomenet' will be created in this folder 'tomenet/src'.
+IMPORTANT NOW: Move the binary one level upwards, ie into '/tomenet' !
+Type:
+        ./tomenet
+to start the game.
+
+If you don't want 6 windows or if you want MORE (up to 8), just edit the file
+'main-x11.c' and comment out/uncomment the lines starting on
+        #define GRAPHICS_TERM_...
+near the beginning of the file as you like, then compile the binary again.
+
+You can use environment variables to set font sizes and window sizes for each
+of the up to 8 windows separately:
+TOMENET_X11_FONT_SCREEN (height and width of main window cannot be changed)
+TOMENET_X11_WID_MIRROR, TOMENET_X11_HGT_MIRROR, TOMENET_X11_FONT_MIRROR
+TOMENET_X11_WID_CHOICE, TOMENET_X11_HGT_CHOICE, TOMENET_X11_FONT_CHOICE
+TOMENET_X11_WID_RECALL, TOMENET_X11_HGT_RECALL, TOMENET_X11_FONT_RECALL
+TOMENET_X11_WID_TERM_4, TOMENET_X11_HGT_TERM_4, TOMENET_X11_FONT_TERM_4
+TOMENET_X11_WID_TERM_5, TOMENET_X11_HGT_TERM_5, TOMENET_X11_FONT_TERM_5
+TOMENET_X11_WID_TERM_6, TOMENET_X11_HGT_TERM_6, TOMENET_X11_FONT_TERM_6
+TOMENET_X11_WID_TERM_7, TOMENET_X11_HGT_TERM_7, TOMENET_X11_FONT_TERM_7
+Use the 'export' command to set them, eg:
+        export TOMENET_X11_FONT_SCREEN=8x13
+        export TOMENET_X11_WID_TERM_4=80
+        export TOMENET_X11_HGT_TERM_4=24
+It's a good idea to make a little script file for this.
+Some possible font sizes are:
+4x6, 5x7, 5x8, 6x9, 6x10, 6x12, 7x13, 7x14, 8x13, 9x15, 10x20, 12x24
+depending on your system.
+TOMENET_X11_FONT sets one font globally for all windows. It's overridden by
+the window-specific font variables listed above though.
+
+Last but not least, you may use the following command-line options:
+-p<Port>        for example -p19348
+-l<Name> <Pass>	for example -lGandalf geheim
+<ip address>    for example 62.210.141.11
+Full command-line example:
+        ./tomenet -p19348 -lGandalf geheim 62.210.141.11
+If your name contains spaces, it is neccessary to put a '\' in front of each.
+Example:
+        ./tomenet -p18348 -lIron\ Man geheimer 62.210.141.11
+..if your account name is 'Iron Man'.
+
 
 
 (2.2) Starting TomeNET and getting to play on an internet server
 ----------------------------------------------------------------
-To start the TomeNET client, run "tomenet4.exe".
+To start the TomeNET client, run 'tomenet4-europe.bat' or 'tomenet4.exe'.
+(If you run the '.bat' file, the meta-server steps will be skipped and you
+will be directly connected to the main europe server instead.)
 Now TomeNET tries to connect to a meta-server which contains a list of all
 available TomeNET internet servers.
 After the meta-server has been queried, the list of available servers will
 appear in the main window. Choose a server that is near to your location to
-avoid high latency. 
+avoid high latency.
 This step is reported to often cause problems under Windows XP. If you don't
 see that list, or if other problems occur, see (8.5) for possible solutions.
 Now you will be prompted to enter your account name and password. You can
@@ -825,23 +946,238 @@ with an ASCII code between 32 (SPACE) and 122 ('z').
 The realname and hostname must not be empty. The nickname (character name)
 needs to start with a letter ('A'..'Z' or 'a'..'z').
 
-To drop items, privately chat with other players, or advance beyond a certain
-level you will need to ask an admin to 'validate' your account. To do so,
-send an email to the admin mentioning your account name, or ask an admin when
-he is online (Admin's names are displayed in dark blue in the chat).
+Newly created accounts are marked as 'not yet validated' and have certain
+limitations, which are:
+Cannot drop items or chat privately with other players, or advance beyond a
+certain level.
+You will need to ask an admin to 'validate' your account. To do so, send an
+email to the admin mentioning your account name, or ask an admin when he is
+online (Admin's names are displayed in dark blue in the chat).
 The e-mail address is usually mentioned in the server's intro screen or just
 ask fellow players for it.
 
 
 
-(2.3) Behaviour and chat messages
+(3) Creating a character & starting to play
+===========================================
+(3.1) Creating a new character; character modes
+-----------------------------------------------
+First you may choose your gender. This will not have actual influence on your
+strengths or weaknesses.
+
+Now you have to choose your race. Humans are good allrounders, while the other
+races are more or less specialized. For example half-trolls are usually quite
+dumb but very strong, and hobbits are quite nimble and intelligent but not
+very strong. For more information about races see (6.4).
+A half-troll warrior might be the best choice for a beginner to try since he
+is tough and has less chance of dying instantly in case you make a more
+serious mistake. Also you don't have to worry about the spell-casting system
+for now.
+
+Now to choosing your class, also called profession. Spellcasters like
+Istari are physically weaker and especially hard to play for beginners.
+If you choose a spellcaster, be aware that his casting ability depends on
+either his INTelligence or his WISdom, depending on the actual class. For more
+information about classes and their pros and cons see (6.5).
+Spellcasting involves using 'macros' (see (3.6)) and might be a bit difficult
+for beginners.
+Classes definitely NOT recommended for beginners are:
+Istar (mage), Priest, Shaman, Adventurer.
+
+Now you will see your six basic attributes STRength, INTelligence, WISdom,
+DEXterity, CONstitution, CHaRisma.
+
+IMPORTANT NOTE: For fighters (rogues also belong to these) that use weapons,
+it is important that you have enough STRength and DEXterity to execute at
+least two attacks per round, called bpr (blows per round). Sometimes this
+srequires you to get rid of your initial weapon and buy a very light weapon,
+for example one of these:
+dagger or main gauche (sword class),
+whip (hafted class),
+hatched (axe class) or
+spear (polearm class).
+Sometimes it is even possible to start out with 3 bpr (warriors mostly).
+
+Depending on the server configuration, starting at TomeNET version 4.2.0,
+there are 2 alternative stages of character creation that may follow now.
+
+1) The old way - random stats:
+You see the short names for the 6 stats written from the left to the right
+on the very bottom of the screen, and you're asked to choose a stat order.
+You have to determine how important each of the 6 stats is to you by defining
+an order. The first attribute you choose will be raised most.
+However, know that all your stats are randomly modified slightly, each
+character that you create even with same race and class will be a bit
+different. Sometimes you are lucky and get really high attributes at the
+beginning. And sometimes you get more gold to start with. If you don't like
+the resulting stats after you finished character creation, suicide and start
+over.
+
+2) The new way since 4.2.0 - chosen stats:
+You see your 6 stats written below each other, followed by a base number (10).
+Right above them you see your free points (30) that you may distribute on the
+stats. Use the numpad (numlock turned on) to navigate and increase or decrease
+your stats until you used up all free points. Hit ESC when you're happy with
+your choice.
+
+Now you can choose a difficulty level you wish to play on. Options are
+n) Normal  f) Fruit bat  g) no Ghost  h) Hard  H) Hellish e) Everlasting
+It is recommended that you choose either n) to play a normal character or g)
+to play a normal character without a ghost.
+You can also choose e), that will give your character an infinite amount of
+resurrecionts, while 'normal' characters often have a limited amount of lives
+(depending on the server configuration).
+
+
+'Normal':
+---------
+A normal character will turn into a ghost if he dies. The ghost can be revived
+by either visiting a temple or another living player using a magic scroll of
+life when standing adjacent to the ghost. The ghost will return to the world
+of living under the cost of a lot of experience but at least the player can
+resume playing. If the ghost dies, the character will finally be erased
+permanently, watch out!
+Depending on the server configuration the number of times a ghost is limited,
+standard is 3 lifes.
+(Outdated/wrong: If a normal player becomes a queen or king (defeats Morgoth),
+all remaining resurrections will be lost and the next time he dies it will be
+permanent, like it is for unworldly characters.)
+
+'Everlasting':
+--------------
+Create an everlasting character for an infinite amount of resurrections.
+Everlasting characters can become king/queen, but cannot enter the high-score.
+Other character types cannot use items that belong to everlasting
+characters. Exception: Word-of-recall scrolls can be exchanged between an
+everlasting and a non-everlasting player!
+Non-everlasting and everlasting characters can't be in the same party.
+If an everlasting King/Queen dies, he won't be destroyed but lose the
+King/Queen status. To regain it, he needs to find another player who hasn't
+killed Sauron and Morgoth yet and team up with him, because those two won't
+(re)spawn for the everlasting player.
+Since it was often asked: Non-everlasting and everlasting players can revive
+each other without problems.
+
+'Unworldly' (no-ghost) and 'Hellish' (no-ghost + hard):
+-------------------------------------------------------
+Unworldly characters are like normal characters, but they have only one life.
+Unworldly as well as hellish characters (who are a combination of 'no-ghost'
+and 'hard') will be completely annihilated and deleted on death.
+
+'Hard' (like 'Normal' but with additional penalties) and 'Hellish':
+-------------------------------------------------------------------
+Hard characters and hellish characters get certain penalties in gameplay.
+These are:
+-losing -1 to all stats
+-healing is reduced by 25%
+-AC is reduced by 50%
+-ESP only works within radius of 20 squares
+-any speed changes above or below +0 are reduced by 50%
+-max number of melee attacks per round is reduced by 1.
+
+'Fruit bat' (Batty):
+--------------------
+A fruit bat is like a normal character, just not in humanoid shape but in bat
+form! Fruit bats usually can take way less damage than normal characters
+before they die, and they cannot wear certain equipment like boots, gloves or
+weapons. However they are twice as fast and hard to hit. Fruit bats are said
+to make good explorers. If you're new to the game, it's absolutely not
+recommended to try and play fruit bat.
+
+
+Hard / Unworldly characters will receive 25% bonus on their high score.
+Hellish (Hard + Unworldly) characters receive 50% bonus on their high score.
+
+Note that race and class will have influence on how much experience you will
+need to gain a new character level. For example, High-Elves already know a
+lot, so experience is hard to gain for them. In fact they will need 130% more
+experience than a human.
+
+Creation of your character is now finished and you are asked to press a key to
+start the actual game. Do so and take a minute to read the text that will
+appear. It is called news or motd (message of the day) and often contains
+important server-specific information or announcements to the players.
+
+
+
+(3.2) The display (user-interface)
+----------------------------------
+After you logged in with a character you will now see yourself (you are the
+'@' symbol) in the town of Bree in the main window.
+
+You can move around in all 8 directions by using the number pad keys! You can
+run by pressing the SHIFT key together with a direction key.
+IMPORTANT: To run (SHIFT+direction) make sure that the Numlock key above your
+number key pad on the right side of your keyboard is turned off. A green lamp
+will usually indicate whether it is on or off.
+
+You can wear/wield items with 'w' (weapons, armour, light source..)
+You can pickup items with 'g'. Drop items with 'd'. Destroy items with 'k'.
+You can see a list of players who are currently online with '@' key.
+You can chat with other players (say hello ^^) with ':' key.
+
+The top right window will give an overview of your character attributes and
+miscellanous abilities. The bottom right window will show the contents of your
+backpack, also called inventory. All characters except ghosts have a backpack.
+The bottom left window will show combat- chat- and server-messages. If most
+of the windows stay totally empty, see (8.5) for possible solutions.
+To the left border in the main window you see a short overview of your most
+important stats, starting with your race, your class and your current title
+(the title will change as you gain experience levels by fighting monsters),
+followed by your current character level, your amount of experience and your
+cash ('Au' stands for Aurum, latin for gold), your 6 character attributes,
+your current sanity (sound means you are completely sane, this might drop, for
+example if a mindcrafter blasts your mind with psionic energy, leaving you
+mad), then comes your Armor Class (AC) which describes how well you are
+protected by all the armor you currently wear. The last four values are most
+important and will change all the time while fighting monsters.
+They are your theoretical maximum of Hit Points (HP) and Spell Points (SP) as
+well as the current values of those.
+Spell points are very important for wizards, since they determine which spells
+and how many of them you can cast. The current hit points (Cur HP) tell you if
+you are injured. If they drop below zero you die!
+If they are the same as your Max HP then you are fully rested and physically
+healed. By the way: If you enter the game and find that you don't like your
+character and want to recreate it from scratch, you can suicide by pressing
+'Q' (capital Q), followed by confirming the question if you really want to
+suicide with 'y' and then finally verify your suicide with '@' key. Often
+players are not happy with their character attributes, like Strength,
+Intelligence, etc. and try several times until they get a luckier result. Note
+that a suicided character is completely and permanently gone (as is a no-
+ghost/hellish character on mundane death).
+Also see (0.2) for some details about suiciding.
+
+Between AU and STR is a line indicating if you are encumbered in any way.
+This line consists of several little icons which have the following meaning:
+(Order: From left to right)
+    Brown [ armour      Your armour is too heavy (tohit/sneakiness penalty).
+    Red weapon          Your weapon is too heavy for you.
+    Orange \ weapon     Your weapon isn't fit for your character (e.g. priest
+                        using non-edged non-blessed weapons like swords).
+    Yellow / weapon     You are using a 1,5-h weapon together with a shield.
+    Green | weapon      You are using a 1h weapon two-handed and get a small
+                        bonus from that (only works for some 1h weapons).
+    Red } weapon        Your ranged weapon is too heavy for you.
+    Yellow } weapon     You are using a shield on your arm, reducing your
+                        accuracy with your ranged weapon.
+    Light-red 'F'       You are martial arts user and your backpack is too
+                        heavy, so that you don't receive Free Action from MA!
+    Yellow [ armour     You're martial arts user and your armour is too heavy.
+    Violet [ armour     Your armour is so heavy that it reduces your SP.
+    Violet ] armour     Your gloves are not made for spellcasting, reducing
+                        your SP.
+Also see (5.4) for more information about encumberment.
+
+
+
+(3.3) Behaviour and chat messages
 ---------------------------------
 You can chat with other players by pressing the colon key ':' once you have
 joined a game with your character.
 In general, don't hesitate to ask questions. Players are usually willing to
-help you with the beginnings. Keep in mind that the message window is flooded
-with status messages if a player is in combat, that means if you write to
-someone while he is fighting monsters he most likely won't notice your
+help you with the beginnings. Keep in mind that players often don't have time
+to look at the chat while they are fighting monsters, that means if you write
+to someone while he is in the dungeon, he often likely won't notice your
 message. Politely try again after some time.
 You can scroll back the messages using CTRL+P, or look at chat-only messages
 using CTRL+O.
@@ -898,182 +1234,24 @@ Dark blue       Player is admin.
 
 
 
-(3) Creating a character & starting to play
-===========================================
-(3.1) Creating a new character; character modes
------------------------------------------------
-First you may choose your gender. This will not have actual influence on your
-strengths or weaknesses.
-Now you have to choose your race. Humans are good allrounders, while the other
-races are more or less specialized. For example half-trolls are usually quite
-dumb but very strong, and hobbits are quite nimble and intelligent but not
-very strong. For more information look at the official website
-http://www.tomenet.net/ where you will find descriptions of all races and
-classes.
-A half-troll warrior might be the best choice for a beginner to try since he
-is tough and has less chance of dying instantly in case you make a more
-serious mistake. Also you don't have to worry about the spell-casting system
-for now. So choose your class, also called profession. Wizards are physically
-weaker but cast spells the better the higher their intelligence is, so
-choosing a race that is very intelligent might be a good idea, while a race
-with high strength and constitution will be fitting a warrior profession.
-Now you will see your six basic attributes STRength, INTelligence, WISdom,
-DEXterity, CONstitution, CHaRisma.
-
-Depending on the server configuration, starting at TomeNET version 4.2.0,
-there are 2 alternative stages of character creation that may follow now.
-
-1) The old way - random stats:
-You see the short names for the 6 stats written from the left to the right
-on the very bottom of the screen, and you're asked to choose a stat order.
-You have to determine how important each of the 6 stats is to you by defining
-an order. The first attribute you choose will be raised most.
-However, know that all your stats are randomly modified slightly, each
-character that you create even with same race and class will be a bit
-different. Sometimes you are lucky and get really high attributes at the
-beginning. And sometimes you get more gold to start with. If you don't like
-the resulting stats after you finished character creation, suicide and start
-over.
-
-2) The new way since 4.2.0 - chosen stats:
-You see your 6 stats written below each other, followed by a base number (10).
-Right above them you see your free points (30) that you may distribute on the
-stats. Use the numpad (numlock turned on) to navigate and increase or decrease
-your stats until you used up all free points. Hit ESC when you're happy with
-your choice.
-
-Now you can choose a difficulty level you wish to play on. Options are
-n) Normal  f) Fruit bat  g) no Ghost  h) Hard  H) Hellish e) Everlasting
-It is recommended that you choose either n) to play a normal character or g)
-to play a normal character without a ghost.
-You can also choose e), that will give your character an infinite amount of
-resurrecionts, while 'normal' characters often have a limited amount of lives
-(depending on the server configuration).
-
-
-'Normal':
----------
-A normal character will turn into a ghost if he dies. The ghost can be revived
-by either visiting a temple or another living player using a magic scroll of
-life when standing adjacent to the ghost. The ghost will return to the world
-of living under the cost of a lot of experience but at least the player can
-resume playing. If the ghost dies, the character will finally be erased
-permanently, watch out!
-Depending on the server configuration the number of times a ghost is limited,
-standard is 3 lifes.
-(Outdated/wrong: If a normal player becomes a queen or king (defeats Morgoth),
-all remaining resurrections will be lost and the next time he dies it will be
-permanent, like it is for unworldly characters.)
-
-'Everlasting':
---------------
-Create an everlasting character for an infinite amount of resurrections.
-Everlasting characters can become king/queen, but cannot enter the high-score.
-Other character types cannot use items that belong to everlasting
-characters. Non-everlasting and everlasting characters can't be in the same
-party.
-If an everlasting King/Queen dies, he won't be destroyed but lose the
-King/Queen status. To regain it, he needs to find another player who hasn't
-killed Sauron and Morgoth yet and team up with him, because those two won't
-(re)spawn for the everlasting player.
-
-'Unworldly' (no-ghost) and 'Hellish' (no-ghost + hard):
--------------------------------------------------------
-A character without a ghost, as well as hellish characters (who basically are
-a combination of 'no-ghost' and 'hard') will be annihilated and deleted
-completely on death.
-
-'Hard' and 'Hellish':
----------------------
-Hard characters and hellish characters get certain penalties in gameplay.
-These are:
--losing -1 to all stats
--healing is reduced by 25%
--AC is reduced by 50%
--ESP only works within radius of 20 squares
--any speed changes above or below +0 are reduced by 50%
--max number of melee attacks per round is reduced by 1.
-
-'Fruit bat' (Batty):
---------------------
-A fruit bat is like a normal character, just not in humanoid shape but in bat
-form! Fruit bats usually can take way less damage than normal characters
-before they die, and they cannot wear certain equipment like boots, gloves or
-weapons. However they are twice as fast and hard to hit. Fruit bats are said
-to make good explorers.
-
-
-Hard / Unworldly characters will receive 25% bonus on their high score.
-Hellish (Hard + Unworldly) characters receive 50% bonus on their high score.
-
-Note that race and class will have influence on how much experience you will
-need to gain a new character level. For example, High-Elves already know a
-lot, so experience is hard to gain for them. In fact they will need 130% more
-experience than a human.
-
-Creation of your character is now finished and you are asked to press a key to
-start the actual game. Do so and take a minute to read the text that will
-appear. It is called news or motd (message of the day) and often contains
-important server-specific information or announcements to the players.
-
-
-
-(3.2) The display (user-interface)
-----------------------------------
-After you logged in with a character you will now see yourself (you are the
-'@' symbol) in the town of Bree in the main window. You can move around in all
-8 directions by using the number pad keys! You can run by pressing the SHIFT
-key together with a direction key. You can pickup items with 'g'.
-The top right window will give an overview of your character attributes and
-miscellanous abilities. The bottom right window will show the contents of your
-backpack, also called inventory. All characters except ghosts have a backpack.
-The bottom left window will show combat- chat- and server-messages. If most
-of the windows stay totally empty, see (8.5) for possible solutions.
-To the left border in the main window you see a short overview of your most
-important stats, starting with your race, your class and your current title
-(the title will change as you gain experience levels by fighting monsters),
-followed by your current character level, your amount of experience and your
-cash ('Au' stands for Aurum, latin for gold), your 6 character attributes,
-your current sanity (sound means you are completely sane, this might drop, for
-example if a mindcrafter blasts your mind with psionic energy, leaving you
-mad), then comes your Armor Class (AC) which describes you well you are
-protected by all the armor you currently wear. The last four values are most
-important and will change all the time while fighting monsters.
-They are your theoretical maximum of Hit Points (HP) and Spell Points (SP) as
-well as the current values of those.
-Spell points are very important for wizards, since they determine which spells
-and how many of them you can cast. The current hit points (Cur HP) tell you if
-you are injured. If they drop below zero you die!
-If they are the same as your Max HP then you are fully rested and physically
-healed. By the way: If you enter the game and find that you don't like your
-character and want to recreate it from scratch, you can suicide by pressing
-'Q' (capital Q), followed by confirming the question if you really want to
-suicide with 'y' and then finally verify your suicide with '@' key. Often
-players are not happy with their character attributes, like Strength,
-Intelligence, etc. and try several times until they get a luckier result. Note
-that a suicided character is completely and permanently gone (as is a no-
-ghost/hellish character on mundane death).
-Also see (0.2) for some details about suiciding.
-
-
-
-(3.3) Start-up equipment
+(3.4) Start-up equipment
 ------------------------
 Every new player has some items right from the beginning, stored in the
-inventory (bottom right window). As a warrior you will have a Chain Mail and
-a Sword.
+inventory (bottom right window). As a warrior you will have a chain mail and
+a weapon, for example a sword.
 Start-up equipment always has level 0 and cannot be used by other players!
 You should now equip your start-up items, since they won't help you if
 they stay inside the backpack. Press the key 'w', you will be asked which
 item you would like to wear or wield, choose the letter in front of the item
-inside your inventory, for example e) if the Sword is the fifth item in your
+inside your inventory, for example e) if the sword is the fifth item in your
 backpack. Equip both, sword and armor this way. You can also equip a
 lightsource like a torch or lantern this way. If it is night in town that will
 help you to see anything. Inside a dungeon you should always make sure that you
 have a lightsource equippped.
+Startup items that you don't want to use you may simply destroy with 'k'.
 The numbers '1' to '9' stand for different shops that you can enter to sell or
-buy items. It is recommended that you sell your torches in store '1' (General
-Store) and buy a lantern there instead, because a lantern provides more light,
+buy items. It is recommended that instead of using your torches, buy a brass
+lantern from store '1' (General Store), because a lantern provides more light,
 increasing your radius of sight in the darkness. Also buy a flask of oil for
 your lantern to refill it if it runs out of oil.
 Press '?' to see an in-game introduction and overview of the keys and commands
@@ -1081,13 +1259,13 @@ that you may use. For example 'e' will show your currently equipped items.
 You can chat with other players using the ':' key. This way you can also enter
 certain commands like /fill to fill an empty bottle with water of a fountain.
 At the beginning, all players receive a parchment with their start-up
-equipment. It's the "Adventurer's guide to Middle Earth". Press '/' to read
+equipment. It's the "Adventurer's guide to Middle Earth". Press 'r' to read
 it. It often contains some notes about the server, about player etiquette and
 hints for newbies.
 
 
 
-(3.4) Preparing the first time for fighting enemies
+(3.5) Preparing the first time for fighting enemies
 ---------------------------------------------------
 Before you enter a dungeon by stepping onto a staircase leading into the earth
 (looks like this: '>') and pressing the staircase symbol '>' you will have to
@@ -1119,7 +1297,7 @@ And if you still have spare money (this one costs a lot) a
 
 
 
-(3.5) Creating basic macros & inscribing items
+(3.6) Creating basic macros & inscribing items
 ----------------------------------------------
 Macros are absolutely obligatory, you _will_ need them, so read this
 carefully and if something isn't explained well, ask a fellow player
@@ -1259,7 +1437,7 @@ the key 'r' which is used to read a scroll, you can reset the key by
 
 
 
-(3.6) Creating macros for ranged attacks & abilities (spells)
+(3.7) Creating macros for ranged attacks & abilities (spells)
 -------------------------------------------------------------
 Those macros basically consist of three parts.
 1. Clearing the keyboard buffer (to avoid your character locking up in
@@ -1401,7 +1579,7 @@ until the 30 shots are finished. The character is 'locked'.
 The ')' in the macro '\e)f*t' clears all previous keypresses and hence
 allows you to hammer the macro without fearing a lock.
 
-(3.6a) Ability codes
+(3.7a) Ability codes
 --------------------
 A problem with the 'm' key is that it not only brings up your magic spells
 but a menu containing all skills you can use. Those can be arrow fletching
@@ -1453,9 +1631,9 @@ mb2a*t
 
 
 
-(3.7) Example macro sets
+(3.8) Example macro sets
 ------------------------
-(For the meaning of '\e)' see below (3.8). I recommend to have all your
+(For the meaning of '\e)' see below (3.9). I recommend to have all your
 macros start with the '\e)' sequence to avoid character lock-ups due to
 queued keypresses that have to be processed.)
 
@@ -1569,7 +1747,7 @@ attack spell, like fire flash) and inscribed it accordingly.
 
 
 
-(3.8) Macros with special keys
+(3.9) Macros with special keys
 ------------------------------
 You can use so-called 'escapes', meaning a combination of '\' and a regular
 key to emulate some special keys in your macros:
@@ -1619,7 +1797,7 @@ Miscellanous escape sequences:
                 adjust the delay to your personal latency, depending on your
                 internet connection and speed at which your character acts.
 
-(3.8a) Creating a chat macro for your party
+(3.9a) Creating a chat macro for your party
 -------------------------------------------
 Using public chat for party coordination can prove annoying to other players
 and as well confusing to your fellow party members since it's sometimes hard
@@ -1659,7 +1837,7 @@ which types   :!:   for you on a single key press automatically:
 
 
 
-(3.9) Experience, level-ups and skill points
+(3.10) Experience, level-ups and skill points
 --------------------------------------------
 By killing monsters your character gains experience. In general, harder
 monsters on deeper dungeon levels give more experience than easy kills.
@@ -1731,7 +1909,7 @@ Depending on race and class, characters need to kill a different amount of
 monsters in order to reach the next level. Yeeks get experience fastest,
 while Thunderlords are slowest. (See (6.4) and (6.5).)
 
-Each time your character gains a new level, (s)he also gains a few skill
+Each time your character gains a new level, (s)he also gains 5 skill
 points that you can distribute on your character's skills, press 'G' to invoke
 the skill chart where you can raise skills of your choice. Do this at a safe
 place, so your character won't be attacked and killed while you are looking
@@ -1742,20 +1920,12 @@ character's class are greyed out and cannot be raised.
 On the skill chart you can press 'Up'/'Down' keys to select a skill and
 'Right' key to invest one of your spare skill points into it. Choices cannot
 be undone, so be careful here.
-At each level-up you gain 5 skill points, so you will have gained at least 250
-skill points at level 50. There is a slim chance that you get 6. This chance
-can be raised by spending points into the 'Training' skill.
 For details about skill point distribution and the different skills see (6.2).
 Also see (7.5) for suggestions about skill point distribution.
 
-Further, there is a slim chance that you gain an extra stat point on stats you
-are very bad at ("stats" = "attributes" = STRength, INTelligence, WISdom,
-DEXterity, CONstitution, CHaRisma). This chance too is increased by the
-'Training' skill.
 
 
-
-(3.10) Death, ghosts and looting
+(3.11) Death, ghosts and looting
 --------------------------------
 Normal/everlasting characters will turn into ghosts if they die. When you
 become a ghost, your title will change to 'Ghost' until you get revived.
@@ -1825,7 +1995,7 @@ drop their items on death, their loot will vanish forever.
 
 
 
-(3.11)  Malicious effects players can suffer
+(3.12)  Malicious effects players can suffer
 --------------------------------------------
 The player can suffer from various effects caused by monsters, traps or
 himself. Against several of these effects the 'Savint Throw' ability helps
@@ -1879,7 +2049,9 @@ If no monsters are within your sight, you are able to run. This
 feature was introduced to let you quickly cross empty areas, while it will
 cease to work as long as you fight monsters. To run, press SHIFT+<direction>
 or type '.' followed by a direction. Running using SHIFT+<direction> will
-currently only work if NUMLOCK is turned off unfortunately.
+only work if Numlock is turned off. Numlock is the key labeled 'Num' above the
+number key pad on the right side of your keyboard. Usually a green lamp will
+indicate whether Numlock is on or off.
 
 If you want to pick up an item from the floor, step on that field and press
 'g' (or press '5' on the numpad, while NUMLOCK must be on). For more
@@ -1905,7 +2077,7 @@ press the asterisk '*' followed by a 't' to designate the closest enemy as
 your target, which usually is what you want.
 To learn how to create a macro instead of typing all these letters every time
 you want to launch a ranged attack, look at
-'(3.6) Creating macros for ranged attacks'.
+'(3.7) Creating macros for ranged attacks'.
 
 
 
@@ -2751,7 +2923,6 @@ Here's a table to tell you the values for str_wgt:
         14          12                      30          18/50-18/220+
         15          13                      
 
-
 The armour weight limit is 5.0 lb + Martial Arts skill level * 0.4 lb.
 So for MA 50 it is 5.0 + 20.0 = 25.0 lb.
 If your armour becomes too heavy, you will see this warning message:
@@ -2768,6 +2939,7 @@ Heavy armour         |     0                           0           0     50%
 Any melee weapon     |                        0               0    0      0
 Any ranged weapon    |                        0               0    0      0
 Heavy shield/weapons |                        0        0           0
+
 
 Martial Arts special combat techniques have certain dice, similar to normal
 weapons. These dice are also effected by brands and slays same as normal 
@@ -2825,6 +2997,12 @@ Martial Arts skill level        Attacks per round
             40                          6
             45                          7
             50                          8
+
+
+Martial Arts users have a higher risk of being infected with Black Breath
+from high undead monsters than weapon-users.
+Also, they have a high risk of being badly cut if a monster uses a disarming
+attack against them.
 
 
 
@@ -2897,6 +3075,10 @@ not magically enchanted, such as:
 Providing 'Free Action' / increasing your mana / increasing your dexterity.
 You will receive a warning message, saying:
 "Your covered hands feel unsuitable for spellcasting."
+
+
+Also see (3.2) at the end of the chapter, for information about the
+'Encumberment status line'.
 
 
 Very heavy armour and/or heavy items in your inventory may also slow you down
@@ -3416,7 +3598,7 @@ ANTIMAGIC ('Antimagic field')
         applies to nearby enemy spellcasters and other players. The
         field has less influence on _party members_ who try to cast.
         The radius is approximately the field power / 15. The field
-        power is the chance of suppressing a spell. It caps at 80%.
+        power is the chance of suppressing a spell. It caps at 75%.
 BLESSED ('It has been blessed by the gods')
         These weapons resist cursing. Priests can use blessed weapons
         without penalties, even if they are not 'hafted' (blunt).
@@ -3505,9 +3687,9 @@ Dark Sword      Dark Swords have a so-called 'antimagic field', which
                 AC boni on Dark Swords won't affect the antimagic field.
                 The antimagic chance of a dark sword stacks with the
                 Antimagic skill (see 6.2).
-Bluesteel Blade Cannot rust (immune against water attacks) and are especially
+Bluesteel Blade Cannot rust (not damaged by water attacks) and are especially
                 sharp (see 'VORPAL' under (5.8)).
-Shadow Blade    Resists darkness, cannot be harmed by acid or water, provides
+Shadow Blade    Resists darkness, cannot be damaged by acid or water, provides
                 a fixed stealth bonus of +2..
 Magic Arrows    Those will return into your quiver magically, so you need only
                 one of them really. Same goes for artifact ammunition of any
@@ -3576,22 +3758,30 @@ Detonations     Better not drink it.
 
 Scrolls
 --
-Blessing/Holy Chant/Holy Prayer
-                Increases your AC by 10/20/30, also increases your to-hit
-                bonus. (Temporarily)
 Rumour          Entertains the audience.
+Blessing/Holy Chant/Holy Prayer
+                Increases your AC by 10/15/20, also increases your to-hit
+                bonus. (Temporarily)
 Life            Resurrects another player's ghost if standing on a directly
                 adjacent field to you when you read it. Does not work inside
                 vaults, and only over solid ground.
                 Also restores your experience points if they were drained.
+                Since it was often asked: Non-everlasting and everlasting
+                players can revive each other without problems.
 Aggravate Monsters
                 Wakes up all monsters in whose radius of awareness you are.
                 Hastes all monsters in your line of sight (same as SHRIEK
-                spell or traps of aggravation).
+                spell or traps of aggravation or the "/shout" command).
 Word of Recall  Use it to quickly travel from the town to a dungeon or tower,
                 it can also be used to travel between towns or on the worldmap
                 in general. See "(0.3) Important Inscriptions" for more info
-                about Word of Recall!
+                about Word of Recall! ("Word-of-recall", "WoR")
+                If you read another Word of Recall while you're still waiting
+                for one to kick in, the effect will be cancelled!
+                That way you can change your mind, for example if you suddenly
+                spot a monster you want to kill just after you read a WoR.
+                Word-of-recall scrolls can be exchanged between an everlasting
+                and a non-everlasting player!
 Blood Bond      Inscribe this @P<playername>, for example @PGandalf, then read
                 it to form a blood bond between you and that player. (Only one
                 of you has to read a BB scroll, it's working bidirectional).
@@ -3700,6 +3890,7 @@ Jewelry
 Amulets of Adornment    They might be looking fancy, but they don't do
                         anything and have no effect on your character.
 Talisman (Amulet)       Increases your luck, helps you finding better loot.
+                        (See (5.8) for more information about luck.)
 Rings of Might          increase strength and constitution.
 Rings of Toughness      increase dexterity and constitution.
 Rings of Cunningness    increase strength and intelligence.
@@ -3716,10 +3907,10 @@ Rings/Amulets of Slow Digestion will slow your food digestion so you have to
                         you hit a bowel cramps trap.
 Amulet of Anti-Magic    See '5.7 NO_MAGIC'
 Amulet of Anti-Teleportation    If worn it will suppress all attemps to
-                                teleport, phase or recall on the whole level!
-                                This can be very dangerous but also very
-                                helpful since it affects both players as well
-                                as monsters.
+                                teleport, phase or recall the wearer,
+                                regardless whether initiated by a monster or
+                                by himself. It will also prevent certain
+                                effects of unresisted nexus attacks.
                                 Any word-of-recall that is cast while
                                 teleportation is supressed will be suspended
                                 and then immediately kick in as soon as the
@@ -3767,8 +3958,10 @@ Tarpaulin           Prevents your inventory from taking water damage on
 Picklock            Improves your disarm ability.
 Money Belt          Prevents thieves from stealing your money.
 Device of theft prevention
-                    Prevents thieves from stealing from you.
+                    Prevents thieves from stealing items from you.
 Climbing set        Allows you to travel over mountain fields.
+                    Info for mimics & co: In order to be able to use it, your
+                    appearance form must have arms and fingers.
 Fortune Cookie      Gives you a line of wisdom.
 Sprig of Athelas    Eat this one to cure Black Breath (see 1.5 for more
                     information about Black Breath),
@@ -4031,13 +4224,21 @@ a certain chance to break the curse. This can often be cheaper than buying a
 ----------------
 Weapons and other items that you can equip may by 'vampiric' (see (5.8)),
 meaning that they drain life from your target.
-Mimics who use a vampire form will also get a vampiric 'brand' on their melee
-attacks (see (6.7)).
+Mimics who use a vampire form and players of 'Vampire' race will also get a
+vampiric 'brand' on their melee attacks (see (6.7)).
 
 Vampiric life draining heals you with a part of the damage you afflicted on
 your target each hit! The more damage you deal and the more attacks per round
 you have, the more life you will leech back. There's a maximum amount of HP
 which you can leech from a victim per round (usually around 50..100).
+
+Vampirism does not work on all types of monsters. From some it is not possible
+to drain life force. Those immune to vampirism are:
+- undead monsters
+- nonliving monsters
+- in general, all elementals ('E'), golems ('g') and vortices ('v').
+Although demons and angels don't really 'live', vampirism is able to drain
+the powers that allow them to exist, and so vampirism works against those too.
 
 The best case is to have vampiric flag on a weapon, that will drain at maximum
 efficiency. If you use vampiric equipment like gloves, they will be a bit less
@@ -4190,6 +4391,75 @@ experience points permanently. Here are some details about that process:
  So you will not lose levels from experience drain.
  HOWEVER: If a monster or other effect drains your experience below your
  current level, the experience drain from items will kick in again!
+
+
+
+(5.20) Runes
+------------
+Runes are magical symbols, often hidden in ancient digging sites, or carried
+around by clueless creatures who are not aware of the power of these relicts.
+Runes can be combined to create powerful magical effects by skilled rune
+hunters who are known by the title of 'Runemasters'. Those folks are more
+often than not queer, known for their greediness, and to be encountered with
+care since most of them are actually not scientists but a bunch of clever
+outlaws who are trying their luck after becoming aware of the potential of
+these stones.
+
+
+When semi-skilled pseudo-professional folks use runes, there's quite a chance
+for them to break! General chance formula is:
+
+For bolts, beams and balls:
+(perfect_cast_level - skill_level) %, minimum is 0%.
+
+For clouds:
+((perfect_cast_level - skill_level) * 2) %, minimum is 0%.
+
+perfect_cast_level is 15 for bolts
+                      25 for beams
+                      35 for balls
+                      50 for clouds.
+
+E.g., perfect_cast_level for a ball spell is 35. So if you're casting a
+ball rune spell at level 20, you have (35-20)% == 15% of the rune to break.
+Note that only a 'modifier rune' can break this way! 'Base runes' don't break!
+
+
+There are two types of runes: 'Base runes', and 'Modifier runes' or short
+'Mod runes'.
+Base runes determine the class of attack: Bolting, Beaming, Engulfing (Ball),
+                                          and Clouding.
+Mod runes determine the tpye of damage: Fire, acid, ... etc.
+
+The way it works is by combining a base and a mod together to conjure a
+spell. For example, a bolt + fire runes combination will result in a fire
+bolt being launched. The game will query for the base rune first (i.e.,
+type of spell you want to conjure: ball, beam, cloud, or bolt) then the
+element you want it to be associated with.
+
+Be aware that there are special kinds of mod runes that will do the same
+thing for any base rune it gets combined with! For example, any base rune
+combined with a Gravity rune will result in a speed buff being casted.
+The cost will not matter if you use Ball of Gravity or Bolt of Gravity.
+This should allow some flexibility in macroing.
+
+An example for macroing:
+The magic number for rune spells is 12.
+    \e)*tm@12\r15
+with Bolt rune inscribed @m1 and a Fire rune inscribed @m5 will launch
+a fire bolt. Note the location of the target input '*t'.
+
+Special buffs for Runemasters:
+Some mod runes offer 'buffs', that are spells that increase your power in some
+way. Regardless of the base rune they are combined with, the buff rune will
+always only work on the runemaster himself, not on any monster or other being.
+So the base rune type doesn't actually matter for buffs.
+About buffs this is important to know:
+    All buffs are toggle spells. Cast again to turn them off again.
+    The more buffs you have enabled, the more your SP usage will increase in
+     casting any other spells.
+    The states are not saved across connections: If you log out, your buffs
+     are reset.
 
 
 
@@ -4443,6 +4713,22 @@ Note that not every skill is available to every profession (class).
     .Holy Support               Learn prayers of the Holy Support branch.
     .Arcane Lore                Learn druid magic tought by arcane lore.
     .Physical Lore              Learn druid magic tought by physical lore.
+.Runemastery                    Determines how skillful you are in handling
+                                magical symbols aka 'Runes'.
+                                At 15, it gives perfect bolt casting
+                                (0% break chance for rune on casting bolts).
+                                At 25, it gives perfect beam casting
+                                (0% break chance for rune on casting beams),
+                                And at this level, all shackles are removed
+                                from the runic spells: They will do full
+                                damage and use full amount of SP.
+                                From here on, the usage and the damage will
+                                increase in a linear manner.
+                                At 35, it gives perfect ball casting
+                                (0% break chance for rune on casting balls).
+                                At 50, it gives perfect cloud casting
+                                (0% break chance for rune on casting clouds).
+                                For more info about runes, see '(5.20) Runes'.
 +Sneakiness                     Slightly increases your character speed
                                 (+7 at 50, so approx +1 every 7..8 points).
                                 Slightly increases perception and searching.
@@ -4464,8 +4750,8 @@ Note that not every skill is available to every profession (class).
                                 traps for higher damage output.
                                 See (4.7) for details about monster traps.
     .Backstabbing               Lets you backstab enemies, afflicting high
-                                damage. Works best in the dark and if the
-                                opponent is sleeping.
+                                damage. Works best if the opponent is
+                                sleeping.
     .Stealing                   Ability to steal (from shops)! Very nasty >:)
                                 If you get caught, you will be on the
                                 'blacklist of merchants' for some minutes up
@@ -4479,7 +4765,7 @@ Note that not every skill is available to every profession (class).
                                 that you can shop normally, but are unable to
                                 steal until the shopkeepers stop to watch you
                                 so intensely. The watchlist runs out slower
-                                than the blacklist.
+                                than the blacklist, but allows you to be AFK.
                                 Your chance to steal an item from a shop
                                 depends on your dexterity, your stealing skill
                                 and the price and weight of the item. Stealth
@@ -4545,12 +4831,17 @@ Note that not every skill is available to every profession (class).
                                 skill and the target's level. To get maximum
                                 drain, the skill should be at least half as
                                 high as the monster level.
+                                Necromancy has no effect on undead and
+                                nonliving monsters. (Also, it does not work if
+                                the player himself is currently dead.)
     .Traumaturgy                Drains mana from monsters when you inflict
                                 damage on them, replenishing your SP.
                                 Only works if you are able to see the target.
                                 The amount of points gained is a fraction of
                                 the damage points you inflicted and only
                                 depends on damage and skill.
+                                Traumaturgy has no effect on angels, undead,
+                                and nonliving monsters.
     .Aura of Fear               Monsters that hit you are stroke by fear.
     .Shivering Aura             Monsters that hit you are stunned.
                                 At a skill of 30 the aura is so strong that
@@ -4562,21 +4853,21 @@ Note that not every skill is available to every profession (class).
                                 your melee attacks (weapon as well as martial
                                 arts) will be branded by it.
                                 (Alternating fire or cold brand.)
-    .Antimagic                  Generated from your strong disbelief in magic
+.Antimagic                      Generated from your strong disbelief in magic
                                 an anti-magic field surrounds you, preventing
                                 attempts from other casters to cast spells or
                                 summon monsters. This effect is cumulative
                                 with the anti-magic field of a Dark Sword.
                                 (See 5.9 for more info about dark swords.)
-                                It's capped at 80% chance of interrupting
+                                It's capped at 75% chance of interrupting
                                 enemy spells.
                                 Note that as soon as you invest a point into
                                 this skill you won't be able to use any magic
                                 wands,staves or rods anymore!
                                 This skill also slightly affects your fellow
                                 party members (casters).
-                                Each point in Antimagic adds 0.8% to your
-                                AM chance, so the max gain is +40% from skill.
+                                Each point in Antimagic adds 0.6% to your
+                                AM chance, so the max gain is +30% from skill.
                                 Note: While ball/bolt attacks are spells,
                                       breathing is NOT.
                                 Antimagic will also reduce the duration of all
@@ -4588,6 +4879,7 @@ Note that not every skill is available to every profession (class).
                                 (skill_level * 2)% chance to regenerate 1,5x
                                 the normal amount of HP per turn (stacks with
                                 REGEN items).
+                                Increases your hit points by 2 for each point.
                                 Also helps you to recover from temporary stats
                                 drain, hallucination, blindness, paralysis,
                                 confusion, slowness, poison, stun and cuts
@@ -4596,24 +4888,9 @@ Note that not every skill is available to every profession (class).
                                 sanity will be displayed as a bar.
                                 At 20 points you'll get the percentage
                                 displayed. At 40 the value will be shown.
-    .Training                   Increases the chance of getting an additional
-                                skillpoint or even a stat-point on level ups.
-                                Note that all characters already have a slim
-                                chance to get an additional skill/stat-point
-                                on level ups even without Training skill.
-                                The weaker an attribute is, the more likely
-                                it's raised. (This stat increase counts like
-                                a stat potion you'd quaffed.)
-                                Everytime you gain a level, a random number
-                                between 0 and 99 will be generated. If it's
-                                smaller than your Training skill, you will
-                                receive an extra skill point.
     .Swimming                   Self-explaining
     .Digging                    Self-explaining
     .Climbing                   You need this at 01.000 to learn climbing.
-    .Flying                     You need this at 01.000 to learn how to fly.
-    .Free Action                You need this at 01.000 to resist paralysis.
-    .Confusion Resistance       You need this at 01.000 to resist confusion.
 
 In my opinion, the sub-skills of 'Health' should be avoided. There are more
 important skills to care about. Also see (7.5) for suggestions about skill
@@ -4711,8 +4988,7 @@ Magic Device
     See (6.10) for more information.
 Blows/Round
     How often per round you are able to strike with your weapon. This depends
-    on your strength, dexterity, your class, your weapon. (Note that Yeeks
-    are limited to 4 blows per round.)
+    on your strength, dexterity, your class, your weapon.
     Spending points in specific weapon masteries will give you an additional
     blow at 25 and at 50 (like sword or hafted mastery).
     Tables of blows/round limits are at (5.4) (for martial arts) and at (6.5)
@@ -4751,13 +5027,13 @@ Human
     Humans have no experience penalties and tend to go up levels faster than
     most other races. No racial adjustments or intrinsics occur to characters
     choosing human.
-    Humans are very good at 'Training'.
+    Humans get a bonus on 'Interception' and 'Climbing'.
 Half-Elf
     Half-elves tend to be smarter and faster than humans, but not as strong.
     Half-elves are slightly better at searching, disarming, saving throws,
     stealth, bows, and magic, but they are not as good at hand weapons.
     Half-elves resist light intrinsically.
-    They get bonus on 'Bows-Mastery' and 'Trainig'.
+    They get bonus on 'Bows-Mastery' and 'Interception'.
 Elf
     Elves resist light effects intrinsically and see invisible creatures.
     Elves are better magicians then humans, but not as good at fighting.
@@ -4866,7 +5142,8 @@ Ent
     experience very slowly. Ents do not eat normal food, but are able to
     consume liquids. Ents resist the force of unleashed water.
     They get boni on 'Health', 'Calmness' and on the magic schools 'Earth' and
-    'Water' and they receive penalties on 'Fire' school.
+    'Water' and they receive penalties on 'Fire' school, 'Axe-mastery' and a
+    slight penalty on 'Sword-mastery'.
 Thunderlord (also known as Dragonrider)
     Thunderlords can eat firestones to temporarily boost their powers.
     They have an intrinsic telepathic vision of all nearby creatures, the
@@ -4878,7 +5155,33 @@ Thunderlord (also known as Dragonrider)
     feather falling (levitation) from birth. See (5.9) for firestone details.
     They receive bonus on 'Polearm-Mastery', 'Aura of Fear' and the magic
     schools 'Conveyance' and 'Fire'.
-
+Dark-elf
+    Dark elves dwell below the surface in huge caverns of their underground
+    city. The children are already drilled to become sworn enemies of most
+    other races of the underground, and also of the hated elves and high-elves
+    who live on the surface under the burning light of the sun. Overthrowing
+    rivals by treachery and murder are acknowledged ways in their society.
+    Dark elves are good fighters and sorcerors, but also decent priests.
+    Dark-elves intrinsically resist darkness, but are susceptible to light.
+    At level 20 they learn to see the invisible.
+    They get bonus on 'Archery', 'Stealth', 'Dodging' and 'Sneakiness'.
+Vampire
+    These powerful undead creatues move out in the night to hunt living prey
+    and suck its blood to sustain themselves. Vampires resist darkness, but
+    are susceptible to light. They fear the sun light and any other kind of
+    blessed light source, since it burns them, draining their hit points.
+    They don't actually need a light source, since they are able to determine
+    their close surroundings even in complete darkness. This ability grows
+    when the vampire rises in character-levels.
+    Vampires are good fighters and decent mages. However, they are unable to
+    utilize magic of water, nature or divination school. Neither can they make
+    use of mimicry techniques or holy spells.
+    They resist darkness, nether, poison or cold and it's hard to drain their
+    life force. They also have partially life leeching (vampiric) attacks
+    (see '(5.15) Vampirism' for more information).
+    Vampires cannot eat normal food, instead they need to feed off living
+    creatures. Vampires dislike hafted weapons, but receive a bonus on all
+    necromancy skills. They become able to turn into a bat at level 20.
 
 Here is a table showing boni/mali of the different races:
 (Di:Disarming,      MD:Magic Device,        ST:Saving Throw,    St:Stealth,
@@ -4889,34 +5192,38 @@ from skills or items yet).
             STR INT WIS DEX CON CHR     HPdice  Exp%    Infra-Vision
             Di  MD  ST  St  Pe  Sr  Fi  BT
 ------------------------------------------------------------------------------
-Human        0   0   0   0   0   0       10     100%     0ft             
+Human        0   0   0   0   0   0       10     100%     0ft
              0   0   0   0  10   0    0   0
-Half-Elf    -1  +1  +0  +1  -1  +1        9     110%    20ft            
+Half-Elf    -1  +1  +0  +1  -1  +1        9     110%    20ft
              2   3   3   1  11   6   -1   6
-Elf         -1  +2  +1  +1  -2  +2        8     120%    30ft            
+Elf         -1  +2  +1  +1  -2  +2        8     120%    30ft
              5   6   6   1   1   8   -5  15
-Hobbit      -2  +2  +1  +3  +0  +1        7     110%    40ft            
+Hobbit      -2  +2  +1  +3  +0  +1        7     115%    30ft
             15  18  18   4  15  12  -10  20
-Gnome       -1  +2  +0  +2  +1  -2        8     125%    40ft            
+Gnome       -1  +2  +0  +2  +1  -2        8     125%    40ft
             10  12  12   3  13   6   -8  12
-Dwarf       +2  -2  +2  -2  +2  -3       11     120%    50ft            
+Dwarf       +2  -2  +2  -2  +2  -3       11     130%    50ft
              2   9   9  -1  10   7   15   0
-Half-Orc    +2  -1  +0  +0  +1  -4       11     100%    30ft            
+Half-Orc    +2  -1  +0  +0  +1  -4       11     115%    30ft
             -3  -3  -3  -1   7   0   12  -5
-Half-Troll  +4  -4  -2  -4  +3  -6       12     120%    30ft            
+Half-Troll  +4  -4  -2  -4  +3  -6       12     135%    30ft
             -5  -8  -8  -2   5  -1   20 -10
-Dunadan     +1  +2  +2  +2  +3  +2       10     180%     0ft             
+Dunadan     +1  +2  +2  +2  +3  +2       10     180%     0ft
              4   5   5   2  13   3   15  10
-High-Elf    +1  +3  -1  +3  +1  +3       10     230%    40ft            
+High-Elf    +1  +3  -1  +3  +1  +3       10     230%    40ft
              4  20  20   3  14   3   10  25
-Yeek        -5  -5  -5  -5  -5  -5        7      80%     0ft             
+Yeek        -5  -5  -5  -5  -5  -3        7      80%     0ft
              0   0   0   0  10   0    0   0
-Goblin      +0  -1  -5  +4  +2  -5       11     115%    30ft            
+Goblin       0  -1  -4  +4  +2  -5       10     120%    30ft
              2  -3  -3   0   8   2   12  -5
-Ent         +8  -4  +2  -4  +8  -5       14     300%    50ft            
+Ent         +8  -4  +2  -4  +8  -4       14     300%    50ft
              5   0  20  -6   4   5   15   5
 Thunderlord +6  +2  +1  +1  +3  +5       12     350%     0ft             
              6   0  10 -16  10  30   15   5
+Dark-elf     0  +2  +1  +3  +1  -6       10     140%    50ft
+             0   3   6   2  10   6   15  15
+Vampire     +2   0  -3  -1   0  -6       11     250%   100ft
+            -4   0  20   2  13  -4   10 -10
 
 
 
@@ -4995,11 +5302,12 @@ Rogue
     A rogue's perception is higher than any other class, and usually they
     notice traps or secret doors without needing a search. Rarely will a
     rogue be unable to avoid or disarm a trap. Rogues also have the unique
-    ability to train stealing from his fellow man, a dangerous but sometimes
+    ability to train stealing from his fellow men, a dangerous but sometimes
     very rewarding profession. Rogues are better than warriors or paladins
     with magical devices, but still can not rely on their performance.
-    Rogues can also learn a few spells. A rogue's primary stats are
-    Intelligence and Dexterity. 
+    Rogues can also learn a few spells. When searching for hidden traps and
+    doors, they may spot them more easily, even from a distance!
+    A rogue's primary stats are Intelligence and Dexterity. 
 Mimic
     Mimics can learn how to shapechange and use monsters' forms, thus
     inheriting nearly all of the monster's abilities. Mimics learn forms
@@ -5074,6 +5382,30 @@ Shaman
     necromancy as they see fit.
     At level 20 shamans learn to perceive the invisible.
 
+Runemaster
+    Runemasters are very skilled in exploiting magical symbols to their own
+    ends. A few meaningful finger gestures or a scribble on a piece of rock
+    could launch a powerful spell at their enemies. They rely mainly on their
+    intelligence and dexterity to be witty enough in the most demanding
+    situations. Because of this, they are often mistaken to be rogues...
+    until you see the most powerful spells come out of their fingers! Most of
+    these folks actually are not scientists but clever and ruthless outlaws
+    who became aware of the potential of rune stones; these rune hunters are
+    sly as rogues and witty as mages. Quite dangerous persons all in all.
+    'Magic' skill has the least effect on this class, and it is not very easy
+    to learn. Runemasters' spells receive a half-damage and half-SP usage
+    penalty that gradually dissapears as their Runemastery reaches 25. At this
+    level, they do full damage and are able to fully tap their potential.
+    The amount of damage and SP their spell use is directly related to their
+    level and their skillfulness in Runemastery.
+    Their roguish nature allows them to train in a specific weapon proficiency
+    except for 'Weaponmastery', and they are also able to train some skills
+    that are typical for rogues. They're very calm under pressure and are able
+    to intercept and disarm things very well.
+    Runemastery is not part of intrinsic magic but of hard scientific work,
+    and hence only available to quite intelligent races.
+    For more information about runes, see '(5.20) Runes'.
+
 If you raise in levels, you will get new titles. These are displayed between
 your class name and your character level in the main window. If you die and
 become a ghost, the title will change to 'Ghost' until you get revived.
@@ -5100,14 +5432,14 @@ Adventurer   0   0   0   0   0   0       +6      +10%       4
             20  20  20   2  15  15  50  50
 Warrior     +5  -2  -2  +2  +2  -1      +10       +0%       6
             25  18  18   1   2  14  70  55
-Istari      -5  +3  +0  +1  -2  +1       +0      +35%       1
+Istar       -5  +3  +0  +1  -2  +1       +0      +35%       1
             30  36  30   2  20  16  34  20
 Priest      -1  -3  +3  -1  +0  +2       +4      +20%       4
             25  30  32   2   8  16  48  35
 Rogue       +2  +1  -2  +3  +1  -1       +5      +25%       5
             45  32  28   5  32  24  60  66
 Mimic       +1  +0  +0  +1  +1  -4       +5      +40%       4
-            25  35  28   7  18  18  60  66
+            25  35  28   1  18  18  60  66
 Archer      +1  +0  +2  +3  +1  -1       +5      +15%       3
             30  32  28   2  20  24  56  82
 Paladin     +3  -3  +1  +0  +2  +2       +8      +30%       5
@@ -5118,6 +5450,8 @@ Druid       +1   0  +2  -2  -2  +1       +5      +50%       4
             30  40  30   5  25  25  50  60
 Shaman       0  +1  +2  -2   0   0       +5      +30%       4
             10  13  30   5  30  20  45  20
+Runemaster  +1  +2  -3  +3  -3  -3       +5      +20%       4
+            10  20  20   0  30  20  45  20
 
 
 
@@ -5294,10 +5628,11 @@ F: flag list
     DISBELIEVE  Will increase the player's anti-magic field by
                 ((monsterlevel / 2) + 20) percent. The range of the anti-magic
                 field is increased by ((monsterlevel / 15) + 3) fields.
-    ARROW_1     The player will receive an additional shot per round with bows
-                since the monster seems to be good at shooting.
+    ARROW_1, ARROW_2, ARROW_3
+                The player will receive an additional shot per round since the
+                monster seems to be good at shooting.
                 If the monster shoots 1_IN_3 or better, the player will
-                even receive 2 extra shots with bows!
+                receive an additional extra shot with slings and bows.
     HURT_ROCK   Means that this creature has a rock-like skin and body.
                 Takes damage from Stone-To-Mud and takes more damage from
                 'disintegration' attacks, but at the same time resists shards!
@@ -5323,7 +5658,12 @@ F: flag list
     OPEN_DOOR   This form can open doors.
     BASH_DOOR   This form can bash doors
                 (useful to forms that cannot OPEN_DOORs!).
-    EVIL        This form will take 2x damage from holy orbs or holy fire.
+    EVIL        Currently no effect, since it's assumed that the evilness of
+                the form is overridden by the mimic's state of mind.
+    DEMON or UNDEAD
+                This form will take 2x damage from holy orbs or holy fire,
+                and suffer from various 'good' effects/spells. UNDEAD has
+                in general more trouble with 'good' effects than DEMON.
     HURT_LITE   This form will take 2x damage from light attacks.
 S: spell list
     These spells can be cast by the monster. Most of them are available to
@@ -5432,6 +5772,12 @@ will disintegrate and the player will polymorph back to his standard form.
 If a player forges a ring, his magic device skill helps to obtain a high
 amount of energy in the ring.
 
+Important: Each time you activate the ring, it will drain a considerable
+amount of energy, so you should avoid activating/deactivating it, but instead
+keep using it until it runs out of turns once you activated it.
+UN_POWER attacks will drain energy from rings quickly, avoid monsters which
+are able to drain energy while using a ring of polymorphing.
+
 
 
 (6.8) Magic spells and prayers
@@ -5459,6 +5805,22 @@ If you raise your Air school to 6 by spending 3 more points into it, the level
 of your Noxious Cloud spell will increase by 3 and now be displayed as
 "level 4" in your spellbook. The spell now deals more damage and lasts longer
 than it did on power level 1 when you just barely learned it.
+
+Casting spells on other players:
+Magic spells, prayers and druid magic are partially able to be used on fellow
+players. However, the ways this is done differs from each other.
+- Istari and other users of their magic may cast some magic spells on others
+  by summoning an ethereal projector sphere on their mind. While this project
+  spell is active, some of their spells will affect not only themselves but
+  also those players nearby. The project spell is found in their 'Meta' school
+  of magic. It works like a switch. Cast it once to enable projecting, cast it
+  again to disable projecting again.
+  The spells which are projectable are marked by a '(project)' tag below.
+- Priests and other classes who rely on prayers, as well as druids do not use
+  any kind of projector sphere. Their spells will always affect fellow players
+  nearby
+  The prayers and druid spells which are projected on others are marked by a
+  '(auto-project)' tag at the end of the spell description below. 
 
 Schools give certain permanent boni and abilities to the player, when trained
 to a certain extent. The boni are listed below each school.
@@ -5653,8 +6015,6 @@ Udun
   BONI:             Resist teleportation attacks at 30,
                     Hold life at 40.
 
-Istari/priest schools:
-----------------------
 Meta
     Recharge        Recharges a magic staff or wand.
                     Required skill level for first spell level: 5.
@@ -5712,15 +6072,15 @@ Holy Offense
   BONI:             Adds slay undead at 30, slay demon at 40, slay evil at 50
                     to all melee and ranged attacks.
 Holy Defense
-    Blessing        Increases AC by 10 temporarily.                 (project)
-                    Lv15: Increases AC by 20 temporarily.           (project)
-                    Lv30: Increases AC by 30 temporarily.           (project)
+    Blessing        Same effect as scroll of Blessing.         (auto-project)
+                    Lv15: Same effect as scroll of Holy Chant. (auto-project)
+                    Lv30: Same effect as scroll of Holy Prayer.(auto-project)
                     Required skill level for first spell level: 1.
-    Holy Resistance Lets you resist heat.                           (project)
-                    Lv5: Lets you also resist cold.                 (project)
-                    Lv10: Lets you also resist lightning.           (project)
-                    Lv15: Lets you also resist acid.                (project)
-                    Lv25: Lets you also resist poison.              (project)
+    Holy Resistance Lets you resist heat.                      (auto-project)
+                    Lv5: Lets you also resist cold.            (auto-project)
+                    Lv10: Lets you also resist lightning.      (auto-project)
+                    Lv15: Lets you also resist acid.           (auto-project)
+                    Lv25: Lets you also resist poison.         (auto-project)
                     Required skill level for first spell level: 11.
     Protection from evil.
                     Repels evil creatures that try to attack you.
@@ -5741,18 +6101,18 @@ Holy Defense
   BONI:             Protects the player from undead at 30, from demons at 40,
                     and from evil in general at 50. Better than the spell.
 Holy Curing
-    Remove Fear     Keeps your heart boldened for a while           (project)
+    Remove Fear     Keeps your heart boldened for a while      (auto-project)
                     Required skill level for first spell level: 1.
-    Healing         Heals a percentage of hit points.               (project)
-                    Required skill level for first spell level: 10.
+    Healing         Heals a percentage of hit points.          (auto-project)
+                    Required skill level for first spell level: 3.
     Cleansing Cloud Continuously heals every player who steps inside.
                     Required skill level for first spell level: 18.
     Curing          Reduces poison duration.
-                    Lv10: Cure poison/cuts/stun/blindness/confusion.(project)
-                    Lv20: Restore stats.                            (project)
-                    Lv25: Restore experience.                       (project)
+                    Lv10: Cure poison/cuts/stun/blindness/confusion.(auto-p.)
+                    Lv20: Restore stats.                       (auto-project)
+                    Lv25: Restore experience.                  (auto-project)
                     Required skill level for first spell level: 16.
-    Mind Focus      Cure hallucinations and insanity.               (project)
+    Mind Focus      Cure hallucinations and insanity.          (auto-project)
                     Required skill level for first spell level: 21.
     Resurrection    Resurrect another player's ghost. The resurrected player
                     will lose less experience the higher the spell level is.
@@ -5762,7 +6122,7 @@ Holy Curing
                     at 33%.
                     Required skill level for first spell level: 30.
     Soul Curing     Cures Black Breath (See 1.5 for more information about
-                    Black Breath).                                  (project)
+                    Black Breath).                             (auto-project)
                     Required skill level for first spell level: 25.
   BONI:             Improves HP regeneration rate extraordinarily the further
                     it is trained above 30,
@@ -5778,26 +6138,26 @@ Holy Support
                     Note that this is a spell shared between offense and
                     support school, meaning that increases in one of those
                     school will increase the spell level by only half as much.
-    Sense Monsters  Detect monsters, see invisible for a while.     (project)
+    Sense Monsters  Detect monsters, see invisible for a while.
                     Lv30: Gives full temporary ESP.
                     Required skill level for first spell level: 1.
     Sanctuary       Puts nearby monsters asleep.
                     Lv20: Lets all monsters in line of sight fall asleep.
                     Required skill level for first spell level: 1.
-    Satisfy Hunger  Satisfies your hunger.                          (project)
+    Satisfy Hunger  Satisfies your hunger.                     (auto-project)
                     Required skill level for first spell level: 10.
     Remove Curses   Removes curses.
                     Lv30: Removes heavy curses.
                     Required skill level for first spell level: 10.
     Sense Surroundings
-                    Detect monsters, see invisible for a while.     (project)
-                    Lv15: Maps the dungeon around you.              (project)
+                    Detect monsters, see invisible for a while.
+                    Lv15: Maps the dungeon around you.
                     Lv30: Gives clairvoyance (full enlightened map).
                           Gives full temporary ESP.
                     Required skill level for first spell level: 10.
-    Zeal            Gives +1 extra attack per round for a while.    (project)
-                    Lv10: Gives +2 EA.                              (project)
-                    Lv20: Gives +3 EA.                              (project)
+    Zeal            Gives +1 extra attack per round for a while.    (auto-p.)
+                    Lv10: Gives +2 EA.                         (auto-project)
+                    Lv20: Gives +3 EA.                         (auto-project)
                     Note: The EA effect won't be applied to barehanded players
                     if they don't have Martial Arts skill of at least 01.000.
                     Required skill level for first spell level: 31.
@@ -5819,19 +6179,19 @@ Arcane Lore
                     Required skill level for first spell level: 15.
     Call of the Forest
                     Dispels all animals from your line of sight.
+                    Animals have a chance to resist, depending on their level.
                     Required skill level for first spell level: 1.
 Physical Lore
     Forest's Embrace
                     Creates a cloud around you which heals everyone including
-                    yourself over time.
+                    yourself over time.                        (auto-project)
                     Required skill level for first spell level: 18.
-    Quickfeet       Temporarily boosts your own speed as well as others
-                    players around you.
+    Quickfeet       Temporarily boosts your speed.             (auto-project)
                     Required skill level for first spell level: 13.
-    Herbal Tea      Satisfies your hunger.
-                    Lv20: Restores your experience.
-                    Lv25: Restores your attributes.
-                    Lv35: Cures black breath!
+    Herbal Tea      Satisfies your hunger.                     (auto-project)
+                    Lv20: Restores your experience.            (auto-project)
+                    Lv25: Restores your attributes.            (auto-project)
+                    Lv35: Cures black breath!                  (auto-project)
                     Required skill level for first spell level: 3.
     Extra Growth    Increases your attributes temporarily.
                     Lv5: Increases charisma.
@@ -6807,6 +7167,10 @@ Light sources
      a) winners (Queens/Kings/Empresses/Emperors)
      b) players whose current level is at least as high as the item level
         (even if they are the rightful owner of the randart).
+     c) if the server as the 'Fallen Kings Etiquette' enabled, meaning that
+        players who won once but then died cannot use static artifacts either,
+        then they will be able to find and use +LIFE randarts if they are at
+        least level 50!
 
 
 General mods:
@@ -6892,7 +7256,8 @@ SOLUTION:   There are 2 possible solutions.
 
 PROBLEM 03: All windows except for the main window stay empty. (occurs on
             Windows XP machines).
-SOLUTION:   Open tomenet4.ini file with a text editor, look for the window
+SOLUTION:   Reasons are unknown. Sometimes a simple reboot helps. Otherwise:
+            Open tomenet4.ini file with a text editor, look for the window
             sections, change the fonts to the same settings (8x13) as in the
             [Main window] section: FontFile=8X13.FON , Font=8X13.FON .
             Also, you could adjust the width/height of the windows (to 80x24
@@ -7166,6 +7531,20 @@ SOLUTION:   Make sure that TomeNET is NOT running while you try to install the
             new version. If TomeNET is running, the unpacking will fail to
             overwrite the existing files! Shut down TomeNET, then extract the
             ZIP (overwriting everything), then start TomeNET again.
+PROBLEM 19: On GNU/Linux OS, When someone uses the /page command to page me,
+            I don't hear the three beeps.
+SOLUTION:   You are probably using OSS. If your soundcard or soundchip doesn't
+            support mixing of multiple sources, that means only one program at
+            a time can output sound. In that case, do the following:
+            Make sure all your programs, like media players, instant
+            messengers, system setting tools, etc. are set to use 'ALSA' for
+            sound, not OSS. Now that all programs use ALSA, make Tomenet use
+            ALSA too. You can do that by using an "ALSA wrapper" which takes
+            the OSS sound output of any application that doesn't support ALSA
+            natively, and wraps it to ALSA. The ALSA wrapper is called 'aoss'.
+            After installing 'aoss', just use call it with the OSS application
+            as parameter. Example:    $> aoss ./tomenet
+            Another example (to start the Opera webbrowser):    $> aoss opera
 
 
 
