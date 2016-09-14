@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 31. Jan 2010 - written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.4.4 - official websites are:
+| Latest update: 3. Mar 2010 - written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.4.4a - official websites are:
 | http://www.tomenet.net/ (main site),
 | http://koti.mbnet.fi/mikaelh/tomenet/ and http://www.c-blue.de/rogue.html
 +---
@@ -1151,8 +1151,8 @@ the mundane world.
 
 (2.1) Installing TomeNET
 ------------------------
-Go to http://www.c-blue.de/rogue.html, download the latest client.
-Extract it to a new directory, preserving the pathnames.
+Go to http://www.tomenet.net/ (or one of our personal pages) to download the
+latest client. Extract it to a new directory, preserving the pathnames.
 
 Windows:
 --------
@@ -1967,7 +1967,7 @@ a) casting a magical spell
      to 'Gandalf.prf' if your character is called 'Gandalf'.
      If your macros are not automatically loaded, you'll have to do it
      manually after logging in, by pressing % and choosing '1 - Load macros',
-	 then specifying the according filename.
+     then specifying the according filename.
     Note that if your character gains additional abilities that show up
     in the 'm' menu, it might happen that 'b) cast a spell' becomes
     'c) cast a spell' which would require you to redefine your macros.
@@ -2158,7 +2158,7 @@ queued keypresses that have to be processed.)
 An example macro set for fighters or archers:
 ---------------------------------------------
 This macro set is already in your /lib/user folder! If it's not there,
-download the latest client from www.c-blue.de/rogue.
+download the latest client from www.tomenet.net or our personal pages.
 You can load this macro file by hitting % to invoke the macro menu,
 then enter '1' to load a macro file, and specifying its filename,
 which is: example_fighter.prf
@@ -2213,7 +2213,7 @@ The above macro set slightly changed to fit
 additional needs of a low level istar or other casters:
 -------------------------------------------------------
 This macro set is already in your /lib/user folder! If it's not there,
-download the latest client from www.c-blue.de/rogue.
+download the latest client from www.tomenet.net or our personal pages.
 You can load this macro file by hitting % to invoke the macro menu,
 then enter '1' to load a macro file, and specifying its filename,
 which is: example_caster.prf
@@ -4582,8 +4582,8 @@ MANA ('It affects your mana capacity.')
         MANA items _add_ to each other, they aren't multiplied.
         They have slightly less effect on non-mages and quite less effect
         on priests or paladins who need wisdom rather than intelligence.
-		MANA affects your complete mana pool, including the additional MP
-		(mana points) a	character gained from 'Magic' skill.
+        MANA affects your complete mana pool, including the additional MP
+        (mana points) a character gained from 'Magic' skill.
 LIFE ('It affects your hit points')
         Will increase your total hit points by +x0%. Example:
         Sword of life (+2) increases your HP by 20%.
@@ -4592,11 +4592,11 @@ LIFE ('It affects your hit points')
         (For mimics, the +LIFE effect might be less since their HP in
         player form or monster form might be low. The +LIFE isn't applied
         to mimics' final HP but the lower base HP.)
-		LIFE affects your complete hit point pool, including the additional
-		HP a character gained from 'Health' skill.
+        LIFE affects your complete hit point pool, including the additional
+        HP a character gained from 'Health' skill.
 AGGRAVATE ('It aggravates nearby creatures')
         Wakes up all monsters in whose radius of awareness you are.
-		(Does not haste them as scrolls do, compare to (5.9)).
+        (Does not haste them as scrolls do, compare to (5.9)).
 LUCK ('The item increases your luck')
         If you are lucky, your chance to find better items increases.
         Luck caps at 40, having higher bonus won't help any more.
@@ -5512,76 +5512,80 @@ experience points permanently. Here are some details about that process:
 
 
 
-(5.20) Runes & Runemastery (OLD RUNEMASTERY)
+(5.20) Runes & Runemastery
 --------------------------
-Runes are magical symbols, often hidden in ancient digging sites, or carried
-around by clueless creatures who are not aware of the power of these relicts.
-Runes can be combined to create powerful magical effects by skilled rune
-hunters who are known by the title of 'Runemasters'. Those folks are more
-often than not queer, known for their greediness, and to be encountered with
-care since most of them are actually not scientists but a bunch of clever
-outlaws who are trying their luck after becoming aware of the potential of
-these stones.
+Runes are magical symbols used to summon and manipulate the raw elemental
+forces which sustain the world of life. They are the motivating force behind
+the traditional systems of magic in TomeNET. The Istari's spell-scroll, for
+example, are composed of a series complicated runes which both protect the
+mage from immediate harm, and create the desired effect, from fireballs to
+magical satiation.
 
-NOTE: A new experimental rune system has been implemented, which is currently
-      live on the 'RPG Server'. The following explanations of the rune system
-      describe the old system, and can't necessarily be applied to the new
-      experimental system.
+Runemasters are less methodical in their approach to magic. Having learned
+to summon elemental forces according to their desires without the
+precautions, limitations and inefficiencies of the complex Istari spell
+system, Runemasters deal directly with the 'pure' substance of magic,
+and are limited only by their wits, their strength and their skill.
 
-When semi-skilled pseudo-professional folks use runes, there's quite a chance
-for them to break! General chance formula is:
+Runemastery is much more dangerous than the sensible Istari's approach! A
+Runemaster risks losing control of their spells, which can result in
+broken runes, physical damage, sickness, madness or even death.
 
-For bolts, beams and balls:
-(perfect_cast_level - skill_level) %, minimum is 0.1%.
+These risks are compounded when the Runemaster is confused, stunned, low
+on magical stamina or simply inexperienced with reference to the attempted
+spell. While an Istar may be rendered helpless once they have cast all of
+the spells that they can handle, a Runemaster lacks this precautionary
+limitation, and may continue casting with significantly increased risks,
+and a in the case of low mana, a magical penalty may be taken directly
+from his or her health.
 
-For clouds:
-((perfect_cast_level - skill_level) * 2) %, minimum is 0.1%.
+Further, runemastery is an inexact science. Spell effects will vary widely
+with each attempt, although these variations will subside a little as the
+runemaster becomes more experienced with the chosen runes. A runemaster will
+always have some idea of how dangerous or successful each spell attempt has
+been. As spells become more successful, they increase in potency and decrease
+in cost. On the flip-side, less successful spells increase in cost and
+decrease in potency.
 
-perfect_cast_level is 15 for bolts
-                      25 for beams
-                      35 for balls
-                      50 for clouds.
+Runemastery requires dexterious physical and intellectual manipulation of
+the rune-forms, requiring high INT and DEX character stats. For this reason,
+runemasters also make for decent thieves, and tolerable fighters: some of
+a runemaster's spells may even increase their skill in hand-to-hand combat.
 
-E.g., perfect_cast_level for a ball spell is 35. So if you're casting a
-ball rune spell at level 20, you have (35-20)% == 15% of the rune to break.
-Note that only a 'modifier rune' can break this way! 'Base runes' don't break!
+A successful runemaster will quickly develop an affinity for a small subset
+of the available runes according to his or her nature, and will eventually
+be able to recite the runes from memory, rather than relying on the physical
+objects distributed about the world, but these physical reminders always
+make rune-spells more successful, and are therefore essential for
+inexperienced runemasters.
 
+Runemasters are able to summon many kinds of spell effects and types, but
+should be aware that some are much more difficult than others. All
+rune-spells will have a different effect when projected on the world to the
+effect they have when cast on the Runemaster. Experimentation in a safe
+environment is essential.
 
-There are two types of runes: 'Base runes', and 'Modifier runes' or short
-'Mod runes'.
-Base runes determine the class of attack: Bolting, Beaming, Engulfing (Ball),
-                                          and Clouding.
-Mod runes determine the type of damage: Fire, acid, ... etc.
+Rune-spells are made up of three components:
+    1. A combination of up to three runes
+    2. A potency
+    3. A spell-type
 
-The way it works is by combining a base and a mod together to conjure a
-spell. For example, a bolt + fire runes combination will result in a fire
-bolt being launched. The game will query for the base rune first (i.e.,
-type of spell you want to conjure: ball, beam, cloud, or bolt) then the
-element you want it to be associated with.
+These are accessible through the m-key menu. When selecting runes, press
+return once you are finished, or enter the maximum of three runes and continue
+with selection. The rune-menu will prompt for a direction if it is required.
 
-Be aware that there are special kinds of mod runes that will do the same
-thing for any base rune it gets combined with! For example, any base rune
-combined with a Gravity rune will result in a speed buff being casted.
-The cost will not matter if you use Ball of Gravity or Bolt of Gravity.
-This should allow some flexibility in macroing.
+Runemastery macros look like this:
+(The magic number for runemastery is 18)
 
-An example for macroing:
-The magic number for rune spells is 12.
-    \e)*tm@12\r15
-with Bolt rune inscribed @m1 and a Fire rune inscribed @m5 will launch
-a fire bolt. Note the location of the target input '*t'.
+    \e)m@18\ra\rcc*t
 
-Special buffs for Runemasters:
-Some mod runes offer 'buffs', that are spells that increase your power in some
-way. Regardless of the base rune they are combined with, the buff rune will
-always only work on the runemaster himself, not on any monster or other being.
-So the base rune type doesn't actually matter for buffs.
-About buffs this is important to know:
-    All buffs are toggle spells. Cast again to turn them off again.
-    The more buffs you have enabled, the more your SP usage will increase in
-     casting any other spells.
-    The states are not saved across connections: If you log out, your buffs
-     are reset.
+Which is a small fire bolt. (fire--small--bolt)
+
+Or:
+    \e)m@18\rabcab
+
+Which is an elemental resistance self-spell (fire + cold + acid--minimized--
+self).
 
 
 
@@ -5796,10 +5800,10 @@ Note that not every skill is available to every profession (class).
                                 Defensive stance - you will block more,
                                                  - intercept less often,
                                                  - deal less damage.
-						 Note: You can use it even
-						 without shield - in that case
-						 your chance of parrying is
-						 increased instead of blocking.
+                                                 Note: You can use it even
+                                                 without shield - in that case
+                                                 your chance of parrying is
+                                                 increased instead of blocking.
                                 Offensive stance - you can stun opponents
                                                    (compare (4.12)),
                                                  - intercept more often,
@@ -5827,15 +5831,15 @@ Note that not every skill is available to every profession (class).
                                 averaged, and rounded up, then bpr bonus for
                                 dual-wielding is added.
                                 Example: 4bpr & 5bpr = 4.5bpr rounded to 5bpr.
-				Also by pressing 'm' you can disable/reenable
-				dual-wield mode.
-				While disabled ('Main-Hand mode') you will just
-				attack with your primary weapon exclusively,
-				and not receive any dual-wield specific boni;
-				this can be useful if it deals much more damage
-				than your secondary weapon.
-				While enabled ('Dual-hand mode') you will
-				attack with both weapons, picked randomly.
+                                Also by pressing 'm' you can disable/reenable
+                                dual-wield mode.
+                                While disabled ('Main-Hand mode') you will just
+                                attack with your primary weapon exclusively,
+                                and not receive any dual-wield specific boni;
+                                this can be useful if it deals much more damage
+                                than your secondary weapon.
+                                While enabled ('Dual-hand mode') you will
+                                attack with both weapons, picked randomly.
     +Archery                    Improves ranged to-damage bonus.
                                 Allows you to learn some shooting techniques,
                                 accessible via 'm', see (6.12) for details.
@@ -5964,23 +5968,14 @@ Note that not every skill is available to every profession (class).
     .Thought Contact            Learn mindcrafter spells of tought contact.
     .Mental Intrusion           Learn mindcrafter spells of mental intrusion.
 .Runemastery                    Determines how skillful you are in handling
-                                magical symbols aka 'Runes'.
-                                (NOTE: APPLIES TO OLD RUNEMASTERY!)
-                                At 15, you reach minimum break chance (0.1%)
-                                for runes when casting bolts.
-                                At 25, you reach minimum break chance (0.1%)
-                                for runes when casting beams.
-                                And at this level, all shackles are removed
-                                from the runic spells: They will do full
-                                damage and use full amount of SP.
-                                From here on, the usage and the damage will
-                                increase in a linear manner.
-                                At 35, you reach minimum break chance (0.1%)
-                                for runes when casting balls.
-                                At 50, you reach minimum break chance (0.1%)
-                                for runes when casting clouds.
-                                For more info about runes, see
-                                '(5.20) Runes & Runemastery'.
+    .Fire and Cold              specific magical symbols or Runes.
+    .Acid and Water
+    .Lighning and Earth         For more info about runes, see
+    .Poison and Wind            '(5.20) Runes & Runemastery'.
+    .Mana and Chaos
+    .Force and Gravity
+    .Nether and Time
+    .Mind and Nexus
 +Sneakiness                     Slightly increases your character speed
                                 (+7 at 50, so approx +1 every 7..8 points).
                                 Slightly increases perception and searching.
@@ -6753,30 +6748,18 @@ Shaman
     At level 20 shamans learn to perceive the invisible.
 
 Runemaster
-    Runemasters are very skilled in exploiting magical symbols to their own
-    ends. A few meaningful finger gestures or a scribble on a piece of rock
-    could launch a powerful spell at their enemies. They rely mainly on their
-    intelligence and dexterity to be witty enough in the most demanding
-    situations. Because of this, they are often mistaken to be rogues...
-    until you see the most powerful spells come out of their fingers! Most of
-    these folks actually are not scientists but clever and ruthless outlaws
-    who became aware of the potential of rune stones; these rune hunters are
-    sly as rogues and witty as mages. Quite dangerous persons all in all.
-    (NOTE: The following description covers the OLD RUNEMASTERY system, and
-    does not necessarily apply to the new experimental rune system that is
-    currently live on 'RPG Server'!)
-    'Magic' skill has the least effect on this class, and it is not very easy
-    to learn. Runemasters' spells receive a half-damage and half-SP usage
-    penalty that gradually dissapears as their Runemastery reaches 25. At this
-    level, they do full damage and are able to fully tap their potential.
-    The amount of damage and SP their spell use is directly related to their
-    level and their skillfulness in Runemastery.
-    Their roguish nature allows them to train in a specific weapon proficiency
-    except for 'Weaponmastery', and they are also able to train some skills
-    that are typical for rogues. They're very calm under pressure and are able
-    to intercept and disarm things very well.
-    Runemastery is not part of intrinsic magic but of hard scientific work,
-    and hence only available to quite intelligent races.
+    Runemasters use arcane symbols or 'runes' to summon pure elemental magic.
+    They use their intelligence and dexterity to both manipulate and protect
+    themselves from the fickle and dangerous forces of their art.
+    Runemasters are not the most dedicated or systematic of adventurers, and are
+    often rely on flashy tricks and sleight-of-hand. Because of this, and their
+    tendncy towards thievery, they are often mistaken for rogues.
+    This roguish nature allows them to train in a specific weapon proficiencies,
+    although their lack of dedication leaves 'Weaponmastery' as an unattainable
+    goal. Some runemasters may be able to use rune-spells to enhance their combat
+    abilities.
+    Runemasters are able to train some skills that are typical for rogues: they
+    are calm under pressure and are able to intercept and disarm things very well.
     For more information about runes, see '(5.20) Runes & Runemastery'.
 
 Mindcrafter
@@ -7916,11 +7899,11 @@ Mental Intrusion
                     allied players who happen to be the same floor.
     Charm           Makes monsters in sight believe that you aren't an enemy,
                     preventing them most of the time from attacking you.
-		    Monsters may resist or be immune to the initial cast.
+                    Monsters may resist or be immune to the initial cast.
                     While active, the spell drains your mana. The more monsters
-		    you try to keep under control, the faster your mana is
-		    depleted. If your distance to the monsters becomes too big,
-		    the spell will break.
+                    you try to keep under control, the faster your mana is
+                    depleted. If your distance to the monsters becomes too big,
+                    the spell will break.
                     Required skill level for first spell level: 33.
 
 
@@ -9119,7 +9102,7 @@ Weapons
         Blessed (usable for priests without penalty)
         Hit point bonus (+LIFE)   (*)
 Weapons, boomerangs
-        Acid/elec/fire/cold brands
+        Elemental (acid/elec/fire/cold/poison) brands
         Increased damage dice
         All SLAY mods (also have a chance to add the corresponding ESP)
         All KILL (*SLAY*) mods (will also add the corresponding ESP)
@@ -9257,7 +9240,7 @@ General mods:
         Searching
         Speed
         Any base immunities (acid/elec/fire/cold). Note: A randart cannot have
-		                                           more than two immunities!
+                                                   more than two immunities!
         Free action
         Hold life
         Any base resistances (acid/elec/fire/cold)
@@ -9449,11 +9432,11 @@ SOLUTION:   Read the error message displayed in a message box on quitting.
             "Name already owned"
                     Account name already exists.
             "Your client is outdated. Please get the latest one from
-            http://www.c-blue.de/rogue"
+            http://www.tomenet.net/"
                     Download the latest client, see (0.1).
-            "Server responds 'Unknown client version'. Server might be
-            outdated or client is invalid. (Latest client is a at http://
-            www.c-blue.de/rogue)"
+            "Server responds 'Unknown client version'. Server might
+            be outdated or client is invalid. Latest client is at
+            http://www.tomenet.net/"
                     The server might be running an older
                     version than your client is.
             "Sorry, the game is full.  Try again later."
@@ -9564,11 +9547,12 @@ SOLUTION:   Seems to happen on Windows machines sometimes.
 
 PROBLEM 12: Every time I connect to the server it will automatically download
             LUA script files. However, they will have a size of 0 Bytes.
-SOLUTION:   Currently not resolved problem. Workaround: Make sure you really
-            have the latest LUA files in /pm/lib/scpt (you can download them
-            from http://www.c-blue.de/rogue.html). Then set all LUA files in
-            that directory to write-protected. This will prevent TomeNET from
-            overwriting them with 0 Byte files.
+SOLUTION:   Possibly write-protection on existing files or the folder.
+            Workaround: Make sure you really have the latest LUA files in
+            TomeNET's /lib/scpt folder (you can download them from
+            http://www.tomenet.net/ or our personal pages). Then set all LUA
+            files in that directory to write-protected. This will prevent
+            TomeNET from overwriting them with 0 Byte files.
 
 PROBLEM 13: I seem to be able to login, create a new character or select a
             character, and see the message of the day (login screen).
