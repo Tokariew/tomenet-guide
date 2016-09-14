@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 10. February 2009; written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.4.1e (www.tomenet.net, usually outdated though).
+| Latest update: 20. March 2009; written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.4.2 (www.tomenet.net, usually outdated though).
 | For latest information about TomeNET see http://www.c-blue.de/rogue.html
 | and definitely Mikael's Site at http://koti.mbnet.fi/mikaelh/tomenet/
 | or join discussion forum at http://forum.t-o-m-e.net/ (TomeNET sections).
@@ -46,6 +46,7 @@ Contents
     (3.6)   Creating basic macros & inscribing items (IMPORTANT)
     (3.7)   Creating macros for ranged attacks & abilities (spells)
     (3.7a)  Ability codes [contained within (3.7)]
+    (3.7b)  Quick'n'dirty macros
     (3.8)   Example macro sets
     (3.9)   Macros with special keys
     (3.9a)  Creating a chat macro for your party
@@ -439,10 +440,12 @@ They all start with a slash '/':
 /dis        DESTROYS every item in your inventory that has one of these
  (/dispose) inscriptions: terrible, cursed, uncursed, broken, worthless,
             average, good. Works only on items that actually can be destroyed.
-            Skips 'flavoured' items that are not known to you yet.
-            Skips items without inscription.
+            Skips 'flavoured' items that are not known to you yet (example:
+            'a blue potion {+,?}' or 'a malachite ring {+,?}').
+            Also see /tag and /untag.
 /dis a      DESTROYS items like /dis, and additionally destroys all items that
-            lack an inscription.
+            have no inscription at all.
+            Also see /tag and /untag.
 /dr         Wields all items in your inventory that are: not cursed,
  (/dress)   not {worthless}, not {terrible}, known to you.
 (The /empty function is currently disabled)
@@ -515,6 +518,15 @@ They all start with a slash '/':
             death, neither one of detonations, so you won't get instakilled.
             (It's easier to press '_' instead of using the /sip command.
             Also see '_' above, for additional information.)
+/tag [a..w] Tags all uninscribed items in your backpack by adding a '!k'
+            inscription. Helpful for looting in conjunction with /dis command.
+            If a slot (a..w) is specified, it only tags the item in that
+            particular inventory slot (if not yet inscribed already).
+/untag [<inscription>]
+            If <inscription is omitted, it removes all inscriptions from items
+            in your backpack which are exactly '!k' (as done by /tag command).
+            Ohterwise it removes inscriptions of all items which are exactly
+            inscribed as specified by <inscription>.
 /time       Tells you the current date and time (of the server, not of your
             local timezone). Useful to compare with bbs time stamps.
 /undoskills Allows you to undo the skill points you assigned in 'G' menu last
@@ -592,7 +604,7 @@ Weapons:
 
 Ranged weapons:
     @O          Auto-retaliate with it (shooting ammo). ('O' is the letter)
-                NOTE: @O must be on your ammunition, not on the bow!
+                (Note: @O can either be on your ammunition or on the bow.)
 
 Spellbooks:
     @Oc         You will auto-retaliate by casting the spell 'c)' from this
@@ -731,7 +743,7 @@ Wormy       Wormtongue, Agent of Saruman. He drops great items.
 (0.5) Rumours, missing features, technical warnings (READ!)
 -----------------------------------------------------------
 -Usually characters expire (that means they are automatically deleted!)
- after 90 days of inactivity.
+ after 180 days of inactivity.
 -Items on the ground (especially in towns) often disappear automatically after
  a few minutes. So don't use the town to 'store' loot.
 -If you press CTRL+X to save&exit the game, you should do that in a safe town.
@@ -744,32 +756,15 @@ Wormy       Wormtongue, Agent of Saruman. He drops great items.
  20 seconds.
 -The items you find don't depend on your race or class but on monster level
  and depth and luck.
--Spells/round is always 1, even if the number displayed is higher (raised by
- items that effect your 'Spell power' via SPELL flag).
 -Don't drop artifacts inside houses if the server doesn't allow artifacts to
  be dropped inside player houses, or you will simply lose the artifact!
 -Items on the floor within a house don't form piles! If you drop too many
  items and space in the house runs out the dropped item may just disappear!
 -The massive iron crown of Morgoth must not be worn by non-Kings/Queens!
--Sometimes if you pick up an item from a pile, the next item below doesn't
- become visible on the map. You still 'feel' it if you step on the pile
- though. So if you died and were revived, scan your loot piles on the ground
- carefully to not miss one of your items at the bottom of a pile.
--Scrolls of House Creation don't work at this time and have been removed from
- the game since they had no effect except for generating cash by being sold
- to a shop.
 -Undead powers (for players' ghosts) are not available at the moment.
--Several shops' features have not yet been implemented.
+-Some shops' features have not yet been implemented.
 -Stealing from monsters is not possible.
 -'LEVELS' and 'ULTIMATE' flag on unique items currently don't do anything.
--Two types of crashes might occur:
- a) Everyone is recalled to town. After a crash all levels will stay static
-    for a short while, so you can recall back and grab loot or whatever.
- b) Players are not recalled. After you logged in again and find yourself in
-    the dungeon, it is highly recommended to recall instantly. When another
-    player enters that level, it can change its layouts/monsters completely
-    even while you're still on it and you might find yourself in big trouble
-    and sometimes unable to move. (In such cases rejoin and recall instantly.)
 
 
 
@@ -1412,18 +1407,21 @@ And if you still have spare money (this one costs a lot) a
 (3.6) Creating basic macros & inscribing items
 ----------------------------------------------
 Macros are absolutely obligatory, you _will_ need them, so read this
-carefully and if something isn't explained well, ask a fellow player
-or send me a mail (mail@c-blue.de) :).
+carefully and if something isn't explained well, ask your fellow players to
+clarify.
+
 In turn-based single-player rogue-like games you always have enough time to
 press "q" (quaff a potion) followed by the according inventory slot, for
 example b) (if there is a potion of cure critical wounds in the second
 inventory slot).
+
 However, TomeNET is multiplayer and real-time. This means you don't have
 enough time to look at your inventory and search the correct letters for items
 which you might need *this instance* to avoid certain death. Often situations
 get hectic, for example if all of a sudden a dark elven warlock comes around
 the corner while you are engaging a pack of wolves, then you need kind of a
 panic button that quickly transports you out of trouble.
+
 To comply with this need, a macro system has been implemented, allowing you to
 program freely choosable keys of your keyboard to perform a series of other
 keypresses or commands when pressed. These macros can also interact with
@@ -1437,13 +1435,15 @@ Before: d) an Elven Cord Armor [6,+20] (+1) {+,10}
 After:  d) an Elven Cord Armor [6,+20] (+1) {+,10} {resists poison!}
 Inscriptions don't just help you to remember the abilities of certain items,
 they can also interact with the macro system and other aspects of the game.
+
 Usually if you want to quaff your potion of Heroism or read a scroll of Phase
-Door, you would press qc (q for quaff, then c for third inventory slot for
-example) or rd (r for read, then d for the fourth inventory slot, if your
-scroll resides here).
+Door, you would press keys 'q' 'c', q for quaff, then c for third inventory
+slot for example, or 'r' 'd' (r for read, then d for the fourth inventory
+slot, if your scroll resides here).
 However, if you just picked up another potion, your inventory order might be
 changed and you had to remember the new positions of your vital potion and
 scroll.
+
 Now we are going to create three macros that will instantly quaff the potions
 or read a scroll of recall, no matter where in the inventory they exactly are,
 on a single keypress! Inscribe the potion of Heroism "@q1", the scroll of
@@ -1452,16 +1452,19 @@ It should look like this now:
 b) a potion of Heroism {+,1} {@q1}
 c) a potion of Cure Light Wounds {+,1} {@q2}
 d) a scroll of Phase Door {+,1} {@r1}
+
 Now we will create macros that make use of these items. Invoke the macro menu
-by pressing '%' key. Then choose "(3) Enter a new action" and enter the two
-characters and press Enter:
+by pressing '%' key. Then choose "(3) Enter a new action" and enter the
+following two characters and press Enter:
 q1
 Now choose "(5) Create a normal macro", then press the F1 key.
 Now enter a new action, this time q2 instead of q1. Create another macro, this
 time hit F2. Then Enter the third macro, r1, and choose F3 key.
 Have your TomeNET client save the macros to a file on your hard disk, in your
-TomeNET directory at \lib\user by choosing "(2) Dump macros" and entering a
-filename, for example "warrior" or "firstmacros".
+TomeNET directory at \lib\user by choosing "(2) Save macros" and entering a
+filename, or simply confirming the shown default file name which is the same
+as your character (recommended!).
+
 Now if you press F1 you will automatically quaff the potion of Heroism, F2 for
 Cure Light Wounds and F3 to read the scroll. You are ready to enter the
 dungeon now. If you still have some spare money, buy a flask of oil to fuel
@@ -1469,11 +1472,23 @@ your lantern if it runs out, as well as some rations of food in case you get
 hungry.
 The next time you log on, you may load your previously saved macro file by
 invoking the macro menu again ('%'), choosing "(1) Load a user pref file" and
-entering the filename.
+entering the filename. If you saved the macros to the same name as your
+character, they will be automatically loaded, saving you that hassle.
 
-Note that while it looks like overkill to create macro hotkeys for all lesser
-items that aren't of importance during combat, inscribing them can still be
-helpful, allowing to easily access them.
+
+The macro recorder:
+-------------------
+Note that instead of entering an action string (such as 'q1' or 'r5'), the
+macro menu also provides a 'macro recorder', which when invoked will record
+all your key presses until you enter the macro menu again. Then the keys
+you pressed will be the default action that you can directly bind to a trigger
+key by choosing normal, command, or hybrid macro.
+
+
+Note that while it is probably overkill to create macro hotkeys for items
+which aren't as important as healing or teleportation, inscribing them can
+still be helpful because it allows you to easily access them.
+
 Example: You inscribed your flasks of oil @F1 . Now if your lantern is running
 low on oil you just type the keys 'F' (to fill) and '1' instead of having to
 search your inventory for the correct slot letter the oil flasks reside at.
@@ -1555,6 +1570,10 @@ the key 'r' which is used to read a scroll, you can reset the key by
 
 (3.7) Creating macros for ranged attacks & abilities (spells)
 -------------------------------------------------------------
+Note: This section is becoming pretty advanced. If you want to try an easier
+method but miss a nice fundamental explanation on the way macros work, you
+may just jump to (3.7b) now!
+
 Those macros basically consist of three parts.
 1. Clearing the keyboard buffer (to avoid your character locking up in
    an attack queue if you hammer the trigger button for a ranged attack).
@@ -1754,6 +1773,33 @@ a   ->  cast spell "a)" (Manathrust)
 mb2a*t
 ..assumed that entry 'b)' in the ability menu (invoked by 'm') is
 'b) Cast a spell'. Except for escaping and clearing the keyboard buffer.)
+
+
+(3.7b) Quick'n'dirty macros
+---------------------------
+Macro actions can be complex and hence time-consuming to enter and prone to
+errors furthermore.
+To allow you to quickly hack in macro actions, there's the Quick'n'Dirty
+option in the macro menu, which will accept short cut characters instead of
+the usual full macro.
+
+On entering the macro action, those characters will be automatically expanded
+to their real functionality. They are:
+  M for using a mimic's innate power
+  F for employing a fighting technique
+  S for employing a shooting technique
+  m for casting a spell
+  n for drawing a rune
+  p for setting up a trap
+  s for changing a stance 
+  * for targetting the nearest monster
+Also, '\e)' is automatically prefixed, and the most fitting macro type
+automatically chosen (depending on the trigger key).
+
+Example: Assumed your book is inscribed @m1 as usual, and you want to cast
+spell a). What you can simply enter in the q'n'd field is:
+  m1a*
+and it will automatically be expanded to the real macro '\e)m@11\r1a*t'.
 
 
 
@@ -3031,7 +3077,7 @@ be added to the dice result.
 
 If you manage to get your hands on an item that imbues your melee weapon with
 an elemental brand (like a Ring Of Ice for example), the dice of your weapon
-will be multiplied by 3 if the target doesn't resist that brand.
+will be multiplied by 2 if the target doesn't resist that brand.
 See (5.3) to get an easy overview.
 
 Characters using weapons have a limited number of melee attacks per round,
@@ -3118,9 +3164,9 @@ remember currently selected target.
 To automatically pick up your arrows simply inscribe them:  !=
 Ranged weapons can also auto-retaliate, that means you will fire automatically
 at targets on sight. To make your ranged weapon behave like that, inscribe the
-_ammunition_ (not the bow):  @O  (the letter 'O').
+bow or ammunition:  @O  (the letter 'O').
 However, auto-retaliating with a ranged weapon works only if the enemy stands
-on an adjacent field, so it's pretty useless :)
+on an adjacent field, so use 'fire-till-kill' mode in general!
 
 The dice of ammunition are also effected by brands and slays same as normal 
 weapons but the additional damage is reduced to 2/5.
@@ -3400,6 +3446,7 @@ Ranger        22.0 lb
 Druid         20.0 lb
 Shaman        17.0 lb
 Runemaster    23.0 lb
+Mindcrafter   23.0 lb (and will get penalty for head gear heavier than 4.0 lb)
 
 So 50 points in 'Combat' would allow a paladin to wear 30.0 + 15.0 =
 45.0 lbs of armour parts without receiving mana penalty from being encumbered.
@@ -3749,8 +3796,8 @@ hounds are susceptible against cold attacks.
 Physical attacks vs monsters:
 Susceptibility of a monster will result in a doubled multiplier for
 branded attacks. Example: If the player hits a Cold Hound with a
-fiery broad sword (2d6) the Cold Hound will receive 2d6 * 6 damage
-instead of 2d6 * 3 (usual brand multiplier for melee weapons).
+fiery broad sword (2d6) the Cold Hound will receive 2d6 * 4 damage
+instead of 2d6 * 2 (usual brand multiplier for melee weapons).
 Also see (5.3) for a table of brand multipliers.
 
 Magical attacks vs monsters:
@@ -5139,8 +5186,8 @@ Note that not every skill is available to every profession (class).
                                 multiple times, hitting multiple enemies.
                                 Note that magic and ethereal ammo fades away
                                 the moment it hits, and never ricochets.
-                                Note that exploding ammo cannot be deflected
-                                by "reflecting" monsters.
+                                Note that the explosion of exploding ammo will
+                                still hit "reflecting" monsters.
                                 Artifact ammunition never breaks.
         .Bow-mastery            At 12.5, 25, 37.5, 50 you will get +1 extra
                                 shot per round each.
@@ -5229,6 +5276,9 @@ Note that not every skill is available to every profession (class).
     .Holy Support               Learn prayers of the Holy Support branch.
     .Arcane Lore                Learn druid magic tought by arcane lore.
     .Physical Lore              Learn druid magic tought by physical lore.
+    .Psycho-Power               Learn mindcrafter spells of psycho-power.
+    .Thought Contact            Learn mindcrafter spells of tought contact.
+    .Mental Intrusion           Learn mindcrafter spells of mental intrusion.
 .Runemastery                    Determines how skillful you are in handling
                                 magical symbols aka 'Runes'.
                                 At 15, it gives perfect bolt casting
@@ -6025,6 +6075,27 @@ Runemaster
     and hence only available to quite intelligent races.
     For more information about runes, see '(5.20) Runes & Runemastery'.
 
+Mindcrafter
+    Mindcrafters are a fair melee fighters who specialize in use of telepathy
+    to unleash spells formed by their psychic powers. They have a lot of
+    possibilities to positively or negatively influence the minds of others,
+    and will have reduced repertoire if they are up against creatures of
+    little or no intelligence. Their primary stat attribute is intelligence,
+    which determines their spell fail rates as well as the most part of their
+    mana pool. Also somewhat affecting the mana pool are their secondary and
+    tertiary attributes charisma and wisdom, although especially wisdom is
+    hardly of any importance to become an able telepathy user.
+    Despite being focussed on sharpening their mind, they don't lack stealth
+    or close combat potential. Except that wearing very heavy head gear might
+    negatively impact their amount of psychic energy.
+    Some of the mindcrafter's spells that interact with friendly targets,
+    mostly his team mates, will require those to prepare and open their mind
+    to become especially sensitive to telepathic contact. This is done by
+    pressing 'p'. Pressing it again will return one's mind to normal.
+    The effects of some necromancy skills are somewhat distracting to
+    mindcrafters, so training them may require a slightly more effort.
+
+
 If you raise in levels, you will get new titles. These are displayed between
 your class name and your character level in the main window. If you die and
 become a ghost, the title will change to 'Ghost' until you get revived.
@@ -6074,6 +6145,8 @@ Shaman       0  +1  +2  -2   0   0       +4      +30%       4
             10  13  30   5  30  20  45  20              poor     poor
 Runemaster  +1  +2  -3  +3  -3  -3       +5      +20%       4
             10  20  20   0  30  20  45  20              fair     fair
+Mindcrafter -1  +3   0  -1  -1  +1       +4      +25%       4
+            30  30  36   2  35  14  45  35              fair     poor
 
 
 
@@ -6845,6 +6918,76 @@ Physical Lore
     Focus           Increases your accuracy, adding a bonus to your
                     melee-to-hit and ranged-to-hit.
                     Required skill level for first spell level: 1.
+
+
+Mindcraft schools:
+------------------
+Psycho-Power
+    Psychokinesis   Destroys traps by psychokinetic manipulation.
+                    Required skill level for first spell level: 3.
+    Autokinesis I   Teleports you within a small range.
+                    Required skill level for first spell level: 5.
+    Autokinesis II  Teleports you over a long range.
+                    Required skill level for first spell level: 16.
+    Autokinesis III Teleports you towards a party member with opened mind.
+                    Required skill level for first spell level: 24.
+    Pyrokinesis     Causes a severe inflammation to burn your opponent.
+                    Required skill level for first spell level: 20.
+    Cryokinesis     Causes a dramatic temperature drop on your opponent.
+                    Required skill level for first spell level: 24.
+    Psychic Warp    Attempts to teleport away your opponent.
+                    Required skill level for first spell level: 30.
+Thought Contact
+    Clear Mind      Removes fear, confusion and hallucination. (auto-project)
+                    Required skill level for first spell level: 3.
+    Willpower       Boosts your willpower to unleash hidden potential,
+                    improving both your performance and resilience.
+                    Gives heroism and fear resistance, and chance to resist
+                    confusion, paralysis and slowness.
+                    Later on gives +1 extra attack.            (auto-project)
+                    Required skill level for first spell level: 3.
+    Self-Reflection Find out more about yourself.
+                    Required skill level for first spell level: 15.
+    Accelerate Nerves
+                    Speeds you up.
+                    Required skill level for first spell level: 20.
+    Telepathy       Senses the minds of creatures.
+                    Required skill level for first spell level: 20.
+    Stabilize Thoughts
+                    Cures some insanity and removes effects.   (auto-project)
+                    Required skill level for first spell level: 25.
+    Telekinesis     Inscribe your book @P<Playername>, cast it, select an
+                    item that you wish to teleport to the player's inventory.
+                    The target player needs to concentrate by opening her/his
+                    mind, see (0.2). It's dangerous to have the mind opened,
+                    since everyone can send you any items, so better close it
+                    again as soon as the desired telekinesis transaction is
+                    done. Example inscription: @PGandalf
+                    Required skill level for first spell level: 30.
+
+Mental Intrusion
+    Psionic Blast   Blasts the target's mind with psionic energy.
+                    Possibly causing various additional effects.
+                    Required skill level for first spell level: 1.
+    Scare           Infuses your target's mind with fear.
+                    Lv10: Becomes a ball effect.
+                    Lv20: Affects all monsters in LoS.
+                    Required skill level for first spell level: 1.
+    Confuse         Infuses your target's mind with confusion.
+                    Lv15: Becomes a ball effect.
+                    Lv30: Affects all monsters in LoS.
+                    Required skill level for first spell level: 3.
+    Sleep           Puts your target's mind to sleep.
+                    Lv20: Affects all monsters in LoS.
+                    Required skill level for first spell level: 5.
+    Drain Strength  Slows your target down, draining power from its muscles.
+                    Lv10: Becomes a ball effect.
+                    Lv20: Affects all monsters in LoS.
+                    Required skill level for first spell level: 7.
+    Psychic Suppression
+                    Drains the target's psychic energy, impacting its ability
+                    to cast spells temporarily.
+                    Required skill level for first spell level: 10.
 
 
 
