@@ -1,8 +1,8 @@
-s.=========================+==--.
+.=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 18. October 2008; written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.4.1c (www.tomenet.net, usually outdated though).
+| Latest update: 10. February 2009; written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.4.1e (www.tomenet.net, usually outdated though).
 | For latest information about TomeNET see http://www.c-blue.de/rogue.html
 | and definitely Mikael's Site at http://koti.mbnet.fi/mikaelh/tomenet/
 | or join discussion forum at http://forum.t-o-m-e.net/ (TomeNET sections).
@@ -68,7 +68,7 @@ Contents
 (5) Item and monster details
     (5.1)   Melee weapons, brands
     (5.2)   Ranged weapons, brands
-    (5.2a)  Shoot-till-kill mode
+    (5.2a)  Fire-till-kill mode
     (5.3)   Slaying vs brands
     (5.4)   Martial Arts, brands
     (5.5)   Weight of weapons and armour
@@ -100,6 +100,7 @@ Contents
     (6.10)  Magic Device skill/ability details
     (6.11)  Parrying and blocking
     (6.12)  Fighting/shooting techniques
+    (6.13)  PvP mode
 (7) Tactics & strategy
     (7.1)   Preparing the inventory for diving into the dungeon
     (7.2)   Preparing the equipment for diving into the dungeon
@@ -186,6 +187,11 @@ compile the game under '(2.1) Installing TomeNET'.
  he is online (Admin's names are displayed in dark blue in the chat).
  The e-mail address is usually mentioned in the server's intro screen or just
  ask fellow players for it.
+-Press '@' key to see a list of players who're currently online. Note that a
+ yellow '(I)' before a name stands for 'invalid', and means that this player
+ is still awaiting account validation by an admin.
+ Also, if a grey '(O)' is in front of a player name, it means that player is
+ using an outdated client. It's very important to keep your client up to date!
 
 It is strongly recommended that you don't stop reading here, but continue at
 (3.2) now >;)
@@ -378,6 +384,11 @@ _       drink from a fountain. You must stand on the fountain to do this.
         There is also a /say command for talking to players nearby, and a
         /shout command for waking up monsters! See further below.
 @       displays a list of players currently on the server.
+        Note that a yellow '(I)' before a name stands for 'invalid', and means
+        that this player is still awaiting account validation by an admin.
+        Also, if a grey '(O)' is in front of a player name, it means that
+        player is using an outdated client. It's very important to keep your
+        client up to date!
 '       lets you peek at the equipment of party members or players within
         sight.
 <,>     go upstairs/downstairs. Press '>' to use a void gate (violet '+').
@@ -428,7 +439,10 @@ They all start with a slash '/':
 /dis        DESTROYS every item in your inventory that has one of these
  (/dispose) inscriptions: terrible, cursed, uncursed, broken, worthless,
             average, good. Works only on items that actually can be destroyed.
-/dis a      DESTROYS every item in your inventory that lacks an inscription!
+            Skips 'flavoured' items that are not known to you yet.
+            Skips items without inscription.
+/dis a      DESTROYS items like /dis, and additionally destroys all items that
+            lack an inscription.
 /dr         Wields all items in your inventory that are: not cursed,
  (/dress)   not {worthless}, not {terrible}, known to you.
 (The /empty function is currently disabled)
@@ -503,6 +517,11 @@ They all start with a slash '/':
             Also see '_' above, for additional information.)
 /time       Tells you the current date and time (of the server, not of your
             local timezone). Useful to compare with bbs time stamps.
+/undoskills Allows you to undo the skill points you assigned in 'G' menu last
+            time. Use this to correct points you accidentally put into a wrong
+            skill.
+/pvp        Carries you into/out of the PvP arena. Only usable by pvp-mode
+            chars. See (6.13) for details about PvP mode.
 
 
 
@@ -590,6 +609,9 @@ Ammunition:
                 will be averaged and rounded downwards. (Doesn't work for
                 cursed or artefact ammo.) Wield the !M stack first, then also
                 wield the stack you want to merge with the equipped ammo.
+    !L          inscribe stacks of ammo in your inventory !L to make them be
+                automatically reloaded into your quiver as soon as the ammo
+                you're currently using runs out.
 
 Weapons that ricochet (sling ammo):
     !R          Prevents ricochetting.
@@ -665,6 +687,11 @@ Pseudo-ID   If a player keeps an unidentified item for a longer time he might
             'feel' if the item is average, good, cursed or special. The item
             will automatically receive a 'pseudo-id inscription' then.
             Pseudo-id intensity and speed depend on the 'Combat' skill.
+PvP         Player vs player. Describes the act of player characters fighting
+            each other. If you want to fight other players to death, create a
+            new 'pvp-mode' character. It's an option during the character
+            creation process, much like 'everlasting mode' or 'normal mode'.
+            For more information about pvp mode, see (6.13).
 Randart     Randomly generated artifact. As opposed to 'Truearts' which are
             also called 'Static arts' from the file a_info.txt. See 'Art'
             at the top of this section for more information.
@@ -856,8 +883,6 @@ the weapon @Ox to avoid auto-retaliation, see (0.3) about inscriptions and
 If you rely on melee weapons you must try to get your hands on an artifact
 since these resist Nazgul greatly! The Stormbringer also resists like an
 artifact. (It doesn't matter if the artifact is a random or a static one.)
-Dark Swords and ego weapons also have a certain chance to resist destruction,
-ego Dark Swords are the best non-artifact weapons against Nazgul.
 If your weapon gets destroyed you'll receive a warning message:
 "Your weapon *DISINTEGRATES*!" or "Your weapon is destroyed !"
 (The permanently cursed weapon 'Mighty Hammer of Grond' cannot be destroyed.)
@@ -1689,7 +1714,7 @@ want to use in your macros, by specifying the "ability code"!
 
 Here is a list of all available ability codes:
 3       Use innate power (for mimicry-users)
-4       Toggle shoot-till-kill mode, usable by anyone. See (5.2a).
+4       Toggle Fire-till-kill mode, usable by anyone. See (5.2a).
 5       Fighting techniques (see (6.12))
 6       Shooting techniques (see (6.12))
 8       Check your dodge chance (for dodging skill)
@@ -1943,6 +1968,7 @@ which types   :!:   for you on a single key press automatically:
 --------------------------------------------
 By killing monsters your character gains experience. In general, harder
 monsters on deeper dungeon levels give more experience than easy kills.
+
 Hanging out on easy dungeon levels compared to your character level (for
 example a high level 50 character on an (to him) easy dungeon level like 60)
 may result in diminishing returns of experience points for killed monsters,
@@ -1951,11 +1977,26 @@ challenge to the player, and whose levels are far above the player
 character's level, will be very rewarding in terms of experience and loot.
 Experience is shared automatically in 'parties', see (6.9).
 
+
 Recommended minimum depths for optimal experience gain
-Note: Always the deeper is the better! These are only _minimum_ recommended
-depths. Also, your character might not always be strong enough to survive on
-these depths. In that case better move to easier dungeon levels until you
-found decent items and maxed out your vital stats.
+
+Note: In general, the deeper the better! These are only _minimum_ recommended
+depths above which your experience gain will receive a quite severe reduction.
+Also, your character might not always be strong enough to survive on
+these depths. In that case, despite the experience penalty, you should
+consider moving to easier dungeon levels anway until you found decent items
+and maxed out your vital stats (constitution, etc).
+
+Note: Your depth display in the bottom right screen corner will indicate the
+appropriateness of your current depth by its colour:
+If you're far above your minimum depth, it'll be dark grey, indicating that
+you cannot expect any good experience gain at all here.
+If you're not more than a couple of levels above your minimum "good" depth,
+it'll turn yellow, to tell you that you're getting close to the depth required
+for best results.
+On the minimum required depth or deeper, it's white.
+(On a side note, while word-of-recall is pending, it'll turn orange, since
+it's also used as a word-of-recall indicator this way.)
 
     Character level     |     Dungeon level
 -------------------------------------------------
@@ -2735,6 +2776,11 @@ feeling as soon as you are about to enter the vault:
                                         recall while inside the vault. Beware!
                                         Further, Wraith Form and probability
                                         travel won't work either!
+                                        The fact that you are standing within
+                                        a no-tele area is also indicated by
+                                        your (xx, yy) position display on the
+                                        lower left area of the main window
+                                        turning from light green to dark grey!
 As soon as you leave such a no-teleport-vault you'll receive this feeling:
 "Fresh air greets you as you leave the vault."
 
@@ -2784,16 +2830,22 @@ giving all your party members access to it). You need to stand directly next
 to the house door to do this.
 The house doors can have different colours to you: 
 -a green house door indicates that you have access to it,
--a brown house door indicates that the house is currently unowned
- (so you may buy it)
+-a light brown house door indicates that the house is currently unowned
+ (so you may buy it).
 -a grey door indicates that this house is owned by someone and you don't have
  access to it.
+-a light blue door indicates that you may access this house because it's set
+ to party access for your party.
+-a white door indicates that you may access this house because your race or
+ class is matching an according race/class access rule.
+-an orange door indicates that you will have party access to this house, as
+ soon as your level matches the door level set by its owner.
+-a violet door indicates that you may access this house because you're in the
+ same guild as the owner, ie the house is set to 'guild access'.
 If you forgot which houses you own, type ~6 to see a list of your houses.
 
 Items on the floor within a house don't form piles! If you drop too many
 items and space in the house runs out the dropped item may just disappear!
-
-Party/Guild access are currently disabled due to abuse, sorry :|.
 
 
 
@@ -2911,6 +2963,17 @@ Highlander Tournament
     redeem it for luck for that character of his.
     All losers will also receive a deed on the next character they log in with
     which can be turned in for a small temporary luck bonus.
+
+Arena Monster Challenge
+    The wizards of Arena Monster Challenge (tm) have prepared a spectacular
+    even on the top floor of Bree's training tower, which will allow any Joe
+    and Jane to experience top-notch fights against creatures that usually
+    pose leathal threat. In this illusonary arena, players will experience
+    a fight that seems absolutely real, but they won't suffer any
+    consequences if they lose, ie 'die'. Test your might against any foe you
+    always wanted to challenge but never dared in real dungeoneer's life!
+    It's also possible to challenge ego monsters (such as veteran archers or
+    holy animals). The arena corners are safe zones and allow for spectating.
 
 
 
@@ -3061,9 +3124,9 @@ on an adjacent field, so it's pretty useless :)
 
 The dice of ammunition are also effected by brands and slays same as normal 
 weapons but the additional damage is reduced to 2/5.
-Example: Ring of Acid will usually add 2x your melee base damage (dice).
-For ranged weapons it will add 2*2/5x of your base damage, so multiply your
-base damage by 1.8 instead of by 3 to get your total damage output.
+Example: Ring of Acid will usually add 1x your melee base damage (dice).
+For ranged weapons it will add 1*2/5x of your base damage, so multiply your
+base damage by 1.4 instead of by 3 to get your total damage output.
 See (5.3) to get an easy overview.
 
 If you try to wield a ranged weapon that is too heavy for your character,
@@ -3074,9 +3137,9 @@ That means you'll get neither any benefits from your 'Archery' skill nor from
 any particular ranged mastery (extra shots!) at all when using that weapon.
 
 
-(5.2a)  Shoot-till-kill mode
+(5.2a)  Fire-till-kill mode
 ----------------------------
-Accessible via 'm' key, you can switch 'shoot-till-kill' mode on or off.
+Accessible via 'm' key, you can switch 'fire-till-kill' mode on or off.
 While enabled, your character will keep firing a ranged weapon once you
 initiated the first shot until the target either dies or direct firing at it
 becomes impossible/obstructed for any reason.
@@ -3088,36 +3151,36 @@ escorts.
 
 (5.3) Slaying vs brands
 -----------------------
-If you use a weapon that slays trolls, that means its dice will be tripled if
+If you use a weapon that slays trolls, that means its dice will be doubled if
 you hit a troll ('T'). If you have an item that gives fire brand, the dice
-would also be tripled by the brand. Slaying and brands are not cumulative.
-That means you will get a total dice multiplier of 3 here.
+would also be doubled by the brand. Slaying and brands are not cumulative.
+That means you will get a total dice multiplier of 2 here.
 Brands don't stack. The best one is taken. So if you wear a ring of fire and
-your weapon does cold damage the dice will be multiplied by 3 if the target
+your weapon does cold damage the dice will be multiplied by 2 if the target
 doesn't resist both heat and cold. If the target is susceptible to one of
-those the dice are multiplied by 6. Same goes for SLAY flags.
+those the dice are multiplied by 4. Same goes for SLAY flags.
 
 Combat Type | Dice multiplier for brands (fire/cold/acid/lightning/poison)
             | Monster..
             | ..is immune   | ..resists | ..doesn't resist  | ..is susceptible
 ------------|-----------------------------------------------------------------
-Melee Weapon|       1             2               3                   6
-Ranged Weap.|       1             1.4             1.8                 3
-Martial Arts|       1             1.33            1.67                2.67
+Melee Weapon|       1             2               2                   4
+Ranged Weap.|       1             1.4             1.4                 2.2
+Martial Arts|       1             1.33            1.33                2
 
 Slaying     | Dice multiplier | Description
 ------------|-----------------------------------------------------------------
 Slay Animal |       2         | It is esp. deadly against natural creatures.
-Slay Giant  |       3         | It is especially deadly against giants.
-Slay Undead |       3         | It strikes at undead with holy wrath.
-Slay Troll  |       3         | It is especially deadly against trolls.
-Slay Orc    |       3         | It is especially deadly against orcs.
-Slay Dragon |       3         | It is especially deadly against dragons.
-Slay Demon  |       3         | It strikes at undead with holy wrath.
+Slay Giant  |       2         | It is especially deadly against giants.
+Slay Undead |       2         | It strikes at undead with holy wrath.
+Slay Troll  |       2         | It is especially deadly against trolls.
+Slay Orc    |       2         | It is especially deadly against orcs.
+Slay Dragon |       2         | It is especially deadly against dragons.
+Slay Demon  |       2         | It strikes at undead with holy wrath.
 Slay Evil   |       2         | It fights against evil with holy fury.
-Kill Undead |       5         | It is a great bane of undead.
-Kill Dragon |       5         | It is a great bane of dragons.
-Kill Demon  |       5         | It is a great bane of demons.
+Kill Undead |       3         | It is a great bane of undead.
+Kill Dragon |       3         | It is a great bane of dragons.
+Kill Demon  |       3         | It is a great bane of demons.
 
 Giants, Undead, Trolls, Orcs, Dragons, Demons are all 'Evil'.
 
@@ -3206,9 +3269,9 @@ Heavy shield/weapons |                                 0
 Martial Arts special combat moves have certain dice, similar to normal
 weapons. These dice are also effected by brands and slays same as normal 
 weapons but the additional damage is reduced to 1/3.
-Example: Ring of Acid will usually add 2x your base damage.
-For MA it will add 2/3x of your base damage, so multiply your base damage
-by 1.67 instead of by 3 to get your total damage output.
+Example: Ring of Acid will usually add 1x your base damage.
+For MA it will add 1/3x of your base damage, so multiply your base damage
+by 1.33 instead of by 2 to get your total damage output.
 See (5.3) to get an easy overview.
 
 You cannot use special moves while stunned or confused.
@@ -3343,7 +3406,8 @@ So 50 points in 'Combat' would allow a paladin to wear 30.0 + 15.0 =
 In general, praying is the easiest-to-use form of magic, and weaving spells
 the most difficult one.
 Your total armour weight is the sum of the weight of any armour pieces worn
-on head (helmet), body, arm (a shield), hands, feet, and your cloak.
+on head (helmet), body, hands, feet, and your cloak. Note that the weight of
+a possibly equipped shield does not matter here (experimental).
 
 
 Armour weight (concerning combat)
@@ -3457,7 +3521,8 @@ Frost/Cold              These attacks can shatter potions.
                         Cold breaths do HP / 3 damage, capping at 1200.
                         Immunity or double resistance protects items in your
                         inventory and equipment from getting harmed (5.10).
-Lightning/Electricity   These attacks can destroy rings and amulets.
+Lightning/Electricity   These attacks can destroy rings, damage amulets and
+                        discharge magic devices, draining their charges.
                         Without resistance it can reduce your dexterity.
                         Lightning bolts do (level/3)+(4d8) damage.
                         Lightning balls do (level*3/2)+8 damage.
@@ -5705,15 +5770,16 @@ Vampire
     their close surroundings even in complete darkness. This ability grows
     when the vampire rises in character-levels.
     Vampires are good fighters and decent mages. However, they are unable to
-    utilize magic of water, nature or divination school. Neither can they make
-    use of mimicry techniques or holy spells. They are unable to try and
-    suppress magic, but can make use of items that provide antimagic effects.
+    utilize magic of water or nature school. Neither can they make use of
+    mimicry techniques or holy spells. They are unable to try and suppress
+    magic, but can make use of items that provide antimagic effects.
     They resist darkness, nether, poison and cold and it's hard to drain their
     life force. They also have partially life leeching (vampiric) attacks
     (see '(5.15) Vampirism' for more information).
     Vampires cannot eat normal food, instead they need to feed off living
-    creatures. Vampires dislike blunt ('hafted') weapons, but receive a bonus
-    on all necromancy skills. They become able to turn into a bat at level 20.
+    creatures. Vampires dislike blunt ('hafted') weapons, get a small penalty
+    on divination magic, but receive a bonus on all necromancy skills.
+    They become able to turn into a bat at level 20.
 
 Here is a table showing boni/mali of the different races:
 (Di:Disarming,      MD:Magic Device,        ST:Saving Throw,    St:Stealth,
@@ -6378,6 +6444,14 @@ players. However, the ways this is done differs from each other.
   The prayers and druid spells which are projected on others are marked by a
   '(auto-project)' tag at the end of the spell description below. 
 
+Shared school spells:
+Some spells are shared between different schools, occuring possibly but not
+necessarily in both of the schools. When a spell is shared between two schools
+it means that training in one of those schools will increase the spell level
+by only half that amount. So if you want to increase a shared spell by say 5
+points, you either have to increase both of its schools by 5, or one of them
+by 10.
+
 Schools give certain permanent boni and abilities to the player, when trained
 to a certain extent. The boni are listed below each school.
 
@@ -6405,7 +6479,8 @@ Air
                     Required skill level for first spell level: 3.
     Wings of Wind   Grants levitation (feather falling).
                     Lv16: Lets you fly.
-                    Required skill level for first spell level: 22.
+                    Required skill level for first spell level: 16.
+                    Shared spell (see above): Air, Conveyance.
     Invisibility    Turns you invisible.
                     Required skill level for first spell level: 30.
     Poison Blood    Gives temporary poison resistance.
@@ -6512,6 +6587,7 @@ Divination
 Nature
     Grow Trees      Grows trees quickly around you.
                     Required skill level for first spell level: 6.
+                    Shared spell (see above): Nature, Temporal.
     Healing         Heals a percentage of your hit points.          (project)
                     Required skill level for first spell level: 10.
     Recovery        Reduces poison duration.
@@ -6543,6 +6619,7 @@ Mind
                     again as soon as the desired telekinesis transaction is
                     done. Example inscription: @PGandalf
                     Required skill level for first spell level: 30.
+                    Shared spell (see above): Mind, Conveyance.
   BONI:             Reduces confusion and hallucination at 30,
                     Reduce insanity influence at 40 and especially at 50.
 Temporal
@@ -6559,6 +6636,7 @@ Temporal
     Banishment      Teleports away all monsters within sight.
                     Lv15: Locks monsters in stasis for a while.
                     Required skill level for first spell level: 30.
+                    Shared spell (see above): Temporal, Conveyance.
   BONI:             Time resistance at 50.
 Udun
     Genocide        Genocides all monsters of a race on the level.
@@ -6612,9 +6690,7 @@ Holy Offense
                     Lv3: Damages monsters.
                     Lv15: Calls a more powerful kind of light.
                     Required skill level for first spell level: 1.
-                    Note that this is a spell shared between offense and
-                    support school, meaning that increases in one of those
-                    school will increase the spell level by only half as much.
+                    Shared spell (see above): H.Offense, H.Support.
     Curse           Causes randomly slowness or confusion or damage.
                     Lv15: Turns from bolt into beam, passing through the
                           target and also hitting those behind.
@@ -6966,7 +7042,7 @@ The techniques are as follows:
 
     Fighting techniques:
     --------------------
-    Sprint							6 stamina
+    Sprint							7 stamina
         Your character will be able to move faster even with monsters in view.
         Normal running isn't affected.
     Taunt               2 stamina
@@ -6980,15 +7056,15 @@ The techniques are as follows:
 
     Rogue-specific fighting techniques:
     -----------------------------------
-    Distract
+    Distract            1 stamina
         Your character will attempt to appear wimpy to adjacent monsters, in
         hope of making them attack another player standing next to you
         instead of you. Not all monsters can be fooled all the time though.
-    Flash bomb
+    Flash bomb          4 stamina
         You throw down a flash bomb that causes a flash of light, blinding
         your opponents for a short time, giving you opportunity to escape or
         kill them off while they are running around in confused state.
-    Shadow run (Kings/Queens only!)
+    Shadow run          10 stamina, kings/queens only!
         You will move at blinding speed, your silhouette turning shadowy.
         Ranged attacks will hardly be able to pin you down, and you will move
         at increased speed. You can even perform a backstab opening attack
@@ -7024,11 +7100,73 @@ The techniques are as follows:
         Prepares to fire a powerful multi-shot which will cost you a whole
         turn. It stuns the target.
 
-    Note: The technique 'Shoot-till-kill' is available to any class, and
+    Note: The technique 'fire-till-kill' is available to any class, and
     does appear directly under 'm'. See (5.2a) for details.
 
 Stamina regenerates slowly over time, faster while resting. Your CONstitution
 stat and 'Health' skill will further improve regeneration speed.
+
+
+
+(6.13) PvP mode
+---------------
+
+PvP stands for "Player vs player". This describes the act of player characters
+fighting each other, usually to death. In that regard, it is quite different
+to the 'blood bond' duel, which always ends without anyone getting hurt.
+
+If you want to fight other players to death in a real pvp match, create a
+'pvp-mode' character. It's an option during the character creation process,
+much like 'everlasting mode' or 'normal mode'.
+
+PvP-mode characters use the /pvp command to enter/leave the pvp arena. This
+arena also releases monsters from time to time. The entry point of a player is
+random, because he gets teleported on arrival.
+
+PvP-mode characters are called 'Gladiators' and use special rulesets that make
+it easier to rise in levels and less of a hassle when you get actually killed
+by an opponent! The special rules that apply are as follows:
+
+
+-PVP chars have only one life and no ghost, ie are erased on death same as
+ no-ghost chars. However, they play more fast-paced and are quickly brought up
+ again. The purpose of PVP chars is to fight other players to the death
+ without remorse, which would otherwise be an unacceptable loss if done with
+ regular characters (who can at least use Blood Bond scrolls for friendly duels
+ though).
+-yellow name in chat, yellow * marker in @-list, completely yellow entry
+ in @-list if viewed by another PVP mode char.
+-start at level 10 and with about 10000 Au.
+-reach level 30 at most.
+-gain no exp from monsters, no credit for killing uniques (hence cannot become
+ king/queen), cannot use static artifacts, can gain loot and money from
+ killing monsters though.
+-cannot team up or exchange goods with non-PVP chars.
+-will automatically be hostile to all other PVP chars, except for towns which
+ are safe zones!
+-will always ESP all other PVP chars as well as see their location in @-list.
+-gains exp (enough for advancing up to 2 levels at once even!) from killing
+ another PVP char. Lower level opponents will give less exp than equal/higher.
+-if a pvp char dies to a monster or trap, all nearby pvp chars will receive a
+ share of his kill count, which currently even gets rounded up(!).
+-gets number of kills of a victim credited as his own kills :) (useful for
+ reward, see below).
+-walk faster by default, similar to 'sprint' fighting technique.
+-cannot chase PVP chars _much_ lower then himself by entering their dungeon
+ level, because he will get auto-recalled then (anti-chicken).
+-will get rewards (similar to highlander tournament) for reaching high/top
+ level or killing an amount of opposing gladiators (other PVP chars).
+-will get deed when killed at high level for his next PVP character, which can
+ be exchanged for an extra item. Highest level deed can be received by non-pvp
+ char.
+-mimicry users gain one free transformation of their choice on (multiple)
+ levelup, and also learn forms 3x as fast as regular characters.
+-diminishing effect on healing: if you spam heal pots, the effect will lessen
+ more and more. over time, it returns to normal. entering a town will reset it
+ too.
+-teleportation will be suppressed during combat, phase door is allowed though.
+-while in a fight with another pvp-char, you cannot teleport away easily
+ (takes about 30 seconds to wear off, or just enter a town to reset).
 
 
 
@@ -7488,7 +7626,6 @@ The most powerful representant of each class:
  it @Ox before fighting a Nazgul to avoid auto-retaliation and then use
  spells or whatever to destroy it. If you rely on melee weapons get an
  artifact since these resist Nazgul greatly!
- Dark Swords and ego weapons also have a certain chance to resist destruction.
  (Compare (1.5).)
 
 -Unique 'P' are often very dangerous, some say the most dangerous next to
@@ -7793,7 +7930,9 @@ Cursed randarts cannot be sold to shops even if the curse is broken. They gain
 only very few abilities, which are accompanied by different types of curses.
 
 All armour-type randarts will have at least +10 to AC bonus (except if they
-happen to be cursed), and dragon scale mails will even have at least +15.
+happen to be cursed), usually much more, dragon scale mails especially.
+Also, the higher level the base type of an armour, the more +AC it can expect
+as a randart.
 
 Possible mods that randarts may get depend on its base type.
 Further, there are general mods that may appear on all items regardless of its
@@ -7904,6 +8043,7 @@ Shields
         All basic resistances (acid/elec/fire/cold)
         Reflection
         Reduced weight
+        Always the maximum of +15 AC, if the server uses block-percentages
 Cloaks
         Stealth
         Feather falling (levitation)
