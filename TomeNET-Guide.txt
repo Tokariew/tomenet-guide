@@ -1,10 +1,10 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 13. September 2009 - written by C. Blue, http://www.c-blue.de/
-| for TomeNET version v4.4.3 - official websites are:
-| http://koti.mbnet.fi/mikaelh/tomenet/, http://www.c-blue.de/rogue.html.
-| Note that http://www.tomenet.net/ is outdated, so don't download from there.
+| Latest update: 31. Jan 2010 - written by C. Blue, http://www.c-blue.de/
+| for TomeNET version v4.4.4 - official websites are:
+| http://www.tomenet.net/ (main site),
+| http://koti.mbnet.fi/mikaelh/tomenet/ and http://www.c-blue.de/rogue.html
 +---
 | Welcome to this guide!
 | Although I'm trying, I give no guarantee that this guide
@@ -41,6 +41,7 @@ Contents
 (2) Installation & setup
     (2.1)   Installing TomeNET
     (2.2)   Starting TomeNET and getting to play on an internet server
+    (2.3)   Client options
 (3) Creating a character & starting to play
     (3.1)   Creating a new character; character modes
     (3.2)   The display (user-interface)
@@ -100,8 +101,10 @@ Contents
     (6.3)   Abilities
     (6.4)   Races
     (6.5)   Classes/Professions, titles, melee blows/round
+    (6.5a)  Start-up Blows/Round Table
     (6.6)   Sanity
     (6.7)   Mimic details, polymorph rings
+    (6.7a)  Druid form details
     (6.8)   Magic spells and prayers
     (6.9)   Parties, Iron Teams, Guilds
     (6.10)  Magic Device skill/ability details
@@ -132,11 +135,10 @@ Contents
 If you are using Linux, you will find additional information about how to
 compile the game under '(2.1) Installing TomeNET'.
 
--Get the latest client from www.c-blue.de/rogue.html (my own site) or from
- http://koti.mbnet.fi/mikaelh/tomenet/getting-started.php (Mikael's site,
- which features a monster-search, and this nice introduction in pictures).
- Note that http://www.tomenet.net/ is usually terribly outdated, so don't
- download anything from there.
+-Get the latest client from the project's main official site www.tomenet.net
+ or from  http://koti.mbnet.fi/mikaelh/tomenet/getting-started.php (Mikael's
+ site, which features a monster-search, and this nice introduction in pictures)
+ and www.c-blue.de/rogue.html (my own site).
  The game client is named something like 'tomenet-???-client.zip', extract it
  to C:\TomeNET for example.
 -Either run 'TomeNET-main.bat' to directly connect to official main server
@@ -149,7 +151,23 @@ compile the game under '(2.1) Installing TomeNET'.
  The server should now allow you to manually choose your stats.
  In case you chose a (Half-Troll) warrior, try this:
   STR 18/30, CON as high as possible, INT as low as possible,
-  spare points into DEX, WIS or CHR. Explanation:
+  spare points into DEX, WIS or CHR.
+ If you decided to play a paladin make sure you have at least DEX 10.
+  In case you can't reach STR 18/30, go for STR 18/20 instead, which should
+  give you 2 attacks with a war hammer, your starting weapon. Then increase
+  CON and WIS as high as possible, INT as low as possible, spare points (you
+  shouldn't have any ;) into CHR. (Paladins use WIS for casting spells.)
+  If for some reason you can't even reach STR 18/20, at least go for STR 18/10,
+  again DEX not below 10, then right after spawning in town discard the war
+  hammer you start with and instead go buy a whip from store '3' (weapon store)
+  or '4' (temple). This should give you a solid 2 attacks per round.
+ If you decided to create a rogue, ensure that you have at least a STR of 15,
+  and a pretty high DEX (the rogue's main stat) of 18/10. This will give you
+  3 attacks per round when dual-wielding your light starter weapons.
+  Rest goes into CON or INT (rogue's main stat for spell-casting).
+ If you made a druid, put couple of points into all, DEX, STR and CON, and keep
+  your WIS relatively high since it's important for druidic spell-casting.
+ Explanation:
    CON affects your hit points, more CON -> more HP.
    STR (and DEX) determine your number of attacks per round. 18/30 in STR is
    enough to get 3 attacks per round with very light weapons, regardless of
@@ -162,7 +180,8 @@ compile the game under '(2.1) Installing TomeNET'.
    on other attributes. WIS isn't really needed either, but it can be useful
    to endure sanity-reducing effects.
  (If you are new to the game, it is NOT recommended to choose one of these:
- Istar, Priest, Shaman, Adventurer.)
+ Istar, Priest, Shaman, Adventurer.
+ Details about how STR and DEX affect startup blows/round are given in (6.5a).)
 -Make sure you DO NOT chose 'PvP' mode. It's a restricted special thing that
  has nothing to do with the normal gameplay at all! (See (6.13) for info).
 -It's strongly recommended to not choose 'fruit bat' body either :).
@@ -770,6 +789,10 @@ distinguish between Rod(s) of Healing and Potion(s) of Healing, you can use
 'Rod?Healing' and 'Potion?Healing' respectively.
 ('?' stands for any number (including zero) of any characters.)
 
+If you put a '!' as first character of a search string, it will force the
+inscription to overwrite existing inscriptions in any case (usually it only
+overwrites trivial inscriptions such as price discount tags).
+
 Auto-inscription files can be saved and will be loaded automatically in the
 same manner as macro files, if the filename matches your race, class, account
 or character name.
@@ -808,14 +831,68 @@ FF          Feather falling (Levitation).
 Gorth       Room in the dungeon, divided into 4 chambers. Similar to a pit.
             (See 4.6)
 GV          Greater Vault. (See 4.6)
+GCV         Greater Checkerboard Vault (looks remotely like a checkerboard).
+ID, *ID*    Identify and *Identify* magic respectively, which is used to
+            reveal magic properties of unknown items. Scrolls of ID can be
+            bought in store 5.
 Iron Team   A special type of party which can only be formed with newly
             created characters. Its members only gain experience if all
             members are online and on the same dungeon level.
+klevel, olevel
+            Somewhat more technical terms, these stand for the exact type of
+            item level that is meant in a certain context:
+            k-level is the 'object kind level', which is given in k_info.txt.
+            This is the object's base level and describes from which minimum
+            dungeon floor level or minimum monster level you can expect to
+            start getting that item type.
+            The o-level is the 'real' object level that you'll see on an item
+            you pick up. This can vary from the klev, depending on the dungeon
+            floor depth and monster level you got the item from.
+            Example: According to k_info.txt an Amulet of the Serpents has a
+            klev of 25, so you can expect to start seeing this drop on dungeon
+            level 25 (1250ft) or from level 25 monsters respectively. However,
+            when you find such an amulet on say a dungeon floor at 4000ft,
+            which equals dungeon level 80, an actual amulet you find might have
+            a level requirement (olev) of 30.
+            (Note: This is similar to mlevel vs rlevel for monsters.)
 Loot        Items that have been dropped by dead monsters or players and
             are waiting to be picked up by someone. :)
 LV          Lesser Vault. (See 4.6)
+mlevel, rlevel
+            Somewhat more technical terms, these stand for the exact type of
+            monster level that is meant in a certain context:
+            m-level is the 'real' monster level that you'll also see when you
+            have your character look at it. This level may actually be boosted
+            and therefore be higher than you'd expect. This happens when you
+            meet the monster on a floor that is far deeper than the level the
+            monster usually starts to occur on.
+            r-level is the base monster level, which is given for each monster
+            in r_info.txt. It describes the minimum floor level a monster is
+            usually found on (although 'out-of-depth' occurances may be
+            possible).
+            Example: According to r_infot.txt, Ancient Red Dragons have a base
+            level of 41. That means you'll usually start seeing them on dungeon
+            floors of level 41 (2050 ft) and deeper, although there's always a
+            slim chance that you meet a monster earlier than its base level
+            (called OoD encounter). Now that means that Ancient Red Dragons
+            have an r-level of 41. However, if you meet an Ancient Red Dragon
+            on a much deeper dungeon floor, say 2400 ft, which would be the
+            equivalent to level 48, when you look at the dragon you'll see it
+            says level 42 instead of the expected 41. This means the dragon's
+            level was actually slightly boosted because the dungeon floor's
+            level was that much higher than the dragon's. So while the rlev
+            of this dragon is still 41, his real level, the mlev, is 42.
+            Some formulas used by the game use mlev, some use rlev.
+            (Note: This is similar to klevel vs olevel for items.)
 Morgy       Morgoth, Lord of Darkness. Final boss enemy in TomeNET.
             See (1.5) for details.
+olevel      see klevel.
+OoD         Out-of-depth. Means a monster or an item encounter that happened at
+            a surprisingly shallow level, opposed to the base level for that
+            monster (given in r_info.txt) or item (given in k_info.txt) where
+            you would usually start expecting to find it.
+            Vaults often containing OoD monsters and items, increasing threat
+            and reward for the brave.
 Party       A group of players who fight together and share experience.
             In a party you will share experience points if you are within 7
             character levels to each other and on the same dungeon/tower level
@@ -834,6 +911,7 @@ Randart     Randomly generated artifact. As opposed to 'Truearts' which are
             also called 'Static arts' from the file a_info.txt. See 'Art'
             at the top of this section for more information.
 Res         Resistance.
+rlevel      see mlevel.
 Scumming    Repeatedly using staircases up/downwards to make a level become
             recreated. Usually in hope of finding a specific monster on that
             depth. ('I scum 450..500 ft for Wormy'.)
@@ -1093,10 +1171,10 @@ How to compile the game binary:
 Go into '/tomenet/src' where the file 'makefile' is located.
 Make sure you have the C-devel, X11-devel, ncurses, ncurses-devel and crypt
 libraries installed. The package names are usually:
-xorg-dev, libncurses5, libncurses5-dev, libgcrypt, libc6-dev.
+xorg-dev, libncurses5, libncurses5-dev, libgcrypt11, libc6-dev.
 Enter these two lines:
-	make clean
-	make tomenet
+        make clean
+        make tomenet
 and the binary 'tomenet' will be created in this folder 'tomenet/src'.
 IMPORTANT NOW: If your makefile is an older version, you need to move the
 binary one level upwards, ie into '/tomenet' ! If your makefile is newer,
@@ -1197,6 +1275,59 @@ ask fellow players for it.
 
 
 
+(2.3) Client options
+--------------------
+By pressing the '=' key, you can access the options menu where you can tweak
+your client in some ways. Some of these options that aren't self-explaining
+or that are especially important are listed in detail here:
+
+(Note: Some options stem from single-player Angband, and are deprecated or
+pointless for multi-player, and therefore don't have any effect. Those are
+displayed in dark grey instead of white.)
+
+(1) User Interface Options
+    Rogue-like commands (rogue_like_commands)
+        Toggles between normal key set and traditional rogue-like key set.
+    Don't display 'flavours' in item names (short_item_names)
+        A 'Black Potion of Speed' will just be shown as a 'Potion of Speed'.
+    Hide unusable skills (hide_unusable_skills)
+        Skills that your character cannot use will not be displayed in the
+        skill menu invoked by 'G' key.
+
+(2) Disturbance Options
+
+(3) Game-Play Options
+    Set 'AFK mode' automatically (auto_afk)
+        Rogues might want to turn this off in order to sit out their blacklist
+        timer in town.
+
+(4) Efficiency Options
+
+(5) TomeNET Additional Options
+    Automatically open doors (easy_open)
+        Your character attempts to open a door just by you moving into it.
+    Suppress server messages as far as possible (taciturn_messages)
+        Will prevent some of the not-so-important server messages to be
+        shown, for example 'You have <item>' when picking up an item.
+!!! Scroll the screen more frequently (wide_scroll_margin)
+!!!     Should always be enabled! Will reduce probability for off-screen kills,
+!!!     since the screen scrolls much earlier when you come close to a border!
+
+(8) Check Server Options
+    Displays a list of the server rules and configuration.
+
+(A) Account options
+    Here you can see if your account is valid. Invalid accounts are also
+    indicated by a yellow 'I' in the players list you get with '@' key.
+    Also, you can change your password here!
+
+(W) Window flags
+    Here you can configure each of the program windows in detail.
+    It is recommended that you have one dedicated window for 'Display chat',
+    so you don't miss important messages during combat.
+
+
+
 (3) Creating a character & starting to play
 ===========================================
 
@@ -1231,9 +1362,9 @@ DEXterity, CONstitution, CHaRisma.
 
 IMPORTANT NOTE: For fighters (rogues also belong to these) that use weapons,
 it is important that you have enough STRength and DEXterity to execute at
-least two attacks per round, called bpr (blows per round). Sometimes this
-requires you to get rid of your initial weapon and buy a very light weapon,
-for example one of these:
+least two attacks per round, called bpr (blows per round, see (6.5a)).
+Sometimes this requires you to get rid of your initial weapon and buy a very
+light weapon, for example one of these:
 dagger or main gauche (sword class),
 whip (blunt class),
 hatched (axe class) or
@@ -2251,6 +2382,27 @@ manathrust with '\e)m@11\r9a*t' you could also just make a macro
 
 In fact you could make a macro '\e)m@Cast a spell\r@Manathrust\r*t'.
 
+IMPORTANT: Keep in mind that call-by-name is actually case-sensitive!
+(So in the example above, 'manathrust' would not work.)
+
+Additional details:
+-------------------
+The text you provide for matching is treated as a partial text (sub-string)
+that must occur anywhere in an inventory slot text. Only those inventory slots
+are tested for this, which actually contain an item of fitting base type (tval)
+for the action that is being executed.
+
+Example: You make a macro   z@Gold-Pl\r  -this will be processed as follows:
+The command is 'z' to zap a rod. So only inventory slots that contain rods will
+be looked at, the rest is ignored.
+Now all inventory slots that contain rods will be tested for whether they
+contain the text piece 'Gold-Pl' somewhere.
+So if you carry any Gold-Plated rods in your inventory they will be zapped.
+
+Note that since it's really just all about partial-text-matching, you could
+inscribe some other rods 'Gold-Pl' so the text matching would succeed, although
+they aren't 'real' Gold-Plated rods. (!)
+
 
 
 (3.10) Experience, level-ups and skill points
@@ -2643,11 +2795,16 @@ There are different types of dungeons. The main five are:
  Sending items via telekinesis to a player who is currently in an ironman
  dungeon/tower will only work if both players are on the same dungeon floor.
  To leave an ironman dungeon/tower you'll have to get to it's bottom
- respectively top. There might possibilities to use Word-of-Recall even if
+ respectively top. There might be possibilities to use Word-of-Recall even if
  you're not at bottom/top yet, depending on the server configuration. In
  general you will recognize levels which allow recalling by a green message,
  saying "You don't sense a magic barrier here..." (compare (4.8)).
  Ironman dungeons/towers are marked by a dark grey < or > symbol.
+ NOTE: In the case of RPG-server settings, you can usually recall INTO town
+ dungeons every (n*1000)+50 ft, n starting at 0. Example: -50 ft, -1050 ft,
+ -2050 ft, etc. Also, ALL dungeons will usually not allow recalling OUT until
+ you reach a floor that is equivalent to at least dungeon level 20. Examples:
+ At least -1000 ft in Barrow-Downs, at least -550 ft in The Orc Cave.
 -Hellish. Players suffer no-ghost deaths inside hellish dungeons.
  Even if they're everlasting.
  Hellish dungeons/towers are marked by a fire-like flickering < or > symbol
@@ -2825,24 +2982,37 @@ The 1..9 are standard shops, namely..
                         Some items cannot be sold elsewhere though.
 8       The Inn         In Bree it's The Prancing Pony. Inside the inn,
                         players are relatively safe from monsters.
-9       Bookstore       Sells books for istari, priests and all other (hybrid)
+9       Book Store      Sells books for istari, priests and all other (hybrid)
                         magic users.
 +       These are different everywhere. Some examples are..
+        Mayor's Office (in Bree)
+                        Allows you to turn in deed parchments you won in
+                        tournaments or on other occasions for a reward.
+                        Also, you can receive a quest here.
         The Bank        Several towns have a bank where you can deposit and
                         withdraw money, so you won't lose it accidentally on a
                         dungeon trip.
-        Casino.         Minas Anor has a casino.
-        ID service      Will identify all items you currently carry for a fee.
-        *ID* Service    Will *identify* an item for a fee.
+        Rune Repository
+                        Sells and buys runes used by Runemasters.
+        Casino          Minas Anor has a casino. Go and try your luck!
+        Mass Identify Service
+                        Will identify all items you currently carry for a fee.
+        *Identify* Service
+                        Will *identify* an item for a fee.
                         See (5.7) for more information about ID, *ID*, shops!
-        Herbal Healing  Will cure black breath for a high fee. (See 1.5 for
+        Herbal Healing Service
+                        Will cure black breath for a high fee. (See 1.5 for
                         more information about Black Breath.)
-        Morph Restoration
+        Morph Restoration Service
                         Restores your form to normal in case you were
                         polymorphed (for example by a potion of Chauve-Souris).
         Enchant Services
                         These will enchant weapons, arrows, or all armour
                         parts you currently have equipped.
+        Mining Supply Store
+                        In the hazardous city of Khazad-Dum is a store that
+                        offers some goods found to be useful by the miners
+                        in the mountain depths.
 
 Shops that buy and sell items will have a price limit that they will pay for
 an item a players wants to sell. The limit varies from 50,000 to 300,000 Au
@@ -3082,6 +3252,9 @@ In addition to those orange level specialties, there are more feelings you
 may get about the danger a level poses. Those only appear if you spent some
 time (usually a few minutes) on the dungeon level you were coming from, so
 they won't be helpful while stair-scumming or probability-travelling quickly.
+The number telling you the current floor's depth in the bottom right corner of
+the main window will turn light blue when you spent enough time on your current
+floor to receive an extra feeling on entering the next floor.
 These extra level feelings (displayed in yellow) are:
 
   "What a terrifying place.."
@@ -4510,6 +4683,11 @@ SPECIAL_GENE
 'Imbued' books and tomes.
         Those especially treatened books and tomes resist the influence of
         heat, water and acid strongly.
+INVIS   Turns you invisible. Items 'of Invisibility' often have a +mod,
+        which gives you additional stealth. Note that this +mod does not
+        qualify or affect your invisibility in any way, but is purely for an
+        extra stealth bonus. Invisibility is binary: Either you are invisible
+        or you are not. Also see '(5.16) Invisibility'.
 
 
 
@@ -5191,6 +5369,13 @@ does the actual leeching!).
 
 (5.16) Invisibility
 -------------------
+Invisibility (for monsters as for players) is binary: Either you are invisible
+or you are not - possible +mods on items that grant invisibility don't affect
+the invisibility itself, but are usually just extra +stealth boni.
+While characters either having or not having 'invisible' property is a binary
+choice, the actual effect it has on gameplay will be affected by player/monster
+level, the ability to see invisible, and shadow cloaks, as follows here:
+
 A player who is invisible is harder to spot for monsters, making them move
 erratically instead of directly targetting the player. This also helps against
 casters, archers or breathers who won't be able to target you as well (often)
@@ -5327,7 +5512,7 @@ experience points permanently. Here are some details about that process:
 
 
 
-(5.20) Runes & Runemastery
+(5.20) Runes & Runemastery (OLD RUNEMASTERY)
 --------------------------
 Runes are magical symbols, often hidden in ancient digging sites, or carried
 around by clueless creatures who are not aware of the power of these relicts.
@@ -5338,6 +5523,10 @@ care since most of them are actually not scientists but a bunch of clever
 outlaws who are trying their luck after becoming aware of the potential of
 these stones.
 
+NOTE: A new experimental rune system has been implemented, which is currently
+      live on the 'RPG Server'. The following explanations of the rune system
+      describe the old system, and can't necessarily be applied to the new
+      experimental system.
 
 When semi-skilled pseudo-professional folks use runes, there's quite a chance
 for them to break! General chance formula is:
@@ -5435,6 +5624,7 @@ Strength (STR)
      if it's too heavy for you.
     -How much damage do you inflict on enemies? (to-dam bonus)
     -Are you able to deliver several blows per round with your weapon?
+     (For details, also see (6.5).)
     -How much can you carry in your backpack without getting slowed down?
     -How easily you can bash doors open.
     -How far you can throw items.
@@ -5462,6 +5652,7 @@ Dexterity (DEX)
     -How well can you steal (from shops)? (A high DEX won't help much if your
      'Stealing' skill is zero by the way ;)
     -Are you able to deliver several blows per round with your weapon?
+     (For details, also see (6.5).)
     -How likely are items or money stolen from you?
     -Can you prevent getting stunned from bashing a door clumsily?
     -Allows you to try hard to swim and not drown in deep water.
@@ -5695,8 +5886,6 @@ Note that not every skill is available to every profession (class).
                                 to-damage bonus while using a boomerang, and
                                 reduces the chance of a boomerang to break or
                                 to fall to the ground instead of returning.
-                                Boomerangs cannot be deflected by "reflecting"
-                                monsters.
                                 Artifact boomerangs never break or fall down.
     .Martial Arts               Ability to fight with bare hands.
                                 Slightly raises your character speed.
@@ -5776,6 +5965,7 @@ Note that not every skill is available to every profession (class).
     .Mental Intrusion           Learn mindcrafter spells of mental intrusion.
 .Runemastery                    Determines how skillful you are in handling
                                 magical symbols aka 'Runes'.
+                                (NOTE: APPLIES TO OLD RUNEMASTERY!)
                                 At 15, you reach minimum break chance (0.1%)
                                 for runes when casting bolts.
                                 At 25, you reach minimum break chance (0.1%)
@@ -5881,8 +6071,8 @@ Note that not every skill is available to every profession (class).
                                 your dodging skill, which (after penalized by
                                 the weight of all your stuff) is compared to
                                 the opponent's level or trap level.
-                                (For dodging monsters, the basic race level of
-                                that monster type is important. Any additional
+                                (For dodging monsters, the rlevel (0.4) of that
+                                monster type is important. Any additional
                                 levels the monster may have gained due to
                                 dwelling deeper than usual will not affect
                                 your dodge chance.)
@@ -5937,6 +6127,7 @@ Note that not every skill is available to every profession (class).
                                 factored in, at the very end of calculation).
                                 Note: You aren't able to intercept a monster's
                                 action while you are stunned. (Compare (4.11))
+                                Note: Monster level means 'rlevel' (see (0.4)).
 +Necromancy                     Drains life and mana from killed monsters,
                                 replenishing your HP and SP.
                                 Only works if you are able to see the target,
@@ -6355,7 +6546,7 @@ Human        0   0   0   0   0   0       10     100%     0ft
 Half-Elf    -1  +1  +0  +1  -1  +1        9     110%    20ft
              2   3   3   1  11   6   -1   6
 Elf         -1  +2  +1  +1  -2  +2        8     120%    30ft
-             5   6   6   1   1   8   -5  15
+             5   6   6   1  12   8   -5  15
 Hobbit      -2  +2  +1  +3  +0  +1        7     115%    30ft
             15  18  18   4  15  12  -10  20
 Gnome       -1  +2  +0  +2  +1  -2        8     125%    40ft
@@ -6446,6 +6637,8 @@ Priest
     Note that priests get a penalty for wielding non-blunt weapons, except
     for BLESSED weapons which priests can use without problems independently
     of their type.
+    Priests are especially adept at sensing curses on any sort of item, an
+    ability that grows with their character level.
 
 Rogue
     Rogues can backstab sleeping or fleeing monsters, and they can train
@@ -6541,6 +6734,7 @@ Druid
     (Special note (compare 6.7): If they wield a weapon while using a form
     which usually cannot use weapons, they will only get 1 blow per round.)
     To recheck which forms you can transform into, use the /ex command.
+    To see an overview of the forms and their abilities, see (6.7a).
 
 Shaman
     Shamans are able to call upon both spiritual and magical powers,
@@ -6568,6 +6762,9 @@ Runemaster
     these folks actually are not scientists but clever and ruthless outlaws
     who became aware of the potential of rune stones; these rune hunters are
     sly as rogues and witty as mages. Quite dangerous persons all in all.
+    (NOTE: The following description covers the OLD RUNEMASTERY system, and
+    does not necessarily apply to the new experimental rune system that is
+    currently live on 'RPG Server'!)
     'Magic' skill has the least effect on this class, and it is not very easy
     to learn. Runemasters' spells receive a half-damage and half-SP usage
     penalty that gradually dissapears as their Runemastery reaches 25. At this
@@ -6645,7 +6842,7 @@ Archer      +1  +0  +2  +3  +1  -1       +5      +10%       3
 Paladin     +3  -3  +1  +0  +2  +2       +8      +30%       5
             10  21  54   1  16  13  60  29              good     superb
 Ranger      +2  +2  -1  +1  +2  +0       +7      +35%       5
-            34  32  30   5  30  30  50  60              good     fair
+            34  32  30   5  30  30  50  60              superb   fair
 Adventurer   0   0   0   0   0   0       +6      +25%       4
             20  20  20   2  15  15  50  50              fair     fair
 Druid       +1   0  +2  -2  -2  +1       +5      +40%       4
@@ -6655,7 +6852,78 @@ Shaman       0  +1  +2  -2   0   0       +4      +45%       4
 Runemaster  +1  +2  -3  +3  -3  -3       +5      +20%       4
             10  20  20   0  30  20  45  20              fair     fair
 Mindcrafter  0  +2   0   0   0  +1       +5      +25%       5
-            30  30  36   2  35  14  45  35              fair     poor
+            30  30  36   2  35  14  45  35              good     fair
+
+
+For melee characters, it's especially vital to know how many blows per round
+they will get right after character creation, to avoid them being unnecessarily
+weak during low-mid levels.
+So a melee-oriented character should make sure to start with sufficient
+STRength and DEXterity to be able to get at least 2 blows/round with the
+lightest possible weapons. (Getting more bpr with heavy weapons is a luxury
+that will have to be put aside until later in the game.)
+
+Note that a (heavier) startup weapon at 2 bpr might beat a very light weapon at
+3 bpr for a few levels at the beginning, maybe up to 4 or so. So you can wait
+for a little a bit until spending $ on it.
+
+
+(6.5a) Start-up Blows/Round Table
+---------------------------------
+Here is a table, showing you some bpr numbers you can expect your newly
+created character to have, depending on certain combinations of class, STR,
+DEX, given for both, lightest possible weapon and startup weapon:
+(Don't forget that some classes can dual-wield, adding an extra +1 bpr on top!)
+
+Class           STR     DEX     Light weapon    Startup weapon
+------------------------------------------------------------------------
+Warrior         18/30   all     3               1-2 (depends on weapon)
+                18/50   all     3               2
+                18/50   18/10   4               2
+                18/70..110  *   3-4             3 (depends on weapon)
+
+Istar           -
+
+Priest          18/50   10      3               2
+                18/10   10      2               1
+
+Rogue           15      18/10   2               2
+                18/10   18/50   3               3
+
+Mimic           similar to priest, also:
+                18/30   18/10   3               2
+
+Archer          -
+
+Paladin         18/10   10      2               1
+                18/20   10      2               2
+                18/30   10      3               2
+
+Ranger          similar to priest, also:
+                18/50   10      3               2-3 (depends on weapon)
+                18/30   18/10   3               2-3 (depends on weapon)
+
+Adventurer      similar to paladin, also:
+                18/30   18/10   3               2-3 (depends on weapon)
+
+Druid           -
+
+Shaman          similar to priest
+
+Runemaster      similar to rogue
+
+Mindcrafter     similar to ranger
+
+So if you're playing a melee-oriented characer, make sure you start with at
+least 2 bpr (in some cases you might have to buy very light weapon and discard
+your starter weapon to achieve this)!
+
+If you think it's strange that 'Mimic fights similar to Priest' keep in mind
+that this is not about actual melee potential, but rather about some sort of
+'blows/round improvement curve' displayed by a class. If a class is busy
+studying other things in parallel (magic), its learning curve gets less steep.
+This, however, doesn't determine its final performance, which is actually
+given by the 'Max. base blows/round' shown further above, and other parameters.
 
 
 
@@ -6863,12 +7131,13 @@ F: flag list
     OPEN_DOOR   This form can open doors.
     BASH_DOOR   This form can bash doors
                 (useful to forms that cannot OPEN_DOORs!).
-    EVIL        Currently no effect, since it's assumed that the evilness of
-                the form is overridden by the mimic's state of mind.
+    EVIL        Becomes susceptible to certain 'good' or 'holy' effects.
     DEMON or UNDEAD
                 This form will take 2x damage from holy orbs or holy fire,
                 and suffer from various 'good' effects/spells. UNDEAD has
                 in general more trouble with 'good' effects than DEMON.
+                UNDEAD will also become susceptible to some 'life' effects,
+                regarding healing or cleansing mostly.
     HURT_LITE   This form will take 2x damage from light attacks.
 
 S: spell list
@@ -6916,10 +7185,14 @@ All trolls and giants
 All dragonriders
             ESP_DRAGON at level 5, feather falling (levitation),
             flying at level 30.
+All evil creatures
+            Becomes susceptible to certain 'good' or 'holy' effects.
 All undead creatures
             Resist darkness, blindness, poison (usually immunity);
             can't bleed (no_cut), infra-vision +1, insanity attacks are
             reduced by a little bit.
+            Becomes susceptible to 'life', which concerns some healing or
+            cleansing effects for example.
 All greater demons (capital 'U')
             Resist poison (in most cases immunity).
 All non-living creatures
@@ -6980,6 +7253,132 @@ which determined for how long the player will keep the form until he polymorphs
 back to normal.
 If a player forges a ring, his magic device skill helps to obtain a high
 amount of energy in the ring.
+
+
+(6.7a) Druid form details
+-------------------------
+Note: Some forms can open doors, others may try to bash doors.
+      Also, all animal forms are able to travel through woods.
+
+Cave bear               tough; can pass mountain terrain
+
+Panther                 speedy
+
+Grizzly bear            same as Cave Bear, but tougher
+
+Yeti                    can pass mountain terrain;
+                        is immune to cold but susceptible to fire
+
+Griffon                 can fly; can pass mountain terrain
+
+Sasquatch               speedy; similar to Yeti, but not susceptible to fire
+
+Werebear                same as Grizzly Bear, but tougher
+
+Great eagle             speedy; can fly; passes most terrain types
+
+White shark             speedy aquatic form (requires deep water to breathe)
+
+Aranea                  a speedy greater spider;
+                        poisonous hits;
+                        resists fire, completely immune to poison;
+                        susceptible to light and to 'good' (creature is evil);
+                        has a small array of magic spells to its disposal
+
+Wyvern                  speedy; can fly and passes most terrains;
+                        25% poisonous attacks;
+                        immune to poison; susceptible to 'good'
+
+Multi-hued Hound        resists fire/cold/lightning/acid/poison and gets a
+                        random immunity of those five on polymorphing;
+                        can't be confused or paralyzed;
+                        can breathe the five elements mentioned above
+
+5-headed hydra          speedy; can swim;
+                        poisonous attacks; immune to poison;
+                        can cast fear and poison ball
+
+Minotaur                tough and very speed; susceptible to 'good'
+
+Giant squid             tough and speedy aquatic creature;
+                        resists cold/acid;
+                        can breathe lightning, acid and poison
+
+7-headed hydra          tough and speedy; can swim;
+                        poisonous (75%) and blinding (25%) attacks;
+                        immune to poison;
+                        can cast fear, poison ball, and breathe poison
+
+Plasma hound            speedy;
+                        resists plasma, sound; immune to fire;
+                        susceptible to cold;
+                        can't be cut/stunned/confused or paralyzed;
+                        can breathe plasma
+
+Elder aranea            speedy and smart (INT bonus) greater spider;
+                        50% poisonous attacks;
+                        resists darkness, fire, poison; immune to either fire
+                        or poison chosen randomly on polymorphing;
+                        susceptible to 'good' and to light;
+                        can't be confused or paralyzed;
+                        regenerates HP quickly;
+                        has a medium array of spells to its disposal
+
+11-headed hydra         speedy and toughest hydra; can swim;
+                        fiery attacks;
+                        immune to fire;
+                        has a small array of fire/fear spells
+
+Lesser kraken           speedy, smart and very tough aquatic creature;
+                        immune to either water attacks and poison, resists the
+                        other, as well as lightning, cold and darkness;
+                        can't be paralyzed or confused;
+                        has a medium size array of spells
+
+Maulotaur               like Minotaur, but tougher; stupid (INT malus);
+                        immune to fire and resisting teleportation attacks;
+                        can cast plasma bolt and fire ball
+
+Winged Horror           speedy winged creature; can fly;
+                        resists cold, poison, darkness, nether, life drain;
+                        immune to either cold or poison;
+                        susceptible to 'good';
+                        can breathe nether, darkness and poison
+
+Spectral Tyrannosaur    speedy undead animal;
+                        has 25% scaring attacks;
+                        resists nexus, teleportation attacks, nether,
+                        life drain, cold, acid and poison;
+                        becomes immune to one of cold/acid/poison;
+                        susceptible to 'good' and 'life';
+                        can't be cut, scared, confused or paralyzed;
+                        can breathe nexus, poison and nether
+
+Greater kraken          speedy, smart and extremely tough aquatic creature;
+                        resists water attacks, cold, poison, lightning, acid,
+                        darkness; becomes immune to one of lightning/poison/
+                        water attacks;
+                        susceptible to 'good';
+                        can cast from a large array of spells
+
+Jabberwock              fabulous very speedy and tough hybrid creature;
+                        can fly;
+                        resists teleportation attacks and chaos;
+                        can curse and breathe chaos
+
+Horned Serpent          speedy and tough; can swim and pass mountain terrain;
+                        33% poisonous attacks;
+                        resists poison, acid, fire, water attacks,
+                        becomes immune to either poison or acid;
+                        can't be scared, confused or paralyzed;
+                        can cast fear and breathe acid and poison
+
+Firebird                speedy and tough; can fly and passes most terrains;
+                        fiery attacks and fire aura;
+                        immune to fire and susceptible to cold;
+                        resists poison, plasma and light;
+                        regenerates HP quickly;
+                        can breathe fire and light
 
 
 
@@ -7169,7 +7568,6 @@ Divination
 Nature
     Grow Trees      Grows trees quickly around you.
                     Required skill level for first spell level: 6.
-                    Shared spell (see above): Nature, Temporal.
     Healing         Heals a percentage of your hit points.          (project)
                     Required skill level for first spell level: 10.
     Recovery        Reduces poison duration.
@@ -7436,6 +7834,8 @@ Physical Lore
 Mindcraft schools:
 ------------------
 Psycho-Power
+    Psychic Hammer  Telekinetic power focussed to bash an enemy, stunning him.
+                    Required skill level for first spell level: 1.
     Psychokinesis   Destroys traps by psychokinetic manipulation.
                     Required skill level for first spell level: 3.
     Autokinesis I   Teleports you within a small range.
@@ -7444,6 +7844,10 @@ Psycho-Power
                     Required skill level for first spell level: 16.
     Autokinesis III Teleports you towards a party member with opened mind.
                     Required skill level for first spell level: 24.
+    Psi Storm       Psionic storm that damages and disturbs all minds within an
+                    area for a while, causing the usual random Psi side effects
+                    on all targets similar to Psionic Blast.
+                    Required skill level for first spell level: 18.
     Pyrokinesis     Causes a severe inflammation to burn your opponent.
                     Required skill level for first spell level: 20.
     Cryokinesis     Causes a dramatic temperature drop on your opponent.
@@ -7675,24 +8079,41 @@ The result will map to the following numbers:
 "You have a slight chance of parrying."         Below 10% chance.
 "You have a significant chance of parrying."    Below 20% chance.
 "You have a good chance of parrying."           Below 30% chance.
-"You have a very good chance of parrying."      30% chance or better.
+"You have a very good chance of parrying."      Below 40% chance.
+"You have an excellent chance of parrying."     Below 50% chance.
+"You have a superb chance of parrying."         50% chance or better.
+                                                (51% is highest reachable)
+Note: Above 30% can only be reached in defensive combat stance without a
+      shield equipped. (Because if no shield is equipped, defensive combat
+      stance which normally bolsters block chance will transfer that defensive
+      advantage to the weapon instead, increasing the parry chance.)
+      Also, your class should be fairly skilled at parrying (see below.)
 
 "You cannot block at the moment."               You aren't wielding a shield.
 "You have almost no chance of blocking."        Below 5% chance.
 "You have a slight chance of blocking."         Below 14% chance.
 "You have a significant chance of blocking."    Below 23% chance
-"You have a good chance of blocking."           Below 30% chance.
-"You have a very good chance of blocking."      Below 40% chance.
-"You have an excellent chance of blocking."     Below 65% chance.
-"You have a superb chance of blocking."         65% chance or better; can only
-                                                be achieved by entering an
-                                                appropriate combat stance.
+"You have a good chance of blocking."           Below 33% chance.
+"You have a very good chance of blocking."      Below 44% chance.
+"You have an excellent chance of blocking."     Below 55% chance.
+"You have a superb chance of blocking."         55% chance or better
+                                                (60% is highest reachable)
+Note: To achieve an extraordinarily high block chance above 30% you'll
+      have to enter a defensive combat stance, and your class should be
+      fairly skilled at blocking. See the note below.
 
-Important: Classes do differently well at parrying and blocking. To find out
-           more, see the class overview table at the end of section (6.5).
 
-Parrying
---------
+NOTES:
+------
+Classes do differently well at parrying and blocking. To find out more, see
+the class overview table at the end of section (6.5).
+
+Parrying/blocking might get boosted/modified under certain circumstances,
+such as PvP or defending from a trap you accidentally set off.
+
+
+More on Parrying
+----------------
 The larger a weapon, the more you can parry. Without a weapon, you cannot
 parry at all.
 A 1-handed weapon will parry less often than a 1 1/2-hander (SHOULD2H), and
@@ -7702,8 +8123,9 @@ swing" (COULD2H), you'll also get an extra parry bonus.
 Increasing weaponmastery improves your parry chance; dual-wielding improves it
 too, provided that you aren't 'flexibility-encumbered' (compare (5.5)).
 
-Blocking
---------
+
+More on Blocking
+----------------
 Many effects that normal armour usually doesn't protect from can actually be
 blocked, for example your character may quickly duck behind his shield just in
 time when an eye tries to gaze in your eyes to paralyze you.
@@ -8920,12 +9342,14 @@ SOLUTION:   A rare problem that is not caused by TomeNET really. Restart your
             MS Windows system and the text should be visible again.
             (This usually only happens once, after updating the client.)
 
-PROBLEM 04: All windows except for the main window stay empty. (occurs on
-            Windows machines).
+PROBLEM 04: All windows except for the main window stay empty.
 SOLUTION:   First make sure it's really a bug and not just missing window
             settings: Press '=' key and 'W' key and configure your windows
-            appropriately. Save your options ('9'). If the windows are still
-            blank, read on.
+            appropriately. It is vital to set one of the windows to display
+            game and/or chat messages, so you can actually read what other
+            players write, and also keep track of combat messages!
+            When you're done setting up the windows, go to 'save options'
+            (key '9'). If all the windows are still blank, read on:
             Reasons are unknown. Sometimes a simple reboot helps. Otherwise:
             Open TomeNET.ini file with a text editor, look for the window
             sections, change the fonts to the same settings (8x13) as in the
