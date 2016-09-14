@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 14. March 2007; written by C. Blue, http://www.c-blue.de/
+| Latest update: 22. March 2007; written by C. Blue, http://www.c-blue.de/
 | for TomeNET version v4.4.0, http://www.tomenet.net/
 | for latest information about TomeNET see http://www.c-blue.de/rogue.html
 | or join discussion in the forum on http://www.tomenet.net/
@@ -287,7 +287,7 @@ P               party screen. Form/disband/modify a party with other players
                 here. In a party you will share experience points if you are
                 within 7 character levels to each other and on the same
                 dungeon/tower level respectively the same worldmap/wilderness
-                sector. See (6.9) for details.
+                sector. See (6.9) for details!
                 For winners (queens/kings/empresses/emperors) the range is 11
                 levels instead of 7.
 
@@ -699,6 +699,12 @@ For sourceforge.net CVS (old):
 cvs -d:pserver:anonymous@cvs.pernband.sourceforge.net:/cvsroot/pernband co pm
 For angband.oook.cz CVS:
 cvs -d:pserver:anonymous@t-o-m-e.net:/var/cvs/tome co tomenet
+
+You can browse the CVS with a normal web browser easily!
+Here's a shortcut to save you time of searching angband.oook.cz, since
+navigating to CVS is somewhat confusing ;) (might change if angband.oook.cz
+changes the site layout) :
+http://angband.oook.cz/cgi-bin/cvsweb.cgi/tomenet/?cvsroot=tome
 
 
 
@@ -2924,7 +2930,7 @@ Here's a table to tell you the values for str_wgt:
         15          13                      
 
 The armour weight limit is 5.0 lb + Martial Arts skill level * 0.4 lb.
-So for MA 50 it is 5.0 + 20.0 = 25.0 lb.
+So for MA 50 it is 5.0 + 25.0 = 25.0 lb.
 If your armour becomes too heavy, you will see this warning message:
 "Your armor weight strains your martial arts performance."
 
@@ -3053,12 +3059,12 @@ Wearing armour which is too bulky gives you this message:
 "The weight of your armour strains your spellcasting."
 That means your mana (Spell Points) will be (severely) reduced from the
 bulkiness of your armour. To counter this effect, train your 'Combat' skill.
-To cast freely, you may wear 20.0 to 30.0 lbs of armour (depending on your
+To cast freely, you may wear 15.0 to 30.0 lbs of armour (depending on your
 class and hence the type of magic you utilize) plus your combat skill (in
-lbs). So 50 points in 'Combat' would allow an istar to wear 20.0 + 50.0 =
-70.0 lbs of armour parts without being encumbered.
-In general, using prayers is easier than weaving spells, and using innate
-powers is easiest of all magic.
+0.5 lbs). So 50 points in 'Combat' would allow a paladin to wear 30.0 + 25.0 =
+55.0 lbs of armour parts without receiving mana penalty from being encumbered.
+In general, praying is the easiest-to-use form of magic, and weaving spells
+the most difficult one.
 Your total armour weight is the sum of the weight of any armour pieces worn
 on head (helmet), body, arm (a shield), hands, feet, and your cloak.
 
@@ -4184,7 +4190,7 @@ empty fields that are adjacent to your character, there is a chance to 'evade'
 and take much less damage or even none at all. Earthquakes can also stun you.
 
 Items will usually be destroyed/lost, only very rarely you'll be able to grab
-one before it falls into a chasm and vanish forever.
+one before it falls into a chasm and vanishes forever.
 
 
 
@@ -5193,7 +5199,7 @@ Vampire
     Vampires are good fighters and decent mages. However, they are unable to
     utilize magic of water, nature or divination school. Neither can they make
     use of mimicry techniques or holy spells.
-    They resist darkness, nether, poison or cold and it's hard to drain their
+    They resist darkness, nether, poison and cold and it's hard to drain their
     life force. They also have partially life leeching (vampiric) attacks
     (see '(5.15) Vampirism' for more information).
     Vampires cannot eat normal food, instead they need to feed off living
@@ -6232,17 +6238,29 @@ Here you can..
     In a party you will share experience points if you are within 7 character
     levels to each other and on the same dungeon/tower level respectively
     the same worldmap/wilderness sector. A slight experience bonus is applied
-    for killing monsters in a party.
+    for killing monsters in a party!
     The range is 11 levels instead of 7 for winners (queens/kings/empresses/
     emperors).
-    Kings/Queens and normal players don't share experience in a party.
-    'Anti-magic fields' of fellow party members have greatly reduced effect
-    on spell-users in the same party, to allow the party to still be a vital
-    combination.
+    Winners and normal players don't share experience in a party.
+
+    Depending on server settings, monsters will remember the highest player
+    they have met and not give experience nor kill credit to players who are
+    more than the <party-allowed-range-of-levels + 1> away from it.
+    Similarly, a player who received a power-up spell from another player
+    who is higher in levels than the range<-allowed-within-party + 1>, may
+    cause that player to not gain any experience or kill credit until a number
+    of turns (usually 200) has passed and the buff spell has worn off.
+    Kings/queens/emperors/empresses are free from those restrictions though!
+
     Set a house owner to 'party' to allow all party members to access that
     house.
     If the owner dies, the whole party is disbanded and all houses of the
-    party are wiped. 
+    party (means all houses that had their owner-type set to 'party' instead
+    of a player) are wiped.
+
+    'Anti-magic fields' of fellow party members have greatly reduced effect
+    on spell-users in the same party, to allow the party to still be a vital
+    combination.
 -Create an iron team
     An iron team is like a party with the following differences:
     An 'Iron Team' can only be formed with newly created characters. Its
@@ -6817,6 +6835,7 @@ Teamplay:
  A player in a party gets a share of experience points from the kills of other
  party members if they are within 7 levels to the player.
  For winners (queens/kings/empresses/emperors) the range is 11 levels.
+ See (6.9) for details about partying!
 
 -Good combinations are the classical meat shields / damage dealers /
  supporters. Keep your teammates in mind and don't teleport out if it meant
