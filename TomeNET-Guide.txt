@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 30. September 2006; written by C. Blue, http://www.c-blue.de/
+| Latest update: 9. January 2006; written by C. Blue, http://www.c-blue.de/
 | for TomeNET version v4.4.0, http://www.tomenet.net/
 | for latest information about TomeNET see http://www.c-blue.de/rogue.html
 | or join discussion in the forum on http://www.tomenet.net/
@@ -3785,12 +3785,18 @@ Word of Recall  Use it to quickly travel from the town to a dungeon or tower,
 Blood Bond      Inscribe this @P<playername>, for example @PGandalf, then read
                 it to form a blood bond between you and that player. (Only one
                 of you has to read a BB scroll, it's working bidirectional).
-                Now you can hostile each other and fight in a friendly duel.
+                Everyone on the server will receive messages about that blood
+                bond been formed: "<player A> blood bonds with <player B>".
+                IF YOU DON'T SEE THIS MESSAGE, YOU DID SOMETHING WRONG. IN
+                THAT CASE DO NOT ATTACK OR YOU MIGHT KILL YOUR OPPONENT FOR
+                REAL! Instead, just get another scroll and repeat the blood
+                bonding until you see the confirmation message.
+                Now you may hostile each other and fight in a friendly duel.
                 The loser won't suffer a real death but just get teleported
                 away. The hostility will automatically be cancelled when the
-                blood bond ends. Everyone will receive messages about a blood
-                bond being formed ("<player A> blood bonds with <player B>")
-                and about the result ("<A> wins the blood bond against <B>").
+                blood bond ends. 
+                Everyone on the server will be informed about the result:
+                "<A> wins the blood bond against <B>".
                 (Hit 'P' for party menu to declare war on someone after you
                 read blood bond. Making peace will be done automatically when
                 a blood bond ends!)
@@ -4168,6 +4174,9 @@ Earthquakes can deal up to 300 damage if you cannot evade the falling rocks
 and shifting ground: Depending on the number of unchanged (by the earthquake)
 empty fields that are adjacent to your character, there is a chance to 'evade'
 and take much less damage or even none at all. Earthquakes can also stun you.
+
+Items will usually be destroyed/lost, only very rarely you'll be able to grab
+one before it falls into a chasm and vanish forever.
 
 
 
@@ -5524,7 +5533,7 @@ I: speed : hit points : vision : armor class : alertness
     monster HP = 50000 / ((50000 / hdice*hsides) + 20) .)
     Now, if the mimic's HP are less then the result, the mimic's HP will
     become approx. ((3*x*y) + (2*normal_HP)) / 5. (2/5 monster HP, 3/5 player
-    HP.) If the mimic's HP in player form (0) are greater than x*y, the
+    HP.) If the mimic's HP in player form (code 0) are greater than x*y, the
     resulting HP will be ((x*y * 4) + (mimic_HP * 1)) / 5.
     (1/5 monster HP, 4/5 player HP!)
   armour class:
@@ -6270,8 +6279,8 @@ Here you can..
 
 
 
-(6.10)  Magic Device skill/ability details
-------------------------------------------
+(6.10) Magic Device skill/ability details
+-----------------------------------------
 The player's "Magic Device" ability in the character overview screen is
 calculated from a base ability depending on race/class, and the magic device
 skill in the skill screen ('G').
