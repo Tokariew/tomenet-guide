@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 13. September 2016 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 15. September 2016 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.6.2 - official websites are:
 | http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | http://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -154,9 +154,10 @@ Contents
     (6.7b)  Druid form details
     (6.7c)  Useful low-level humanoid forms for weapon-using mimics
     (6.8)   Magic spells and prayers
-    (6.8a)  Spell failure rate
+    (6.8a)  Mimic powers
     (6.8b)  Runes & Runemastery
     (6.8c)  Runespell tables
+    (6.8d)  Spell failure rate
     (6.9)   Parties, Iron Teams, Guilds
     (6.9a)  Guild halls
     (6.10)  Magic devices, skill and ability
@@ -3226,7 +3227,7 @@ strengths or weaknesses.
 Next you have to choose your class. Spellcasters like Istari or Shamans are
 physically weaker and especially hard to play for beginners.
 If you choose a spellcaster, be aware that his casting ability depends on
-either his INTelligence or his WISdom, depending on the actual class. For more
+either his intelligence or his wisdom, depending on the actual class. For more
 information about classes and their pros and cons see (6.5).
 Spellcasting involves using 'macros' (see (3.6)) and might be a bit difficult
 for beginners.
@@ -3550,17 +3551,17 @@ This line consists of the following icons that may show up:
                    You will receive extreme penalties on ranged combat.
     Yellow }       You are using a shield on your arm, reducing your
                    accuracy with your ranged weapon.
-    Light-red 'F'  You are martial arts user and your backpack is too
+    Light-red 'F'  You are Martial Arts user and your backpack is too
                    heavy, so that you don't receive Free Action from MA!
                    See (5.3a) for more detailed information.
-    Yellow (       You are martial arts user and your armour is too heavy.
+    Yellow (       You are Martial Arts user and your armour is too heavy.
                    You might receive various penalties (see (5.3a)).
                    NOTE: Up to client version 4.4.2 this can stand for both,
                    the meaning described above and the meaning of 'Blue ('
                    described below. Starting with 4.4.2a, these two were
                    separated into yellow and blue '(' icon.
     Blue (         You're a rogue or using primarily rogueish skills such
-                   as dodging or dual-wield which depend on especially
+                   as dodging or Dual-wield which depend on especially
                    flexible armour (meaning: Your total armour weight must not
                    be too high), but your armour is exceeding that limit!
                    You will lose some of the benefits, see (5.5)!
@@ -3827,7 +3828,7 @@ a Long Sword {0,+} (2d6) (+0,+0)
     Note that training weapon-related skills will also add to your overall
     +damage bonus. So your character might have +34 to-damage using a mere
     Long Sword (2d6) (+9,+15), with the remaining +19 damage coming from your
-    'Sword-Mastery' skill that you trained.
+    'Sword-mastery' skill that you trained.
 
     Also note that often it can be better to wield lighter weapons instead of
     heavier weapons, if you can attack more often during each round with them.
@@ -4297,7 +4298,7 @@ What does that mean?
          currently 'L'ooking around or something)
 )   ->  clear the keyboard buffer (removes all pending keypresses that haven't
         been processed yet due to slow character speed, so we become instantly
-        ready to perform our mana thrust spell _now_)
+        ready to perform our Manathrust spell _now_)
 *t  ->  choose the closest monster as target
 m   ->  invoke an ability
 @   ->  specify an ability code directly
@@ -4380,7 +4381,7 @@ Example 3: Assumed you have the spell Manathrust somewhere in your books and
         *tM@Manathrust\-
     and it will automatically be expanded to '\e)*tm@11\r@Manathrust\r-'.
 
-Example 4: Casting phase door would be..
+Example 4: Casting Phase Door would be..
         M@Phase Door\
     (expanded to '\e)m@11\r@Phase Door\r'.)
 
@@ -4620,9 +4621,9 @@ F12 use a magic device on the closest target        \e)*t/1-        @/1
     Your magic device ability must be good enough
     or you will keep failing; also see (6.10))
 +                                  \e)*tm@11\r@Noxious Cloud\r-    -none-
-    Cast noxious cloud spell on nearest target
--   Cast phase door.                     \e)m@11\r@Phase Door\r    -none-
-0   Cast manathrust at nearest target \e)*tm@11\r@Manathrust\r-    -none-
+    Cast Noxious Cloud spell on nearest target
+-   Cast Phase Door.                     \e)m@11\r@Phase Door\r    -none-
+0   Cast Manathrust at nearest target \e)*tm@11\r@Manathrust\r-    -none-
 
 This low level istar might be armed with a sling to support his yet weak
 magic, so the F1 macro makes sense. Assuming that he uses the numpad keys for
@@ -4758,7 +4759,7 @@ So, instead of inscribing your potions of Healing '@q1' and having a macro
 '\e)q1' you could also just have a macro '\e)q@Healing\r'.
 
 Or, instead of inscribing a Beginner Cantrips book '@m1' and macroing the spell
-manathrust with '\e)*tm@11\r9a-' you could also just make a macro
+Manathrust with '\e)*tm@11\r9a-' you could also just make a macro
 '\e)*tm@11\r@Manathrust\r-' without the need to inscribe your book.
 
 In fact you could make a macro '\e)*tm@Cast a spell\r@Manathrust\r-'.
@@ -4766,7 +4767,7 @@ In fact you could make a macro '\e)*tm@Cast a spell\r@Manathrust\r-'.
 Another example: '\e)m@11\r@Phase Door\r'.
 
 IMPORTANT: Keep in mind that call-by-name is actually case-sensitive!
-(So in the example above, 'manathrust' would not work.)
+(So in the example above, 'Manathrust' would not work.)
 
 Additional details:
 -------------------
@@ -7002,7 +7003,7 @@ Highlander Tournament (pvp, only one can win, 2+ participants)
     The item you get will be random but still depend on your character's skill
     points spent. So you should not turn in the deed before you actually spent
     your skill points. For example if you spend several points into
-    sword-mastery then _if_ you receive a weapon it will actually be a sword.
+    Sword-mastery then _if_ you receive a weapon it will actually be a sword.
     See (8.5) for details!
     Highlander Tournament rewards can theoretically end up with a higher item
     value in gold than rewards from other events. Reward items cannot be sold
@@ -7442,8 +7443,8 @@ Mimics and especially druids can use an aquatic form or a form that can swim
 easily, and they will be able to cross water in the same way, without ever
 drowning. Another way is to use a form that grants wraithform or simply a form
 that grants levitation, which is a rather common ability.
-Rangers learn how to swim at great skill at level 25, Martial arts users will
-be able to swim easily at a martial arts skill of 30.000.
+Rangers learn how to swim at great skill at level 25, Martial Arts users will
+be able to swim easily at a Martial Arts skill of 30.000.
 Ents never drown since they're made of wood, while Draconians will actually
 gain intrinsic levitation at level 30.
 Characters training the magic 'Water' or 'Nature' school will acquire
@@ -7463,11 +7464,11 @@ larger areas of water.
 Teleportation is the magical, instantaneous relocation of a player or monster.
 
 There are five main types of teleportation:
--Phase door/blink
+-Phase door/Blink
   It follows the same rules as 'teleport self', it's just named differently to
   indicate that it is limited to a rather short range (usually less than 20
   grids away).
-  The spell available to players are usually called 'phase door' while the
+  The spell available to players are usually called 'Phase Door' while the
   spell used by monsters is usually called 'blink', but again that's just a
   matter of naming.
   Note that monsters cannot blink out of vaults.
@@ -7660,11 +7661,11 @@ Swords, axes, blunt weapons (whips, hammers, morning stars etc.), polearms.
 
 You may wonder which one to choose and why. In general, if your character is
 especially skilled at one of the four masteries you might want to pick that one
-to save skill points (for example Half-Trolls get a bonus on Blunt-Mastery).
+to save skill points (for example Half-Trolls get a bonus on Blunt-mastery).
 
 Also, priests cannot use edged weapons that aren't 'blessed' (a special magical
 property, ie ego-power), so if you want to create a melee-oriented priest,
-you will usually pick blunt weapons (or 'martial arts' instead, for weaponless
+you will usually pick blunt weapons (or 'Martial Arts' instead, for weaponless
 combat, making more for a monk-style character).
 
 However, if you have a choice or don't care about a few skill points more, you
@@ -7684,7 +7685,7 @@ Polearms*  low / high           high / medium         low / mid
  Damage-wise 2h-swords with VORPAL flag can make up somewhat for the damage gap
  towards the top tier weapons of the other weapon classes.
  VORPAL mod makes an especially big difference in scenarios that are low on
- critical hits (ie no CRIT item flag or Critical-Strike skill being applied).
+ critical hits (ie no CRIT item flag or Critical-strike skill being applied).
 
 For example if you stick with dual-wielding two weapons, you might want to go
 with swords and definitely not with polearms, since there are a lot of 1h
@@ -7826,7 +7827,7 @@ Kill Dragon |       3         | It is a great bane of dragons.
 Kill Demon  |       3         | It is a great bane of demons.
 
 Same as in the 'brands' table, x1.5 will become x1.2 for ranged weapons and
-x1.17 for martial arts, x2 becomes x1.4 and x1.33 and x3 will become x1.8
+x1.17 for Martial Arts, x2 becomes x1.4 and x1.33 and x3 will become x1.8
 and x1.67 respectively.
 
 Giants, Undead, Trolls, Orcs, Dragons, Demons are all 'Evil'.
@@ -7836,7 +7837,6 @@ If several multipliers match the highest one will be used.
 For ranged weapons, the damage calculated from brands/slays applied to ammo
 dice will further be multiplied by the bow's multiplier (x2..x5, depending on
 the type of sling, bow or crossbow).
-
 
 
 (5.3a) Martial Arts, brands
@@ -7851,7 +7851,7 @@ Training Martial Arts will give you..
 -special abilities and resistances (like Free Action, see (6.2) for details).
 -extra speed and stealth bonus.
 -extra AC bonus for each part of armour that is NOT worn.
- Increasing your martial arts skill lets you wear light and even medium armour
+ Increasing your Martial Arts skill lets you wear light and even medium armour
  and still benefit from its AC.
 -a chance to grab your enemies to prevent them from casting or teleporting.
  (This chance adds to your interception skill.)
@@ -7867,7 +7867,7 @@ of several points..
 -using too heavy armour will cut your number of blows per round to half, and
  nullify your to-hit, to-dam, speed and stealth bonus from MA.
 -using a melee or ranged weapon or carrying a very heavy backpack will nullify
- the AC bonus from martial arts, and greatly reduce your number of blows per
+ the AC bonus from Martial Arts, and greatly reduce your number of blows per
  round.
 -using a melee or ranged weapon or a shield will nullify the special combat
  styles, reducing your damage.
@@ -7877,7 +7877,7 @@ of several points..
  stealth bonus.
 
 The backpack weight limit includes the weight of your equipment and is
-depending on your strength and martial arts skill. It is
+depending on your strength and Martial Arts skill. It is
 10.0 lb + (str_wgt * 2.0 lb) + ((str_wgt + 5) * rounddown(skill * 0.1 lb)).
 
 Here's a table to tell you the values for str_wgt:
@@ -8089,7 +8089,7 @@ Armour weight (concerning sneakiness/to-hit boni)
 -------------------------------------------------
 Wearing armour which is too heavy for you will reduce speed bonus from
 'Sneakiness' skill and your to-hit boni received from your dexterity and weapon
-class' mastery skill (eg Sword-Mastery).
+class' mastery skill (eg Sword-mastery).
 You will receieve a warning message, telling you:
 "The weight of your armour encumbers your movement."
 To move freely, you may wear 10.0 lb of armoury plus a strength-factor plus
@@ -10655,8 +10655,8 @@ then if a vampire (true one, not mimicked) equips it its negative boni will
 flip to positive numbers. Also vampires tend to greatly resist certain bad
 effects that heavily cursed items may exert, making for example Morgul weapons
 and some heavily cursed artifacts quite useful. Note that the curse must be
-heavy, not normal, for this bonus-flipping to work. See (6.4) "- Vampire" for
-more information.
+heavy, not normal, for this bonus-flipping to work. Look up the Vampire race
+description in (6.4) for more information.
 
 
 
@@ -11340,7 +11340,7 @@ Note that not every skill is available to every profession (class).
                                 Lets you wear heavier armour without losing
                                 dodge chance (gained from the 'Dodging' skill),
                                 or other roguish abilities like
-                                boni from dual-wielding, critical-strike,
+                                boni from dual-wielding, Critical-strike,
                                 area-searching and cloaking.
 
                                 Lets you wear heavier armour without getting
@@ -11398,7 +11398,7 @@ Note that not every skill is available to every profession (class).
 
                                 Slightly increases your chance to score
                                 critical hits in armed combat (Note: The skill
-                                'Critical-Strike' has much more effect.)
+                                'Critical-strike' has much more effect.)
 
                                 Weaponmastery will also increase your parry
                                 chance a good deal (see (6.11) for details):
@@ -11431,7 +11431,7 @@ Note that not every skill is available to every profession (class).
                                 You can always score critical hits,
                                 independent on weapon class and crit-skill.
                                 Martial artists can score critical hits too,
-                                although the Critical-Strike skill won't do
+                                although the Critical-strike skill won't do
                                 anything for them (it only helps light SWORDS
                                 not heavier than 10.0 lb).
                                 The probability to land a critical hit will be
@@ -11541,7 +11541,7 @@ Note that not every skill is available to every profession (class).
                                 (Note: Switching your combat stance costs you
                                 half a turn of energy.)
 
-        .Dual-Wield             The ability to wield two weapons at once. This
+        .Dual-wield             The ability to wield two weapons at once. This
                                 ability cannot be trained, it's always at 1.000
                                 if your character's class can dual-wield, else
                                 at zero. (So it's basically a switch.)
@@ -11586,7 +11586,7 @@ Note that not every skill is available to every profession (class).
                                 attack with both weapons, picked randomly.
 
     .Martial Arts               Ability to fight with bare hands.
-                                Martial arts users do not and cannot wield any
+                                Martial Arts users do not and cannot wield any
                                 weapons or they get penalised heavily, except
                                 for boomerangs.
 
@@ -11613,7 +11613,7 @@ Note that not every skill is available to every profession (class).
                                 provide a base interception chance if you don't
                                 have the Interception skill available on a
                                 character (see 'Interception' skill). These two
-                                interception gains from martial arts skill add
+                                interception gains from Martial Arts skill add
                                 up. (If you do have the Interception skill
                                 available, you get a base interception chance
                                 depending on your character level instead, to
@@ -11649,7 +11649,7 @@ Note that not every skill is available to every profession (class).
                                 Martial arts moves can have high damage dice
                                 of up to 8d7. Some moves have special effects
                                 such as slowing or stunning your opponent.
-                                Your character will use his Martial Arts moves
+                                Your character will use his martial arts moves
                                 automatically and somewhat randomly, but mostly
                                 choose the most powerful moves available.
 
@@ -11665,7 +11665,7 @@ Note that not every skill is available to every profession (class).
                                 (horizontally, vertically or diagonally).
 
                                 All characters that are able to train this
-                                skill or that have trained martial arts skill
+                                skill or that have trained Martial Arts skill
                                 actually gain a base interception chance:
                                 If they are able to train Interception then
                                 that base chance will depend on their character
@@ -11804,31 +11804,30 @@ Note that not every skill is available to every profession (class).
         .Udun                   Learn spells of the Udun branch.
         .Mind                   Learn spells of the Mind branch.
 
+        .Spell-power            Increases the power of learned spells by
+                                adding a bonus to the spell level.
+                                At 50, it will raise spell levels by 40%.
+                                (It won't raise the level of spells which you
+                                haven't learned yet.)
+                                Note that Spell-power ONLY affects spells of
+                                the 'Wizardry' schools!
+
     +Prayers
         .Holy Offense           Learn prayers of the Holy Offense branch.
         .Holy Defense           Learn prayers of the Holy Defense branch.
         .Holy Curing            Learn prayers of the Holy Curing branch.
         .Holy Support           Learn prayers of the Holy Support branch.
 
-    .Spell-power                Increases the power of learned spells by
-                                adding a bonus to the spell level.
-                                At 50, it will raise spell levels by 40%.
-                                (It won't raise the level of spells which you
-                                haven't learned yet.)
-                                Note that Spell-power only affects spells of
-                                the 'Magic' and 'Prayer' school!
-                                It does not affect magic of druids,
-                                mindcrafters, runemasters, or the astral school
-                                that maiar can learn.
-                                It does not affect mimic powers or magic
-                                devices either.
+    +Occultism
+        .Shadow                 Learn spells of the Shadow branch.
+        .Spirit                 Learn spells of the Spirit branch.
 
     +Druidism
         .Arcane Lore            Learn druid magic taught by arcane lore.
         .Physical Lore          Learn druid magic taught by physical lore.
 
     +Mindcraft
-        .Psycho-Power           Learn mindcrafter spells of psycho-power.
+        .Psycho-power           Learn mindcrafter spells of psycho-power.
         .Attunement             Learn mindcrafter spells of attunement.
         .Mental Intrusion       Learn mindcrafter spells of mental intrusion.
 
@@ -11885,6 +11884,10 @@ Note that not every skill is available to every profession (class).
                                 receive a small bonus in their favour.
                                 It is automatically enabled when you train the
                                 skill; you can disable the aura in 'm' menu.
+                                Being blood magic, auras will feed from your
+                                blood. This means that the speed of your hit
+                                point regeneration will be reduced while the
+                                aura is active.
 
         .Shivering Aura         Monsters that hit you are stunned.
                                 Monsters that are immune to cold and those that
@@ -11899,6 +11902,10 @@ Note that not every skill is available to every profession (class).
                                 arts will be branded by it (cold brand).
                                 It is automatically enabled when you train the
                                 skill; you can disable the aura in 'm' menu.
+                                Being blood magic, auras will feed from your
+                                blood. This means that the speed of your hit
+                                point regeneration will be reduced while the
+                                aura is active.
 
         .Aura of Death          Monsters that hit you are hit by waves
                                 of plasma and ice, alternating randomly.
@@ -11910,6 +11917,10 @@ Note that not every skill is available to every profession (class).
                                 or cold brand).
                                 It is automatically enabled when you train the
                                 skill; you can disable the aura in 'm' menu.
+                                Being blood magic, auras will feed from your
+                                blood. This means that the speed of your hit
+                                point regeneration will be reduced while the
+                                aura is active.
 
     .Mimicry                    Ability to shapechange into a monster!
                                 You also inherit the monsters abilities,
@@ -11930,7 +11941,7 @@ Note that not every skill is available to every profession (class).
                                 35.000 will cut this down by 5%, so at 50.000
                                 Mimicry shapechanging will only take 1/4 turn.
 
-    .Magic device               Mainly reduces fail chance when trying to use
+    .Magic Device               Mainly reduces fail chance when trying to use
                                 magic devices (wands, staves, rods, activatable
                                 items - see (5.9a)), increases their power and
                                 speeds up recharging of rods you carry.
@@ -12113,7 +12124,7 @@ Note that not every skill is available to every profession (class).
                                 the damage your backstab attacks deal.
 
                                 Backstabbing requires sword-type weapons or
-                                martial arts skill, in which case it transforms
+                                Martial Arts skill, in which case it transforms
                                 into neck-twisting. That means your target must
                                 possess a neck, read: A head and a torso.
 
@@ -12331,26 +12342,26 @@ turn any obstacle to mud that you could dig through, and some boots or a
 climbing set might grant you the ability to climb highest mountains. Dwarves
 also learn this ability automatically when they reach level 30.
 
-Here is what the numbers mean (we will use the Axe-Mastery skill for this
+Here is what the numbers mean (we will use the Axe-mastery skill for this
 example:
 
 +Combat                         10.500  [0.800]
     +Weaponmastery               5.250  [0.800]
-        .Axe-Mastery            15.000  [0.500]
+        .Axe-mastery            15.000  [0.500]
 
 As we can see this player has 10.5 skill points in Combat, 5.25 in
-Weaponmastery and 15 in Axe-Mastery. He just reached a new level and hence
-gained 5 skill points. Now he decides to invest them all into Axe-Mastery.
-He presses <DOWN> key until the Axe-Mastery line is selected. Now he presses
+Weaponmastery and 15 in Axe-mastery. He just reached a new level and hence
+gained 5 skill points. Now he decides to invest them all into Axe-mastery.
+He presses <DOWN> key until the Axe-mastery line is selected. Now he presses
 <RIGHT> key 5 times to invest all his 5 spare skill points here.
-Axe-Mastery will be increased by 0.500 points per invested skill point (hence
-the [0.500] on the right), leaving him at 17.5 Axe-Mastery now.
+Axe-mastery will be increased by 0.500 points per invested skill point (hence
+the [0.500] on the right), leaving him at 17.5 Axe-mastery now.
 Since sub-skills always slightly affect their parent skills, Weaponmastery
 and Combat will also be raised slightly. The result might look like this:
 
 +Combat                         10.750  [0.800]
     +Weaponmastery               6.250  [0.800]
-        .Axe-Mastery            17.500  [0.500]
+        .Axe-mastery            17.500  [0.500]
 
 
 Opposed skills
@@ -12394,25 +12405,24 @@ continue to have effect, although the character won't be able to increase them
 any further after that.
 
 Modifications for becoming 'enlightened':
-    Necromancy, traumaturgy, aura of death and shadow become disabled.
+    Necromancy, Traumaturgy, aura of death and Shadow become disabled.
 
-    Sword, blunt and polearm skill x 1.3.
+    Sword-, Blunt- and Polearm-mastery skill x 1.3.
     The four holy schools x 2.1.
     Spirit school x 2.1.
     Divination school x 1.7.
-    Light and mana runes x 1.7.
-    Fear and shivering aura x 3.0.
+    Light and Mana runes x 1.7.
+    Fear and Shivering Aura x 3.0.
 
 Modifications for becoming 'corrupted':
-    The four holy schools and spirit become disabled.
+    The four holy schools and Spirit become disabled.
 
-    Axe and martial arts skill x 1.3.
-    Fire, air, conveyance school x 1.7.
+    Axe-mastery and Martial Arts skill x 1.3.
+    Fire, Air, Conveyance school x 1.7.
     Udun school x 2.0.
-    Darkness and nether runes x 1.7.
+    Darkness and Nether runes x 1.7.
     Shadow school x 2.1.
-    Necromancy and traumaturgy x 3.0.
-    The three aura skills x 3.0.
+    All Blood Magic schools x 3.0.
 
 Note: After a skill's gain ratio has been boosted as stated above, it will be
       capped against a maximum value of 2.000, which cannot be exceeded.
@@ -12499,8 +12509,8 @@ Blows/Round
     How often per round you are able to strike with your weapon. This depends
     on your strength, dexterity, your class, your weapon.
     Spending points in specific weapon masteries will give you an additional
-    blow at 25 and at 50 (like sword or blunt mastery).
-    Tables of blows/round limits are at (5.3a) for martial arts, and at (6.5)
+    blow at 25 and at 50 (like Sword- or Blunt-mastery).
+    Tables of blows/round limits are at (5.3a) for Martial Arts, and at (6.5)
     and (6.5a) for melee weapons.
 Shots/Round
     How often per round you are able to use your ranged weapon.
@@ -12581,7 +12591,7 @@ create a character!):
     Half-elves are slightly better at searching, disarming, saving throws,
     stealth, bows, and magic, but they are not as good at hand weapons.
     Half-elves resist light intrinsically.
-    They get bonus on 'Bow-Mastery' and 'Interception' and a small bonus on
+    They get bonus on 'Bow-mastery' and 'Interception' and a small bonus on
     the magic 'Nature' school.
 
 - Elf
@@ -12591,7 +12601,7 @@ create a character!):
     also have better wisdom.
     Elves are better at searching, disarming, perception, stealth, bows, and
     magic, but they are not as good at hand weapons.
-    Elves get bonus on 'Bow-Mastery', 'Magic', 'Stealth', 'Dodging',
+    Elves get bonus on 'Bow-mastery', 'Magic', 'Stealth', 'Dodging',
     'Calmness', 'Sneakiness' and the magic 'Water' school and a large bonus on
     the magic 'Nature' school.
 
@@ -12603,7 +12613,7 @@ create a character!):
     prefer to be called burglars. They are much weaker than humans, and no good
     at melee fighting. Halflings have fair infra-vision, so they can detect
     warm-blooded creatures at a distance. Hobbits resist black breath somewhat.
-    They get bonus on 'Sling-Mastery', 'Sneakiness', 'Dodging' and a large
+    They get bonus on 'Sling-mastery', 'Sneakiness', 'Dodging' and a large
     bonus on 'Stealth'.
 
     Note:
@@ -12618,7 +12628,7 @@ create a character!):
     perception, and stealth. They have lower strength than humans so they are
     not very good at fighting with hand weapons. Gnomes have fair infra-vision,
     so they can detect warm-blooded creatures at a distance.
-    Gnomes receive bonus on 'Crossbow-Mastery' and 'Magic' and a large bonus on
+    Gnomes receive bonus on 'Crossbow-mastery' and 'Magic' and a large bonus on
     'Dodging' and 'Digging'.
 
 - Dwarf
@@ -12633,7 +12643,7 @@ create a character!):
     drawback, though. Dwarves are loudmouthed and proud, singing in loud
     voices, arguing with themselves for no good reason, and screaming out
     challenges at nearby foes. In other words, dwarves have a miserable
-    stealth. They receive a bonus on 'Axe-Mastery' and 'Climbing' and a huge
+    stealth. They receive a bonus on 'Axe-mastery' and 'Climbing' and a huge
     bonus on 'Digging'.
 
 - Half-Orc
@@ -12655,8 +12665,8 @@ create a character!):
     that a Half-Orc grimaces in their presence. They need to eat often but
     they also regenerate hit point especially quickly. Thanks to their thick
     skin, they also get an (albeit very small) bonus to armour class.
-    Half-Trolls get bonus on 'Blunt-Mastery', 'Health'. They receive a penalty
-    on 'Critical-Strike' and 'Swimming' and large penalties on 'Climbing',
+    Half-Trolls get bonus on 'Blunt-mastery', 'Health'. They receive a penalty
+    on 'Critical-strike' and 'Swimming' and large penalties on 'Climbing',
     'Swimming', 'Archery', 'Magic' and 'Sorcery'.
 
 - Dunadan
@@ -12674,7 +12684,7 @@ create a character!):
     their wisdom is sometimes suspect. They do very well in all professions.
     There are few things that they have not seen already, and experience is
     hard for them to gain.
-    High-Elves receive boni on 'Bow-Mastery', 'Magic', 'Stealth', 'Dodging'
+    High-Elves receive boni on 'Bow-mastery', 'Magic', 'Stealth', 'Dodging'
     and the magic 'Nature' school, a large bonus on 'Calmness' and a slight
     bonus on 'Swimming'.
 
@@ -12700,7 +12710,7 @@ create a character!):
     like a side of meat. They are as sturdy as Dwarves and are quite agile
     making them good fighters, rogues, and mimics. Being creatures of the
     night, Goblins have natural resistance to darkness.
-    They receive bonus on 'Boomerang-Mastery' and 'Stealing'.
+    They receive bonus on 'Boomerang-mastery' and 'Stealing'.
 
 - Ent
     The Ents are a powerful race dating from the beginning of the world,
@@ -12754,7 +12764,7 @@ create a character!):
     even while polymorphed.
     Thanks to their scaly hide they receive a small bonus to armour class,
     especially the metallic lineages - bronze, silver and gold.
-    Draconians receive a bonus on 'Attunement', 'Polearm-Mastery' and
+    Draconians receive a bonus on 'Attunement', 'Polearm-mastery' and
     'Magic devices' and a slight bonus on 'Swimming'.
 
     Table of their traits:
@@ -12933,6 +12943,11 @@ create a character!):
         also, their melee attacks will slay evil opponents intrinsically.
         Able to almost instantly sense curses on items.
 
+        Necromancy, Traumaturgy, Aura of Death and Shadow become disabled.
+        Sword-, Blunt- and Polearm-mastery skill x 1.3.
+        The four holy schools x 2.1, Spirit x 2.1, Divination x 1.7.
+        Light and Mana runes x 1.7, Fear and Shivering Aura x 3.0.
+
     Corrupted:
         Resist fire and darkness while being susceptible to good-based attacks.
         +2 bonus HP for each level above 20.
@@ -12940,11 +12955,17 @@ create a character!):
         be enveloped in a fiery aura.
         Able to take off lightly cursed items.
 
+        The four holy schools and Spirit become disabled.
+        Axe-mastery and Martial Arts skill x 1.3.
+        Fire, Air, Conveyance schools x 1.7, Udun x 2.0, Shadow x 2.1.
+        Darkness and Nether runes x 1.7, all Blood Magic schools x 3.0.
+
     Maiar start with a low profile skill chart which gets boosted on initiation
-    depending on their alignment. Their skills will be adjusted so that they
-    remain as close to their previous values as possible while the character
-    gets back any skill points that are freed up due to higher skill ratios
-    after the initiation took place, see (6.2a) for details.
+    depending on their alignment, never exceeding 2.000 though.
+    Their skills will be adjusted on initiation so that they remain as close to
+    their previous values as possible while the character gets back any skill
+    points that are freed up due to higher skill ratios after the initiation
+    took place, see (6.2a) for details.
 
     Maia get a bonus on 'Sneakiness' and 'Stealth' no matter the alignment.
 
@@ -13078,12 +13099,12 @@ create a character!):
     Dual-wield trick if you lose your items on death:
     If you die and revive, you could save a lot of money by foregoing heavy
     armour for attack power. Just buy some cheap, light armour and two cheap
-    and very light 1-handed weapons which you wield both at once (dual-wield)!
+    and very light 1-handed weapons which you wield both at once (Dual-wield)!
     The lightest weapons of each class are:
-    - Daggers (sword-mastery)
-    - Whips (blunt-mastery)
-    - Cleavers (axe-mastery)
-    - Spears (polearm-mastery)
+    - Daggers (Sword-mastery)
+    - Whips (Blunt-mastery)
+    - Cleavers (Axe-mastery)
+    - Spears (Polearm-mastery)
     Dual-wielding requires light armour. This should be adequate until you find
     some heavy armour in the dungeon, then you can switch back to 1-handed
     weapon with a shield (or to a 2-handed weapon if you have excessive enough
@@ -13177,8 +13198,8 @@ create a character!):
     'Taunt' when you learn them, which you do pretty early on. They are great
     for catching annoying monsters that try to keep their distance to you.
     (See (6.12) for details about fighting techniques.)
-    Always keep your sword-mastery skill at maximum (if you don't go for an
-    unusual build that uses martial arts instead).
+    Always keep your Sword-mastery skill at maximum (if you don't go for an
+    unusual build that uses Martial Arts instead).
 
 - Mimic
     Mimics are melee fighters who can learn how to shapechange and use the form
@@ -13285,6 +13306,13 @@ create a character!):
     that try to keep their distance to you. (See (6.12) for details.)
     Pick one of the four weapon masteries (Sword/Blunt/Axe/Polearm), or Martial
     Arts if you don't want to use weapons, and always keep it maximized.
+
+- Death Knight
+    Death Knights are unfortunate souls who were paladins in life. Unable to
+    die in peace they rose again as bloodthirsty, undead warriors.
+    They have the same abilities as paladins in all regards but they are not
+    able to utilize any kind of prayers and are susceptible to holy effects,
+    instead they command unholy blood and shadow magic.
 
 - Ranger
     Second only to adventurers regarding versatility rangers excel at a lot of
@@ -13909,7 +13937,9 @@ F: flag list
 
 S: spell list
     These spells can be cast by the monster. Most of them are available to
-    the mimic too, some of them have slightly different effects.
+    the mimic too, called 'mimic powers', some of them may have slightly
+    different effects when used by the mimic. For a list of all available
+    mimic powers see (6.8a).
     The chance to successfully use such a monster power is affected by the
     mimic's intelligence (INT).
     Depending on how frequently the monster is able to cast spells, the player
@@ -13932,7 +13962,7 @@ S: spell list
     BR_INERTIA  gives free action.
     MIND_BLAST  Insanity attacks are reduced a little bit.
     BRAIN_SMASH Insanity attacks are reduced somewhat.
-    The mana costs of mimic spells are fixed, the success chance is relatively
+    The mana costs of mimic powers are fixed, the success chance is relatively
     fixed too although it benefits somewhat from 'Magic' skill.
 
 Especially interesting spells of mimics are 'Blink' (Phase Door) and
@@ -14122,7 +14152,7 @@ form level              ring level
 Polymorph rings contain a certain amount of energy that cannot be changed,
 which determined for how long the player will keep the form until he polymorphs
 back to normal.
-If a player forges a ring, his 'Magic device' skill helps to obtain a high
+If a player forges a ring, his 'Magic Device' skill helps to obtain a high
 amount of energy in the ring.
 
 
@@ -14337,7 +14367,7 @@ Small kobold     1  Actually very weak, but it has poison resistance. This way
 (or normal kobold)  this form may help you to kill Rotting corpses (see below)
                     which have poisonous melee attacks. ;)
                     Not really useful other than that.
-Novice mage      2  Sort of weak but has 'blink' spell (aka phase door) and
+Novice mage      2  Sort of weak but has 'Blink' spell (aka Phase Door) and
                     more.
                     It occurs solo at depth 2, but in packs at depth 6!
 Novice priest    2  Sort of weak but can cast fear/curse and self-heal spells.
@@ -14452,7 +14482,7 @@ or Tomes, that contain several different spells) in their inventory.
 
 The failure rate when attempting to successfully cast a spell is usually shown
 when browsing the according spell scroll/crystal, and is determined by your
-intelligence or wisdom, and the spell's level. For details see (6.8a).
+intelligence or wisdom, and the spell's level. For details see (6.8d).
 
 Spell scrolls and some books can be purchased in store '9' (the 'book store',
 usually also sells 'Beginner Cantrips' and sometimes also Codices) or in
@@ -14502,8 +14532,8 @@ the player, when trained to a certain extent. The boni are listed below each
 school.
 
 
-Istar schools:
---------------
+- Wizardry -
+------------
 
 - Mana
 
@@ -14873,8 +14903,8 @@ Istar schools:
                     Reduce insanity influence at 40 and especially at 50.
 
 
-Priest schools:
----------------
+- Prayers -
+-----------
 (In general, holy schools are somewhat less affected by antimagic fields.)
 
 - Holy Offense
@@ -14930,7 +14960,7 @@ Priest schools:
                     Lv20: Also resist poison.                  (auto-project)
                     Required skill level for first spell level: 20.
 
-    Protection from evil.
+    Protection from evil
                     Evil creatures that try to attack you in melee might get
                     repelled, thereby preventing them from actually hitting
                     you.
@@ -15097,8 +15127,9 @@ Priest schools:
                     Keeps the hunger satisfied all the time at 50.
 
 
-Occult schools:
----------------
+- Occultism -
+-------------
+
 - Shadow
 
     Cause Fear      Scares your target.
@@ -15212,8 +15243,8 @@ Occult schools:
                     but never goes below 30% total exp loss) at 50.
 
 
-Druid schools:
---------------
+- Druidism -
+------------
 
 - Arcane Lore
 
@@ -15272,11 +15303,11 @@ Druid schools:
                     Required skill level for first spell level: 1.
 
 
-Mindcraft schools:
-------------------
+- Mindcraft -
+-------------
 (In general, mindcraft schools are less affected by antimagic fields.)
 
-- Psycho-Power
+- Psycho-power
 
     Psychic Hammer  Telekinetic power focussed to bash an enemy,
                     damaging and stunning him.
@@ -15316,7 +15347,7 @@ Mindcraft schools:
                     again as soon as the desired telekinesis transaction is
                     done. Example inscription: @PGandalf
                     Required skill level for first spell level: 35.
-                    Shared spell (see above): Psycho-Power / Attunement.
+                    Shared spell (see above): Psycho-power / Attunement.
 
     Kinetic Shield  Uses telekinetic force to set up a shield around you that
                     has a good chance to repel physical attacks or projectiles,
@@ -15374,7 +15405,7 @@ Mindcraft schools:
                     again as soon as the desired telekinesis transaction is
                     done. Example inscription: @PGandalf
                     Required skill level for first spell level: 35.
-                    Shared spell (see above): Psycho-Power / Attunement.
+                    Shared spell (see above): Psycho-power / Attunement.
 
 
 - Mental Intrusion
@@ -15465,8 +15496,9 @@ Mindcraft schools:
                     Required skill level for first spell level: 33.
 
 
-Exclusive astral school for Maiar:
-----------------------------------
+- Astral Knowledge -
+---------------------
+The exclusive astral school for Maiar.
 Instead of normal spell level, the spells of this school use an 'astral level'
 to determine damage or effect. This astral level consists to equal parts of
 your character level and your Astral Knowledge school level. This means that
@@ -15474,8 +15506,6 @@ a level 49 character with 1.000 in Astral Knowledge will still cast spells that
 deal damage and have effects as if the spell was actually at level 25 (the
 average value of 1 and 49). (Spell success chance uses the normal spell level
 though, as all other magic schools do, not the astral level.)
-
-- Astral Knowledge
 
     Power Bolt      Casts a bolt of electricity/mana/dispelling depending on
                     your alignment:
@@ -15534,60 +15564,87 @@ though, as all other magic schools do, not the astral level.)
                     This spell requires a character level of at least 62.
 
 
-(6.8a) Spell failure rate
--------------------------
-The chance to not successfully cast a spell, aka the spell fail rate is shown
-in percent when browsing a spell scroll/crystal. An exception are currently
-mimic powers which they inherit from mimicking a monster, whose fail rates are
-not shown anywhere at the moment, this might be subject to improvement.
+(6.8a) Mimic powers
+-------------------
+The monster spells ('S:' line in r_info.txt) are mostly also usable by a player
+transforming into the monster via Mimicry skill, these spells are also called
+'mimic powers', since they're not always spells in a strict sense of the word.
+(In general, monsters' summoning spells are never available as mimic powers.)
 
-The fail rate of a spell depends on..
+All mimic powers use intelligence stat to determine their failure rate.
+Their power usually depends on the level of the monster whose form the
+character is using and on the character's own level.
+As with magic spells, some mimic powers require a target, some don't.
 
-Magic schools:
-    Nearly all magic spells depend on the spell level and your INTelligence,
-    some spells however use WISdom instead of intelligence, those spells are
-    designated in (6.8) in their spell description.
-    Currently, the only magic spell using wisdom is 'Genocide'.
-Prayer schools:
-    All holy spells depend on the spell level and your WISdom.
-Occult schools:
-    Some shadow and most spirit spells use WISdom, the others INTelligence.
-Mindcraft schools:
-    All mind spells depend on the spell level and your INTelligence,
-    except for 'Charm' which uses CHaRisma.
-Druidic schools:
-    All druidic spells depend on the spell level and your WISdom.
-Astral school:
-    Some astral spells depend on the spell level and WISdom, some on the spell
-    level and INTelligence, as designated in (6.8) in the spell descriptions.
+Here is a list of all available mimic powers:
 
-In general, when you learn a new spell that starts at a high fail rate, you
-will observe a great improvement just by further training the spell's school to
-increase the spell's level. Increasing your INT or WIS (depending on what this
-particular spell uses) will also help.
-At a certain point however, usually when the spell's fail chance is already
-rather low, the spell fail rate might not go down further from increasing its
-level. At that point the only thing you can do to further reduce the spell fail
-rate is to increase the stat (INT or WIS) that the spell uses.
-
-Mimic powers use INT to determine fail rate, have a greater fail rate than
-other spells in general, and do not have a 'spell level'. Their effects are
-pretty much fixed.
-
-A spell failure rate of 0% means that you will always successfully cast the
-spell. However, certain status effects can increase your failure rate
-temporarily or even completely prevent spell-casting, even if your fail rate
-used to be 0%:
-
--Blindness
- Some spells can be cast while blind (will say so in the spell description)
--Confusion
- Some spells can be cast while confused (will say so in the spell description)
--Stun
- Stun will increase your fail chance by 15%, heavy stun even by 25%.
- When you're knocked out you can of course not cast any spells (or do anything
- at all).
-
+Shriek                  Aggravates nearby creatures and annoys nearby players.
+Fire Rocket             ..
+Arrow                   Fires an arrow, does not require bow or ammunition.
+Shot                    Fires a shot, does not require bow or ammunition.
+Bolt                    Fires a bolt, does not require bow or ammunition.
+Missile                 Fires a (physical) missile.
+Breathe Acid            ..
+Breathe Lightning       ..
+Breathe Fire            ..
+Breathe Cold            ..
+Breathe Poison          ..
+Breathe Nether          ..
+Breathe Lite            ..
+Breathe Darkness        ..
+Breathe Confusion       ..
+Breathe Sound           ..
+Breathe Chaos           ..
+Breathe Disenchantment  ..
+Breathe Nexus           ..
+Breathe Time            ..
+Breathe Inertia         ..
+Breathe Gravity         ..
+Breathe Shards          ..
+Breathe Plasma          ..
+Breathe Force           ..
+Breathe Mana            ..
+Breathe Disintegration  ..
+Breathe Toxic Waste     ..
+Throw Boulder           Hurls a boulder at a target (giants do this usually).
+Acid Ball               ..
+Lightning Ball          ..
+Fire Ball               ..
+Cold Ball               ..
+Poison Ball             ..
+Nether Ball             ..
+Water Ball              ..
+Mana Storm              .. (casts a mana ball)
+Darkness Storm          .. (casts a darkness ball)
+Mind Blast              Psi attack, similar to Psionic Blast mindcrafter spell.
+Brain Smash             Powerful psi attack, similar to Psionic Blast.
+Cause Wounds            The curse spell, eg used by priests and archpriests.
+Ball Toxic Waste        ..
+Raw Chaos               .. (casts a chaos ball)
+Acid Bolt               ..
+Lightning Bolt          ..
+Fire Bolt               ..
+Cold Bolt               ..
+Poison Bolt             ..
+Nether Bolt             ..
+Water Bolt              ..
+Mana Bolt               ..
+Plasma Bolt             ..
+Ice Bolt                ..
+Magic Missile           ..
+Scare                   ..
+Blind                   ..
+Confusion               ..
+Slow                    ..
+Paralyze                Tries to put a monster into stasis (similar to sleep).
+Haste Self              Temporarily increases your speed by 10.
+Heal                    Heals yourself, amount depends on spell level.
+Blink                   Short range teleport, like Phase Door.
+Teleport                ..
+Teleport To             Tries to teleport a monster towards you.
+Teleport Away           Tries to teleport monsters away (it's a beam!).
+Darkness                Unlights the area around you.
+Cause Amnesia           Confuses a target.
 
 
 (6.8b) Runes & Runemastery
@@ -15668,7 +15725,7 @@ critical situations. For this reason, beginner runemasters are advised to
 use basic elemental spells that they can easily acquire the according
 resistance for or stick to the Mana element, which has few adverse effects.
 
-INTelligence, DEXterity, and skill level affect spell failure rates for
+Intelligence, dexterity, and skill level affect spell failure rates for
 runespells. Runespell type generally governs the level of a spell, and is
 further modified by the runespell modifier. Highly experienced and talented
 runemasters may achieve 0% spell failure rates, but should be cautioned
@@ -15776,7 +15833,6 @@ element, and Rings of Fire Resistance are readily available in magic shops.
 
 Note that different elemental damage types are reduced more or less when
 resisted, see (5.6) Resistances & caps, Immunities, Susceptibilities for info.
-
 
 
 (6.8c) Runespell Tables
@@ -15973,6 +16029,64 @@ Time           | Sp     | EA   |        |       |       |       | EA    | Sp
 Disenchantment | AM     |      | Ba     | Ba    | Ba    |       |       |
 Ice            | SD     | BrVo |        |       |       |       | Br    |
 Plasma         | Pl     | Br   |        |       |       | Fe    | Br    |
+
+
+(6.8d) Spell failure rate
+-------------------------
+The chance to not successfully cast a spell, aka the spell fail rate is shown
+in percent when browsing a spell scroll/crystal.
+For mimic spells, the failure rate is shown next to their spell name in the
+mimic power menu (accessible with 'm').
+
+The fail rate of a spell depends on..
+
+Magic schools:
+    Nearly all magic spells depend on the spell level and your intelligence,
+    some spells however use wisdom instead of intelligence, those spells are
+    designated in (6.8) in their spell description.
+    Currently, the only magic spell using wisdom is 'Genocide'.
+Prayer schools:
+    All holy spells depend on the spell level and your wisdom.
+Occult schools:
+    Some shadow and most spirit spells use wisdom, the others intelligence.
+Mindcraft schools:
+    All mind spells depend on the spell level and your intelligence,
+    except for 'Charm' which uses charisma.
+Druidic schools:
+    All druidic spells depend on the spell level and your wisdom.
+Astral school:
+    Some astral spells depend on the spell level and wisdom, some on the spell
+    level and intelligence, as designated in (6.8) in the spell descriptions.
+
+Runecraft:
+    Runespells use dexterity, intelligence and spell level to determine failure
+    rate.
+
+Mimic powers:
+    All mimic powers use intelligence to determine fail rate.
+
+In general, when you learn a new spell that starts at a high fail rate, you
+will observe a great improvement just by further training the spell's school to
+increase the spell's level. Increasing your attributes (depending on what this
+particular spell uses, see list above) will also help.
+At a certain point however, usually when the spell's fail chance is already
+rather low, the spell fail rate might not go down further from increasing its
+level. At that point the only thing you can do to further reduce the spell fail
+rate is to increase the stat that the spell uses.
+
+A spell failure rate of 0% means that you will always successfully cast the
+spell. However, certain status effects can increase your failure rate
+temporarily or even completely prevent spell-casting, even if your fail rate
+used to be 0%:
+
+-Blindness
+ Some spells can be cast while blind (will say so in the spell description)
+-Confusion
+ Some spells can be cast while confused (will say so in the spell description)
+-Stun
+ Stun will increase your fail chance by 15%, heavy stun even by 25%.
+ When you're knocked out you can of course not cast any spells (or do anything
+ at all).
 
 
 
@@ -16205,7 +16319,7 @@ installed or changed by the current guild master.
 ---------------------------------------
 The player's "Magic Device" ability in the character overview screen is
 calculated from a base ability depending on race/class, your intelligence, and
-to the largest part from the 'Magic device' skill in the skill screen ('G').
+to the largest part from the 'Magic Device' skill in the skill screen ('G').
 It determines how well a character can make use of magical devices such as
 wands, staves, rods and activatable items (see (5.9a)).
 
@@ -16228,7 +16342,7 @@ In detail, the magic device ability does this...
  Confusion reduces your chance, EASY_USE (rods of charging/of the istari)
  greatly increases it.
 
-The 'Magic device' skill does the following...
+The 'Magic Device' skill does the following...
 -increases the power of magic devices.
 -makes rods take less time to recharge.
 -helps to reduce effects of UN_POWER attacks (does not protect the remaining
@@ -16237,7 +16351,7 @@ The 'Magic device' skill does the following...
 -makes it easier to recharge items provided you don't use scrolls to do that,
  but a real magic device (some artifacts can be activated for recharging).
 
-Magic device skill and ability have no effect on the damage output of traps
+Magic Device skill and ability have no effect on the damage output of traps
 loaded with a magic device or on recharge time of rods that are loaded inside
 trap kits.
 
@@ -16841,7 +16955,7 @@ Beginners (level 1)
   increase the total damage you inflict on enemies, since it's multiplied by
   the bow's power factor.
   Note that martial arts users can only use boomerangs, other ranged weapons
-  will nullify their martial arts skills.
+  will nullify their Martial Arts skills.
 + An appropriate melee weapon (except if using martial arts, eg Druids!)
   Check out how many blows per round you get with a light dagger, whip,
   cleaver or spear, depending on your favourite weapon class. If you get more
@@ -18052,13 +18166,13 @@ what you must actively do BEFORE turning in a deed for a reward item is:
   If you have increased your 'Magic' skill even just a little bit (note that
   increasing Mimicry will also increase Magic skill slightly!) you will have a
   chance to receive caster items (eg some hat of intelligence).
-  Especially important: Magic skills, weapon skills, martial arts skill. These
+  Especially important: Magic skills, weapon skills, Martial Arts skill. These
   determine weapon (or mage staff) reward probabilities and armour weight if
   you happen to get an armour piece. Magic classes also have a somewhat higher
   chance to get a crown instead of helmet/cap.
   Note: Critical-strike skill will aim at sword-type weapons, same as if you
-  skilled sword-mastery skill.
-  If you have Sword-Mastery and Antimagic skill, you will get a Dark Sword in
+  skilled Sword-mastery skill.
+  If you have Sword-mastery and Antimagic skill, you will get a Dark Sword in
   case you receive a weapon as reward.
 - wear roughly the appropriate type of armour (ie light vs heavy) and..
 - wield the type of weapon (dual, 1-handed or 2-handed) that you prefer.
@@ -18080,12 +18194,12 @@ what you must actively do BEFORE turning in a deed for a reward item is:
   the item, so it will not end up redundant with Draconian resistances for
   example.
 - druids will never receive a mage staff even if they haven't trained their
-  martial arts skill above the starting value yet.
+  Martial Arts skill above the starting value yet.
 
 It does not matter if a skill is trained further above 3.000 or what your
 character level is. Skills are used to 'unlock' item classes such as
 'mage staff' or 'specific melee weapon' but for example you won't have a higher
-chance to get a sword if you increase sword-mastery to 5.000 than if you only
+chance to get a sword if you increase Sword-mastery to 5.000 than if you only
 had it at the minimum threshold value of 3.000.
 
 If you qualify for multiple reward classes, which are 'specific melee weapon',
