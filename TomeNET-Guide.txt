@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 21. September 2016 - written by C. Blue (c_blue@gmx.net)
-| for TomeNET version v4.6.2 - official websites are:
+| Latest update: 7. October 2016 - written by C. Blue (c_blue@gmx.net)
+| for TomeNET version v4.7.0 - official websites are:
 | http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | http://muuttuja.org/tomenet/ (Mikael's TomeNET site)
 |
@@ -30,7 +30,9 @@ Contents
 (0) Quickstart (If you don't like to read much :)
     (0.1)   Start & play
     (0.2)   Command reference & key sets
-    (0.2a)  IRC bot commands
+    (0.2a)  Text editing keys
+    (0.2b)  Slash command reference
+    (0.2c)  IRC bot commands
     (0.3)   Important inscriptions, Word of Recall
     (0.3a)  The auto-inscription feature
     (0.4)   Typical slang/abbreviations
@@ -312,7 +314,7 @@ compile the game under '(2.1) Installing/updating TomeNET'.
  read. They don't do anything, just a short read containing some information.
 
 -If your character gains a new level it also gains skill points. To distribute
- those, invoke the skill screen with SHIFT+G. (See 3.10, 6.2 and 7.5.)
+ those, invoke the skill screen with SHIFT+G. (See (3.10), (6.2) and (7.5).)
 
 -If you don't like your character and want to delete it, you may commit
  suicide by pressing SHIFT+q or CTRL+k and double-confirming the following
@@ -489,12 +491,17 @@ z       a       use (zap) a magic rod.
 
 u       Z       use a magic staff.
 
+,       ,       or..
 g       g       pick up an item from the floor. You have to stand on the item
                 to do that. You can also pick up an item by pressing '5' on
                 the number pad while numlock is turned off. Gold is always
                 picked up automatically.
                 If you stand on a pile of different items, the top-most type of
                 item will be picked.
+                Note that ',' key has by default a "reply to last private chat"
+                macro on it, so you'll have to use 'g' key instead or delete
+                the macro from the comma key, if you want to use it to pick up
+                items.
 
 CTRL+G  CTRL+Z  pick up exactly one piece from a stack of same type of items.
 
@@ -879,9 +886,8 @@ TAB or CTRL+I
         most wounded player in general if you aren't in a party.)
 
 
-Text editing keys
------------------
-
+(0.2a) Text editing keys
+------------------------
 When typing in a line of text (eg to chat), the following control keys are
 available for text editing:
 
@@ -903,9 +909,8 @@ CTRL+A/S    Move cursor back/forward by one character.
 CTRL+D      Delete character under the cursor.
 
 
-Slash commands
---------------
-
+(0.2b) Slash commands
+---------------------
 There are also some commands that can be entered with ':' like a chat line.
 They all start with a slash '/' hence they're called slash commands:
 
@@ -1426,7 +1431,7 @@ or shorter: /tym [rs]
             on race, class and level.
 
 
-(0.2a) IRC bot commands
+(0.2c) IRC bot commands
 -----------------------
 When in an IRC channel where the 'TomeNET' bot relays chat to and from a
 game server, you may enter these IRC commands:
@@ -1447,7 +1452,7 @@ game server, you may enter these IRC commands:
 --------------------------------------------
 To inscribe an item, press the { key. To uninscribe, press }.
 You can also mass-inscribe/uninscribe items by using the commands /tag or /t
-and /untag or /ut respectively (see 0.2 for command details).
+and /untag or /ut respectively (see (0.2b) for command details).
 
 All items:
     Inscribing an item with an '!' followed by a key will cause that key to
@@ -1737,7 +1742,7 @@ GoI         Globe of invulnerability. This only exists as 'Stair GoI', see
 Gorth       Room in the dungeon, divided into 4 chambers, similar to a pit.
             Also see 'Room', 'Pit' and (4.6).
 
-GV          Greater Vault. (See 4.6)
+GV          Greater Vault. (See (4.6))
 
 GCV         Greater Checkerboard Vault (looks remotely like a checkerboard).
 
@@ -1788,7 +1793,7 @@ klevel, olevel
 Loot        Items that have been dropped by dead monsters or players and
             are waiting to be picked up by someone. :)
 
-LV          Lesser Vault. (See 4.6)
+LV          Lesser Vault. (See (4.6))
 
 mlevel, rlevel
             Somewhat more technical terms, these stand for the exact type of
@@ -2089,7 +2094,7 @@ with other players and developers via the following media:
       you to read what's going on in-game, and to chat with players simply
       with any IRC client.
       See below (1.1b) for how to set up IRC chat in detail.
-      See (0.2a) for commands you can send to the TomeNET IRC bot.
+      See (0.2c) for commands you can send to the TomeNET IRC bot.
 -Voice chat via mumble, get it from http://mumble.sourceforge.net/.
       IP is 'europe.tomenet.eu', port is '23348', password is 'tomenet'.
       For details see "(2.4) Installing voice chat".
@@ -2129,7 +2134,7 @@ Joining a channel will relay chat from and to the TomeNET server, allowing you
 to read what's going on in-game, and to chat with the players.
 (Note that not all kinds of messages are actually relayed, for example AFK
 messages are not.)
-See (0.2a) for commands you can send to the TomeNET IRC bot.
+See (0.2c) for commands you can send to the TomeNET IRC bot.
 
 Usually all IRC clients offer a possibility to configure them to connect a
 specific network (Freenode) and to join specific channels (#tomenet etc.)
@@ -2188,7 +2193,7 @@ dangers but also fantastic treasure. Players on the same server can also play
 together by forming parties and sharing their experience! Players will acquire
 new ranks as their experience grows, allowing them to learn new abilities and
 to become stronger. Morgoth is said not to show up until his servant Sauron,
-the Sorceror has been defeated. (See 1.5 for more information about Morgoth.)
+the Sorceror has been defeated. (See (1.3a) for details about Morgoth.)
 
 On their journey through wilderness and remote towns, towers and dungeons,
 characters will gain experience points that increase their level up to 50.
@@ -2199,7 +2204,7 @@ Queen respectively, or Emperor/Empress if their character is of unworldly or
 hellish mode. A player must be at least level 40 to get credit for this.
 
 When you win the game, an automatic chardump is generated in /lib/user called
-'<charname>-victory.txt' (see 8.2) which you can view with any text editor.
+'<charname>-victory.txt' (see (8.2)) which you can view with any text editor.
 Also, a screenshot is made automatically, displaying your situation, saved
 to '<charname>-victory-screenshot.xhtml'.
 (You can view xhtml files in most webbrowsers.)
@@ -2282,6 +2287,8 @@ is a chance that you will be infected by the Black Breath. This dark aura is
 able to infect other players if you come too close to them. It will drain your
 stats and permanently drain your experience. Slowly, but steadily. There are
 several possibilities to cure Black Breath, for example Sprigs of Athelas.
+Players cannot infect other players with Black Breath if they are in Bree or in
+the Training Tower, those are safe zones.
 
 Each Nazgul will drop a ring of power, which is a random artifact ring bearing
 the Nazgul's name. These rings have a lot of random mods (ie abilities) and
@@ -3725,7 +3732,7 @@ press  = 2  and toggle the client option "censor_swearing". (Requires client
 version newer than 4.4.8a.)
 
 You can also enter slash commands in the chat line. For details about slash
-commands see (0.2).
+commands see (0.2b).
 
 To type a private message to someone, enter <name>:<text>
 Example:    Hi!             <- goes to everyone
@@ -4402,7 +4409,7 @@ Here is a list of all available ability codes:
 5       Fighting techniques (see (6.12))
 6       Shooting techniques (see (6.12))
 8       Check your dodge chance (for dodging skill)
-(included in '6' now: 9       Create ammunition (for archery skill))
+(included in '6' now: 9       Craft ammunition (for archery skill))
 10      Set a monster trap (for trapping skill, see (4.7))
 11      Cast a magic spell / recite a holy prayer
 12      Draw a rune (for runecraft, see '(6.8b) Runes & Runemastery')
@@ -4679,7 +4686,7 @@ F10 zap some rod                                    \e)z1           @z1
     you will keep failing; also see (6.10))
 F11 eat something.                                  \e)E1           @E1
     (Draconians could inscribe some firestones
-    (see 5.9) instead of normal food, to quickly
+    (see (5.9)) instead of normal food, to quickly
     boost their powers if needed.)
 F12 use a magic device on the closest target        \e)*t/1-        @/1
     (Magic devices are wands, staves or rods.
@@ -5104,7 +5111,7 @@ Lev.   Experience   Lev.   Experience   Lev.   Experience   Lev.   Experience
 Death
 -----
 If a player dies, an automatic chardump is generated in /lib/user called
-'<charname>-death.txt' (see 8.2) which you can view with any text editor.
+'<charname>-death.txt' (see (8.2)) which you can view with any text editor.
 Also, a screenshot is made automatically, displaying your situation, saved
 to '<charname>-death-screenshot.xhtml'.
 (You can view xhtml files in most webbrowsers.)
@@ -5326,7 +5333,7 @@ Runes:          Auto-retaliate with the inscribed rune. The format is modifier
                 a non-damaging runespell will disable auto-retaliation.
 
 Mimic powers:   Use the /autoret or for short /ar command to set these up,
-    /ar tg      compare (0.2). Usage (t is optional for 'town-only'):
+    /ar tg      compare (0.2b). Usage (t is optional for 'town-only'):
                 /ar [t]<power>
 
 If you want an auto-retaliation-enabling inscription to only work while you are
@@ -5659,8 +5666,8 @@ See (4.5) for details about stores.
 
 Rubble-
 ':' is rubble. Characters with high enough archery skill who use a sling-type
-weapon can stand next to rubble and use their 'create ammo' ability to create
-sling ammunition from it.
+weapon can stand next to rubble and use their 'Craft Ammunition' ability to
+create sling ammunition from it.
 
 Dark Pits-
 Dark grey '^' are pits that can only be crossed if you have feather falling or
@@ -5850,7 +5857,7 @@ The 1..9 are standard shops, namely..
                         Will *identify* an item for a fee.
                         See (5.7) for more information about ID, *ID*, shops!
         Herbal Healing Service
-                        Will cure black breath for a high fee. (See 1.5 for
+                        Will cure black breath for a high fee. (See (1.3a) for
                         more information about Black Breath.)
         Morph Restoration Service
                         Restores your form to normal in case you were
@@ -5941,6 +5948,9 @@ The 1..9 are standard shops, namely..
         ..and various miscellaneous store services, of which some currently may
         not have an actual effect.
 
+
+Price limits:
+-------------
 Shops that buy and sell items will have a price limit that they will pay for
 an item a players wants to sell. The limit varies from 50,000 to 300,000 Au
 depending on the shop owner. The shop owners change regularly, if a shop makes
@@ -5950,6 +5960,9 @@ they may use the same number '1'..'9' and '+' for their entrance symbols.
 If the item is worth more than 300,000 Au maybe you can find a fellow player
 who is wealthy and in urgent need of your items.
 
+
+Item orders
+-----------
 The basic town stores also allow you to order specific basic items that they
 usually offer in their store template. These items will come without any
 hit/damage/ac enchantments or ego powers, but in their plain versions.
@@ -5964,6 +5977,9 @@ can accept or decline. If you accept, the money will be deduced from your purse
 and the shopkeeper will let you know how long the delivery of your order will
 approximately take, in in-game time. So if it takes "about an hour" that will
 be much less in real world time for you to wait.
+Note that for spells and runes you don't need to type out the full item name!
+Just typing the spell name or rune name will be sufficient.
+
 Items that are very common in that store will cost about the same amount of
 money that you'd pay when buying them the regular way, while items that occur
 only very rarely in a shop can be much more expensive to order.
@@ -5971,12 +5987,20 @@ Ordering a pile of items instead of just one will prolong the delivery time.
 You can only have one order in process at any time. If you want to order a
 different item you will have to wait until your order is delivered and fetch
 it.
+
 When you enter a shop where you had an order placed and the item has arrived
 then it will be automatically placed in your inventory. If you meanwhile
 purchase the same type of item in the shop's regular stock that will not affect
 your delivery in any way.
 The delivered item will carry an inscription containing the shop name.
+It is possible that the item arrives earlier than expected, as part of the
+store's regular stock. In that case the shop owner will inform you and hand you
+out as many of those items as possible (if you have ordered a pile of them),
+that amount will then automatically be deduced from your outstanding order.
 
+
+Shop scumming:
+--------------
 Shops regularly change their inventory on a random basis: Roughly every 33
 seconds there is a chance that some items might get dropped and/or some new
 items might get added to the store inventory.
@@ -6161,7 +6185,7 @@ The Paths of the Dead        |  Feagwath             | Doomcaller
 Angband                      |  - (*)                | -
 ------Non-town dungeons------+-----------------------+-------------------------
 Death Fate                   |  -                    | -
-The Halls of Mandos          |  -                    | -
+The Halls of Mandos (****)   |  -                    | -
 The Orc Cave                 |  Azog                 | -
 Mirkwood                     |  -                    | -
 The Old Forest               |  Old Man Willow       | Boomerang of Beor
@@ -6201,6 +6225,11 @@ When you kill Sauron, you will be able to recall out from that dungeon level!
 Note: If you kill Sauron, you will automatically also get kill credit for the
 Shadow of Dol Guldur, meaning that the Shadow won't spawn for you anymore if
 you didn't kill it before killing Sauron.
+
+(****) Getting out of the Halls of Mandos will be complemented with an entry
+into 'Noteworthy Occurances' list.
+Extermination orders in the Halls of Mandos will (same as for the IDDC) have
+its monster level depend on the floor level rather than on the player's level.
 
 
 
@@ -6702,7 +6731,7 @@ night the colours will not be accurate but darker, until you come close enough
 that the door is within your lamp's light radius.
 
 Special gimmick: You can press 'h' or use the /paint command to paint your
-house, see the "/paint" command in (0.2) for more information.
+house, see the "/paint" command in (0.2b) for more information.
 
 WARNING:
 Items on the floor within a house don't form piles! If you drop too many
@@ -6772,6 +6801,12 @@ can inscribe the items
   @S-
 which will make them unsellable, yet they will be on display on your store.
 
+You can also put up 'signs' in your store by inscribing a (non-massive)
+piece of wood "@S:" followed by the desired sign text. Signs are just for
+viewing and cannot be purchased by customers. For example inscribe any item
+in your shop this way:
+  @S:Welcome to my store!
+
 If another player buys your item, there will be a 10% fee that is cut from your
 profits.
 The rest of the price the customer paid will be imprinted into a cheque. This
@@ -6795,11 +6830,11 @@ cancelled and the customer will see a message:
 Usually, player stores may only pop up if a player doesn't have access to that
 house door. If you want to test your own player store though, you can just
 press 'h' key or use the /pstore command when standing next to your house door
-(see (0.2)).
+(see (0.2b)).
 
 To indicate that your house is a player store, you can use 'h' key or the
 "/paint" command to paint your house entrance for other players to see!
-Please see (0.2) for more information about painting.
+Please see (0.2b) for more information about painting.
 
 
 
@@ -7061,9 +7096,10 @@ location information (except if they are using the super compact @-screen
 layout that shows only two lines per player).
 
 On an Ironman server or within the Ironman Deep Dive Challenge dungeon, the
-quality of the items rewarded is boosted somewhat, while the amount of
-monsters that need to be slain is somewhat lower (especially for low level
-orders).
+amount of monsters that need to be slain is somewhat lower (especially for low
+level orders). Also, in the IDDC and in the Halls of Mandos, the monster level
+of the extermination order will depend on the floor level rather than on the
+player's level.
 
 
 Events (use /evinfo and /evsign commands to get information and to sign up)
@@ -7245,9 +7281,11 @@ Ironman Deep Dive Challenge (IDDC)
     Use the /ex command to see how much more gold you may pick up.
 
     If you make a 'slot-exclusive' IDDC character, it will start out with 300
-    extra gold, and in turn automatically be unable to pick up any more gold or
-    items of other players, and it won't get experience from eating bad food
-    either. (It cannot buy houses either, but you won't need those anyway.)
+    extra gold, get at least a 50% discount in all shops, and in turn will
+    automatically be unable to pick up any more gold or items of other players,
+    and it won't get experience from eating bad food either. (It cannot buy
+    houses either, but you won't need those anyway.)
+
     As IDDC-exclusive character you will get no experience when you kill a
     monsters outside of the IDDC. As a little extra bonus, slot-exclusive IDDC
     characters will also randomly gain knowledge of some item flavours on
@@ -7299,10 +7337,15 @@ Ironman Deep Dive Challenge (IDDC)
     On very deep floors after Nargothrond, a seasoned alchemist store may
     appear, allowing you to resupply.
 
+    Rogues should be aware that it's quite hard to steal from shops in IDDC,
+    some of the shops that you might expect to have it do not even offer a
+    steal function.
+
     Inside the challenge dungeon you can acquire an extermination order via
     /xorder command at level 1 already, instead of the usual minimum level 5.
-    On average, extermination orders in here require less monsters to be slain
-    yet provide slightly boosted item quality.
+    On average, extermination orders in here require less monsters to be slain.
+    Also, the monster level of the order will depend on the floor level instead
+    of the player's level.
 
     The IDDC is randomly using themes of all the other dungeons, the selection
     is randomly rerolled every 24 hours. The final floor of each theme might
@@ -7751,7 +7794,7 @@ Some larger weapons that should be used two-handed can also be used
 single-handed, but you will receive penalties to to-hit and to-dam bonus if
 you use it that way. Look at your character screen ('C') to compare the
 to-hit/to-dam boni and see if it's worth it. You'll see a warning message
-"You find it hard to fight with your weapon and shield.".
+"Using this large weapon together with a shield makes fighting harder."
 
 Medium weapons which 'may' be used two-handed won't give malus if used
 single-handed, but you might get more blows per round if you wield them with
@@ -7973,7 +8016,7 @@ the type of sling, bow or crossbow).
 
 (5.3a) Martial Arts, brands
 ---------------------------
-The "auto-retaliator" (see 4.1a) also works if you fight bare-handed.
+The "auto-retaliator" (see (4.1a)) also works if you fight bare-handed.
 
 Training Martial Arts will give you..
 -a bonus to-hit and to-dam.
@@ -8618,29 +8661,11 @@ Combined damage types:
 Ice             Ice attacks combine shard and cold damage.
                 Ice damage (bolt only) is (6d6)+monsterlevel.
                 Ice damage consists of 60% cold damage and 40% shards damage.
-Plasma          Plasma attacks combine raw force, electricity and immense heat.
-                Being immune to both, fire and lightning will cut damage to
-                1/9. If that's not the case two checks are applied, for fire
-                and for lightning, whose results stack with each other as
-                follows:
-                1) Fire check:
-                -Fire immunity will cut damage to 1/4. If you don't have this..
-                -Plasma resistance (very rare) will cut damage to 3/7..3/12
-                 and protect from stun effect. If you don't have this..
-                -Fire resistance will cut damage to 3/5.
-                -Fire susceptibility will increase damage by 1/2.
-                (Note that having fire immunity and plasma resistance will give
-                the damage reduction of fire immunity and the stun protection
-                of plasma resistance accordingly.)
-                2) Lightning check:
-                -Lightning resistance or immunity will cut damage to 4/5.
-                -Lightning susceptibility will increase damage by 1/3.
-                (Note that lightning resistance and susceptibility only have
-                any effect if you don't have plasma resistance.)
-                Plasma also has stun effect if sound resistance (or plasma
-                resistance) is missing.
-                Plasma resistance will also give you resistance to fire,
-                lightning and sound!
+Plasma          Plasma attacks combine raw force, electricity and, mostly of
+                all, immense heat. The usual resistances, susceptibilities
+                and immunities for fire, electricity and sound apply as
+                available.
+                Plasma also has stun effect if sound resistance is missing.
                 Breath damage is monster HP/6. Plasma breath caps at 150.
                 Plasma bolts do 10+level+(8d7) damage.
 Radiation/Nuke/ This is a poisonous attack (player suffers pure poison damage)
@@ -9187,13 +9212,13 @@ LUCK ('It affects your luck.')
         Note: Luck has NO effect on 'acquirement' and 'artifact creation'.
         Note: Luck does NOT affect which base item type drops, ie whether it is
         a dragon scale mail or a cloth hat.
-NO_MAGIC ('Antimagic shell')
+NO_MAGIC ('Anti-magic shell')
         Raises your saving throw to 95%, making you nearly immune to any
         malicious magical influence (like paralysation or slowness, but also to
         monsters cursing you). Also prevents you from using any magic device or
         casting spells. You can still use scrolls and potions though.
         For more information about Saving Throw see (6.3).
-ANTIMAGIC ('Antimagic field')
+ANTIMAGIC ('Anti-magic field')
         Prevents you from using any magic device or casting spells, also
         prevents nearby monsters and other players from casting spells (but
         not from using magic devices). You can still use scrolls and potions
@@ -9201,12 +9226,12 @@ ANTIMAGIC ('Antimagic field')
         The field has less influence on _party members_ who try to cast.
         Usage of magic devices by party members is not hindered.
         The radius is approximately the field power / 9, and is cumulative
-        to the 'Antimagic' skill. The field power is the chance of
+        to the 'Anti-magic' skill. The field power is the chance of
         suppressing a spell. It caps at 75% and is cumulative to the
-        'Antimagic' skill. Make sure to read up on antimagic skill at (6.2).
+        'Anti-magic' skill. Make sure to read up on anti-magic skill at (6.2).
         The chance to interrupt spells is quartered for your party members,
-        so they are not affected much by your antimagic field.
-        The antimagic field's radius caps at range 9.
+        so they are not affected much by your anti-magic field.
+        The anti-magic field's radius caps at range 9.
 BLESSED ('It has been blessed by the gods')
         These weapons resist cursing. Priests can use blessed weapons
         without penalties, even if they are not blunt.
@@ -9293,7 +9318,7 @@ REFLECT ('It reflects bolts and arrows.')
         damaging/killing the monster who shot at you.
 
 Weapons of Spinning
-        Spin around on activation, hitting every monster around you in a
+        On activatin spin around, hitting every monster around you in a
         radius of 1, with an extra stun effect.
 
 EASY_USE (of Simplicity, 'It is especially easy to activate.')
@@ -9351,7 +9376,7 @@ Weapons & Armour
 Blade of Chaos  Resists chaos and produces chaotic effects (see (5.8)).
 Bluesteel Blade Cannot rust (not damaged by water attacks) and are especially
                 sharp (see 'VORPAL' under (5.8)).
-Dark Sword      Dark Swords have a so-called 'antimagic field', which
+Dark Sword      Dark Swords have a so-called 'anti-magic field', which
                 prevents the user from using magic devices or casting spells,
                 and also has a chance to interrupt nearby monsters and players
                 who try to cast spells but doesn't affect their magic devices.
@@ -9360,24 +9385,24 @@ Dark Sword      Dark Swords have a so-called 'antimagic field', which
                 to-hit and to-dam values of the dark sword. Example:
                 A Dark Sword (+3,+7) has 30 - (3+7) * 3/5 = 24% chance of
                 interrupting spellcasters. The chance is further quartered for
-                party members, so they are hardly affected by your antimagic
+                party members, so they are hardly affected by your anti-magic
                 field. Usage of magic devices by party members is not hindered.
-                The radius of the antimagic field is several fields (chance
+                The radius of the anti-magic field is several fields (chance
                 to interrupt spells, divided by 9), getting smaller if the
                 chance is smaller than 30%.
                 Dark Swords never give more than 30% AM, even if tohit and
                 todam boni added together result in a negative number.
-                They also never give 'negative antimagic', 0% AM is the
+                They also never give 'negative anti-magic', 0% AM is the
                 minimum, even if tohit+todam are greater than its AM.
-                AC boni on Dark Swords won't affect the antimagic field.
-                The antimagic chance and field radius of a dark sword stacks
-                with the 'Antimagic' skill (see 6.2).
+                AC boni on Dark Swords won't affect the anti-magic field.
+                The anti-magic chance and field radius of a dark sword stacks
+                with the 'Anti-magic' skill (see (6.2)).
 
                 Note that if you dual-wield dark swords the stronger AM field
                 will override the weaker one, so they don't stack.
 
                 Similarly, if there are multiple players around nearby who have
-                antimagic fields affecting the same monster then only the
+                anti-magic fields affecting the same monster then only the
                 strongest AM field will work, overriding the weaker ones.
 Demon Hammer    Slays demons.
 Hunting Spear   Slays animals.
@@ -9699,7 +9724,8 @@ Vermin Control  Stops breeders on the map from multiplying. Doesn't have effect
 
 Wands/Rods/Staves
 -----------------
-Annihilation    Wand only: Drains 15..25% life from your target.
+Annihilation    Wand only: Drains 10..20% life from your target.
+                Unique monsters can resist. The damage drained caps at 1200.
 Clone Monster   Duplicates a monster. The duplicate, aka 'clone', does not give
                 experience, drop items, or count as form credit for mimicry
                 users.
@@ -9711,10 +9737,10 @@ Detection       Detects treasures, objects, traps, secret doors, stairs and
 Dragon's Breath These wands fire a ball of dragon odem (more powerful than
                 normal ball spell wands.) - randomly on each cast one of:
                 Fire, frost, lightning, acid or poison.
-Drain Life      Wand: Drains 10..20% life from your target, giving you 25% of
-                the drained life force.
-                Rod: Drains 10..20% life from your target, giving you 25% of
-                the drained life force.
+Drain Life      Wand/rod: Drains 10..20% life from your target, giving you 25%
+                of the drained life force.
+                Undead and nonliving monsters are unaffected, unique monsters
+                can resist. The damage drained caps at 900.
 Enlightenment   Magically maps your surroundings.
 Genocide        See 'Scrolls'.
 Havoc           Fires balls or beams of random type, the exact outcome is hard
@@ -9837,7 +9863,7 @@ Device of theft prevention
                     When equipped, greatly reduces chance of thieves succeeding
                     in stealing items from your backpack.
 Empty bottles       You can /fill these at fountains to turn them into
-                    potions. (See 0.2 for more details.)
+                    potions. (See (0.2b) for more details.)
 (Small) Firestones  These can be eaten by Draconians and players in dragon
                     forms and have various random effects (small firestones
                     have reduced duration):
@@ -9909,7 +9935,7 @@ Mummy Wrapping      Reduces your charisma slightly, and prevents other players
 Picklock            When equipped, improves your trap-disarming ability.
 Rubble ':' on the floor You can create sling ammo from this. You cannot pick
                         up rubble, just stand next to it (see (6.12)).
-Skeletons/Bones/Skulls  You can create ammunition from these if your Archery
+Skeletons/Bones/Skulls  You can craft ammunition from these if your Archery
                         skill is sufficient (see (6.12)).
 Spell scroll        Although called "scrolls" they actually persist and can be
                     used infinite times. They may however get destroyed by
@@ -9941,7 +9967,7 @@ Codex, Spellbook, Grimoire
                     the most space (5).
                     (Note that you cannot use these books if your game client
                     version is below 4.4.2!)
-Sprig of Athelas    Eat this one to cure Black Breath (see 1.5 for more
+Sprig of Athelas    Eat this one to cure Black Breath (see (1.3a) for more
                     information about Black Breath),
                     also cures poison/stun/cuts.
 Tarpaulin           When equipped a tarp prevents your inventory and equipment
@@ -9963,7 +9989,7 @@ such as..
  ability consists mainly of your 'Magic Device' skill and also somewhat of your
  intelligence.
  See (6.10) for more information on the Magic Device skill.
--whether you have trained your Antimagic skill
+-whether you have trained your Anti-magic skill
 -if you have the item equipped
 
 An activated item will usually have a cooldown (timeout) until it can be
@@ -10426,14 +10452,15 @@ HOLD            Paralyses you from afar.
 FORGET          Blanks your mind, makes you forget the dungeon map and details
                 of your items (unidentifies items).
 TRAPS           Can place traps around you (from afar).
-DISBELIEVE      Monster has an antimagic field, the strength depending on its
+DISBELIEVE      Monster has an anti-magic field, the strength depending on its
                 level.
 
-                Like training the 'Antimagic' skill, having intrinsic antimagic
-                from the DISBELIEVE flag will also shorten the duration of
-                certain magical temporary buffs and debuffs on your character!
+                Like training the 'Anti-magic' skill, having intrinsic anti-
+                magic from the DISBELIEVE flag will also shorten the duration
+                of certain magical temporary buffs and debuffs on your
+                character!
                 To see which those are and to see more information about
-                antimagic, see 'Antimagic' skill in (6.2) and 'Dark Sword' in
+                anti-magic, see 'Anti-magic' skill in (6.2) and 'Dark Sword' in
                 (5.9).
 
 DROP_GOOD       The monster usually drops enchanted items.
@@ -10632,12 +10659,12 @@ LITE            Light or blindness resistance.
                 resistance and gets amplified by susceptibility.
 
 Getting hit by higher undead creatures may also infect you with the
-Black Breath! (See 1.5 for more information about Black Breath.)
+Black Breath! (See (1.3a) for more information about Black Breath.)
 
 
 Further, monsters may have one or more spells they can cast. Breathing elements
 and shooting or throwing boulders belong to those too (but aren't affected by
-antimagic fields since they aren't 'real spells' but rather physical actions).
+anti-magic fields since they aren't 'real spells' but rather physical actions).
 
 Among the monster spells, such as casting bolt or ball spells, teleporting,
 healing, trying to blind/scare/confuse/paralyze/slow the player, summoning
@@ -10762,7 +10789,7 @@ DG_CURSE        Rarely summons a random monster on you, even if uncursed.
                 (DG_CURSE will stay, even if the 'normal' curse is broken!)
                 Greatly lowers the items value by 25000 Au.
                 This curse will be on hold while you're in a town.
-                Note that an antimagic field has a chance to suppress it.
+                Note that an anti-magic field has a chance to suppress it.
                 Having 'Holy Support' skill at 40.000 or better will completely
                 negate TY_CURSE effects.
                 ("It carries an ancient morgothian curse.")
@@ -11226,6 +11253,7 @@ Means of recharging:
 
 The power determines both, the chance of succeeding in recharging the item and
 the degree of recharging done to the item.
+Some lesser means of recharging might not be powerful enough to recharge rods.
 
 Staves and wands 'of plenty' will receive about twice as many charges from
 recharging (with the risk of breaking remaining unchanged) so look out for
@@ -11445,7 +11473,7 @@ If you rise in character levels by gaining experience, you also get skill
 points to distribute on various abilities. To invoke the skill system overview
 press 'G' (capital G!).
 If you make a mistake while distributing skill points, look up the /undoskills
-command in (0.2). "/undoskills" can only be used once per level.
+command in (0.2b). "/undoskills" can only be used once per level.
 
 
 Skills of dark grey colour cannot be used by your character at all.
@@ -11834,8 +11862,8 @@ Note that not every skill is available to every profession (class).
                                 intercept will override the others.
 
                                 Regarding spell suppression, interception
-                                combines with Antimagic in a special way, see
-                                'Antimagic' skill for details.
+                                combines with Anti-magic in a special way, see
+                                'Anti-magic' skill for details.
 
     +Archery                    Improves ranged to-damage bonus somewhat, by +1
                                 for every 5.000 increase in skill.
@@ -11843,7 +11871,7 @@ Note that not every skill is available to every profession (class).
                                 which in turn further increases hit chance.
 
                                 Allows you to learn some shooting techniques
-                                and the ability to create ammunition,
+                                and the ability to craft ammunition,
                                 accessible via 'm', see (6.12) for details.
 
                                 Increases your chance to score critical hits.
@@ -11989,6 +12017,9 @@ Note that not every skill is available to every profession (class).
                                 high as the monster level.
                                 Necromancy has no effect on undead and
                                 nonliving monsters.
+                                At 50.000 the character gains ultimate hold
+                                on his life force, rendering him immune to
+                                experience drain.
 
         .Traumaturgy            Drains mana from monsters when you inflict
                                 damage on them, replenishing your MP.
@@ -12080,42 +12111,42 @@ Note that not every skill is available to every profession (class).
                                 See (6.10) for more information on magic
                                 devices, the skill and the ability.
 
-.Antimagic                      Generated from your strong disbelief in magic
-                                an antimagic field surrounds you, preventing
+.Anti-magic                     Generated from your strong disbelief in magic
+                                an anti-magic field surrounds you, preventing
                                 nearby monsters and players from casting
                                 spells (but does not prevent them from using
                                 magic devices).
-                                This effect is cumulative with the antimagic
-                                field of a Dark Sword. (See 5.9 for more info
+                                This effect is cumulative with the anti-magic
+                                field of a Dark Sword. (See (5.9) for more info
                                 about dark swords.)
                                 It's capped at 75% chance of interrupting
                                 enemy spells. The capped chance is further
                                 quartered for party members, so they are hardly
-                                affected by your antimagic field. Usage of
+                                affected by your anti-magic field. Usage of
                                 magic devices by party members is not hindered.
-                                The radius of your antimagic field is approx.
+                                The radius of your anti-magic field is approx.
                                 the field's power / 9 and caps at range 9.
-                                Each point in Antimagic adds 1% to your
+                                Each point in Anti-magic adds 1% to your
                                 AM chance, so the max gain is +50% from skill.
                                 If you use a dark sword that gives the maximum
-                                amount of antimagic they can give (+30%) then
-                                you only need Antimagic skill at 45 instead of
-                                50 to reach the antimagic cap value of 75%
+                                amount of anti-magic they can give (+30%) then
+                                you only need Anti-magic skill at 45 instead of
+                                50 to reach the anti-magic cap value of 75%
                                 (30% from dark sword + 45% from skill = 75%).
                                 Note: While ball/bolt attacks are spells,
                                       breathing is NOT.
-                                Warriors that specialize in Antimagic are
-                                called 'Unbelievers' (The antimagic powers
+                                Warriors that specialize in Anti-magic are
+                                called 'Unbelievers' (The anti-magic powers
                                 result from their strong disbelief in magic).
 
                                 Note that as soon as you invest a point into
                                 this skill you won't be able to use any spells
                                 or magic devices (wands, staves, rods, items
                                 that can be activated) anymore!
-                                Being antimagic still allows you to use scrolls
-                                and potions though.
+                                Being anti-magic still allows you to use
+                                scrolls and potions though.
 
-                                Training the Antimagic skill will shorten the
+                                Training the Anti-magic skill will shorten the
                                 duration of certain magical temporary buffs
                                 and debuffs on your character, which are:
                                 ESP, space/time anchor, probability travel,
@@ -12124,18 +12155,18 @@ Note that not every skill is available to every profession (class).
                                 invulnerability obtained from a potion,
                                 deflection, shield.
 
-                                Regarding spell suppression, Antimagic fields
+                                Regarding spell suppression, Anti-magic fields
                                 combine with interception in a special way:
                                 The total chance to suppress a monster's
                                 attempt to cast a spell will yield diminishing
                                 returns if the monster's attempt gets hindered
-                                by both, Interception and Antimagic. This means
-                                that having high values in both, Interception
-                                and Antimagic, will still give benefits for
-                                spell suppression, but the total chance of
-                                suppression that results from applying both to
-                                a single spell casting attempt will actually
-                                come out somewhat reduced.
+                                by both, Interception and Anti-magic. This
+                                means that having high values in both,
+                                Interception and Anti-magic, will still give
+                                benefits for spell suppression, but the total
+                                chance of suppression that results from
+                                applying both to a single spell casting attempt
+                                will actually come out somewhat reduced.
 
 +Sneakiness                     Slightly increases your character speed
                                 (+7 at 50, so approx +1 every 7..8 points).
@@ -12394,7 +12425,7 @@ Note that not every skill is available to every profession (class).
                                 Increases your hit point regeneration rate:
                                  (skill_level * 2)% chance to regenerate 1.5x
                                  the normal amount of HP per turn (stacks with
-                                 REGEN items).
+                                 other regeneration effects and item flag).
                                 Increases your stamina regeneration rate.
 
                                 Helps you to recover from temporary stats drain
@@ -12504,10 +12535,10 @@ Take care on the following combinations:
         Weaponmastery   <->     Sorcery
         Archery         <->     Sorcery
         Martial Arts    <->     Sorcery
-        Antimagic       <->     excludes any type of magic and magic devices,
+        Anti-magic      <->     excludes any type of magic and magic devices,
                                 including mimicry.
                                 However, a mimicking player won't lose his
-                                current form on training in Antimagic.
+                                current form on training in Anti-magic.
                                 He just won't be able to transform ever again
                                 by using his mimic powers.
                                 His form CAN still change though, if he is
@@ -12647,9 +12678,9 @@ Blows/Round
 Shots/Round
     How often per round you are able to use your ranged weapon.
     Spending points into specific archery skills will give you additional shots
-    (see 6.2 for details).
+    (see (6.2) for details).
     Mimics may get additional shots per round if the monster form they use has
-    the ability to shoot with ranged weapons (see 6.7 for details).
+    the ability to shoot with ranged weapons (see (6.7) for details).
 Infra-Vision
     How far you can see warm-blooded monsters in the dark.
     10 ft equal a distance of 1 field.
@@ -12795,11 +12826,12 @@ create a character!):
     very stupid and slow. They make great warriors and iffy priests. They are
     bad at searching, disarming, perception, and stealth. They are so ugly
     that a Half-Orc grimaces in their presence. They need to eat often but
-    they also regenerate hit point especially quickly. Thanks to their thick
-    skin, they also get an (albeit very small) bonus to armour class.
-    Half-Trolls get bonus on 'Blunt-mastery', 'Health'. They receive a penalty
-    on 'Critical-strike' and 'Swimming' and large penalties on 'Climbing',
-    'Swimming', 'Archery', 'Magic' and 'Sorcery'.
+    they also regenerate hit point especially quickly (same as if wearing an
+    item providing regeneration, doesn't stack with item ability). Thanks to
+    their thick skin, they also get an (albeit very small) bonus to armour
+    class. Half-Trolls get bonus on 'Blunt-mastery', 'Health'. They receive a
+    penalty on 'Critical-strike' and 'Swimming' and large penalties on
+    'Climbing', 'Swimming', 'Archery', 'Magic' and 'Sorcery'.
 
 - Dunadan
     Dunadain have their constitution sustained. Dunadain are a race of hardy
@@ -12865,9 +12897,9 @@ create a character!):
     Ents intrinsically resist the force of unleashed water and their bark skin
     provides a small bonus to armour class.
     They get bonus to 'Health' and a large bonus on 'Calmness' and on the magic
-    schools 'Earth' and 'Water'. They receive a large penalty on 'Fire' school,
-    a penalty on 'Axe-mastery' and a small penalty on 'Sword-mastery'. They
-    cannot train 'Climbing' at all.
+    schools 'Earth', 'Water' and 'Nature'. They receive a large penalty on
+    'Fire' school, a penalty on 'Axe-mastery' and a small penalty on
+    'Sword-mastery'. They cannot train 'Climbing' at all.
 
 - Draconian
     These humanoid half-breeds of dragon and man surpass common humans in all
@@ -12978,7 +13010,7 @@ create a character!):
     conjure holy fire or utilize magic of water or nature school. Neither can
     they make use of mimicry techniques (with the exception of vampire bat,
     see below) or holy or spirit spells. They are unable to try and suppress
-    magic, but can make use of items that provide antimagic effects.
+    magic, but can make use of items that provide anti-magic effects.
     Aside from darkness they also resist sanity-draining effects (somewhat),
     time, nether, poison, and it's hard to drain their life force - as a
     specialty this is also true for life force drained by items a vampire has
@@ -13062,7 +13094,8 @@ create a character!):
     of all races since they are either greatly respected or feared by all other
     creatures.
     They gain experience extremely slowly, and rarely need to feed before
-    initiation. Afterwards they have no more need for any worldly food at all.
+    initiation. Afterwards they have no more need for any worldly food at all
+    (and they cannot become gorged either).
     Alignment-dependant boni are..
 
     Enlightened:
@@ -13200,7 +13233,7 @@ create a character!):
     heavy armour which dual-wielding doesn't.
     Warriors have more melee attacks per round than any other class.
     They may decide to become 'Unbelievers' by spending points irreversibly
-    into the 'Antimagic' skill. As soon as they spend the first point here
+    into the 'Anti-magic' skill. As soon as they spend the first point here
     they will immediately become unable to use any magic wand/staff/rod!
     The full opposite of sorcerers, unbelievers so strongly despise magic that
     not only do they refuse to use magic spells, they refuse all training in
@@ -13208,7 +13241,7 @@ create a character!):
     trying to use a magic item, although they can still quaff potions and read
     scrolls. Because they are so unattuned to magic, trained unbelievers will
     suppress any sort of magic from occurring around them at high probability,
-    which is dubbed 'antimagic field'. They can further strengthen it by
+    which is dubbed 'anti-magic field'. They can further strengthen it by
     wielding a Dark Sword (see (5.9)).
     Warriors can also choose to become monk-like fighters, by training the
     'Martial Arts' skill. This will require them to wear no armour or only very
@@ -13389,7 +13422,7 @@ create a character!):
     An Archer is very bad at melee, being only better than mage-like classes.
     Archers will receive an array of special techniques to their disposal from
     training the 'Archery' skill, such as setting up a precise sniping shot at
-    a target asleep or how to create ammunition from rubble or from the bones
+    a target asleep or how to craft ammunition from rubble or from the bones
     of their opponents (see (6.12)), accessible via 'm' key or macro wizard.
 
     The first thing you should do when you created your character is making
@@ -14001,7 +14034,8 @@ F: flag list
                 These immaterial forms also drain the hit points of their
                 user.
     KILL_WALL   The mimic will dig *easily* through walls.
-    REGENERATE  Faster hit point regeneration.
+    REGENERATE  Faster hit point regeneration (same as item ability, doesn't
+                stack with regeneration obtained from item flag).
     REFLECTING  Gives 'reflect' ability to the player, see (5.8) for details.
                 (Side note about monster reflection in general:
                 The 'REFLECTING' flag on monsters gives them a flat 50% chance
@@ -14016,8 +14050,8 @@ F: flag list
     NO_STUN     Sound resistance.
     NO_CUT      The player can't be cut and won't bleed continously from
                 wounds.
-    DISBELIEVE  Will increase the player's antimagic field by
-                ((monsterlevel / 2) + 10) percent. The range of the antimagic
+    DISBELIEVE  Will increase the player's anti-magic field by
+                ((monsterlevel / 2) + 10) percent. The range of the anti-magic
                 field is increased by ((monsterlevel / 50) + 2) fields.
     ARROW_1, ARROW_2, ARROW_3
                 The player will receive an extra shot per round with slings or
@@ -14089,7 +14123,7 @@ S: spell list
     About specific spells:
     BR_xxx      (breathing) will give the according resistance to the player
                 (if that specific attack CAN be resisted at all).
-    BR_PLASMA   gives plasma & fire resistance.
+    BR_PLASMA   gives fire immunity and resistance to electricity and sound.
     BR_GRAVITY  gives feather falling.
     BR_INERTIA  gives free action.
     MIND_BLAST  Insanity attacks are reduced a little bit.
@@ -14378,12 +14412,11 @@ Elder aranea            speedy and smart (INT bonus) greater spider;
                         immune to either fire or poison;
                         susceptible to 'good' and to light;
                         can't be confused or paralyzed;
-                        regenerates HP quickly;
+                        regenerates HP quickly (same as item flag);
                         has a medium array of spells at its disposal
 
 Plasma hound            speedy;
-(Code 726)              resists plasma (implying lightning and sound
-                        resistance too), light; immune to fire;
+(Code 726)              immune to fire, resistant to lightning and sound;
                         susceptible to cold;
                         can't be stunned (by magic), cut, confused or
                         paralyzed;
@@ -14456,8 +14489,8 @@ Level 60:
 Firebird                speedy and tough; can fly and passes most terrains;
 (Code 1127)             fiery attacks and fire aura;
                         immune to fire and susceptible to cold;
-                        resists poison, plasma and light;
-                        regenerates HP quickly;
+                        resists poison, sound and light;
+                        regenerates HP quickly (same as item flag);
                         can breathe fire and light
 
 (*) "Aquatic" means that this form requires deep water to breathe, you will get
@@ -14573,7 +14606,8 @@ Uruk            16  Good HP, good melee damage, good AC, +1 extra shot w/
                     a confusion effect (which makes fighting it in close combat
                     a bit dangerous).
                     (Does not occur in packs.)
-*Forest troll   17  High HP, good AC, can pass trees, gives 'HP regeneration'.
+*Forest troll   17  High HP, good AC, can pass trees, gives 'HP regeneration'
+                    (same as item flag).
 *Earth spirit   17  Useful only for shamans because it has no limbs!
                     Since this is an 'E' form, shamans learn it very quickly.
                     Similar to Air spirit (see further above) this form comes
@@ -14616,11 +14650,21 @@ The failure rate when attempting to successfully cast a spell is usually shown
 when browsing the according spell scroll/crystal, and is determined by your
 intelligence or wisdom, and the spell's level. For details see (6.8d).
 
+Some spells have an instant effect, other spells have a lasting effect over a
+certain duration, most commonly storm-type or cloud-type spells which deal
+damage over time. Such spells that have lasting effects on the map grids do not
+stack! For example, casting Noxious Cloud and immediately afterwards Vapor will
+cause the Noxious Cloud getting replaced by Vapor on all map grids where they
+would overlap.
+
 Spell scrolls and some books can be purchased in store '9' (the 'book store',
 usually also sells 'Beginner Cantrips' and sometimes also Codices) or in
 '7' (the 'black market' - very expensive but you often find tomes here!).
 Book stores in higher-level towns on average also tend to sell higher-level
-spells.
+spells. You can also use the 'o' key in the book store to order specific
+spells! Note that in the book store it is sufficient to just enter the spell
+name when ordering, you don't need to type out the full item name of the
+spell scroll/crystal.
 
 Note that you must spend enough points into a particular magic school (or
 into sorcery) for the spell turning from grey into green in your spell book,
@@ -14857,6 +14901,7 @@ school.
                     Shared spell (see above): Air, Nature.
 
     Regeneration    Increases your hit point regeneration rate.
+                    (Stacks with other regeneration effects and item flag.)
                     Required skill level for first spell level: 20.
 
     Grow Trees      Grows trees quickly around you.
@@ -14867,7 +14912,8 @@ school.
                     Required skill level for first spell level: 30.
 
     BONI:           Regeneration (faster hit point regeneration, same as from
-                    items that provide regeneration) at 30,
+                    items that provide regeneration, so doesn't stack with
+                    item flag regeneration) at 30,
                     pass trees and water easily at 30,
                     poison resistance at 40.
 
@@ -15040,7 +15086,7 @@ school.
 
 - Prayers -
 -----------
-(In general, holy schools are somewhat less affected by antimagic fields.)
+(In general, holy schools are somewhat less affected by anti-magic fields.)
 
 - Holy Offense
 
@@ -15071,10 +15117,14 @@ school.
     Chaos Bolt      Channels the powers of chaos into a bolt attack.
                     Required skill level for first spell level: 30.
                     Shared spell (see above): O.Shadow, H.Offense.
+                    This spell cannot be not found in the Holy Offense tome.
 
     Doomed Grounds  Similar to 'Drain Life', weaker, but affects a whole area.
+                    Unique monsters may resist, undead and nonliving monsters
+                    are unaffected.
                     Required skill level for first spell level: 40.
                     Shared spell (see above): H.Offense, O.Shadow.
+                    This spell cannot be not found in the Shadow tome.
 
     Earthquake      Creates a local earthquake.
                     Required skill level for first spell level: 42.
@@ -15129,6 +15179,7 @@ school.
                     -any malicious effects such as poisoning, fear, blindness,
                      confusion, paralyzation, slowness, stun or cuts,
                     -nexus, polymorph and teleportation effects.
+                    Martyrdom doesn't protect your inventory from harm though.
                     The heavens won't accept another martyrium until 1000
                     seconds have passed.
                     Note: To check whether you can use the spell again,
@@ -15182,7 +15233,7 @@ school.
     Faithful Focus  Cure hallucinations and insanity.          (auto-project)
                     Required skill level for first spell level: 21.
 
-    Soul Curing     Cures Black Breath (See 1.5 for more information about
+    Soul Curing     Cures Black Breath (See (1.3a) for more information about
                     Black Breath).                             (auto-project)
                     Required skill level for first spell level: 25.
 
@@ -15199,6 +15250,7 @@ school.
 
     BONI:           Improves HP regeneration rate extraordinarily the further
                     it is trained above 30.
+                    (Stacks with other regeneration effects and item flag.)
                     Reduces duration of various bad effects on the body at
                     30 (blindness, poison) / 40 (stun, cuts) / 50
                     (hallucination).
@@ -15249,7 +15301,8 @@ school.
                     Required skill level for first spell level: 33.
 
     BONI:           Completely Suppresses DG_CURSE and TY_CURSE at 40.
-                    Keeps the hunger satisfied all the time at 50.
+                    Keeps the hunger satisfied all the time at 50
+                    (you also cannot become gorged anymore).
 
 
 - Occultism -
@@ -15295,6 +15348,7 @@ school.
     Chaos Bolt      Channels the powers of chaos into a bolt attack.
                     Required skill level for first spell level: 30.
                     Shared spell (see above): O.Shadow, H.Offense.
+                    This spell cannot be not found in the Holy Offense tome.
 
     Nether Bolt     Channels lingering nether into a bolt attack.
                     Required skill level for first spell level: 30.
@@ -15303,11 +15357,19 @@ school.
 
     Drain Life      Drains life from a non-undead and non-nonliving creature
                     and returns a part of it to your hit points.
+                    Unique monsters may resist, undead and nonliving monsters
+                    are unaffected. Damage caps at 900.
                     Required skill level for first spell level: 37.
+                    Shared spell (see above): O.Shadow, Necromancy.
+                    (Necromancy isn't actually a school, but a normal skill.)
 
-    Doomed Grounds  Similar to 'Drain Life', weaker, but affects a whole area.
+    Doomed Grounds  Temporarily applies a weak annihilation effect to an area.
                     Required skill level for first spell level: 40.
                     Shared spell (see above): H.Offense, O.Shadow.
+                    This spell cannot be not found in the Shadow tome.
+
+    Darkness Storm  Conjures up a storm of darkness.
+                    Required skill level for first spell level: 42.
 
     BONI:           At 30 grants darkness resistance and a stealth bonus that
                     increases the further the school is trained.
@@ -15432,7 +15494,7 @@ school.
 
 - Mindcraft -
 -------------
-(In general, mindcraft schools are less affected by antimagic fields.)
+(In general, mindcraft schools are less affected by anti-magic fields.)
 
 - Psycho-power
 
@@ -16032,7 +16094,7 @@ Bolt       |   5 | Fires a single target bolt, may be reflected.     | Beam
 Cloud      |  10 | Damages an area about your target over time.      | Storm
 Sign   (*) |  15 | Specific buff or effect, see Sign Effects.        | Glyph
 Ball       |  20 | Targeted area damage that diminishes with radius. | Swarm
-Wave       |  25 | High damage in an expanding area about yourself.  | Dispel
+Wave       |  25 | High damage in an expanding area about yourself.  | Surge
 Sigil  (&) |  30 | Grants worn equipment the according resistance.   | Boon
 Burst      |  35 | Focussed area damage, full damage across radius.  | Flare
 
@@ -16049,7 +16111,7 @@ Beam       |  15 | Fires a beam, damaging all grids in a line.       | Bolt
 Storm      |  20 | A high damage, radius 1 cloud that follows you.   | Cloud
 Glyph  (*) |  25 | Set or retrieve a damaging glyph of warding.      | Sign
 Swarm      |  30 | Fires a spread of level/10, radius 1 mini balls.  | Ball
-Dispel     |  35 | Instantly damages all monsters in line of sight.  | Wave
+Surge      |  35 | Instantly damages all monsters in line of sight.  | Wave
 Boon   (&) |  40 | Enhances worn equipment, see Enhanced Sigil Boni. | Sigil
 Flare      |  45 | High damage non-reflectable bolt, 33% backlash.   | Burst
 
@@ -16075,12 +16137,12 @@ Darkness | Nexus    | Gravity        | Mass Teleport-To  | Pulls monsters.
 Darkness | Nether   | Frost          | Infusion      (P) | Brand, resist cold.
 Darkness | Chaos    | Acid           | Infusion      (P) | Brand, resist acid.
 Darkness | Mana     | Poison         | Infusion      (P) | Brand, resist pois.
-Nexus    | Nether   | Shards         | Dig               | Breaks walls.
+Nexus    | Nether   | Shards         | Dig               | Breaks walls/doors.
 Nexus    | Chaos    | Sound          | Disarm            | Breaks traps/doors.
 Nexus    | Mana     | Time           | Haste         (P) | Temporary speed.
 Nether   | Chaos    | Disenchantment | Resistance    (P) | Base (four) resists.
-Nether   | Mana     | Ice            | Ice Shield        | AC, ice damage.
-Chaos    | Mana     | Plasma         | Plasma Shield     | AC, plasma damage.
+Nether   | Mana     | Ice            | Ice Shield        | +AC, ice damage.
+Chaos    | Mana     | Plasma         | Plasma Shield     | +AC, plasma damage.
 
 Enhanced Sigil Boni
 -------------------
@@ -16093,7 +16155,7 @@ staves, boomerangs, and crowns (see (8.4) Artifact Creation).
 Note: Non-enhanced sigils will always produce the element's according resist.
 
 Abbreviations (in alphabetical order):
-AM - Antimagic shell
+AM - Anti-magic shell
 Au - Aura
 Ba - Base resist (acid/elec/fire/cold)
 Bl - Blind resist
@@ -16287,7 +16349,7 @@ Parties:
     Be aware that his houses will be wiped too, so the party might lose quite
     an amount of items that way.
 
-    'Antimagic fields' of fellow party members have greatly reduced effect
+    'Anti-magic fields' of fellow party members have greatly reduced effect
     on spell-users in the same party, to allow the party to still be a vital
     combination. Usage of magic devices by party members is not hindered.
 
@@ -16316,6 +16378,9 @@ Parties:
     If you aren't in a party, you will see "Add yourself to party" instead!
     This will allow you to add this character to a party, provided that at
     least one of your other characters is already a member of it.
+    This does not work for cross-adding to nether realm parties.
+    It only works for cross-adding to IDDC parties if your already partied
+    character is currently in the IDDC.
 
 -Delete a player from your party
     This can only be done by the party owner.
@@ -16659,13 +16724,13 @@ The techniques are as follows:
         Listen carefully to every sound in your surroundings, thereby locating
         creatures. Some entities are so quiet that they cannot be detected this
         way though.
-    Flash bomb          4 stamina
+    Flash Bomb          4 stamina
         You throw down a flash bomb that causes a flash of light, blinding
         your opponents for a short time, giving you opportunity to escape or
         kill them off while they are running around in confused state.
         See (4.12) for which monsters are (not) affected by blindness.
         (Throwing a flash bomb costs a turn of energy.)
-    Shadow run          10 stamina, kings/queens only!
+    Shadow Run          10 stamina, kings/queens only!
         You will move at blinding speed, your silhouette turning shadowy.
         Ranged attacks will hardly be able to pin you down, you will act at
         increased speed and you cannot be intercepted.
@@ -16683,21 +16748,21 @@ The techniques are as follows:
 
     Shooting techniques:
     --------------------
-    Flare missile       2 stamina      (4.000 Archery)
+    Flare Missile       2 stamina      (4.000 Archery)
         Prepares an oil-drenched shot for the next time you shoot, which will
         burn brightly, lighting up the area where it lands or hits a wall.
         If that spot is inside a room, the whole room will be lit up.
         This technique consumes 1 flask of oil and your shot/arrow/bolt.
         Note that this destroys magic ammunition too.
         (Preparing a flare missile costs a turn of energy.)
-    Precision shot      7 stamina      (8.000 Archery)
+    Precision Shot      7 stamina      (8.000 Archery)
         You aim your next shot carefully, costing you a turn. The next shot
         you fire however will receive a great damage bonus, even more so
         against fleeing opponents. Useful opener against sleeping monsters.
         Aiming will be interrupted by most actions, including walking.
         (Aiming precisely costs a turn of energy.)
-    Create ammunition   -              (10.000 Archery)
-        Create ammunition for your currently equipped ranged weapon from
+    Craft Ammunition    -              (10.000 Archery)
+        Craft ammunition for your currently equipped ranged weapon from
         bones, skeletons or broken sticks in your inventory or from a pile of
         rubble (':') next to your character.
         If you wield a bow or crossbow, you'll need to have bones, skeletons or
@@ -16712,15 +16777,15 @@ The techniques are as follows:
         (the total weight of that inventory slot determines the stack size).
         The level of the raw materials has no effect on the outcome.
         (Creating ammunition costs a turn of energy.)
-    Double-shot         1 stamina*     (16.000 Archery)
+    Double Shot         1 stamina*     (16.000 Archery)
         (*: 20% chance per turn of actively using it to drain 1 stamina.)
-        Toggle, making you enter or leave double-shot mode. While active, you
+        Toggle, making you enter or leave double shot mode. While active, you
         will fire 2 projectiles at once on each shot, dealing way less damage
         than a single shot though. Useful to eradicate weak critters.
         Note: If your stamina drops below 1 you will continue to fire
-              normally, but not leave double-shot mode. That means as soon as
-              you get stamina back you'll start firing double-shots again.
-              To permanently leave double-shot mode, you have to toggle it
+              normally, but not leave double shot mode. That means as soon as
+              you get stamina back you'll start firing double shots again.
+              To permanently leave double shot mode, you have to toggle it
               explicitely in the 'm' menu.
         (Double-shooting does not cost more energy than shooting normally.)
     Barrage             9 stamina      (25.000 Archery)
@@ -17035,7 +17100,7 @@ Higher characters (up to 35)
   to give you Black Breath.
   You can leave the sprig in your house since Black Breath saps your soul very
   slowly, so there should be enough time to finish business in the dungeon and
-  recall to town afterwards to eat a sprig. (See 1.5 for more information
+  recall to town afterwards to eat a sprig. (See (1.3a) for more information
   about Black Breath.)
 + Scrolls of *Remove Curse*. These are expensive in the black market, but are
   sometimes sold in the temple cheaply, so always check the temple when you
@@ -17161,7 +17226,7 @@ Higher characters (up to 35)
 + Try to Get Confusion Resistance, so you can always read teleport scrolls!
   Note that chaos resistance also provides confusion resistance.
 + Get Nexus Resistance. Nexus attacks can scramble your body, swapping your
-  stats, which can mess up your character. (See 5.6.)
+  stats, which can mess up your character. (See (5.6).)
 + Try to get Blindness Resistance, so you can always read teleport scrolls!
   Helms or Caps of seeing give this!
 + Before venturing into Mordor you should have basic (fire/cold/lightning/acid)
@@ -17473,7 +17538,7 @@ Mistakes / Carelessness:
  quickly.
 
 -Teleport out of trouble
- If you are not an antimagic-user, you should buy a staff of teleportation as
+ If you are not an anti-magic-user, you should buy a staff of teleportation as
  soon as possible since it can take you out of dangerous situations.
  However, the staff is no guarantee :)
  After you bought it, try if you can actually use it well or if you keep
@@ -17546,6 +17611,34 @@ Teamplay:
 
 -Make sure you stick together with your team mates. If you wander off instead
  of staying close you will greatly increase your risk of dying to something.
+
+
+Manage your spells and items:
+-----------------------------
+It can happen often that you die in a specific situation that you could have
+survived had you actually used everything at your disposal, that you forgot
+about, either because..
+-you panicked or because
+-you expected a new, strong opponent to perform just as weakly as the other
+ hundred monsters you slew before even though it gives away that it is special
+ by its blinking colour or by being represented by a symbol/letter that you are
+ not familiar with and haven't seen before in that dungeon.
+
+Some examples:
+-Forgetting to apply a buff, such as a berserk strength potion or resist heat
+ against strong fire breathers (which are one of the early threats in the game)
+-Neglecting to use a protective/defensive spell before engaging in a fight
+-Not casting 'damage-add' spells, ie spells that don't deal high damage but
+ that deal _additional_ damage to your main damage spells, which is a welcome
+ bonus that can make a difference. Examples are mainly storm-type spells but
+ can also be cloud spells, ie all spells that continue to deal damage over time
+ after being initially cast, allowing you to cast direct damage spells in
+ addition to them being active, increasing your total overall damage output.
+-Not using items because you weren't aware of their beneficial uses. Such as
+ throwing a potion of salt water at a pack of monsters that is trying to
+ surround you, to temporarily blind them (which has the same result as applying
+ confusion state to them), allowing you to either escape or kill them while
+ they're groping around blindly, even though it only lasts for a moment.
 
 
 
@@ -17624,6 +17717,11 @@ spells - compare (4.12)).
 
 -Minas Anor, Lothlorien and especially Khazad-dum can spawn swordmasters or
  even grand swordmasters, which can disarm you and deal heavy damage. Beware.
+
+-Before challenging a dungeon boss, look it up in the monster lore (press ~7)
+ because dungeon bosses sometimes have extraordinary abilities or stats that
+ you want to be aware of. They do give extraordinary amounts of experience
+ points and sometimes special item drops too.
 
 
 
@@ -18058,7 +18156,7 @@ Mage staves
 Boomerangs (also see 'Weapons' above)
         Extra shots
 Dark swords (also see 'Weapons' above)
-        Increased antimagic (not over 30% in total, see (5.9)).
+        Increased anti-magic (not over 30% in total, see (5.9)).
 Ammunition
         All elemental brands (acid/elec/fire/cold/poison)
         All SLAY mods
@@ -18209,7 +18307,7 @@ General mods:
         Slow digestion
         Faster mana regeneration
         Faster HP regeneration
-        Antimagic shell
+        Anti-magic shell
             (Legendary saving throw is raised to 95% cap)
 
 
@@ -18231,7 +18329,7 @@ Items cannot give more than +3 extra attacks. Gloves can only give up to +2.
 Items cannot give more than +3 life (+30% base hit points).
 Items that give both extra attacks and life are capped at +1.
 Items that add mana, give mana regeneration or are blessed will never have an
- antimagic shell.
+ anti-magic shell.
 
 Headgear cannot give more than +6 infra-vision.
 Headgear cannot give more than +3 speed.
@@ -18298,7 +18396,7 @@ what you must actively do BEFORE turning in a deed for a reward item is:
   chance to get a crown instead of helmet/cap.
   Note: Critical-strike skill will aim at sword-type weapons, same as if you
   skilled Sword-mastery skill.
-  If you have Sword-mastery and Antimagic skill, you will get a Dark Sword in
+  If you have Sword-mastery and Anti-magic skill, you will get a Dark Sword in
   case you receive a weapon as reward.
 - wear roughly the appropriate type of armour (ie light vs heavy) and..
 - wield the type of weapon (dual, 1-handed or 2-handed) that you prefer.
@@ -18384,8 +18482,7 @@ The differences between Ironman ruleset and normal servers are as follows:
    required mimicry skill to actually see the learn-message show up.)
   -Item level restrictions are disabled and have no effect.
   -Extermination orders can be acquired as early as at level 3 instead of level
-   5, and the quality of the rewarded items is somewhat boosted on average,
-   while the amount of monsters that needs to be slain is even somewhat lower.
+   5 and the amount of monsters that needs to be slain is even somewhat lower.
   -Temporary luck bonus from deeds is somewhat longer.
   -Usually, scheduled artifact resets happen less frequently (if at all).
    (See (5.9b) for more information about artifact resets.)
@@ -19015,7 +19112,7 @@ PROBLEM 21: My (mixer) settings or window positions (MS Windows only) aren't
 SOLUTION:   Don't use ALT+F4 or the 'x' button in the title bar of the game
             window to quit the game. It will result in skipping the normal exit
             routine, which asks you to save chat and which also saves certain
-            settings. Instead, use CTRL+Q for 'save & quit' (compare 0.2).
+            settings. Instead, use CTRL+Q for 'save & quit' (compare (0.2)).
 
 PROBLEM 22: When I try to login, I get a 'security violation'.
 SOLUTION:   Either your host name (that's your PC's network name you can set in
