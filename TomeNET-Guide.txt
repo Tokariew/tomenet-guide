@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 8. October 2016 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 11. October 2016 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.7.0a - official websites are:
 | http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | http://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -14156,9 +14156,13 @@ Yeeks           Feather falling.
 All animals     Able to pass trees.
 All spiders     Able to pass mountains, able to pass spider webs.
 All ghosts      See invisible, Infra-vision +4 (stacks with undeads' +1 bonus).
+                Ghosts are susceptible to light.
+                Almost all ghosts can pass solid walls.
 All orcs        Resist darkness.
 All trolls and giants
                 Sustain strength.
+All monsters with stone skin (HURT_ROCK flag)
+                Shard resistance.
 All dragonriders
                 ESP_DRAGON at level 5, feather falling,
                 levitation at level 30.
@@ -14166,7 +14170,7 @@ All evil creatures
                 Becomes susceptible to certain 'good' or 'holy' effects.
 All undead creatures
                 Resist darkness, blindness, poison (usually immunity, depends
-                on ~7 flags);
+                on ~7 flags), time and nether;
                 can't bleed (no_cut), infra-vision +1, insanity attacks are
                 reduced by a little bit.
                 Also helps somewhat against the effects of encountering an
@@ -14184,7 +14188,7 @@ All greater undead creatures
                 See 'All undead creatures' above, and in addtion they get
                 another +4 bonus to infra-vision (ie +5 in total).
 All greater demons (capital 'U')
-                Resist poison (usually immunity, depends on ~7 flags).
+                Resist poison (usually immunity, depends on ~7 flags) and time.
                 Take 2x damage from holy orbs or holy fire and suffer
                 from a couple of 'good' effects/spells (similar to undead).
 All non-living creatures
@@ -15315,6 +15319,7 @@ school.
 
     Cause Fear      Scares your target.
                     Lv18: Scares all nearby creatures.
+                    (This spell uses WISDOM to determine fail-rates!)
                     Required skill level for first spell level: 1.
 
     Blindness       Blinds your target.
@@ -15349,11 +15354,13 @@ school.
                     Required skill level for first spell level: 30.
 
     Chaos Bolt      Channels the powers of chaos into a bolt attack.
+                    (This spell uses WISDOM to determine fail-rates!)
                     Required skill level for first spell level: 30.
                     Shared spell (see above): O.Shadow, H.Offense.
                     This spell cannot be not found in the Holy Offense tome.
 
     Nether Bolt     Channels lingering nether into a bolt attack.
+                    (This spell uses WISDOM to determine fail-rates!)
                     Required skill level for first spell level: 30.
                     Shared spell (see above): O.Shadow, Necromancy.
                     (Necromancy isn't actually a school, but a normal skill.)
@@ -15362,11 +15369,13 @@ school.
                     and returns a part of it to your hit points.
                     Unique monsters may resist, undead and nonliving monsters
                     are unaffected. Damage caps at 900.
+                    (This spell uses WISDOM to determine fail-rates!)
                     Required skill level for first spell level: 37.
                     Shared spell (see above): O.Shadow, Necromancy.
                     (Necromancy isn't actually a school, but a normal skill.)
 
     Doomed Grounds  Temporarily applies a weak annihilation effect to an area.
+                    (This spell uses WISDOM to determine fail-rates!)
                     Required skill level for first spell level: 40.
                     Shared spell (see above): H.Offense, O.Shadow.
                     This spell cannot be not found in the Shadow tome.
@@ -15374,8 +15383,9 @@ school.
     Darkness Storm  Conjures up a storm of darkness.
                     Required skill level for first spell level: 42.
 
-    BONI:           At 30 grants darkness resistance and a stealth bonus that
-                    increases the further the school is trained.
+    BONI:           At 30 grants darkness resistance.
+                    At 35 and higher it will also grant a stealth bonus that
+                    increases by +1 every five skill points, up to +4 at 50.
                     If both Holy Defense and Shadow school are at least 45,
                     chaos resistance is granted. (Note that chaos resistance
                     also always implies confusion resistance.)
@@ -15395,6 +15405,7 @@ school.
                     Lv21: Calls a more powerful kind of light. This light
                          damages all types of monsters.
                          Radius and damage will further increase.
+                    (This spell uses INTELLIGENCE to determine fail-rates!)
                     Required skill level for first spell level: 2.
 
     Trance          Causes all ghosts, spirits and elementals that see you
@@ -15402,9 +15413,11 @@ school.
                     Required skill level for first spell level: 5.
 
     Lightning Bolt  Conjures up spiritual power into a lightning bolt.
+                    (This spell uses INTELLIGENCE to determine fail-rates!)
                     Required skill level for first spell level: 10.
 
     Spear of Light  Conjures up spiritual light into a powerful beam.
+                    (This spell uses INTELLIGENCE to determine fail-rates!)
                     Required skill level for first spell level: 10.
 
     Lift Curses     Removes curses from carried/worn objects.
