@@ -13473,8 +13473,8 @@ create a character!):
     Also make sure to create a macro for your fighting techniques 'Sprint' and
     'Taunt' when you learn them, they are great for catching annoying monsters
     that try to keep their distance to you. (See (6.12) for details.)
-    Pick one of the four weapon masteries (Sword/Blunt/Axe/Polearm), or Martial
-    Arts if you don't want to use weapons, and always keep it maximized.
+    Pick one of the four weapon masteries (Sword/Blunt/Axe/Polearm), and always
+    keep it maximized. Unlike priests, paladins cannot train Martial Arts.
 
 - Death Knight
     Death Knights are unfortunate souls who were paladins in life. Unable to
@@ -14201,10 +14201,10 @@ All vampires and vampiric monsters (vampire bats and others)
                 real vampire forms (and vampiric ixitxachitl) have 50% chance
                 (half their attacks are hits, the other half is biting).
                 For details see '(5.15) Vampirism'.
-All angels      Resist light, blindness and poison (usually immunity, see
-                ~7 flags), resist fear, resist confusion, see invisible,
-                strong resistance to insanity-inducing attacks.
-                Note: 'Fallen Angel' doesn't get light/confusion resistances.
+All angels      Resist light, blindness and poison (usually immunity, see ~7
+                flags), resist fear, resist confusion, free action, strong
+                resistance to insanity-inducing attacks, see invisible.
+                Note: 'Fallen Angel' doesn't get light resistances.
 Mist and fume   Feather falling.
 
 Keep in mind that by changing forms you can potentially lose abilities that
