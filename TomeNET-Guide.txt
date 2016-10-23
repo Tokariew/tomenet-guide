@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 15. October 2016 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 22. October 2016 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.7.0a - official websites are:
 | http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | http://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -7450,11 +7450,13 @@ Ironman Deep Dive Challenge (IDDC)
 Seasonal events
 ---------------
 At certain times of the year, some seasonal events will occur for a couple of
-days each. The exact time of the day when they start can vary depending on your
-time zone, even a date difference of +/-1 day is possible for that reason:
+days each. The exact time of the day when they start or end can vary depending
+on your time zone, even a date difference of +/-1 day is possible for that
+reason. The ending date means that somewhen after the beginning of that day,
+the event will end:
 
 Halloween
-    Running from 28th October to 2nd November.
+    Running from 26th October till 2nd November.
     The server will recall all players (20 minutes ahead warning will be
     displayed) and restart. After that, Halloween is live and costumes can be
     found and stored costumes can be worn again.
@@ -15339,6 +15341,7 @@ school.
 
     Veil of Night   Causes your target to fall asleep instantly.
                     Lv16: It expands around you.
+                    (This spell uses WISDOM to determine fail-rates!)
                     Required skill level for first spell level: 5.
 
     Shadow Bolt     Channels shadow into a bolt attack.
