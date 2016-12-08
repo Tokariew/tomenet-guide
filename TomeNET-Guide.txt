@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 24. November 2016 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 8. December 2016 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.7.0a - official websites are:
 | http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | http://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -744,11 +744,15 @@ SPACE   Stop executing repeatable actions such as searching, tunnelling or
         add the other one.
 
         Additional info that may be shown in @ screen:
-        'Silent'        Means the player has enabled the 'limit_chat' option,
+        'Silent mode'   Means the player has enabled the 'limit_chat' option,
                         which restricts chat to players on the same dungeon
                         floor as him, except for private/party/guild messages.
         'Private mode'  The player has used the '/ic' command to ignore all
-                        chat except for private/party/guild messages.
+                        chat except for private or party messages.
+        '*Private* mode'
+                        The player has used the '/ic *' (or alias /dnd) command
+                        to ignore all chat except for party messages and
+                        private messages from party members.
 
         If the server has specific PK-rules enabled, there are additionally:
         'PK'            Player participates in player-killing.
@@ -1168,10 +1172,15 @@ They all start with a slash '/' hence they're called slash commands:
             he tries to send you any private message or page you.
 
 /ic         ignore all normal chat messages which are neither private messages
- (/ignchat) nor party messages. ('Private mode' will be displayed after the
-            player's name in the player overview screen which can be invoked
-            by pressing '@', indicating that this player currently cannot read
-            normal chat messages.)
+ (/ignchat) nor party messages. ('Private mode' will be displayed after
+            the player's name in the player overview screen which can be
+            invoked by pressing '@', indicating that this player currently
+            cannot read normal chat messages.)
+            (This is similar to 'limit_chat' option, which however still allows
+            all floor-chat occurring on the same dungeon floor and guild chat.)
+/ic *       Same as above, but also disables all private messages except from
+ (/dnd)     party members! (Will display '*Private* mode' after the player's
+            name in the @ screen.)
 
 /info <msg>
             Sets an informative message that is displayed to other players in
@@ -1758,6 +1767,7 @@ ID, *ID*    Identify and *Identify* magic respectively, which is used to
 Iron Team   A special type of party which can only be formed with newly
             created characters. Its members only gain experience if all
             members are online and on the same dungeon level.
+            Also, members can only trade items and money with other members.
 
 kinging     The process of beating Morgoth, the game boss, and thereby
             acquiring a royal title (king/queen/emperor/empress).
@@ -7415,13 +7425,14 @@ Ironman Deep Dive Challenge (IDDC)
     enter will give you a progressively increasing (with floor depth) luck
     bonus, making it more and more likely to obtain better items.
 
-    Everlasting and non-everlasting characters can team up and trade items
-    while they are inside the ironman deep dive dungeon.
+    The IDDC does not allow forming a party or adding someone to an existing
+    party, so you have to do this while everyone who wants to join the party is
+    still outside of the IDDC.
+    IDDC allows partying and trading between everlasting and non-everlasting
+    characters. To form a party between those, everyone must be within the
+    worldmap sector where the IDDC entrance is located.
     Level requirements on items are not in effect while inside the ironman deep
     dive challenge either, so item levels are meaningless.
-    An exception are items brought from outside the IDDC into it:
-    Apart from food and torches, these can only be dropped when a player
-    reaches at least dungeon floor #5.
 
     Party bonus experience is higher than outside of IDDC. This means that the
     experience you get per killed monster is much closer to the experience you
