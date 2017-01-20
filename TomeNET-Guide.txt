@@ -15291,7 +15291,7 @@ school.
                     Genocide-type spells do not yield experience or loot.)
                     Required skill level for first spell level: 25.
 
-    Wraithform      Temporarily turns your form immaterial.    (auto-project)
+    Wraithform      Temporarily turns your form immaterial.
                     Required skill level for first spell level: 35.
     Stop Wraithform Turns you back to material form immediately.
 
@@ -15446,9 +15446,6 @@ school.
                     monsters of higher level.
                     (This effect does not stack with the spell/scroll, but
                     overrides them.)
-                    If both Holy Defense and Shadow school are at least 45,
-                    chaos resistance is granted. (Note that chaos resistance
-                    also always implies confusion resistance.)
 
 
 - Holy Curing
@@ -15573,11 +15570,6 @@ school.
                     Detects all invisible creatures nearby.
                     Required skill level for first spell level: 3.
 
-    Poisonous Fog   Creates a cloud of poisonous fog.
-                    Lv26: Unbreath cloud, harder to resist since it prevents
-                    living creatures from actually breathing.
-                    Required skill level for first spell level: 8.
-
     Veil of Night   Causes your target to fall asleep instantly.
                     Lv16: It expands around you.
                     (This spell uses WISDOM to determine fail-rates!)
@@ -15636,9 +15628,6 @@ school.
     BONI:           At 30 grants darkness resistance.
                     At 35 and higher it will also grant a stealth bonus that
                     increases by +1 every five skill points, up to +4 at 50.
-                    If both Holy Defense and Shadow school are at least 45,
-                    chaos resistance is granted. (Note that chaos resistance
-                    also always implies confusion resistance.)
 
 
 - Spirit
