@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 25. January 2017 - written by C. Blue (c_blue@gmx.net)
-| for TomeNET version v4.7.0b - official websites are:
+| Latest update: 29. January 2017 - written by C. Blue (c_blue@gmx.net)
+| for TomeNET version v4.7.1 - official websites are:
 | http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | http://muuttuja.org/tomenet/ (Mikael's TomeNET site)
 |
@@ -3815,7 +3815,7 @@ There are extended colour codes available since 4.5.2 (some in later clients)
     E  meteor           N  mana             Q  disintegration   Y  water
     i  ice              l  plasma           O  detonation       k  nuke
     K  unbreath         j  holy orb         J  holy fire        X  hell fire
-    z  thunder          Z  ember            0  starlight
+    z  thunder          Z  ember            0  starlight        1  havoc
 
 
 Character names in chat lines have different colours to indicate their status:
@@ -8918,6 +8918,8 @@ Rocket          Rockets combine fire, shard & sound effects and can also damage
                 (Technically, rockets are similar to breath attacks.)
 Detonation      Same as rocket.
 Inferno         Same as detonation, except it does not destroy walls.
+Havoc           A terrible mixture of wrecking Inferno, blasts of uncontrolled
+                mana and waves of raw chaos.
 
 There is also a special 'Teleportation Resistance', giving the self-knowledge
 line: "You resist incoming teleportation effects.".
@@ -12322,8 +12324,20 @@ Note that not every skill is available to every profession (class).
                                 aura is active.
 
     .Mimicry                    Ability to shapechange into a monster!
+                                To learn a monster form you must kill an amount
+                                of it equal to its level, while your Mimicry
+                                skill must be at least half as high as the
+                                monster level for you to get credit.
+
+                                Example: To learn Uruk form, you need to kill
+                                16 Uruks because Uruk is a level 16 monster
+                                (see ~7 for monster lore to check level) and
+                                your Mimicry skill must be at least 8 while you
+                                kill them, or you won't gain any knowledge.
+
                                 You also inherit the monsters abilities,
                                 weaknesses and resistances!
+
                                 See section (6.7) for more info.
                                 To find out details about a monster form,
                                 press  ~ 7  in game or consult a spoiler file.
@@ -13563,6 +13577,9 @@ create a character!):
     If you're a team player and want to support your team right from the
     beginning, get the spell 'Cure Wounds' as soon as possible and macro it.
 
+    There are rumours of ultimately corrupted priests which have lost all their
+    holiness and serve the powers of hell instead.
+
 - Rogue
     A Rogue is a character that prefers to live by cunning, but is capable of
     fighting their way out of a tight spot. The master of traps and locks, no
@@ -13618,24 +13635,23 @@ create a character!):
     Intelligence is not of primary importance but it can help somewhat to
     increase the mana pool for making use of monster spells/breaths, and it
     also affects the success chance when attempting to use a monster power.
-    Mimics learn forms by killing as many of a certain monster type as that
-    monster has high a level. Further, their 'Mimicry' skill must be at least
-    1/2 of the monster level.
-    If mimics kill monsters whose level is higher than twice their mimicry
-    skill those kills will nevertheless be counted in case the skill is raised
-    to the appropriate level later, so those kills won't be 'lost'.
+    Mimics learn forms by killing an amount of that monster type that is the
+    same as the monster's level. Further, their 'Mimicry' skill must be at
+    least 1/2 of the monster level or you won't gain knowledge from the kills.
+
     Example: To use the form of an Ancient Bronze Dragon (level 40) the
     mimic has to kill 40 of them and have a mimicry skill of at least 20.
 
+    To find out the level and special abilities of a monster form, press '~'
+    followed by '7' and look it up, then consult section (6.7) for how the
+    monster details translate into mimic abilities.
     To find out how many monsters you already killed and how many you need
     in total to learn a form, press the '~' key followed by '2'.
     To polymorph into a form, press 'm' key, like casting a magic spell.
     (Forms that have DISBELIEVE ability are skipped when using the normal
     'Polymorph Self' spell. You have to use 'Polymorph Self Into..' if you
     want to use these forms.)
-    To find out the special abilities of a monster form, press '~' followed by
-    '7' and look it up, then consult section (6.7) for how the monster details
-    translate into mimic abilities.
+
     A list of useful low-level humanoid forms for weapon-using mimics is given
     in (6.7c) because weapon-using mimics have a somewhat harder time to find
     usable forms early on than martial artists who might just utilize
@@ -13721,6 +13737,15 @@ create a character!):
     able to utilize any kind of prayers and are susceptible to holy effects,
     instead they command unholy blood and shadow magic.
     Death knights resist fear intrinsically.
+
+- Hell Knight
+    This ultimately corrupted paladin can only be brought into existance when
+    an astral spirit forsakes enlightenment and turns demonic instead.
+    Imbued by the powers of chaos and hellflame, these warriors represent
+    absolute treason without remorse.
+    They have the same abilities as paladins in all regards but they are not
+    able to utilize any kind of prayers and are susceptible to holy effects,
+    instead they command blood magic and heretic magic of flame and chaos.
 
 - Ranger
     Second only to adventurers regarding versatility rangers excel at a lot of
@@ -15664,8 +15689,8 @@ school.
 
     Possess         Tries to manipulate the mind of a monster to make it ignore
                     you.
-                    At level 9 it turns into a ball.
-                    At level 17 it affects all monsters in sight.
+                    Lv9: Turns into a ball.
+                    Lv17: Affects all monsters in sight.
                     Required skill level for first spell level: 23.
     Stop Possess    Stops active possession of monster minds.
 
@@ -15673,14 +15698,58 @@ school.
                     Invokes your guardian spirit, guiding and protecting you.
                     Your saving throw is maximised and you are protected from
                     evil.
-                    At level 21 all physical attacks have a chance to miss you,
-                    at the cost of your mana.
+                    Lv21: All physical attacks have a chance to miss you,
+                          at the cost of your mana.
                     Required skill level for first spell level: 25.
 
     BONI:           At 30 grants a firm hold on your life force.
                     Adds slay undead to all your physical attacks at 40.
                     -5% experience loss on getting revived (by whatever means,
                     but never goes below 30% total exp loss) at 50.
+
+
+- Hereticism
+    Terror          Casts fear and confusion into the hearts of others.
+                    Required skill level for first spell level: 3.
+
+    Ignore Fear     Temporarily removes the ignorant weakness known as fear.
+                    Required skill level for first spell level: 7.
+
+    Fire Bolt       Conjures up fire into a powerful bolt.
+                    Required skill level for first spell level: 10.
+
+    Wrathflame      It temporarily brands your weapons with unholy fire.
+                    Lv7: Grants temporary fire resistance.
+                    Required skill level for first spell level: 12.
+
+    Demonic Strength
+                    Temporarily increases and sustains strength and
+                    constitution.
+                    Required skill level for first spell level: 30.
+
+    Chaos Bolt      Channels the powers of chaos into a bolt.
+                    Required skill level for first spell level: 32.
+
+    Dark Meditation
+                    Restores drained stats and lost experience.
+                    Required skill level for first spell level: 35.
+
+    Levitation      Grants the power of levitation.
+                    Required skill level for first spell level: 39.
+
+    Robes of Havoc  Envelops you in hellfire, burning your opponents to ashes.
+                    Required skill level for first spell level: 42.
+
+    Blood Sacrifice
+                    Inflict a mortal wound on yourself, causing the warped
+                    powers of chaos to temporarily change your form into a
+                    terrifying Bloodthirster.
+                    --- This spell is only usable by Corrupted
+                        Maia Priests and Hell Knights! ---
+                    Required skill level for first spell level: 45.
+
+    BONI:           At 30 grants resistance to fire.
+                    At 45 grants resistance to chaos.
 
 
 - Druidism -
