@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 29. January 2017 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 30. January 2017 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.7.1 - official websites are:
 | http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | http://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -2964,7 +2964,7 @@ By pressing the '=' key in game, you can access the options menu where you can
 tweak your client in some ways. Some of these options that aren't
 self-explaining or that are especially important are listed in detail here:
 
-(1, 2, 3) User Interface Options
+ (1, 2, 3) User Interface Options
     Rogue-like commands (rogue_like_commands)
         Toggles between normal key set and traditional rogue-like key set.
 
@@ -3037,7 +3037,7 @@ self-explaining or that are especially important are listed in detail here:
 
         view_lite_extra (lights up a few additional wall/floor types)
 
-(4) Audio Options
+ (4) Audio Options
     (See (2.1a) for more information about sound and music.)
 
     A bunch of stuff here, mostly you might want to look at attack-sound effect
@@ -3046,7 +3046,7 @@ self-explaining or that are especially important are listed in detail here:
 
     no_shriek_sfx and no_house_sfx might be especially interesting too.
 
-(5, 6) Game-Play Options
+ (5, 6) Game-Play Options
     Use old target by default (use_old_target)
         If this is on, a ranged attack via *t5 or *t- will not pick a new
         (ie closer) target if the previously acquired target is still okay.
@@ -3125,15 +3125,15 @@ self-explaining or that are especially important are listed in detail here:
     Get kicked out automatically by the game when starving and idle for 30
         seconds. (idle_starve_kick)
 
-(8) Check Server Options
+ (8) Check Server Options
     Displays a list of the server rules and configuration.
 
-(A) Account options
+ (A) Account options
     Here you can see if your account is valid. Invalid accounts are also
     indicated by a yellow 'I' in the players list you get with '@' key.
     Also, you can change your password here!
 
-(W) Window flags
+ (W) Window flags
     Here you can configure each of the program windows in detail.
     It is recommended that you have one dedicated window for 'Display chat',
     so you don't miss important messages during combat.
@@ -13006,8 +13006,8 @@ create a character!):
     Half-elves are slightly better at searching, disarming, saving throws,
     stealth, bows, and magic, but they are not as good at hand weapons.
     Half-elves resist light intrinsically.
-    They get bonus on 'Bow-mastery' and 'Interception' and a small bonus on
-    the 'Nature' and 'Spirit' magic schools.
+    They get bonus on 'Bow-mastery' and 'Interception', a small bonus on
+    the 'Nature' and 'Spirit' and a small malus on the 'Shadow' school.
 
 - Elf
     Elves resist light effects intrinsically and see invisible creatures.
@@ -13017,8 +13017,8 @@ create a character!):
     Elves are better at searching, disarming, perception, stealth, bows, and
     magic, but they are not as good at hand weapons.
     Elves get bonus on 'Bow-mastery', 'Magic', 'Stealth', 'Dodging',
-    'Calmness', 'Sneakiness' and the magic 'Water' and occult 'Spirit' schools
-    and a large bonus on the magic 'Nature' school.
+    'Calmness', 'Sneakiness' and the magic 'Water' and occult 'Spirit' schools,
+    a large bonus on the magic 'Nature' school and a malus on 'Shadow'.
 
 - Hobbit
     Hobbits have their dexterity sustained. Further, they get a dexterity bonus
@@ -13071,7 +13071,7 @@ create a character!):
     have great constitutions and lots of hit points.
     They get a slight bonus on 'Backstabbing', a large bonus on 'Weaponmastery'
     and a bonus on 'Necromancy' and occult 'Shadow' magic and receive penalties
-    on 'Magic' and 'Sorcery' and a slight penalty on 'Swimming'.
+    on 'Magic', 'Sorcery' and 'Spirit' and a slight penalty on 'Swimming'.
 
 - Half-Troll
     Half-trolls have their strength sustained. They are very strong, but also
@@ -13101,8 +13101,8 @@ create a character!):
     There are few things that they have not seen already, and experience is
     hard for them to gain.
     High-Elves receive boni on 'Bow-mastery', 'Magic', 'Stealth', 'Dodging'
-    and the magic 'Nature' school, a large bonus on 'Calmness' and a slight
-    bonus on 'Swimming' and on occult 'Spirit' magic.
+    and the magic 'Nature' school, a large bonus on 'Calmness', a slight
+    bonus on 'Swimming' and on occult 'Spirit' magic and a malus on 'Shadow'.
 
 - Yeek
     Being weak and losing many childhood fights, they have learned the
@@ -13127,7 +13127,7 @@ create a character!):
     making them good fighters, rogues, and mimics. Being creatures of the
     night, Goblins have natural resistance to darkness.
     They receive bonus on 'Boomerang-mastery', 'Stealing' and occult 'Shadow'
-    magic.
+    magic and a malus to 'Spirit' and all four holy schools.
 
 - Ent
     The Ents are a powerful race dating from the beginning of the world,
@@ -13149,10 +13149,10 @@ create a character!):
     potions that provide nourishment. They can never be gorged though.
     Ents intrinsically resist the force of unleashed water and their bark skin
     provides a small bonus to armour class.
-    They get bonus to 'Health' and a large bonus on 'Calmness' and on the magic
-    schools 'Earth', 'Water' and 'Nature'. They receive a large penalty on
-    'Fire' school, a penalty on 'Axe-mastery' and a small penalty on
-    'Sword-mastery'. They cannot train 'Climbing' at all.
+    They get bonus to 'Health', a slight bonus to 'Spirit' and a large bonus on
+    'Calmness' and on the magic schools 'Earth', 'Water' and 'Nature'. They
+    receive a large penalty on 'Fire' school, a penalty on 'Axe-mastery' and a
+    small penalty on 'Sword-mastery'. They cannot train 'Climbing' at all.
 
 - Draconian
     These humanoid half-breeds of dragon and man surpass common humans in all
@@ -13230,8 +13230,9 @@ create a character!):
     Dark-Elves are good fighters and sorcerors, but also decent priests.
     Dark-Elves intrinsically resist darkness, but are susceptible to light.
     At level 20 they learn to see the invisible.
-    They get bonus on 'Stealth', 'Dodging', 'Sneakiness', 'Backstabbing' and
-    occult 'Shadow' magic.
+    They get bonus on 'Stealth', 'Dodging', 'Sneakiness', 'Backstabbing', a
+    large bonnus on occult 'Shadow' magic and a malus on all four holy schools
+    and the occult 'Spirit' school.
 
 - Vampire
     These powerful undead creatues move out in the night to hunt living prey
@@ -13302,7 +13303,7 @@ create a character!):
     this any further.
     Vampires hate 'Blunt' weapons, are bad at 'Swimming', get a penalty on
     'Divination' magic school, but receive a bonus on 'Mental Intrusion' and
-    'Shadow', a large bonus on 'Necromancy' and all aura skills and a small
+    a large bonus on 'Shadow', 'Necromancy' and all aura skills and a small
     bonus on 'Traumaturgy'. They cannot use certain magic schools at all as
     described above. As undead, Vampires gain a moderate skill bonus for
     'Nether' runes but in turn find it hard to improve in 'Light' runes.
@@ -13578,7 +13579,7 @@ create a character!):
     beginning, get the spell 'Cure Wounds' as soon as possible and macro it.
 
     There are rumours of ultimately corrupted priests which have lost all their
-    holiness and serve the powers of hell instead.
+    holiness and align with the forces of hell instead.
 
 - Rogue
     A Rogue is a character that prefers to live by cunning, but is capable of
