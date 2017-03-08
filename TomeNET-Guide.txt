@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 4. March 2017 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 5. March 2017 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.7.1 - official websites are:
 | http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | http://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -6139,7 +6139,7 @@ eg.
 [3, 3](6) {reroll - still not settled}
 [4, 1](5) {you win}
 
-[5, 6](11) {you lose with the first roll}
+[5, 6](11) {you win with the first roll}
 
 
 ==============================================================================
@@ -6428,15 +6428,15 @@ The Halls of Mandos (****)   |  -                    | -
 The Orc Cave                 |  Azog                 | -
 Mirkwood                     |  -                    | -
 The Old Forest               |  Old Man Willow       | Boomerang of Beor
-The Helcaraxe                |  White Balrog         | Til-i-arc
+The Helcaraxe                |  White Balrog         | Pike 'Til-i-arc'
 The Sandworm lair            |  Sandworm Queen       | Armour of the Sandworm
 The Heart of the Earth       |  Golgarach            | Space-time Anchor (**)
 The Maze                     |  Minotaur             | Helm of Hammerhand
-Cirith Ungol                 |  Shelob               | Sting
-The Land Of Rhun             |  Ulfang the Black     | Careth Asdriag
-Moria                        |  Balrog of Moria      | Quarterstaff of Olorin
+Cirith Ungol                 |  Shelob               | Smallsword 'Sting'
+The Land Of Rhun             |  Ulfang the Black     | Sabre 'Careth Asdriag'
+Moria                        |  Balrog of Moria      | Quarterstaff 'Ruyi Bang'
 The Small Water Cave         |  Watcher in the Water | Trident of Wrath
-Submerged Ruins              |  Ar-Pharazon          | Toris Mejistos
+Submerged Ruins              |  Ar-Pharazon          | Amulet 'Toris Mejistos'
 The Illusory Castle          |  King in Yellow       | Helm of Knowledge
 The Sacred Land Of Mountains |  T'ron  (level 72!)   | Coat of T'ron
 Erebor                       |  Smaug                | Arkenstone of Thrain
@@ -10873,17 +10873,24 @@ EAT_xxx         DEX, stealing skill.
 UN_BONUS        disenchantment.
                 The damage can partially be mitigated by having the resistance.
 UN_POWER        no resistance. It drains charges/energy from your items.
+
                 Magic Device skill helps to prevent draining though.
                 See (6.10) for more information about the Magic Device skill.
-                Also drains the duration of a polymorph ring form the player is
-                currently mimicking.
+
+                Mimicking a monster form that has UN_POWER attacks and at the
+                same time is a very proficient caster (at least 1_IN_2 spell
+                frequency) will help to prevent draining too.
+
+                Also reduces the remaining duration of a polymorph ring form
+                the player is currently mimicking (this effect cannot be
+                mitigated by magic device skill or unpower-form).
 TIME            time.
                 The damage can partially be mitigated by having the resistance.
 DISEASE         poison.
                 This attack can also decrease your constitution.
 INSANITY        none. (mimics using WEIRD_MIND/EMPTY_MIND form resist slightly)
 HALLU           chaos.
-PARASITE        <no effect>
+PARASITE        <currently no effect>
 DISARM          'Fighting' ability.
                 Weapons wielded 2-handely are harder to disarm (stacking).
                 Artifacts are also harder to disarm (stacking).
@@ -10891,6 +10898,12 @@ DISARM          'Fighting' ability.
                 Note that DISARM effects have a chance to be blocked or parried
                 if their attack type can be blocked or parried, which is
                 usually the case (they usually have HIT attack type).
+
+                Sometimes disarmed weapons land in your backpack, but sometimes
+                you drop them to the ground instead. If there is no empty floor
+                (for example because you're fighting on mountain terrain) they
+                will instead be scattered across the dungeon level and you will
+                have to search it to retrieve them.
 FAMINE          none. Makes you hungry.
 SEDUCE          none. Makes you take off equipped items.
                 Can have random side effects, if your HP are still above 40%
@@ -10901,7 +10914,8 @@ SEDUCE          none. Makes you take off equipped items.
                 - lose an item or gold (monster steals it; tools won't help!)
                 - gain some experience
                 - regain some drained sanity, if any.
-SHATTER         hits & causes an earthquake - very dangerous, see (5.13).
+SHATTER         purely physical damage. Hits & causes an earthquake - very
+                dangerous, see (5.13).
                 This damage type can be mitigated by AC.
 LITE            Light or blindness resistance.
                 The damage can partially be mitigated by having light
@@ -13304,9 +13318,9 @@ create a character!):
     see below) or holy or spirit spells. They are unable to try and suppress
     magic, but can make use of items that provide anti-magic effects.
     Aside from darkness they also resist sanity-draining effects (somewhat),
-    time, nether, poison, and it's hard to drain their life force - as a
-    specialty this is also true for life force drained by items a vampire has
-    equipped: Those will drain exp at half the normal rate.
+    cold, time, nether, they're immune to poison and it's hard to drain their
+    life force - this is also true for life force drained by items a vampire
+    has equipped: Those will drain exp at only half the normal rate.
     Vampires have a good chance to resist the adverse effects of encountering
     an eldritch horror (see (6.3) under 'Saving Throw' for details on those).
     They also intrinsically have partially life leeching (vampiric) attacks
@@ -13455,7 +13469,7 @@ Half-Troll  +4  -4  -2  -4  +3  -6      12      135%    30ft
             -5  -8  -8  -2   5  -1  20 -10
 Dunadan     +1  +2  +2  +2  +3  +2      10      170%     0ft
              4   3   5   0  13   3  15  10
-High-Elf    +1  +3  -1  +3  +1  +3      10      250%    40ft
+High-Elf    +1  +3  -1  +3  +1  +3      10      230%    40ft
              4  20  20   3  14   3  10  25
 Yeek        -5  -5  -5  -5  -5  -3       8       80%     0ft
              0   0   0   0  10   0   0   0
@@ -13469,7 +13483,7 @@ Kobold      -1  -1   0  +2  +2  -2       8      115%    50ft
             10   5   0   4  15  15  -5  10
 Dark-Elf     0  +2  +1  +3  +1  -6      10      150%    80ft
              7   3   6   4   6  10  15  15
-Vampire     +2  +2  -1  +2   0  +3      11      220%   150ft
+Vampire     +2  +2  -1  +2   0  +3      11      270%   150ft
             -2   3  20   2  13  -4  10 -10
 Maia        +2  +3  +3  +1  +1  +2      11      400%   100ft
              3  20   3   0   5   1  15   5
@@ -13964,8 +13978,8 @@ create a character!):
     attemps and psionic attacks in general much better than other classes.
     A lot of their spells can actually be cast while blinded (or even
     confused), and their targetted spells often do not require a clean line of
-    sight, since they manifest whereever their mind is focussed on (e.g.
-    Psionic Blast).
+    sight, since they manifest whereever their mind is focussed on
+    (e.g. Psionic Blast).
     Their spells also cannot be reflected by monsters for that same reason.
     Some of the mindcrafters' spells that interact with party members will
     require them to prepare and open their mind for telepathic contact. This
@@ -16769,8 +16783,10 @@ Guilds:
     You can create a guild with a character that is at least level 30.
     This costs 2,000,000 Au. A guild will stay, even if the owner dies.
     The guild creator will receive a 'Guild Key' which designates him as the
-    guild master. In case the guild master dies, another guild member may
-    fetch the key to become the new guild master.
+    guild master. The guild master doesn't need to carry the key around with
+    him but can just safely deposit it in a house.
+    In case the guild master dies, another guild member may fetch the key to
+    become the new guild master.
     Only one character per account can be a guild master.
 
     A guild offers a dedicated guild chat, so players in a guild can organize
