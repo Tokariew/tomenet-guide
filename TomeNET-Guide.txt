@@ -714,6 +714,9 @@ SPACE   Stop executing repeatable actions such as searching, tunnelling or
         "\!!" will remove an "!" tag.
         "\##" will remove the whole part that follows after the '#' character.
 
+        To simply append a new inscription to an existing inscription, enter
+        '\\' at the beginning of the new inscription.
+
 }       remove inscription from an item.
 
 /       in general, use an item (combines q,r, etc..).
@@ -1298,8 +1301,8 @@ They all start with a slash '/' hence they're called slash commands:
             appear in your inventory and carry an inscription indicating
             it's the reward. (See (4.13) for more info.)
             This command is only available in the Ironman Deep Dive Challenge
-            dungeon. Otherwise you have to visit the mayor's office in Bree to
-            receive an extermination order.
+            dungeon and in the Halls of Mandos. Otherwise you have to visit the
+            mayor's office in Bree to receive an extermination order.
 
 /que        Lists your currently pursued quests.
  (/quest)   Specify a quest number to drop a quest -- warning! You might not
@@ -13590,7 +13593,7 @@ create a character!):
     strength to get at least 2 blows per round with it).
     (For details on the benefits of dual-wielding, see (6.2).)
 
-- Istar (elvish word for Mage)
+- Istar (the Quenya word for "mage")
     Istari use intelligence primarily, determining how much mana they have
     to cast spells and how low their failure rate is.
     They are the all-around best magicians, having both devastating and highly
@@ -16086,7 +16089,7 @@ school.
 
 
 - Astral Knowledge -
----------------------
+--------------------
 The exclusive astral school for Maiar.
 Instead of normal spell level, the spells of this school use an 'astral level'
 to determine damage or effect. This astral level consists to equal parts of
@@ -18577,8 +18580,7 @@ Ammunition
                             light, dark, confusion, plasma, sound, shards,
                             force, inertia, mana, meteor, ice, chaos, nether,
                             nexus, time, gravity, stone-to-mud, teleport away,
-                            scare monster, nuke, stun, disintegration,
-                            hellfire.
+                            scare monster, nuke, disintegration, hellfire.
         Extra +hit and +dam bonus, this caps at +12 hit and +6 dam.
         Either +1 extra damage die sides or +1 extra damage dice.
 Boots
