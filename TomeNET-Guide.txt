@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 10. March 2017 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 14. March 2017 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.7.1 - official websites are:
 | http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | http://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -15795,10 +15795,15 @@ school.
                     Lv7: Grants temporary fire resistance.
                     Required skill level for first spell level: 12.
 
+    Flame Wave      Eradicates critters beneath your notice that dare trifle
+                    with you, by emitting a flamewave that expands into all
+                    directions.
+                    Required skill level for first spell level: 20.
+
     Demonic Strength
                     Temporarily increases and sustains strength and
                     constitution.
-                    Required skill level for first spell level: 30.
+                    Required skill level for first spell level: 26.
 
     Chaos Bolt      Channels the powers of chaos into a bolt.
                     Required skill level for first spell level: 32.
@@ -15836,6 +15841,10 @@ school.
 
     BONI:           At 30 grants resistance to fire.
                     At 45 grants resistance to chaos.
+                    If both Hereticism and Traumaturgy are at least 30.000,
+                    insanity-inducing effects become less effective.
+                    If both Hereticism and Traumaturgy are at least 45.000,
+                    insanity-inducing effects become much less effective.
 
 
 - Druidism -
