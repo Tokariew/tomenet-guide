@@ -11940,8 +11940,8 @@ Note that not every skill is available to every profession (class).
                                 of each stance, which is the most powerful
                                 version. If you die and lose your title, you
                                 won't be able to use the stance either.
-                                Only warriors, mimics, paladins and rangers
-                                can learn certain stances.
+                                Only warriors, mimics, paladins, rangers and
+                                mindcrafters can learn certain stances.
                                 On certain skill levels, you will learn a new
                                 rank of a stance. A higher ranked stance
                                 features more of its benefits and/or less of
@@ -15791,8 +15791,9 @@ school.
     Fire Bolt       Conjures up fire into a powerful bolt.
                     Required skill level for first spell level: 10.
 
-    Wrathflame      It temporarily brands your melee weapons with unholy fire.
+    Wrathflame      It temporarily brands your melee weapons with fire.
                     Lv7: Grants temporary fire resistance.
+                    Lv17: The brand is now hellfire instead of normal fire.
                     Required skill level for first spell level: 12.
 
     Flame Wave      Eradicates critters beneath your notice that dare trifle
