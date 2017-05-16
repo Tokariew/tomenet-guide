@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 23. April 2017 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 15. May 2017 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.7.1 - official websites are:
 | http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | http://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -14481,7 +14481,10 @@ F: flag list
                 If you are already using a form that can provide the immunity
                 that you switch to, that immunity will become the active one
                 immediately without the need for re-polymorphing.
-                (Note: IM_TELE actually always gives RES_TELE.)
+                Note that two immunities are actually exempt and don't
+                translate directly:
+                    IM_TELE actually always gives RES_TELE.
+                    IM_PSI instead gives strong insanity reduction.
     PASS_WALL   Will allow the mimic to pass walls like a ghost.
                 These immaterial forms also drain the hit points of their
                 user.
@@ -15902,6 +15905,7 @@ school.
 
 - Hereticism
     Terror          Casts fear and confusion into the hearts of others.
+                    Level 16: Affects all opponents surrounding you.
                     Required skill level for first spell level: 3.
 
     Ignore Fear     Temporarily removes the ignorant weakness known as fear.
