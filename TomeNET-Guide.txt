@@ -1,8 +1,8 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 15. July 2017 - written by C. Blue (c_blue@gmx.net)
-| for TomeNET version v4.7.1 - official websites are:
+| Latest update: 7. August 2017 - written by C. Blue (c_blue@gmx.net)
+| for TomeNET version v4.7.1a - official websites are:
 | http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | http://muuttuja.org/tomenet/ (Mikael's TomeNET site)
 |
@@ -6541,6 +6541,7 @@ When you kill Sauron, you will be able to recall out from that dungeon level!
 Note: If you kill Sauron, you will automatically also get kill credit for the
 Shadow of Dol Guldur, meaning that the Shadow won't spawn for you anymore if
 you didn't kill it before killing Sauron.
+Also, you cannot find The One Ring anymore if you already killed Sauron.
 
 (****) The Halls of Mandos are barred to ANY unique monsters!
 
@@ -10975,15 +10976,18 @@ you won't be affected at all and only take a physical part of the damage -
 if there is a physical part. This depends on the attack type.
 Here is a list of attack types and brands:
 
-Attack type      Contact/Cut/Stun/Bypasses AC
----------------------------------------------
-HIT                                  + + + -
-PUNCH,KICK,BUTT,CRUSH                + - + -
-CLAW, BITE                           + + - -
-TOUCH,STING,ENGULF,CHARGE,CRAWL      + - - -
-SPIT,                                - - - -
-GAZE,WAIL,SPORE,EXPLODE,BEG,         - - - +
-INSULT,MOAN,DROOL,SHOW,WHISPER       - - - +
+Attack type      Contact/Cut/Stun/Bypasses AC/No Block/No Parry
+---------------------------------------------------------------
+HIT                                  + + + - - -
+PUNCH,KICK,BUTT,CRUSH                + - + - - -
+CLAW, BITE                           + + - - - -
+TOUCH,STING,ENGULF,CHARGE,CRAWL      + - - - - -
+SPIT                                 - - - - - -
+GAZE,WAIL,SPORE,BEG                  - - - + + +
+INSULT,MOAN,SHOW,WHISPER             - - - + + +
+EXPLODE                              - - - + - +
+DROOL                                - - - - - +
+(Note that 'Bypasses AC' also means that this attack type cannot be dodged.)
 
 Brand           Needed resistance to reduce/avoid its effect
 (also called    (These help to avoid the effect but do not mitigate damage
@@ -11006,9 +11010,11 @@ TERRIFY         fear.
 PARALYZE        free action.
 EXP_xx          hold life.
 LOSE_xxx        sustain stats.
-EAT_xxx         DEX, stealing skill.
-                Device of theft prevention.
-                Won't help against EAT_FOOD/EAT_LITE.
+EAT_xxx         DEX and stealing skill increase your chance to resist
+                EAT_ITEM (item stealing) or EAT_GOLD (money stealing) attempts.
+                A device of theft prevention makes you immune to EAT_ITEM.
+                A money belt makes you immune to EAT_GOLD.
+                Nothing helps against EAT_FOOD or EAT_LITE.
 UN_BONUS        disenchantment.
                 The damage can partially be mitigated by having the resistance.
 UN_POWER        no resistance. It drains charges/energy from your items.
