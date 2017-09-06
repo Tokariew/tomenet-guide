@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 13. August 2017 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 06. September 2017 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.7.1a - official websites are:
 | http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | http://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -12476,7 +12476,7 @@ Note that not every skill is available to every profession (class).
                                 drain, the skill should be at least half as
                                 high as the monster level.
                                 Necromancy has no effect on undead and
-                                nonliving monsters.
+                                nonliving (constructs) monsters.
 
                                 (Don't confuse Necromancy with vampirism:
                                 Necromancy drains from the monster's soul on
@@ -12511,8 +12511,8 @@ Note that not every skill is available to every profession (class).
                                 have an area of effect and can therefore hit
                                 multiple monsters, such as balls and especially
                                 clouds.
-                                Traumaturgy has no effect on angels, undead,
-                                and nonliving (constructs) monsters.
+                                Traumaturgy has no effect on undead and
+                                nonliving (constructs) monsters.
 
                                 A natural vampire race character who has both
                                 Necromancy and Traumaturgy at 25.000 or higher
@@ -15508,7 +15508,7 @@ school.
 
                     Tier II: Level 20.
 
-                    Tier II: Level 40.
+                    Tier III: Level 40.
 
     Vermin Control  Prevents vermin from breeding any further on
                     your current level.
@@ -15856,7 +15856,7 @@ school.
                     During martyrdom any kind of line-of-sight (ie affecting
                     all monsters at once that are in your character's field of
                     view) spell damage you inflict will only deal half damage.
-                    Required skill level for first spell level: 45.
+                    Required skill level for first spell level: 47.
 
     BONI:           Protects the player from undead at 30, from demons at 40
                     and from evil in general at 50. Works similar to the
@@ -16200,7 +16200,7 @@ school.
     Demonic Strength
                     Temporarily increases and sustains strength and
                     constitution.
-                    Required skill level for first spell level: 26.
+                    Required skill level for first spell level: 23.
 
     Chaos Bolt      Channels the powers of chaos into a bolt.
                     Required skill level for first spell level: 32.
@@ -16212,9 +16212,18 @@ school.
                     (This spell uses INTELLIGENCE to determine fail-rates!)
                     Required skill level for first spell level: 39.
 
+    Boundless Hate  Your melee strikes are furious, granting you one
+                    extra attack per round.
+                    This spell has a special synergy with 'Traumaturgy' skill:
+                    If you keep hitting opponents in melee that are affected by
+                    Traumaturgy while under the effect of Boundless Hate, their
+                    pain will continue to fuel your rage and keep extending the
+                    spell's duration.
+                    Required skill level for first spell level: 41.
+
     Robes of Havoc  Envelops you in hellfire, burning your opponents to ashes.
                     (This spell uses INTELLIGENCE to determine fail-rates!)
-                    Required skill level for first spell level: 42.
+                    Required skill level for first spell level: 44.
 
     Blood Sacrifice
                     Inflict a mortal wound on yourself, causing the warped
@@ -16229,14 +16238,16 @@ school.
                     use the /sacrifice (or /sac) command.
                     --- This spell is only usable by Corrupted
                         Maia Priests and Hell Knights! ---
-                    Required skill level for first spell level: 45.
+                    Required skill level for first spell level: 47.
 
-                    (Form information according to (6.7) with the exceptions
-                     that this form will grant BOTH, poison and fire immunity
-                     and never has less armour class than in normal form:
-                     Greater demon, speedy and tough; HP-regeneration; immune
-                     to fire and poison; resists acid, cold, fear, paralysis,
-                     confusion, nether, nexus and teleportation effects.)
+                    (Its powers according to (6.7), with the exceptions that
+                     this greater demon form will actually grant TWO immunities
+                     at the same time and it never has less armour class than
+                     in player form:
+                      Speedy and tough; levitates; has intrinsic hit point
+                      regeneration; immune to fire and poison; resists fear,
+                      paralysis, confusion, cold, acid, nexus, nether and
+                      teleportation effects.)
 
     BONI:           At 30 grants resistance to fire.
                     At 45 grants resistance to chaos.
