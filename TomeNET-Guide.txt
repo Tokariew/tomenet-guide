@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 21. October 2017 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 9. Januar 2018 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.7.1a - official websites are:
 | http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | http://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -2363,21 +2363,27 @@ Your weapon itself will not damage the Nazgul if it doesn't have one of the
 mods SLAY_EVIL, SLAY_UNDEAD or KILL_UNDEAD and if it isn't a Morgul weapon.
 However, you will still be able to damage the Nazgul, if your raw to-dam
 bonus is high enough. Enchantments from rings, gloves or other items and the
-damage bonus from your skills will be the only factors which decide the damage
-you deal, in that case.
+damage bonus from your skills and strength will be the only factors which
+decide the damage you deal, in that case.
 For weapons which damage dice and to-dam bonus will not be counted (ie non-
 SLAY/KILL EVIL/UNDEAD or Morgul weapons) you'll see the message:
 "The Ringwraith is IMPERVIOUS to the mundane weapon."
+The same is true for Martial Arts, which style boni will be nullified if you
+don't have one of the slay-undead/slay-evil flags.
 
-Note: Having those slay/kill mods on gloves (or other items) instead of the
-      weapon does not help! They will not count.
+Note: For weapon attacks, having those slay/kill mods on gloves (or other
+      items) instead of the weapon does not help! They will not count.
+      For martial arts/bare-handed attacks, having the slay flags on other
+      items (for example gloves) WILL count!
 
       However - the 'slay undead' bonus received from Holy Offense school at a
-      skill of 30.000 will infuse your weapon and will make its dice and damage
-      count again, as if the weapon itself had the slay mod!
+      skill of 30.000 will infuse your weapon (and bare-handed combat too of
+      course) and will make its dice and damage count again, as if the weapon
+      itself had the slay mod!
 
-Martial Arts users can fight relatively efficiently against Nazgul, but their
-chance to receive Black Breath is higher than for weapon users.
+Martial Arts users can fight relatively efficiently against Nazgul since they
+don't have to worry about their weapon breaking, but their chance to receive
+Black Breath is higher than for weapon users.
 
 If you come in contact with a Nazgul or a very powerful undead creature there
 is a chance that you will be infected by the Black Breath. This dark aura is
@@ -3887,7 +3893,7 @@ There are extended colour codes available since 4.5.2 (some in later clients)
     T  disenchantment   F  force            V  gravity          t  time
     E  meteor           N  mana             Q  disintegration   Y  water
     i  ice              l  plasma           O  detonation       k  nuke
-    K  unbreath         j  holy orb         J  holy fire        X  hell fire
+    K  unbreath         j  holy orb         J  holy fire        X  hellfire
     z  thunder          Z  ember            0  starlight        1  havoc
 
 
@@ -13631,6 +13637,7 @@ create a character!):
     Alignment-dependant boni are..
 
     Enlightened:
+        Gain time resistance (all initiated Maiar, enlightened and corrupted).
         Able to see invisible and resisting light, while being susceptible to
         evil-based attacks.
         Intrinsic light aura that adds to any light source's radius.
@@ -13646,6 +13653,7 @@ create a character!):
         Light and Mana rune ratios x 1.7, Fear and Shivering Aura ratio x 3.0.
 
     Corrupted:
+        Gain time resistance (all initiated Maiar, enlightened and corrupted).
         Resist fire and darkness while being susceptible to good-based attacks.
         +2 bonus HP for each level above 20.
         At level 50 they will become resistant to poison, immune to fire, and
@@ -15925,7 +15933,7 @@ school.
 
                     Tier II: Level 23.
 
-    Healing         Heals a percentage of hit points.          (auto-project)
+    Heal            Heals a percentage of hit points.          (auto-project)
                     Required skill level for first spell level: 3.
 
                     Tier II: Level 23.
@@ -16634,7 +16642,7 @@ though, as all other magic schools do, not the astral level.)
 
     The Silent Force
                     Enlightened: Slows down monsters within sight
-                                 and grants temporary time resistance.
+                                 and grants temporary mana resistance.
                                  Note: This resistance does not stack
                                        with permanent resistance.
                     Corrupted: Increases your chance to strike critically.
