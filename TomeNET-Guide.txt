@@ -1,10 +1,11 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 8. July 2018 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 13. August 2018 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.7.1a - official websites are:
 | http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | http://muuttuja.org/tomenet/ (Mikael's TomeNET site)
+| Runes & Runemastery sections by Kurzel (kurzel.tomenet@gmail.com)
 |
 | IF YOU GOT THIS GUIDE WITH THE PROGRAM DOWNLOAD, IE IN A CLIENT ZIP FILE,
 | THEN FIRST THING YOU SHOULD DO NOW IS GO TO www.tomenet.eu AND DOWNLOAD THE
@@ -918,6 +919,9 @@ CTRL+E      Delete word before the cursor.
 
 CTRL+A/S    Move cursor back/forward by one character.
 CTRL+D      Delete character under the cursor.
+
+CTRL+C      Search history of chat messages you typed. Press CTRL+C again for
+            next match. Press ENTER to choose or ESC to cancel.
 
 
 (0.2b) Slash commands
@@ -9657,7 +9661,8 @@ LUCK ('It affects your luck.')
         is by your personal ooc luck I guess :-p).
         'Great' means that an item has ego powers or is an artifact. Luck does
         not affect how great its ego power or artifact abilities will be!
-        Note: Luck has NO effect on 'acquirement' and 'artifact creation'.
+        Note: Luck has NO effect on 'acquirement', 'artifact creation' or on
+        items you obtain from chests.
         Note: Luck does NOT affect which base item type drops, ie whether it is
         a dragon scale mail or a cloth hat.
 NO_MAGIC ('Anti-magic shell')
@@ -11020,6 +11025,9 @@ For details about parrying and blocking see (6.11).
 
 Armour class:
 -------------
+First off: Armour class does not help against ranged attacks or spells, only
+against melee attacks (hits, kicks, etc)!
+
 Armour class helps you twice:
 -It makes monsters miss you more often with attacks that don't bypass armour.
  The more AC the better, it's weighed against the level of the attacking
@@ -12607,6 +12615,8 @@ Note that not every skill is available to every profession (class).
                                 receive a small bonus in their favour.
                                 It is automatically enabled when you train the
                                 skill; you can disable the aura in 'm' menu.
+                                Typing '/ex' command into chat will display the
+                                state of all your auras.
                                 Being blood magic, auras will feed from your
                                 blood. This means that the speed of your hit
                                 point regeneration will be reduced while the
@@ -12627,6 +12637,8 @@ Note that not every skill is available to every profession (class).
                                 arts will be branded by it (cold brand).
                                 It is automatically enabled when you train the
                                 skill; you can disable the aura in 'm' menu.
+                                Typing '/ex' command into chat will display the
+                                state of all your auras.
                                 Being blood magic, auras will feed from your
                                 blood. This means that the speed of your hit
                                 point regeneration will be reduced while the
@@ -12642,6 +12654,8 @@ Note that not every skill is available to every profession (class).
                                 or cold brand).
                                 It is automatically enabled when you train the
                                 skill; you can disable the aura in 'm' menu.
+                                Typing '/ex' command into chat will display the
+                                state of all your auras.
                                 Being blood magic, auras will feed from your
                                 blood. This means that the speed of your hit
                                 point regeneration will be reduced while the
@@ -13164,12 +13178,13 @@ Modifications for becoming 'corrupted':
   Fire, Air, Conveyance school x 1.7.
   Udun school x 2.0.
   Darkness and Nether runes x 1.7.
-  Shadow school x 2.1.
+  Shadow school x 1.7.
   All Blood Magic schools x 3.0.
 
   Paladins/priests:
    The four holy schools get completely reset, disabled and their points are
    fully refunded.
+   They gain access to Udun school from the Wizardry school array.
 
 Note: After a skill's gain ratio has been boosted as stated above, it will be
       capped against a maximum value of 2.000, which cannot be exceeded.
@@ -15889,17 +15904,17 @@ school.
                     Temporary resistance to heat, cold, lightning and acid.
                     Shared spell (see above): Fire, Water, Earth, Air.
 
-    Stone Prison    Creates a prison of granite walls around you.
-                    Required skill level for first spell level: 25.
-
     Strike          Creates a force bolt that may stun enemies.
                     Required skill level for first spell level: 25.
 
                     Tier III: Level 37.
                     It's a small ball instead of a bolt.
 
+    Stone Prison    Creates a prison of granite walls around you.
+                    Required skill level for first spell level: 33.
+
     Shake           Creates a local earthquake.
-                    Required skill level for first spell level: 35.
+                    Required skill level for first spell level: 37.
 
     BONI:           Shard resistance at 40,
                     Great damage reduction against earthquakes at 50.
@@ -16084,11 +16099,7 @@ school.
                     please see (5.9) scroll of geno/oblit.
                     (This spell uses WISDOM to determine fail-rates!
                     Genocide-type spells do not yield experience or loot.)
-                    Required skill level for first spell level: 25.
-
-    Wraithform      Temporarily turns your form immaterial.
-                    Required skill level for first spell level: 35.
-    Stop Wraithform Turns you back to material form immediately.
+                    Required skill level for first spell level: 30.
 
     Disenchantment Beam
                     Conjures a powerful and nearly irresistible beam.
@@ -16100,6 +16111,10 @@ school.
                     (This spell uses WISDOM to determine fail-rates!
                     Genocide-type spells do not yield experience or loot.)
                     Required skill level for first spell level: 40.
+
+    Wraithform      Temporarily turns your form immaterial.
+                    Required skill level for first spell level: 43.
+    Stop Wraithform Turns you back to material form immediately.
 
     BONI:           Hold life at 40.
 
@@ -17763,6 +17778,9 @@ While a guild is leaderless, three restrictions apply:
 
 PvP outside of the dedicated 'PvP' character mode:
 --------------------------------------------------
+This is usually disabled in standard server settings, so you won't see these
+options in the party menu:
+
 -Specify player to attack
     Now you are hostile to that player and you will hurt each other like
     when fighting a monster (this includes auto-retaliating and targetting).
@@ -17793,7 +17811,7 @@ The guild master is the only person who can change back ownership of the guild
 hall or even sell it if the guild for example wants to migrate to a bigger
 guild hall.
 
-The appromimate guild hall location can be viewed by all guild members by
+The approximate guild hall location can be viewed by all guild members by
 pressing SHIFT+P and then choosing 'e)'.
 
 The door of a guild hall is displayed in violet colour to all eligible members.
@@ -18312,6 +18330,8 @@ Low level character (up to 15)
 + Some Scrolls of Word of Recall
 + Some Scrolls of Identify
   These will allow you to identify unknown items that you may find!
++ Archers might find rods/wands/staves of light useful to create LoS
+  (line-of-sight) opportunities for killing monsters from afar down hallways.
 
 
 Medium level character (up to 25)
