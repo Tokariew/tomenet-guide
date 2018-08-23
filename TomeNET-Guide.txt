@@ -1644,6 +1644,7 @@ Item power inscription (added in 4.7.1):
     _S                sustain stat (S/I/W/D/C/H, where H is cHarisma)
     +S                increase stat
     ^S                increase and sustain stat
+    -S                decrease stat
     Xm/Xs             extra might/extra shots (ranged weapons)
     HP/MP             +hit points/+mana
     Spd/Att/Crt/Stl   +speed/+extra attacks/+critical hits/+stealth
@@ -10196,8 +10197,8 @@ Deeds           Some of the parchments are deeds, which are used as rewards
                 It will also fail on dungeon floors that do not allow
                 *destruction* magic explicitely (orange floor feeling saying
                 "The walls here seem very solid.", also see (4.8)).
-                (You do not get experience, loot or credit for monsters erased
-                by *destruction*, same as for genocide-type spells.)
+                (*Destruction* does not yield any kind of credit such as
+                experience points, loot or monster-form for mimics.)
 Enchant
   Sub-types: weapon to-dam, weapon to-hit, armour.
                 Will attempt to enchant weapon/ammunition or armour.
@@ -10230,7 +10231,8 @@ Genocide        Removes all monsters of a certain kind from the current level.
                 Monsters have a chance to resist genocide, depending on their
                 level. Monsters inside vaults, Uniques, and monsters that are
                 immune to teleportation attacks cannot be genocided.
-                (Genocide-type spells do not yield experience or loot.)
+                (Genocide-type spells do not yield any kind of credit such as
+                experience points, loot or monster-form for mimics.)
 Golem Creation  Allows you to create a golem which follows you and which you
                 can control to some extent, see (8.3) for more information.
 Life            Resurrects another player's ghost if standing on a directly
@@ -10259,7 +10261,8 @@ Obliteration    Removes all monsters that are close to you.
                 Monsters have a chance to resist genocide, depending on their
                 level. Monsters inside vaults, Uniques, and monsters that are
                 immune to teleportation attacks cannot be genocided.
-                (Genocide-type spells do not yield experience or loot.)
+                (Genocide-type spells do not yield any kind of credit such as
+                experience points, loot or monster-form for mimics.)
 Parchments      These contain informations about the game, they won't
                 disappear if you read them.
 Protection from evil    Repels evil creatures that try to attack you in melee.
@@ -14230,7 +14233,7 @@ create a character!):
     great effect, flipping their negative boni to positive ones. (With the same
     exception as for vampires: Weapons "of nothingness" will do them no good
     either.)
-    Hell Hnights have a very high chance to resist the adverse effects of
+    Hell Knights have a very high chance to resist the adverse effects of
     encountering an eldritch horror (see (6.3) under 'Saving Throw' for details
     on those).
 
@@ -17151,8 +17154,8 @@ though, as all other magic schools do, not the astral level.)
 
     Sphere of Destruction
                     Enlightened: Conjures up a mana storm.
-                    Corrupted: Conjures up raging inferno, which deals similar
-                               damage as rockets do.
+                    Corrupted: Conjures up raging inferno, which deals the
+                               same damage type as rockets do.
                     Required skill level for first spell level: 50.
 
     Gateway         Enlightened: Nigh-instantaneous Word of Recall for all
