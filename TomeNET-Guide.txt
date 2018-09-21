@@ -1665,8 +1665,8 @@ Item power inscription (added in 4.7.1):
     Refl/Inv/AM/Bless reflection/invisibility/anti-magic shell/Blessed
     ID                auto-ID
     Climb/Swim/Wraith climbing/swimming/wraithform
-    AE/AC/AF          aura of fire/cold/electricity
-    BE/BC/BF/BA/BP    brand of fire/cold/electricity/acid/poison
+    AE/C/F            aura of fire/cold/electricity
+    BE/C/F/A/P        brand of fire/cold/electricity/acid/poison
     +oTPaWUDEvil      slay orc/troll/giant/animal/undead/demon/dragon/evil
     *WUD              kill undead/demon/dragon
     ~oTPaWUEvil       ESP orc/troll/giant/animal/undead/demon/dragon/evil
@@ -2550,6 +2550,9 @@ Enter the 'tomenet/' folder and type:
         ./tomenet
 to start the game.
 
+If you get a font-related error ("Font not found: 9x15") please see PROBLEM 55
+in chapter Troubleshooting (8.8).
+
 
 Linux (compiling from source):
 ------------------------------
@@ -2590,6 +2593,9 @@ IMPORTANT NOW: You need to move the binary 'tomenet' that was just created one
 Go up one level into your 'tomenet/' folder. There type:
         ./tomenet
 to start the game.
+
+If you get a font-related error ("Font not found: 9x15") please see PROBLEM 55
+in chapter Troubleshooting (8.8).
 
 
 Configure TomeNET on Linux by editing config files or setting environment vars:
@@ -20882,5 +20888,16 @@ SOLUTION:   If you're on Windows and using a game version greater than 4.6.1a,
             installation, but this is the normal location in almost all cases.
             (The reason the game does this is that Windows starting at version
             7 will severly limit access to the Program Files folder.)
+
+PROBLEM 55: On a fresh TomeNET installation on Linux, the game will fail to
+            start, giving a font-not-found error (usually about font '9x15'),
+            like this: "Font not found: 9x15".
+SOLUTION:   TomeNET uses basic linux system fonts (and allows you to switch to
+            fonts of your own choice instead, if you want to). Some Linux
+            distributions do not have these installed by default though, for
+            example Antergos.
+            Install the necessary fonts packages on your system, using the
+            system's package manager. It should usually be 'xorg-fonts-misc'.
+            After installation, reboot your system to ensure they work.
 
 ==============================================================================
