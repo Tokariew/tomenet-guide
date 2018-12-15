@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 20. November 2018 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 13. December 2018 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.7.2 - official websites are:
 | http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | http://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -13058,6 +13058,9 @@ Note that not every skill is available to every profession (class).
                                 owned by a player, ie an item that has been
                                 sold to the shop, is especially hard.
 
+                                Training the 'Stealing' skill will carry over
+                                strongly into its parent skill 'Sneakiness'.
+
     .Backstabbing               Lets you backstab enemies, afflicting high
                                 damage. Works if the opponent is asleep or
                                 running away in fear, exposing his back to you.
@@ -16393,8 +16396,9 @@ school.
                     Shared spell (see above): O.Shadow, H.Offense.
                     This spell cannot be found in the Holy Offense tome.
 
-    Doomed Grounds  Has an annihilation effect, much weaker, but affecting a
-                    whole area. Unique monsters may resist.
+    Doomed Grounds  Has an annihilation effect, much weaker, but affecting
+                    a whole area, draining a small percentage of an enemy's
+                    hit points. Unique monsters may resist.
                     Required skill level for first spell level: 40.
                     Shared spell (see above): H.Offense, O.Shadow.
                     This spell cannot be found in the Shadow tome.
@@ -17366,6 +17370,8 @@ Teleport To             Tries to teleport a monster towards you.
 Teleport Away           Tries to teleport monsters away (it's a beam!).
 Darkness                Unlights the area around you.
 Cause Amnesia           Confuses a target.
+Disenchantment Bolt     ..
+Breathe Water           ..
 
 
 (6.8b) Runes & Runemastery
