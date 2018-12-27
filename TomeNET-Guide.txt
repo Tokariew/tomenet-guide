@@ -1999,7 +1999,8 @@ Pre-King    The life of a character within the level range 1 to 50.
 Pseudo-ID   If a player keeps an unidentified item for a longer time he might
             'feel' if the item is average, good, cursed or special. The item
             will automatically receive a 'pseudo-id inscription' then.
-            Pseudo-id intensity and speed depend on the 'Combat' skill.
+            Pseudo-id intensity and speed depend on various skills in regards
+            to the type of item: 'Combat', 'Archery', 'Magic' or 'Trapping'.
             It does not matter whether the player is acting, afk or idle.
             See (5.7) for more information about identification.
 
@@ -2399,13 +2400,16 @@ Note: For weapon attacks, having those slay/kill mods on gloves (or other
 
 Martial Arts users can fight relatively efficiently against Nazgul since they
 don't have to worry about their weapon breaking, but their chance to receive
-Black Breath is higher than for weapon users.
+Black Breath is higher than for weapon users:
 
 If you come in contact with a Nazgul or a very powerful undead creature there
 is a chance that you will be infected by the Black Breath. This dark aura is
 able to infect other players if you come too close to them. It will drain your
 stats and permanently drain your experience. Slowly, but steadily. There are
-several possibilities to cure Black Breath, for example Sprigs of Athelas.
+several possibilities to cure Black Breath, such as eating a Sprig of Athelas,
+asking another player for help who is able to command the required healing
+magic, or -if everything else is not available- visiting the Earth-Dome in
+Gondolin, where you can receive 'Herbal Healing' for a (somewhat high) price.
 Players cannot infect other players with Black Breath if they are in Bree or in
 the Training Tower, those are safe zones.
 
@@ -6103,19 +6107,19 @@ The 1..9 are standard shops, namely..
                         Get your Go game records emailed to you via "/kifu".)
                         For details about the gambling rules of the casino, see
                         subsequent (4.5a2) paragraph.
-        Mass Identify Service
+        Mass Identify Service (Minstrels Haven)
                         Will identify all items you currently carry for a fee.
                         See (5.7) for more information about identification.
-        *Identify* Service
+        *Identify* Service (Library)
                         Will *identify* an item for a fee.
                         See (5.7) for more information about ID, *ID*, shops!
-        Herbal Healing Service
+        Herbal Healing Service (Earth-Dome)
                         Will cure black breath for a high fee. (See (1.3a) for
                         more information about Black Breath.)
-        Morph Restoration Service
+        Morph Restoration Service (Sea-Dome)
                         Restores your form to normal in case you were
                         polymorphed (for example by a potion of Chauve-Souris).
-        Enchant Services
+        Enchant Services (various stores)
                         These will enchant weapons, arrows, or armour you have
                         equipped.
                         For weapons, this will attempt to enchant a main-hand
@@ -6144,12 +6148,12 @@ The 1..9 are standard shops, namely..
                         In the hazardous city of Khazad-Dum is a store that
                         offers some goods found to be useful by the miners
                         in the mountain depths.
-        Donate gold and pray to the gods  (EXPERIMENTAL: allows to solo reking)
-                        This is a special option in The Mirror in Lothlorien
-                        which allows fallen kings and queens to get their fate
-                        changed by the gods: Their Morgoth kill will be undone
-                        so they may challenge him once more, to regain their
-                        royal title!
+        Donate gold and pray to the gods (The Mirror)
+                        (EXPERIMENTAL: allows a fallen winner to solo-reking.)
+                        This is a special option which allows fallen kings and
+                        queens to get their fate changed by the gods:
+                        Their Morgoth kill will be undone so they may challenge
+                        him once more, to regain their royal title!
                         (In game slang, this is called 'solo-rekinging'.)
                         This service is useful if you do not have any team mate
                         who still hasn't killed Morgoth yet, to kill Morgoth in
@@ -6644,12 +6648,9 @@ In this light, Tik'srvzllat could be seen as Angband's final boss.
 Also, Morgoth, the Lord of Darkness is encountered in Angband at -1700 ft or
 deeper. See (1.3), (1.3a) and (1.3b) for more information.
 
-(**) A space-time anchor is an anti-teleportation field of radius 12 that will
-prevent all teleportation and stall all Word of Recall attempts within.
-(Note: It actually prevents all teleportation attempts that originate from
-       within it and also prevents all teleportation targets to be moved away
-       from within it, but does not prevent a teleportation from dropping its
-       target into them.)
+(**) The space-time anchor is a special light source that can be activated to
+create a temporary anti-teleportation field of radius 12 that will prevent all
+teleportation from and to, and stall all Word of Recall attempts within.
 
 (***) While Sauron, the Sorceror, boss of Mount Doom, does not drop any
 specific artifact, he is still a required kill before you are able to encounter
@@ -8395,7 +8396,7 @@ will be multiplied by 2 if the target doesn't resist that brand.
 See (5.3) to get an easy overview.
 
 Characters using weapons have a limited number of melee attacks per round,
-depending on the character class . A table showing the blows/round limits
+depending on the character class. A table showing the blows/round limits
 is at section (6.5).
 
 There are four different classes of melee weapons,
@@ -8905,6 +8906,7 @@ Some special abilities depend on armour weight (including shield) too.
 Those are..
 -dodge chance from 'Dodging' skill.
 -critical hit bonus from 'Critical-strike' skill.
+-stabbing attacks from 'Backstabbing' skill.
 -extra parry bonus from dual-wielding two weapons. (Also see (6.11).)
 -extra blow/round bonus from dual-wielding two weapons.
 -area searching for the 'Rogue' class (exclusive ability).
@@ -12239,8 +12241,8 @@ Note that not every skill is available to every profession (class).
                                 usefulness of ranged weapons and ammunition
                                 more distinctively, even if (s)he's not
                                 knowledgeable in archery otherwise.
-                                A very powerful one (combat 41) can also
-                                roughly estimate usefulness of magical items.
+                                A very powerful one (combat 41) can also notice
+                                curses on all kinds of items.
                                 The further you train Combat, the faster you
                                 will pseudo-id items.
 
@@ -12424,7 +12426,7 @@ Note that not every skill is available to every profession (class).
                                 if your character's class can dual-wield, else
                                 at zero. (So it's basically a switch.)
                                 Classes that are able to dual-wield are
-                                warriors, rangers and rogues.
+                                warriors, rangers, rogues and hell knights.
                                 Note that both weapons must be 1-handed.
                                 1,5- or 2-handed weapons cannot be used.
 
@@ -13182,12 +13184,19 @@ Note that not every skill is available to every profession (class).
                                 place a trap if a monster is close to you and
                                 trying to interfere. Also, monsters will have
                                 a harder time to discover your traps.
-                                Last but not least you learn to optimize your
-                                traps for higher damage output.
+                                By training Trapping you also learn to optimize
+                                your traps for higher damage output.
                                 (Note that 'Magic Device' or 'Runecraft' skill
                                 have no effect on trap damage output, even if
                                 it is loaded with a device or a rune.)
                                 See (4.7) for details about monster traps.
+
+                                Improves your ability to recognize traps:
+                                Lets you pseudo-id trap kits, the more often
+                                the higher your skill.
+                                If increased to at least 11, pseudo-id will
+                                give you more distinctive feelings instead of
+                                just 'good' or 'cursed'.
 
                                 Trapping also improves your disarming ability,
                                 making it easier to pick locks and to disarm
@@ -13195,12 +13204,17 @@ Note that not every skill is available to every profession (class).
                                 experience you gain from manually disarming
                                 traps is not affected by the skill but only by
                                 the traps' level).
-                                The chance to identify a trap on disarming it
-                                will also increase with higher Trapping skill.
+                                The chance to identify the type of a trap on
+                                disarming it will also increase with higher
+                                Trapping skill.
+
+                                And being more proficient in trapping will also
+                                increase your chances of spotting traps, ie
+                                improving your 'Searching' ability.
 
                                 Last but not least Trapping gives you a chance
-                                to salvage a trap kit from any trap when you
-                                disarm it!
+                                (depending on your skill) to salvage a trap kit
+                                from any trap you disarm!
 
                                 Hint: Inscribe all your trapping components
                                       '!=' for easy auto-pickup and make sure
