@@ -12786,7 +12786,8 @@ Note that not every skill is available to every profession (class).
 
                                 Traumaturgy has insanity-reducing synergy when
                                 trained together with Hereticism. It also can
-                                prolong the 'Boundless Rage' spell. See (6.8)
+                                prolong the 'Boundless Rage' spell, the better
+                                the higher Traumaturgy is trained. See (6.8)
                                 for details.
 
                                 A natural vampire race character who has both
@@ -14967,7 +14968,7 @@ Hell Knight (aka Corrupted Maia Paladin)
                             Unholy Zealot
                             Hell Knight
 
-                            Plague Champion
+                            Plaguebringer
                             Grand Tormentor
                             Vizier of Chaos
                 Demon Prince            Demon Princess
@@ -16832,7 +16833,8 @@ school.
 
     Demonic Strength
                     Temporarily increases and sustains strength and
-                    constitution.
+                    constitution. Also grants HP regeneration (same as for
+                    example an amulet of regeneration, so it doesn't stack).
                     Required skill level for first spell level: 23.
 
     Boundless Rage  Your melee strikes are furious, granting you one
@@ -16840,8 +16842,9 @@ school.
                     This spell has a special synergy with 'Traumaturgy' skill:
                     If you keep hitting opponents in melee that are affected by
                     Traumaturgy while under the effect of Boundless Rage, their
-                    pain will continue to fuel your rage and keep extending the
-                    spell's duration.
+                    pain will continue to fuel your rage and keep prolonging
+                    the spell's duration, the better the higher Traumaturgy has
+                    been trained.
                     Required skill level for first spell level: 29.
 
                     Tier II: Level 41.
@@ -17008,7 +17011,9 @@ school.
 
                     Tier III: Level 40.
 
-    Extra Growth    Increases your attributes temporarily.
+    Extra Growth    Increases your attributes temporarily and also grants HP
+                    regeneration (same as for example an amulet of regeneration
+                    so the effect doesn't stack).
                     Lv1: Increases strength.
                     Lv5: Also increases dexterity.
                     Required skill level for first spell level: 15.
