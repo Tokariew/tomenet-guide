@@ -6,7 +6,7 @@ On the release subpage of this repository are unofficial builds for Windows Serv
 
 Another mirrors of unofficial builds are available at this location:
 * [dropbox](https://www.dropbox.com/sh/sgki3q57c8e8jgb/AACIW3WkVozKFD2Rvo1SdnAna?dl=0)
-* [mega.nz](https://mega.nz/#F!BJMWUSiC!vHGvSggkboSFV19uSC10sA)
+* [mega.nz](https://mega.nz/#F!xcl3GKKY!NrC2mmn9x_uYui56DB7lPA)
 
 ### Who do I talk to? ###
 If you want to contact about this repository for tracking changes in guide or about unofficial builds for server use this e-mail: korbolinhii+tomenet@gmail.com
