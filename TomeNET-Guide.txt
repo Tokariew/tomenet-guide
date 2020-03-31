@@ -108,6 +108,7 @@ Contents
     (4.12)  Malicious effects monsters can suffer
     (4.13)  Extermination Orders, Events and Ironman Challenge
     (4.14)  In-game time system
+    (4.14a) In-game metrics
     (4.15)  Swimming
     (4.16)  Teleportation
 (5) Item and monster details
@@ -115,6 +116,7 @@ Contents
     (5.1a)  Melee weapon types
     (5.2)   Ranged weapons, brands
     (5.2a)  Fire-till-kill mode
+    (5.2b)  Throwing items
     (5.3)   Slaying vs brands
     (5.3a)  Martial Arts, brands
     (5.4)   Application of attack-affecting item mods
@@ -5310,11 +5312,10 @@ If you are below the optimum depth, your experience gain will decrease.
 The experience gained will be multiplied by 2 / (2 + leveldifference).
 So for 1 level missing to optimum depth you would get 2 / (2 + 1) = 67% of
 the optimum experience, at 2 levels difference you'd get 50%, 40% at 3, etc.
-At level 64 and higher, no dungeon except for the Nether Realm (see (4.5c))
-will be deep enough to deliver optimal experience and your experience gain
-after attaining level 66 will sharply decrease outside of the Nether Realm.
-The Nether Realm is by far the deepest dungeon in the game and allows players
-of very high character levels to accumulate excellent experience.
+At level 64 and higher, no dungeon except for the Cloud Planes and the
+Nether Realm (see (4.5c)) will be deep enough to deliver optimal experience
+and after attaining level 70 only the Nether Realm - by far the deepest
+dungeon in the game - can deliver optimal experience points.
 
 These depth restrictions regarding experience gain are applied to all dungeons
 except in Ironman Deep Dive Challenge and Halls of Mandos (which is Ironman).
@@ -8307,6 +8308,26 @@ to have to handle this time speed in the actual dungeon where you encounter
 the really bad guys..
 
 
+(4.14a) In-game metrics
+-----------------------
+The lore is, that a grid in the game has a size of 10x10 ft, aka 3x3 metres.
+Hence when a character has 40 ft infra-vision he will be able to spot monsters
+detectable by infra-vision no further than 4 grids away from him.
+
+However, since the game uses square grids instead of for example hexagonal
+grids, this has some implications for moving:
+Diagonal movement is more efficient than moving just horizontally and just
+vertically when your target location is not exactly horizontally or vertically
+away from you. Simply because by moving 1 grid diagonally you are twice as fast
+as if you had moved to the same grid by first moving 1 grid vertically and then
+1 grid horizontally.
+
+While this seems sort of obvious, it is easy to miss that for example in the
+'Dungeon Keeper' event whenever you enter another room, the next doors closest
+to you are actually diagonal of you! So now it might become clear how to do
+that event in the most effective way..
+
+
 
 (4.15) Swimming
 ---------------
@@ -8694,6 +8715,50 @@ repeatable actions such as searching or tunnelling.
 
 Fire-till-kill does not work with any other type of attacks besides those
 mentioned above.
+
+
+(5.2b) Throwing items
+---------------------
+Slings, bows, crossbows and even boomerangs are placed in the "ranged weapon"
+equipment slot 'c)'and are then 'fired', even though in the case of Boomerangs
+of course the correct term would be 'thrown'.
+However, in TomeNET, throwing is already reserved for the action of throwing an
+item from your inventory - and while throwing plays no big role for high level
+characters it can make a difference in the early game!
+
+Throwing can be used to get rid of that pesky fruit bat, floating eye, or to
+inflict not just damage but status effects too on a monster or even a group of
+monsters.
+
+To throw an item, you'd press 'v'. While you can throw any item to inflict some
+damage, usually the more damage the bigger the item is, there are a couple of
+things to know about throwing:
+
+- Potions thrown at a something will shatter, often releasing an area effect.
+  If you have potions in your inventory that are pseudo-identified as 'bad'
+  just throw them at a monster or a pack of them.
+  For example a potion of salt water can temporarily blind monsters, while a
+  potion of weakness can reduce their melee damage.
+  Potions of slowness and potions of sleep are very effective too.
+- Some weapon types are especially effective at dealing damage when thrown,
+  much more so than other random items. These are:
+  - Daggers (main gauche counts as such as well),
+  - Axes
+  - Spears and tridents.
+- Flasks of oil can also be thrown for an extra fire damage effect.
+
+The effect a shattered potion applies is in general the same that a fumes trap
+loaded with that potion would cause, just that the fumes from the trap are
+usually more potent.
+
+Tip: To easily throw all 'bad' potions in your inventory create a throwing
+macro in the macro wizard ('%' and then 'z')  and when asked for the item name
+or inscription, just type 'bad', as that will automatically select a potion
+that has been automatically inscribed 'bad' by the pseudo-identification
+system of the game.
+
+However, another use for bad potions could be to use the '/empty' command on
+them to obtain empty bottles, and fill those at fountains.
 
 
 
@@ -9527,10 +9592,10 @@ This is a magical whip. Magical, because its damage is enchanted to +3.
 It doesn't possess any further special abilities.
 
 Example 2:
-A Fiery Whip of Gondolin {+,24} (1d6) (+8,+11) (+3)
+A Fiery Whip of Gondolin {+,24} (1d6) (+8,+13) (+3)
 This is an ego-weapon ('of Gondolin') with a fire brand ('Fiery'). The
 base weapon type is a whip which makes it belong to the blunt weapons.
-Its to-hit and to-damage are magically enchanted to +8 and +11.
+Its to-hit and to-damage are magically enchanted to +8 and +13.
 Gondolin weapons increase strength and constitution (here +3).
 
 Ego-items or excellent magical items often have varying abilities.
@@ -19720,7 +19785,7 @@ HOW IT WORKS ON JEWELRY:
 
 -In general, it's not a good idea to try to turn a ring or amulet that
 has high bonus numbers into an artifact, like for example a ring of speed
-(+11) because these numbers will get erased and randomly re-rolled. Your great
+(+9) because these numbers will get erased and randomly re-rolled. Your great
 speed ring will not get more than +7 speed as a randart, much likely less, so
 speed rings in particular are very poor targets for artifact creation.
 So if you want to use the scroll on say a ring of extra attacks, you should
@@ -19731,8 +19796,8 @@ ring of extra attacks.
 However... read on:
 
 -On jewelry (+to-hit,+to-dam) and [+AC] will stay the same, for example a ring
-of slaying (+10,+15) will keep the (+10,+15) and an Amulet of Reflection [+11]
-will keep the [+11] to AC when turned into a randart.
+of slaying (+10,+15) will keep the (+10,+15) and an Amulet of Reflection [+13]
+will keep the [+13] to AC when turned into a randart.
 (Any dice (xdy) as well as _base_ AC [x,+0] on jewelry will always become 0,
 but there is currently no jewelry in the game that has damage dice or base AC.)
 
