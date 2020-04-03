@@ -1028,6 +1028,8 @@ They all start with a slash '/' hence they're called slash commands:
             If <text> is omitted, the current BBS contents will be shown, same
             as using the '!' key.
 
+/bug        report a bug to the admin(s).
+
 /convertexclusive    Attempts to convert your current character into a
                      slot-exclusive character (either PvP-mode or IDDC aka
                      Ironman Deep Dive Challenge). Warning: This process is NOT
@@ -1389,9 +1391,8 @@ They all start with a slash '/' hence they're called slash commands:
 /ref        redraw the screen (do this if it's messed up for some reason).
  (/refresh, or simply hit CTRL+R)
 
-/bug        report a bug to the admin(s).
-
 /rfe        Store a message/suggestion for the admin(s).
+            (Request for enhancement)
 
 /say <text>
  (/s)       Speaks <text> to players who are currently nearby your position,
@@ -1610,15 +1611,16 @@ Other !-inscriptions:
     !U          This item will be displayed in dark grey colour in your
                 inventory. Can be useful for sorting loot.
 
-
 The # inscription:
     This one makes all following inscription be appended directly behind the
     actual item name, instead of at the end of the item's full description.
     It can be especially convenient if the item has a very long name.
     Sometimes you can also use this to confuse your fellow players :-p
 
-(The '..' inscription is no longer available since 'Thunderlord' ego weapons
-no longer have the TELEPORT flag.)
+Player-store inscription:
+    @S          This inscription has a variety of different usages and is used
+                for displaying items in your own shop that you can set up in
+                any of your houses. For more information see (4.10a).
 
 Items that 'can cause Earthquakes':
     !Q          Prevents the item from causing an earthquake. This usually
@@ -1723,12 +1725,12 @@ Item power inscription (added in 4.7.1):
     Refl/Inv/AM/Bless reflection/invisibility/anti-magic shell/Blessed
     ID                auto-ID
     Climb/Swim/Wraith climbing/swimming/wraithform
-    AE/C/F            aura of fire/cold/electricity
-    BE/C/F/A/P        brand of fire/cold/electricity/acid/poison
+    AF/C/E            aura of fire/cold/electricity
+    BF/C/E/A/P        brand of fire/cold/electricity/acid/poison
     +oTPaWUDEvil      slay orc/troll/giant/animal/undead/demon/dragon/evil
     *WUD              kill undead/demon/dragon
     ~oTPaWUDEvil      ESP orc/troll/giant/animal/undead/demon/dragon/evil
-     SDRAgUni             spider/dragonrider/good('A')/nonliving('g')/unique
+     SDRAgUni          spider/dragonrider/good('A')/nonliving('g')/unique
     ESP               telepathy (full ESP)
     Tele/NT           induces random teleportation/allows no teleportation
     Dr/Drm/Drx/Aggr   drains hp/mana/experience / aggravates
@@ -1762,9 +1764,9 @@ town you visited.
 
     NOTES:
     1) You must've already been at that depth or deeper in order to teleport
-       there via WoR!
+       there via WoR! And you must have been alive, not dead (ie a ghost).
     2) In order to recall to a place on the world map, you need to have been
-       there before, NOT while you were dead (ghost), but while you were
+       there before, not while you were dead (ghost), but while you were
        alive! Temple priests actually won't revive ghosts either who have not
        been to this place alive previously. So don't try to travel to Gondolin
        as a ghost, the priest over there will reject you and you won't remember
@@ -1906,13 +1908,14 @@ ESP         Extrasensory perception. ESP is a telepathic power that allows you
             ESP powers can vary, from full telepathy (seeing all monsters that
             have a mind) to partial ESP that only detects specific kinds of
             monsters, such are:
-            Animals, Spiders, Orcs, Trolls, Giants, Undead (most lesser undead
-            are mindless though and therefore undetectable by ESP), Demons,
-            Dragons, Good (all monsters that have the 'GOOD' flag), Evil (all
-            monsters that have the 'EVIL' flag, which is quite a lot!),
-            Non-living (most of these don't have a mind though), Uniques.
-            In the early game, obtaining ESP-Evil is already a huge help, as it
-            will cover a lot of monsters.
+            Animals, Spiders, Orcs, Trolls, Giants, Dragonriders, Undead (most
+            lesser undead are mindless though and therefore undetectable by
+            ESP), Demons, Dragons (includes Dragonriders), Good (all monsters
+            that have the 'GOOD' flag), Evil (all monsters that have the 'EVIL'
+            flag, which is quite a lot), Non-living (most of these don't have a
+            mind though), Unique monsters.
+            In the early game, obtaining ESP-Evil, often from a weapon of *slay
+            evil*, is already a huge help, as it will cover a lot of monsters.
 
             ESP can be gained by magic or by items, typical items are:
              - Crowns of telepathy (full ESP, 'It gives telepathic powers.')
@@ -1964,7 +1967,7 @@ kinging     The process of beating Morgoth, the game boss, and thereby
             A player must be at least level 40 to get credit for beating
             Morgoth.
 
- rekinging  Fallen winners, ie players who beat Morgoth but later on died and
+rekinging   Fallen winners, ie players who beat Morgoth but later on died and
             thereby lost their royal title again, can attempt to regain it by
             teaming up with someone who has not yet defeated Morgoth.
             If that person lands the killing blow, everyone in her/his party
@@ -2107,6 +2110,9 @@ Randart     Randomly generated artifact. As opposed to 'Truearts' which are
             See (5.9b) for more information about artifacts.
 
 Res         Resistance.
+
+RFE         A request for enhancement, ie a suggestion, that players can send
+            to the game admins using the "/rfe" command.
 
 Room        The dungeon contains many rooms connected by passages. Some of the
             rooms are of special shape. Especially rooms containing a further,
@@ -2438,7 +2444,7 @@ no-tele vaults, even if they normally aren't!
 If you team up against him, he will grow stronger for every additional player
 who enters his dungeon level. Growing stronger in fact means that he gains a
 hit point and speed bonus. If a player leaves his level, he will weaken again.
-See the following paragraph (1.6) for more information.
+See the following paragraph (1.3b) for more information.
 
 When a player lands the killing blow on Morgoth, everyone else who is in her or
 his party and also on the same dungeon floor will get credit for winning the
@@ -5436,6 +5442,10 @@ if they die.
 Everlasting characters may also use the 'Instant Resurrection' feature offered
 by town temples, see (4.5a), which will avoid turning into a ghost.
 
+Ghosts are very fragile, but can pass solid walls, float up and down freely
+using the < and > keys, their melee attacks can cause fear and they gain +3
+infra-vision.
+
 If a player ultimatively dies on a dungeon or tower floor, ie he didn't turn
 into a resurrectable ghost but got completely erased, then that particular
 floor he "perma-died" (also termed "ghost-died") on will remain static for
@@ -6280,7 +6290,8 @@ The 1..9 are standard shops, namely..
                         million or you can wait for about 2 weeks (real time,
                         you don't even need to be logged on!) or you can
                         gain about 5 million raw experience points or a mix of
-                        all these, up to your personal preference.
+                        all these, up to your personal preference. The two
+                        weeks begin to count immediately after you have died.
                         'Raw' experience means that it's simply the amount of
                         experience shown in the monster spoiler (~7) and the
                         only other factors are the monster's clone state and
@@ -7321,6 +7332,8 @@ However, the following items have a default price of only 1x their base value:
 - Rings of Speed
 - Scrolls of Artifact Creation
 - Random artifacts
+To verify the appraised price, just inspect (Shift+I) an item inscribed '@S'
+while you are inside your house.
 
 If you want to set a higher price than the default price, you can inscribe the
 item with the price like this:
@@ -7395,6 +7408,12 @@ press 'h' key or use the /pstore command when standing next to your house door
 To indicate that your house is a player store, you can use 'h' key or the
 "/paint" command to paint your house entrance for other players to see!
 Please see (0.2b) for more information about painting.
+
+All items put up in player stores will be listed on the "Player store search"
+webpage on the TomeNET website: Go to "Official Server Info" and there click
+"Player Stores". This list is usually updated once per hour, so items you just
+added to your store might not yet be displayed on the webpage. Similarly, items
+you already removed might linger there for a bit more.
 
 
 
@@ -8181,8 +8200,9 @@ Halloween
     except it won't show up on the first 19 floors in the Ironman Deep Dive
     Challenge.
     Players who are too high level (above 30 on main, above 35 on Ironman*)
-    will not be able to hunt him, for the others he will still be tough and
-    might require teamwork.
+    will not be able to hunt him, they will see a message:
+     "A ghostly force drives you out of this dungeon!"
+    but for all others he will still be tough and might require teamwork.
 
     The Great Pumpkin does not cause any damage but still has a few annoying
     spells at its disposal. It is level 127 and therefore can drop quite high-
@@ -9964,7 +9984,7 @@ floor level is 127 and race level is 85.
 Now the higher of the two (floor and race) is 127. The difference of the result
 (106) to 127 is 21. This gets capped at 20 and is the random 'tolerance' for
 each item dropped by the wyrm.
-The treasure class of the wyrm is 50% treasure and 50% combat.
+The treasure class of the wyrm is 20% treasure and 80% combat.
 
 Let's look at 3 items it drops:
 
@@ -10439,8 +10459,8 @@ Restore Life Levels
                 yellow colour instead of the usual light green.
                 Note that this potion does not restore experience you lost by
                 dying (there is no way to restore experience loss by death).
-Restore Mana    Restores 500 MP.
-*Restore Mana*  Restores 1000 MP.
+Restore Mana    Restores 500 MP. ('You feel your head clearing')
+*Restore Mana*  Restores 1000 MP. ('You feel your head clearing')
 Ruination       Take 10d10 damage. All stats are decreased by 25 (restorable).
 Self-Knowledge  Tells you everything about yourself and identifies your items.
 
@@ -10515,8 +10535,10 @@ Deeds           Some of the parchments are deeds, which are used as rewards
                 It will also fail on dungeon floors that do not allow
                 *destruction* magic explicitely (orange floor feeling saying
                 "The walls here seem very solid.", also see (4.8)).
-                (*Destruction* does not yield any kind of credit such as
-                experience points, loot or monster-form for mimics.)
+                *Destruction* does not yield any kind of credit such as
+                experience points, loot or monster-form for mimics.
+                *Destruction* actually erases objects completely, so potions
+                caught up in it will not cause any shatter-effects.
 Enchant
   Sub-types: weapon to-dam, weapon to-hit, armour.
                 Will attempt to enchant weapon/ammunition or armour.
@@ -10651,6 +10673,7 @@ Healing         Staves:
 Holiness        Dispels nearby evil. Also protects you from evil for a while.
                 Cures poison/cuts, removes fear/stun, heals you somewhat.
 Magi            Restores your intelligence and 500 mana points.
+                ('You feel your head clearing')
 Perception      Identifies a specific item.
 *Perception*    *Identifies* a specific item, you guessed it..
 Polymorph       Polymorphs your target randomly into another form.
@@ -10672,28 +10695,23 @@ Jewelry
 -------
 Talisman (Amulet)       Increases your luck, helping you finding better loot.
                         (See LUCK flag in (5.8) for details about luck.)
-Amulets of Adornment    They might be looking fancy, but they don't do
+Amulet of Adornment     They might be looking fancy, but they don't do
                         anything and have no effect on your character.
 Amulet of Anti-Magic    See (5.8), 'NO_MAGIC'
-Amulet of Anti-Teleportation    If worn it will suppress all attemps to
-                                teleport, phase or recall the wearer,
-                                regardless whether initiated by a monster or
-                                by himself. It will also prevent certain
-                                effects of unresisted nexus attacks.
-Amulets of Brilliance   increase intelligence and wisdom, provide light.
-Rings of Cunningness    increase strength and intelligence.
-Rings of Might          increase strength and constitution.
-Rings of Ready Wit      increase dexterity and intelligence.
-Rings of Toughness      increase dexterity and constitution.
-Rings of Sustain Ability        sustain strength and dexterity.
-Rings of Sustain Brilliance     sustain intelligence and wisdom.
-Rings of Sustain Cunningness    sustain strength, intelligence and charisma.
-Rings of Sustain Might          sustain strength and constitution.
-Rings of Sustain Ready Wit      sustain dexterity, intelligence and charisma.
-Rings of Sustain Steadiness     sustain wisdom and constitution.
-Amulets of Sustenance           sustain all six attributes, provide 'Hold Life'
-                                aka resistance to experience-draining attacks,
-                                and provide slow digestion.
+Amulet of Anti-Teleportation
+                        If worn it will suppress all attemps to teleport, phase
+                        or recall the wearer, regardless whether initiated by a
+                        monster or by himself. It will also prevent certain
+                        effects of unresisted nexus attacks.
+Amulet of Brilliance    increase intelligence and wisdom, provide light.
+Amulet of the Moon      Gives infra-vision, the power to see invisible, and it
+                        can be activated to sleep monsters nearby.
+                        It also improves your +hit and +dam boni.
+Amulet of Terken        Gives the power to see invisible, free action, and
+                        improves your searching (usually by quite a lot).
+Amulet of Sustenance    sustain all six attributes, provide 'Hold Life'
+                        resistance to experience-draining attacks,
+                        and provide slow digestion.
                         Sustenance of a stat will prevent it from being drained
                         by various sort of attacks, potions, or other effects.
                         For most things it works 100% of the time, but for some
@@ -10704,22 +10722,28 @@ Amulets of Sustenance           sustain all six attributes, provide 'Hold Life'
                         Ability can be helpful for melee fighters, especially
                         if they enter an ironman dungeon which they cannot
                         leave early in case they need to restore drained stats.
-Elemental rings (flames, frost, acid, lightning)
-                    Provide the according resistance and can be activated for
-                    temporary resistance too, thereby temporarily giving you
-                    "double resistance" (see (5.17) for details).
-                    They also brand your physical attacks with the according
-                    element.
-Rings of Lordly Protection      Resist poison, disenchantment, life drain and
-                                give free action (immunity to paralysis).
-Amulet of the Moon      Gives infra-vision, the power to see invisible, and it
-                        can be activated to sleep monsters nearby.
-                        It also improves your +hit and +dam boni.
-Rings/Amulets of Slow Digestion will slow your food digestion so you have to
-                        eat less often. Also prevents instant paralysation if
-                        your food state hits red 'weak'.
-Amulet of Terken        Gives the power to see invisible, free action, and
-                        improves your searching (usually by quite a lot).
+Ring of Cunningness     increase and sustain strength and intelligence.
+Ring of Tenacity        increase and sustain strength and wisdom.
+Ring of Might           increase and sustain strength and constitution.
+Ring of Ready Wit       increase and sustain dexterity and intelligence.
+Ring of Gallantry       increase and sustain dexterity and wisdom.
+Ring of Toughness       increase and sustain dexterity and constitution.
+Ring of Preparedness    increase and sustain constitution and intelligence.
+Ring of Steadiness      increase and sustain constitution and wisdom.
+Ring of Flames, Ring of Ice, Ring of Acid, Ring of Lightning
+                        Provide the according resistance and can be activated
+                        for temporary resistance too, thereby temporarily
+                        giving you "double resistance" (see (5.17) for
+                        details). They also brand your physical attacks with
+                        the according element.
+Ring of Lordly Protection
+                        Resist poison, disenchantment, life drain and give
+                        free action (immunity to paralysis).
+Amulet of Slow Digestion
+Ring of Slow Digestion
+                        will slow your food digestion so you have to eat less
+                        often. Also prevents instant paralysation if your food
+                        state hits red 'weak'.
 
 
 Misc
@@ -10745,10 +10769,12 @@ Chests              Chests may contain treasures or items. Usually, chests
                     Happy looting.
                     Note that only the chest's level affects what kind of items
                     you may find in it. It does not matter where you actually
-                    are when you open it. A player's 'Luck' value has no effect
-                    on what will come out of it either.
+                    are when you open it or who opens it. A player's 'Luck'
+                    value has no effect on the outcome either.
                     On average, large chests tend to contain items rather than
                     money while small chests mostly contain money.
+                    Chests have an increased chance to drop good items, same as
+                    monsters that have DROP_GOOD flag.
                     Also see (5.7c) for more information.
 Climbing set        Allows you to travel over mountain fields.
                     Info for mimics & co: In order to be able to use it, your
@@ -10758,11 +10784,12 @@ Device of theft prevention
                     in stealing items from your backpack.
 Empty bottles       You can /fill these at fountains to turn them into
                     potions. (See (0.2b) for more details.)
-(Small) Firestones  These can be eaten by Draconians and players in dragon
+Firestones          These can be eaten by Draconians and players in dragon
                     forms and have various random effects (small firestones
-                    have reduced duration):
+                    just have reduced duration):
                     - If the player isn't a Draconian but he is currently in
                       dragon form he will get some mana refilled.
+                      ('You feel your head clearing')
                     - If he is a Draconian, the following effects can apply:
                         - Adrenaline:   Consume way more food.
                                         Get STR/CON/DEX bonus.
@@ -10828,10 +10855,12 @@ Mummy Wrapping      Reduces your charisma slightly, and prevents other players
                     point regeneration rate.
 Picklock            When equipped, improves your trap-disarming (and therefore
                     also your lockpicking) ability.
-Rubble ':' on the floor You can create sling ammo from this. You cannot pick
-                        up rubble, just stand next to it (see (6.12)).
-Skeletons/Bones/Skulls  You can craft ammunition from these if your Archery
-                        skill is sufficient (see (6.12)).
+Rubble ':' on the floor
+                    You can create sling ammo from this. You cannot pick up
+                    rubble, just stand next to it (see (6.12)).
+Skeletons/Bones/Skulls
+                    You can craft ammunition from these if your Archery skill
+                    is sufficient (see (6.12)).
 Spell scroll        Although called "scrolls" they actually persist and can be
                     used infinite times. They may however get destroyed by
                     certain damage effects (most notably fire and acid)
@@ -11361,6 +11390,8 @@ NO_AUTORET      You won't use auto-retaliation against this entity.
 
 REFLECTING      The monster can deflect bolts and arrows, physical and magical
                 projectiles, prolonging the fight.
+                Also, the monster will resist any types of light-based attacks
+                greatly, not just attacks in bolt form.
 HURT_LITE       This monster is susceptible to light attacks.
 HURT_ROCK       This monster is susceptible to stone-to-mud attacks.
 
@@ -11403,6 +11434,10 @@ DROP_GREAT      The monster usually drops items with ego powers or artifacts.
                 of their respective dungeon.
                 (For details on monster stats and flags, press ~ 7 in the game
                 to invoke the monster lore browser.)
+DROP_60         The monster has a 60%/90% chance to drop something (an item or
+ DROP_90        a gold pile).
+ONLY_GOLD       The monster drops only gold (and no items) or only items (and
+ ONLY_ITEM      no gold).
 
 
 
@@ -11585,9 +11620,10 @@ DISARM          'Fighting' ability.
                 Weapons wielded 2-handely are harder to disarm (stacking).
                 Artifacts are also harder to disarm (stacking).
                 Heavily cursed items are quite hard to disarm (stacking).
-                Note that DISARM effects have a chance to be blocked or parried
-                if their attack type can be blocked or parried, which is
-                usually the case (they usually have HIT attack type).
+                Note that DISARM effects have a chance to be blocked, parried
+                or dodged if their attack type can be blocked, parried or
+                dodged, which is currently the case for all monsters that can
+                disarm because the monsters all use the HIT attack type for it.
 
                 Sometimes disarmed weapons land in your backpack, but sometimes
                 you drop them to the ground instead. If there is no empty floor
@@ -11678,6 +11714,9 @@ Items will usually be destroyed/lost. Stairs and void jump gates are immune.
 
 Monsters killed by earthquakes do not yield experience, loot or other credit,
 same as goes for monsters erased by *destruction* or genocide.
+
+Earthquakes actually erases objects completely, so potions caught up in one
+will not cause any shatter-effects.
 
 
 
@@ -12140,7 +12179,7 @@ For digging through granite wall without having to wait for ages to succeed,
 you will definitely want a better digging tool than basic shovels or picks.
 For example ones 'of Digging', a magical ego power for digging tools.
 Or higher level diggers such as gnomish, orcish or dwarven diggers or mattocks,
-which have a higher base digging bonus that just (+1).
+which have a higher base digging bonus than just (+1).
 
 Tunnelling into walls that are actually secret doors will be treated as if
 you were 'searching' instead of tunnelling. You cannot find secret doors in
@@ -12370,6 +12409,10 @@ Examples:
 18/10 is like 19 (ie 18+1).
 18/120 is like 30 (ie 18+12).
 18/47 is like 22. The fraction 0.7 is not factoring into actual gameplay.
+
+The way stats are displayed can be toggled in  = 2  'linear_stats'. This will
+change them to numbers from 3 to 40, where 40 equals 18/220 and is similarly
+displayed as asterisks instead of a number to indicate that it's the limit.
 
 If you quaffed the maximum of "stat potions" (potions raising your stats), the
 maxed out attribute will be displayed in light umber.
@@ -12818,6 +12861,8 @@ stated.
                                 summoning, running away.
                                 The monster must be standing right beside you
                                 (horizontally, vertically or diagonally).
+                                To intercept an enemy it doesn't matter whether
+                                you have a weapon or shield equipped or not.
 
                                 Classes that have the Interception skill
                                 available for training will automatically gain
@@ -14167,10 +14212,11 @@ create a character!):
     darkling, a harbinger of demonkind (to become enlightened) before reaching
     level 20 or they will lose the ability to stay in the realm and their
     physical form will be destroyed.
-    They will also meet such a fate of being destroyed by indecisiveness if
-    they kill both of these kind indiscriminately before having reached
-    initiation, so take care. After they underwent initiation at level 20, they
-    may just kill all of them indiscriminately, same as any other monster.
+    Starting at level 15, they will also meet such a fate of being destroyed by
+    indecisiveness if they kill both of these kind indiscriminately before
+    having reached initiation, so take care.
+    After they underwent initiation at level 20, they may just kill all of them
+    indiscriminately, same as any other monster.
     Using but their mind they can easily perceive both good and demonkind
     telepathically. The servants and harbingers of those factions that Maiar
     need to slay occur from dungeon level 12 to 20 (which correspond to
@@ -14597,7 +14643,8 @@ create a character!):
 
 - Hell Knight
     This ultimately corrupted paladin can only be brought into existance when
-    an astral spirit forsakes enlightenment and turns demonic instead.
+    an astral spirit on its way of becoming a paladin forsakes enlightenment
+    and turns into a demonic traitor instead.
     Imbued by the powers of chaos and hellflame, these warriors represent
     absolute treason without remorse.
     They have the same abilities as paladins in all regards but they are not
@@ -15502,9 +15549,11 @@ F: flag list
     REGENERATE  Faster hit point regeneration (same as item ability, doesn't
                 stack with regeneration obtained from item flag).
     REFLECTING  Gives 'reflect' ability to the player, see (5.8) for details.
+                Also gives resistance to light.
                 (Side note about monster reflection in general:
                 The 'REFLECTING' flag on monsters gives them a flat 50% chance
-                to reflect physical or magical projectiles.)
+                to reflect physical or magical projectiles and resistance to
+                any light-based attacks.)
     CAN_SWIM    The player can pass water fields without problems.
     CAN_FLY     The player can levitate.
     STUPID      -2 intelligence.
@@ -15639,10 +15688,11 @@ All undead creatures
 All greater undead creatures
                 See 'All undead creatures' above, and in addtion they get
                 another +4 bonus to infra-vision (ie +5 in total).
-All greater demons (capital 'U')
-                Resist poison (usually immunity, depends on ~7 flags) and time.
-                Take 2x damage from holy orbs or holy fire and suffer
+All demons      Take 2x damage from holy orbs or holy fire and suffer
                 from a couple of 'good' effects/spells (similar to undead).
+All greater demons (capital 'U')
+                See 'All demons' above, and in addition they
+                resist poison (usually immunity, depends on ~7 flags) and time.
 All non-living creatures
                 Resist poison (usually even immune, depends on ~7 flags)
                 and fear; insanity attacks are reduced somewhat (see (6.6)).
@@ -15697,7 +15747,7 @@ CHR     Dragonriders: +1
 
 Stealth         Body weight: -4..+3
 Infra-Vision    Undead in general: +1
-                Ghosts specifically: +3
+                Ghosts, Wraiths/Wights, Liches, Vampires : +3
 
 
 Intrinsic abilities that aren't kept when changing forms:
@@ -16054,7 +16104,7 @@ Level 50:
 ---------
 Spectral Tyrannosaur    speedy undead animal;
 (Code 705)              has 25% scaring attacks;
-                        resists nexus, teleportation attacks, nether,
+                        resists nexus, teleportation attacks, nether, time,
                         life drain, cold, acid and poison;
                         becomes immune to one of cold/acid/poison;
                         susceptible to 'good' and 'life';
@@ -17237,7 +17287,7 @@ school.
     BONI:           At 30 it grants HP regeneration to true vampires (same as
                     from item flag) and strong hold of your life force for
                     other races.
-                    At if both Unlife and Necromancy are at 50.000, it grants
+                    If both Unlife and Necromancy are at 50.000, it grants
                     ultimate hold on one's own life force, rendering oneself
                     immune to experience drain.
 
@@ -17577,6 +17627,10 @@ though, as all other magic schools do, not the astral level.)
     Empowerment     Enlightened: Incite self-fury.
                     Corrupted: Increases own hit points temporarily.
                     (This spell uses WISDOM to determine fail-rates!)
+                    Note that this effect is the same as and stacks with +LIFE
+                    on items and hence caps against a total of +3 with those
+                    items. So if you already have +3 LIFE from items the spell
+                    will have no effect as you already reached the max cap.
                     Required skill level for first spell level: 40.
                     This spell can be used even while blind.
 
@@ -17611,6 +17665,8 @@ The monster spells ('S:' line in r_info.txt) are mostly also usable by a player
 transforming into the monster via Mimicry skill, these spells are also called
 'mimic powers', since they're not always spells in a strict sense of the word.
 (In general, monsters' summoning spells are never available as mimic powers.)
+Note that you cannot use any mimic powers if your skill is not a least 1.000,
+resulting in the failure message "You cannot control your form."
 
 All mimic powers use intelligence stat to determine their failure rate.
 Their power usually depends on the level of the monster whose form the
@@ -20173,7 +20229,7 @@ General mods:
         Stealth
         Searching
         Speed
-            (cannot spawn on shields)
+            (cannot spawn on shields or boomerangs)
         Any base immunities:
             Acid, Electricity, Fire, Cold.
             (A randart cannot have more than two immunities at once.)
@@ -20221,6 +20277,9 @@ Items that add mana, give mana regeneration or are blessed will never have an
 Headgear cannot give more than +6 infra-vision.
 Headgear cannot give more than +3 speed.
 Headgear cannot give more than +3 mana.
+
+On items other than boots you cannot get more than +7 speed and getting that
+high a value is already *extremely rare*. Realistically think of +5 as superb.
 
 Gloves cannot get more than +6 to-hit or to-dam bonus, so (+6,+6) is max.
 Gloves cannot give more than +2 extra attacks.
@@ -20296,6 +20355,8 @@ what you must actively do BEFORE turning in a deed for a reward item is:
   Regarding weapon weight, note that a weapon reward will usually not give you
   less attacks per round than the weapon you are already wielding (if any). If
   you don't wield one, it aims for 3 attacks per round as default.
+  An exception are dark swords, which are always rewarded when you have any
+  points in Anti-magic skill, even if it lowers your BpR.
 - runemasters who receive a piece of armour will usually (as long as it's
   reasonably possible regarding ego-power type and value) get one that provides
   resistance to one of the elements they can conjure up with their runecraft
@@ -21385,5 +21446,10 @@ PROBLEM 60: Editing the Colormap_0 entry (TomeNET.ini) or colormap_0 entry
             (.tomenetrc) doesn't do anything, no matter which colour I choose.
 Solution:   Indeed the entry #0 cannot be changed and is always black ie
             #000000. All other entries are freely modifiable though.
+
+PROBLEM 61: I changed a key in the macro menu and now it doesn't work anymore.
+Solution:   To restore a key's default behaviour, press % to enter the macro
+            menu and choose 'd' to delete a macro from a key, then press the
+            key in question.
 
 ==============================================================================
