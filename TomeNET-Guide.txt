@@ -1,4 +1,4 @@
-.=========================+==--.
+ .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
 | Latest update: 1. April 2020 - written by C. Blue (c_blue@gmx.net)
@@ -1667,8 +1667,10 @@ Scrolls/spell books of Identify (except for bag-ID), Rods/Staves of Perception:
                 This inscription also works on 'The Stone of Lore'.
                 It does not work for Arcane Lore, since that is purely a bag ID
                 spell.
-                Note that it will attempt to re-cast the ID spell until it
-                succeeds or you're out of mana. Use with care.
+                Note that the !X inscription only makes one attempt each time
+                you pick up an item. That means if you use means that can fail,
+                such as spells or magic devices, and you do fail, there will be
+                no automatic retry, you will have to ID it manually.
                 See (5.7) for more information about identification.
 
 An item that can be activated:
@@ -10974,8 +10976,8 @@ in the list of its powers that you get when *identifying* it.
 Artifact ammunition never breaks or (in case of boomerangs) falls down to the
 floor instead of returning. Artifact weapons are harder to get disarmed.
 
-There are two classes of artifacts, 'true artifacts' (also called 'static
-artifacts') and 'random artifacts' or short 'randarts':
+There are two classes of artifacts, 'true artifacts' (or short 'truearts',
+also called 'static artifacts') and 'random artifacts' or short 'randarts':
 
 
 True artifacts
