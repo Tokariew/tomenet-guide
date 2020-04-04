@@ -1,7 +1,7 @@
  .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 1. April 2020 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 4. April 2020 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.7.2 - official websites are:
 | http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | http://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -136,6 +136,7 @@ Contents
     (5.11a) Monster flags
     (5.12)  Monster attack mechanism, Armour Class, damage caps
     (5.12a) Monster attack types and brands
+    (5.12b) Dispelling/Banishing/Turning monsters
     (5.13)  Earthquakes
     (5.14)  Curses
     (5.15)  Vampirism
@@ -1463,19 +1464,30 @@ They all start with a slash '/' hence they're called slash commands:
             Allows you to target a specific grid specified by X,Y as offset
             to your current character position.
 
-/testyourmight [rs]
-or shorter: /tym [rs]
+/testyourmight <show|rs>
+or shorter: /tym <show|rs>
+            '/tym show' will display your damage/healing output so far and
+            '/tym rs' will reset the damage/healing counters.
+
             Displays damage and healing stats for your character, totals and
             averages over number of attacks and over time (# of seconds
             passed).
+
             Note: 'Numer of attacks' only counts successful attacks, ie not
-                  attacks that missed, were blocked/parried/dodged or
-                  nullified by invulnerability, etc.
-                  It however counts ALL attacks, for example aura hits too.
-            Note that for characters moving at high speed and having a high
+            attacks that missed, were blocked/parried/dodged or nullified by
+            invulnerability, etc. It however counts ALL attacks, for example
+            aura hits too.
+
+            WARNING: For characters moving at high speed and having a high
             number of blows per round, you might need to remove items giving
             +SPEED or +Extra Attacks for the test to be accurate, this is due
             to frame rate limits of the real-time engine, compare (8.7).
+            Then use the /ex command before and after taking off speed items to
+            see how often you can move per turn to calculate your real dps.
+
+            In general, if you want to compare different equipment sets,
+            taking off all extra (ie existing in both sets) items that give
+            +EA or +Speed is the best way to get accurate results!
 
 /time       Tells you the current in-game time, same as /ex does.
 
@@ -2519,9 +2531,14 @@ will always provide invisibility (5.16) and experience drain (5.19). They are
 also always heavily cursed, cannot be dropped while cursed, and can re-curse
 themselves (5.14).
 
-In order to find Morgoth, players have to defeat Sauron, the Sorceror first.
-For more information about encountering Sauron and Morgoth, see next paragraph
-(1.3b).
+In order to find Morgoth, players have to defeat Sauron, the Sorceror first,
+Morgoth's servant, who dwells at the bottom of Mount Doom. A player must get
+the killing blow on Sauron to get kill credit, so if you are in a party of
+several players who all haven't killed him yet, you must seek him out multiple
+times for every single party member who then has to get the last hit to get the
+kill credited.
+
+For more information about encountering Morgoth, see next paragraph (1.3b).
 It is noteworthy that Sauron is able to boost his own spell-casting speed for
 as long as he finds himself or the area around his target blocked by Glyphs of
 Warding (also called Runes of Protection).
@@ -8388,6 +8405,10 @@ While this seems sort of obvious, it is easy to miss that for example in the
 to you are actually diagonal of you! So now it might become clear how to do
 that event in the most effective way..
 
+Note that the map coordinates you see when pressing SHIFT+L (SHIFT+W with rogue
+like keymap) can differ depending on if you have 'big_map' option enabled or
+not in  = 1  options menu.
+
 
 
 (4.15) Swimming
@@ -8802,7 +8823,7 @@ things to know about throwing:
   potion of weakness can reduce their melee damage.
   Potions of slowness and potions of sleep are very effective too.
 - Some weapon types are especially effective at dealing damage when thrown,
-  much more so than other random items. These are:
+  much more so than other random items. These throwing weapons are:
   - Daggers (main gauche counts as such as well),
   - Axes
   - Spears and tridents.
@@ -9972,7 +9993,7 @@ depends on the server configuration but is usually:
 (dungeon floor depth + monster race level) / 2
 to which (for each item anew) a random tolerance of 0..diff is added, where
 'diff' is the difference of above's calculation result to the higher value of
-the two 'dungeon floor depth' and 'monster race level'. 'diff' caps at 20.
+the two 'dungeon floor depth' and 'monster race level'. 'diff' caps at 13.
 
 Note that the highest level items in the game at this time are these two level
 115 items: 'Massive Piece of Adamantite' and 'Heavy Ribbed Adamantite Armour'.
@@ -9984,7 +10005,7 @@ You kill a great wyrm of power on the deepest floor of Angband (-3050 ft), so
 floor level is 127 and race level is 85.
 (floor + race) / 2 = (127 + 85) / 2 = 106 (the result is always rounded down).
 Now the higher of the two (floor and race) is 127. The difference of the result
-(106) to 127 is 21. This gets capped at 20 and is the random 'tolerance' for
+(106) to 127 is 21. This gets capped at 13 and is the random 'tolerance' for
 each item dropped by the wyrm.
 The treasure class of the wyrm is 20% treasure and 80% combat.
 
@@ -9999,14 +10020,14 @@ Let's look at 3 items it drops:
    What cannot drop on this attempt is a Heavy Ribbed Mithril Armour, for
    example, because it is level 110 (see in k_info.txt spoiler file).
 
-2) 106 + random(0..20) = 126. A lucky tolerance roll, we got the full 20 added
+2) 106 + random(0..13) = 119. A lucky tolerance roll, we got the full 13 added
    to the level cap of the second item that the wyrm dropped.
    This means that this item could be anything that can possibly drop (from the
    treasure classes 'treasure' and 'combat' that is). So if we have beaten
    Morgoth and hence acquired a royal title, we might see any piece of royal
    armour drop.
 
-3) 106 + random(0..20) = 114. The random tolerance roll of 0..20 turned out to
+3) 106 + random(0..13) = 114. The random tolerance roll of 0..20 turned out to
    be an 8 for this item, closely ruling out Heavy Ribbed Adamantite Armour
    which is level 115, but allowing all other items of the appropriate treasure
    classes of this monster.
@@ -10176,8 +10197,8 @@ CHAOTIC ('It produces chaotic effects.')
         a) drain life (VAMPIRIC, see (5.15)) (very likely).
         b) earthquake (see (5.13) for details).
            (If enabled in the server settings, it can be suppressed with
-           the !E inscription. See (0.3) for !E settings or press ~d in game.
-           Usually, !E only works on the artifact "Grond".)
+           the !Q inscription. See (0.3) for !Q settings or press ~d in game.
+           Usually, !Q only works on the artifact "Grond".)
         c) confuse target (very likely).
         d) teleport target away.
         e) polymorph target.
@@ -10192,8 +10213,8 @@ IMPACT ('It can cause earthquakes.')
         Causes earthquakes if the damage is > 50. See (5.13) for details about
         earthquakes.
         (If enabled in the server settings, it can be suppressed with
-        the !E inscription. See (0.3) for !E settings or press ~d in game.
-        Usually, !E only works on the artifact "Grond".)
+        the !Q inscription. See (0.3) for !Q settings or press ~d in game.
+        Usually, !Q only works on the artifact "Grond".)
 FUEL_LITE ('It provides light when fueled.')
         A light source that needs to be fueled, otherwise it runs out.
         WARNING:
@@ -11394,8 +11415,12 @@ NO_TARGET       This monster cannot be targetted with target command.
 NO_DEATH        This entity can never die.
 NO_AUTORET      You won't use auto-retaliation against this entity.
 
-REFLECTING      The monster can deflect bolts and arrows, physical and magical
-                projectiles, prolonging the fight.
+REFLECTING      The monster can deflect shots, arrows and bolts, physical and
+                magical projectiles, prolonging the fight.
+                Boomerangs cannot be deflected. For thrown items it depends on
+                their weight, only very light items can be deflected reasonably
+                well, and already middle-light items become undeflectable,
+                making throwing weapons an alternative (see (5.2b)).
                 Also, the monster will resist any types of light-based attacks
                 greatly, not just attacks in bolt form.
 HURT_LITE       This monster is susceptible to light attacks.
@@ -11696,6 +11721,20 @@ HOLD            Although not so special and already mentioned in the text above
                 Ghouls can do this for example, so make sure that you get
                 Free Action as early as possible, definitely before venturing
                 into Mordor though.
+
+
+(5.12b) Dispelling/Banishing/Turning monsters
+---------------------------------------------
+The terms 'dispel' and 'banish' are unfortunately used in an ambiguous manner
+throughout the game.
+In most cases it just means that damage is afflicted to specific monster tupes
+but sometimes it can indeed mean that the target is teleported away or even
+removed completely from the floor, or at least that there is a chance (usually
+depending on the monster's level) for that to happen.
+
+The term 'turn' as in 'turn evil' however is used in only one way: It refers to
+a fear-like effect that makes them run away from you instead of approaching you
+as a target.
 
 
 
@@ -14219,7 +14258,8 @@ create a character!):
     level 20 or they will lose the ability to stay in the realm and their
     physical form will be destroyed.
     Maiar who kill both, a darkling and a candlebearer, before initiation at
-    level 20, will also meet their fate and be destroyed by indecisiveness.
+    level 20, will also meet their fate and be destroyed by indecisiveness:
+    "Your presence in the realm is forfeit."
     At level 13, maiar will get a reminder if they haven't killed any darkling
     or candlebearer yet: "We all have to pick our own path some time..."
     At level 19, there will be another reminder, as it's now their last chance:
@@ -21461,4 +21501,8 @@ Solution:   To restore a key's default behaviour, press % to enter the macro
             menu and choose 'd' to delete a macro from a key, then press the
             key in question.
 
-==============================================================================
+PROBLEM 62: I sometimes lose the ability to run for no apparent reason.
+Solution:   Make sure you don't trigger your NumLock key. For running, numlock
+            should be turned off all the time.
+
+===============================================================================
