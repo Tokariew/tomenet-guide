@@ -2,6 +2,8 @@
 
 Repository created for easier tracking of changes in TomeNET Guide, which is available at this [location](https://tomenet.eu/guide.php).
 
+Official Repository with code is avaible [here](https://github.com/TomenetGame/tomenet)
+
 On the release subpage of this repository are unofficial builds for Windows Servers (x86). The official source of TomeNET is available [here](https://tomenet.eu/downloads.php).
 
 Another mirrors of unofficial builds are available at this location:
