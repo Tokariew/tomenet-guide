@@ -1,7 +1,7 @@
  .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 11. April 2020 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 12. April 2020 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.7.2 - official websites are:
 | http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | http://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -559,8 +559,9 @@ g       g       pick up an item from the floor. You have to stand on the item
 CTRL+G  CTRL+Z  pick up exactly one piece from a stack of same type of items.
 
 K       CTRL+C  forcibly combines a level 0 item in your inventory with other
-                items of the same type that aren't level 0. Be warned, that
-                this will change the level of all the items involved to 0.
+                items of the same type that aren't level 0 ('force-stack').
+                Be warned, that this will change the level of all the items
+                involved to 0 so they will become untradable.
 
 C       C       see a character overview.
 
@@ -1640,7 +1641,7 @@ Items that 'can cause Earthquakes':
                 (Press keys  ~d  in the game to check server settings.)
                 See (5.13) for more information about earthquakes.
 
-Weapons, devices and spells:
+Weapons/ammo, devices and spells:
     @O          This and its variants control the 'auto-retaliator' which is a
                 mechanism designed to make your character automatically attack
                 targets that are standing directly adjacent to you.
@@ -1909,6 +1910,9 @@ Excellents  Items that pseudo-identified as 'excellent'.
 EA          Extra Attacks. Rings, gloves or weapons which increase your number
             of blows per round (BpR) with melee weapons. Quite expensive.
 
+EL          Everlasting. This refers to the character mode that the player
+            chooses during character creation. For details see (3.1).
+
 ESP         Extrasensory perception. ESP is a telepathic power that allows you
             to sense monsters even though they aren't in your line of sight but
             far away. This is tremendously useful as you know what monsters are
@@ -1981,17 +1985,6 @@ kinging     The process of beating Morgoth, the game boss, and thereby
             A player must be at least level 40 to get credit for beating
             Morgoth.
 
-rekinging   Fallen winners, ie players who beat Morgoth but later on died and
-            thereby lost their royal title again, can attempt to regain it by
-            teaming up with someone who has not yet defeated Morgoth.
-            If that person lands the killing blow, everyone in her/his party
-            on the same floor will gain winner status again, even fallen kings.
-            A player must be at least level 40 to get credit for beating
-            Morgoth.
-            A new (experimental) way to obtain a lost royal title again is to
-            donate and pray in 'The Mirror' in Lothlorien, see (4.5a) for
-            details.
-
 klevel, olevel
             Somewhat more technical terms, these stand for the exact type of
             item level that is meant in a certain context:
@@ -2059,8 +2052,8 @@ Morgy       Morgoth, Lord of Darkness. Final boss enemy in TomeNET.
 Nazgul weapon or RW weapon
             An artifact weapon that doesn't really excel, but since it's an
             artifact it can still be put to good use as a weapon for killing
-            nazgul (the nine ringwraiths, see (1.3a)).
-            Since nazgul still have a 1 in 1000 chance to destroy an artifact
+            Nazgul (the nine ringwraiths, see (1.3a)).
+            Since Nazgul still have a 1 in 1000 chance to destroy an artifact
             weapon on hit, you don't want to put your best weapons at risk.
             So using a mediocre artifact instead that you'd otherwise just sell
             to a store seems like a good idea, since it won't be much of a loss
@@ -2073,6 +2066,9 @@ Nest        Originally also just called 'pits', nests only differ from pits in
             The monsters in a nest are not completely random but follow certain
             schemes. For example all monsters in a 'clones nest' are exactly
             the same type. Also see 'pits'.
+
+non-EL      Not Everlasting. This refers to the character mode that the player
+            chooses during character creation. For details see (3.1).
 
 olevel      see klevel.
 
@@ -2123,10 +2119,23 @@ Randart     Randomly generated artifact. As opposed to 'Truearts' which are
             this section for more information.
             See (5.9b) for more information about artifacts.
 
+rekinging   Fallen winners, ie players who beat Morgoth but later on died and
+            thereby lost their royal title again, can attempt to regain it by
+            teaming up with someone who has not yet defeated Morgoth.
+            If that person lands the killing blow, everyone in her/his party
+            on the same floor will gain winner status again, even fallen kings.
+            A player must be at least level 40 to get credit for beating
+            Morgoth.
+            A new (experimental) way to obtain a lost royal title again is to
+            donate and pray in 'The Mirror' in Lothlorien, see (4.5a) for
+            details. (Also see 'kinging'.)
+
 Res         Resistance.
 
 RFE         A request for enhancement, ie a suggestion, that players can send
             to the game admins using the "/rfe" command.
+
+rlevel      See mlevel.
 
 Room        The dungeon contains many rooms connected by passages. Some of the
             rooms are of special shape. Especially rooms containing a further,
@@ -2134,8 +2143,6 @@ Room        The dungeon contains many rooms connected by passages. Some of the
             mostly 'Gorths' (rooms divided into four chambers containing a
             lot of monsters), 'Checkerboard-Rooms' (rooms containing a
             checkerboard-like maze structure and a lot of monsters).
-
-rlevel      see mlevel.
 
 Scumming    Repeatedly using staircases up/downwards to make a level become
             recreated. Usually in hope of finding a specific monster on that
@@ -2157,9 +2164,9 @@ Static      A level that is static will not change if you leave it but stay
 
 Static Art  See 'Art' at the top of this section.
 
-Stair GoI   Stair-Goi is a very short-lasting globe of invulnerability (usually
-            2 to 3 turns). It is a magical protection effect that any player
-            who takes a staircase up or down or uses Word of Recall will
+Stair GoI   Stair-Goi is a very short-lasting globe of semi-invulnerability
+            (3 turns). It is a magical protection effect that any player who
+            takes a staircase up or down or uses Word of Recall will
             automatically receive: A temporary buff of +100 armour class
             and 40% chance to deflect any attacks that hit him. Attacks that
             aren't deflected still get their damage halved.
@@ -2510,9 +2517,9 @@ Note: For weapon attacks, having those slay/kill mods on gloves (or other
       items (for example gloves) WILL count!
 
       However - the 'slay undead' bonus received from Holy Offense school at a
-      skill of 30.000 will infuse your weapon (and bare-handed combat too of
-      course) and will make its dice and damage count again, as if the weapon
-      itself had the slay mod!
+      skill of 30.000 and likewise from Spirit school at 40.000 will infuse
+      your weapon (and bare-handed combat too of course) and will make its dice
+      and damage count again, as if the weapon itself had the slay mod!
 
 Martial Arts users can fight relatively efficiently against Nazgul since they
 don't have to worry about their weapon breaking, but their chance to receive
@@ -3573,9 +3580,10 @@ display it in the colour 'attribute' which may range from 0 to 55 (up to 4.6.1a
 client) or 57 (in later clients), with colours 0 to 15 being static colours and
 the higher ones being animated.
 
-Problems have been reported for mapping characters 2 and 16 to 27, there is
-currently no further information available regarding this issue. If those don't
-work for you, just pick different ones.
+Problems have been reported for mapping certain characters:
+0, 2, 16..27 (unclear), 21..31, 129, 141, 143, 144, 157, 195.
+There is currently no further information available regarding this issue.
+If those don't work for you, just pick different ones.
 
 Examples:
 
@@ -4108,6 +4116,9 @@ There are extended colour codes available since 4.5.2 (some in later clients)
     i  ice              l  plasma           O  detonation       k  nuke
     K  unbreath         j  holy orb         J  holy fire        X  hellfire
     z  thunder          Z  ember            0  starlight        1  havoc
+
+To return to the previous colour, instead of specifying it you can also just
+use '{-', for example: {rRed Text{gGreen now{-Red again.
 
 
 Character names in chat lines have different colours to indicate their status:
@@ -4750,7 +4761,7 @@ Here is a list of all available ability codes:
 10      Set a monster trap (for trapping skill, see (4.7))
 11      Cast a magic spell / recite a holy prayer
 12      Draw a rune (for runecraft, see '(6.8b) Runes & Runemastery')
-13      Change combat stance (for combat stances skill)
+13      Change combat stance (for combat stances skill, see (6.2))
 14      Check your chances of parrying and blocking (for melee fighters,
         see (6.11) for details about these abilities)
 15      Toggle 'Aura of Fear' if you have trained the according skill.
@@ -4852,10 +4863,6 @@ Example 3: Assumed you have the spell Manathrust somewhere in your books and
     want to cast it by name, what you enter in the q'n'd field is:
         *tM@Manathrust\-
     and it will automatically be expanded to '\e)*tm@11\r@Manathrust\r-'.
-
-Example 4: Casting Phase Door would be..
-        M@Phase Door\
-    (expanded to '\e)m@11\r@Phase Door\r'.)
 
 
 (3.7c) The macro wizard
@@ -6019,6 +6026,9 @@ Light brown '+' are closed doors, ' are open or broken doors.
 Void Jumpgates-
 Violet '+' are void jumpgates that teleport you elsewhere.
 Press '>' key to use them.
+Jump gates are always connected in pairs. Note that draconians are susceptible
+to the void, taking damage when they pass through jump gates.
+Also, monsters can try to intercept you when you attempt to use a void gate.
 
 Stores-
 Store entrances are represented by coloured numbers '1'..'7', '9' and '+'.
@@ -7349,9 +7359,10 @@ As soon as a house contains at least one item inscribed this way, if a player
 who does not have access to the house tries to open the door, he will be
 presented with a store screen where he can buy those inscribed items.
 
-The default price of an item is 2x its base value that it would cost in normal
-(non black market) town stores. This price cannot be undercut in player shops.
-However, the following items have a default price of only 1x their base value:
+The default price (the minimum price) of an item is 2x its base value that it
+would cost in normal (non black market) town stores. This price cannot be
+undercut in player shops. However, the following items are exceptions and have
+a default price of only 1x their base value:
 - Rings of Speed
 - Scrolls of Artifact Creation
 - Random artifacts
@@ -7824,7 +7835,7 @@ On an Ironman server or within the Ironman Deep Dive Challenge dungeon, the
 amount of monsters that need to be slain is somewhat lower (especially for low
 level orders). Also, in the IDDC and in the Halls of Mandos, the monster level
 of the extermination order will depend on the floor level rather than on the
-player's level.
+player's level. Inside the IDDC you may only request one order per floor.
 
 
 Events (use /evinfo and /evsign commands to get information and to sign up)
@@ -7854,6 +7865,8 @@ Highlander Tournament (pvp, only one can win, 2+ participants)
     All losers will also receive a deed on the next character they log in with
     which can be turned in for a small temporary luck bonus (multiple deed
     buffs don't stack).
+    If you die in this event, your character will get erased, even if it was
+    an everlasting-mode character.
     For details about luck see LUCK flag in (5.8).
 
     Detailed course of the event:
@@ -7930,6 +7943,8 @@ Dungeon Keeper (everyone can win, 1+ participants)
     Characters who want to participate must not be of higher level than 14.
     A character can participate only once in this event.
     PvP-mode characters are not eligible to join.
+    If you die in this event, your character will get erased, even if it was
+    an everlasting-mode character.
     Running, phasing, teleporting, magic mappping, detection and ESP are
     disabled in the event. Also, your speed cannot exceed +0 (Normal), and
     the lava that floods the dungeon will deal irresistible damage even if
@@ -8855,9 +8870,14 @@ you hit a troll ('T'). If you have an item that gives fire brand, the dice
 would also be doubled by the brand. Slaying and brands are not cumulative.
 That means you will get a total dice multiplier of 2 here.
 Brands don't stack. The best one is taken. So if you wear a ring of fire and
-your weapon does cold damage the dice will be multiplied by 2 if the target
-doesn't resist both heat and cold. If the target is susceptible to one of
+your weapon does acid damage the dice will be multiplied by 2 if the target
+doesn't resist both heat and acid. If the target is susceptible to one of
 those the dice are multiplied by 4. Same goes for SLAY flags.
+There is a specialty regarding fire/hellfire and cold brand: If your hits are
+branded by both, fire and cold, it will be a coin flip on each hit which of the
+two brands gets applied and which gets discarded. If you have hellfire and cold
+brand, the hellfire brand will override the cold brand, so your hits will all
+be hellfire branded and not deal any cold damage.
 
 Combat Type | Dice multiplier for brands (fire/cold/acid/lightning/poison)
             | Monster..
@@ -8886,6 +8906,8 @@ x1.17 for Martial Arts, x2 becomes x1.4 and x1.33 and x3 will become x1.8
 and x1.67 respectively.
 
 Giants, Undead, Trolls, Orcs, Dragons, Demons are all 'Evil'.
+
+Dragonriders count as dragons too, so slay/kill mods will work on them.
 
 If several multipliers match the highest one will be used.
 
@@ -8954,7 +8976,7 @@ Here's a table to tell you the values for str_wgt:
         15          13
 
 The armour weight limit is 5.0 lb + Martial Arts skill level * 0.44 lb.
-So for MA 50 it is 5.0 + 21.0 = 27.0 lb.
+So for MA 50 it is 5.0 + 22.0 = 27.0 lb.
 If your armour becomes too heavy, you will see this warning message:
 "Your armour weight strains your martial arts performance."
 
@@ -9967,7 +9989,7 @@ item that you will find on the floor:
     -Combat:
      Weapons, armour (except boots), shields, ammunition.
 
-    -Treasure:
+    -Treasure (named 'Valuables' in ~7 monster spoilers):
      Chests, rings, amulets, dragon scale mails, crowns.
 
     -Magic:
@@ -10037,6 +10059,10 @@ Let's look at 3 items it drops:
    which is level 115, but allowing all other items of the appropriate treasure
    classes of this monster.
 
+Note that there is a small chance that an item is sometimes allowed to vastly
+exceed the usual maximum level, an "Out of Depth" (OoD) drop!
+This phenomenon accounts for finding Dragon Scale Mail in the Orc Caves and
+other such occurances..
 
 
 (5.8) Special abilities of items
@@ -10068,14 +10094,13 @@ XTRA_MIGHT
         although Long Bows usually have a (x3) multiplier.
         Note that the multiplier may also affect the maximum shooting range.
 MANA ('It affects your mana capacity.')
-        Will increase your total mana points by +x0%. Example:
-        Gloves of the magi (+3) increase your mana by 30%.
+        For istari and runemasters, this Will increase your total mana points
+        by +x0%. Example: Gloves of the magi (+3) increase your mana by 30%.
+        For other classes, the increase will be a bit smaller.
         MANA items _add_ to each other, they aren't multiplied.
-        MANA-increasing items have reduced effect on priests or paladins,
-        because their spells are not so much pure magic but rather a form
-        of praying.
         MANA affects your complete mana pool, including the additional MP
-        (mana points) a character gained from 'Magic' skill.
+        (mana points) a character gained from 'Magic' skill, except for the
+        mana added by training the Mimicry skill above 35.
 LIFE ('It affects your hit points.')
         Will increase your total hit points by +x0%. Example:
         Sword of life (+2) increases your HP by 20%.
@@ -10215,11 +10240,11 @@ CHAOTIC ('It produces chaotic effects.')
 CLONE ('It can clone monsters.')
         Has a 1 in 1000 chance to clone the monster it hits.
 IMPACT ('It can cause earthquakes.')
-        Causes earthquakes if the damage is > 50. See (5.13) for details about
-        earthquakes.
+        Causes earthquakes randomly, the higher the damage dealt the higher the
+        chance. See (5.13) for details about earthquakes.
         (If enabled in the server settings, it can be suppressed with
         the !Q inscription. See (0.3) for !Q settings or press ~d in game.
-        Usually, !Q only works on the artifact "Grond".)
+        Usually, !Q _only_ works on the Mighty Hammer 'Grond'.)
 FUEL_LITE ('It provides light when fueled.')
         A light source that needs to be fueled, otherwise it runs out.
         WARNING:
@@ -10648,8 +10673,12 @@ Remove Curse    Breaks lesser curses on items, allowing you to unwear or
                 on weapons or armours can also be broken by enchanting one of
                 their boni some points above +0 manually. (The enchant service
                 of shops won't help!)
-Rune of Protection  Creates a warding glyph on the floor that stops monsters
-                    from crossing the field or summoning on it.
+Rune of Protection
+                Creates a rune on the ground that monsters cannot cross nor
+                summon on. Monsters have a chance to break it on each turn.
+                Weak monsters will rarely succeed while powerful monsters may
+                break it quickly.
+
 Rumour          Makes a random rumour come to your character's (and everyone
                 else's characters') mind. Has no further effect and is not
                 necessarily true even.
@@ -10897,7 +10926,7 @@ Spell scroll        Although called "scrolls" they actually persist and can be
 Spell crystal       They are like "spell scrolls", except they are used for
                     mindcrafter spells. A specialty of spell crystals is that
                     they ignore fire damage (and water damage, same as spell
-                    scrolls).
+                    scrolls), but are susceptible to electricity!
 Codex, Spellbook, Grimoire
                     These are magic books that may contain magic spells of any
                     type and school.
@@ -11243,7 +11272,7 @@ Staves              x               x
 Rods
 
 Spell Scrolls       x               x                       x
-Spell Crystals      x
+Spell Crystals      x       x
 Beginner Handbooks  x               x
 Handbooks           x               x                       x
 Tomes               x               x
@@ -11408,7 +11437,6 @@ OOD_xx          The monster cannot occur more than xx levels out of depth.
                 All unique monsters actually have an intrinsic OOD_20 flag even
                 if it's not shown in the monster lore spoilers.
 FRIENDS         This monster comes in a pack. Makes life easier for mimics.
-
 RAND_xxx        This monster has random movement. The xxx number is the chance
                 in percent. Several of these flags will stack.
 NO_SLEEP        This does not mean that the monster cannot be asleep when you
@@ -11874,9 +11902,24 @@ Vampirism does not work with magic, only with physical attacks.
 Vampiric life draining heals you with a part of the damage you afflicted on
 your target, almost each hit! The more damage you deal and the more attacks per
 round you have, the more life you will leech back. There's a maximum amount of
-HP which you can leech from a victim per round, but this cap isn't really
-reached until your character deals quite a lot of damage, remember:
+HP which you can leech per round, which isn't reached until your character
+deals quite a lot of damage. In short:
 Leeching is based on a fraction of your damage dealt.
+
+Exact formula for melee:
+The amount of HP you heal is 1d2 + 2d(damage/16) on each hit, however it caps
+at a maximum amount of 50 HP divided by your BpR, per attack (rounding errors
+are handled so you don't lose anything if that's not a clean division).
+Example: If you have 8 BpR and deal 64 damage each hit and have average dice
+rolls in the formula, you'd try to leech 52 HP during that turn, saturating the
+cap pretty well.
+
+Exact formula for ranged:
+The amount of HP you heal is 1d2 + 2d(damage/16) on each hit, however it caps
+at a maximum amount of 10 HP per shot.
+Example: If you have deal 128 damage each hit and have average dice rolls in
+the formula, you'd try to leech 10 HP during that turn, saturating the
+cap exactly.
 
 Vampirism does not work on all types of monsters. From some it is not possible
 to drain life force. Those immune to vampirism are:
@@ -11912,7 +11955,7 @@ Vampirism source priority table (from best at the top to worst at the bottom)
 The best source overrides all weaker ones, which simply get ignored:
 | Melee                               | Ranged                              |
 -----------------------------------------------------------------------------
-| Weapon                     100%     | Shooter                     50%     |
+| Weapon                     100%     | Ranged weapon               50%     |
 | Vampire bat/mist form      100%     | Ammunition                  50%     |
 | Vampire character race      50% (*) |                                     |
 | Other vampiric forms        50%     |                                     |
@@ -12663,6 +12706,14 @@ stated.
                                 Critical-strike skill only helps light swords,
                                 not heavier than 10.0 lb., while critical-hits
                                 items will work with all weapons.
+                                The weight limit counts per weapon, so you may
+                                dual-wield two 10.0lb weapons just fine.
+                                If you dual-wield one eligible weapon (ie sword
+                                up to 10.0lb) and a non-eligible weapon (ie a
+                                too heavy weapon or not a sword) then the
+                                eligible weapon will still get Critical-strike
+                                skill applied for its hits, and the other
+                                weapon won't.
                                 (The skill effect does not depend on how heavy
                                 exactly the weapon is, as long as it's not
                                 above 10.0 lb, so that weight threshold is
@@ -13263,6 +13314,8 @@ stated.
                                 For each point that Mimicry is trained above
                                 30.000 the character's mana pool will expand
                                 by an extra +5 MP (so up to +100 MP at 50.000).
+                                Note that this extra mana is NOT affected by
+                                +MANA items.
 
                                 The further Mimicry is trained above 35.000
                                 the faster a player can shapechange. Usually it
@@ -13270,6 +13323,13 @@ stated.
                                 (or back to player form), but each point above
                                 35.000 will cut this down by 5%, so at 50.000
                                 Mimicry shapechanging will only take 1/4 turn.
+
+                                Note: Some monsters exist in two versions that
+                                are identical except that one is solo and the
+                                other appears in packs (FRIENDS flag).
+                                For example novice warriors.
+                                Your kill count of these two versions will be
+                                unified, so they both count for the same form.
 
     .Magic Device               Mainly reduces fail chance when trying to use
      (1/16)                     magic devices (wands, staves, rods, activatable
@@ -14969,48 +15029,48 @@ See (6.11) for details about parry and block.
 (Di:Disarming,      MD:Magic Device,        ST:Saving Throw,    St:Stealth,
 Pe:Perception (sight range), Sr:Searching,  Fi:Fighting,        BT:Bows/Throw)
 
-            STR INT WIS DEX CON CHR     HP die   Exp%   Max. base blows/round
-            Di  MD  ST  St  Pe  Sr  Fi  BT              Parrying/Blocking
+Class       STR INT WIS DEX CON CHR     HP die   Exp%   Max. base blows/round
+ @-colour   Di  MD  ST  St  Pe  Sr  Fi  BT              Parrying/Blocking
             Di  MD  ST  St  Pe  Sr  Fi  BT (relative modifiers, see (6.3))
 ------------------------------------------------------------------------------
 Warrior     +5  -2  -2  +2  +2  -1      +10       +0%       6
-            25  18  18   1   2  14  70  55              superb   superb
+ brown      25  18  18   1   2  14  70  55              superb   superb
             10   7  10   0   0   0  45  40
 Istar       -5  +3   0  +1  -2  +1       +0      +35%       1
-            30  36  30   2  20  16  34  20              bad      bad
+ red        30  36  30   2  20  16  34  20              bad      bad
              7  13   9   0   0   0  15  15
 Priest      -1  -3  +3  -1   0  +2       +5      +20%       4
-            25  25  32   2   8  16  48  35              fair     fair
+ green      25  25  32   2   8  16  48  35              fair     fair
              7  10  12   0   0   0  20  15
 Rogue       +2  +1  -2  +3  +1  -1       +5      +15%       5
-            45  28  28   5  32  24  60  66              superb   fair
+ blue       45  28  28   5  32  24  60  66              superb   fair
             15  10  10   0  10  10  40  40
 Mimic       +1   0   0  +1  +1  -4       +6      +30%       5
-            25  34  28   1  18  18  60  46              good     good
+ l.grey     25  34  28   1  18  18  60  46              good     good
              9  10  10   0   0   0  40  25
 Archer      +1   0  +2  +3  +1  -1       +5      +10%       3
-            30  22  28   2  20  24  56  72              fair     fair
+ orange     30  22  28   2  20  24  56  72              fair     fair
              8   7  10   0   0   0  30  50
 Paladin     +3  -3  +1   0  +2  +2       +8      +30%       5
-            10  21  54   1  16  13  60  40              good     superb
+ yellow     10  21  54   1  16  13  60  40              good     superb
              2   8  10   0   2   0  35  10
 Ranger      +2  +2  -1  +1  +2   0       +7      +35%       5
-            34  32  30   5  30  30  50  60              superb   fair
+ l.brown    34  32  30   5  30  30  50  60              superb   fair
             12  10  10   0   5  15  30  45
 Adventurer   0   0   0   0   0   0       +6      +25%       4
-            20  22  20   3  15  15  50  50              fair     fair
+ violet     20  22  20   3  15  15  50  50              fair     fair
             10  10  10   0   5   5  25  25
 Druid       +1   0  +2  -2  -2  +1       +5      +35%       4
-            30  35  30   4  25  25  50  44              poor     poor
+ l.green    30  35  30   4  25  25  50  44              poor     poor
              8  11  10   0   5  10  20  25
 Shaman       0  +1  +2  -2   0   0       +3      +40%       4
-            10  30  30   4  30  20  45  23              poor     poor
+ l.red      10  30  30   4  30  20  45  23              poor     poor
              0  11  10   0   5   3  20  12
 Runemaster   0  +2  -2  +2  -2   0       +4      +40%       4
-            30  32  20   3  30  26  45  40              fair     poor
+ l.blue     30  32  20   3  30  26  45  40              fair     poor
              0  12  10   0   5   5  25  30
 Mindcrafter +2  +2   0   0   0  +1       +6      +25%       5
-            30  28  36   3  35  14  55  45              good     fair
+ grey       30  28  36   3  35  14  55  45              good     fair
              0   9   5   0   3   3  26  25
 
 
@@ -16492,9 +16552,9 @@ school.
                     Tier III: Level 40.
 
     Elemental Shield
-                    Temporary resistance to heat and cold.     (auto-project)
-                    Required skill level for first spell level: 15.
-                    Shared spell (see above): Fire, Water. (NOT Air!)
+                    Tier I is only shared between Fire and Water school and
+                    hence not available in the Air or Earth schools.
+                    Required skill level for first spell level: 15 (Tier I).
 
                     Tier II: Level 20.                         (auto-project)
                     Temporary resistance to heat, cold, lightning and acid.
@@ -16531,9 +16591,9 @@ school.
                     Tier III: Level 40.
 
     Elemental Shield
-                    Temporary resistance to heat and cold.     (auto-project)
-                    Required skill level for first spell level: 15.
-                    Shared spell (see above): Fire, Water. (NOT Earth!)
+                    Tier I is only shared between Fire and Water school and
+                    hence not available in the Air or Earth schools.
+                    Required skill level for first spell level: 15 (Tier I).
 
                     Tier II: Level 20.                         (auto-project)
                     Temporary resistance to heat, cold, lightning and acid.
@@ -16645,6 +16705,10 @@ school.
                     If all floors in the (up or down) direction of your attempt
                     to probtravel are occupied by players you get this message:
         "There is a magical discharge in the air as probability travel fails!"
+                    Travelling up and down will prevent you from landing inside
+                    any vault, nest or pit.
+                    Travelling around the floor however, will only prevent you
+                    from landing inside a vault.
                     Required skill level for first spell level: 35.
 
     Mass Warp       Locks monsters in stasis for a while.
@@ -16697,9 +16761,10 @@ school.
                     Required skill level for first spell level: 1.
 
                     Tier II: Level 41.
-                    Creates a Glyph of Warding on the ground that stops
-                    monsters from crossing the field or summoning on it.
-                    Powerful monsters may be able to break glyphs.
+                    Creates a rune on the ground that monsters cannot cross
+                    nor summon on. Monsters have a chance to break it on each
+                    turn. Weak monsters will rarely succeed while powerful
+                    monsters may break it quickly.
 
     Slow Monster    Slows down a monster.
                     Required skill level for first spell level: 10.
@@ -16888,7 +16953,9 @@ In general, holy schools are somewhat less affected by anti-magic fields.)
 
     Glyph of Warding
                     Creates a rune on the ground that monsters cannot cross
-                    nor summon on. Powerful monsters may break it.
+                    nor summon on. Monsters have a chance to break it on each
+                    turn. Weak monsters will rarely succeed while powerful
+                    monsters may break it quickly.
                     Required skill level for first spell level: 35.
 
     Martyrdom       You burn in holy fire making you invincible for 15 seconds
@@ -16924,7 +16991,8 @@ In general, holy schools are somewhat less affected by anti-magic fields.)
                     'protection from evil' spell, but has better effect on
                     monsters of higher level.
                     (This effect does not stack with the spell/scroll, but
-                    overrides them.)
+                    overrides them, so there is no need to cast the spell
+                    anymore once you acquire this bonus.)
 
 
 - Holy Curing
@@ -17195,6 +17263,18 @@ spell failure rate. All Unlife spells use WIS.)
 
     Possess         Tries to manipulate the mind of a monster to make it ignore
                     you.
+                    Monsters may resist or be immune to the initial cast.
+                    While active, the spell drains your mana. The more monsters
+                    you try to keep under control, the faster your mana is
+                    depleted. If your distance to the monsters becomes too big
+                    or your mana is depleted then the spell will break.
+                    Sleeping monsters won't be affected or woken up by Possess.
+                    Monsters which have already been hurt cannot be possessed.
+                    Psi-immune, unique, undead, empty-minded or non-living
+                    monsters cannot be possessed either.
+                    Monsters may have a chance to resist the attack, the higher
+                    the more of the following abilities they possess:
+                    Being smart, resisting confusion, being powerful.
                     Lv9: Turns into a ball.
                     Lv17: Affects all monsters in sight.
                     Required skill level for first spell level: 23.
@@ -17278,7 +17358,7 @@ spell failure rate. All Unlife spells use WIS.)
                     Gives +2 EA to the caster.
 
     Chaos Bolt      Channels the powers of chaos into a bolt.
-                    Required skill level for first spell level: 32.
+                    Required skill level for first spell level: 29.
 
     Wicked Oath     Restores drained stats and lost experience.
                     Required skill level for first spell level: 35.
@@ -17711,7 +17791,7 @@ though, as all other magic schools do, not the astral level.)
 
     Vengeance       Enlightened: Summons all party members on the same floor
                                  to you (as well as all monsters in line of
-                                 sight) who have their mind opened.
+                                 sight) who have their mind opened ('p').
                                  Might summon additional monsters for each
                                  player who got teleported.
                     Corrupted: Damages all monsters in line of sight.
@@ -18476,6 +18556,11 @@ Guilds:
     least one of your other characters is either the guild master or one of the
     'adders' designated by the guild master (and the 'adders' guild flag must
     be enabled).
+
+    If the guild flag 'autoreadd' is enabled, members that lose their character
+    will be automatically added to their guild again on the next character they
+    log in with. Also, if they were a designated 'adder', this status will be
+    restored too, provided there are still vacant adder slots.
 
 -Remove player from guild
     Only the guild master can do this. If all members are removed including
@@ -20513,7 +20598,7 @@ The differences between Ironman ruleset and normal servers are as follows:
    -non-town dungeons allow random recalling at a 20% chance per floor,
    -on dungeon levels shallower than level 20 (eg easier than -1000 ft Bree),
     recalling is impossible, overriding the above rules.
-  -Players may recall INTO dungeons to 50 ft + every 1000 ft, eg to 50 ft,
+  -Players may recall INTO town dungeons to 50 ft + every 1000 ft, eg to 50 ft,
    1050 ft, 2050 ft, ... .
   -Players start with more gold (class-dependant) to buy supplies.
   -Players additionally start with a few cure wounds potions.
