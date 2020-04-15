@@ -1,7 +1,7 @@
  .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 12. April 2020 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 15. April 2020 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.7.2 - official websites are:
 | http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | http://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -1134,6 +1134,7 @@ They all start with a slash '/' hence they're called slash commands:
             Empty a potion from your inventory, leaving an empty bottle.
             Example: /empty c   (if you have 'c) 3 potions of boldness', one
             will be emptied and 2 remain at 'c) 2 potions of boldness'.))
+            You can also empty brass lanterns with this command.
 
 /evinfo     Displays information about all ongoing events.
 
@@ -6192,6 +6193,7 @@ The 1..9 are standard shops, namely..
                         However, the player will need to have enough cash to
                         pay an instant resurrection fee when he dies, which is:
                         Dungeonlevel * dungeonlevel * 10 + 10 gold pieces.
+                        Eg at -50ft Orc Cave it's 10 * 10 * 10 + 10 = 1010 Au.
                         The money is automatically deducted from the purse or
                         the bank account as required. If the player does not
                         have enough money in total then resurrection will fail
@@ -6259,7 +6261,7 @@ The 1..9 are standard shops, namely..
                         If the mail gets returned to the sender for any reason
                         but the sender character no longer exists, the mail
                         will also get erased irrevocably.
-        Rune Repository
+        Rune Repository (This shop might not exist in newer game verions!)
                         Sells and buys runes used by Runemasters.
         Casino          Minas Anor has a casino. Go and try your luck!
                         (There are various gambling opportunities, and also
@@ -10457,8 +10459,8 @@ Potions
 -------
 Augmentation    Raises all your stats.
 Berserk Strength
-                Temporary effects: Increase CHP and MHP by 30. Removes fear.
-                +5 bonus to-hit, +10 bonus to-dam, -10 malus to to-ac.
+                Temporary effects: Heals you for 30, increases CHP and MHP by
+                20, become fearless, -10 malus to ac and +10 to strength.
                 Does not stack with 'Berserk' technique.
 Boldness        Removes fear and keeps your heart boldened for a while.
 Chauve-Souris   Turns you into a fruit bat. Quaff another one to be restored
@@ -10495,7 +10497,7 @@ Experience      Gives you additionally half your current experience plus 10,
                 However, some players prefer to quaff it earlier, when it's
                 especially hard for them to reach the next level for some
                 reason, maybe harder than if they were at 200,000 exp already.
-Heroism         Temporary effects: Increase CHP and MHP by 10. Removes fear.
+Heroism         Temporary effects: Increases CHP and MHP by 10. Removes fear.
                 +12 bonus to-hit.
 Invulnerability Will turn you partially invulnerable (40% chance to fully
                 deflect any attack, 50% damage reduction if it still hits) and
@@ -10864,10 +10866,10 @@ Firestones          These can be eaten by Draconians and players in dragon
                                         shards, sound and ice shards.
                         - ESP:          You can see telepathically.
                         - Physical Instability:     Probability Travel.
-                        - Fury:         40 more HP, speed bonus,
-                                        to-dam bonus, to-hit/to-ac malus.
+                        - Fury:         speed bonus, to-dam bonus, no fear,
+                                        to-hit malus, to-ac malus.
                         - Speed-up:     Speed bonus.
-                        - Heroism:      10 more HP, to-hit bonus, resist fear.
+                        - Heroism:      +10 CHP/MHP, +12 to-hit, resist fear.
                         - Temp res:     Temporary base and poison resistance.
                     If you eat too many of them over a short period of time you
                     might get poisoned by adrenaline overdose, with lethal
@@ -10992,7 +10994,7 @@ Cloaks of Lordly Resistanc: Temporary base+poison resistance.
 Dragon Scale Mails: According breath attack.
 Weapons of the Thunderlords: Teleportation.
 Weapons of Spinning: Spin attack.
-Fury weapons: Berserk.
+Fury weapons: Fury.
 Noldor caps: Treasure detection.
 Spectral weapons: Wraithform (see (5.22)).
 
@@ -12838,8 +12840,7 @@ stated.
                                                    (see (4.12) about stunning),
                                                  - intercept more often,
                                                  - parry and dodge only rarely,
-                                                 - get an AC penalty same as
-                                                   for being in 'fury'.
+                                                 - get an AC penalty.
                                                  Note: You must wield a weapon
                                                  that is not too small to be
                                                  gripped with both hands
@@ -17620,6 +17621,10 @@ In general, mindcraft schools are less affected by anti-magic fields.)
                     Required skill level for first spell level: 15.
                     This spell can be used even while blind.
 
+    Recognition     Identifies an item.
+                    Required skill level for first spell level: 15.
+                    Shared spell (see above): Attunement / Mental Intrusion.
+
     Accelerate Nerves
                     Speeds you up.
                     Required skill level for first spell level: 20.
@@ -17628,10 +17633,6 @@ In general, mindcraft schools are less affected by anti-magic fields.)
     Telepathy       Senses the minds of creatures.
                     Required skill level for first spell level: 20.
                     This spell can be used even while blind.
-
-    Recognition     Identifies an item.
-                    Required skill level for first spell level: 20.
-                    Shared spell (see above): Attunement / Mental Intrusion.
 
     Stabilize Thoughts
                     Cures some insanity and removes effects:   (auto-project)
@@ -18838,8 +18839,9 @@ The techniques are as follows:
         blows/round!
         (Spinning around costs a turn of energy.)
     Berserk             10 stamina   (warriors only)
-        Similar to potions of berserk strength, additionally giving you
-        +1 blow/round. (Entering berserk rage does not cost energy.)
+        Temporary effects: Heals you for 30 HP, increases CHP and MHP by 20,
+        become fearless, -10 malus to ac and +10 to strength.
+        (Entering berserk rage does not cost movement energy.)
         Does not stack with a potion of berserk strength.
 
     Rogue-specific fighting techniques:
@@ -18925,7 +18927,11 @@ The techniques are as follows:
         (Double-shooting does not cost more energy than shooting normally.)
     Barrage             9 stamina      (25.000 Archery)
         Prepares to fire a powerful multi-shot which will cost you half a
-        turn. It stuns the target (if it doesn't resist stunning attacks).
+        turn. All the ammo is fired at the same target, so it doesn't hit
+        multiple monsters, rather it is just one attack in itself.
+        Also, it does not deal especially high damage. Instead, its main effect
+        is that it stuns the target (if the target doesn't resist stunning
+        attacks).
         Because 6 shots are fired at once you will need at least as many
         projectiles in your quiver in order to use it.
         (Firing a barrage costs half a turn of energy.)
