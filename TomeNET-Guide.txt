@@ -6987,10 +6987,14 @@ Device Trap Kit         -       Wands/Staves/Rods.
                                 itself.
 
 A normal trap kit can be loaded with 1 item of the according ammo.
-After it went off (and is out of charges for device traps) you can pick up the
-trap kit to use it again.
+After it went off (and is out of charges for device traps or out of ammo for
+automatic traps) you can pick up the trap kit to use it again.
 If it was a catapult/arrow/bolt trap kit you can often recover the ammunition
 too, in case it didn't break. (Magic ammo and artifact ammo never break).
+Note that if you use magic ammo or artifact ammo, you only need 1 as it is
+neverending, except for 'Extra Shots' trap kits - because they fire multiple
+simultaneous shots, they will require the appropriate amount of ammo.
+If you load a trap kit with less than optimal ammo, it will still work though.
 
 Trap kits can have special (ego) powers:
 (prefixes:)
@@ -19673,6 +19677,9 @@ The most powerful representant of each class:
 
 -Unique 'P's are often very dangerous, some say the most dangerous next to
  Morgoth himself is Nodens, Lord of the Great Abyss.
+ He has the TPORT (teleport) spell and is therefore able to teleport WITH YOU
+ when you try to teleport away from him, provided you are within melee range
+ of him when you teleport.
 
 
 Mistakes / Carelessness:
@@ -19912,8 +19919,9 @@ You can create a character dump by invoking the character screen by pressing
 'C' and then pressing 'f' (as it states at the bottom).
 
 Character dumps are automatically created in your /TomeNET/lib/user folder
-if your character dies. The filename is charactername-death.txt, for example
-Gandalf-death.txt. (no overwrite-check is performed.)
+(or C:\Users\<yourname>\TomeNET-user on Windows) if your character dies.
+The filename is charactername-death.txt, for example Gandalf-death.txt.
+(no overwrite-check is performed, but date and time are added to the name.)
 
 Clients of version greater than plain 4.4.2 will also generate an automatic
 dump when you win the game by defeating Morgoth. Following above's example,
@@ -19921,7 +19929,8 @@ it will be named Gandalf-victory.txt accordingly.
 
 Also, newer clients will automatically take an xhtml screenshot too when a
 char dump is made, of same name but with .xhtml ending. Those can be viewed
-in most webbrowsers.
+in most webbrowsers. To manually take an xhtml-Screenshot at any time, press
+CTRL+T.
 
 
 
