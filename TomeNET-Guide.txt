@@ -1,7 +1,7 @@
  .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 21. April 2020 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 22. April 2020 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.7.2 - official websites are:
 | http://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | http://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -68,7 +68,7 @@ Contents
     (3.3)   Behaviour, chat messages and chat modes
     (3.4)   Start-up equipment & how to use it
     (3.4a)  Item basics
-    (3.4b)  Items that are always tradable
+    (3.4b)  Item trading rules and exceptions
     (3.5)   Preparing the first time for fighting enemies
     (3.6)   Creating basic macros & inscribing items (IMPORTANT)
     (3.7)   Creating macros for ranged attacks & abilities (spells)
@@ -150,11 +150,10 @@ Contents
     (5.20c) Digging - Further information
     (5.21)  Recharging
     (5.22)  Wraithform
-    (5.23)  Item sharing rules and exceptions
 (6) Character details
     (6.1)   Attributes
     (6.2)   Skills, opposed skills
-    (6.2a)  Maiar skill modifications
+    (6.2a)  Maiar initiation effects
     (6.3)   Abilities
     (6.4)   Races
     (6.5)   Classes/Professions, titles, melee blows/round
@@ -4388,17 +4387,69 @@ a Pick of Digging {+,9} (+5,+9) (+1) (+3)
 (See (5.20) for details about digging.)
 
 
-(3.4b) Items that are always tradable
--------------------------------------
+(3.4b) Item trading rules and exceptions
+----------------------------------------
+The following item sharing rules apply to a standard server configuration.
+It is possible that a server runs certain alterations of some aspects.
+
+
+Trading items between characters of different mode
+--------------------------------------------------
+Usually items cannot be exchanged between characters of different modes, eg
+everlasting mode, pvp mode and other modes.
+Normal mode and unworldly mode characters can exchange items though, they are
+basically unified as 'non-everlasting' mode aka 'scoreboard mode'.
+They too cannot exchange items with pvp mode characters though.
+Game pieces are an exception and can always be used by anyone.
+
+(If the server is running a non-standard configuration, it might be possible
+for everlasting or pvp characters to actually pick up items from other modes
+but not vice versa.)
+
+
+Trading zero-level items
+------------------------
+Level 0 items, which are either starter items, special boss drops or event
+reward items can only be used by the first owner and are unusable by anyone
+else. Certain event parchments can actually be traded despite being level 0.
+
+
+Exceptions for emergency cases
+------------------------------
 Certain items can always be traded, no matter the item level or owner mode (ie
 everlasting vs non-everlasting vs pvp). They will in turn receive a 100% value
 discount on trading. Those items are:
 
--Any kind of food
--Scrolls of Satisfy Hunger
--Scrolls of Word of Recall
--Amulets of the Highlands
+Torches, food, scrolls of satisfy hunger, oil flasks, Word of Recall scrolls.
+These items will get a 100% discount when they are exchanged between modes.
+
+An exception for level 0 items are the following starter items:
+Torches, food, scrolls of satisfy hunger.
+They too will get a 100% discount and their level will actually change to 1.
+
+Other items that can always be picked up by anybody:
+-Amulets of the Highlands (used in the Highlander Tournament event)
 -Game pieces (eg chess, heavy ball)
+
+
+Special restrictions
+--------------------
+Items usually cannot be sent via telekinesis if the target player does not
+meet the item's level requirements.
+True artifacts usually cannot be picked up by a player who does not meet the
+item's level requirements.
+Some items can only be used by 'winners' (characters who have beaten Morgoth).
+These items cannot be sent via telekinesis to a non-winner either.
+
+
+Dungeon-specific exceptions
+---------------------------
+In the ironman deep dive challenge (IDDC) and in the Nether Realm dungeon,
+items can actually be traded between any character mode.
+Within the IDDC, item levels don't even have any effect!
+For the Nether Realm, the items must have been found within the Nether Realm.
+As soon as a character leaves the worldmap sector of the Nether Realm, the
+items lose their ability to be traded between incompatible character modes.
 
 
 
@@ -11269,8 +11320,8 @@ floor. Items that IGNORE_COLD also resist impact damage.
 Usually items that contain wood, leather or stuff are susceptible to fire and
 acid, while things that consist only of metal are just susceptible to acid.
 
-                    Acid    Elec    Fire    Cold    Impact* Water
------------------------------------------------------------------
+                    Acid    Elec    Fire    Cold    Impact* Water   Shards
+----------------------------------------------------------------------------
 Arrows              x               x
 Bolts               x               x
 Pebbles
@@ -11300,10 +11351,10 @@ Soft Armour         x               x
 Hard Armour         x
 DSM Armour
 
-                    Acid    Elec    Fire    Cold    Impact  Water
------------------------------------------------------------------
+                    Acid    Elec    Fire    Cold    Impact  Water   Shards
+----------------------------------------------------------------------------
 
-Scrolls             x               x                       x
+Scrolls             x               x                       x       x
 Parchments          x               x
 Potions/Flasks                      x       x       x
 Bottles                             x               x
@@ -11328,7 +11379,7 @@ Tomes               x               x
 Greater Crystals
 Custom Books        x               x
 
-*Impact-based attacks:
+*Impact-based attacks (includes force- and sound-based attacks):
 These do not hurt items in your inventory. For example impact hounds breathing
 at you will not destroy any potions in your backpack.
 However, there are some cases where impact-type destruction can happen to your
@@ -12455,66 +12506,6 @@ of attackers..
 
 Last but not least, spells cast while in wraithform will only deal half as much
 damage as usual, even if the target is in wraithform too.
-
-
-
-(5.23) Item sharing rules and exceptions
-----------------------------------------
-The following item sharing rules apply to a standard server configuration.
-It is possible that a server runs certain alterations of some aspects.
-
-
-Trading items between characters of different mode
---------------------------------------------------
-Usually items cannot be exchanged between characters of different modes, eg
-everlasting mode, pvp mode and other modes.
-Normal mode and unworldly mode characters can exchange items though, they are
-basically unified as 'non-everlasting' mode aka 'scoreboard mode'.
-They too cannot exchange items with pvp mode characters though.
-Game pieces are an exception and can always be used by anyone.
-
-(If the server is running a non-standard configuration, it might be possible
-for everlasting or pvp characters to actually pick up items from other modes
-but not vice versa.)
-
-
-Trading zero-level items
-------------------------
-Level 0 items, which are either starter items, special boss drops or event
-reward items can only be used by the first owner and are unusable by anyone
-else. Certain event parchments can actually be traded despite being level 0.
-
-
-Exceptions for emergency cases
-------------------------------
-Certain items can be exchanged freely between incompatible modes to make rescue
-missions easier:
-Torches, food, scrolls of satisfy hunger, oil flasks, Word of Recall scrolls.
-These items will get a 100% discount when they are exchanged between modes.
-
-An exception for level 0 items are the following starter items:
-Torches, food, scrolls of satisfy hunger.
-They too will get a 100% discount and their level will actually change to 1.
-
-
-Special restrictions
---------------------
-Items usually cannot be sent via telekinesis if the target player does not
-meet the item's level requirements.
-True artifacts usually cannot be picked up by a player who does not meet the
-item's level requirements.
-Some items can only be used by 'winners' (characters who have beaten Morgoth).
-These items cannot be sent via telekinesis to a non-winner either.
-
-
-Dungeon-specific exceptions
----------------------------
-In the ironman deep dive challenge (IDDC) and in the Nether Realm dungeon,
-items can actually be traded between any character mode.
-Within the IDDC, item levels don't even have any effect!
-For the Nether Realm, the items must have been found within the Nether Realm.
-As soon as a character leaves the worldmap sector of the Nether Realm, the
-items lose their ability to be traded between incompatible character modes.
 
 
 
@@ -13857,8 +13848,8 @@ Take care on the following combinations:
                                 costs in order to keep his 'final' form.
 
 
-(6.2a) Maiar skill modifications
---------------------------------
+(6.2a) Maiar initiation effects
+-------------------------------
 Maiar start with a low-profile skill chart, which on initiation gets multiplied
 or diminished depending on their alignment (enlightened vs corrupted).
 Low-profile means that their "good" and "evil" skills - all holy schools and
@@ -13874,34 +13865,54 @@ Skills that become disabled on initiation will not be nulled and hence will
 continue to have effect, although the character won't be able to increase them
 any further after that.
 
-Modifications for becoming 'enlightened':
-  Necromancy, Traumaturgy, aura of death and Shadow become disabled.
+Besides changes in their skill tree, Maiar als gain particular abilities on
+initiation, depending on their alignment. All the changes are listed here:
 
-  Sword-, Blunt- and Polearm-mastery skill x 1.3.
-  The four holy schools x 2.1.
-  Spirit school x 2.1.
-  Divination school x 1.7.
-  Light and Mana runes x 1.7.
-  Fear and Shivering Aura x 3.0.
+Enlightened:
+    Gain time resistance (all initiated Maiar, enlightened and corrupted).
+    Able to see invisible and resisting light, while being susceptible to
+    evil-based attacks.
+    Intrinsic light aura that adds to any light source's radius.
+    +1 bonus AC for every 2 levels above 20 (caps at 50).
+    At level 50 they will be able to levitate, become resistant to poison,
+    electricity, cold and be enveloped in an aura of frost and lightning;
+    also, their melee attacks will slay evil opponents intrinsically.
+    Able to almost instantly sense curses on items.
 
-Modifications for becoming 'corrupted':
-  The four holy schools and Spirit become disabled.
+    Necromancy, Traumaturgy, Aura of Death and Shadow become disabled.
+    Sword-, Blunt- and Polearm-mastery skill ratios x 1.3.
+    The four holy school ratios x 2.1, Spirit x 2.1, Divination x 1.7.
+    Light and Mana rune ratios x 1.7, Fear and Shivering Aura ratio x 3.0.
 
-  Axe-mastery and Martial Arts skill x 1.3.
-  Fire, Air, Conveyance school x 1.7.
-  Udun school x 2.0.
-  Darkness and Nether runes x 1.7.
-  Shadow and Unlife school x 1.7.
-  Hereticism school x 2.1.
-  All Blood Magic schools x 3.0.
+Corrupted:
+    Gain time resistance (all initiated Maiar, enlightened and corrupted).
+    Resist fire and darkness while being susceptible to good-based attacks.
+    +2 bonus HP for each level above 20.
+    At level 50 they will become resistant to poison, immune to fire, and
+    be enveloped in a fiery aura.
+    Able to take off lightly cursed items.
 
-  Paladins/priests:
-   The four holy schools get completely reset, disabled and their points are
-   fully refunded.
-   They gain access to Udun school from the Wizardry school array.
+    The four holy schools and Spirit become disabled (cannot be trained
+    further, but you keep their current status),
+    priests and paladins however get them completely reset (refunded).
+
+    Priests:  Sword-mastery is enabled and receives the same skill ratio as
+              Blunt-Mastery, then it gets boosted by x 1.3 (as replacement
+              of non-existant Axe-mastery for this class).
+    Paladins: Sword-mastery ratio x 1.1.
+              Blunt-mastery ratio receives a x 1.1 bonus; because its ratio
+              ends up lower than before, its points will be refunded.
+              Axe-mastery and Blunt-mastery ratios are swapped, so Axe will
+              now have the higher ratio and Blunt will have the lower ratio.
+
+    Axe-mastery and Martial Arts skill ratios x 1.3.
+    Fire, Air, Conveyance school ratios x 1.7, Udun x 2.0,
+    Shadow and Unlife x 1.7, Hereticism x 2.1,
+    Darkness and Nether rune ratios x 1.7,
+    all Blood Magic ratios x 3.0.
 
 Note: After a skill's gain ratio has been boosted as stated above, it will be
-      capped against a maximum value of 2.000, which cannot be exceeded.
+      capped against a maximum value of 2.000, which can never be exceeded.
 
 
 
@@ -13926,9 +13937,11 @@ Some of those abilities have a maximum value after which they cannot be
 increased any further. Such abilities show 'legendary' in different colours
 than just light green. Instead they use:
 Legendary   (dark green)    This means it's good enough to deserve being
-                            called 'legendary'.
+                            called 'legendary', but that it can actually be
+                            further increased up to a specific maximum.
 Legendary   (golden)        This means, that you have reached the absolute
-                            highest possible value for this ability.
+                            highest possible value, ie the maximum, for this
+                            ability.
 
 
 Here is a list of detailed information about miscellaneous abilities:
@@ -14405,7 +14418,13 @@ create a character!):
     "Your soul thirsts for shaping, either enlightenment or corruption!"
     After they underwent initiation at level 20, they may just kill all of them
     indiscriminately, same as any other monster.
-    Using but their mind they can easily perceive both good and demonkind
+    Maiar start with a low profile skill chart which gets boosted on initiation
+    depending on their alignment. Their skills will be adjusted on initiation
+    so that they remain as close to their previous values as possible while the
+    character gets back any skill points that are freed up due to higher skill
+    ratios after the initiation took place, see (6.2a) for details.
+
+    Using but their mind Maiar can easily perceive both good and demonkind
     telepathically. The servants and harbingers of those factions that Maiar
     need to slay occur from dungeon level 12 to 20 (which correspond to
     -600..-1000 ft in dungeon 'Barrow-Downs' for example, since that dungeon
@@ -14427,54 +14446,6 @@ create a character!):
     They gain experience extremely slowly, and rarely need to feed before
     initiation. Afterwards they have no more need for any worldly food at all
     (and they cannot become gorged either).
-    Alignment-dependant boni are..
-
-    Enlightened:
-        Gain time resistance (all initiated Maiar, enlightened and corrupted).
-        Able to see invisible and resisting light, while being susceptible to
-        evil-based attacks.
-        Intrinsic light aura that adds to any light source's radius.
-        +1 bonus AC for every 2 levels above 20 (caps at 50).
-        At level 50 they will be able to levitate, become resistant to poison,
-        electricity, cold and be enveloped in an aura of frost and lightning;
-        also, their melee attacks will slay evil opponents intrinsically.
-        Able to almost instantly sense curses on items.
-
-        Necromancy, Traumaturgy, Aura of Death and Shadow become disabled.
-        Sword-, Blunt- and Polearm-mastery skill ratios x 1.3.
-        The four holy school ratios x 2.1, Spirit x 2.1, Divination x 1.7.
-        Light and Mana rune ratios x 1.7, Fear and Shivering Aura ratio x 3.0.
-
-    Corrupted:
-        Gain time resistance (all initiated Maiar, enlightened and corrupted).
-        Resist fire and darkness while being susceptible to good-based attacks.
-        +2 bonus HP for each level above 20.
-        At level 50 they will become resistant to poison, immune to fire, and
-        be enveloped in a fiery aura.
-        Able to take off lightly cursed items.
-
-        The four holy schools and Spirit become disabled,
-        priests and paladins also get the four holy schools reset.
-        Priests:  Sword-mastery is enabled at receives the same skill ratio as
-                  Blunt-Mastery, then it gets boosted by x 1.3 (as replacement
-                  of non-existant Axe-mastery for this class).
-        Paladins: Sword-mastery ratio x 1.1.
-                  Axe-mastery and Blunt-mastery ratios are swapped!
-                  Blunt-mastery ratio receives a x 1.1 bonus; because its ratio
-                  ends up lower than before, its points will be all refunded.
-        Axe-mastery and Martial Arts skill ratios x 1.3.
-        Fire, Air, Conveyance school ratios x 1.7, Udun x 2.0,
-        Shadow and Unlife x 1.7, Hereticism x 2.1,
-        Darkness and Nether rune ratios x 1.7,
-        all Blood Magic ratios x 3.0.
-
-    Maiar start with a low profile skill chart which gets boosted on initiation
-    depending on their alignment, never exceeding 2.000 though.
-    Their skills will be adjusted on initiation so that they remain as close to
-    their previous values as possible while the character gets back any skill
-    points that are freed up due to higher skill ratios after the initiation
-    took place, see (6.2a) for details.
-
     Maia get a bonus on 'Sneakiness' and 'Stealth' no matter the alignment.
 
 
@@ -16339,11 +16310,23 @@ Firebird                speedy and tough; can fly and passes most terrains;
 (6.8) Spells and prayers
 ------------------------
 Istari (mages), rangers, rogues, priests, paladins, druids, shamans,
-mindcrafters and even adventurers can cast magic spells, use telepathic powers
-(which are the same as spells, technically) or speak prayers.
+mindcrafters, runemasters, mimics and even adventurers can cast magic spells,
+use telepathic powers (which are the same as spells, technically) draw runes
+or speak prayers.
 To do so, they need the according spell scrolls (which contain exactly one
 specific spell) or books (such as Codices, Spell Books, Grimoires, Handbooks
 or Tomes, that contain several different spells) in their inventory.
+Mindcraft uses spell crystals instead of spell scrolls, there is no real
+difference in the way of spell-casting though.
+Runemasters however do not use any scrolls or books. Instead they draw runes
+from their memory. For certain advanced spells they might require physical
+runes in their inventory. Runecraft is quite different from normal spellcasting
+and is explained in chapters (6.8b) and (6.8c) instead.
+Mimics use a very different type of magic too, 'innate powers' that they gain
+from the very monster form they imitate, allowing them to cast most if not all
+spells that the monster would be able to use. As such, Mimicry has almost
+nothing to do with normal spell-casting either and is instead discussed in
+chapter (6.8a).
 
 The failure rate when attempting to successfully cast a spell is usually shown
 when browsing the according spell scroll/crystal, and is determined by your
@@ -18720,10 +18703,9 @@ some items can only be activated while they are equipped.
 The chance to successfully activate a magic device is shown when you inspect it
 (SHIFT+i, and the item must be identified). The displayed chance does not take
 any anti-magic effects in account.
-Note that it is not possible to achieve 100% success rate with any device.
-It is possible to gain more than 99% chance though. If you manage to exceed 99%
-chance another digit will be shown on inspection to tell you your exact chance,
-for example: 99.3%
+It is possible to achieve 100% success rate with some devices. If you reach 99%
+the success chance shown on inspection will get another digit added, so it will
+for example look like: 99.3%.
 
 Magic Device skill and ability have no effect on the damage output of traps
 loaded with a magic device or on recharge time of rods that are loaded inside
@@ -21659,6 +21641,8 @@ Solution:   TomeNET uses basic linux system fonts (and allows you to switch to
             system's package manager. It should usually be 'xorg-fonts-misc' or
             'linux-fonts-misc'.
             After installation, reboot your system to ensure they work.
+            If there is still a problem, you could try installing
+            xorg-fonts-type1 or awesome-terminal-fonts too. Maybe it helps.
 
 PROBLEM 57: On older Linux systems that do not use pulseaudio, audio (sound/
             music) is not working at all. (First see PROBLEM 20 please.)
