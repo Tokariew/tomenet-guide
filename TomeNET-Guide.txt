@@ -1,7 +1,7 @@
- .=========================+==--.
+.=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 6. May 2020 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 8. May 2020 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.7.3 - official websites are:
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -786,7 +786,8 @@ SPACE   Stop executing repeatable actions such as searching, tunnelling or
 ~       display further information of your (character's) knowledge.
         Point (2) and (7) here are especially helpful for mimics:
         In ~2, the number shown in round brackets before each monster name is
-        the same they have to enter for their 'Polymorph self into..' ability!
+        the same they have to enter for their ability:
+          'Polymorph self into a specific form'
         In ~7 you can check out all features of a monster.
 
 @       displays a list of players currently on the server.
@@ -1014,11 +1015,12 @@ They all start with a slash '/' hence they're called slash commands:
             This will auto-retaliate with mimic power 'g)', but only while in
             town.
 
-            (Note that you cannot auto-retaliate with 'polymorph into...'
+            (Note that you cannot auto-retaliate with
+              'Polymorph Self into a specific form'
             power aka 'c)', instead it will be treated like power 'b)' aka
-            'polymorph into next form with fitting extremities'. Then again
-            using this kind of power for auto-ret doesn't make much sense
-            anyway..)
+            'Polymorph Self into next form with fitting extremities'.
+            Then again using this kind of power for auto-ret doesn't make much
+            sense anyway..)
 
 /bbs <text>
             Add a line of text to the in-game bulletin board system. Players
@@ -3330,12 +3332,43 @@ self-explaining or that are especially important are listed in detail here:
         Definitely enable this to see if you prefer it: It doubles the size of
         the game-play area displayed in the main window.
 
-    Suppress server messages as far as possible (taciturn_messages)
-        Will prevent some of the not-so-important server messages to be
-        shown, for example 'You have <item>' when picking up an item.
+    Alert on taking damage while you are AFK (alert_afk_dam) and
+    alert on taking damage while looking around the map via 'locate' command
+    (alert_offpanel_dam). (The locate command is invoked with SHIFT+L on normal
+    key map and SHIFT+W on rogue-like key map.)
+
+    A bunch of options for special visual effects and lighting.
+        These options change how lighting is applied to lamp light and walls,
+        lamp light colour and how walls are displayed depending on the font:
+
+        font_map_solid_walls (depending on font displays walls as solid blocks)
+        view_animated_lite (fire-based light sources flicker yellow-orange)
+
+        wall_lighting (generally enables lighting/shading fx for walls:)
+        view_lamp_walls (your light source lights up certain wall grids)
+        view_shade_walls (darkens wall grids out of sight)
+
+        floor_lighting (generally enables lighting/shading fx for floors:)
+        view_lamp_floor (your light source lights up certain floor grids)
+        view_shade_floor (darkens floor grids out of sight)
+
+        view_lite_extra (lights up a few additional wall/floor types)
+
+    Display overview resistance/boni page at startup (overview_startup)
+        Makes your character sheet start out showing the resistances/boni table
+        instead of the your basic stats and abilities.
+        (Press C and then tap h to cycle through it, as usual.)
+
+    Hide unusable skills (hide_unusable_skills)
+        Skills that your character cannot use will not be displayed in the
+        skill menu invoked by 'G' key.
 
     Don't display 'flavours' in item names (short_item_names)
         A 'Black Potion of Speed' will just be shown as a 'Potion of Speed'.
+
+    Suppress server messages as far as possible (taciturn_messages)
+        Will prevent some of the not-so-important server messages to be
+        shown, for example 'You have <item>' when picking up an item.
 
     Show experience bar instead of a number (exp_bar)
         In the main window at the 'XP' label your experience is displayed as a
@@ -3361,10 +3394,6 @@ self-explaining or that are especially important are listed in detail here:
         +++++++++   You have 95% (or up to 99%) XP and are therefore very close
                     to level-up! Might just as well keep diving till ding! :-p
 
-    Hide unusable skills (hide_unusable_skills)
-        Skills that your character cannot use will not be displayed in the
-        skill menu invoked by 'G' key.
-
     Flash own character icon after far relocation (flash_player)
         Whenever your character teleports, recalls, takes a void jump gate or
         phases in such a way that your current view panel changes, your
@@ -3373,27 +3402,14 @@ self-explaining or that are especially important are listed in detail here:
         Useful for example if there are many monsters around and you're a
         mimic in monster form, or just in general when you're in big_map mode.
 
-    Alert on taking damage while you are AFK (alert_afk_dam) and
-    alert on taking damage while looking around the map via 'locate' command
-    (alert_offpanel_dam). (The locate command is invoked with SHIFT+L on normal
-    key map and SHIFT+W on rogue-like key map.)
-
-    A bunch of options for special visual effects and lighting.
-        These options change how lighting is applied to lamp light and walls,
-        lamp light colour and how walls are displayed depending on the font:
-
-        font_map_solid_walls (depending on font displays walls as solid blocks)
-        view_animated_lite (fire-based light sources flicker yellow-orange)
-
-        wall_lighting (generally enables lighting/shading fx for walls:)
-        view_lamp_walls (your light source lights up certain wall grids)
-        view_shade_walls (darkens wall grids out of sight)
-
-        floor_lighting (generally enables lighting/shading fx for floors:)
-        view_lamp_floor (your light source lights up certain floor grids)
-        view_shade_floor (darkens floor grids out of sight)
-
-        view_lite_extra (lights up a few additional wall/floor types)
+    Use consistent symbols and colours for players (consistent_players)
+        Will always display party members as dark grey @ (flickering to slate
+        if they have black breath) and will always display yourself as a white
+        @, yellow while a shielding spell is active, orange when the spell is
+        about to run out.
+        So it will ignore any class-based colouring for party members and both
+        symbols and colours of monster forms for party members and the player
+        himself.
 
  (4) Audio Options
     (See (2.1a) for more information about sound and music.)
@@ -14808,8 +14824,9 @@ create a character!):
     in total to learn a form, press the '~' key followed by '2'.
     To polymorph into a form, press 'm' key, like casting a magic spell.
     (Forms that have DISBELIEVE ability are skipped when using the normal
-    'Polymorph Self' spell. You have to use 'Polymorph Self Into..' if you
-    want to use these forms.)
+    'Polymorph Self' spell. You have to explicitely use your (c) power:
+      'Polymorph Self into a specific form'
+    if you want to use these forms.)
 
     A list of useful low-level humanoid forms for weapon-using mimics is given
     in (6.7b) because weapon-using mimics have a somewhat harder time to find
