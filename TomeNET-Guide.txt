@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 10. July 2020 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 16. July 2020 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.7.3 - official websites are:
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -1800,11 +1800,15 @@ dungeon you came from, to the deepest possible floor. If you use them on the
 world surface without inscription and there is no dungeon at your location that
 you have previously visited, they will instead teleport you back to the last
 town you visited.
+    Travel into a dungeon/tower:
     @R500       will teleport you to depth 500ft (tower).
     @R-350      will teleport you to depth -350ft (dungeon).
+
+    World travel:
     @RW32,32    will teleport you to sector 32,32 on the worldmap (Bree).
                 World map ranges from 0,0 to 63,63.
-    or even better..
+
+    or even better for any kind of recalling..
     @R          This inscription makes the above versions sort of obsolete.
                 If you have inscribed a Word of Recall item like this then you
                 can just type the command    /rec    into chat to invoke the
@@ -2370,6 +2374,10 @@ with other players and developers via the following media:
 -Voice chat via mumble, get it from http://mumble.sourceforge.net/.
       IP is 'europe.tomenet.eu', port is '23348', password is 'tomenet'.
       For details see "(2.4) Installing voice chat".
+-Discord (Text and voice channels, https://discord.com/ ).
+      Server is "tomenet". Aside from the general channel there is a dedicated
+      one for russian language chat and one for korean language chat.
+      Follow this invite link to join: https://discord.gg/QGJw7fT
 
 
 (1.1b) How to set up IRC chat
