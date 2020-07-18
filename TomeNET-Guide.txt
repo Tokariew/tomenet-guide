@@ -13295,6 +13295,12 @@ stated.
     +Wizardry
         .Sorcery                Learn to use spells of ALL magic schools at
                                 once, instead of training a particular branch!
+                                Note that if you train Sorcery your character's
+                                mana pool will become sensitive to usage of
+                                gloves. You will need gloves that give any of
+                                Free Action, Dexterity, +Mana or elven gloves
+                                in order to not get encumbered and as a
+                                consequence suffer reduction of your max MP.
         .Mana                   Learn spells of the Mana branch.
         .Fire                   Learn spells of the Fire branch.
         .Water                  Learn spells of the Water branch.
@@ -13335,6 +13341,10 @@ stated.
         .Psycho-power           Learn mindcrafter spells of psycho-power.
         .Attunement             Learn mindcrafter spells of attunement.
         .Mental Intrusion       Learn mindcrafter spells of mental intrusion.
+            Note: As soon as you train any of the three mindcraft schools your
+            character's mana pool will become sensitive to heavy head gear.
+            If your head gear's weight exceeds 4.0 lbs your max MP will suffer
+            a reduction from encumberment.
 
     +Runecraft                  See '(6.8b) Runes & Runemastery'.
         .Light                  Learn to evoke light runes.
