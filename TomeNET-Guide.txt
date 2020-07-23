@@ -1640,6 +1640,9 @@ Other !-inscriptions:
     !T          Prevent taking off a secondary item.
     !F          Prevent using up this item to fuel your currently equipped
                 light source. (Note that !k inscription implies this too.)
+    !Fnn        If the server has the (experimental) Demolitionist perk enabled
+                this inscription can be used on blast charges to customize the
+                fuse length to nn seconds, where nn must be within 1 to 15.
     !E          Prevent eating this item.
     !q          Prevent quaffing this potion.
     !r          Prevent reading this scroll.
@@ -14013,6 +14016,18 @@ stated.
                                 may attempt to convert it into the finished
                                 blast charge by activating it again with itself
                                 (think of this as some kind of drying process).
+
+                                You then activate a blast charge to place and
+                                arm it. Its fuse will take 2 to 10 seconds to
+                                run depending on the charge type, so you might
+                                want to hurry up and get away.
+                                You can customize the fuse to anything from 1
+                                to 15 seconds by inscribing the charge "!Fnn"
+                                before planting it, where nn is the amount of
+                                seconds ie the fuse length. Example:  !F12
+                                ..which will result in a 12-seconds fuse.
+                                If you change your mind, you can try to disarm
+                                an armed charge before it goes boom, take care.
 
                                 Examples to start you off:
                                 <1 Charcoal + 1 Sulfur + 2 Saltpetre> or
