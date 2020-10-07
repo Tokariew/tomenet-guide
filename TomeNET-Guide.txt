@@ -15961,33 +15961,52 @@ Corrupted Priest (aka Corrupted Maia Priest)
 
 (6.6) Sanity (or insanity)
 --------------------------
-Your sanity can have the following values:
-Sound, Sane, Weird, Insane, Mad, Vegetable.
+When your character loses sanity, temporary halluciations (flashbacks) may
+occur and become more frequent when you lose even more sanity, you will see the
+the message "A flashback storms your head!".
+Hallucinations are not just visually confusing when things seem to pop up that
+don't really exist and things that do exist become unrecognizable. They will
+also hinder your character's abilities in various ways, for example you become
+unable to target anything.
+
+If your character loses all sanity ie turns completely insane, you will
+permanently die - even if you are everlasting-mode! Your character will be gone
+and erased.
+
+Your sanity, displayed as 'SN:', can have the following text 'values' depending
+on how much sanity you have left:
+Sound (90%+), Sane (75%+), Weird (50%+), Crazy (25%+), Insane (10%+), Mad (>0%)
+and finally Vegetable (0%, you are permanently dead).
 
 If you spend 10 points on your 'Health' skill, the sanity display will turn
 into a bar, displaying exacter values. At 20 points you'll get the percentage
 displayed. At 40 the value will be shown.
+You can type the '/snbar' slash command into chat to cycle through these.
 
-At the beginning, your sanity is always 'Sound'. That means you are completely
-sane. Monsters or traps can reduce your sanity. If your sanity drops below 0,
-your mind will be qualified as an unthinking vegetable, this means your
-character is permanently dead, so be extremely cautious! Fortunately there are
-potions available that cure your sanity, although they are not very common and
-cannot be bought in shops. Wisdom helps against insanity by inceasing your
-'sanity capacity'. As you gain levels, your sanity capacity will also increase.
-However, this means IF your sanity drops to dangerous regions, you will need
-more potions to cure it.
+Monsters, traps or too much booze can reduce your sanity.
+Fortunately there are potions available that cure insanity, although they
+are not very common and cannot be bought in NPC shops. Wisdom helps against
+insanity by inceasing your 'sanity capacity'. As you gain levels, your sanity
+capacity will also increase. Certain classes such as priests or mindcrafters
+may (depending on their skills) be able to cure insanity too.
 
-If your sanity is lowered, there's an increasing chance that flashbacks will
-storm your head, leaving you with mad visions for a while..
-("A flashback storms your head!")
-
-When your sanity suffers from an attack, you'll see a light red message in the
-message window telling you so, instead of the usual white or yellow combat
-messages, to make it easily visible.
-
-Certain classes such as priests or mindcrafters may depending on their skills
-be able to cure insanity.
+When your sanity suffers from an attack, you'll see a message in the message
+window telling you so, instead of the usual white or yellow combat messages it
+will be coloured in red tones to make it easily visible:
+- When your sanity value is still relatively high there will be no message yet.
+- When your sanity is down to half, warning messages will be displayed, in red:
+  'You feel insanity creep into your mind..'
+- When your sanity is down to one quarter already, messages will be light red:
+  'You feel severly disturbed and paranoid..'
+- When your sanity is at 1/8 or worse it will be fiery (red/yellow flashing):
+  'You can hardly suppress screaming out insane laughters!'
+  If you don't have any way to restore it right away this is probably when you
+  want to teleport out and back to town immediately to seek professional help.
+- The final message when you die to insanity by turning into a vegetable-brain,
+  that message will be purple - game over:
+  'You turn into an unthinking vegetable.'
+In addition to the message, sanity attacks will play a whispering sound effect,
+named 'insanity' in the sfx jukebox (press = n to access).
 
 There are no items granting any insanity resistance, but there are certain ways
 to reduce incoming insanity damage, depending on the flags of a mimicked form
