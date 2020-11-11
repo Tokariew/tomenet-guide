@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 8. November 2020 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 11. November 2020 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.7.3 - official websites are:
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -1184,6 +1184,15 @@ They all start with a slash '/' hence they're called slash commands:
             Opposite of /bed.
 
 /dun        Displays the name of the dungeon you're currently in.
+
+/edmt       This toggles the client option 'easy_disarm_montraps' manually.
+            (Note that this will not change the option in =7, if you enter that
+            menu, the option state will be reset to what it is in there.)
+            This will toggle the characters behaviour when walking into a
+            monster trap: Whether it will automatically attempt to disarm it or
+            not. Use it as a trapper for convenience to disarm all remaining
+            traps on the field faster after a battle has ended, instead of
+            having to press the disarm-key for every trap.
 
 /empty <inventory slot>
             Empty a potion from your inventory, leaving an empty bottle.
