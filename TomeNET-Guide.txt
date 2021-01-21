@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 6. Januar 2021 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 21. Januar 2021 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.7.3 - official websites are:
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -3816,20 +3816,29 @@ client. Again press = f and then use + and - keys to switch the main window
 font. These two keys allow you to switch through all fonts available in the
 lib/xtra/font folder.
 
-
 For the Linux/OS X client, the game doesn't use the lib/xtra/font folder but
 instead assumes that some standard fonts are provided by your system and tries
 to select those when cycling with 'c' key in the fonts menu.
 You can also set fonts manually with = f if you want to choose specific fonts
 available in your Linux/OS X installation.
+To manually install your own fonts, see the instructions for Linux two
+paragraphs below in (2.5a), it should be in pcf format.
 
 
 (2.5a) Custom fonts
 -------------------
-For the Windows client it is possible to create your own custom fonts for the
-game. You can use "Fony" for example: http://hukka.ncn.fi/?fony
+It is possible to create your own custom fonts for the game.
+For the Windows client which uses .FON files you can use "Fony" for example:
+http://hukka.ncn.fi/?fony
 (Up to client 4.6.1a it was not possible to use characters of numbers 128-255
 but this has been addressed, so the full range of characters is available now.)
+
+For the Linux client you'll need to convert the font to pcf format,
+place it into a registered fonts folder (check 'xset -q'), usually that can be
+/usr/share/fonts/misc, let X11 rescan it with 'fc-cache' (optionally with -f to
+force rescan) and run 'sudo mkfontdir' in /usr/share/fonts/misc to add them to
+fonts.dir file (which TomeNET scans) and you can verify the installation with
+'fc-list'. (Note that 'xlsfonts' cannot see pcf formatted fonts.)
 
 Since you might need/want to use mapping files to remap terrain features to the
 characters in your font, you can create font-preference files that contain
@@ -15617,47 +15626,33 @@ Pe:Perception (sight range), Sr:Searching,  Fi:Fighting,        BT:Bows/Throw)
 
 Class       STR INT WIS DEX CON CHR     HP die   Exp%   Max. base blows/round
  @-colour   Di  MD  ST  St  Pe  Sr  Fi  BT              Parrying/Blocking
-            Di  MD  ST  St  Pe  Sr  Fi  BT (relative modifiers, see (6.3))
 ------------------------------------------------------------------------------
 Warrior     +5  -2  -2  +2  +2  -1      +10       +0%       6
  brown      25  18  18   1   2  14  70  55              superb   superb
-            10   7  10   0   0   0  45  40
 Istar       -5  +3   0  +1  -2  +1       +0      +35%       1
  red        30  36  30   2  20  16  34  20              bad      bad
-             7  13   9   0   0   0  15  15
 Priest      -1  -3  +3  -1   0  +2       +5      +20%       4
  green      25  25  32   2   8  16  48  35              fair     fair
-             7  10  12   0   0   0  20  15
 Rogue       +2  +1  -2  +3  +1  -1       +5      +15%       5
  blue       45  28  28   5  32  24  60  66              superb   fair
-            15  10  10   0  10  10  40  40
 Mimic       +1   0   0  +1  +1  -4       +6      +30%       5
  l.grey     25  34  28   1  18  18  60  46              good     good
-             9  10  10   0   0   0  40  25
 Archer      +1   0  +2  +3  +1  -1       +5      +10%       3
  orange     30  22  28   2  20  24  56  72              fair     fair
-             8   7  10   0   0   0  30  50
 Paladin     +3  -3  +1   0  +2  +2       +8      +30%       5
  yellow     10  21  54   1  16  13  60  40              good     superb
-             2   8  10   0   2   0  35  10
 Ranger      +2  +2  -1  +1  +2   0       +7      +35%       5
  l.brown    34  32  30   5  30  30  50  60              superb   fair
-            12  10  10   0   5  15  30  45
 Adventurer   0   0   0   0   0   0       +6      +25%       4
  violet     20  22  20   3  15  15  50  50              fair     fair
-            10  10  10   0   5   5  25  25
 Druid       +1   0  +2  -2  -2  +1       +5      +35%       4
  l.green    30  35  30   4  25  25  50  44              poor     poor
-             8  11  10   0   5  10  20  25
 Shaman       0  +1  +2  -2   0   0       +3      +40%       4
  l.red      10  30  30   4  30  20  45  23              poor     poor
-             0  11  10   0   5   3  20  12
 Runemaster   0  +2  -2  +2  -2   0       +4      +40%       4
  l.blue     30  32  20   3  30  26  45  40              fair     poor
-             0  12  10   0   5   5  25  30
 Mindcrafter +2  +2   0   0   0  +1       +6      +25%       5
  grey       30  28  36   3  35  14  55  45              good     fair
-             0   9   5   0   3   3  26  25
 
 
 For melee characters, it's especially vital to know how many blows per round
@@ -21926,11 +21921,11 @@ Solution:   The meta-server might be down or a DNS problem might be occuring
             Make sure your TomeNET.ini file contains the correct server port,
             usually 18348! This port isn't needed if you use the meta-list to
             choose a server to connect to, but it's important if you connect
-            directly! (For linux the file is ".tomenetrc".)
+            directly! (For Linux the file is ".tomenetrc".)
             You can connect directly to a TomeNET server and skip the meta
             server list by running your Tomenet directly from the command-line
             (DOS window) within its folder, adding the server IP as a
-            parameter. (In windows2k choose START/Run... and type 'cmd'
+            parameter. (In Windows 2000 choose START/Run... and type 'cmd'
             without quotation marks to open a command-line window.
             Alternatively you can create a shortcut from your TomeNET.exe by
             right-clicking, dragging, releasing it. Edit this shortcut's
@@ -22388,7 +22383,7 @@ Solution:   If you're on Windows and using a game version greater than 4.6.1a,
 PROBLEM 56: On a fresh TomeNET installation on Linux, the game will fail to
             start, giving a font-not-found error (usually about font '9x15'),
             like this: "Font not found: 9x15".
-Solution:   TomeNET uses basic linux system fonts (and allows you to switch to
+Solution:   TomeNET uses basic Linux system fonts (and allows you to switch to
             fonts of your own choice instead, if you want to). Some Linux
             distributions do not have these installed by default though, for
             example Antergos.
