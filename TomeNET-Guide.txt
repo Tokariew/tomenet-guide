@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 13. Februar 2021 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 14. Februar 2021 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.7.3a - official websites are:
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -11513,9 +11513,9 @@ Mattock/Pick/Shovel Diggers, improving your digging capabilities.
                     Main factor is the (+diggingpower) mod though. (Equip it!)
                     If you lack any of these valuable digging tools, axes and
                     swords can help you hacking down trees or bushes. For
-                    hacking away webs or ivy, certain polearms used for
-                    slashing (scythes and sickles) may help too, just as much
-                    as swords or axes. (see 'Digging' skill in (6.2) and (5.20)
+                    hacking away spider webs certain polearms used for slashing
+                    (scythes and sickles) may help too, at least as well as
+                    swords or axes. (see 'Digging' skill in (6.2) and (5.20)
                     for more information about digging).
 Money Belt          When equipped, prevents thieves from stealing your money.
 Mushrooms of paranoia/cure paranoia
@@ -12885,11 +12885,10 @@ greater than the result of a random number roll "random(0..x-1) + y":
 ---------------------------------------------------------------------
 Spider web           100 +  0
 Rubble               200 +  0
-Ivy                  200 +  0
 Bush                 300 +  0
 Dead tree            300 +  0
 Tree                 400 +  0
-Sandwall             250 +  5
+Sandwall             300 +  0
 Magma intrusion      400 + 10
 Quartz vein          800 + 20
 Granite wall        1600 + 40
@@ -12924,8 +12923,6 @@ Without a digging tool..
  below 18/100.
 -You cannot tunnel through magma without a digging tool if your STRength is
  below 18/60.
--You cannot tunnel through sand walls without a digging tool if your STRength
- is below 18/20.
 
 With a digging tool..
 -You can tunnel through all materials other than granite walls with just a
@@ -12972,9 +12969,9 @@ Also see (3.4a) for more information on digging tool mods.
 
 If you haven't got a digging tool equipped, or if it's just a basic shovel (+1)
 then wielding a sword or especially an axe can work as pseudo-digger when you
-want to hack down organic material such as trees, bushes, ivy or spider webs.
+want to hack down organic material such as trees, bushes or spider webs.
 Certain polearms that have a slashing effect (scythes and sickles) can help
-just as well as swords or axes against spider webs or ivy.
+at least as well as swords or axes against spider webs.
 (Dual-wielding does not help, so two weapons can't dig better than just one.
 Wielding a 1.5-handed weapon in only 1 hand will decrease your digging chance
 though, so take off your shield for best results.)
@@ -14432,9 +14429,9 @@ stated.
                                 axes will help a lot and swords somewhat, in
                                 case you have no good digging tool at hand.
                                 2-handed weapons even more than 1-handed.
-                                For hacking away webs or ivy, certain polearms
+                                For hacking away spider webs, certain polearms
                                 used for slashing (scythes and sickles) may
-                                help too, just as well as swords or axes.
+                                help too, at least as well as swords or axes.
                                 See (3.4a) for more information on digging
                                 tools and (5.20) for technical details on
                                 digging.
