@@ -1861,9 +1861,10 @@ Other !-inscriptions:
                 anyway.
     !U          This item will be displayed in dark grey colour in your
                 inventory. Can be useful for sorting loot.
-Consumable items only:
+Mainly for consumable items:
     !Q          will not print a message how many you have left after consuming
-                one. For example use on ID scrolls in combination:  !XQ
+                one (like if 'taciturn_messages' were enabled). For example use
+                on ID scrolls in combination:  !XQ
 
 The # inscription:
     This one makes all following inscription be appended directly behind the
@@ -4934,6 +4935,9 @@ So to prepare for hunting in the dungeon, buy:
 And if you still have spare money (this one costs a lot) a
 -Scroll of Word of Recall. (See "(0.3) Important inscriptions, Word of Recall"
  for more info.)
+
+If you are interested in more tips about preparing inventory and equipment, you
+could check out chapter (7) Tactics & Strategy.
 
 
 
@@ -12520,7 +12524,7 @@ TY_CURSE        Randomly drains stats sometimes, even if the item is uncursed.
 DG_CURSE        Rarely summons a random monster on you, even if uncursed.
                 (DG_CURSE will stay, even if the 'normal' curse is broken!)
                 Greatly lowers the items value by 25000 Au.
-                This curse will be on hold while you're in a town.
+                This curse will be on hold while you're in a town area.
                 Note that an anti-magic field has a chance to suppress it.
                 Having 'Holy Support' skill at 40.000 or better will completely
                 negate TY_CURSE effects.
