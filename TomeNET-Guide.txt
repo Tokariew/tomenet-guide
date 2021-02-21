@@ -14659,14 +14659,14 @@ Acid                  |         |                      | Crafting
 Wood chips            | Trees,  |                      | Grinding
                       | bushes  |                      |
 Charcoal              |         |                      | Burning wood, crafting
-Sulfur                | Magma   | Large firebreathers  |
+Sulfur                | Magma   | Medium firebreathers |
 Saltpetre             | Sandwall| Bats, Birds, Hybrids, Novice Mages (rarely)
 Ammonia salt          |         | Quadrupeds, Canines, Hydras, Yetis,
-                      |         | Large poisonbreathers|
+                      |         | Medium poisonbreathers
 Reactive metal powder | Quartz  |                      | Grinding
 Caustic metal ash     |         |                      | Crafting
 Caustic salt          |         |                      | Crafting
-Vitriol               | Magma   | Large acidbreathers  |
+Vitriol               | Magma   | Medium acidbreathers |
 
 Crafting ingredients from raw materials:
 ----------------------------------------
@@ -19845,7 +19845,7 @@ The techniques are as follows:
         branding will fade away.
         The poison will only last for a short while, so it's best to apply it
         before engaging in a fight.
-    Perceive Noise      3 stamina
+    Perceive Noise      2 stamina
         Listen carefully to every sound in your surroundings, thereby locating
         creatures. Some entities are so quiet that they cannot be detected this
         way though.
