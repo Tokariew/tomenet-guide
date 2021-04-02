@@ -1,7 +1,7 @@
 .=========================+==--.
 |      TomeNET Guide      |
 +=========================+-
-| Latest update: 20. Februar 2021 - written by C. Blue (c_blue@gmx.net)
+| Latest update: 31. March 2021 - written by C. Blue (c_blue@gmx.net)
 | for TomeNET version v4.7.3a - official websites are:
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -99,7 +99,8 @@ Contents
     (4.5d)  Dungeon bosses
     (4.6)   Pits and vaults
     (4.7)   Traps & trap kits
-    (4.8)   Level & vault feelings
+    (4.7a)  Trap kit load effects
+    (4.8)   Dungeon, floor & vault feelings
     (4.9)   Navigating on maps
     (4.10)  Houses
     (4.10a) Player stores
@@ -165,7 +166,7 @@ Contents
     (6.7)   Mimicry details
     (6.7a)  Polymorph rings
     (6.7b)  Useful low-level humanoid forms for weapon-using mimics
-    (6.7c)  Druid form details
+    (6.7c)  Druid forms
     (6.8)   Spells and prayers
     (6.8a)  Mimic powers
     (6.8b)  Runes & Runemastery
@@ -1091,10 +1092,11 @@ They all start with a slash '/' hence they're called slash commands:
 /arm        Sets up auto-retaliation with a mimic power.
             Enter  /arm help  for this information in-game.
             Usage:   /arm [t]<power>   or to disable:   /arm -
-            If 't' is prefixed to the power, it will only be used while in a
-            town. Example:   /arm tg
+            The 't' is optional. If it's prefixed to the power, auto-ret will
+            only be used while in a town. Example:   /arm tg
             This will auto-retaliate with mimic power 'g)', but only while in
             town.
+            For more info see (6.8b), paragraph Auto-Retaliation.
 
             (Note that you cannot auto-retaliate with
               'Polymorph Self into a specific form'
@@ -1105,11 +1107,11 @@ They all start with a slash '/' hence they're called slash commands:
 /autoretr
 /arr        Sets up auto-retaliation with runecraft.
             Enter  /arr help  for this information in-game.
-            Usage:   /arr [t]<a-f><a-f><a-h><a-f>
+            Usage:   /arr [t]<a-f><a-f><a-h><a-f>   or to disable:   /arr -
             Parameters are:
              t: town-only? (optional)
              and then mandatory: rune, rune, mode, type
-            For more info and examples see (6.8b), paragraph Auto-Retaliation.
+            For more info see (6.8b), paragraph Auto-Retaliation.
 
 /bbs <text>
             Add a line of text to the in-game bulletin board system. Players
@@ -1379,6 +1381,8 @@ They all start with a slash '/' hence they're called slash commands:
             commonly used slash commands.
             Optionally, a topic can be specified - in this case a guide search
             will be conducted on that topic. For example enter:   /? ac
+/?r         Shortcut to your character's race description in the guide.
+/?c         Shortcut to your character's class description in the guide.
 
 /house
 /hou        Displays your houses, same as ~9, but offers two optional
@@ -1558,6 +1562,7 @@ They all start with a slash '/' hence they're called slash commands:
             instead of sending your message to everyone on the server.
 
 /shout <text>
+            Shout <text> loudly, will wake up monsters. (Same as "/yell".)
 
 /scream <text>
             Same as /shout, but also aggravates monsters in your current
@@ -1726,7 +1731,7 @@ They all start with a slash '/' hence they're called slash commands:
             mayor's office in Bree to receive an extermination order.
 
 /yell <text>
-            Shout <text> loudly, will wake up monsters.
+            Shout <text> loudly, will wake up monsters. (Same as "/shout".)
 
 Aside from slash commands there are also item-paste shortcuts, which can be
 incorporated into any text you type in chat:
@@ -1933,6 +1938,12 @@ Scrolls/spell books of Identify (except for bag-ID), Rods/Staves of Perception:
                 no automatic retry, you will have to ID it manually.
                 See (5.7) for more information about identification.
 
+Empty bottles:
+    !Mn         Will auto-destroy any further empty bottles you acquire beyond
+                the amount of n bottles. Example:  !M10
+                This is mainly useful for when 'keep_bottle' option is enabled,
+                to prevent uncontrolled amassment of empty bottles.
+
 An item that can be activated:
     @A1         Pressing the keys 'A' and then '1' will activate that item.
 
@@ -2127,6 +2138,7 @@ Auto-ID     A special ability of some items. If you equip an item that grants
             you 'Auto-ID' all items you touch will automatically be
             identified! Items who grant their wielder Auto-Identification are
             highly sought after. Randart helmets or gloves sometimes have it.
+            Training 'Divination' school to 50.000 also grants auto-ID.
             See (5.7) for more information about identification.
 
 BD          Barrow-Downs. The main starter dungeon in the town of Bree, located
@@ -2765,9 +2777,12 @@ foes as you can before facing him.
 Morgoth, the god of destruction, has reinforced his surroundings to be
 especially devastating to all living beings:
 If you get killed on a level where Morgoth, Lord of Darkness walks, your
-ghost will be destroyed too, even if you are everlasting! Beware!
+ghost will be destroyed too, even if you are everlasting! Beware! Even after
+Morgoth is no longer there the floor will still keep this deadly property.
+You will get a floor feeling warning you whenever you enter a floor where
+Morgoth resides, see (4.8).
 Note that on a floor where Morgoth currently resides, all vaults will turn into
-no-tele vaults, even if they normally aren't!
+no-teleport vaults.
 
 If you team up against him, he will grow stronger for every additional player
 who enters his dungeon level. Growing stronger in fact means that he gains a
@@ -2907,15 +2922,23 @@ at close quarters combat. In general, do not underestimate Sauron's power!
  -An extra randart drop of 'combat' treasure class.
  -Extra artifact creation scrolls for every player more than two (so trio+).
 -There are no obstacles that can hold Morgoth back for long.
+-All vaults on Morgoth's floor will be no-teleport vaults.
+-If you die on Morgoth's floor your character is deleted even if everlasting!
+ You will get a floor feeling to warn you of this whenever you enter a floor
+ where Morgoth resides on, see (4.8).
 
 See (1.3a) for more information about Morgoth.
 
 There are rumours of even more powerful beings than the Lord Of Darkness.
-Kings and Queens who seek new challenges shall try to enter the Nether Realm,
-a dungeon with dangers beyond imagination. Only those who destroyed Morgoth
-may enter. The Nether Realm can be very rewarding in terms of experience but
-also very deadly. Terrible foes are said to dwell there which aren't seen in
-the mundane world. See (4.5c) for more information about the Nether Realm.
+Kings and Queens who seek new challenges shall try to enter the Cloud Planes
+in the skies far above the world surface, where icy winds freeze you to death,
+and the Nether Realm, the deepest abyss that serves as barrier of the mundane
+world, a dungeon with dangers beyond imagination.
+Only those who destroyed Morgoth may enter these two dungeons. The Nether Realm
+can be highly rewarding in terms of experience but also very deadly. Terrible
+foes are said to dwell there which aren't seen in the mundane world.
+See (4.5c) for more information about the Cloud Planes and about the extra XP
+bonus characters gain in the Nether Realm.
 
 
 
@@ -3093,7 +3116,8 @@ Since version 4.4.5 which supports music and sound via SDL, you also need
 libsdl-mixer-devel, libsdl, libsmpeg. Usual package names (SDL version 1.2):
 libsdl-mixer1.2, libsdl-mixer1.2-dev, libsdl1.2debian, libsdl1.2-dev,
 (preferably libsdl1.2debian-pulseaudio, eg under Ubuntu), libsmpeg0,
-libsmpeg-dev.
+libsmpeg-dev. Sometimes instead of the libsdl* packages your system might
+provide the packages simply named 'sdl' and 'sdl_mixer' instead.
 If you don't want to use audio, edit the makefile and compare the two
 paragraphs titled 'Without SDL' and 'With SDL' and edit the makefile
 accordingly, to compile it without SDL audio support.
@@ -6026,8 +6050,8 @@ Everlasting characters may also use the 'Instant Resurrection' feature offered
 by town temples, see (4.5a), which will avoid turning into a ghost.
 
 Ghosts are very fragile, but can pass solid walls, float up and down freely
-using the < and > keys, their melee attacks can cause fear and they gain +3
-infra-vision.
+using the < and > keys, their melee attacks can cause fear and they gain a few
+special abilities listed further below under 'Ghosts' (such as infra-vision).
 
 If a player ultimatively dies on a dungeon or tower floor, ie he didn't turn
 into a resurrectable ghost but got completely erased, then that particular
@@ -6120,8 +6144,9 @@ Ghosts have some special abilities, these are
 -they can see invisible creatures
 -life force can hardly be drained from them
 -they cannot be paralyzed
--they spot warm-blooded creatures easily
--they resist darkness effects, poison, cold, blindness, fear and confusion
+-they spot warm-blooded creatures easily (aka +5 to infra-vision)
+-they resist darkness effects, cold, blindness, fear and confusion
+-they are immune to poison and don't suffer from continuous disease
 -they cannot be cut since they don't bleed
 -they resist insanity attacks
 -they can pass solid walls and mountains
@@ -6230,14 +6255,19 @@ Magic devices:
     @O          Auto-retaliate with it. (Wands, staves, rods.)
                 Note that you cannot use self-relocation magic such as teleport
                 or word of recall for auto-retaliation.
+                You can restrict auto-retaliation to town-only by adding a 't'
+                after the '@O' like this: '@Ot'.
 
 Spellbooks:
     @Oc         You will auto-retaliate by casting the spell 'c)' from this
                 book (or any other spell, change the inscription accordingly).
+                You can restrict auto-retaliation to town-only by adding a 't'
+                after the '@O' like this: '@Otc'.
                 IMPORTANT: If you cannot cast spells from the book or you
                 inscribe an unsuitable item, auto-retaliation will be disabled
                 completely!
-                (If 'c' is omittted, the first spell will be chosen.)
+                If the spell letter, in this example 'c', is omittted, the
+                first spell in the book will be chosen.
                 Note that you cannot use self-relocation spells such as
                 phase door, teleport or word of recall for auto-retaliation.
 
@@ -6246,16 +6276,17 @@ Runes:          Auto-retaliate with a runespell. The format is rune, rune, mode
                 disable auto-retaliation. 't' is optional for town-only.
                 See (0.2b) for details.
 
-Mimic powers:   Use the /autoret or for short /ar command to set these up,
-    /ar tg      compare (0.2b). Usage (t is optional for 'town-only'):
-                /ar [t]<power>
+Mimic powers:   Auto-retaliate with a mimic power, format is (t is optional for
+    /arm tg     'town-only'): /arm [t]<power>
+                To disable mimic-power-autoretaliation again, use '/arm -'.
                 Note that you cannot use self-relocation spells such as blink
                 or teleport for auto-retaliation.
+                See (0.2b) for details.
 
 If you want an auto-retaliation-enabling inscription to only work while you are
 around a town, add a 't' after the 'O', examples: '@Ot', '@Otb'.
 
-If you want to fall back on melee-autoretaliation in case you are out of mana,
+If you want to fall back to melee-autoretaliation in case you are out of mana,
 use 'Q' symbol instead of 'O'. Examples: '@Qt', '@Qtb'.
 This is useful for classes that may use attack spells yet can perform decently
 in close combat, such as paladin or mindcrafter.
@@ -7270,8 +7301,7 @@ See (4.3) under "Dungeon Types" -> "Experimental dungeons" for more details.
 enter any dungeon you like at any character level.
 
 (***) Death Fate:
-You cannot escape this dungeon, ever. Any character that enters it is fated to
-die to monsters (unlikely) or starvation (very likely).
+Will this be the end of you as you cannot seem to spot a way to escape?
 
 (****) Cloud Planes details:
 -To enter the Cloud Planes a player must carry the 'King'/'Queen' title,
@@ -7291,6 +7321,9 @@ die to monsters (unlikely) or starvation (very likely).
 -Note that the amount of experience is already very high even without this
  depth-bonus, since creatures in the Nether Realm are of a very high level.
 -Instant resurrection does not work in the Nether Realm.
+-It is possible for everlasting and non-everlasting characters who usually
+ cannot form a party to actually team up in the Nether Realm! This is called a
+ cross-mode party, for more information see (3.4b).
 
 (******) Halls of Mandos details:
 -Getting out of the Halls of Mandos will be complemented with an entry
@@ -7643,6 +7676,42 @@ them. That inscribing-macro could look like this:
 {-@m1\r
 where the '-' will cause the { inscribe command to prompt for inscription first
 and the item afterwards, effectively simply asking you to specify the item.
+
+
+(4.7a) Trap kit load effects
+----------------------------
+For most items loaded in monster traps the effects are sort of self-explanatory
+and some items have no effect at all (eg detection magic) but here is a list of
+those effects that might not be so obvious:
+
+Flasks:
+Oil                     Fire damage
+Acid                    Acid damage and blinding effect
+
+Potions:
+Salt Water              Blind
+Weakness                Reduces damage
+Clumsiness              Reduces AC
+Sickliness              Reduces HP
+Ruination               Weakness + Clumsiness + Sickliness
+Lose Memories           Confuse
+Life                    Holy fire vs Undead; heals non-undead
+
+Scrolls:
+Remove Curse            Dispel undead
+*Remove Curse*          *Dispel undead*
+Blessing                Holy fire
+Holy Chant              Holy fire
+Holy Prayer             Holy fire
+Protection from Evil    Dispel evil
+Rune of Protection      Holds a monster in place temporarily
+Scroll of Life          Erases ghosts ('G')
+
+Wands:
+Wall Creation           Stone prison
+
+Staves:
+Remove Curse            Dispel undead
 
 
 
@@ -8462,10 +8531,12 @@ Highlander Tournament (pvp, only one can win, 2+ participants)
     stack). Usually you will want the item. However, you can trade the deed to
     someone else, who can then go and redeem it for luck for that character of
     his (although the luck bonus he gets will be somewhat lower than what the
-    original owner would receive).
+    original owner would receive). 
     All losers will also receive a deed on the next character they log in with
     which can be turned in for a small temporary luck bonus (multiple deed
     buffs don't stack).
+    The luck buffs are on hold while on the world surface, so you won't lose
+    buff time from running around.
     If you die in this event, your character will get erased, even if it was
     an everlasting-mode character.
     For details about luck see LUCK flag in (5.8).
@@ -8500,7 +8571,7 @@ Highlander Tournament (pvp, only one can win, 2+ participants)
     teleported back to Bree. He automatically receives a victory deed in his
     inventory which he can exchange at the Mayor's office in the town hall.
     It can be exchanged for eiter an item or a temporary luck bonus (multiple
-    deed buffs don't stack).
+    deed buffs don't stack, on hold on world surface).
     He can also give this deed to another character if he wishes, although in
     that case it can only be exchanged for a luck bonus, not an item, and the
     bonus will be somewhat lower than for the Highlander champion himself.
@@ -8508,7 +8579,7 @@ Highlander Tournament (pvp, only one can win, 2+ participants)
     All losers will also receive a 'contenders deed' on the next character they
     log on with, which can be exchanged at the Mayor's office for small
     temporary luck bonus (note that it vanishes when you log off, and multiple
-    deed buffs don't stack).
+    deed buffs don't stack, buff is on hold while on world surface).
 
     A note regarding turning in a deed for an item:
     The item you get will be random but still depend on your character's skill
@@ -8588,6 +8659,9 @@ Dungeon Keeper (everyone can win, 1+ participants)
     Loser parchments are not tradable and can only be turned in for a small
     temporary luck buff (about 30 minutes duration).
     For details about luck see LUCK flag in (5.8).
+
+    The luck buffs are on hold while on the world surface, so you won't lose
+    buff time from running around.
 
     Hints:
     -The Horned Reaper in this maze bashes doors instead of opening them.
@@ -9856,10 +9930,11 @@ IMPORTANT: If you get the above flexibility warning message, that means your
 Armour weight (concerning ranged weapons)
 -----------------------------------------
 If you wear a shield on your arm, no matter its weight and your strength, your
-hit chance with ranged weapons will be reduced by this encumberment. You will
+hit chance with shooting weapons will be reduced by this encumberment. You will
 get an orange message saying
 "You find it hard to aim while carrying your shield."
 and a yellow '}' icon will appear in the encumberment bar.
+Note that boomerangs are one-handed ranged weapons and not affected by shields.
 
 Also, the greater your total equipped armour weight is, the more your ranged
 to-hit bonus is reduced. This is a fluent, continuous process, and therefore
@@ -10808,7 +10883,7 @@ DRAIN_EXP ('It drains your life force')
         Vampire race characters suffer half as much from this effect as others.
 LUCK ('It affects your luck.')
         If you are lucky, your chance to find better items increases.
-        Luck caps at 40, having higher bonus won't help any more.
+        Luck caps at 40 (and -10), having higher bonus won't help any more.
         The higher your luck is, the more diminishing is the effect of
         increasing it even more.
         What does 'better items' mean exactly?
@@ -11232,6 +11307,8 @@ Deeds           Some of the parchments are deeds, which are used as rewards
                 than the original owner could have gotten.
                 Note that temporary luck buffs from deeds do not stack and also
                 will end prematurely when you log out before the buff ran out.
+                The luck buffs are on hold while on the world surface, so you
+                won't lose buff time from running around.
 *Destruction*   Causes a local earthquake, nearly completely wiping the area
                 of monsters and objects (see (5.13) about earthquakes).
                 Extremely powerful magic which causes a searing blast of light
@@ -13768,10 +13845,9 @@ stated.
                                 Increases ranged to-damage bonus when wielding
                                 a boomerang by +1 for every 2.500 increase.
 
-                                Reduces the chance of a boomerang to break or
-                                to fall to the ground instead of returning.
-
-                                Artifact boomerangs never break or fall down.
+                                Reduces the chance of a boomerang to land on
+                                the ground instead of returning.
+                                Artifact boomerangs always return reliably.
 
                                 (Note that your 'Combat' skill determines your
                                 ability to pseudo-id Boomerangs.)
@@ -14570,7 +14646,7 @@ Besides changes in their skill tree, Maiar als gain particular abilities on
 initiation, depending on their alignment. All the changes are listed here:
 
 Enlightened:
-    Gain time resistance (all initiated Maiar, enlightened and corrupted).
+    Gain time resistance and they no longer have any need for worldly food.
     Able to see invisible and resisting light, while being susceptible to
     evil-based attacks.
     Intrinsic light aura that adds to any light source's radius.
@@ -14588,7 +14664,7 @@ Enlightened:
     Light and Mana rune ratios x 1.7, Fear and Shivering Aura ratio x 3.0.
 
 Corrupted:
-    Gain time resistance (all initiated Maiar, enlightened and corrupted).
+    Gain time resistance and they no longer have any need for worldly food.
     Resist fire and darkness while being susceptible to good-based attacks.
     +2 bonus HP for each level above 20.
     At level 50 they will become resistant to poison, immune to fire, and
@@ -14667,6 +14743,14 @@ Reactive metal powder | Quartz  |                      | Grinding
 Caustic metal ash     |         |                      | Crafting
 Caustic salt          |         |                      | Crafting
 Vitriol               | Magma   | Medium acidbreathers |
+
+Note that in order to find some of these you need a minimum digging skill,
+just for reactive metal powder you can circumvent it via grinding tool usage:
+Sulfur                  at least 10.000 in 'Digging'
+Saltpetre               at least 10.000 in 'Digging'
+Ammonia salt            at least 10.000 in 'Digging'
+Reactive metal powder   at least 10.000 in 'Digging'
+Vitriol                 at least 15.000 in 'Digging'
 
 Crafting ingredients from raw materials:
 ----------------------------------------
@@ -14961,8 +15045,8 @@ create a character!):
     very stupid and slow. They make great warriors and iffy priests. They are
     bad at searching, disarming, perception, and stealth. They are so ugly
     that a Half-Orc grimaces in their presence. They need to eat often but
-    they also regenerate hit point especially quickly (same as if wearing an
-    item providing regeneration, doesn't stack with item ability). Thanks to
+    they also regenerate hit point especially quickly (1.5x as fast as from
+    'regeneration' flag, doesn't stack with any regen items). Thanks to
     their thick skin, they also get an (albeit very small) bonus to armour
     class. Half-Trolls get bonus on 'Blunt-mastery', 'Health'. They receive a
     large penalty 'Climbing' and huge penalties on 'Critical-strike', 'Magic',
@@ -15078,7 +15162,7 @@ create a character!):
     White       Frost           frost, aura (15), immune (25),
                                  susceptible to fire
     Red         Fire            fire, immune (25),
-                                 susceptible to cold
+                                 susceptible to cold, hit point regeneration
     Black       Acid            acid, immune (25)
     Green       Poison          poison, immune (25)
     Multi-hued  Any of the      lightning (5), frost (10), fire (15),
@@ -15152,9 +15236,10 @@ create a character!):
     using a Morgul weapon will not pose a problem to them.
     Vampires are good fighters and decent mages. However, they are unable to
     conjure holy fire or utilize magic of water or nature school. Neither can
-    they make use of mimicry techniques (with the exception of vampire bat,
-    see below) or holy or spirit spells. They are unable to try and suppress
-    magic, but can make use of items that provide anti-magic effects.
+    they make use of mimicry techniques (with the exception of vampire bat and
+    vampiric mist, see below) or holy or spirit spells.
+    They are unable to train in anti-magic in order to suppress magic, but they
+    can make use of items that provide anti-magic effects.
     Aside from darkness they also resist sanity-draining effects somewhat,
     cold, time, nether, they're immune to poison and it's hard to drain their
     life force - this is also true for life force drained by items a vampire
@@ -15464,6 +15549,8 @@ create a character!):
     A Rogue is a character that prefers to live by cunning, but is capable of
     fighting their way out of a tight spot. The master of traps and locks, no
     device is impossible for him to overcome.
+    Their main way of combat is by either dual-wielding two sword-class weapons
+    such as daggers, or - rather rarely seen - utilizing martial arts.
     Their primary stats are intelligence and dexterity, intelligence being very
     important if they aim to become proficient at magic, while dexterity makes
     up in combat prowess for what their strength might be lacking.
@@ -15617,6 +15704,7 @@ create a character!):
     They have the same abilities as paladins in all regards but they are not
     able to utilize any kind of prayers and are susceptible to holy effects,
     instead they command unholy blood, unlife and shadow magic.
+    Also, they are significantly better than paladins at using magic devices.
     Death knights resist fear intrinsically.
 
 - Hell Knight
@@ -15631,6 +15719,7 @@ create a character!):
     Unlike paladins they can actually also dual-wield two one-handed weapons at
     once, although they will need to use light armour for this strategy to be
     effective (see (6.2)).
+    Also, they are somewhat better than paladins at using magic devices.
     Similar to Vampires, Hell Knights can wield some heavily cursed items to
     great effect, flipping their negative boni to positive ones. (With the same
     exception as for vampires: Weapons "of nothingness" will do them no good
@@ -15718,6 +15807,8 @@ create a character!):
     Druids learn how to quickly pass through thick forest at level 10 --
     note though that they can already do this at level 5 by simply polymorphing
     into an animal ('m' key), since all animals can pass forest easily.
+    Also starting at 5 they learn the first form (cave bear) that can pass
+    mountain terrain, and later they also learn flying forms (griffon).
     To review which forms you can transform into, use the /ex command.
     To see an overview of the forms and their abilities, see (6.7c).
 
@@ -15859,35 +15950,39 @@ BpR limits count only for weapons, not for martial arts usage, see (5.3a).
 (Di:Disarming,      MD:Magic Device,        ST:Saving Throw,    St:Stealth,
 Pe:Perception (sight range), Sr:Searching,  Fi:Fighting,        BT:Bows/Throw)
 
-Class       STR INT WIS DEX CON CHR     HP die   Exp%   Max. base blows/round
- @-colour   Di  MD  ST  St  Pe  Sr  Fi  BT              Parrying/Blocking
-------------------------------------------------------------------------------
-Warrior     +5  -2  -2  +2  +2  -1      +10       +0%       6
- brown      25  18  18   1   2  14  70  55              superb   superb
-Istar       -5  +3   0  +1  -2  +1       +0      +35%       1
- red        30  36  30   2  20  16  34  20              bad      bad
-Priest      -1  -3  +3  -1   0  +2       +5      +20%       4
- green      25  25  32   2   8  16  48  35              fair     fair
-Rogue       +2  +1  -2  +3  +1  -1       +5      +15%       5
- blue       45  28  28   5  32  24  60  66              superb   fair
-Mimic       +1   0   0  +1  +1  -4       +6      +30%       5
- l.grey     25  34  28   1  18  18  60  46              good     good
-Archer      +1   0  +2  +3  +1  -1       +5      +10%       3
- orange     30  22  28   2  20  24  56  72              fair     fair
-Paladin     +3  -3  +1   0  +2  +2       +8      +30%       5
- yellow     10  21  54   1  16  13  60  40              good     superb
-Ranger      +2  +2  -1  +1  +2   0       +7      +35%       5
- l.brown    34  32  30   5  30  30  50  60              superb   fair
-Adventurer   0   0   0   0   0   0       +6      +25%       4
- violet     20  22  20   3  15  15  50  50              fair     fair
-Druid       +1   0  +2  -2  -2  +1       +5      +35%       4
- l.green    30  35  30   4  25  25  50  44              poor     poor
-Shaman       0  +1  +2  -2   0   0       +3      +40%       4
- l.red      10  30  30   4  30  20  45  23              poor     poor
-Runemaster   0  +2  -2  +2  -2   0       +4      +40%       4
- l.blue     30  32  20   3  30  26  45  40              fair     poor
-Mindcrafter +2  +2   0   0   0  +1       +6      +25%       5
- grey       30  28  36   3  35  14  55  45              good     fair
+Class         STR INT WIS DEX CON CHR     HP die   Exp%   Max. base blows/round
+ @-colour     Di  MD  ST  St  Pe  Sr  Fi  BT              Parrying/Blocking
+-------------------------------------------------------------------------------
+Warrior       +5  -2  -2  +2  +2  -1      +10       +0%       6
+ brown        25  18  18   1   2  14  70  55              superb   superb
+Istar         -5  +3   0  +1  -2  +1       +0      +35%       1
+ red          30  36  30   2  20  16  34  20              bad      bad
+Priest        -1  -3  +3  -1   0  +2       +5      +20%       4
+ green        25  25  32   2   8  16  48  35              fair     fair
+Rogue         +2  +1  -2  +3  +1  -1       +5      +15%       5
+ blue         45  28  28   5  32  24  60  66              superb   fair
+Mimic         +1   0   0  +1  +1  -4       +6      +30%       5
+ light grey   25  30  28   1  18  18  60  46              good     good
+Archer        +1   0  +2  +3  +1  -1       +5      +10%       3
+ orange       30  22  28   2  20  24  56  72              fair     fair
+Paladin       +3  -3  +1   0  +2  +2       +8      +30%       5
+ yellow       10  21  54   1  16  13  60  40              good     superb
+Ranger        +2  +2  -1  +1  +2   0       +7      +35%       5
+ light brown  34  32  30   5  30  30  50  60              superb   fair
+Adventurer     0   0   0   0   0   0       +6      +25%       4
+ violet       20  22  20   3  15  15  50  50              fair     fair
+Druid         +1   0  +2  -2  -2  +1       +5      +35%       4
+ light green  30  35  30   4  25  25  50  44              poor     poor
+Shaman         0  +1  +2  -2   0   0       +3      +40%       4
+ light red    10  30  30   4  30  20  45  23              poor     poor
+Runemaster     0  +2  -2  +2  -2   0       +4      +40%       4
+ light blue   30  32  20   3  30  26  45  40              fair     poor
+Mindcrafter   +2  +2   0   0   0  +1       +6      +25%       5
+ grey         30  28  36   3  35  14  55  45              good     fair
+Death Knight  +3  -3  +1   0  +2  +2       +8      +30%       5
+ dark grey    10  28  54   1  16  13  60  40              good     superb
+Hell Knight   +3  -3  +1   0  +2  +2       +8      +30%       5
+ dark grey    10  25  54   1  16  13  60  40              good     superb
 
 
 For melee characters, it's especially vital to know how many blows per round
@@ -16711,12 +16806,13 @@ Yeeks           Feather falling.
                 level 4, can swim easily, pass trees.)
 All animals     Able to pass trees.
 All spiders     Able to pass mountains, able to pass spider webs.
-All ghosts      See invisible, Infra-vision +4 (stacks with undeads' +1 bonus).
-                Ghosts are susceptible to light.
-                Almost all ghosts can pass solid walls.
 All orcs        Resist darkness.
-All trolls and giants
-                Sustain strength.
+All trolls      Sustain strength. Extraordinary HP regeneration (2x as fast as
+                from 'REGEN' flag, doesn't stack with items. 1.5x as fast for
+                Half-Troll form).
+All giants      Sustain strength.
+All hydras      Extraordinary HP regeneration (2x as fast as from 'REGEN' flag,
+                doesn't stack with items), as they regrow their heads!
 All monsters with stone skin (HURT_ROCK flag)
                 Shard resistance.
 All dragonriders
@@ -16727,7 +16823,7 @@ All evil creatures
 All undead creatures
                 Resist darkness, blindness, poison (usually immunity, depends
                 on ~7 flags), time and nether;
-                can't bleed (no_cut), infra-vision +1, insanity attacks are
+                can't bleed (no_cut), infra-vision +2, insanity attacks are
                 reduced by a little bit (see (6.6)).
                 Drowning damage taken is halved.
                 Becomes susceptible to 'life', which concerns some healing or
@@ -16737,9 +16833,16 @@ All undead creatures
                 Take 2x damage from holy orbs or holy fire and suffer
                 from many 'good' effects/spells (even more so than demons).
                 Suffer less often from black breath infection and consequences.
+All ghosts      See 'All undead creatures' above, but ghosts gain +5
+                Infra-vision instead of just +2.
+                See invisible.
+                Ghosts are susceptible to light.
+                Almost all ghosts can pass solid walls.
+                NOTE: Player ghosts (aka when your character died) get somewhat
+                different boni instead, see (3.11).
 All greater undead creatures
-                See 'All undead creatures' above, and in addtion they get
-                another +4 bonus to infra-vision (ie +5 in total).
+                See 'All undead creatures' above, but greater undead gain +5
+                Infra-vision instead of just +2.
 All demons      Take 2x damage from holy orbs or holy fire and suffer
                 from a couple of 'good' effects/spells (similar to undead).
 All greater demons (capital 'U')
@@ -16799,8 +16902,8 @@ CHR     Dragonriders: +1
         GOOD creatures: +2
 
 Stealth         Body weight: -4..+3
-Infra-Vision    Undead in general: +1
-                Ghosts, Wraiths/Wights, Liches, Vampires : +3
+Infra-Vision    Undead in general: +2
+                Ghosts, Wraiths/Wights, Liches, Vampires : +5
 
 
 Intrinsic abilities that aren't kept when changing forms:
@@ -16993,8 +17096,9 @@ Uruk            16  Good HP, good melee damage, good AC, +1 extra shot w/
                     a confusion effect (which makes fighting it in close combat
                     a bit dangerous).
                     (Does not occur in packs.)
-*Forest troll   17  High HP, good AC, can pass trees, gives 'HP regeneration'
-                    (same as item flag).
+*Forest troll   17  High HP, good AC, can pass trees, and like all trolls (and
+                    hydras by the way) has extraordinarily fast HP regeneration
+                    (2x as much as and not stacking with REGEN flag).
 *Earth spirit   17  Useful only for shamans because it has no limbs!
                     Since this is an 'E' form, shamans learn it very quickly.
                     Similar to Air spirit (see further above) this form comes
@@ -17023,13 +17127,16 @@ general though, without losing their excellent bare-handed melee skills.)
 Commonly seen advanced forms: Bloodletter of Khorne, Storm Giant, Dragonriders.
 
 
-(6.7c) Druid form details
--------------------------
+(6.7c) Druid forms
+------------------
 The according polymorph code is given in parentheses below the creature name.
 Note: Some druid forms can open doors, others may try to bash doors.
       Also, all animal forms are able to travel through woods.
 You can use the /ex command in game to see which forms you can use, and what
 polymorph code they have.
+
+Lore-wise all hydras have extraordinary hit point renegeration (that doesn't
+further stack with REGEN flag) as their heads regrow quickly when cut.
 
 Note: If a monster can fly that means it will grant the player the 'levitation'
       ability.
@@ -17044,7 +17151,7 @@ Panther                 speedy
 
 Level 10:
 ---------
-Grizzly bear            same as Cave Bear, but tougher
+Grizzly bear            same as Cave bear, but tougher
 (Code 191)
 
 Yeti                    can pass mountain terrain;
@@ -17060,7 +17167,7 @@ Sasquatch               speedy; can pass mountain terrain and woods;
 
 Level 20:
 ---------
-Werebear                same as Grizzly Bear, but tougher
+Werebear                same as Grizzly bear, but tougher
 (Code 414)
 
 Great eagle             speedy; can fly; passes most terrain types
@@ -17089,7 +17196,7 @@ Multi-hued Hound        resists fire/cold/lightning/acid/poison and is immune
 
 Level 30:
 ---------
-5-headed hydra          tough and speedy; can swim;
+5-headed hydra          tough and speedy; can swim; extraordinary regeneration;
 (Code 440)              all melee attacks are poisonous; immune to poison;
                         can cast fear and poison ball
 
@@ -17102,7 +17209,7 @@ Giant squid             tough and speedy aquatic(*) creature;
 
 Level 35:
 ---------
-7-headed hydra          tough and speedy; can swim;
+7-headed hydra          tough and speedy; can swim; extraordinary regeneration;
 (Code 614)              poisonous (75%) and blinding (25%) melee attacks;
                         immune to poison;
                         can cast fear, poison ball, and breathe poison
@@ -17126,8 +17233,8 @@ Plasma hound            speedy;
 Level 40:
 ---------
 11-headed hydra         speedy and toughest hydra; can swim;
-(Code 688)              fiery attacks;
-                        immune to fire;
+(Code 688)              extraordinary regeneration;
+                        fiery attacks; immune to fire;
                         has a small array of fire/fear spells
 
 Giant Roc               speedy giant bird; deals high damage;
@@ -17677,7 +17784,7 @@ school.
                     *Identifies* an item.
                     Required skill level for first spell level: 35.
 
-    BONI:           Automatic identification at 50.
+    BONI:           Automatic identification (auto-ID) at 50.
 
 
 - Temporal
@@ -18088,10 +18195,11 @@ spell failure rate. All Unlife spells use WIS.)
 
                     Tier III: Level 40.
 
-    Aspect of Peril
-                    Temporarily brands your melee weapons with poison.
-                    Lv10: Grants temporary poison resistance.
-                    Required skill level for first spell level: 14.
+    Aspect of Peril                                            (auto-project)
+                    Temporarily brands your or adjacent friendly players'
+                    melee weapons with poison.
+                    Lv10: Additionally grants temporary poison resistance.
+                    Required skill level for first spell level: 10.
 
     Darkness        Causes a burst of darkness around you, possibly blinding
                     nearby creatures.
@@ -18103,12 +18211,6 @@ spell failure rate. All Unlife spells use WIS.)
                     This spell cannot be found in the Conveyance tome.
 
     Shadow Shroud   Grants temporary invisibility. (See (5.16) for details.)
-                    In addition to the normal invisibility effect this spell
-                    makes it extra hard for monsters to hit you in melee (aka
-                    it will provide an AC bonus), as long as you are standing
-                    on a non-lit grid (and aren't using any sort of light
-                    source). Note that this extra 'shrouding' effect cannot
-                    coexist with a reactive shield spell (fiery shield).
                     Required skill level for first spell level: 30.
 
     Chaos Bolt      Channels the powers of chaos into a bolt attack.
@@ -18133,16 +18235,21 @@ spell failure rate. All Unlife spells use WIS.)
                     Shared spell (see above): H.Offense, O.Shadow.
                     This spell cannot be found in the Shadow tome.
 
-    Darkness Storm  Conjures up a storm of darkness.
+    Darkness Storm  Conjures up a ball of darkness.
                     Required skill level for first spell level: 42.
 
     BONI:           Increases infra-vision by +1 every 10 points, up to +5.
                     (Note that infra-vision caps at TomeNET's generic maximum
                     sight range, which is 200 ft aka 20 grids.)
-                    At 10 it starts increasing your walking speed while you are
-                    moving on non-lit grids (and not using any light source),
-                    very similar to how the 'Sprint' technique works. This
-                    'shadow walk' effect increases every 10 levels.
+                    If you aren't using _any_ light source (note that intrinsic
+                    "light" of Vampire characters doesn't count as light), it
+                    increases the chance for monsters to miss you in melee
+                    combat (sort of a 'blur' effect) more often and at 10.000
+                    also gives you a walking speed increase, similar to how the
+                    'Sprint' technique works. This 'shadow walk' effect
+                    increases with every 10 points. Exception: While cloaked
+                    (rogues), blur and shadow walk will actually work with a
+                    light source too.
                     At 30 grants darkness resistance.
                     At 35 and higher it will also grant a stealth bonus that
                     increases by +1 every five skill points, up to +4 at 50.
@@ -19441,7 +19548,7 @@ Parties:
     you will be prompted to rename the party. Only the party owner can do this.
 
     Specialty: Everlasting and non-everlasting players can team up while
-               inside the Nether Realm.
+               inside the Nether Realm and trade loot, see (3.4b) and (4.5c).
 
 -Create or rename an 'Iron Team' party
     Allows you to create an iron team if you aren't in one yet, or rename your
@@ -19464,7 +19571,8 @@ Parties:
     If you aren't in a party, you will see "Add yourself to party" instead!
     This will allow you to add this character to a party, provided that at
     least one of your other characters is already a member of it.
-    This does not work for cross-adding to nether realm parties.
+    This does not work for cross-adding to nether realm parties (see (3.4b)
+    and (4.5c)).
     It only works for cross-adding to IDDC parties if your already partied
     character is currently in the IDDC.
 
@@ -20593,6 +20701,8 @@ Some monsters that people often get killed by are:
 -The Stormbringer, an animated blade that bears mad wrath within. It swings
  so powerful that it can knockout its enemies with ease. Defeating it,
  however, will make it usable to its defeater!
+ If you dare wielding this weapon be prepared that it will defy you and even
+ attack your own allies, possibly killing them! Only towns are safe zones.
 
 -Ulik the Troll. He is so strong that his hits cause earthquakes and he cannot
  be stopped by (non-permanent) walls. Beware his prowess in melee combat!
@@ -21911,10 +22021,10 @@ If you want to compare dps of different weapons or the effect of extra-attack
 equipment vs critical-hit equipment in Bree, first remove all items that give
 +speed (and apply to both scenarios) to make sure you get accurate numbers.
 The limits in Bree (and hence on the world surface) are:
- +90 speed -> max 5 attacks
- +72 speed -> max 6 attacks
- +53 speed -> max 7 attacks
- +43 speed -> max 8 attacks
+ +90 speed -> max 5 attacks or shots
+ +72 speed -> max 6 attacks or shots
+ +53 speed -> max 7 attacks or shots
+ +43 speed -> max 8 attacks or shots (maximum attainable shots per round)
  +37 speed -> max 9 attacks
  +32 speed -> max 10 attacks
  +28 speed -> max 11 attacks
