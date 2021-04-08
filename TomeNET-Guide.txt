@@ -1,18 +1,19 @@
-.=========================+==--.
-|      TomeNET Guide      |
-+=========================+-
-| Latest update: 6. April 2021 - written by C. Blue (c_blue@gmx.net)
-| for TomeNET version v4.7.3a - official websites are:
+.==========================================================================+--.
+|                              TomeNET Guide                               |
++==========================================================================+-
+| Latest update: 8. April 2021 - written by C. Blue (c_blue@gmx.net)       |
+| for TomeNET version v4.7.3a - official websites are:                     :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
 | Runes & Runemastery sections by Kurzel (kurzel.tomenet@gmail.com)
 |
-| You should always keep this guide up to date: Either go to www.tomenet.eu to
-| obtain the latest copy or simply run the TomeNET-Updater.exe in your TomeNET
-| installation folder (desktop shortcut should also be available) to update it.
+| You should always keep this guide up to date: Either go to www.tomenet.eu
+| to obtain the latest copy or simply run the TomeNET-Updater.exe in your
+| TomeNET installation folder (desktop shortcut should also be available)
+| to update it.
 |
-| If your text editor cannot display the guide properly (needs fixed-width font
-| like for example Courier), simply open it in any web browser instead.
+| If your text editor cannot display the guide properly (needs fixed-width
+| font like for example Courier), simply open it in any web browser instead.
 +---
 | Welcome to this guide!
 | Although I'm trying, I give no guarantee that this guide
@@ -20,10 +21,10 @@
 | b) is all the time 100% accurate on every occasion.
 | Don't blame me if something differs or is missing; it shouldn't though.
 |
-| If you have any suggestions about the guide or the game, please use the /rfe
-| command in the game or write to the official forum on www.tomenet.eu.
+| If you have any suggestions about the guide or the game, please use the
+| /rfe command in the game or write to the official forum on www.tomenet.eu.
+:
 \
-
 
 
 Contents
@@ -62,8 +63,10 @@ Contents
     (2.5)   Fonts
     (2.5a)  Custom fonts
 (3) Creating a character & starting to play
-    (3.1)   Creating a new character; character modes
-    (3.1a)  Character names, collisions and reservations
+    (3.1)   Creating a new character
+    (3.1a)  Character modes
+    (3.1b)  Body Modifications
+    (3.1c)  Character names, collisions and reservations
     (3.2)   The display (user-interface)
     (3.2a)  The encumberment bar
     (3.3)   Behaviour, chat messages and chat modes
@@ -192,6 +195,7 @@ Contents
 (8) Miscellanous
     (8.1)   'The Art Not To Die'
     (8.2)   Character dumps
+    (8.2a)  High Score
     (8.3)   Golem creation
     (8.4)   Artifact creation
     (8.5)   Reward item creation
@@ -951,7 +955,7 @@ SPACE   Stop executing repeatable actions such as searching, tunnelling or
 '       lets you peek at the equipment of party members or players within
         sight.
 
-#       displays the high scores (same as ~c).
+#       displays the high scores (same as ~c). See (8.2c) for details.
         (Note: If you press this while browsing any text you can jump to a
         line number of your choice.)
 
@@ -4246,7 +4250,6 @@ Note: The stat points you distribute have no effect on the maximum value your
 character can get by quaffing stat potions. These points to distribute are
 basically just "free stat potions".
 
-
 Now you can choose a difficulty level you wish to play on. Options are
 n) Normal  g) no Ghost  H) Hellish  e) Everlasting
 It is recommended that you choose either n) to play a normal character or g)
@@ -4254,6 +4257,12 @@ to play a normal character without a ghost.
 You can also choose e), that will give your character an infinite amount of
 resurrections, while 'normal' characters often have a limited amount of lives
 (depending on the server configuration).
+
+These difficulty settings are called 'character modes':
+
+
+(3.1a) Character Modes
+----------------------
 
 Mode: 'Normal'
 --------------
@@ -4290,6 +4299,7 @@ Unworldly characters are like normal characters, but they have only one life.
 So if they die they cannot revive but are completely erased (no ghost will be
 created.)
 Note: This is the traditional rogue-like gaming mode.
+Unworldly characters will receive 25% bonus on their high score.
 
 Mode: 'Soloist' (no-ghost and no PC-trading)
 --------------------------------------------
@@ -4312,21 +4322,28 @@ These are unworldly characters with extra penalties:
 -ESP only works within radius of 20 squares
 -any speed changes above or below +0 are reduced by 50%
 -max number of melee attacks per round is reduced by 1.
+Hellish characters receive 50% bonus on their high score.
 
 Mode: 'PvP'
 -----------
 This is a special restricted mode that has nothing to do with normal gameplay.
 If you're new to the game, it's absolutely not recommended to choose this.
 More information about 'PvP' mode is given in (6.13).
+PvP mode character cannot enter the high-score and cannot become kings/queens.
 
-Unworldly characters will receive 25% bonus on their high score.
-Hellish characters receive 50% bonus on their high score.
 The highscore numbers are just for bragging and have no actual influence on
 game-play or anything.
 
-
 Last you can choose a body modification. It's strongly recommended for
 beginners to choose 'normal body' and NOT 'fruit bat'. ;)
+
+
+(3.1b) Body Modifications
+-------------------------
+
+Body: 'Normal body'
+-------------------
+This is what you should pick in most cases and especially as a new player.
 
 Body: 'Fruit bat' (Batty)
 -------------------------
@@ -4340,7 +4357,6 @@ However, fruit bats are twice as fast as normal characters at the beginning
 vampiric, making them leech life on each hit, replenishing their hit points.
 Fruit bats are said to make good explorers. If you're new to the game, it's
 absolutely not recommended to try and play fruit bat.
-
 
 Note that race and class will have influence on how much experience you will
 need to gain a new character level. For example, High-Elves already know a
@@ -4357,7 +4373,7 @@ cannot defeat a certain monster or you cannot advance your character the way
 you'd like to, check out (7.3a)!
 
 
-(3.1a) Character names, collisions and reservations
+(3.1c) Character names, collisions and reservations
 ---------------------------------------------------
 You cannot pick names of characters that are already in use by other players or
 that are very similar to another player's account name.
@@ -10137,7 +10153,7 @@ There are also five minor resistances:
 Fear            While you're afraid you won't be able to attack a target in
                 close combat.
 Blindness       You cannot read scrolls or books while you're blind.
-                Blindness can be caused directly by a blindness attack or by
+                Blindness can be caused directly by a blindness attack or
                 indirectly by light or darkness attacks if you don't resist
                 those. You still can use magic staves, rods or wands and
                 quaff potions. Quaffing a potion of Healing, Curing or
@@ -14475,6 +14491,10 @@ stated.
                                 increase your chances of spotting traps, ie
                                 improving your 'Searching' ability.
 
+                                At 10.000 Trapping you will learn the fighting
+                                technique 'Steam Blast' which can blast open
+                                doors.
+
                                 Last but not least Trapping gives you a chance
                                 (depending on your skill) to salvage a trap kit
                                 from any trap you disarm!
@@ -14591,6 +14611,10 @@ stated.
                                 10.000 (when found, not when created by using a
                                 grinding tool, so it can be acquired at 5.000).
                                 For information on crafting charges see (6.2b).
+
+                                At 10.000 Digging, if Demolitionist is enabled,
+                                you will learn the fighting technique
+                                'Steam Blast' which can blast open doors.
 
 The abilities Swimming, Digging and Climbing are also granted by items you
 can find. Those are for example items that grants you levitation, so you may
@@ -18534,6 +18558,9 @@ spell failure rate. All Unlife spells use WIS.)
     BONI:           At 30 it grants HP regeneration to true vampires (same as
                     from item flag) and strong hold of your life force for
                     other races.
+                    At 50 it grants 'nether feedback': If you take damage from
+                    nether-based attacks the damage is reduced by a flat 10%
+                    and you regain that part as mana points.
                     If both Unlife and Necromancy are at 50.000, it grants
                     ultimate hold on one's own life force, rendering oneself
                     immune to experience drain, including the permanent drain
@@ -20000,6 +20027,18 @@ The techniques are as follows:
         Shadow running includes sprinting, ie moving at half energy cost.
         (Starting to shadow-run does not cost energy.)
 
+    Other fighting techniques:
+    --------------------------
+    Steam Blast         -
+        Learnt by skilling 'Trapping' or - if the Demolitionist perk is enabled
+        - 'Digging' to at least 10.000.
+        Requires a fumes trap kit and a potion both inscribed '!S'. They will
+        be consumed and a steam blast charge is planted on the lock of the next
+        door the player bumps into. The player must not move or the skill will
+        be cancelled.
+        The steam blast charge detonates after several seconds and will break
+        the door open.
+
     Shooting techniques:
     --------------------
     Flare Missile       2 stamina      (4.000 Archery)
@@ -21100,6 +21139,28 @@ Also, newer clients will automatically take an xhtml screenshot too when a
 char dump is made, of same name but with .xhtml ending. Those can be viewed
 in most webbrowsers. To manually take an xhtml-Screenshot at any time, press
 CTRL+T.
+
+
+(8.2a) High Score
+-----------------
+The high score is just for bragging and has no further purpose in-game.
+Everlasting and PvP mode characters cannot enter the high score.
+
+During gameplay you can invoke the high score table with '#' key or ~ c.
+If your currently calculated score would he high enough to enter the high score
+in case you died now, you will be able to see your own entry in the high score
+table, so you can always check where you stand. Note that you can see yourself
+in the high score even if you aren't eligible to really enter it because of
+your character mode, so even everlasting players could check where they "would"
+stand, in theory.
+
+The high score is based on the character's experience (XP), its level and its
+expfact (that is the internal name for race/class-dependant experience penalty,
+eg lowest for yeek, highest for maia, and similarly for the classes).
+
+Further boni are applied for being unworldly, hellish or playing a dedicated
+IDDC-slot character. These stack, so the highest score bonus is achieved by
+playing a hellish IDDC-exlusive mode character.
 
 
 
