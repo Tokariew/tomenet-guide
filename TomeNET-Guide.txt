@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 8. April 2021 - written by C. Blue (c_blue@gmx.net)       |
+| Latest update: 9. April 2021 - written by C. Blue (c_blue@gmx.net)       |
 | for TomeNET version v4.7.3a - official websites are:                     :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -488,12 +488,13 @@ If you are especially photosensitive, the screen-lighting effect used for
 thunderstorm weather might impact you. There are also a few minor especially
 fast-flickering effects. You can disable all of these in the game options by
 pressing the following keys in game to access the various options pages (1-7):
+
 = 1 view_animated_lite (fire-based lamps will flicker in yellow/orange)
-= 2 no_weather (disables all weather particles: raindrops and snowflakes)
+= 1 no_weather (disables all weather particles: raindrops and snowflakes)
+= 1 disable_lightning (the aforementioned thunderstorm flash)
 = 3 flash_player (your '@' flickers brightly whenever you change location
     rapidly to make it easier spotting yourself on the screen)
 = 3 recall_flicker (show animated colours in the various game windows)
-= 4 disable_lightning (the aforementioned thunderstorm flash)
 
 
 
@@ -8304,7 +8305,7 @@ Hit point drain ('Drains your hit points')
      -Items that just drain your HP
      -Items that have strong good powers and you use them as a Vampire
      -The sun, when it's day and you're a Vampire and out in the open without
-      a protective mummy wrapping
+      a protective mummy wrapping or something granting resistance to light.
      -Monster forms that provide wall-passing (wraith form)
 
     HP drain can be countered by HP regeneration, which can be gained from:
@@ -10756,7 +10757,7 @@ item that you will find on the floor:
     -Tools:
      Boots, cloaks, diggers, light sources, flints, food, flasks, trap kits,
      spikes, climbing sets, picklocks, money belts,
-     devices of theft prevention, tarpaulins, mummy wrappings.
+     backpack safety locks, tarpaulins, mummy wrappings.
 
     -Junk (rest chance, not covered by the above four categories):
      Skeletons/skulls/bones, bottles, shards of pottery, broken sticks,
@@ -11599,7 +11600,7 @@ Chests              Chests may contain treasures or items. Usually, chests
 Climbing set        Allows you to travel over mountain fields.
                     Info for mimics & co: In order to be able to use it, your
                     appearance form must have arms and fingers. (Equip it!)
-Device of theft prevention
+Backpack safety lock
                     When equipped, prevents thieves from stealing items from
                     your backpack. It does not secure your purse though, you
                     will need a money belt for that.
@@ -12442,7 +12443,7 @@ LOSE_xxx        sustain stats.
 EAT_xxx         DEX and stealing skill increase your chance to resist
                 EAT_ITEM (item stealing) and
                 EAT_GOLD (money stealing) attempts.
-                A device of theft prevention makes you immune to EAT_ITEM.
+                A backpack safety lock makes you immune to EAT_ITEM.
                 A money belt makes you immune to EAT_GOLD.
                 Nothing helps against EAT_FOOD or EAT_LITE.
 UN_BONUS        disenchantment.
@@ -17956,6 +17957,9 @@ In general, holy schools are somewhat less affected by anti-magic fields.)
                     Radius and damage will further increase.
                     Shared spell (see above): H.Offense, H.Support.
 
+    Ray of Light    Casts a ray of powerful light.
+                    Required skill level for first spell level: 18.
+
     Redemption      *Dispels undead* in your field of view.
                     Required skill level for first spell level: 10.
 
@@ -21314,14 +21318,15 @@ Here is some advice how to use these most valuable scrolls wisely:
 DOESN'T ENCHANT WHOLE STACKS:
 
 -Don't use scrolls of artifact creation on item stacks, it would
-reduce the stack to 1.
+ reduce the stack to 1.
 
 ONLY WORKS ON STANDARD EQUIPMENT:
 
--Artifact creation only works on items that can be equipped - with the
-exception of tool items like diggers, picklock, money belt, device of theft
-prevention, tarpaulin, flint, mummy wrapping, climbing set. These won't work!
-Also, it does not work on rings of polymorphing or amulets of telepathy!
+-Artifact creation only works on items that can be equipped - with
+ the exception of tool items like diggers, picklocks, money belts,
+ backpack safety locks, tarpaulins, flints, mummy wrappings, climbing sets.
+ These won't work!
+ Also, it does not work on rings of polymorphing or amulets of telepathy!
 
 DOESN'T WORK ON EGOS / ARTS:
 
