@@ -1,8 +1,8 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 11. April 2021 - written by C. Blue (c_blue@gmx.net)      |
-| for TomeNET version v4.7.3a - official websites are:                     :
+| Latest update: 14. April 2021 - written by C. Blue (c_blue@gmx.net)      |
+| for TomeNET version v4.7.4 - official websites are:                     :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
 | Runes & Runemastery sections by Kurzel (kurzel.tomenet@gmail.com)
@@ -1092,6 +1092,10 @@ They all start with a slash '/' hence they're called slash commands:
 /acol       Display a table of all animated colours.
             To see a table of the normal colours, use /col.
 
+/adestroy   This toggles the client option 'auto_destroy' manually.
+            Destroy item (on the floor) if matches auto-destroy rules.
+            Also see slash command '/apickup' which goes with this one.
+
 /afk        toggle AFK (away from keyboard) mode if you have to take a
             quick break from playing.
             Note that your character won't need to consume food while afk _IF_
@@ -1110,6 +1114,12 @@ They all start with a slash '/' hence they're called slash commands:
 /afk <msg>  You can specify a reason that will be displayed to the other
             players, so they know why you are currently AFK or when you will
             be back.
+
+/apickup    This toggles the client option 'auto_pickup' manually.
+            This will toggle the characters behaviour when seeing
+            an item under character: Whether it will automatically attempt
+            to pick it up or not.
+            Also see slash command '/adestroy' which goes with this one.
 
 /autotag
 /at         Apply auto-inscription settings to current inventory.
@@ -1185,6 +1195,9 @@ They all start with a slash '/' hence they're called slash commands:
 
 /ctime      Tells you your local time (this command is executed locally on your
             client, actually). Also see /ctime and /stime.
+
+/cversion
+/cver       Displays the client's version information in detail.
 
 /shuffle [32|52 <jokers>]
             Prepares a new deck of cards.
@@ -2133,6 +2146,8 @@ You can use '#' as wildcard in the search string (was '?' before v4.7.1a).
 For example if you want to distinguish between Rod(s) of Healing and Potion(s)
 of Healing, you can use 'Rod#Healing' and 'Potion#Healing' respectively.
 So '#' stands for any number (including zero) or sequence of characters.
+Wildcards cannot be used as prefix or suffix and not on their own, except for
+the auto-pickup and auto-destroy features (see below).
 
 If you put a '!' as first character of a search string, it will force the
 inscription to overwrite existing inscriptions in any case (usually it only
@@ -2152,6 +2167,14 @@ NOTE: In addition to this user-defined client-side auto-inscription list, there
       client option 'auto_inscribe'.
       This option will add a predefined set of auto-inscriptions that might be
       generally useful for all types of characters, see (2.3) for details.
+
+By pressing 'a' you can toggle auto-pickup (green 'a') and auto-destroy (red
+'A') features. These two will actually allow specifying a "#" wildcard on its
+own, which means that ALL items will be picked up or destroyed and subsequent
+rules will be ignored accordingly. (The sole '#' will not work for inscribing).
+The client options 'auto_pickup' and 'auto_destroy' must be enabled for these
+functions to work. This can also be done via slash commands '/apickup' (toggles
+auto_pickup option) and '/adestroy' (toggls auto_destroy option).
 
 
 
@@ -3705,7 +3728,7 @@ By pressing the '=' key in game, you can access the options menu where you can
 tweak your client in some ways. Some of these options that aren't
 self-explaining or that are especially important are listed in detail here:
 
- (1, 2, 3) User Interface Options
+ (1, 2, 3, 4) User Interface Options
     Rogue-like commands (rogue_like_commands)
         Toggles between normal key set and traditional rogue-like key set.
 
@@ -3792,7 +3815,7 @@ self-explaining or that are especially important are listed in detail here:
         symbols and colours of monster forms for party members and the player
         himself.
 
- (4) Audio Options
+ (5) Audio Options
     (See (2.1a) for more information about sound and music.)
 
     A bunch of stuff here, mostly you might want to look at attack-sound effect
@@ -3801,7 +3824,7 @@ self-explaining or that are especially important are listed in detail here:
 
     no_shriek_sfx and no_house_sfx might be especially interesting too.
 
- (5, 6) Game-Play Options
+ (6, 7, 8) Game-Play Options
     Use old target by default (use_old_target)
         If this is on, a ranged attack via *t5 or *t- will not pick a new
         (ie closer) target if the previously acquired target is still okay.
@@ -3879,6 +3902,35 @@ self-explaining or that are especially important are listed in detail here:
 
     Get kicked out automatically by the game when starving and idle for 30
         seconds. (idle_starve_kick)
+
+    Automatically pickup items (auto_pickup)
+        Enables auto-pickup. Auto-pickup uses the auto-inscriptions rules list
+        and the same matching algorithm.
+        To choose items for auto-pickup press '&' to enter auto-inscriptions
+        screen and toggle auto-pickup/auto-destroy with 'a' key per item.
+        A green 'a' means the item will be automatically picked up.
+        A special match with just '#' can be created to pick up ALL items.
+        This option causes a loop on item piles that ends if item matches
+        no more rules or there are no more items under the character.
+        Option could be toggled through slash command '/apickup', this allows
+        creating macros for fast toggling as you usually don't want to
+        always pick up items (if you are in a fight or in your house).
+
+    Destroy item if it matches auto-destroy rules (auto_destroy)
+        Enables auto-destroy. Auto-destroy uses the auto-inscriptions rules
+        list and the same matching algorithm.
+        To choose items for auto-pickup press '&' to enter auto-inscriptions
+        screen and toggle auto-pickup/auto-destroy with 'a' key per item.
+        A red 'A' means the item will be automatically destroyed!
+        A special match with just '#' can be created to destroy up ALL items.
+        This option causes a loop on item piles that ends if item matches
+        no more rules or cannot be destroyed, or there are no more items under
+        the character.
+        Option could be toggled through slash command '/adestroy', this allows
+        creating macros for fast toggling as you usually don't want to
+        always destroy up items (if you are in a fight or in your house).
+        Note that the item is destroyed on the floor and not picked up first,
+        so this is feasible to use against curse-no-drop items too.
 
  (8) Check Server Options
     Displays a list of the server rules and configuration.
