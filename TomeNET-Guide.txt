@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 25. April 2021 - written by C. Blue (c_blue@gmx.net)      |
+| Latest update: 26. April 2021 - written by C. Blue (c_blue@gmx.net)      |
 | for TomeNET version v4.7.4a - official websites are:                     :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -1007,9 +1007,12 @@ CTRL+P  view previous messages.
         forwards).
         Press CTRL+K in here to copy the bottom-most line to the OS clipboard.
         On Linux/OSX this requires 'xclip' to be installed.
+        Hint: Tapping CTRL+K twice will try to extract an URL from the bottom-
+        most line and copy that to the OS clipboard instead, if it finds one.
 
 CTRL+O  view previous chat messages.
-        Press CTRL+K in here to copy the bottom-most line to the OS clipboard.
+        Press CTRL+K in here to copy the bottom-most line to the OS clipboard
+        (or double-tap to try and extract a URL and copy that one instead).
         On Linux/OSX this requires 'xclip' to be installed.
 
 CTRL+Q  save your character & quit the game. (You should do this in town!)
@@ -1079,7 +1082,8 @@ CTRL+C      Search history of chat messages you typed. Press CTRL+C again for
 CTRL+K      Copies currently typed chat line to clipboard.
             Note that CTRL+K can also be used inside message recall screen,
             which is invoked by CTRL+O/P (important/all messages). There it
-            will copy the bottom-most displayed line to the clipboard.
+            will copy the bottom-most displayed line to the clipboard, or - if
+            double-tapped - tries to extract a URL and copy that one instead.
 CTRL+L      Pastes current OS clipboard as chat line (erasing any existing
             text you might have been typing in).
             On Linux/OSX this requires 'xclip' to be installed.
@@ -4788,6 +4792,16 @@ $:      Sends the following text to your current guild.
 %:      Sends the following text to yourself (has some use in macros).
 +:      Sends the following text to the last person who whispered us a private
         message, so it's sort of a 'reply' function.
+
+
+Similar to message scrollback (CTRL+O/P), you can copy/paste while in the chat
+prompt, too:
+CTRL+K will copy the currently written text in your active chat prompt to the
+OS clipboard (requires xclip to be installed on Linux/OSX), and CTRL+K will
+paste the current OS clipboard into your chat prompt )thereby erasing anything
+you were aleady typing in).
+Doubl-tapping CTRL+K will specifically attempt to extract an URL from your chat
+input and copy that one to the clipboard.
 
 
 
