@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 7. May 2021 - written by C. Blue (c_blue@gmx.net)         |
+| Latest update: 12. May 2021 - written by C. Blue (c_blue@gmx.net)         |
 | for TomeNET version v4.7.4a - official websites are:                     :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -1175,6 +1175,9 @@ They all start with a slash '/' hence they're called slash commands:
 
 /bug        Report a bug to the admin(s).
 
+/characters
+/chars      Lists all your existing characters, including their locations.
+
 /convertexclusive    Attempts to convert your current character into a
                      slot-exclusive character (either PvP mode or IDDC aka
                      Ironman Deep Dive Challenge). Warning: This process is NOT
@@ -1924,7 +1927,7 @@ Other !-inscriptions:
                 use, since non-winners cannot generate +LIFE on randarts
                 anyway.
     !U          This item will be displayed in dark grey colour in your
-                inventory. Can be useful for sorting loot.
+                inventory or equipment. Can be useful for sorting loot.
 Mainly for consumable items:
     !Q          will not print a message how many you have left after consuming
                 one (like if 'taciturn_messages' were enabled). For example use
