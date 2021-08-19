@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 28. July 2021 - written by C. Blue (c_blue@gmx.net)        |
+| Latest update: 19. August 2021 - written by C. Blue (c_blue@gmx.net)        |
 | for TomeNET version v4.7.4b - official websites are:                     :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -2119,8 +2119,8 @@ wrongly treated as @@@ inscription. For example like this:
     "@@ @S" or "@@-@x0"
 
 
-"Word of Recall", provided by items (scrolls and rods) or spells:
------------------------------------------------------------------
+Word of Recall, provided by items (scrolls and rods) or spells:
+---------------------------------------------------------------
 If you use these without inscription, they will just teleport you back into the
 dungeon you came from, to the deepest possible floor. If you use them on the
 world surface without inscription and there is no dungeon at your location that
@@ -2377,7 +2377,7 @@ Ironman     This typically describes a gameplay scenario where you cannot
             2) The normal TomeNET server has a few Ironman dungeons too, which
                are just dubbed 'Wilderness' in the dungeon list when found.
                These dungeons can only be traversed one-way. To leave them you
-               must reach the final floor and then use word-of-recall there.
+               must reach the final floor and then use 'word of recall' there.
                There is one 'named' Ironman dungeon: 'The Halls of Mandos',
                which goes from level 1 to 100 and as a specialy (no other
                dungeon has this restriction) has no unique monsters in it.
@@ -2555,6 +2555,10 @@ Res         Resistance.
 
 RFE         A request for enhancement, ie a suggestion, that players can send
             to the game admins using the "/rfe" command.
+
+rll         Restore Life Levels. A potion (can be bought in the temple) or
+            magic that will restore drained experience points. (If drained xp
+            can be restored this will be indicated by a yellow XP bar/value).
 
 rlevel      See mlevel.
 
@@ -3948,7 +3952,7 @@ self-explaining or that are especially important are listed in detail here:
             Potions of Healing:         @q1
             Potions of Speed:           @q2
             Potions of Resistance:      @q3
-            Potions of Restore-L-Lev:   @q4
+            Potions of Restore L.Lev.:  @q4
         Note: Already inscribed items are not touched.
 
     Thin down screen flush signals to avoid freezing (thin_down_flush)
@@ -7713,7 +7717,7 @@ give it away.
 Another very early indication for a vault on your dungeon level are the floor
 feelings displayed in yellow colour, see (4.8).
 Among the most dangerous vaults are "no-teleport" (or for short "no-tele")
-vaults. These prohibit all teleportation effects including word-of-recall.
+vaults. These prohibit all teleportation effects including 'word of recall'.
 That means when you get into a bad situation you cannot easily escape!
 No-tele areas will give you certain warning indicators when you enter them,
 see "Vault feelings" in (4.8), the first one listed ("still air").
@@ -11827,8 +11831,9 @@ Climbing set        Allows you to travel over mountain fields.
                     Info for mimics & co: In order to be able to use it, your
                     appearance form must have arms and fingers. (Equip it!)
 Backpack safety lock
-                    When equipped, prevents thieves from stealing items from
-                    your backpack and money from your purse.
+                    When equipped it has a very high chance to prevent thieves
+                    from stealing items from your backpack or money from your
+                    purse.
 Empty bottles       You can /fill these at fountains to turn them into
                     potions. (See (0.2b) for more details.)
 Firestones          These can be eaten by Draconians and players in dragon
@@ -16926,6 +16931,7 @@ B: attack method : attack effect : damage
       receive HOLD_LIFE (resist life-draining attacks) from this form.
     SHATTER will result in a bonus to player's STRength attribute.
     LOSE_xxx will give the according sustenance.
+    SEDUCE will grant charisma sustenance.
 
     Monster effects (like poisoning or paralyzing) are applied to
     the player's attacks with a probability that corresponds to their
