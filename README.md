@@ -4,11 +4,12 @@ Repository created for easier tracking of changes in TomeNET Guide, which is ava
 
 Official Repository with code is avaible [here](https://github.com/TomenetGame/tomenet)
 
-On the release subpage of this repository are unofficial builds for Windows Servers (x86). The official source of TomeNET is available [here](https://tomenet.eu/downloads.php).
+Unofficial builds for Windows version of server are now [here](https://github.com/Tokariew/tomenet)
+
 
 Another mirrors of unofficial builds are available at this location:
-* [dropbox](https://www.dropbox.com/sh/sgki3q57c8e8jgb/AACIW3WkVozKFD2Rvo1SdnAna?dl=0)
-* [mega.nz](https://mega.nz/#F!xcl3GKKY!NrC2mmn9x_uYui56DB7lPA)
+* [dropbox](https://www.dropbox.com/sh/1jzhc83yetecqdl/AACUsmGRLV39s-AKSeNxq_-2a?dl=0)
+* [nextcloud](https://tokariew.xyz/nextcloud/s/4JEyCDNCftB2QGN)
 
 ### Who do I talk to? ###
 If you want to contact about this repository for tracking changes in guide or about unofficial builds for server use this e-mail: korbolinhii+tomenet@gmail.com
