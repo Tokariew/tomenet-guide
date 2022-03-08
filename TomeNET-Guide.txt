@@ -5007,8 +5007,8 @@ haul back to town to sell it, you could just equip it anyway to just use that
 weapon slot in your equipment as a +1 extension of your inventory, and then
 teleport back to town right away (via a scroll of Word of Recall).
 
-Sub-inventory:
---------------
+Subinventory:
+-------------
 Starting in clients after 4.7.4b, there are 'container' items that provide a
 small inventory in themselves, thereby extending your total inventory space.
 However, you can only ever use one of each category at the same time.
@@ -5035,8 +5035,8 @@ putting it back into your (normal) inventory.
   This satchel stores chemicals and mixtures related to the Demolitionist
   perk acquired via Digging skill (6.2), and allows you to mix chemicals right
   from within it via 'a' key, while browsing the satchel.
-  Alternatively you can activate them as usual with SHIFT+A, but then you have
-  to use the '@' feature (call by item name) in the prompt,
+  Alternatively you can activate them from the outside as usual with SHIFT+A,
+  but then you have to use the '@' feature (call by item name) in the prompt,
   or simply create a macro using the macro wizard, which does it this way too.
 
 - Trap kit bag
@@ -5050,6 +5050,12 @@ putting it back into your (normal) inventory.
   (all staves and some rods) and allows you to use them straight from within.
   To do so, you must use the '@' feature (call by item name) in the prompt,
   or simply create a macro using the macro wizard, which does it this way too.
+
+As you noticed, for now from outside the subinventory you cannot access any
+items inside except if you use the '@' (call by item name) feature in the item
+prompt. This might get improved in a future (maintenance) release. But since
+the macro wizard actually creates call-by-name macros anyway, you can just use
+it if you are unsure.
 
 A few generic commands are always available in any subinventory:
   - Chat (:).
@@ -12123,6 +12129,8 @@ Chests              Chests may contain treasures or items. Usually, chests
                     Chests have an increased chance to drop good items, same as
                     monsters that have DROP_GOOD flag.
                     Also see (5.7c) for more information.
+                    After client 4.7.4b, emptied chests can be used for storing
+                    items to extend your inventory slightly, see (3.4).
 Climbing set        Allows you to travel over mountain fields.
                     Info for mimics & co: In order to be able to use it, your
                     appearance form must have arms and fingers. (Equip it!)
@@ -14720,6 +14728,9 @@ stated.
                                 See (6.10) for more information on magic
                                 devices, the skill and the ability.
 
+                                To reduce inventory space usage go to the magic
+                                shop and buy a Passive-device wrapping.
+
 .Anti-magic                     Generated from your strong disbelief in magic
  (1.000)                        an anti-magic field surrounds you, preventing
                                 nearby monsters and players from casting
@@ -15075,6 +15086,9 @@ stated.
                                       to create macros so you can place a trap
                                       by simply pressing a single button.
 
+                                      To reduce inventory space usage, go to
+                                      general store and buy a trap kit bag.
+
 +Health                         Increases your hit points by 2 for each point.
  (0.500)                        Note that this gain stacks with +LIFE items
                                 (compare '+LIFE' in (5.8)).
@@ -15202,6 +15216,9 @@ stated.
                                 If you don't want ingredients to drop to reduce
                                 loot clutter, You can turn them off (and on
                                 again) with the /demo command.
+
+                                To reduce inventory space usage, go to the town
+                                alchemist and buy an Alchemy Satchel.
 
 The abilities Swimming, Digging and Climbing are also granted by items you
 can find. Those are for example items that grants you levitation, so you may
