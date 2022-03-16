@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 13. March 2022 - written by C. Blue (c_blue@gmx.net)      |
+| Latest update: 16. March 2022 - written by C. Blue (c_blue@gmx.net)      |
 | for TomeNET version v4.7.4b - official websites are:                     :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -4257,6 +4257,8 @@ then run 'sudo mkfontdir' in /usr/share/fonts/misc (if that's the folder where
 you placed the fonts) to add them to fonts.dir file. You can verify that all is
 fine by doing 'fc-list' and 'xlsfonts'. TomeNET doesn't use fontconfig but it's
 probably a good idea to register the fonts in both, fontconfig and X11.
+Fedora 33: Tokariew wrote information about installing fonts on this OS here:
+ https://github.com/TomenetGame/tomenet/issues/15
 
 Since you might need/want to use mapping files to remap terrain features to the
 characters in your font, you can create font-preference files that contain
@@ -23770,5 +23772,9 @@ PROBLEM 65: A recent Windows 10 update from end of 2020 or beginning 2021 seems
             "Font file corrupted"
 Solution:   A workaround is to run TomeNET as privileged user or as super user
             (administrator).
+
+PROBLEM 66: Tokariew found out about a linking problem when cross-compiling
+            TomeNET on Fedora 33 with mingw-gcc10.
+Solution:   Using the linker flag  -fstack-protector  resolved this.
 
 ===============================================================================
