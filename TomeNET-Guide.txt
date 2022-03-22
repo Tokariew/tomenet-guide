@@ -8724,6 +8724,8 @@ Cut                     Cuts will make you lose HP continuously.
                         Cure Light/Serious Wounds potions can heal cuts a bit,
                         while Cure Critical Wounds and Healing work much better
                         and any means of 'Curing' will completely heal cuts.
+                        Note that half-trolls, trolls and hydras can continue
+                        regenerating HP even while cut.
 
 Poison   -Poisoned      The player will continuously lose Hit Points.
                         Resisting poison will prevent the player from getting
@@ -15832,11 +15834,12 @@ create a character!):
     bad at searching, disarming, perception, and stealth. They are so ugly
     that a Half-Orc grimaces in their presence. They need to eat often but
     they also regenerate hit point especially quickly (1.5x as fast as from
-    'regeneration' flag, doesn't stack with any regen items). Thanks to
-    their thick skin, they also get an (albeit very small) bonus to armour
-    class. Half-Trolls get bonus on 'Blunt-mastery', 'Health'. They receive a
-    large penalty 'Climbing' and huge penalties on 'Critical-strike', 'Magic',
-    'Sorcery', 'Archery' and 'Swimming'.
+    'regeneration' flag, doesn't stack with any regen items) and even keep
+    regenerating while still suffering from cuts.
+    Thanks to their thick skin, they also get an (albeit very small) bonus to
+    armour class. Half-Trolls get bonus on 'Blunt-mastery', 'Health'. They
+    receive a large penalty 'Climbing' and huge penalties on 'Critical-strike',
+    'Magic', 'Sorcery', 'Archery' and 'Swimming'.
 
 - Dunadan
     Dunadain have their constitution sustained. Dunadain are a race of hardy
@@ -17612,9 +17615,11 @@ All orcs        Resist darkness.
 All trolls      Sustain strength. Extraordinary HP regeneration (2x as fast as
                 from 'REGEN' flag, doesn't stack with items. 1.5x as fast for
                 Half-Troll form).
+                They even continue regenerating while suffering open cuts.
 All giants      Sustain strength.
 All hydras      Extraordinary HP regeneration (2x as fast as from 'REGEN' flag,
                 doesn't stack with items), as they regrow their heads!
+                They even continue regenerating while suffering open cuts.
 All monsters with stone skin (HURT_ROCK flag)
                 Shard resistance.
 All dragonriders
@@ -17873,6 +17878,8 @@ Large kobold     5  As all kobolds it has poison resistance. It also has a lot
                     of hit points and very good AC for its level.
 Rotting corpse   8  Free action, resists confusion/fear/cold, poison immunity,
                     brands melee attacks with poison, decent AC.
+                    Despite its lack of physical thoughness this is a very
+                    underrated form considering all the beneficial abilities.
 *Phantom warrior 8  Useful only for shamans because it has no limbs!
                     This form can pass solid walls!
                     Also gives fear/sound/insanity resistance, free action,
@@ -17899,12 +17906,13 @@ Illusionist and Druid
                     (Later on, 'Mage' is a mid-level form that also provides
                     haste spell and is actually more common to find.)
                     (These two do not occur in packs.)
-*Ogre           13  This form can cross thick woods and mountain terrain.
+*Ogre           13  This strong form can cross forest and mountain terrain.
                     Note that Ogres also count as giants which means that
                     shamans can use this form too.
                     (This monster occurs somewhat more rarely than the others.)
 Black orc       13  Good HP, good melee damage, +1 extra shot w/ slings/bows.
-Lizard man      16  High HP, can swim easily, resists water, immune to acid.
+*Black Ogre     15  Slightly stronger than Ogre but cannot move through woods.
+Lizard man      16  Good HP, can swim easily, resists water, immune to acid.
                     (This monster occurs somewhat more rarely than the others.)
 *Ogrillon       16  Very high HP for its level, good melee damage.
                     Note that Ogrillons also count as giants which means that
