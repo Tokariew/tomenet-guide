@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 20. March 2022 - written by C. Blue (c_blue@gmx.net)      |
+| Latest update: 25. March 2022 - written by C. Blue (c_blue@gmx.net)      |
 | for TomeNET version v4.8.0 - official websites are:                     :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -10954,14 +10954,14 @@ against fire attacks.
 
 Some susceptibilities can only be acquired by mimicking a monster that has
 those. Here is a table of all susceptibilities players can get affected by:
-- Fire          Ents
-- Cold          By mimicry only
-- Acid          By mimicry only
-- Electricity   By mimicry only
-- Light         Dark-elves, Vampires
-- Evil          Enlightened trait of Maiar
-- Good          Vampires, Corrupted trait of Maiar
-- Life          Vampires
+ -Fire          Ents
+ -Cold          By mimicry only
+ -Acid          By mimicry only
+ -Electricity   By mimicry only
+ -Light         Dark-elves, Vampires
+ -Evil          Enlightened trait of Maiar
+ -Good          Vampires, Corrupted trait of Maiar
+ -Life          Vampires
 Most of these are self-explaining, but some seem obscure, here is what you get
 hurt from when susceptible to one of the three obscure ones:
 Evil:   Double damage from holy based attacks (holy orb, holy fire)
@@ -11165,12 +11165,15 @@ Items display the following pseudo-id tags:
 -Useless items (not cursed)     {broken}
 -Cursed artifacts / egos        {terrible}
 
+'Terrible' doesn't need to mean useless. Some cursed artifacts can be very
+powerful, rings of power dropped by Nazgul especially. Also, heavily cursed
+items, including artifacts (and excluding weapons of nothingness) will flip
+their negative values into positive ones when equipped by a true vampire (ie
+excluding mimicked ones) or hell knight (again excluding mimicry forms).
+
 ('worthless' and 'broken' sort of overlap, depending on item base type.
 For example rods without value will be worthless instead of broken, while
 armour will be broken, and ego armour without value will be worthless again.)
-
-Terrible doesn't need to equal useless. Some cursed artifacts can be very
-powerful, rings of power dropped by Nazgul especially.
 
 Note that potions don't have 'egos' or 'artifacts', scrolls don't have
 artifacts either, but some of the potions and scrolls show similar pseudo-id
@@ -18500,8 +18503,8 @@ school.
                     current floor. Doesn't work on unnatural creatures.
                     Required skill level for first spell level: 10.
 
-    Recovery        Neutralizes poison, heals cuts, cures confusion,
-                    stun and blindness.                        (auto-project)
+    Recovery        Neutralizes poison, cures diseases, heals cuts,
+                    cures confusion, stun and blindness.       (auto-project)
                     Required skill level for first spell level: 15.
 
                     Tier II: Level 35.
@@ -18882,7 +18885,7 @@ In general, holy schools are somewhat less affected by anti-magic fields.)
                     Also neutralizes poison, cures blindness, cuts, confusion.
 
                     Tier III: Level 21.                        (auto-project)
-                    Also cures stun and hallucinations.
+                    Also cures diseases, stun and hallucinations.
 
     Cure Wounds     Heals a fixed amount of hit points of a friendly target,
                     which is capped at 14d8, the same amount a potion of cure
