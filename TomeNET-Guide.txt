@@ -1289,14 +1289,6 @@ They all start with a slash '/' hence they're called slash commands:
             player already shuffled a deck of his own, that one will be erased
             aka overwritten by the one he receives from you.
 
-/ing
-/ingredients
-            Disable (and reenable) any ingredient drops for demolitionist perk
-            and for Rogues' "Apply Poison" fighting technique (poison potions).
-            This setting is saved between logins. When you login on a character
-            that has drops disabled you will see a message reminding you of it:
-            "Ingredient drops [...] are currently suppressed."
-
 /dice       Roll some dice, you must at least specify a number of dice or a
             number of sides, each from 1 to 100.
             The result is random and can be seen by other players who stand
@@ -1479,6 +1471,9 @@ They all start with a slash '/' hence they're called slash commands:
 
 /flip       Same as /coin.
 
+/forms      Mimicry-users only: Shows all monster forms you have learned.
+            (This is a convenient shortcut for pressing  ~ 2 @ ESC  .)
+
 /ftkon      Enables, and respectively..
 /ftkoff     Disables fire-till-kill mode (see (5.2a)).
             Alternatively, you can toggle it in 'm' menu.
@@ -1562,6 +1557,14 @@ They all start with a slash '/' hence they're called slash commands:
             displayed when you're not afk.
             For example do:  /info Want to team up for Mordor!
             If you type /info without a message, it clears your info message.
+
+/ing
+/ingredients
+            Disable (and reenable) any ingredient drops for demolitionist perk
+            and for Rogues' "Apply Poison" fighting technique (poison potions).
+            This setting is saved between logins. When you login on a character
+            that has drops disabled you will see a message reminding you of it:
+            "Ingredient drops [...] are currently suppressed."
 
 /kifu <email>
             Use this command after you played Go in the casino in Minas Anor.
@@ -3666,12 +3669,23 @@ found, preventing TomeNET from starting. A fix according to "N der Fuenfte":
 Starting with version 4.4.5, TomeNET features a new SDL-based audio system,
 which provides sound effects and background music.
 
-To make use of it, all you have to do is download a sound and/or music pack and
-then install it. For downloading, go to www.tomenet.eu and then click on
-'Downloads'.
-Read on for instructions how to install those once you downloaded them. There
-are two ways, automatically (client does it for you) and manually (you unzip
-them to the correct location yourself):
+If you don't aim at installing specific 3rd-party packs but just want to add
+sound or music capabilities to your installation, because your current version
+does not have these, the easiest way is to go to the TomeNET website and just
+download the full installer that comes with music and sound and install it over
+your existing TomeNET installation. This will preserve your configuration while
+updating everything to the latest version and also adding sound and music.
+For details on this see (2.1) and then 'Updating via reinstallation'.
+
+For a more chirurgical way to specifically just install an audio pack (music
+pack or sound pack), read on:
+
+All you have to do is download a sound and/or music pack and then install it.
+For downloading the official packs, go to www.tomenet.eu and then click on
+'Downloads'. Other players might offer their own audio packs on the forums.
+Read on for instructions how to install those packs once you downloaded them.
+There are two ways, automatically (client does it for you) and manually (you
+unzip them to the correct location yourself):
 
 
 a) Automatic audio pack installation
@@ -12118,6 +12132,8 @@ Detonations / Death
                 If thrown (press 'v' to throw an item) these potions show the
                 strongest effect by far of all potions - devastating!
                 Accordingly useful to be used in fumes traps.
+                Death potions can be consumed by undead without taking damage
+                and they will even restore their stamina.
 Enlightenment   Illuminates and maps the whole level and reveals all objects.
                 It also identifies all of the user's items.
 *Enlightenment* Raises your intelligence and wisdom, detect treasures,
@@ -12139,13 +12155,13 @@ Infra-vision    Temporarily grants you 100..200 ft of infra-vision randomly,
                 to your fixed infra-vision radius, further increasing it.
                 ("Your eyes begin to tingle!")
 Invulnerability Will turn you partially invulnerable (40% chance to fully
-                deflect any attack, 50% damage reduction if it still hits) and
-                increases armour class by 100 temporarily.
+                deflect any attack, 50% damage reduction if it still hits)
+                and increases armour class by 100 temporarily.
                 ("A powerful iridescent shield forms around your body!")
 Learning        Gives you 1..3 (random) additional skill points to spend.
 Life            Heals 700 HP, removes blindness/confusion/stun, cures
                 poison/disease/cuts/hallucinations, cures Black Breath,
-                restores all your stats and experience.
+                restores all your stats and experience and your stamina.
 Lose Memories   Lose 25% experience (if Hold Life is missing).
 Resistance      Gives you temporary resistance against heat, cold, acid,
                 electricity and poison. (Stacks with permanent resistance
@@ -15145,6 +15161,11 @@ stated.
                                 of it equal to its level, while your Mimicry
                                 skill must be at least half as high as the
                                 monster level for you to get credit.
+
+                                To see which monsters you have killed or which
+                                forms you have already learned, press ~ 2 or
+                                conveniently use the "/forms" command if you
+                                just want to see a list of all learnt forms.
 
                                 Example: To learn Uruk form, you need to kill
                                 16 Uruks because Uruk is a level 16 monster
