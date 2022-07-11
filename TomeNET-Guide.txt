@@ -13952,6 +13952,19 @@ experience points permanently. Here are some details about that process:
 Your chance to successfully tunnel through an obstacle depends on the obstacle
 and your 'digging power'.
 
+In general, the digging power depends on your digging tool's (+digging) bonus
+and its (+hit,+dam) enchantment and also on its weight (that's why a pick is a
+better digging tool than a shovel for example, even if they have the same bonus
+enchantments). Digging power further depends on your Digging skill and your STR
+(strength).
+If you lack a digging tool, an equipped sword or axe can substitute somewhat
+when you are just trying to hack down vegetation instead of rocks.
+
+Each digging attempt of your character has a constant chance to succeed, based
+on your digging power vs the material you're trying to tunnel through. If your
+digging power is too low, the chance might even be 0% so you would be trying
+forever.
+
 If you're not interested in the exact formula, skip down to (5.20b) which has a
 table with example values for certain scenarios.
 
@@ -15826,7 +15839,9 @@ Note: After a skill's gain ratio has been boosted as stated above, it will be
 -------------------------
 At 5.000 Digging skill your character acquires the passive 'Demolitionist' perk
 that allows finding certain chemicals and crafting explosive charges from them.
-See 'Digging' skill in (6.2) for details about acquiring chemicals.
+See 'Digging' skill in (6.2) for details about acquiring chemicals, note that
+you can use the "/ing" command to turn off/on ingredients drop if you ever feel
+it's spammy.
 Use a grinding tool (available at the alchemist store) to grind items that you
 don't need anymore to easily obtain wood chips or reactive metal powder.
 
@@ -15887,6 +15902,9 @@ Crafting ingredients from raw materials:
 - Vitriol + water or salt water = flask of acid.
 - Reactive metal powder + salt water or ammonia salt = caustic metal ash.
 - Reactive metal powder + acid or vitriol = caustic salt.
+- To obtain water or salt water you can just fill up an empty bottle with
+  sea water or freshwater at the appropriate terrain. To obtain empty bottles
+  you can make use of the "/empty" command or the "keep_bottle" option in =7 .
 
 Crafting actual explosive charges:
 ----------------------------------
