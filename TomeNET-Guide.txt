@@ -5745,7 +5745,8 @@ you should NOT use them for macros:
 pref.prf (global for all OS and users on the system)
 *.opt files (client options configuration files, ending on ".opt")
 pref-<operating system>.prf (loaded if under the specific operating system)
-graf-<operating system>.prf OR font-<operating system>.prf
+graphics-<operating system>.prf OR font-<operating system>.prf OR
+graphics-<dimensions>.prf OR font-<dimensions>.prf
                             (loaded if using graphics / ascii font on the
                              specified system)
 user-<operating system>.prf (loaded if under the specific operating system)
@@ -16327,10 +16328,10 @@ create a character!):
     eldest of all animals or plants who inhabit Arda. Spirits of the
     land, they were summoned to guard the forests of Middle-earth.
     Being much like trees they are very slow but strong and do not have
-    to eat as often. Because they consist of wood, they are quite
+    to feed as often. Because they consist of wood, they are quite
     susceptible to fire and they don't drown in water. As the Shepherds
     of the Trees, they can learn to sense the presence of others, such
-    as animals  at level 10, orcs at 15, trolls at 20, giants at 25,
+    as animals at level 10, orcs at 15, trolls at 20, giants at 25,
     dragons at 30, demons at 40 and all evil-minded creatures at level 50.
     At level 4 Ents learn to see invisible things. In general, they accumulate
     experience very slowly and they do not eat normal food but they are able to
@@ -23997,9 +23998,10 @@ PROBLEM 31: Changes I do to my macros seem to not get saved or macros I deleted
             their respective .prf file.
 Solution:   Macros or client options can be saved to various .prf files which
             might _all_ get loaded automatically and partially override each
-            other. So check _all_ (except for font*.prf and graf*.prf usually)
-            .prf files in your lib/user folder and/or move or delete them to
-            make sure they don't get loaded if you don't intend them to.
+            other. So check _all_ (except for font*.prf and graphics*.prf
+            usually) .prf files in your lib/user folder and/or move or delete
+            them to make sure they don't get loaded if you don't intend them
+            to.
             For example the file 'user.prf' usually carries your client options
             and overrides the default file 'options.prf'. However, if there's a
             file 'user-x11.prf' (system-specific for Linux X11 - on Windows
