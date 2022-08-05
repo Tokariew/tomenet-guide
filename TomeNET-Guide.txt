@@ -14057,7 +14057,8 @@ when you are just trying to hack down vegetation instead of rocks.
 Each digging attempt of your character has a constant chance to succeed, based
 on your digging power vs the material you're trying to tunnel through. If your
 digging power is too low, the chance might even be 0% so you would be trying
-forever.
+forever, giving you a message "You cannot seem to make a dent in the ..." as
+your character realizes the futility of the attempt.
 
 If you're not interested in the exact formula, skip down to (5.20b) which has a
 table with example values for certain scenarios.
@@ -18598,8 +18599,9 @@ Lesser kraken           speedy, smart and very tough aquatic(*) creature;
 
 Level 45:
 ---------
-Maulotaur               like Minotaur, but tougher; stupid (INT malus);
-(Code 723)              immune to fire; resists teleportation attacks;
+Maulotaur               Like Minotaur very speedy and susceptible to 'good',
+(Code 723)              but even tougher; stupid (INT malus);
+                        immune to fire; resists teleportation attacks;
                         can cast plasma bolt and fire ball
 
 Winged Horror           speedy winged creature; can fly;
