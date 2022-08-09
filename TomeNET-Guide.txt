@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 7. August 2022 - written by C. Blue (c_blue@gmx.net)      |
+| Latest update: 9. August 2022 - written by C. Blue (c_blue@gmx.net)      |
 | for TomeNET version v4.8.0 - official websites are:                      :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -1446,7 +1446,8 @@ They all start with a slash '/' hence they're called slash commands:
             as mentioned above, when you're poisoned, suffering from a cut,
             waiting for your blacklist to run out, or any other matters.)
 
-            Additionally, /ex will also display the following information:
+            Additionally to your actions per turn, /ex will also display the
+            following information:
             - how many resurrections you have left, if you are a normal-mode
               character;
             - which of your auras are currently active (if you have points in
@@ -1461,6 +1462,12 @@ They all start with a slash '/' hence they're called slash commands:
             - pvp kills;
             - the in-game time and date, and whether it is day or night.
               (Note: If you want to know the server real-life time, use /time.)
+            - An indicator if instant resurrection is enabled, and also tell
+              you your fee for the current dungeon level (red if you don't have
+              sufficient funds) or, if not in a dungeon, display the maximum
+              dungeon level your funds would suffice for.
+            - How many houses you own and how many more you may own.
+            - Your chance of parrying and blocking.
             - how much more gold you may pick up before your character will
               automatically receive 1 experience point (to limit the amount
               of cash you can pick up before participating in certain events,
@@ -1706,7 +1713,7 @@ They all start with a slash '/' hence they're called slash commands:
             Attempts to enter a player store next to you, even if it's your own
             house. So this command is good for 'testing' your own store.
             Usually you simply enter another player's store by trying to enter
-            his house, which will preset you with the store screen.
+            his house, which will display the player's store screen.
             (See (4.10a) for more information about player stores.)
 
 /pvp        Carries you into/out of the PvP arena. Only usable by PvP mode
@@ -4558,10 +4565,15 @@ Also, exclusive IDDC characters will automatically be no-ghost mode and will
 receive an extra +25% score bonus (stacking with the no-ghost score bonus and a
 potential hard-mode bonus should the player choose hard-mode aka 'hellish').
 
-If you have already created a character of the same name before, you will be
-given the 'reincarnate' option in every stage of character creation, which
-allows you to just press the '#' key to make the same choices that you did on
-your previous character of that name.
+Reincarnation / auto-reincarnation:
+If you already created a character of the same name before, you can choose to
+reincarnate. This just means that the new character you are creating will be
+created exactly like the deceased version of it, regarding class, race, etc..
+There are two keys for reincarnation displayed on each step of the character
+creation process: '%' for auto-reincarnation and '#' for reincarnation just for
+the current step of the character creation process.
+Auto-reincarnation, ie pressing '%', is like pressing '#' in every step of the
+character creation process. (There is also a commandline option '-R' for this.)
 
 However, since this is your first character, just press 'N' to start the
 creation progress, enter a character name, and continue reading.
@@ -7541,6 +7553,13 @@ Temple          4       Player ghosts will be revived here, and receive some
                         Instant resurrection does not work in no-ghost dungeons
                         (ie ironman or hellish) and dungeon levels (ie floors
                         where Morgoth is) or in the Nether Realm.
+                        You can use the /ex command to check whether instant
+                        resurrection is enabled, it will tell you if so. Then
+                        it will additionally display the fee needed for your
+                        current dungeon level, displayed in red if you don't
+                        have enough funds. Or if you aren't in a dungeon it
+                        will instead display the maximum dungeon level your
+                        current funds would suffice for.
 
 Alchemist       5       Sells various scrolls and potions.
 
@@ -13046,7 +13065,7 @@ someone else kills Zu-Aon. Until then its owner can keep it indefinitely.
 ------------------------------------------------
 Items in your inventory can be destroyed if you are hit by an elemental
 attack. Those attacks can even have a very slim chance of damaging an item
-that you have equipped!
+that you have equipped (see (5.10a) subsequently)!
 
 There are two different cases, inventory items and equipped items:
 
@@ -13056,9 +13075,10 @@ There are two different cases, inventory items and equipped items:
 
  Having resistance will reduce the chance of inventory items getting destroyed
  somewhat. To protect your inventory effectively though you will need to have
- double resistance*.
- Being immune to an element will also protect all your inventory from any
- damage from that element.
+ double resistance (*), ie static + temporary resistance. This will protect
+ inventory items completely from getting destroyed by that particular element.
+ Being immune to an element will also protect all your inventory (and euqipment
+ too) from any damage from that element.
 
 -Equipped items can get damaged by certain elemental attacks (armour) or they
  can get damaged when used to attack an elementally affine monster (weapons) or
@@ -13069,7 +13089,7 @@ There are two different cases, inventory items and equipped items:
  Being immune to an element will also protect all your equipment from any
  damage from that element.
 
-(*"Double resistance": Static resistance gained from an equipped item or an
+(*) "Double resistance": Static resistance gained from an equipped item or an
  intrinsic character class/race resistance or a resistance acquired by training
  a skill, plus temporary resistance gained from either consumables (usually
  potions) or castable spells or activatable items that grant you temporary
@@ -13084,6 +13104,9 @@ fire damage.
 
 All artifacts, random and static ones, cannot be harmed by elemental attacks
 of any type.
+
+As a specialty, all items that resist or ignore disenchantment (eg Dark Swords)
+can also not be damaged by any elemental attacks!
 
 Here is a table of items and which elements they are susceptible against:
 "Impact" happens if you fall into a pit, smashing some potions on hitting the
@@ -13172,9 +13195,9 @@ hit by elemental magic. Blocking an attack with a shield may damage it in the
 same manner. Weapons may take damage if you hit an elemental monster with them.
 Armour might also rust from moving through water without a tarpaulin equipped.
 
-Armour/shields getting damage means a reduction of their +AC bonus by 1 point
-each time, while weapons getting damaged means a reduction of their +damage
-bonus by 1 point each time.
+Armour (and shields in archaic server version) getting damage means a reduction
+of their +AC bonus by 1 point each time, while weapons getting damaged means a
+reduction of their +damage bonus by 1 point each time.
 AC bonus won't drop lower than half the negative amount of the base AC.
 Damage bonus won't drop lower than -10.
 
