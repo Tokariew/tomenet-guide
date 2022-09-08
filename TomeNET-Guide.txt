@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 4. September 2022 - written by C. Blue (c_blue@gmx.net)   |
+| Latest update: 8. September 2022 - written by C. Blue (c_blue@gmx.net)   |
 | for TomeNET version v4.8.0 - official websites are:                      :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -13551,6 +13551,8 @@ If a monster tries to hit you, the following happens:
    you don't take any damage, ie the monster misses you. If this doesn't
    succeed..
 5) your character takes damage, but your armour class will at least reduce it.
+   If disruption shield is active, the damage will instead hit your mana pool
+   instead of your hit points (unless you don't have enough mana).
 
 Note that some attacks can bypass some of those defenses.
 More info further below.
@@ -13567,6 +13569,8 @@ If a monster tries to shoot you, the following happens:
 4) your character may try to block the shot with a shield.
    If this doesn't succeed..
 5) your character takes damage. Armour class has no effect.
+   If disruption shield is active, the damage will instead hit your mana pool
+   instead of your hit points (unless you don't have enough mana).
 
 Monster is casting a spell that wounds you:
 -------------------------------------------
@@ -13581,6 +13585,8 @@ If a monster casts a spell at you, the following happens:
    If it isn't then your character may still try to cover behind a shield.
    If this doesn't succeed..
 5) your character takes damage. Armour class has no effect.
+   If disruption shield is active, the damage will instead hit your mana pool
+   instead of your hit points (unless you don't have enough mana).
 
 For details about parrying and blocking see (6.11).
 
@@ -19613,12 +19619,15 @@ In general, holy schools are somewhat less affected by anti-magic fields.)
                     which is capped at 14d8, the same amount a potion of cure
                     critical wounds actually heals.
                     Required skill level for first spell level: 3.
+
                     (Since this is a bolt spell, use the 'target friendly' key,
                     which is '('. See command reference section (0.2) for
                     details about this key.
                     To target yourself, use a macro that clears your current
                     target via '*q' and picks direction '5' which will then be
-                    your current grid.)
+                    your current grid.
+                    The easiest way is to just use the macro wizard and choose
+                    'f)' or 'g)' as targetting method when prompted.)
 
                     Tier II: Level 23.
 
