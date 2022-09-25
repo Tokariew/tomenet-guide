@@ -7635,9 +7635,15 @@ Bookstore       9       Sells books for istari, priests and all other (hybrid)
 Then there are various shops that just use a normal door '+' symbol, these are
 different everywhere. Some examples are mainly..
 
-The Inn                 Eg The Prancing Pony in Bree. While the '8' is just the
-                        entrance into the tavern, the + is the actual bar where
-                        you can order things from the innkeeper.
+Inn                     The first inn you see is the spawn point of newly
+                        created characters: The Prancing Pony in Bree.
+                        While the '8' is just the entrance into the tavern,
+                        the '+' is the actual bar where you can order things
+                        from the innkeeper.
+                        All inns are safe zones where you cannot get harmed by
+                        monsters from outside, and items dropped inside in inn
+                        will persist and not time out. If you go AFK in a town
+                        you should always do so in the local inn to be safe.
 
 Mayor's Office (Bree)   Allows you to turn in deed parchments you won in
                         tournaments or on other occasions for a reward.
@@ -19495,22 +19501,25 @@ school.
 
                     Tier II: Level 40.
 
-    Genocide        Genocides all monsters of a race on your dungeon level.
+    Genocide        Genocides all monsters of a race on your dungeon level at
+                    the cost of your HP, yielding no experience, kill credit or
+                    loot. Monsters may resist. Doesn't work inside vaults. Use
+                    with care!
                     For details on the effect "genocide" of this spell,
                     please see (5.9) scroll of geno/oblit.
-                    (This spell uses WISDOM to determine fail-rates!
-                    Genocide-type spells do not yield experience or loot.)
+                    (This spell uses WISDOM to determine fail-rates!)
                     Required skill level for first spell level: 30.
 
     Disenchantment Beam
                     Conjures a powerful and nearly irresistible beam.
                     Required skill level for first spell level: 40.
 
-    Obliteration    Obliterates all monsters nearby.
+    Obliteration    Obliterates all monsters nearby at the cost of your HP,
+                    yielding no experience, kill credit or loot. Monsters may
+                    resist. Doesn't work inside vaults. Use with care!
                     For details on the effect "obliteration" of this spell,
                     please see (5.9) scroll of geno/oblit.
-                    (This spell uses WISDOM to determine fail-rates!
-                    Genocide-type spells do not yield experience or loot.)
+                    (This spell uses WISDOM to determine fail-rates!)
                     Required skill level for first spell level: 40.
 
     Wraithform      Temporarily turns your form immaterial.
