@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 24. September 2022 - written by C. Blue (c_blue@gmx.net)  |
+| Latest update: 26. September 2022 - written by C. Blue (c_blue@gmx.net)  |
 | for TomeNET version v4.9.0 - official websites are:                      :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -77,6 +77,7 @@ Contents
     (3.4a)  Start-up equipment & how to use it
     (3.4b)  Item basics
     (3.4c)  Item trading rules and exceptions
+    (3.4d)  Money
     (3.5)   Preparing the first time for fighting enemies
     (3.6)   Creating basic macros & inscribing items, predefined macros (READ!)
     (3.7)   Creating macros for ranged attacks & abilities (spells)
@@ -5642,6 +5643,42 @@ As soon as a character leaves the worldmap sector of the Nether Realm, the
 items lose their ability to be traded between incompatible character modes.
 
 
+(3.4d) Money
+------------
+Your money is displayed as pieces of gold in TomeNET, traditionally abbreviated
+to 'Au' for latin 'Aurum', meaning 'gold'. 'Au' is also the chemical symbol for
+gold in the periodic table.
+
+If you find money in any other form than gold pieces, such as copper or gems,
+it will always just display the equivalent gold value and be treated as such.
+For example if you take a pile of copper it will say how many gold pieces you
+found..worth of copper. So you don't need to calculate anything, all money
+numbers in the game are always in gold pieces.
+
+It is a good idea to 'invest' money in your character!
+For example by buying consumables such as potions and scrolls, better equipment
+(especially look at player stores for this, by pressing ~P, that is tilde key
+to open the knowledge menu and then SHIFT+P to open the player store search in
+your web browser), or scrolls to enchant your equipment to-hit, to-damage and
+also to-ac (armour class).
+
+If you run out on money, you can make some basic amounts quickly by just going
+to the Training Tower in Bree, which often has some copper or silver piles just
+lying around waiting to be picked up.
+When in the dungeon, know that magic devices such as wands and staves can sell
+for quite a lot. Just make sure to identify them before selling because the
+shops will pay extra money for their amount of charges.
+Heavy armour and weaponry also sells for good cash, again make sure to always
+identify any item that gets pseudo-identified (aka 'felt') as {good} so you
+will receive the full worth of its enchantments and not just the base price.
+
+Money is vital if you are everlasting mode and have the 'instant resurrection'
+feature enabled in the temple: It costs a fee to activate when you die. If you
+don't have enough money (your carried money and your banked money is added up
+for this, so you don't have to worry about how it is distributed) then you will
+not get auto-resurrected and instead just turn into a ghost.
+
+
 
 (3.5) Preparing the first time for fighting enemies
 ---------------------------------------------------
@@ -6795,6 +6832,40 @@ Lev.   Experience   Lev.   Experience   Lev.   Experience   Lev.   Experience
 
 (3.11) Death, ghosts and looting
 --------------------------------
+
+Death messages
+--------------
+Depending on how a player died, there are different kinds of death messages:
+- "committed suicide"
+  The player committed suicide to delete his character permanently.
+- "retired to a warm, sunny climate"
+  This is like suicide, but what happens if winners attempt to suicide:
+  They simply retire. The character is deleted permanently same as suiciding.
+- "was defeated by"
+  The everlasting player was killed but got auto-resurrected because he had
+  the "instant resurrection" feature enabled in a temple.
+- "was killed by"
+  The player was killed.
+  If the message is enclosed in asterisk pairs, it was a permanent (no-ghost)
+  death, so the character is permanently deleted now.
+  If the message was not enclosed in asterisks, the player turned into a ghost
+  and is probably hoping to get rescued and revived now.
+- "was annihilated by"
+  Same as "was killed by", just different wording.
+  This message appears if the damage taken with the death blow was very high.
+- "was vaporized by"
+  Same as "was killed by", just different wording.
+  This message appears if the damage taken with the death blow was extreme.
+- "was destroyed by"
+  The player was permanently killed so his character has been deleted now.
+  Instead of the asterisk-paired "was killed by" message (which indicates
+  permanent death same as this message does) this message is used exclusively
+  for insanity-induced deaths.
+- "ghost was destroyed by"
+  The player's ghost was destroyed (ie 'killed').
+  This means the character is now permanently deleted.
+- Some special, random death messages when the player gets killed by the game
+  boss, Morgoth, Lord of Darkness.
 
 Death
 -----
@@ -9848,6 +9919,10 @@ Ironman Deep Dive Challenge (IDDC)
     of it already exists right now elsewhere in the world.
     This means that you don't have to worry which uniques other players are
     currently fighting - they can still spawn for you just fine.
+
+    If you make it through the IDDC, the title of "Iron Champion" will be
+    bestowed on you. If you even manage to defeat Morgoth you will instead
+    acquire the title of "Iron Emperor" or "Iron Empress" respectively.
 
   Specialties:
     Mimicry users gain +9 extra kill credit on each kill, effectively
