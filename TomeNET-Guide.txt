@@ -4462,22 +4462,33 @@ http://hukka.ncn.fi/?fony
 (Up to client 4.6.1a it was not possible to use characters of numbers 128-255
 but this has been addressed, so the full range of characters is available now.)
 
-For the Linux client you'll need to convert the font to pcf format,
-place it into a registered fonts folder (check 'xset -q'), usually that can be
+For the Linux client you'll need to convert the font to 'pcf' format, but 'bdf'
+might work too, depending on your system.
+Place it into a registered fonts folder (check 'xset -q'), usually that can be
 /usr/share/fonts/misc, let fontconfig rescan it with 'fc-cache' (optionally
-with -f to force rescan) and also have X rescan it with 'xset fp rehash' and
+with '-f' to force rescan) and also have X rescan it with 'xset fp rehash' and
 then run 'sudo mkfontdir' in /usr/share/fonts/misc (if that's the folder where
-you placed the fonts) to add them to fonts.dir file. You can verify that all is
-fine by doing 'fc-list' and 'xlsfonts'. TomeNET doesn't use fontconfig but it's
-probably a good idea to register the fonts in both, fontconfig and X11.
+you placed the fonts) to add them to fonts.dir file.
+You can verify that all is fine by doing 'fc-list' and 'xlsfonts'. TomeNET
+doesn't use fontconfig but it's probably a good idea to register the fonts in
+both, fontconfig and X11. (TomeNET uses XListFonts() to read available fonts.)
+Note that TomeNET only auto-scans fonts that contain a (lower-case) 'x' letter,
+eg fonts whose names contain a <width>x<height> info. After this another filter
+will be applied via the (exactly one!) regular expression specified in the file
+'lib/xtra/fonts-x11-menuscan.txt'.
+To add other fonts that don't match these criteria, you have to add their names
+manually in the file 'lib/xtra/fonts-x11-menuscan.txt'.
+When using a custom font that has different mapping than standard fonts you
+might need to turn off the option 'font_map_solid_walls' in = 1 if you spot
+any wall tiles that look not like they are supposed to in that particular font.
 Fedora 33: Tokariew wrote information about installing fonts on this OS here:
  https://github.com/TomenetGame/tomenet/issues/15
 
 Since you might need/want to use mapping files to remap terrain features to the
 characters in your font, you can create font-preference files that contain
 mapping information.
-The default font mapping file is lib/user/font-win.prf. If it exists, this file
-will automatically be loaded by the game client.
+The default font mapping file is lib/user/font-win.prf (for Windows OS). If it
+exists, this file will automatically be loaded by the game client.
 However, the client first checks for the existance of a specific, custom font
 mapping file that has a filename: lib/user/font-custom-FONTNAME.prf and loads
 this instead of attempting to load font-win.prf.
