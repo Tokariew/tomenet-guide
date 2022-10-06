@@ -12391,10 +12391,11 @@ Weapons of Morgul
                 these weapons will get their mali reversed into boni when you
                 equip them, working in your favour! That doesn't mean their
                 curse is broken, though..
-                Since they have a heavy curse on them, you need to either use a
-                scroll of *remove curse* or use enchant scrolls to break it.
-                For details about the enchant-scrolls trick, which is usually
-                much cheaper, see paragraph '(5.14) Curses'.
+                Since they have a heavy curse on them, if you want to get rid
+                of them you will need to either use a scroll of *remove curse*
+                or use enchant scrolls to break it. For details about the trick
+                with enchant-scrolls, which are usually much cheaper, see the
+                paragraph '(5.14) Curses'.
                 Wielding a weapon of Morgul will allow you to see the invisible
                 but also infect you with Black Breath, drain your experience
                 and aggravate nearby monsters.
@@ -17022,6 +17023,14 @@ create a character!):
     Maiar who kill both, a darkling and a candlebearer, before initiation at
     level 20, will see the message "Your presence in the realm is forfeit!"
     and also meet their fate and be destroyed by indecisiveness at level 20.
+
+    You can verify your current status anytime either by checking your monster
+    list with ~ 2 or by using the '/ex' chat command, which will give you one
+    of these status messages if you are a Maia:
+    - no harbinger killed yet: "Your destiny in the realm is still undecided."
+    - killed a darkling: "Your are treading on the path to enlightenment."
+    - killed a candlebearer: "Your are treading on the path to corruption."
+    - killed both types, oops!: "Your presence in the realm is forfeit."
 
     After they underwent initiation at level 20, they may just kill all of them
     indiscriminately, same as any other monster, without consequences.
