@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 6. October 2022 - written by C. Blue (c_blue@gmx.net)     |
+| Latest update: 8. October 2022 - written by C. Blue (c_blue@gmx.net)     |
 | for TomeNET version v4.9.0 - official websites are:                      :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -1574,6 +1574,10 @@ They all start with a slash '/' hence they're called slash commands:
             To access not a chapter, but a "header" of some subparagraph, try
             searching for all uppercase, eg "CONFUSION" instead of "confusion".
 
+            If a search initiated by this command wraps around once, it will
+            drop the search tier to basic text search, resulting in potentially
+            many more hits.
+
 /?c         Shortcut to your character's class description in the guide.
 /?r         Shortcut to your character's race description in the guide.
 /?t         Shortcut to your character's race trait in the guide.
@@ -1620,15 +1624,16 @@ They all start with a slash '/' hence they're called slash commands:
             that has drops disabled you will see a message reminding you of it:
             "Ingredient drops [...] are currently suppressed."
 
-/kifu <email>
+/kifu <email>   (japanese name)
+/gibo <email>   (korean name)
             Use this command after you played Go in the casino in Minas Anor.
             It will send all your new Go game records as SGF files to the email
             specified. If you're using a Microsoft-related email address, eg
             outlook.com, note that Microsoft is notorious for blocking email
             from the email-provider used by TomeNET, so you might not get it.
-            The /kifu command works per character name, not per account name,
-            so you only get those kifus emailed that the character played on
-            which you used the command. (SGF is the 'Smart Game Format'.)
+            This command works per character name, not per account name, so you
+            only get those kifus emailed that the character played on which you
+            used the command. (SGF is the 'Smart Game Format'.)
 
 /know       Client-side command that invokes the knowledge menu, same as if the
             user pressed '~' key.
@@ -2241,11 +2246,10 @@ Item power inscription (added in 4.7.1):
                special powers. Only works with *identified* items.
                Can also be used on custom spell books. If used on handbooks or
                tomes however, it works like @@@, shortening the spell names.
-    @@@        Redux version. Avoids stats, extra might since it's obvious,
-               infra-vision, searching, and mods that are obvious because they
-               can only come from base item type (disarm, digging, luck),
-               light radius, slays and brands except for kill-flags, and
-               partial ESPs.
+    @@@        Redux version. Avoids stats, infra-vision, searching, and mods
+               that are obvious because they can only come from base item type
+               (disarm, digging, luck), light radius, slays and brands except
+               for kill-flags, partial ESPs, trap kits' eligible enemy type.
                Can also be used on custom spell books, will shorten the names.
 
     Resulting inscription details:
@@ -2273,6 +2277,12 @@ Item power inscription (added in 4.7.1):
     Refl/Inv/AM/Bless reflection/invisibility/anti-magic shell/Blessed
     ID                auto-ID
     Climb/Swim/Wraith climbing/swimming/wraithform
+    *Auto*/Auto       (fully) automatic trap kit
+    <D>/<U>/<a>/<W>/<Evil>
+                      trapkit's eligible target monster type:
+                      Dragon, demon, animal, undead, evil.
+    Wf                trapkit can harm wraithform (PASS_WALL) enemies
+    Tt                trapkit casts teleport-to-player on enemies
     AF/C/E            aura of fire/cold/electricity
     BF/C/E/A/P        brand of fire/cold/electricity/acid/poison
     +oTPaWUDEvil      slay orc/troll/giant/animal/undead/demon/dragon/evil
@@ -7788,7 +7798,8 @@ Casino                  Minas Anor has a casino. Go and try your luck!
                         (There are various gambling opportunities, and also
                         the ancient board game 'Go' which can be played on a
                         9x9 board for a one-time fee on each difficulty level.
-                        Get your Go game records emailed to you via "/kifu".)
+                        Get your Go game records emailed to you via "/kifu"
+                        (japanese) or "/gibo" (korean) command, same thing.)
                         For details about the gambling rules of the casino, see
                         subsequent (4.5a2) paragraph.
 
@@ -8180,7 +8191,8 @@ Strategy:
  strategy. Smaller boards are used for non-serious games, 9x9 somewhat common,
  whereby the games become purely tactical and lack much of the 19x19 strategy.
 
-You can use the /kifu command to have the game email you your Go game records!
+You can use the /kifu or /gibo command to have the game email you your Go game
+records!
 
 Enjoy!
 
