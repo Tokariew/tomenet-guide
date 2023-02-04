@@ -7223,7 +7223,7 @@ Magic devices:
                 You can restrict auto-retaliation to town-only by adding a 't'
                 after the '@O' like this: '@Ot'.
 
-Spellbooks:
+Spell scrolls, books or crystals:
     @Oc         You will auto-retaliate by casting the spell 'c)' from this
                 book (or any other spell, change the inscription accordingly).
                 You can restrict auto-retaliation to town-only by adding a 't'
@@ -16137,7 +16137,8 @@ stated.
                                 in their favour.
                                 At a skill of 30 the aura is so strong that
                                 your melee attacks (weapon as well as martial
-                                arts will be branded by it (cold brand).
+                                arts will be branded by it (cold brand) and
+                                you are granted resistance to cold.
                                 The aura is automatically enabled when you
                                 train the skill; you can disable the aura in
                                 the 'm' menu. Typing '/ex' command into chat
