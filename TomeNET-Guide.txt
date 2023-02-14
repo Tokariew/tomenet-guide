@@ -1,8 +1,8 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 3. February 2023 - written by C. Blue (c_blue@gmx.net)    |
-| for TomeNET version v4.9.0a - official websites are:                     :
+| Latest update: 13. February 2023 - written by C. Blue (c_blue@gmx.net)   |
+| for TomeNET version v4.9.0c - official websites are:                     :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
 | Runes & Runemastery sections by Kurzel (kurzel.tomenet@gmail.com)
@@ -70,7 +70,7 @@ Contents
     (3.1a)  Character modes
     (3.1b)  Body Modifications
     (3.1c)  Character names, collisions and reservations
-    (3.2)   The display (user-interface)
+    (3.2)   The display (user interface)
     (3.2a)  The encumberment bar
     (3.3)   Chat, chat messages and chat modes
     (3.4)   Inventory and equipment
@@ -1585,7 +1585,7 @@ They all start with a slash '/' hence they're called slash commands:
 /?r         Shortcut to your character's race description in the guide.
 /?t         Shortcut to your character's race trait in the guide.
 
-/house
+/houses
 /hou        Displays your houses, same as ~9, but offers two optional
             parameters to refine the search results:
             /hou o    will only show your own houses.
@@ -1653,6 +1653,7 @@ They all start with a slash '/' hence they're called slash commands:
 
 /me         Write an emote. Example: /me hides.
 
+/monsters
 /mon [<monster character>] [<+minimum level>]
             Same as going to ~ menu and selecting 'Monsters':
             Will show your kill count of all matching monsters.
@@ -1683,16 +1684,21 @@ They all start with a slash '/' hence they're called slash commands:
 
 /opty <option>
 /optvy <option>
-            Sets a client option to 'yes'. Eg: /opty big_map
+            Sets a client option to 'yes'. Eg: /opty font_map_solid_walls
             The /optvy command will display a feedback message (v = verbose).
 /optn <option>
 /optvn <option>
-            Sets a client option to 'no'. Eg: /optn big_map
+            Sets a client option to 'no'. Eg: /optn font_map_solid_walls
             The /optvn command will display a feedback message (v = verbose).
 /optt <option>
 /optvt <option>
-            Toggles a client option between 'yes' or 'no'. Eg: /optt big_map
+            Toggles a client option between 'yes' or 'no'.
+            Eg: /optt font_map_solid_walls
             The /optvt command will display a feedback message (v = verbose).
+
+            Quality of life hack:
+            You can actually refer 'big_map' via /opt commands even though it's
+            not a real option (anymore)!
 
 /page <player-name>     Sends beeps to that player to help you getting his
                         attention. (Using /ignore on a player will also
@@ -1943,6 +1949,12 @@ They all start with a slash '/' hence they're called slash commands:
             You may reset a whole skill once per character, at The Mirror
             located in Lothlorien, when you are exactly level 35 - not earlier
             and not later! See (4.5a) for details about The Mirror.
+
+/uniques
+/uni        Displays your list of unique monsters, same as ~3. Offers similar
+            optional parameters to refine the search results:
+            /uni a    will only show uniques that are still alive for you.
+            /hou b    will only show bosses.
 
 /untag [<inscription>]
 /ut         If <inscription is omitted, it removes all inscriptions from items
@@ -2696,6 +2708,16 @@ mlevel, rlevel
 Morgy       Morgoth, Lord of Darkness. Final boss enemy in TomeNET.
             See (1.3) for details.
 
+MP          Mana points, the amount of magical energy you have at your disposal
+            to cast spells or recite prayers.
+            A class that cannot use any spells will '-' displayed instead of a
+            numerical amount.
+            The starter MP are different for each race and class and can be
+            viewed in the tables in chapters (7.4) and (7.5) respectively;
+            quick-access these tables by searching the guide for chapter key
+            words (or "/?" command) "race tab" and "class tab" respectively.
+            For an overview of all spells and prayers, see (7.8).
+
 Nazgul weapon or RW weapon
             An artifact weapon that doesn't really excel, but since it's an
             artifact it can still be put to good use as a weapon for killing
@@ -2819,6 +2841,15 @@ SI          See invisible. (See (5.14) for details about invisibility.)
 
 Specials    Items that pseudo-identify as 'special'. These are true arts or
             randarts.
+
+ST          Stamina, which you can spend to use certain special techniques that
+            are usually either fighting techniques (close combat) or shooting
+            techniques (ranged combat), see (7.12) for a complete list.
+            A class that cannot use any techniques will '-' displayed instead
+            of a numerical amount.
+            Maximum stamina is always 10, its regeneration is slow. It can be
+            sped up by resting (SHIFT+R), and by having a higher Constitution
+            attribute (CON) or by training the 'Health' skill.
 
 Static      A level that is static will not change if you leave it but stay
             the same, permanently until it is unstaticed.
@@ -3658,9 +3689,17 @@ POSIX command-line options:
 -C                      compatibility mode for ancient servers (deprecated)
 -e                      Create file 'tomenet.log' instead of displaying
                         error messages in the terminal
--f<config file>         use a different config file than ~/.tomenetrc
--F <fps>                set client internal engine fps (default is 100)
 -i                      ignore the ~/.tomenetrc config file
+                        This option must come before any -f options!
+-f<config file>         source (use) a specified config file. This is actually
+                        cumulative and does not cause the standard .tomenetrc
+                        to not be loaded. To _only_ load this config file and
+                        ignore .tomenetrc, specify -i option together with -f
+                        option and make sure that -i comes first!
+                        The last file that is read is used as default config
+                        file and any changes that are saved will be saved to
+                        this file.
+-F <fps>                set client internal engine fps (default is 100)
 -l<Account> <Password>  for example -lGandalf geheim
 -m                      skip motd (message of the day) on login
 -N<character name>      for example -NMagnet
@@ -4164,13 +4203,9 @@ By pressing the '=' key in game, you can access the options menu where you can
 tweak your client in some ways. Some of these options that aren't
 self-explaining or that are especially important are listed in detail here:
 
- (1, 2, 3, 4) User Interface Options
+ (1, 2, 3, 4) User Interface Options:
     Rogue-like commands (rogue_like_commands)
         Toggles between normal key set and traditional rogue-like key set.
-
-    Double height of the map shown in the main window (big_map)
-        Definitely enable this to see if you prefer it: It doubles the size of
-        the gameplay area displayed in the main window.
 
     Alert on taking damage while you are AFK (alert_afk_dam) and
     alert on taking damage while looking around the map via 'locate' command
@@ -4251,7 +4286,7 @@ self-explaining or that are especially important are listed in detail here:
         symbols and colours of monster forms for party members and the player
         himself.
 
- (5) Audio Options
+ (5, 6) Audio Options
     (See (2.1a) for more information about sound and music.)
 
     A bunch of stuff here, mostly you might want to look at attack-sound effect
@@ -4260,7 +4295,7 @@ self-explaining or that are especially important are listed in detail here:
 
     positional_audio is an especially interesting option, enabled by default.
 
- (6, 7, 8) Gameplay Options
+ (7, 8, 9) Gameplay Options
     Use old target by default (use_old_target)
         If this is on, a ranged attack via *t5 or *t- will not pick a new
         (ie closer) target if the previously acquired target is still okay.
@@ -4383,18 +4418,26 @@ self-explaining or that are especially important are listed in detail here:
         allows creating macros for fast toggling.
         Auto-destroying does not trigger inside houses.
 
- (8) Check Server Options
-    Displays a list of the server rules and configuration.
+ (w) Window flags
+    Here you can configure each of the program windows in detail.
+    It is recommended that you have one dedicated window for 'Display chat',
+    so you don't miss important messages during combat.
+
+ (b) Toggle big_map (double screen height)
+    Double height of map shown in the main window, dubbed 'big_map' setting.
+    Definitely enable this to see if you prefer it: It doubles the size of
+    the gameplay area displayed in the main TomeNET window.
+    To save this setting, make sure to quit the game via CTRL+Q and not by
+    terminating the game window via mouseclicking the window title bar's
+    'x' button.
+    Quality of life hack:
+    You can actually refer 'big_map' via /opt commands even though it's not a
+    real option (anymore)!
 
  (A) Account options
     Here you can see if your account is valid. Invalid accounts are also
     indicated by a yellow 'I' in the players list you get with '@' key.
     Also, you can change your password here!
-
- (W) Window flags
-    Here you can configure each of the program windows in detail.
-    It is recommended that you have one dedicated window for 'Display chat',
-    so you don't miss important messages during combat.
 
 
 (2.3a) Client options configuration files
@@ -4932,7 +4975,7 @@ just to reserve it for you.
 
 
 
-(3.2) The display (user-interface)
+(3.2) The display (user interface)
 ----------------------------------
 After you logged in with a character you will now see yourself (you are the
 '@' symbol, except if you chose 'fruit bat' body, then you'll be a 'b')
@@ -4983,7 +5026,7 @@ important stats:
  (the title will change as you gain experience levels by fighting monsters),
 -followed by your character level
 -your amount of experience
--and your cash ('Au' stands for Aurum, latin for gold)
+-and your money ('Au' stands for Aurum, latin for gold)
 -the 'encumberment' bar (blank at the beginning)
 -a mini lag-o-meter bar displaying your 'ping' by coloured plusses, 1 plus
  symbol means your latency is below 50ms, each further plus symbol means 50ms
@@ -4998,17 +5041,17 @@ important stats:
 -The next two values are most important and will change all the time while
  fighting monsters.
  They are your Hit Points (HP) and Mana Points (MP), current/maximum values.
- Mana points are very important for wizards, since they determine which spells
- and how many of them you can cast. The current hit points (Cur HP) tell you if
- you are injured. If they drop below zero you die!
- If they are the same as your Max HP then you are fully rested and physically
+ The current hit points (Cur HP) tell you if you are injured. If they drop
+ below zero you die! If they are the same as your Max HP then you are fully
  healed.
+ Mana points are very important for classes that can cast spells or recite
+ prayers, since they determine which spells and how many of them you can cast.
+ A list of all spells and prayers can be found at (7.8).
  If your current MP or HP are low and you wish to regenerate them faster, you
  can press SHIFT+R to rest. While resting, regeneration is greatly increased.
 -Next entry is your stamina (ST), if you chose a class that makes use of it.
- Stamina may allow you to employ special techniques accessed with 'm'.
- Maximum stamina is always 10. Its regeneration rate can be increased by
- having a higher Constitution attribute (CON) or by training 'Health' skill.
+ Stamina may allow you to employ special techniques accessed with 'm', see
+ chapter (7.12) for details. Maximum stamina is always 10.
  If your current ST is low and you wish to regenerate it faster, you can press
  SHIFT+R to rest. While resting, regeneration is greatly increased.
 -Below stamina is a 'flag bar' which displays certain combat-related modi of
@@ -5725,6 +5768,11 @@ items lose their ability to be traded between incompatible character modes.
 Your money is displayed as pieces of gold in TomeNET, traditionally abbreviated
 to 'Au' for latin 'Aurum', meaning 'gold'. 'Au' is also the chemical symbol for
 gold in the periodic table.
+
+Any type of money on the floor is always denoted by a '$' symbol, and you can
+drop money from your inventory to the floor by pressing the '$' key, and use
+the letters 'k/K' and 'm/M' to denote 1000x and 1000000x, eg you can drop 2m
+or 2m43 or k6 to drop 2 million Au, 2.43 million Au or 600 Au.
 
 If you find money in any other form than gold pieces, such as copper or gems,
 it will always just display the equivalent gold value and be treated as such.
@@ -6768,7 +6816,13 @@ of in light green to indicate that it is drained), your maximum experience ie
 the amount you used to have before getting drained still profits by 10% of any
 experience you gain, so it is not completely wasted if you don't have a potion
 of restore life levels at hand, or some other means to restore your experience
-back to normal.
+back to normal. Yet it is highly inefficient as you waste 90% of the experience
+gained and you should use some means to restore your XP as soon as possible
+before continuing to kill monsters.
+
+If you died and turned into a ghost you will still gain experience from killing
+monsters, but all experience gains from any source are cut to 50% while you are
+dead.
 
 
 Recommended minimum depths for optimal experience gain
@@ -7465,16 +7519,20 @@ staircase colours (also visible on the world map):
 
 -Experimental dungeons. There might be an experimental dungeon available, which
  has special flags that are very unusual:
- NO_TELE, NO_ESP, LIMIT_ESP, NO_SUMMON.
- These can prevent teleportation, ESP, limit ESP vision to radius 10, prevent
- all kind of summoning (especially monsters summoning more monsters!).
+ - NO_TELE (monsters and players cannot teleport)
+ - NO_ESP or LIMIT_ESP (either no ESP at all or ESP range is limited to 10),
+ - NO_SUMMON (monsters and players cannot summon).
+
  Such experimental dungeons have light umber coloured staircases (same colour
- as is used for maxed stats/abilities, ie light umber).
+ as is used for maxed stats/abilities, ie light brown/bronze).
  Experimental dungeons do not belong to the canon game and you enter on your
  own risk! (Well, you actually enter any dungeon at your own risk, so..)
 
-If a dungeon has several of these flags, the latter ones will override the
-staircase colour. So a hellish NO_RECALL_INTO dungeon has hellish-looking
+ If an experimental dungeon also has Ironman, Hellish or FORCE_DOWN flags its
+ staircase will instead be dark grey and flicker orange.
+
+If a dungeon has several of these flags listed, the latter ones will override
+the staircase colour. So a hellish NO_RECALL_INTO dungeon has hellish-looking
 staircases.
 
 Sometimes you might find ruins of old staircases that don't lead to any
@@ -7537,10 +7595,9 @@ Note that jails (if the server has one) don't allow any sort of teleportation,
 nor will you turn into a ghost if you get killed there, instead you will get
 destroyed completely (basically same as if you were a no-ghost mode char).
 
-A jail usually has an ironman tower or dungeon inside. It has no deeper meaning
-and is certainly not required or recommended to take. If you're up for a pretty
-hard extra challenge and take it, you'll be a free man or woman if you make it
-out alive, though.
+A jail often has an ironman tower or dungeon inside, constituting an escape
+tunnel. If you don't feel like sitting out your punishment you could try taking
+your chances to escape. If you make it out alive you'll be a free man or woman.
 
 
 
@@ -8436,6 +8493,10 @@ See (4.3) under "Dungeon Types" -> "Experimental dungeons" for more details.
   store can spawn on very deep floors.
  -An IDDC-exclusive character is (under the usual server settings) also able to
   enter the Halls of Mandos instead of the IDDC!
+ -Depending on local server settings, the Halls of Mandos might have special
+  or unusual dungeon flags, such as 'disallow any teleport', 'limit ESP range'
+  and 'disallow any summoning', making gameplay quite distinguished from other
+  dungeons.
 
 
 (4.5c2) Example dungeon depth relations
@@ -8689,7 +8750,7 @@ Mode via 'S'. This will slow you down but make you search for traps on every
 step you take and at the same time prioritize displaying all known traps over
 items.
 
-Disarming traps will become an essential part of the gameplay later on. Vaults
+Later on, disarming traps will become an essential part of the gameplay. Vaults
 will have *lots* of traps and if you haven't got superior disarming skills (or
 wands of disarming / trap destruction) every single move of your character will
 have to be planned! This can be especially annoying and dangerous if there are
@@ -9280,6 +9341,21 @@ You can use 'k' and 'M' to denote a multiplier of thousand and million
 respectively:
   @S3k  will sell for 3000,
   @S1M  will sell for 1000000.
+
+If you want to keep the last item of a pile of items offered in your store,
+you can put a 'B' after the '@S', for 'base', eg:
+  @SB
+  @SB15000
+(This will always cause 'mass cheques' (those inscribed 'various piled items')
+to be used for sales of this item, as the pile can never run out.)
+You can also specify a number after the 'B' to set the exact minimum amount of
+items to keep (from 1 to 99). It must be terminated by a semikolon, eg:
+  @SB5;
+  @SB5;15000
+Depending on the server settings, items inscribed @SB that are running too low,
+hitting the base stock limit specified via the B-tag and therefore stop being
+available for purchase in the store will be displayed in dark grey and possibly
+with the numerical prefix 'no more' and/or a price tag saying 'SOLD OUT'.
 
 If you want to display items that are not for sale, eg create a 'museum', you
 can inscribe the items
@@ -10068,6 +10144,8 @@ Ironman Deep Dive Challenge (IDDC)
     Rogues should be aware that it's not possible to steal from general store,
     weaponsmith, armoury, temple, magic shop, black market and the special
     potion store in the dungeon towns.
+    This leaves only the Hidden Library, Herbalist, Alchemist and the Library
+    to steal from.
 
     If you use stolen enchant scrolls on an item while you are in a town,
     then the item will get a 100% off discount. If you want to use stolen
@@ -10104,6 +10182,10 @@ Ironman Deep Dive Challenge (IDDC)
     If you make it through the IDDC, the title of "Iron Champion" will be
     bestowed on you. If you even manage to defeat Morgoth you will instead
     acquire the title of "Iron Emperor" or "Iron Empress" respectively.
+    You are allowed to re-enter the IDDC (and depending on server version) and
+    also the Halls of Mandos after you made it through.
+    However, if you are on a dedicated-IDDC character, you will automatically
+    retire (aka suicide) if you enter any other dungeon.
 
   Specialties:
     Mimicry users gain +9 extra kill credit on each kill, effectively
@@ -10427,8 +10509,8 @@ to you are actually diagonal of you! So now it might become clear how to do
 that event in the most effective way..
 
 Note that the map coordinates you see when pressing SHIFT+L (SHIFT+W with rogue
-like keymap) can differ depending on if you have 'big_map' option enabled or
-not in  = 1  options menu.
+like keymap) can differ depending on if you have 'big_map' setting enabled or
+not via  = b  .
 
 
 
@@ -11715,7 +11797,7 @@ Evil:   Double damage from holy based attacks (holy orb, holy fire)
 Good:   Double damage from hellfire attacks;
         eating Lembas;
         reading blessing or PfE scroll;
-        using dispel evil or holiness staff;
+        using dispel evil staff;
         hostile dispel evil effects;
         activating the true arts of Ingwe, Carlammas, Fundin Bluecloak, Himring
 Life:   Eating Lembas or sprigs of Athelas; quaffing potion of life;
@@ -12529,6 +12611,8 @@ Experience      Gives you additionally half your current experience plus 10,
                 However, some players prefer to quaff it earlier, when it's
                 especially hard for them to reach the next level for some
                 reason, maybe harder than if they were at 200,000 exp already.
+                The XP gain from this potion is not affected by the experience
+                gain penalties (exp ratio) of your class or race.
 Heroism         Temporary effects: Increases CHP and MHP by 10. Removes fear.
                 +12 bonus to-hit. ("You feel like a hero!")
 Infra-vision    Temporarily grants you 100..200 ft of infra-vision randomly,
@@ -12799,7 +12883,7 @@ Healing         Staves:
                 Rods:
                 Heals 100 to 400 hit points, depending on magic device skill,
                 cures stun and cuts.
-Holiness        Dispels nearby evil. Also protects you from evil for a while.
+Holiness        Dispels nearby undead. Also protects you from evil for a while.
                 Cures poison/disease/cuts, removes fear/stun, heals somewhat.
 Magi            Restores your intelligence and 500 mana points.
                 ('You feel your head clearing')
@@ -13232,9 +13316,14 @@ and also
     The Hard Leather Armor 'Gothmog'    (which is actually a random artifact)
 You'd get a small luck bonus, or 'set bonus'. The more artifacts of similar
 name you equip the greater the luck bonus will be.
+
 If your client is newer than 4.8.0, it will display the indices of equipment
 slots providing set luck bonus in colours (see table below). This behaviour
 can be toggled with the 'equip_set_colour' option in =3.
+
+The randart rings of power dropped by Nazgul are exempt from this and won't
+give any kind of bonus nor contribute to one.
+
 The exact luck boni for those 'artifact sets' starting at two items are:
 
   Number of artifacts equipped  |  Luck bonus  | Equip slot index colour
@@ -15732,6 +15821,8 @@ stated.
      (0.228)                    Martial Arts users do not and cannot wield any
                                 weapons or they get penalised heavily, except
                                 for boomerangs.
+                                Note that as a specialty MA actually works with
+                                the 'Backstabbing' skill!
 
                                 They also get an armour class bonus for each
                                 _unused_ equipment slot that can take a piece
@@ -17755,7 +17846,8 @@ create a character!):
     fighting their way out of a tight spot. The master of traps and locks, no
     device is impossible for him to overcome.
     Their main way of combat is by either dual-wielding two sword-class weapons
-    such as daggers, or - rather rarely seen - utilizing martial arts.
+    such as daggers, or - rather rarely seen - utilizing martial arts. (As a
+    specialty the 'Backstabbing' skill actually works with martial arts.)
     Their primary stats are intelligence and dexterity, intelligence being very
     important if they aim to become proficient at magic, while dexterity makes
     up in combat prowess for what their strength might be lacking.
@@ -22308,13 +22400,10 @@ Parrying and blocking can both be affected by combat stances - see (7.2) for
 
 (7.12) Fighting/shooting techniques
 -----------------------------------
-Depending on your class, your character is able to gain access to certain
-fighting techniques that cost 'Stamina' to use. Warriors, rangers, paladins
-and mimics will learn all of them eventually, while rogues may learn sprint
-and taunt, and some rogue-specific techniques.
-
-Similarly, by training archery your character will gain access to a couple of
-ranged techniques.
+Certain special techniques can be learned that cost 'Stamina' (ST) to use:
+Which fighting techniques you will learn usually just depends on your class,
+except when written otherwise in the technique's description.
+Ranged techniques however instead depend on training your archery skill.
 
 All techniques are accessable via 'm' key, also see (3.7a) and can of course
 be put on hotkeys, for example by using the macro wizard.
@@ -25110,20 +25199,7 @@ Solution:   See (2.1a) for details on how to install audio packs. Also note
             is '7zip' (a sourceforge project at the time of writing)
             downloadable at:  https://www.7-zip.org/
 
-PROBLEM 34: On OS X when entering the game (right after picking a character) in
-            big_map mode with already large (46 lines) main window, the window
-            will suddenly become small (24 lines) again.
-            As of the time of writing this, the exact cause is still unknown.
-            A workaround is to perform the following steps:
-            -turn off big_map mode (= key for options, page 5) and save options
-            -exit client with CTRL+Q (so it will save the main window height)
-            -log on again, turn on big_map mode, save the options again.
-            -from now on, always exit the game via the window close button in
-             the window's titlebar, never via CTRL+Q. That way, your .tomenetrc
-             config file is never overwritten and hence your client will always
-             start with only 24 lines, switching back to correct big_map mode
-             only when you actually log in with a character, thus circumventing
-             the bug.
+PROBLEM 34: (Deprecated)
 
 PROBLEM 35: On certain terminal emulators, TomeNET when run in ncurses-mode
             ('-c' command-line option or just a GCU-only client) will display
