@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 13. August 2023 - written by C. Blue (c_blue@gmx.net)     |
+| Latest update: 22. August 2023 - written by C. Blue (c_blue@gmx.net)     |
 | for TomeNET version v4.9.0c - official websites are:                     :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -426,7 +426,7 @@ compile the game under '(2.1) Installing/updating TomeNET'.
           world location in the player list (accessed with '@' key).
           (SHIFT+O if you are using rogue-like key map.)
  SHIFT+L  look around the map. Very useful to locate team mates ;).
-          (SHIFT+W if you are using rogue-like key map.)
+          (CTRL+W if you are using rogue-like key map.)
  CTRL+U   the audio mixer menu (the hotkeys for toggling master/music work
           outside of this menu too).
           (CTRL+F if you are using rogue-like key map.)
@@ -699,7 +699,8 @@ K       CTRL+C  forcibly combines a level 0 item in your inventory with other
 
 C       C       see a character overview.
 
-L       CTRL+W  look around your current sector/floor (use direction keys).
+L       CTRL+W  look around your current sector/floor, using direction keys.
+                Hit ESC to exit this 'locate' mode again.
 
 M       M       display either the world map if you're not in a town or in a
                 dungeon, otherwise display a minimap of the town or of your
@@ -2005,7 +2006,7 @@ They all start with a slash '/' hence they're called slash commands:
 
 /untag *    Will remove all inscriptions from all items in your inventory.
 
-/untag p    Will remove all pseudo-id tags from your inventory items.
+/untag p    Will remove all pseudo-ID tags from your inventory items.
             Note: This will work on equipped items too!
 
 /untag u    Will remove all unique-loot tags from your inventory items.
@@ -2615,8 +2616,8 @@ ESP         Extrasensory perception. ESP is a telepathic power that allows you
              trolls are not a major threat, the ESP can be utilized for finding
              troll pits! These usually yield major amounts of experience in the
              early gameplay. Typically, the player would enter a dungeon floor
-             and use Shift+L (Shift+W RL keymap) to scan the whole floor for a
-             possible troll pit.
+             and use Shift+L (CTRL+W for Roguelike keymap) to scan the whole
+             floor for a possible troll pit.
 
             Note that the rogue ability 'Cloaking' overrides ESP, so a cloaked
             target cannot be spotted by ESP.
@@ -2814,8 +2815,8 @@ Pre-King    The life of a character within the level range 1 to 50.
 
 Pseudo-ID   If a player keeps an unidentified item for a longer time he might
             'feel' if the item is average, good, cursed or special. The item
-            will automatically receive a 'pseudo-id inscription' then.
-            Pseudo-id intensity and speed depend on various skills in regards
+            will automatically receive a 'pseudo-ID inscription' then.
+            Pseudo-ID intensity and speed depend on various skills in regards
             to the type of item: 'Combat', 'Archery', 'Magic' or 'Trapping'.
             It does not matter whether the player is acting, afk or idle.
             See (5.7) for more information about identification.
@@ -2877,6 +2878,9 @@ RoP         Ring of Power. While these also includes the true artifact rings of
 Scumming    Repeatedly using staircases up/downwards to make a level become
             recreated. Usually in hope of finding a specific monster on that
             depth. ('I scum 450..500 ft for Wormy'.)
+            Use 'locate' (SHIFT+L or CTRL+W depending on key map) to quickly
+            'scan' the floor for your desired monsters, provided you have the
+            required type of ESP to see them.
 
 SI          See invisible. (See (5.14) for details about invisibility.)
 
@@ -4251,7 +4255,7 @@ self-explaining or that are especially important are listed in detail here:
     Alert on taking damage while you are AFK (alert_afk_dam) and
     alert on taking damage while looking around the map via 'locate' command
     (alert_offpanel_dam). (The locate command is invoked with SHIFT+L on normal
-    key map and SHIFT+W on rogue-like key map.)
+    key map and CTRL+W on rogue-like key map.)
 
     A bunch of options for special visual effects and lighting.
         These options change how lighting is applied to lamp light and walls,
@@ -8933,8 +8937,8 @@ other weapon.
 
 Trap kits can have special (ego) powers:
 
-Pprefixes:
-----------
+Prefixes:
+---------
 Automatic       - Can set off up to 99 times, with a 20% chance each time of
                   ceasing to function. Requires the according amount of ammo
                   though, if it's not a device trap kit. (AUTOMATIC_5 flag.)
@@ -10287,7 +10291,7 @@ Ironman Deep Dive Challenge (IDDC)
     Rogues should be aware that it's not possible to steal from general store,
     weaponsmith, armoury, temple, magic shop, black market and the special
     potion store in the dungeon towns.
-    This leaves only the Hidden Library, Herbalist, Alchemist and the Library
+    This leaves only the hidden Library, herbalist, alchemist and the library
     to steal from.
 
     If you use stolen enchant scrolls on an item while you are in a town,
@@ -10651,7 +10655,7 @@ While this seems sort of obvious, it is easy to miss that for example in the
 to you are actually diagonal of you! So now it might become clear how to do
 that event in the most effective way..
 
-Note that the map coordinates you see when pressing SHIFT+L (SHIFT+W with rogue
+Note that the map coordinates you see when pressing SHIFT+L (CTRL+W with rogue
 like keymap) can differ depending on if you have 'big_map' setting enabled or
 not via  = b  .
 
@@ -12135,17 +12139,17 @@ See (5.9b) for more information about artifacts.
 If a player holds an unidentified item long enough he/she might get
 a 'feeling' about it. The more points in 'Combat' skill the player has
 the faster and clearer he can feel the items value. This is called
-'pseudo-identifying'. Warriors are more likely to pseudo-id than casters.
-If a player pseudo-ids an item, the 'feeling' will be appended in { }
+'pseudo-identifying'. Warriors are more likely to pseudo-ID than casters.
+If a player pseudo-IDs an item, the 'feeling' will be appended in { }
 brackets to the item name.
-Note that archers or casters will also become better at pseudo-id'ing,
+Note that archers or casters will also become better at pseudo-ID'ing,
 if they train the 'Archery' or 'Magic' skill respectively.
 'Archery' at level 11 helps to get more detailed ('excellent' too instead of
 just 'good') feelings about ranged weapons and ammunition.
 'Magic' at level 11 helps to get more detailed ('excellent' too, instead of
 just 'good') feelings about magic items, potions and scrolls.
 
-Items display the following pseudo-id tags:
+Items display the following pseudo-ID tags:
 
 -Basic items, non-magical:         {average}
 -Valuable / enchanted items        {good}
@@ -13791,7 +13795,7 @@ to 50.000 or if he is in wraithform, these two stack for 3/4 reduction total.
 Several items you find will be {cursed}!
 Cursed items usually have bad effects that outweigh or dominate their useful
 abilities, and you cannot take them off once you equipped them, as long as
-the curse isn't broken. Cursed artifacts and ego items are pseudo-id'ed as
+the curse isn't broken. Cursed artifacts and ego items are pseudo-ID'ed as
 {terrible}. Shops won't buy cursed items, they might buy the item after the
 curse is broken, however.
 If you equip an unidentified item and it carries a curse your character will
@@ -14389,8 +14393,8 @@ Enchanting restrictions:
     - Normal items that have the NO_ENCHANT flag, which are Dark Swords and all
       three types of "Magic" ammo.
 
-To enchant an item, you can either use scrolls (available at the Alchemist or
-the Black Market) or enchantment shop services (see (4.5a)).
+To enchant an item, you can either use scrolls (available at the alchemist or
+the black market) or enchantment shop services (see (4.5a)).
 There are big differences between the effects:
  - Shop services always enchant one of your equipped items (which is eligible
    for enchanting) to 5 + (yourlevel / 5), capping at 20. So you reach that
@@ -15690,7 +15694,7 @@ stated.
                                 average, good, excellent or special.
                                 At the beginning you will only feel 'cursed'
                                 or 'good', and only for melee weapons, armour
-                                and boomerangs -  and food.
+                                and boomerangs - and food.
                                 Raise combat skill to at least 11 to get
                                 more distinctive feelings about melee weapons,
                                 armour and boomerangs.
@@ -15701,7 +15705,7 @@ stated.
                                 A very powerful one (combat 41) can also notice
                                 curses on all kinds of items.
                                 The further you train Combat, the faster you
-                                will pseudo-id items.
+                                will pseudo-ID items.
 
                                 Increases Fear/Stun/Confuse duration of the
                                 target (if attacking causes those).
@@ -16138,9 +16142,9 @@ stated.
                                 At 20 the quality of your handmade ammunition
                                 becomes remarkably better.
 
-                                Lets you pseudo-id shooting weapons and
+                                Lets you pseudo-ID shooting weapons and
                                 ammunition more often the higher the skill.
-                                If increased to at least 11, pseudo-id will
+                                If increased to at least 11, pseudo-ID will
                                 give you much more distinctive feelings about
                                 the items. Before that, you can only
                                 distinguish between cursed and good.
@@ -16216,7 +16220,7 @@ stated.
                                 Artifact boomerangs always return reliably.
 
                                 (Note that your 'Combat' skill determines your
-                                ability to pseudo-id Boomerangs.)
+                                ability to pseudo-ID Boomerangs.)
 
 << For more information about learning spells, see (7.8)
    Most spells will increase in power in one way or the other when you increase
@@ -16224,13 +16228,16 @@ stated.
 
 +Magic                          Increases your base mana by +4 per point.
  (0.250)
-                                Lets you pseudo-id magic itemsfaster the higher
-                                your skill is. Magic items are:
-                                Mage staves, potions, scrolls, food (hybrid),
-                                and magic devices (wands, rods, staves).
+                                Lets you pseudo-ID magic items faster the
+                                higher your skill is. Magic items are:
+                                Mage staves, potions, scrolls, food (!),
+                                rings, amulets and magic devices (wands,
+                                rods, staves).
+
+                                You can also sense curses on any kind of item.
 
                                 If 'Magic' is at least at 11 points, you will
-                                get more distinctive feelings from pseudo-id,
+                                get more distinctive feelings from pseudo-ID,
                                 before that you only sense 'good' or 'cursed'.
 
     +Wizardry
@@ -16831,9 +16838,9 @@ stated.
                                 See (4.7) for details about monster traps.
 
                                 Improves your ability to recognize traps:
-                                Lets you pseudo-id trap kits, the more often
+                                Lets you pseudo-ID trap kits, the more often
                                 the higher your skill.
-                                If increased to at least 11, pseudo-id will
+                                If increased to at least 11, pseudo-ID will
                                 give you more distinctive feelings instead of
                                 just 'good' or 'cursed'.
 
@@ -20100,7 +20107,7 @@ fine except for custom books, and you won't be able to browse the equipped book
 and you can only cast from it by using the macro wizard (or manually creating
 macros that cast spells by their name).
 If you use the latest github code or a client of version higher than 4.9.0c
-these limitations will be fixed.
+these limitations will be lifted.
 
 
 - Wizardry -
@@ -23681,7 +23688,7 @@ Mistakes / Carelessness:
 
 -If you are surrounded by huge piles of loot from dead monsters you might be
  tempted to drop cheaper items like phase door scrolls to make room for the
- precious loot, and go /afk to wait for pseudo-id. However, know that you
+ precious loot, and go /afk to wait for pseudo-ID. However, know that you
  _can_ all of a sudden be ambushed during that time by enemies. By enemies
  that _require_ you to use phase door..
 
@@ -25351,12 +25358,16 @@ Solution:   Despite similar name, the only thing these two games have in common
             Also, the two games are maintained and developed by completely
             different persons and teams.
 
-PROBLEM 22: My (mixer) settings or window positions (MS Windows only) aren't
-            saved automatically as they should be, when I quit the game.
+PROBLEM 22: My (mixer) settings or window positions aren't saved automatically
+            as they should be, when I quit the game.
 Solution:   Don't use ALT+F4 or the 'x' button in the title bar of the game
             window to quit the game. It will result in skipping the normal exit
             routine, which asks you to save chat and which also saves certain
             settings. Instead, use CTRL+Q for 'save & quit' (compare (0.2)).
+            Alternatively, depending on your window manager causing trouble,
+            you can also try devilspie to save window locations. Devilspie can
+            also undecorate windows (removes the title bar) which can be useful
+            to maximize screen estate.
 
 PROBLEM 23: When I try to login, I get a 'security violation'.
 Solution:   Either your host name (that's your PC's network name you can set in
