@@ -2153,8 +2153,9 @@ The ! inscriptions:
     either inscribe it   !dsvk   or just   !*   (implies != too, but whatever).
 
     !+ inscription:
-        Does the same as !* except that it does not prevent dropping an item,
-        so it does not imply !d but just !ksv=h (with 'h' being obsolete).
+        Implies !d, !k, !s, !=, !h.
+        So it does the same as !* except that it does not prevent dropping or
+        throwing an item. This can be useful for throwing weapons for example.
 
 A very useful inscription for (heavily) cursed items:
     !w          Prevent wielding/wearing an item. This is very useful if you
@@ -5537,6 +5538,10 @@ There are four categories of subinventories:
   just fine when they are inside bags, just as usual.
   If you pick up fitting magical devices they will be auto-stowed into this bag
   unless inscribed (see further down).
+
+- Potion Belt
+  This utility belt can hold potions for you, ready to use on demand, thereby
+  alleviating the load on your precious inventory space.
 
 As you noticed, for now from outside the subinventory you cannot access any
 items inside except if you use the '@' (call by item name) feature in the item
