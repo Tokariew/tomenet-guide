@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 21. December 2023 - written by C. Blue (c_blue@gmx.net)   |
+| Latest update: 24. December 2023 - written by C. Blue (c_blue@gmx.net)   |
 | for TomeNET version v4.9.1 - official websites are:                      :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -14075,6 +14075,8 @@ TY_CURSE        "It carries an ancient foul curse."
 DG_CURSE        "It carries an ancient morgothian curse."
                 Rarely summons a random non-unique monster on you, even if
                 uncursed. The monster will yield no credit, xp or loot.
+                Monster groups (escorts or friends) cannot be summoned by this
+                curse, so it will always just be a single monster.
                 The maximum (randomized) monster level will be..
                 (player level * 7 / 5 + dungeon_level) / 2 + 5.
                 (DG_CURSE will stay, even if the 'normal' curse is broken!)
@@ -18292,14 +18294,16 @@ create a character!):
     once (see (7.2). They prefer light armour, since dual-wielding and many of
     their special abilities won't work with heavy armour or two-handed weapons
     (see (5.5)).
-    A rogue's perception is higher than any other class, and usually they
+    A rogue's perception is higher than any other class, and often they
     notice traps or secret doors without needing a search. Rarely will a
     rogue be unable to avoid or disarm a trap. Rogues also have the unusual
     ability to train stealing from shops and their fellow men, a dangerous but
     sometimes very rewarding profession.
     Searching (or entering searching mode) will actually search within a radius
     instead of just the adjacent grids, another special trick of this class -
-    this way it becomes much easier to find staircases without mapping magic.
+    this ability can even detect staircases, shops, hostile rune- or monster
+    traps making navigation easier without relying on stair-detection magic or
+    mapping magic.
     Rogues are better than warriors or paladins with magical devices, but still
     can not rely on their performance. They can also learn a few magic spells.
     When searching for hidden traps, doors and stairs, they may spot them more
@@ -18393,13 +18397,17 @@ create a character!):
 
     The first thing you should do when you created your character is making
     a macro for firing your bow. Press % and then z to start the macro wizard,
-    and then c to create a firing macro.
+    and then c to create a firing macro. The F1 key already has such a macro
+    predefined on it (if you didn't change it), test it in town on some townie
+    or one of the target dummies.
+
     Even though archers start out with just a long bow for ranged weapon, they
     also get one of each of the 3 base types of ammo in the game (magic arrow
     for bow, magic bolt for crossbow, magic shot for sling) so you can buy any
     ranged weapon of your choice in the town stores and will have the matching
     type of ammo to go with it right from the start - press 'w' key to load it
-    into your quiver.
+    into your quiver. Magic ammunition always returns to you so you only need
+    one, except if it gets destroyed by some elemental attack.
 
     Hints:
     Enchanting your ranged weapon to-damage is especially effective because
@@ -18507,11 +18515,16 @@ create a character!):
     If you're planning to make use of ranged weapons, the first thing you
     should do when you created your character is making a macro for firing your
     bow. Press % and then z to start the macro wizard, and then c to create a
-    firing macro. Buy arrows (to use with your bow) in store 1 or store 3 in
-    town and put them in your quiver (w key). If you instead get a crossbow you
-    will need bolts instead of arrows, and slings would need shots or pebbles.
+    firing macro. The F1 key already has such a macro predefined on it (if you
+    didn't change it), test it in town on some townie or a target dummy.
 
-    Hint:
+    Buy arrows (to use with your bow) in store 1 or store 3 in town and put
+    them in your quiver (w key). If you instead get a crossbow you will need
+    bolts instead of arrows, and slings would need shots or pebbles. Inscribe
+    the ammunition  !=  to pick it up automatically from the floor by simply
+    walking over it.
+
+    Hints:
     Make sure to create a macro for your fighting techniques 'Sprint' and
     'Taunt' when you learn them, which you do pretty early on. They are great
     for catching annoying monsters that try to keep their distance to you.
