@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 16. January 2024 - written by C. Blue (c_blue@gmx.net)    |
+| Latest update: 23. January 2024 - written by C. Blue (c_blue@gmx.net)    |
 | for TomeNET version v4.9.1 - official websites are:                      :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -2186,6 +2186,7 @@ A very useful inscription for (heavily) cursed items:
                 If n isn't specified it will use the default value '10'.
                 This is useful for consumables such as healing potions, to
                 draw your attention to them when you're running low.
+                Eg: !W15
                 (This warning can only get triggered when the count of the item
                 stack is reduced, eg when an item is consumed.)
                 WARNING: Don't confuse this inscription with !w. It does NOT
@@ -2203,6 +2204,7 @@ Other ! inscriptions:
     !Fn         If the server has the (experimental) Demolitionist perk enabled
                 this inscription can be used on blast charges to customize the
                 fuse length to n seconds, where nn must be within 0 to 15.
+                Eg: !F15
     !E          Prevent eating this food item.
     !q          Prevent quaffing this potion.
     !r          Prevent reading this scroll.
@@ -2302,7 +2304,7 @@ Sling ammunition and boomerangs:
     !R          Prevents ricochetting.
 
 Scrolls/spell books of Identify (except for bag-ID), Rods/Staves of Perception:
-    !X          If you pick up an unidentified item, you will automatically
+    !X[n]       If you pick up an unidentified item, you will automatically
                 read a scroll to identify it.
                 This inscription also works on 'The Stone of Lore'.
                 It does not work for Arcane Lore, since that is purely a bag ID
@@ -2311,6 +2313,11 @@ Scrolls/spell books of Identify (except for bag-ID), Rods/Staves of Perception:
                 you pick up an item. That means if you use means that can fail,
                 such as spells or magic devices, and you do fail, there will be
                 no automatic retry, you will have to ID it manually.
+                An optional number can be specified after the "!X" to restrict
+                which items will be identified:
+                 0: Only ID flavoured items.
+                 1: Never ID flavoured items.
+                Eg: !X0
                 See (5.7) for more information about identification.
 
 Bags (subinventory):
@@ -2364,6 +2371,22 @@ Some examples for inscriptions to use with macros:
   Eg:  @r0      Pressing the keys 'r' and '0' will read that scroll.
 
 etc.. you get the idea. :)
+
+
+There is also a special variant of the tag-macro inscription, when you have
+only one type of item you want to use for a specific action, for example
+refilling your torch from a stack of spare torches in your inventory:
+  @<commandkey>%
+
+When you press the <commandkey>, This macro will not prompt for an item but
+immediately use the inscribed item for the action.
+Example for refilling your equipped torch with torches in your inventory,
+inscribe the torches in your inventory:
+  @F%
+
+Now if you press F (that is Shift+F) to refill torch, you will not get prompted
+but one of the inscribed torches is automatically used for the macro.
+
 
 You can also inscribe items just to remember their abilities. For example
 if you find an armour that is an artifact, and you found out it resists
@@ -17529,6 +17552,7 @@ Aside from blast charges it's possible to craft fireworks:
 ----------------------------------------------------------
 Charcoal + sulfur + 2x saltpetre + 2x reactive metal powder
  + scroll of light or scroll of fire = scroll of firework (of random type)
+Using a scroll of fire will always result in 'big' types of firework scrolls.
 
 
 
@@ -17985,7 +18009,8 @@ create a character!):
     conjure holy fire or utilize magic of water or nature school. Neither can
     they make use of mimicry techniques (with the exception of vampire bat and
     vampiric mist, see below) or holy or spirit spells.
-    As a specialty, vampire istari are able to learn the occult shadow school.
+    As a specialty, vampire istari are able to learn the occult shadow school
+    and unlife school, which are not accessible to istari of other races.
     They are unable to train in anti-magic in order to suppress magic, but they
     can make use of items that provide anti-magic effects.
     Aside from darkness they also resist sanity-draining effects somewhat,
@@ -18277,6 +18302,9 @@ create a character!):
     effectively use the 'Disruption Shield' spell they are very vulnerable.
     A high-level istar can be very powerful, but getting there can be a
     difficult journey.
+    As a specialty, vampire istari are able to learn the occult shadow school
+    and the occult unlife school, as they cannot train water or nature schools
+    and also don't have access to the holy-fire based Fireflash spell.
 
     Hint:
     An istar has very few hit points compared to other classes, making
@@ -20669,6 +20697,7 @@ these limitations will be lifted.
                     current floor. Doesn't work on unnatural creatures.
                     Works on all currently existing breeders and also on all
                     that may spawn in the future on this same dungeon floor.
+                    (Same effect as scroll of vermin control.)
                     Required skill level for first spell level: 10.
 
     Recovery        Neutralizes poison, cures diseases, heals cuts,
@@ -21551,6 +21580,7 @@ All Unlife spells are Wisdom-based.)
                     current dungeon floor. Doesn't work on unnatural creatures.
                     Works on all currently existing breeders and also on all
                     that may spawn in the future on this same dungeon floor.
+                    (Same effect as scroll of vermin control.)
                     Required skill level for first spell level: 13.
 
     Nether Sap      Draws from nether undercurrents to continuously replenish
@@ -21592,6 +21622,10 @@ All Unlife spells are Wisdom-based.)
                     into and pass solid walls. However, the effect will cease
                     immediately as soon as you step from walls back into open
                     space again.
+                    Wraithstep will trigger whenever you try to enter a grid
+                    that is impassable to you, but would be passable in wraith
+                    form. So it doesn't trigger on fixed terrain types but
+                    depends on your current abilities to pass specific terrain.
                     Required skill level for first spell level: 46.
                     Shared spell (see above): O.Unlife, O.Shadow.
                     This spell cannot be found in the Shadow tome.
