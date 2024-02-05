@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 2. February 2024 - written by C. Blue (c_blue@gmx.net)    |
+| Latest update: 5. February 2024 - written by C. Blue (c_blue@gmx.net)    |
 | for TomeNET version v4.9.1 - official websites are:                      :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -206,6 +206,7 @@ Contents
     (8.6)   Town/dungeon related hints
 (9) Miscellanous
     (9.1)   'The Art Not To Die'
+    (9.1a)  The worst kind of help
     (9.2)   Character dumps
     (9.2a)  High Score
     (9.3)   Golem creation
@@ -3704,19 +3705,19 @@ Windows command-line options:
 -h                      Displays this list of command-line parameters
 -C                      Compatibility mode for ancient servers (deprecated)
 -F <fps>                Set client internal engine fps (default is 100)
--k                      Don't disable numlock on client startup
 -l<Account> <Password>  For example -lGandalf geheim
--m                      Skip motd (message of the day) on login
 -N<character name>      For example -NDruidor
+-R <character name>     Character name to choose and auto-reincarnate it
 -p<Port>                For example -p19348
 -P <path to lib dir>    Sets the path to TomeNET's 'lib' folder
+-k                      Don't disable numlock on client startup
+-m                      Skip motd (message of the day) on login
 -q                      Turns off loading/initializing of audio ('quiet mode')
--R <character name>     Character name to choose and auto-reincarnate it
 -u                      Disables automatic LUA script updating
                         (You should NOT use this option!)
+-w                      Disables weather effects
 -v                      Automatically save chat log on exit (exclusive with -V)
 -V                      Automatically save complete message log on exit
--w                      Disables weather effects
 -x                      Don't save chat/message log on exit (don't prompt)
 <ip address>            for example 37.187.75.24
 
@@ -3874,17 +3875,17 @@ POSIX command-line options:
                         this file.
 -F <fps>                set client internal engine fps (default is 100)
 -l<Account> <Password>  for example -lGandalf geheim
--m                      skip motd (message of the day) on login
 -N<character name>      for example -NMagnet
+-R <character name>     character name to choose and auto-reincarnate it
 -p<Port>                for example -p19348
 -P <path to lib dir>    sets the path to TomeNET's 'lib' folder
+-m                      skip motd (message of the day) on login
 -q                      turns off loading/initializing of audio ('quiet mode')
--R <character name>     character name to choose and auto-reincarnate it
 -u                      disables automatic LUA script updating
                         (You should NOT use this option!)
+-w                      disables weather effects
 -v                      automatically save chat log on exit
 -V                      automatically save complete message log on exit
--w                      disables weather effects
 -x                      don't save chat/message log on exit (don't prompt)
 <ip address>            for example 37.187.75.24
 
@@ -24392,6 +24393,26 @@ Notes:
    "Instant Resurrection" in any temple, see (4.5a) for details and drawbacks.
  - You can use the  /page  command to get someone's attention if he seems afk
    and you need his help. This command will make his game client beep 3 times.
+
+
+(9.1a) The worst kind of help
+-----------------------------
+If you play with a newbie friend, don't spoil him by giving him powerful items
+or have him stand back in safety while you clear all monsters.
+
+This will prevent him from learning anything about the game, deprive him of any
+adrenaline-pumpking challenges that make us addicted, and you will kill his fun
+very quickly.
+
+When he finally dies at medium level, he will have no idea what is actually
+happening and also have no feeling about why is is actually playing this game
+at all or what's so fun about it.
+
+You are destroying your friend's gaming experience by babysitting him,
+it's the worst kind of "help" you could give.
+
+Instead, create a new level 1 character to team up with him, do not take any
+pre-existing items or gold with you, as if it was your first day of TomeNET.
 
 
 
