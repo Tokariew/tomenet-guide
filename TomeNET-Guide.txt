@@ -2350,8 +2350,9 @@ Any item in your inventory:
                 This inscription works with picking up items from the floor,
                 purchasing items from a store, stealing items from a store and
                 taking items from a list house (shop-style house).
-    !Kn         Inscribed on an inventory item, will auto-destroy any further
+    !K[n]       Inscribed on an inventory item, will auto-destroy any further
                 items you acquire beyond the amount of n.
+                If n is omitted, the default value of 15 will be used.
                 Use this mainly for empty bottles, especially in conjunction
                 with the 'keep_bottle' option enabled, to prevent uncontrolled
                 amassment of empty bottles. Example:  !K10
@@ -12119,7 +12120,7 @@ Gravity         These attacks have very annoying side-effects:
 Mana            Mana is pure magical energy. There are only rumours
                 about items that provide resistance against it.
                 Resisting it will cut damage to 6/7..6/12.
-                Breath damage is monster HP/3, breath caps at 250. Only very
+                Breath damage is monster HP/3, breath caps at 350. Only very
                 few monsters (mostly uniques) can breathe mana.
                 Mana bolts do 50+(1...[level*7/2]) damage.
                 Mana storms (balls) do (level*5)+(10d10) damage. Beware!
@@ -14248,8 +14249,10 @@ actual leeching).
 Last but not least some items might be 'Chaotic'. This means there are a few
 specific things that can happen on striking an enemy. One of them is vampiric
 life drain, which (together with 'confusion') is actually the most common one.
-When it happens it will have the same effect as if your weapon was actually
-vampiric. (For more details on the CHAOTIC flag, see (5.8).)
+When it procs (which isn't that common) it will have the same effect for that
+particular hit as if your weapon was actually vampiric. It does not stack with
+Vampirism in any way and also cannot really replace the reliable, continuous
+effect of 'real' vampirism (For more details on the CHAOTIC flag, see (5.8).)
 
 In general, vampiric flags don't stack from multiple sources! Just the source
 that fits the situation best (usually weapon/ammo) overrides the weaker ones
