@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 5. February 2024 - written by C. Blue (c_blue@gmx.net)    |
+| Latest update: 28. February 2024 - written by C. Blue (c_blue@gmx.net)   |
 | for TomeNET version v4.9.1 - official websites are:                      :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -824,6 +824,12 @@ B       f       1) bash/force something (ie a stuck door).
                 It will inflict damage depending on shield weight and your
                 strength and a stun effect (modified by Combat skill) on your
                 target. For details, see (7.12).
+
+                3) depending on server settings you can also bash a non-hostile
+                player in order to try and push past him, effectively switching
+                places with him.
+                Use it if someone is blocking a dungeon staircase by standing
+                around afk on it for example.
 
 l       x       look at a player/monster/object (use direction keys for
                 targetting). Similar to targetting, while looking you can press
@@ -10451,7 +10457,7 @@ Ironman Deep Dive Challenge (IDDC)
     you won't make it on the leaderboard that can be viewed at the
     mayor's office in Bree.
     (Note that 'IDDC-exclusive' characters can NOT recall out at static towns.
-    If they try, they are just 'killed by indetermnation' and erased.)
+    If they try, they are just 'killed by indetermination' and erased.)
 
     Starting after 4.9.0c, the IDDC will also spawn a refuge area every 500 ft
     on non-town floors, which offers a possibility to sell loot. If a player
@@ -18050,9 +18056,9 @@ create a character!):
     randarts will even get rerolled mostly, see the end of (5.12) for details,
     although some randarts may fail and remain cursed and useless.
     Vampires are good fighters and decent mages. However, they are unable to
-    conjure holy fire or utilize magic of water or nature school. Neither can
-    they make use of mimicry techniques (with the exception of vampire bat and
-    vampiric mist, see below) or holy or spirit spells.
+    conjure holy fire (Fireflash spell) or utilize magic of water or nature
+    school. Neither can they make use of mimicry techniques (with the exception
+    of vampire bat and vampiric mist, see below) or holy or spirit spells.
     As a specialty, vampire istari are able to learn the occult shadow school
     and unlife school, which are not accessible to istari of other races.
     These two schools are not affected by Sorcery though, so they have to be
@@ -19347,8 +19353,8 @@ Note: For some classes the power curve can depend heavily on the way you
       in terms of damage output if they can rely on a good party.
 
       Shamans can reach '++++' in 'Late', 'Endgame' and 'Post-winning' in terms
-      of usability, being able to easily access all features of Istari, Priests
-      and also Mimicry features without that much expense of skill points.
+      of usability, as they may access all features of Istari, Priests and also
+      those of Mimicry and Runecraft without that much expense of skill points.
 
               Start     Early     Mid       Late      Endgame   Post-winning
               (Lv 1)    (10+)     (30+)     (40+)     (50)      (After Morgoth)
@@ -19366,7 +19372,7 @@ Hell Knight   +++       +++       +++       +++       +++       +++
 Ranger        +++       +++       +++       +++       +++       +++
 Adventurer    +         +         ++        +++       +++       +++
 Druid         +++       ++++      ++++      +++       +++       +++
-Shaman        ++        ++        +++       +++       +++       +++
+Shaman        ++        ++        +++       +++.      +++.      +++.
 Runemaster    +         +++       +++       +++       +++       +++
 Mindcrafter   +++       ++        +++       +++       +++       +++
 
@@ -23209,7 +23215,7 @@ The techniques are as follows:
 
     Fighting techniques:
     --------------------
-    Sprint              7 stamina
+    Sprint              6 stamina
         Your character will be able to move faster, so you can catch up to
         runners and other monsters that avoid you. Note: This does not affect
         your SPEED stat, nor has anything to do with 'running' (shift+dir),
