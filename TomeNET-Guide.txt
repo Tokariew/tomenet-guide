@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 17. June 2024 - written by C. Blue (c_blue@gmx.net)       |
+| Latest update: 21. June 2024 - written by C. Blue (c_blue@gmx.net)       |
 | for TomeNET version v4.9.1 - official websites are:                      :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -874,8 +874,8 @@ P       O       party screen. Form/disband/modify a party with other players
                 For winners (queens/kings/empresses/emperors) the range is 11
                 levels instead of 7.
 
-H       CTRL+G  re-apply client-side and (if 'auto_inscribe' option is enabled)
-                server-side auto-inscriptions to an item.
+H       CTRL+G  re-apply client-side and (if 'auto_inscr_server' option is
+                enabled) server-side auto-inscriptions to an item.
 
 CTRL+U  CTRL+F  Displays/exits the audio mixer settings. (Also see (2.1a).)
                 Note: Mixer settings are saved automatically, provided you use
@@ -2617,7 +2617,7 @@ use the  /at  command.
 
 NOTE: In addition to this user-defined client-side auto-inscription list, there
       is also a server-side auto-inscription feature that can be enabled via
-      client option 'auto_inscribe'.
+      client option 'auto_inscr_server'.
       This option will add a predefined set of auto-inscriptions that might be
       generally useful for all types of characters, see (2.3) for details.
 
@@ -3188,6 +3188,8 @@ Wormy       Wormtongue, Agent of Saruman. He drops great items.
  level might occasionally spike out-of-depth, up to 40 levels above the floor
  level. This can be especially nasty because these spawns will not change the
  floor feeling, so you won't notice it except when you spot the monster.
+
+-No, there is currently no 'fishing' feature implemented.
 
 
 
@@ -4537,7 +4539,7 @@ self-explaining or that are especially important are listed in detail here:
         Alternatively if you have this option turned off, you can just use the
         '}' key to uninscribe the items you get from someone else.
 
-    Use additional predefined auto-inscriptions (auto_inscribe)
+    Also use predefined server-side auto-inscriptions (auto_insc_server)
         Will provide a predefined (on server-side) set of item-inscriptions
         that will be applied automatically to some selected items, which are
         Word of Recall items, various scrolls and a few potions.
@@ -9958,6 +9960,10 @@ Drain effects caused by items:
 ------------------------------
 Experience drain ('Drains your life force')
     Having 'Hold Life' does not protect against this.
+    Having 'Keep Life' (only obtainable from either having both Necromancy
+    and Unlife maxed out at 50.000, or from attaining character level 99)
+    completely prevents any XP drain, always, including drain from items.
+
     If you equip multiple items that drain experience, the total drain will
     diminish with each further item though instead of adding up, so for example
     using two rings of power will be less severe than than one might expect.
@@ -12637,6 +12643,11 @@ DRAIN_EXP ('It drains your life force')
         While in town areas (that means dungeon towns, normal towns and the
         surrounding housing area) the drain effect will be on hold!
         For more information see (4.11a).
+HOLD_LIFE ('It provides resistance to life draining attacks.')
+        Hold Life gives you a chance to resist the experience-draining effects
+        from attacks or potions, either resulting in no drain or at least
+        reduced drain if the roll is successful.
+        Does not help against DRAIN_EXP item flag.
 LUCK ('It affects your luck.')
         If you are lucky, your chance to find better items increases.
         Luck caps at 40 (and -10 downwards), having higher bonus won't help any
@@ -16695,9 +16706,9 @@ stated.
 
                                 If a character has Unlife and Necromancy both
                                 at 50.000 the character gains ultimate hold
-                                on his life force, rendering him immune to
-                                experience drain, including the permanent drain
-                                effect from DRAIN_EXP items.
+                                on his life force ('Keep Life'), rendering him
+                                immune to experience drain, including the
+                                permanent drain effect from DRAIN_EXP items.
 
                                 A natural vampire race character who has both
                                 Necromancy and Traumaturgy at 25.000 or higher
@@ -18426,8 +18437,13 @@ create a character!):
     If you're a team player and want to support your team right from the
     beginning, get the spell 'Cure Wounds' as soon as possible and macro it.
 
+- Corrupted Priest
     There are rumours of ultimately corrupted priests which have lost all their
     holiness and align with the forces of hell instead.
+    They have the same abilities as priests in all regards but while they too
+    can make use of shadowy occultism, they are not able to utilize any kind of
+    holy prayers and are susceptible to holy effects.
+    Instead they command blood magic and heretic magic of flame and chaos.
 
 - Rogue
     A Rogue is a character that prefers to live by cunning, but is capable of
@@ -19353,7 +19369,7 @@ being awarded at level 99, the maximum level reachable.
 -------------------
 Classes fare differently depending on their progress in the game. Here are some
 rough approximations of 'power levels', trying to give an idea how strong each
-class is at its different game stages.
+class is at different progress stages of the game.
 
 Note: For some classes the power curve can depend heavily on the way you
       distribute skill points so this is only a hand-picked estimate of the
@@ -19378,7 +19394,7 @@ Note: For some classes the power curve can depend heavily on the way you
       in terms of damage output if they can rely on a good party.
 
       Shamans can reach '++++' in 'Late', 'Endgame' and 'Post-winning' in terms
-      of usability, as they may access all features of Istari, Priests and also
+      of utility, as they may access all features of Istari, Priests and also
       those of Mimicry and Runecraft without that much expense of skill points.
 
               Start     Early     Mid       Late      Endgame   Post-winning
@@ -21766,9 +21782,9 @@ All Unlife spells are Wisdom-based.)
                     nether-based attacks the damage is reduced by a flat 10%
                     and you regain that part as mana points.
                     If both Unlife and Necromancy are at 50.000, it grants
-                    ultimate hold on one's own life force, rendering oneself
-                    immune to experience drain, including the permanent drain
-                    effect from DRAIN_EXP items.
+                    ultimate hold on one's own life force ('Keep Life'),
+                    rendering oneself immune to experience drain, including
+                    the permanent drain effect from DRAIN_EXP items.
 
 
 - Druidism -
