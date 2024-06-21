@@ -1380,8 +1380,8 @@ They all start with a slash '/' hence they're called slash commands:
             aka overwritten by the one he receives from you.
 
 /roll       Same as /dice.
-/dice       Roll some dice, you must at least specify a number of dice or a
-            number of sides, each from 1 to 100.
+/dice       Roll some dice (same as /roll), you must at least specify a number
+            of dice or a number of sides, each from 1 to 100.
             The result is random and can be seen by other players who stand
             nearby.
             Examples of possible usage variants:
@@ -1412,16 +1412,18 @@ They all start with a slash '/' hence they're called slash commands:
 
             Tip: If you want to keep {good} items too, press '&' to open the
             auto-inscriptions menu and add a new auto-inscription there:
-            For search string, enter:   !good
-            and for inscription, enter: -good-
+            Press 'f' to toggle force-inscribe: The index number at the
+            beginning of the line should change from white colour to orange.
+            For search string, enter: "good" (without quotes)
+            and for inscription, enter:  "-good-" (without quotes)
             What this does is to look for any item that is inscribed {good} and
             immediately inscribe it {-good-} instead. Thanks to the slight
             modification (adding the two dashes around the 'good') the /dis
             command will no longer recognize it as {good} pseudo-inscription
             and therefore not attempt to destroy this item.
-            The exclamation mark in '!good' was needed to force re-inscribing
-            an already inscribed item, without it the inscription would only
-            be applied to items that do not carry an inscription yet.
+            The force-toggle was needed to force re-inscribing an already
+            inscribed item, without it the inscription would only be applied
+            to items that do not carry an inscription yet.
 
 /dis a      DESTROYS items like '/dis', and additionally destroys all items
             that have no inscription at all or just a price discount tag
@@ -1578,8 +1580,9 @@ They all start with a slash '/' hence they're called slash commands:
             If you aren't eligible for receiving a floor feeling, you will
             instead get the message "You feel nothing special.".
 
-/fill       Fill an 'Empty Bottle' in your inventory with the water from a
-            fountain. You must stand on the fountain to do this.
+/fill       Fill an 'Empty Bottle' in your inventory with the liquid from a
+            fountain or water from the ground. You must stand on the fountain
+            or the water map tile to do this.
 
 /flip       Same as /coin.
 
@@ -2629,8 +2632,8 @@ By pressing 'a' you can toggle auto-pickup (green 'a') and auto-destroy (red
 own, which means that ALL items will be picked up or destroyed and subsequent
 rules will be ignored accordingly. (The sole '#' will not work for inscribing).
 The client options 'auto_pickup' and 'auto_destroy' must be enabled for these
-functions to work. This can also be done via slash commands '/apickup' (toggles
-auto_pickup option) and '/adestroy' (toggls auto_destroy option).
+functions to work. This can also be done via slash commands '/apickup' (which
+toggles auto_pickup option) and '/adestroy' (toggles auto_destroy option).
 Instead of using a "#" wildcard-rule, you can also toggle the option
 'destroy_all_unmatched' (which can also be toggled via '/daunmatched' slash
 command), this option requires 'auto_destroy' option to be enabled.
@@ -5698,24 +5701,27 @@ There are four categories of subinventories:
   perk acquired via Digging skill (7.2), and allows you to mix chemicals right
   from within it via 'a' key, while browsing the satchel.
   Alternatively you can activate them from the outside as usual with SHIFT+A,
-  but then you have to use the '@' feature (call by item name) in the prompt,
-  or simply create a macro using the macro wizard, which does it this way too.
+  but for client versions older than 4.9.2, you must then use the '@' feature
+  (call by item name) in the prompt, or simply create a macro using the macro
+  wizard, which creates call-by-name macros.
   If you pick up chemicals or mixtures they will be auto-stowed into this bag
   unless inscribed (see further down).
 
 - Trap Kit Bag
   This bag compactly stores a surprising amount of trap kits and allows you to
   deploy them straight from within.
-  To do so, you must use the '@' feature (call by item name) in the prompt,
-  or simply create a macro using the macro wizard, which does it this way too.
+  (For client versions older than 4.9.2, you must use the '@' feature (call by
+  item name) in the prompt, or simply create a macro using the macro wizard,
+  which creates call-by-name macros.)
   If you pick up trap kits they will be auto-stowed into this bag unless
   inscribed (see further down).
 
 - Antistatic Wrapping
   This bag can hold magic devices that do not require a directional activation
   (all staves and some rods) and allows you to use them straight from within.
-  To do so, you must use the '@' feature (call by item name) in the prompt,
-  or simply create a macro using the macro wizard, which does it this way too.
+  (For client versions older than 4.9.2, you must use the '@' feature (call by
+  item name) in the prompt, or simply create a macro using the macro wizard,
+  which creates call-by-name macros.)
   Just pay attention that you use % z J (and not % z k) to create the macro.
   Unknown rods are never eligible to be placed in this bag.
   Note that !C inscription (to alert when charged) on your magic devices works
@@ -5726,16 +5732,17 @@ There are four categories of subinventories:
 - Potion Belt
   This utility belt can hold potions for you, ready to use on demand, thereby
   alleviating the load on your precious inventory space.
-  To quaff them you must use the '@' feature (call by item name) in the prompt,
-  or simply create a macro using the macro wizard, which does it this way too.
+  (For client versions older than 4.9.2, you must use the '@' feature (call by
+  item name) in the prompt, or simply create a macro using the macro wizard,
+  which creates call-by-name macros.)
   If you pick up potions, they will be auto-stowed into this bag unless
   inscribed (see further down).
 
-As you noticed, for now from outside the subinventory you cannot access any
-items inside except if you use the '@' (call by item name) feature in the item
-prompt. This might get improved in a future (maintenance) release. But since
-the macro wizard actually creates call-by-name macros anyway, you can just use
-it if you are unsure.
+For client versions older than 4.9.2:
+From outside the subinventory you cannot access any items inside except if you
+use the '@' (call by item name) feature in the item prompt.
+Since the macro wizard actually creates call-by-name macros anyway, you can
+just use it if you are unsure.
 
 A few generic commands are always available in any subinventory:
   - Chat (:).
@@ -17094,8 +17101,8 @@ stated.
                                 Backstabbing requires sword-type weapons or
                                 polearms, up to 10.0 lbs in weight.
                                 Alternatively it works if you use Martial Arts,
-                                in which case it transforms into neck-twisting.
-                                That means your target must possess a neck,
+                                in which case it transforms into neck-twisting;
+                                that means your target must possess a neck,
                                 read: A head and a torso.
 
                                 If you dual-wield, you will also dual-backstab
@@ -20600,7 +20607,7 @@ these limitations will be lifted.
                     blindness too.
 
     Fire Bolt       Fires a fire bolt at a target.
-                    Required skill level for first spell level: 10.
+                    Required skill level for first spell level: 4.
 
                     Tier II: Level 25.
 
@@ -20658,20 +20665,20 @@ these limitations will be lifted.
 
                     Tier III: Level 40.
 
-    Ent's Potion    Fills your stomach.
-                    Lv  5: Removes fear.
-                    Lv 12: Makes you heroic.
-                    Required skill level for first spell level: 6.
-
     Frost Bolt      Fires a frost bolt at a target.
-                    Required skill level for first spell level: 8.
+                    Required skill level for first spell level: 3.
 
                     Tier II: Level 22.
 
                     Tier III: Level 40.
 
+    Ent's Potion    Fills your stomach.
+                    Lv  5: Removes fear.
+                    Lv 12: Makes you heroic.
+                    Required skill level for first spell level: 6.
+
     Water Bolt      Fires a water bolt at a target.
-                    Required skill level for first spell level: 14.
+                    Required skill level for first spell level: 10.
 
                     Tier II: Level 24.
 
@@ -20724,6 +20731,13 @@ these limitations will be lifted.
 
 - Air               [Spells are INT-based.]
 
+    Lightning Bolt  Fires a lightning bolt at a target.
+                    Required skill level for first spell level: 2.
+
+                    Tier II: Level 21.
+
+                    Tier III: Level 40.
+
     Noxious Cloud   Fires a poison cloud at a designated target.
                     Required skill level for first spell level: 3.
 
@@ -20732,13 +20746,6 @@ these limitations will be lifted.
                     Tier III: Level 33.
                     Unbreath cloud instead of normal poison, harder to resist
                     since it prevents living creatures from actually breathing.
-
-    Lightning Bolt  Fires a lightning bolt at a target.
-                    Required skill level for first spell level: 6.
-
-                    Tier II: Level 21.
-
-                    Tier III: Level 40.
 
     Elemental Shield
                     Tier I is only shared between Fire and Water school and
@@ -20780,15 +20787,15 @@ these limitations will be lifted.
 
 - Earth             [Spells are INT-based.]
 
-    Dig             Turns walls into mud.
-                    Required skill level for first spell level: 12.
-
     Acid Bolt       Fires an acid bolt at a target.
-                    Required skill level for first spell level: 12.
+                    Required skill level for first spell level: 5.
 
                     Tier II: Level 24.
 
                     Tier III: Level 40.
+
+    Dig             Turns walls into mud.
+                    Required skill level for first spell level: 12.
 
     Elemental Shield
                     Tier I is only shared between Fire and Water school and
@@ -21378,6 +21385,13 @@ All Unlife spells are Wisdom-based.)
                     Tier II: Level 20.
                     It expands around you.
 
+    Shadow Bolt     Channels shadow into a bolt attack.
+                    Required skill level for first spell level: 6.
+
+                    Tier II: Level 25.
+
+                    Tier III: Level 40.
+
     Detect Invisible
                     Detects all invisible creatures nearby.
                     (See (5.14) for details about invisibility.)
@@ -21389,13 +21403,6 @@ All Unlife spells are Wisdom-based.)
                     floor grids, eg those inside no-teleport vaults, because
                     the still air on these will prevent your shadowy moves.
                     Required skill level for first spell level: 8.
-
-    Shadow Bolt     Channels shadow into a bolt attack.
-                    Required skill level for first spell level: 10.
-
-                    Tier II: Level 25.
-
-                    Tier III: Level 40.
 
     Aspect of Peril                                            (auto-project)
                     Temporarily brands your own and any adjacent friendly
@@ -21610,7 +21617,7 @@ All Unlife spells are Wisdom-based.)
 
     Fire Bolt       Conjures up fire into a powerful bolt.
                     (This spell uses INTELLIGENCE to determine fail-rates!)
-                    Required skill level for first spell level: 10.
+                    Required skill level for first spell level: 6.
 
                     Tier II: Level 25.
 
