@@ -9186,8 +9186,9 @@ While many traps have obvious effects, here are some less obvious ones:
   Ale Vendor                It doesn't hand out free ale, you're paying for it.
   Seasoned Traveller        Does not touch items of value 150 Au or more.
   Lost Labor                All non-uniques on the floor turn into 100% clones.
-  Despair                   Your stats are reduced and you gain two potions,
-                            Augmentation and Death. Quaff the correct one!
+  Despair                   Your stats are reduced and you get an Augmentation
+                            and a Death potion placed in your inventory.
+                            Make sure you quaff the correct one!
   Cleaning                  Deletes all nearby unowned loot.
   Animate Coins             The animated coins are from your own purse..
   Remittance                You share some of your money in your purse with
@@ -9899,8 +9900,8 @@ Poison   -Poisoned      The player will continuously lose Hit Points.
                         poisoned (compare (5.6)).
                         Slow Poison (potions) will reduce the speed at which
                         poison ticks and drains your HP. Best is of course to
-                        have means of Cure/Neutralize Poison, 'Curing', or some
-                        Lembas, which will all completely cure poison.
+                        have means of Cure/Neutralize Poison, 'Curing', or
+                        some Lembas, which will all completely cure poison.
 
 Disease  -Diseased      Very similar to poison, but poison resistance does not
                         help against this. Can be cured by eating some Lembas,
@@ -11755,7 +11756,7 @@ your combat skill * 0.3 lb (per 1.000 skill). Here is a table of the classes:
 Adventurer    21.0 lb
 Warrior       -
 Istar         15.0 lb
-Priest        25.0 lb
+Priest        25.0 lb (also Corrupted Priest)
 Rogue         20.0 lb
 Mimic         28.0 lb
 Archer        -
@@ -18938,7 +18939,7 @@ Warrior       +5   -2   -2   +2   +2   -1        +10     +0%         6
  brown        25   18   18    1    2   14   70   55            superb   superb
 Istar         -5   +3    0   +1   -2   +1         +0    +35%         1
  red          30   36   30    2   20   16   34   20            bad      bad
-Priest        -1   -3   +3   -1    0   +2         +5    +20%         4
+Priest (*)    -1   -3   +3   -1    0   +2         +5    +20%         4
  green        25   25   32    2    8   16   48   35            fair     fair
 Rogue         +2   +1   -2   +3   +1   -1         +5    +15%         5
  blue         45   28   28    5   32   24   60   66            superb   fair
@@ -18968,6 +18969,7 @@ Hell Knight   +3   -3   +1    0   +2   +2         +8    +30%         5
 (Di:Disarming,      MD:Magic Device,        ST:Saving Throw,    St:Stealth,
 Pe:Perception (sight range), Sr:Searching,  Fi:Fighting,        BT:Bows/Throw)
 
+(*) Corrupted Priest is same as Priest in this table.
 
 For melee characters, it's especially vital to know how many blows per round
 they will get right after character creation, to avoid them being unnecessarily
