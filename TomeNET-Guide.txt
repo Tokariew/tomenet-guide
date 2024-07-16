@@ -1,8 +1,8 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 12. July 2024 - written by C. Blue (c_blue@gmx.net)        |
-| for TomeNET version v4.9.1 - official websites are:                      :
+| Latest update: 16. July 2024 - written by C. Blue (c_blue@gmx.net)       |
+| for TomeNET version v4.9.2 - official websites are:                      :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
 | Runes & Runemastery sections by Kurzel (kurzel.tomenet@gmail.com)
@@ -65,6 +65,7 @@ Contents
     (2.4)   Installing voice chat
     (2.5)   Fonts
     (2.5a)  Custom fonts
+    (2.5b)  Graphical tilesets
 (3) Creating a character & starting to play
     (3.1)   Creating a new character
     (3.1a)  Character modes
@@ -2424,6 +2425,17 @@ inscribe the torches in your inventory:
 
 Now if you press F (that is Shift+F) to refill torch, you will not get prompted
 but one of the inscribed torches is automatically used for the macro.
+The same macro works for oil flasks too, to refill a lantern.
+
+Note that if you make a macro for an item inscribed with '%' shortcut that you
+will end up with a pending inventory prompt if you are out of items, even if
+you have safe_macros enabled, as the macro system cannot know that you intended
+to not enter an actual item!
+In this case as a workaround to clear the inventory prompt in case you are out
+of items to use with the macro, you can add an '\e' (ESC) to the macro, eg:
+ For refilling light:  \e)F\e
+ For using a staff:    \e)u\e
+ etc...
 
 
 You can also inscribe items just to remember their abilities. For example
@@ -4807,8 +4819,14 @@ instead assumes that some standard fonts are provided by your system and tries
 to select those when cycling with 'c' key in the fonts menu.
 You can also set fonts manually with = f if you want to choose specific fonts
 available in your Linux/OS X installation.
-To manually install your own fonts, see the instructions for Linux two
+
+To manually install your own fonts on POSIX, see the instructions for Linux two
 paragraphs below in (2.5a), it should be in pcf format.
+
+Starting in 4.9.2 I added an 'posix_extra_fonts' folder and install script for
+more convenience to the lib/xtra folder, which attempts to install fonts in pcf
+format (with optional prf file, if they contain custom mappings) on POSIX
+systems.
 
 
 (2.5a) Custom fonts
@@ -4961,6 +4979,72 @@ Add them to your system with the usual font-adding procedures for your specific
 Linux distribution, then you can select them in TomeNET via  = f  (or enter
 them directly in your .tomenetrc config file).
 
+
+(2.5b) Graphical tilesets
+-------------------------
+Thanks to jEzEk (https://github.com/jezek) graphics tiles are now supported
+again, now with a colour mask and autoscaling. The advantage over normal fonts
+is that these can have many colours and thereby look much better.
+
+Graphical tilesets are xyz.bmp files in 24-bit format (R8,G8,B8 - and make sure
+to check "Don't include colour space information" in GIMP or whatever you use,
+or it will not work on Windows) that come with a graphics-xyz.prf mapping file.
+The bmp file goes to tomenet/lib/graphics
+and the prf file, as always, to tomenet/lib/user  - or -
+on Windows OS to the folder 'TomeNET-user' inside your user's home folder
+(eg C:/Users/Tomenetplayer/TomeNET-user).
+
+Svechnik (EvgenijK) has worked on a major graphical tileset that can be found
+on his github, including instructions on how to use it:
+
+  https://github.com/EvgenijK/TomeNET-Tileset
+
+At the time of 4.9.2 release, TomeNET ships with the tileset files (pcf/fon in
+the lib/xtra/graphics folder and prf in the lib/user folder) from that date.
+However, check out his site or our discord for updates maybe.
+
+After ensuring that the '16x22sv.bmp' tiles file is in tomenet/lib/graphics and
+the mapping file 'graphics-16x22sv.prf' is in tomenet/lib/user (or TomeNET-user
+in your user's home folder on Windows OS), don't forget to activate the tileset
+by putting this in your .tomenetrc (POSIX):
+  graphics 1
+  graphic_tiles 16x22sv
+or TomeNET.ini (Windows):
+  Graphics=1
+  GraphicTiles=16x22sv
+and then in-game make sure that the option = 1 'font_map_solid_walls' is OFF!
+
+
+Notes about an important difference to normal fonts:
+----------------------------------------------------
+Graphical tilesets require you to still select a normal font too!
+The way it works is: Whenever the graphical tileset provides a valid mapping
+for a grid, it will use the graphics, otherwise it will fall back to the text
+font and use its symbol instead.
+
+Since the tileset linked above is a work in progress and so far there are no
+known complete tilesets, that is the reason why an underlying font to work
+together with the tileset is still needed.
+
+The font should preferably have the same dimensions as the tileset, or scaling
+will happen automatically that might not look very good.
+For EvgenijK's bmp tileset which has dimensions 16x22 px/tile, he provides
+a 16x22 font that is located in lib/fonts, as both .FON and .pcf format, but
+of course you can use any other font file too.
+
+
+Issues:
+-------
+As of the time of 4.9.2 release when this was written, there are still issues
+with graphical tiles, which I copy-pasted from EvgenijK's github here:
+
+- there is no in client interface to choose or change gfx tilesets, only by
+  changing tomenetrc/tomenet.ini.
+- monster list shows wrong tiles (issue TomenetGame/tomenet#50)
+- interface crash and packet errors if there is only tiles for "monsters"
+  (issue TomenetGame/tomenet#51)
+- in character overview window items that have tiles are not displayed
+  correctly.
 
 
 (3) Creating a character & starting to play
