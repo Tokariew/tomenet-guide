@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 31. July 2024 - written by C. Blue (c_blue@gmx.net)       |
+| Latest update: 1. August 2024 - written by C. Blue (c_blue@gmx.net)      |
 | for TomeNET version v4.9.2 - official websites are:                      :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -35,7 +35,7 @@ Contents
     (0.1b)  Colours and colour blindness
     (0.1c)  Photosensitivity / Epilepsy issues
     (0.1d)  Readability improvements
-    (0.2)   Command reference & key sets
+    (0.2)   Command reference & keysets
     (0.2a)  Text editing keys
     (0.2b)  Slash commands
     (0.2c)  IRC bot commands
@@ -350,7 +350,7 @@ compile the game under '(2.1) Installing/updating TomeNET (Windows/Linux/OSX)'.
  Now you're in the game and should see the town of Bree.
 
  Note that all following keys mentioned assume that you use the normal
- (aka non-roguelike) keymap! If you use rogue-like keymap, refer to (0.2) for
+ (aka non-roguelike) keyset! If you use rogue-like keyset, refer to (0.2) for
  a full list of command keys under that setting.
 
 -To chat, press the colon key ':' . Don't hesitate to ask other players
@@ -431,12 +431,12 @@ compile the game under '(2.1) Installing/updating TomeNET (Windows/Linux/OSX)'.
  SHIFT+P  form a party with your buddies. You share experience in a party and
           you can always see each other on the map and your team mates' current
           world location in the player list (accessed with '@' key).
-          (SHIFT+O if you are using rogue-like key map.)
+          (SHIFT+O if you are using rogue-like keyset.)
  SHIFT+L  look around the map. Very useful to locate team mates ;).
-          (CTRL+W if you are using rogue-like key map.)
+          (CTRL+W if you are using rogue-like keyset.)
  CTRL+U   the audio mixer menu (the hotkeys for toggling master/music work
           outside of this menu too).
-          (CTRL+F if you are using rogue-like key map.)
+          (CTRL+F if you are using rogue-like keyset.)
  CTRL+Q   quit the game. Safest way is to quit in a town, not in the dungeon!
 
 
@@ -549,8 +549,8 @@ page. It will colour prices and XP alternatingly in 3-digit columns.
 
 
 
-(0.2) Command reference & key sets
-----------------------------------
+(0.2) Command reference & keysets
+---------------------------------
 Can be different depending on OS / configuration.
 This chapter consists of three subsections:
 Command keys, Text editing keys, Slash commands.
@@ -561,29 +561,29 @@ Command keys
 
 Key combinations with CTRL key can be entered in the macro menu by prefixing
 the key with a '^' symbol. For example, a macro to force-stack an item in
-normal key set could be 'K0', but in rogue-like key set (where force-stack
+normal keyset could be 'K0', but in rogue-like keyset (where force-stack
 is CTRL+C instead of K) it will be '^c0' instead (or you can use a capital
 letter: '^c0', it's actually the same when using ^ codes).
 
 Keys:
-The first key is of the 'original Angband key set', the second key is of the
-'rogue-like' key set. Some people prefer to use that one. You can change it
+The first key is of the 'original Angband keyset', the second key is of the
+'rogue-like' keyset. Some people prefer to use that one. You can change it
 in the options menu, which you invoke with '=' key.
 
 
 Walk into a direction:
-    Original key set        Rogue-like key set      Rogue-like (running)
+    Original keyset         Rogue-like keyset       Rogue-like (running)
         7   8   9               y   k   u               Y   K   U
         4       6               h       l               H       L
         1   2   3               b   j   n               B   J   N
 
-In addition, the rogue-like key set has tunneling on the movement keys if
+In addition, the rogue-like keyset has tunneling on the movement keys if
 the CTRL key is pressed together with one. CTRL is expressed by prefixing
-the key with '^', so the rogue-like key set for tunneling is:
+the key with '^', so the rogue-like keyset for tunneling is:
         ^y  ^k  ^u
         ^h      ^l
         ^b  ^j  ^n
-(The normal key set has no directional keys for tunneling, so you'd have
+(The normal keyset has no directional keys for tunneling, so you'd have
 to create macros if you want that.)
 
 You can also use the arrow keys instead of the Numpad keys for movement.
@@ -658,7 +658,7 @@ x       S       swap an item. This is basically like both "wear/wield" and
                 When the item is currently in the inventory, it will be
                 equipped. If it already is equipped though, then it will be
                 taken off.
-                Note for rogue-like keymap:
+                Note for rogue-like keyset:
                 Although the key is 'S', the actual item inscriptions must
                 still use 'x', eg '@x0' when the macro is 'S0'!
 
@@ -911,7 +911,7 @@ CTRL+N  CTRL+V  Toggles audio. Shortcut for master toggle in the mixer
 
 CTRL+C          Toggles music. Shortcut for toggling it in the mixer settings.
                 This hotkey works outside of the mixer screen too.
-                NOT AVAILABLE IN ROGUE-LIKE KEY SET.
+                NOT AVAILABLE IN ROGUE-LIKE KEYSET.
 
 
 SPACE   Stop executing repeatable actions such as searching, tunnelling or
@@ -1115,7 +1115,7 @@ CTRL+O  view previous chat messages.
 CTRL+Q  save your character & quit the game. (You should do this in town!)
         This also automatically saves some settings, like window layout (the
         windows' positions and sizes) and mixer settings (CTRL+U to change,
-        CTRL+F on rogue-like key map), and you will be asked if you want to
+        CTRL+F on rogue-like keyset), and you will be asked if you want to
         save the chat log to a text file.
         Note that if you exit the game just by clicking on the 'x' button in
         the game window's titlebar, these extra features will be skipped, and
@@ -1148,7 +1148,7 @@ TAB or CTRL+I
 
 ^       Allows to enter a CTRL character as command.
 
-\       Enter a command, bypassing the client's key map.
+\       Enter a command, bypassing the client's keymap.
         Also allows to enter ^ next to enter a CTRL character as command.
 
 )       Clears the command buffer of pending key presses (used in macros).
@@ -2270,7 +2270,7 @@ Mainly for consumable items:
                 on ID scrolls in combination:  !XQ
 Mainly for consumable items stored in piles:
     !g          trying to pick up this pile will only grab 1 item, as if the
-                player pressed CTRL+G (or CTRL+Z with rogue-like key map).
+                player pressed CTRL+G (or CTRL+Z with rogue-like keyset).
 
 The # inscription:
     This one makes all following inscription be appended directly behind the
@@ -2769,7 +2769,7 @@ ESP         Extrasensory perception. ESP is a telepathic power that allows you
              trolls are not a major threat, the ESP can be utilized for finding
              troll pits! These usually yield major amounts of experience in the
              early gameplay. Typically, the player would enter a dungeon floor
-             and use Shift+L (CTRL+W for Roguelike keymap) to scan the whole
+             and use Shift+L (CTRL+W for Roguelike keyset) to scan the whole
              floor for a possible troll pit.
 
             Note that the rogue ability 'Cloaking' overrides ESP, so a cloaked
@@ -3044,7 +3044,7 @@ RoP         Ring of Power. While these also includes the true artifact rings of
 Scumming    Repeatedly using staircases up/downwards to make a level become
             recreated. Usually in hope of finding a specific monster on that
             depth. ('I scum 450..500 ft for Wormy'.)
-            Use 'locate' (SHIFT+L or CTRL+W depending on key map) to quickly
+            Use 'locate' (SHIFT+L or CTRL+W depending on keyset) to quickly
             'scan' the floor for your desired monsters, provided you have the
             required type of ESP to see them.
 
@@ -4114,37 +4114,81 @@ found, preventing TomeNET from starting. A fix according to "N der Fuenfte":
 
 (2.1e) Android (custom/compilation)
 -----------------------------------
-Compilation is straight-forward and similar to Linux.
+Compilation is straight-forward and similar to Linux:
+
 - Install "termux" from F-Droid repository. Do NOT install the version from
-  Google Play store!
+  Google Play store! (Or you might not be able to download all packages.)
+  F-Droid is an open source repository that is available at:
+    https://f-droid.org/
+
+- In termux, issue this command to ensure that the repository is up to date:
+    pkg up
+
 - In termux, issue these commands to install the SDL2 audio mixer library:
-   pkg in x11-repo
-   pkg in sdl2-mixer
+    pkg in x11-repo
+    pkg in sdl2-mixer
+
+- You might also need to install these tools:
+    pkg in mc        -> the midnight commander ('mc') just for quality of life.
+    pkg in git       -> this is required to download the tomenet repository.
+    pkg in make      -> this is required for client compilation.
+    pkg in clang     -> this is required for client compilation.
+    pkg in wget      -> you can use the 'wget' command to download audio packs,
+                        but it might not work and you'll have to download them
+                        in your webbrowser instead if mediafire is under load.
+    pkg in p7zip     -> the '7z' command is needed to extract audio packs.
+
 - Get the latest github TomeNET source, as the most recent release at the time
   of writing this was 4.9.2 and it doesn't have the required code yet:
-   git clone https://www.github.com/TomeNETGame/tomenet
+    git clone https://www.github.com/TomeNETGame/tomenet
+
 - Enter the cloned repository, go straight into the source folder:
-   cd tomenet/src
+    cd tomenet/src
+
 - Issue the build command, specifically using the GCU-makefile:
-   make tomenet -f makefile.gcu
+    make tomenet -f makefile.gcu
+
 - After compilation finished, move the resulting 'tomenet' binary up one level
   and return to the main level, in order to run the game binary:
-   mv tomenet ..
-   cd ..
+    mv tomenet ..
+    cd ..
+
 - Optionally, grab a sound pack and/or music pack, eg the official ones from
   the forum here:
-   https://tomenet.eu/phpBB3/viewtopic.php?f=4&t=120
+    https://tomenet.eu/phpBB3/viewtopic.php?f=4&t=120
   and extract them to the tomenet/lib/xtra/ folder, so you end up with the
   folders tomenet/lib/xtra/sound and tomenet/lib/xtra/music respectively.
+
+  Example command to download some music/audio packs from mediafire via 'wget':
+    wget https://www.mediafire.com/file/issv5sdv7kv3odq/TomeNET-soundpack.7z
+    wget https://www.mediafire.com/file/3j87kp3fgzpqrqn/TomeNET-musicpack.7z
+  However, these might not work if mediafire is currently under heavy load, in
+  which case you'll have to download the packs in your webbrowser instead and
+  move them to your termux home folder by using some file manager on your
+  device which is able to access the termux home folder as well as the device's
+  download folder, so you can move the downloaded zip or 7z files into termux.
+
+  After you acquired the audio pack zip files and moved them into the
+  tomenet/lib/xtra/ folder, navigate into it with 'cd' command, eg:
+    cd ~/tomenet/lib/xtra/
+  and there use the '7z' command to extract them, eg:
+    7z x TomeNET-Soundpack.7z
+    7z x TomeNET-Musicpack.7z
+  Verify by issuing the 'ls' command, it should show the 'sound' and 'music'
+  folder (among other things) respectively.
+  Finally, navigate back from tomenet/lib/xtra/ to tomenet/ by ascending twice:
+    cd ../..
+
 - Run the game:
-   ./tomenet
+    ./tomenet
   Most of the usual linux command-line options are available, such as "-q".
   If you get the error message "TomeNET needs an 80x24 'curses' screen", make
   sure that termux has at least a visible text area of 80x24, bigger is ok too.
   You can just pinch-zoom out the display, which will shrink the termux font!
-- In the game, note that you might need to switch the keymap to "rogue-like" in
+
+- In the game, note that you might need to switch the keyset to "rogue-like" in
   order to move. This can be done directly by (in-game) pressing   = 1 A   to
-  toggle the option. (See (0.2) for keymap details.)
+  toggle the option. (See (0.2) for keyset details.)
 
 
 (2.2) Installing sound and music packs
@@ -4226,7 +4270,7 @@ Step 4:
  After it's done it should tell you to restart your client. (You might also
  get disconnected automatically, if the auto-installation takes a while. That
  is fine.) Just restart the game and press CTRL+U to look at the audio mixer
- (or CTRL+F if you're using rogue-like key map).
+ (or CTRL+F if you're using rogue-like keyset).
  It should tell you that sound and/or music pack have been installed.
 
 In case you want to install the packs manually instead of using auto-install,
@@ -4271,7 +4315,7 @@ or music zip file is to:
    If you were extracting a sound pack or if you already installed a music pack
    previously then you will be prompted to overwrite files - choose "yes".
    Wait for the extraction process to finish.
-5. Start or restart TomeNET and press CTRL+U (or CTRL+F on rogue-like key map)
+5. Start or restart TomeNET and press CTRL+U (or CTRL+F on rogue-like keyset)
    in the game to view the audio mixer screen. If everything went smoothly it
    should say that a sound or a music pack or both have been found.
    If you don't have sound, make sure that your TomeNET.ini file (it's in your
@@ -4291,7 +4335,7 @@ use '7z x ...' and not '7z e ...'! x will extract with correct path names.
 
 Now start or restart the game, and you should have sound.
 If you don't have sound, press CTRL+U for audio mixer (or CTRL+F if you're
-using rogue-like key map):
+using rogue-like keyset):
 It should say that sound and music pack have been detected if everything went
 alright, otherwise you see a red error message.
 Also verify  that your config file ("TomeNET.ini" on MS Windows, ".tomenetrc"
@@ -4300,9 +4344,9 @@ in your home folder on Linux or Mac OS X) has 'Sound' set to '1'.
 
 (2.2a) Audio controls and config options
 ----------------------------------------
-You can control mixer settings with CTRL+U key on normal keymap and CTRL+F on
-rogue-like key map (or use CTRL+C to toggle music and CTRL+N to toggle the
-master mixer on/off, CTRL+V instead of CTRL+N on rogue-like key map).
+You can control mixer settings with CTRL+U key on normal keyset and CTRL+F on
+rogue-like keyset (or use CTRL+C to toggle music and CTRL+N to toggle the
+master mixer on/off, CTRL+V instead of CTRL+N on rogue-like keyset).
 
 Note: Mixer settings are saved automatically, provided you use CTRL+Q to quit.
 (Compare troubleshooting section (9.8), PROBLEM 22.)
@@ -4401,7 +4445,7 @@ B) You have no packs installed. In this case, you will have pretty bare example
   that are supported by the game but currently unused by the official packs!
 
   To test your changes live while you're logged into the game, press CTRL+U
-  (or CTRL+F if you use rogue-like keymap) and then CTRL+R to reload and
+  (or CTRL+F if you use rogue-like keyset) and then CTRL+R to reload and
   reset all audio pack information on the fly. Changes to the files on disk
   will be applied immediately to the live client this way.
 
@@ -4511,12 +4555,12 @@ self-explaining or that are especially important are listed in detail here:
 
  (1, 2, 3, 4) User Interface Options:
     Rogue-like commands (rogue_like_commands)
-        Toggles between normal key set and traditional rogue-like key set.
+        Toggles between normal keyset and traditional rogue-like keyset.
 
     Alert on taking damage while you are AFK (alert_afk_dam) and
     alert on taking damage while looking around the map via 'locate' command
     (alert_offpanel_dam). (The locate command is invoked with SHIFT+L on normal
-    key map and CTRL+W on rogue-like key map.)
+    keyset and CTRL+W on rogue-like keyset.)
 
     A bunch of options for special visual effects and lighting.
         These options change how lighting is applied to lamp light and walls,
@@ -5839,7 +5883,7 @@ Weapons, armour, magic rings and amulets, a lantern or a digging tool, ammo in
 your quiver - all of these must be equipped (via 'w' key to wear/wield an item)
 in order to have effect.
 If you don't want to use a certain item anymore, you can take it off again with
-'t' key (or 'T' in rogue-like key set), putting it back into your inventory.
+'t' key (or 'T' in rogue-like keyset), putting it back into your inventory.
 
 Light sources that run on fuel (torches and brass lanterns) will put the fuel
 consumption on hold while in your inventory. Their fuel will only be consumed
@@ -6618,7 +6662,8 @@ Those macros basically consist of three parts.
 2. Designating a target.
 3. Attacking the designated target.
 What does the macro look like? (Note: Keys could vary depending on your
-key set definitions. Throwing might be 't' instead of 'v' etc.)
+keymap definitions. Firing might be 't' instead of 'f' if you use the
+rogue-like keyset etc.)
 For..
 a) casting a magical spell
     Press 'm' to see your choices of casting magical spells. Let's assume you
@@ -7709,7 +7754,7 @@ Ghosts have some special abilities, these are
 -they cannot carry items except for the Book Of The Dead.
 
 Ghosts can access ghost powers with 'U' (currently not available, sorry) or
-with CTRL+X if using rogue-like key map.
+with CTRL+X if using rogue-like keyset.
 Those powers drain your experience. If you use them too often you might lose
 character levels even, and if you eventually run out of experience you will
 fade away and permanently cease to exist without a chance of resurrection
@@ -10720,18 +10765,14 @@ he will usually just get teleported back to Bree.
 In general, fruit bats, PvP characters and ghosts cannot participate.
 
   Under Elmoth:
-    Co-op, for 1 up to 6 participants.
-
     Create a new character and challenge the forbidding dark-elven halls
     under sunken Nan Elmoth. Once a place of beauty, now its cavernous
     chambers contain only dread! Triumph over the corruption if you can!
 
-    Restrictions: Must have zero XP (experience). 30 minutes time limit.
-    Prohibitions: No ESP, Mapping, Detection, Genocide, *Destruction* or
-                  Earthquake.
+    -- Restrictions: Zero experience required. 1-6 players. 30 minutes.
 
-    Hints: BEWARE! Some encounters will challenge different playstyles.
-           Try various strategies or participate in a group to succeed!
+    -- Prohibitions: No Mapping, Detection, ESP.
+    -- Prohibitions: No Summoning, Genocide, Earthquake, *Destruction*.
 
 
 Seasonal events:
@@ -11246,7 +11287,7 @@ to you are actually diagonal of you! So now it might become clear how to do
 that event in the most effective way..
 
 Note that the map coordinates you see when pressing SHIFT+L (CTRL+W with rogue
-like keymap) can differ depending on if you have 'big_map' setting enabled or
+like keyset) can differ depending on if you have 'big_map' setting enabled or
 not via  = b  .
 
 
@@ -12329,7 +12370,7 @@ Water           Water resistance is rare (an *ID*ed item will say
                 Resistance will cut damage to 1/3. (For players in aquatic
                 form this gets overridden by its cut down to 1/4 instead.)
                 Resistance will also reduce the chance of harm to items in
-                inventory or equipment and completely prevent stun and 
+                inventory or equipment and completely prevent stun and
                 confusion effects from water-based attacks.
                 If you don't wear a 'tarpaulin' items in your inventory might
                 be destroyed by the water (if they don't resist water).
@@ -17080,7 +17121,7 @@ stated.
                                 your melee attacks (weapon as well as martial
                                 arts will be branded by it (cold brand) and
                                 you are granted resistance to cold.
-                                Additionally at 30, cold magic or breaths you 
+                                Additionally at 30, cold magic or breaths you
                                 generate will solidify into cutting ice shards
                                 while your aura is active, dealing ice damage.
                                 This element conversion reduces damage to 2/3.
@@ -17101,7 +17142,7 @@ stated.
                                 your melee attacks (weapon as well as martial
                                 arts) will be branded by it (alternating plasma
                                 or ice brand). (See (5.3) for brand details.)
-                                Additionally at 40, cold magic or breaths you 
+                                Additionally at 40, cold magic or breaths you
                                 generate will solidify into cutting ice shards
                                 while your aura is active, dealing ice damage.
                                 Fire produced will likewise ionize into plasma!
@@ -22723,12 +22764,13 @@ Physical runes are items found occasionally from tunneling deep in the earth,
 or in the collection of monsters fascinated by their magic. Certain secretive
 markets are also known to trade these rare embodiments of elemental power...
 
-Physical runes may be activated (after achieving skill level 40) to emblazon
-non-artifact armour, shields and melee weapons with an elemental sigil. This
-sigil confers a generally positive effect as long as the item remains wielded.
-Sigils vanish from the equipment when sold, dropped, taken off, disarmed, etc.
-Applying an additional physical rune to an item dispels any previous sigils,
-consuming a new rune to power the new effect (even if the result is identical).
+Physical runes may be activated (after achieving skill level 40 with the
+appropriate elements) to emblazon a non-artifact armour, shield or melee weapon
+with an elemental sigil. This sigil confers a generally positive boni effect as
+long as the equipment remains wielded. Sigils vanish from equipment when sold,
+dropped, taken off, disarmed, etc. Applying an additional physical rune dispels
+any previous sigil, consuming a new rune to power the new effect (even if the
+resulting boni is identical to that which was previously conferred).
 
 The process for determining success and which boni is applied depends on both a
 pool of available effects, listed in (7.8c) Runespell Tables, Sigil Boni, and
@@ -22737,6 +22779,8 @@ enchantments may synergize with or couteract some sigil boni (eg. PVAL) and are
 limited in effect by the same restrictions that constrain artifact creation.
 Duplicate effects are never applied, and boni only increase in potency (eg.
 fire resistance will be replaced with immunity, never the other way around).
+Sigil boni may always result in resistance to the element of the physical rune,
+if such a resistance exists (that is, not inertia/gravity/hellfire/force).
 
 Runemasters are limited to one sigil per element, but can maintain 7 in total.
 
@@ -22932,7 +22976,13 @@ restricted as with artifact creation regarding PVAL modifiers. Stat enhancing
 boni have a chance to include a sustain, and boni occuring both generally and
 on the item type specifically are more likely to occur. Some weapon/helm boni
 are specific to staves, boomerangs, and crowns (see (9.4) Artifact creation).
+
 All elements associated with a specific resistance may confer that resistance.
+
+The 'Any' column indicates boni which are not restricted to a specific type of
+equipment, and can thus appear on any type of item. If a boni is listed both in
+this column and the column for a specific equipment type, it is more likely to
+be conferred to that type of equipment (at twice the probability).
 
 Abbreviations (in alphabetical order):
 AM - Anti-magic shell (see (5.8) under NO_MAGIC)
@@ -23590,7 +23640,7 @@ The techniques are as follows:
         effectively the same as being confused).
     Bash                6 stamina
         This shield-bash technique can also be used directly by pressing 'B'
-        (normal keymap) or 'f' (rogue-like keymap) to perform a shield-bash
+        (normal keyset) or 'f' (rogue-like keyset) to perform a shield-bash
         against an enemy. This technique obviously requires wielding a shield.
         It will inflict damage depending on shield weight and your strength and
         a stun effect (modified by Combat skill) on your target. Your chance to
@@ -26632,7 +26682,7 @@ PROBLEM 63: My audio (sound/music) should be working fine, but I don't hear
 Solution:   Aside from checking all other audio-related problems in this
             section, make sure the reason isn't simply that you have disabled
             the 'Master' or 'Sound' or 'Music' switch in the audio mixer:
-            Press CTRL+U for the mixer (CTRL+F on rogue-like keymap) and check
+            Press CTRL+U for the mixer (CTRL+F on rogue-like keyset) and check
             that the 'Master' button and any other relevant audio button has
             a green 'X' symbol between the white brackets: [X] , indicating
             that it is enabled. If not, enable all four buttons and see if it
