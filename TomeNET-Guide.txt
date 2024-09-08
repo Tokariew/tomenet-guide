@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 6. September 2024 - written by C. Blue (c_blue@gmx.net)   |
+| Latest update: 8. September 2024 - written by C. Blue (c_blue@gmx.net)   |
 | for TomeNET version v4.9.2 - official websites are:                      :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -4623,7 +4623,10 @@ self-explaining or that are especially important are listed in detail here:
         These options change how lighting is applied to lamp light and walls,
         lamp light colour and how walls are displayed depending on the font:
 
-        font_map_solid_walls (depending on font displays walls as solid blocks)
+        font_map_solid_walls (depending on font displays walls as solid blocks.
+                              This option can break visuals of custom fonts
+                              and graphical tilesets as it interferes with
+                              the mapping.)
         view_animated_lite (fire-based light sources flicker yellow-orange)
 
         wall_lighting (generally enables lighting/shading fx for walls:)
@@ -18642,8 +18645,7 @@ create a character!):
     land, they were summoned to guard the forests of Middle-earth.
     Being much like trees they are very slow but strong and do not have
     to feed as often. Because they consist of wood, they are quite
-    susceptible to fire and they don't drown in water (unless overloaded by
-    items).
+    susceptible to fire and they don't drown in water.
     As the Shepherds of the Trees, they can learn to sense the presence of
     others, such as animals at level 10, orcs at 15, trolls at 20, giants
     at 25, dragons at 30, demons at 40 and all evil-minded creatures at
