@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 13. September 2024 - written by C. Blue (c_blue@gmx.net)  |
+| Latest update: 16. September 2024 - written by C. Blue (c_blue@gmx.net)  |
 | for TomeNET version v4.9.2 - official websites are:                      :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -3829,6 +3829,15 @@ automatically, and various other things.
 
 Windows command-line options:
 -h                      Displays this list of command-line parameters
+-I                      Disable IME. Input Method Editors are for CJK languages
+                        ie chinese, japanese, korean, to allow using their
+                        keyboard layouts that use multiple keypresses to
+                        construct a character.
+                        If you don't use such a keyboard, you can safely
+                        disable IME in case you suspect it causes any problems
+                        for you. This might be the case if you like to switch
+                        your keyboard language via keyboard shortcut while
+                        TomeNET is focussed.
 -C                      Compatibility mode for ancient servers (deprecated)
 -F <fps>                Set client internal engine fps (default is 100)
 -l<Account> <Password>  For example -lGandalf geheim
@@ -4988,7 +4997,9 @@ It is possible to create your own custom fonts for the game.
 For the Windows client which uses .FON files you can use "Fony" for example:
 http://hukka.ncn.fi/?fony
 (Up to client 4.6.1a it was not possible to use characters of numbers 128-255
-but this has been addressed, so the full range of characters is available now.)
+but this has been addressed, so the full range of characters is available now.
+Up to client 4.9.2 there was a glitch that required you to shift all R-indices
+downwards by a fixed offset of 12, this has been fixed.)
 
 For the Linux client you'll need to convert the font to 'pcf' format, but 'bdf'
 might work too, depending on your system.
@@ -5256,10 +5267,14 @@ graphical font (a text font with additional, pseudo-graphical character set).
 Issues:
 -------
 As of the time of 4.9.2 release when this was written, there are still issues
-with graphical tiles, which I copy-pasted from EvgenijK's github here:
+with graphical tiles (some listed on EvgenijK's github):
 
 - interface crash and packet errors if there is only tiles for "monsters"
   (issue TomenetGame/tomenet#51)
+
+- Up to client 4.9.2 there was a glitch that required you to shift all indices
+  for 'R:' mappings downwards by a fixed offset of 12, this has been fixed.
+
 
 
 (3) Creating a character & starting to play
@@ -5300,7 +5315,7 @@ There are two keys for reincarnation displayed on each step of the character
 creation process: '%' for auto-reincarnation and '#' for reincarnation just for
 the current step of the character creation process.
 Auto-reincarnation, ie pressing '%', is like pressing '#' in every step of the
-character creation process. (There is also a commandline option '-R' for this.)
+character creation process. (There is also command-line option '-R' for this.)
 
 However, since this is your first character, just press 'N' to start the
 creation progress, enter a character name, and continue reading.
@@ -11176,6 +11191,8 @@ die permanently even if you are everlasting!
     items can be traded. Items cannot be traded on stale floors.
     Level requirements on items are not in effect while inside the ironman deep
     dive challenge either, so item levels are meaningless.
+    However, when a character picks up an unowned pile of money from the floor,
+    it will be evenly split between all party members on the same floor.
 
     Party bonus experience is higher than outside of IDDC. This means that the
     experience you get per killed monster is much closer to the experience you
@@ -12206,14 +12223,19 @@ encumbers "your movement" accordingly.)
 Armour weight (concerning flexibility boni and abilities)
 ---------------------------------------------------------
 Some special abilities depend on armour weight (including shield) too.
-Those are..
--dodge chance from 'Dodging' skill.
--critical hit bonus from 'Critical-strike' skill.
--stabbing attacks from 'Backstabbing' skill.
--extra parry bonus from dual-wielding two weapons. (Also see (7.11).)
--extra blow/round bonus from dual-wielding two weapons.
--area searching for the 'Rogue' class (exclusive ability).
--cloaking mode for the 'Rogue' class (exclusive ability).
+Those are...
+ - any improvements from your 'Stealing' skill to...
+    - your chance to steal successfully.
+    - reducing someone else's chance to steal from you.
+    - someone else not noticing you trying to steal from them.
+    - noticing someone else trying to steal from you.
+ - dodge chance from 'Dodging' skill.
+ - critical hit bonus from 'Critical-strike' skill.
+ - stabbing attacks from 'Backstabbing' skill.
+ - extra parry bonus from dual-wielding two weapons. (Also see (7.11).)
+ - extra blow/round bonus from dual-wielding two weapons.
+ - area searching for the 'Rogue' class (exclusive ability).
+ - cloaking mode for the 'Rogue' class (exclusive ability).
 
 If the armour becomes too heavy to perform those, a message will appear:
 "The weight of your armour strains your flexibility and awareness."
@@ -13949,6 +13971,11 @@ Wilderness Mapping
                 Maps the wilderness area around the worldmap sector you
                 are currently within. These scrolls also sometimes carry
                 an inscription telling the location of a hidden dungeon.
+                If you discover a dungeon's location this way, you must still
+                go there in person and find the entrance staircase (get it
+                into unobstructed line-of-sight of your character) for it to
+                register! Only then it will be officially 'known', to you and
+                server-wide (in the Mathom House).
 
 Word of Recall  Use it to quickly travel from the town or the wilderness into a
                 dungeon or tower within your current sector.
@@ -17715,15 +17742,25 @@ stated.
                                 doesn't help. But if you invest a lot of points
                                 you will eventually see an improvement ;).
 
-    .Stealing                   Ability to steal items from stores.
-     (0.100, at least 1.000)    If you get caught you will be on the
-                                'blacklist of merchants' for a while, which can
-                                be from 0 up to 76 minutes, depending on the
-                                (possibly discounted) value of the item you
+    .Stealing                   Ability to steal items from stores,
+     (0.100, at least 1.000)    also helps against someone else trying to steal
+                                from you.
+
+                                This skill will not give you stealing-chance or
+                                notice-stealing benefits if your armour is so
+                                heavy that you get a flexibility warning (5.5).
+
+                                If you get caught by an NPC shopkeeper you will
+                                be on the 'blacklist of merchants' for a while,
+                                which can be from 0 up to 76 minutes, depending
+                                on the (discounts matter) value of the item you
                                 tried to steal from the shop.
                                 During this time it's impossible to steal from
                                 shops, and you will get BAD prices (quadruple,
-                                like in the blackmarket usually) in all shops.
+                                like in the blackmarket usually) in this and
+                                all other NPC shops, including those that don't
+                                sell items but just offer services.
+                                (Player stores are unaffected by this.)
 
                                 You'll also be on the 'watchlist', meaning
                                 that you can shop at normal prices as usual,
@@ -27363,5 +27400,17 @@ Solution:   Usually caused by an outdated config file, such as .opt (options)
             For example all options that were starting on "hi..." as short form
             of "high..." were at some point changed to actually read "high..."
             instead. For example "hilite_player" -> "highlite_player" etc.
+
+PROBLEM 77: I cannot switch languages in Windows via keyboard shortcut while
+            TomeNET is in focus.
+Solution:   As long as you don't rely on CJK IME (Input Method Editors for
+            chinese, japanese, korean languages), you can safely disable IME
+            and it should fix the problem. There are three ways:
+            1) In game, press = for options menu, then press E to toggle IME.
+               Quit the client via CTRL+Q to ensure the option is saved.
+            2) Edit your TomeNET.ini file with a text editor, find the option
+               'DisableIME' and set it to '1' instead of '0'.
+            3) Start TomeNET with the command-line option '-I', for example
+               from a terminal window or a .BAT file:  TomeNET.exe -I
 
 ===============================================================================
