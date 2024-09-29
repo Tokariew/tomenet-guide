@@ -1764,12 +1764,14 @@ They all start with a slash '/' hence they're called slash commands:
             /mix 094    -> mix chemicals inscribed '@C0', '@C9' and '@C4'.
             /mix 094*   -> mix those chemicals and self-activate the mixture.
             /mix 3      -> Self-activates a mixture inscribed '@C3'.
-Alternative syntax, lower-case for alchemy satchel, upper-case for inventory:
-/mix <satchel-lower-case / inven-upper-case slot letters> [<'*' activates>]
+ Alternative syntax, lower-case for alchemy satchel, upper-case for inventory:
+  /mix <satchel-lower-case / inven-upper-case slot letters> [<'*' activates>]
             Example:  /mix accD*  -> mix chemicals from the satchel slot (a),
                                      two units from the satchel slot (c), one
                                      from normal inventory slot (d) and finally
                                      self-activate the resulting mixture.
+ Optional 'x<0-9>' parameter, must be first in line, repeats the whole process!
+            Example:  /mix x5 bc9E*   -> performs the crafting attempt 5 times.
 
 /monsters
 /mon [<monster character>] [<+minimum level>]
@@ -18347,15 +18349,16 @@ Enlightened:
       electricity, cold and be enveloped in an aura of frost and lightning;
     - also, their melee attacks will slay evil opponents intrinsically.
 
-    - Necromancy, Traumaturgy, Aura of Death, Shadow, Unlife and Hereticism
-      become disabled but you will keep them at their currently trained level.
+    - Blood Magic/Occultism: Necromancy, Traumaturgy, Aura of Death, Shadow,
+      and Unlife and Hereticism become disabled but you will keep them at their
+      currently trained level.
 
-    - Sword-, Blunt- and Polearm-mastery skill ratios x 1.2.
-    - The four prayer school ratios x 1.6.
-    - Wizardry Divination school x 1.4.
-    - Occult Spirit school x 1.6.
-    - Light and Mana rune ratios x 1.25.
-    - Fear and Shivering Aura ratio x 2.0.
+    - Melee combat: Sword-, Blunt- and Polearm-mastery skill ratios x 1.2.
+    - All four prayer school ratios x 1.6.
+    - Wizardry: Divination school x 1.4.
+    - Occultism: Spirit school x 1.6.
+    - Runecraft: Light and Mana rune ratios x 1.25.
+    - Blood magic: Fear and Shivering Aura ratio x 2.0.
 
 Corrupted:
     - Gain time resistance and they no longer have any need for worldly food.
@@ -18367,8 +18370,8 @@ Corrupted:
     - At level 50 they will become resistant to poison, immune to fire, and
       be enveloped in a fiery aura.
 
-    - The four prayer schools and Spirit become disabled (cannot be trained
-      further, but you keep their current status),
+    - All four prayer schools and Spirit (Occultism) become disabled (cannot
+      be trained further, but you keep their current status),
       priests and paladins however get them completely reset (refunded).
 
     - Priests:  Sword-mastery is enabled and receives the same skill ratio as
@@ -18380,10 +18383,10 @@ Corrupted:
                 Axe-mastery and Blunt-mastery ratios are swapped, so Axe will
                 now have the higher ratio and Blunt will have the lower ratio.
 
-    - Axe-mastery and Martial Arts skill ratios x 1.2.
-    - Fire, Air, Conveyance school ratios x 1.1, Udun x 1.4.
-    - Shadow and Unlife x 1.6, Hereticism x 1.7.
-    - Darkness and Chaos rune ratios x 1.25.
+    - Melee combat: Axe-mastery and Martial Arts skill ratios x 1.2.
+    - Wizardry: Fire, Air, Conveyance school ratios x 1.1, Udun x 1.4.
+    - Occultism: Shadow and Unlife x 1.6, Hereticism x 1.7.
+    - Runecraft: Darkness and Chaos rune ratios x 1.25.
     - All Blood Magic ratios x 2.0.
 
 Note: After a skill's gain ratio has been boosted as stated above, it will be
@@ -18417,15 +18420,18 @@ A simpler way to create mixtures is to use the slash command "/mix":
 This command mixes chemicals and/or self-activate a mixture, which must all be
 inscribed @C<n> where <n> is a numerical tag from 0 to 9.
 Examples:
-  /mix 094    -> mix chemicals inscribed '@C0', '@C9' and '@C4'.
-  /mix 094*   -> mix those chemicals and self-activate the mixture.
-  /mix 3      -> Self-activates a mixture inscribed '@C3'.
+  /mix 094       -> mix chemicals inscribed '@C0', '@C9' and '@C4'.
+  /mix 094*      -> mix those chemicals and self-activate the mixture.
+  /mix 3         -> Self-activates a mixture inscribed '@C3'.
 Alternative syntax, lower-case for alchemy satchel, upper-case for inventory:
   /mix <satchel-lower-case / inven-upper-case slot letters> [<'*' activates>]
 Example:
-  /mix accD*  -> mix chemicals from the satchel slot (a), two units from the
-                 satchel slot (c), one from normal inventory slot (d), and
-                 finally self-activate the resulting mixture.
+  /mix accD*     -> mix chemicals from the satchel slot (a), two units from the
+                    satchel slot (c), one from normal inventory slot (d), and
+                    finally self-activate the resulting mixture.
+Optional 'x<0-9>' parameter, must be first in line, repeats the whole process!
+Example:
+  /mix x5 bc9E*  -> performs the crafting attempt 5 times.
 
 A mixture that contains no valid combination of ingredients in the correct
 amounts is ruined and you can just discard it with 'k'.
