@@ -17549,7 +17549,10 @@ stated.
 
         .Traumaturgy            Drains mana from monsters when you inflict
          (0.500)                damage on them, replenishing your MP.
-                                Only works if you are able to see the target.
+                                Only works if you are actually able to target
+                                the opponent, eg there must not be a wall
+                                between you and the target; Traumaturgy does
+                                not require light but also works in darkness.
                                 The amount of points gained depends linearly
                                 on your skill level and also somewhat on the
                                 damage you inflicted.
@@ -21618,17 +21621,6 @@ these limitations will be lifted.
 
                     Tier II: Level 40.
 
-    Mirage Mirror   Grants temporary reflection, ie a high chance to reflect
-                    physical and magical projectiles such as bolts or arrows,
-                    same as having an item or form that grants REFLECT (item)
-                    or REFLECTING (form).
-                    (This is a pseudo reactive-shield spell, mutually exclusive
-                    with other (pseudo) reactive-shield spells. The only
-                    other Wizardry spell colliding with it is 'Fiery Shield',
-                    all other reactive-shield spells are from Runecraft.)
-                    Required skill level for first spell level: 35.
-                    Shared spell (see above): Air, Water.
-
     BONI:           Swim in water at 30,
                     water resistance at 40.
                     Items that go bad over time due to warmth while being
@@ -21686,7 +21678,6 @@ these limitations will be lifted.
                     other Wizardry spell colliding with it is 'Fiery Shield',
                     all other reactive-shield spells are from Runecraft.)
                     Required skill level for first spell level: 35.
-                    Shared spell (see above): Air, Water.
 
     BONI:           Feather falling at 30,
                     levitation at 45.
@@ -21741,6 +21732,14 @@ these limitations will be lifted.
                     Tier II: Level 20.
 
                     Tier III: Level 40.
+
+    Grasping Vines  Summons vines from the ground that grasp an opponent,
+                    slowing it down.
+                    Required skill level for first spell level: 6.
+
+                    Tier II: Level 23.
+                    Summons a wide array of vines, slowing down all opponents
+                    in your field of view.
 
     Vermin Control  Prevents vermin from breeding any further on your
                     current floor. Doesn't work on unnatural creatures.
