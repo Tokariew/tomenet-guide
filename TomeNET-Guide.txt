@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 4. December 2024 - written by C. Blue (c_blue@gmx.net)    |
+| Latest update: 7. December 2024 - written by C. Blue (c_blue@gmx.net)    |
 | for TomeNET version v4.9.2 - official websites are:                      :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -11320,6 +11320,10 @@ This is a permanent, special, gigantic ironman dungeon (or tower) that you may
 attempt to conquer by reaching the final floor or killing Morgoth and then
 recalling out. It allows traversing only in one direction and if you die you
 die permanently even if you are everlasting!
+It accommodates different dungeon themes, suggested and implemented by Kurzel,
+and dungeon towns, suggested by Kurzel and implemented by C. Blue, and it comes
+with a specific ruleset, to which many IDDC goers contributed such as the IDDC
+top dog Pondos and many others.
 
   Structure, getting out:
     The IDDC dungeon consists of 127 floors (-50 ft till -6350 ft, or positive
@@ -22535,7 +22539,7 @@ In general, holy schools are somewhat less affected by anti-magic fields.)
     Protection from evil
                     Evil creatures that try to attack you in melee might get
                     repelled, thereby preventing them from actually hitting
-                    you (same as the scroll effect).
+                    you (same as the scroll effect).           (auto-project)
                     Works very well, as long as the creature isn't of a higher
                     r-level than your character level.
                     Doesn't work at all on monsters of an r-level more than 10
