@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 28. December 2024 - written by C. Blue (c_blue@gmx.net)   |
+| Latest update: 1. January 2025 - written by C. Blue (c_blue@gmx.net)     |
 | for TomeNET version v4.9.2 - official websites are:                      :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -20817,6 +20817,9 @@ Note: For some classes the power curve can depend heavily on the way you
 
       Istari lose their weakness aka their fragility when they acquire the
       Mana school spell 'Disruption Shield' which is considered essential.
+      They are unmatched in terms of controlling almost any situation and
+      at the same time being able to focus on raw +speed accumulation while
+      maintaining very high survivability thanks to disruption shield.
 
       Especially non-martial-arts melee-classes can reach '++++' in the
       'Post-winning' stage if they are able to acquire a great set of equipment
@@ -20831,6 +20834,9 @@ Note: For some classes the power curve can depend heavily on the way you
       of utility, as they may access all features of Istari, Priests and also
       those of Mimicry and Runecraft without that much expense of skill points.
 
+      Mimics can reach '++++' in 'Late', 'Endgame' and 'Post-winning' in terms
+      of survivability/power balance if they obtain the most powerful forms.
+
               Start     Early     Mid       Late      Endgame   Post-winning
               (Lv 1)    (10+)     (30+)     (40+)     (50)      (After Morgoth)
 -------------------------------------------------------------------------------
@@ -20839,7 +20845,7 @@ Istar         ++        ++        +         +++       ++++      ++++
 Priest        +         +         ++        +++       +++       +++
 Corrupted P.  +         ++        ++        +++       +++       +++
 Rogue         +++       +++       +++       +++       +++       +++
-Mimic         ++        ++        +++       +++       +++       +++
+Mimic         ++        ++        +++       +++.      +++.      +++.
 Archer        ++        ++        ++        +++       +++       +++
 Paladin       ++        ++        +++       +++       +++       +++
 Death Knight  ++        +++       +++       +++       +++       +++
