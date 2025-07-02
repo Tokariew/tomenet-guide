@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 28. June 2025 - written by C. Blue (c_blue@gmx.net)       |
+| Latest update: 2. July 2025 - written by C. Blue (c_blue@gmx.net)        |
 | for TomeNET version v4.9.3a - official websites are:                     :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -6464,6 +6464,18 @@ There are four categories of subinventory containers:
   inscribed (see further down).
   Potion belts are sometimes sold by the Alchemy Shop in town.
 
+- Food Bag
+  This dry bag can store all kinds of food, such as rations, mushrooms and for
+  the sake of gameplay even pints of ale/wine :-p.
+  It has a relatively high capacity, allowing you to carry various special-
+  purpose mushrooms without taking up main inventory space.
+  (For client versions older than 4.9.2, you must use the '@' feature (call by
+  item name) in the prompt, or simply create a macro using the macro wizard,
+  which creates call-by-name macros.)
+  If you pick up food, it will be auto-stowed into this bag unless inscribed
+  (see further down).
+  This is by far the cheapest bag and often sold in the General Store in town.
+
 For client versions older than 4.9.2:
 From outside the subinventory you cannot access any items inside except if you
 use the '@' (call by item name) feature in the item prompt.
@@ -11666,7 +11678,7 @@ certain aspects of it:
 
   New year's eve:
     Running from 31st December to 1st January.
-    If seasons run at 2x speed, then also from 31st June till 1st July.
+    If seasons run at 2x speed, then also from 30st June till 1st July.
 
     Fireworks will be launched into the sky of the town of Bree.
     While it's night and fireworks are being launched, magic that lights up the
@@ -22993,7 +23005,8 @@ these limitations will be lifted.
                     Required skill level for first spell level: 15.
                     Shared spell (see above): Air, Nature.
 
-    Regeneration    Increases your hit point regeneration rate.
+    Regeneration    Increases your hit point regeneration rate
+                    and also speeds up the healing process of cuts.
                     (Stacks with other regeneration effects and item flag.)
                     Required skill level for first spell level: 20.
 
