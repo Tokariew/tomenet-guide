@@ -19066,11 +19066,12 @@ stated.
                                 the blacklist time will be much shorter too.
                                 Some potion/scroll/wand/staff break points
                                 regarding this (not complete, just examples):
+                                ?Magic Mapping, !Cure Serious Wounds: 40 Au.
                                 ?Identify: 50 Au.
                                 !Neutralize Poison: 55 Au.
                                 !Cure Critical Wounds: 100 Au.
                                 ?Enchant Weapon/Armour: 125 Au.
-                                ?Recharging: 150 Au.
+                                ?Recharging/Word of Recall: 150 Au.
                                 !Speed, ?Holy Chant, _Treasure Location:200 Au.
                                 !Restore stat, -Stone to Mud: 300 Au.
                                 !Healing, ?Teleportation: 400 Au.
