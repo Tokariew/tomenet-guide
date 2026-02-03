@@ -1,8 +1,8 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 21. January 2026 - written by C. Blue (c_blue@gmx.net)    |
-| for TomeNET version v4.9.3a - official websites are:                     :
+| Latest update: 3. Febuary 2026 - written by C. Blue (c_blue@gmx.net)     |
+| for TomeNET version v4.9.4 - official websites are:                      :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
 | Runes & Runemastery sections by Kurzel (kurzel.tomenet@gmail.com)
@@ -1562,6 +1562,11 @@ They all start with a slash '/' hence they're called slash commands:
 
 /dun        Displays the name of the dungeon you're currently in.
 
+/dw         Toggles, or...
+/dwon       Enables, and respectively..
+/dwoff      Disables dual-wield mode (see (7.2)).
+            Alternatively, you can toggle it in 'm' menu.
+
 /edmt       This toggles the client option 'easy_disarm_montraps' manually.
             (Note that this will not change the option in =9 if you enter that
             menu, the option state will be reset to what it is in there.)
@@ -1671,6 +1676,7 @@ They all start with a slash '/' hence they're called slash commands:
             A minimum monster level can be specified optionally.
             (This is a convenient shortcut for pressing  ~ 2 @ ESC  .)
 
+/ftk        Toggles, or...
 /ftkon      Enables, and respectively..
 /ftkoff     Disables fire-till-kill mode (see (5.2a)).
             Alternatively, you can toggle it in 'm' menu.
@@ -2392,6 +2398,8 @@ The ! inscriptions:
                 once inscribing an item '!*' will do ALL of these checks:
         !d      Prevent dropping an item.
                 If on a bag this will also prevent storing it in a list house.
+                This inscription will actually also prevent spilling an item to
+                the ground randomly if a backpack overflow happens.
         !k      Prevent killing (destroying) an item. (Note that '!k' on a
                 torch also prevents using that torch to refuel another one.)
         !s      Prevent selling an item to shop (!s).
@@ -2597,6 +2605,9 @@ Bags (subinventory):
     !S[0|1]     !S  : Only auto-stow items in this bag when buying from store.
                 !S0 : And only if they stack with existing items.
                 !S1 : And only if they are similar(*) to existing items.
+
+    !I          Prevents auto-stowing unknown or unidentified items into this
+                bag.
 
     (*) 'Similar' just means they can stack with the item, but there might not
         be enough space to get fully absorbed into the existing stack.
@@ -4573,7 +4584,15 @@ pack or sound pack), read on:
 
 All you have to do is download a sound and/or music pack and then install it.
 For downloading the official packs, go to www.tomenet.eu and then click on
-'Downloads'. Other players might offer their own audio packs on the forums.
+'Downloads'. Other players might offer their own audio packs on the forums,
+here are two forum threads:
+- Official audio packs:
+  https://www.tomenet.eu/phpBB3/viewtopic.php?t=120
+- List of alternative audio packs made by various people:
+  https://tomenet.eu/phpBB3/viewtopic.php?p=7934#p7934
+(Note that if you downloaded the 'multi-music' client, that one should already
+contains all alternative audio packs! And the official ones of course.)
+
 Read on for instructions how to install those packs once you downloaded them.
 There are two ways, automatically (client does it for you) and manually (you
 unzip them to the correct location yourself):
@@ -6555,6 +6574,8 @@ There are also inscriptions that can be put onto these bags (don't mix them):
   !S  Only auto-stow items into this bag when buying from a store.
   !S0 ..and only if this item can stack with already existing items in the bag.
   !S1 ..and only if they are at least similar(*) to existing items.
+
+  !I  Prevents auto-stowing unknown or unidentified items into this bag.
 
   (*) 'Similar' just means they can stack with the item, but there might not
       be enough space to get fully absorbed into the existing stack.
@@ -9891,12 +9912,16 @@ the game. For more information, see (4.13), Ironman Challenge.
   level.
  -There are various shops similar to those found in normal towns, appearing
   randomly in the dungeon. Some might offer certain goods cheaper than usual.
+  Shops will buy all types of items, but will offer less money for items the
+  less they match their specific theme (eg selling a weapon to a potion store).
+  Items sold to stores cannot be bought back!
  -Similar to IDDC, minimum floor depth vs character level regarding experience
   gain is not enforced: Normal experience is gained on any depth regardless of
   your character's level. But unlike in IDDC this is only true for characters
   up to level 49. Characters of level 50+ will receive depth-restricted XP.
  -Same as in the IDDC there are no live-spawns and floors become stale after
   relogging to the same depth but a newly generated floor.
+ -Mimics learn forms at the same boosted rate as in IDDC (+9 bonus per kill).
  -The Halls of Mandos are barred to any unique monsters and to Unmakers!
  -Various more or less basic stores, including a library, will spawn in
   addition to the usual dungeon stores. Also (like in the IDDC) a deep supply
