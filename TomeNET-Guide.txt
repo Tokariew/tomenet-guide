@@ -1,7 +1,7 @@
 .==========================================================================+--.
 |                              TomeNET Guide                               |
 +==========================================================================+-
-| Latest update: 19. April 2026 - written by C. Blue (c_blue@gmx.net)      |
+| Latest update: 24. April 2026 - written by C. Blue (c_blue@gmx.net)      |
 | for TomeNET version v4.9.4 - official websites are:                      :
 | https://www.tomenet.eu/ (official main site, formerly www.tomenet.net)
 | https://muuttuja.org/tomenet/ (Mikael's TomeNET site)
@@ -2299,9 +2299,12 @@ They all start with a slash '/' hence they're called slash commands:
 /uptime     Displays time passed since the TomeNET server started up (running).
 
 /version [x]
-/ver       Displays the server version.
-           If used with any parameter it will display the server settings too,
-           same as pressing ~i (knowledge menu -> server settings).
+/ver        Displays the server version.
+            If used with any parameter it will display the server settings too,
+            same as pressing ~i (knowledge menu -> server settings).
+
+/wager      Client-side command to set your standard wager for casinos, ie the
+            amount suggested automatically in the "How much gold...?" prompt.
 
 /whisper <text>
 /wh         Whispers <text> to players currently standing right next to you.
@@ -2424,9 +2427,10 @@ The ! inscriptions:
     part is not parsed as it is separated by a space from the "!..." sequence.
     You can inscribe an item by pressing '{' and uninscribe it with '}'.
 
-    !* inscription, this is a "combo" shortcut inscription.
-        *       is a 'wild card' which stands for multiple inscriptions at,
-                once inscribing an item '!*' will do ALL of these checks:
+    !* inscription, this is a "combo" shortcut inscription. The '*' is a 'wild
+        card' which combines the effect of multiple inscriptions. Inscribing an
+        item '!*' will perform ALL of the following checks:
+
         !d      Prevent dropping an item.
                 If on a bag this will also prevent storing it in a list house.
                 This inscription will actually also prevent spilling an item to
@@ -2445,7 +2449,7 @@ The ! inscriptions:
     either inscribe it   !dsvk   or just   !*   (implies != too, but whatever).
 
     !+ inscription:
-        Implies !k, !s, !=, !h.
+        A 'wild card' inscription that combines these: !k, !s, !=, !h.
         So it does the same as !* except that it does not prevent dropping or
         throwing an item. This can be useful for throwing weapons for example.
 
@@ -9643,7 +9647,7 @@ So eg at level 9 you could bet up to 900 Au, and at level 10 up to 10000 Au.
 The game of Go however has fixed bets for each stage that you cannot change.
 
 
-==============================================================================
+===============================================================================
 
 In-Between
 ----------
@@ -9661,7 +9665,7 @@ if two black dice are 2 and 9, and you rolled 1, you lose.
 if two black dice are 2 and 9, and you rolled 2, you lose.
 
 
-==============================================================================
+===============================================================================
 
 Craps
 -----
@@ -9686,7 +9690,7 @@ eg.
 [5, 6](11) {you win with the first roll}
 
 
-==============================================================================
+===============================================================================
 
 Spin the wheel
 --------------
@@ -9702,7 +9706,7 @@ If the wheel stops at your number you receive nine times (9x) your wager,
 so the payoff odds are 9. The 'zero' always loses.
 
 
-==============================================================================
+===============================================================================
 
 Dice slots
 ----------
@@ -9744,7 +9748,51 @@ if shield, sword, sword appears, you win at payoff 2.
 if lemon, cherry, shield appears, you lose.
 
 
-==============================================================================
+===============================================================================
+
+Blackjack
+---------
+
+Setup:
+------
+-A deck of 52 standard cards is used, numbers 2-10, Jack, Queen, King, Ace.
+ Jack, Queen, King count 10, Ace counts 1 or 11 (depending on what's best).
+
+-The goal of the game is to get a higher score than the bank to win.
+ Same score as the bank ties, lesser score loses.
+
+-If the bank or the player exceed 21 points they lose automatically ('bust').
+
+-A combination of 10-value card (10, J, Q, K) and Ace is called 'Blackjack'
+ and wins over any other hand except another Blackjack, against which it ties.
+
+-A Blackjack has payout ratio 3:2, all other hands have payout 1:1.
+
+Game process:
+-------------
+-The Player is dealt two cards, the bank two cards of which one is concealed
+ except if it's a Blackjack, in which case the game ends instantly.
+
+-If the player's cards are of equal value they may 'split' the cards and play
+ them as two separate games against the same bank cards.
+ The player will pay another wager of the same amount for the 2nd game.
+
+-If the player does not split they may choose to 'double down' now.
+ This will double their wager and they will receive exactly one more card,
+ after which it's the bank's turn (unless the card busts and the player loses).
+
+-If a player doesn't double down, they may choose to take more cards ('hit')
+ or stop taking cards ('stand').
+
+-After the player stands, it's the bank's turn. The concealed card is revealed.
+ The bank must draw cards until reaching at least a score of 17.
+ If the bank draws an Ace and this would result in a score from 17 to 21 if
+ interpreted as '11 points' then the Ace will be counted as 11 points,
+ the bank's turn finishes and the game result is evaluated.
+ (This means that unlike the player, the bank never has any freedom of choice.)
+
+
+===============================================================================
 
 Go challenge
 ------------
